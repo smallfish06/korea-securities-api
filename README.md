@@ -52,6 +52,7 @@ krsec -config config.yaml
 | Method | Path | 설명 |
 |---|---|---|
 | `POST` | `/kis/{path...}` | KIS 엔드포인트 호출 (`/uapi` 경로를 구현된 함수로 매핑) |
+| `POST` | `/kiwoom/{path...}` | Kiwoom 엔드포인트 호출 (`/api` 경로 + `api_id`를 구현/문서 등록(비웹소켓 REST) 함수로 명시 매핑) |
 | `GET` | `/quotes/{market}/{symbol}` | 현재가 |
 | `GET` | `/quotes/{market}/{symbol}/ohlcv` | 일봉 |
 | `GET` | `/instruments/{market}/{symbol}` | 종목 정보 |

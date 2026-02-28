@@ -13,174 +13,174 @@ type endpointSpec struct {
 
 var (
 	endpointDomesticQuote = endpointSpec{
-		APIID:       "ka10001",
+		APIID:       APIIDDomesticQuote,
 		Method:      http.MethodPost,
-		Path:        "/api/dostk/stkinfo",
+		Path:        PathStockInfo,
 		ContentType: "application/json;charset=UTF-8",
 	}
 	endpointDomesticExecutionInfo = endpointSpec{
-		APIID:       "ka10003",
+		APIID:       APIIDDomesticExecutionInfo,
 		Method:      http.MethodPost,
-		Path:        "/api/dostk/stkinfo",
+		Path:        PathStockInfo,
 		ContentType: "application/json;charset=UTF-8",
 	}
 	endpointDomesticOrderBook = endpointSpec{
-		APIID:       "ka10004",
+		APIID:       APIIDDomesticOrderBook,
 		Method:      http.MethodPost,
-		Path:        "/api/dostk/mrkcond",
+		Path:        PathMarketCond,
 		ContentType: "application/json;charset=UTF-8",
 	}
 	endpointInstrumentInfo = endpointSpec{
-		APIID:       "ka10100",
+		APIID:       APIIDInstrumentInfo,
 		Method:      http.MethodPost,
-		Path:        "/api/dostk/stkinfo",
+		Path:        PathStockInfo,
 		ContentType: "application/json;charset=UTF-8",
 	}
 	endpointInvestorByStock = endpointSpec{
-		APIID:       "ka10059",
+		APIID:       APIIDInvestorByStock,
 		Method:      http.MethodPost,
-		Path:        "/api/dostk/stkinfo",
+		Path:        PathStockInfo,
 		ContentType: "application/json;charset=UTF-8",
 	}
 	endpointSectorCurrent = endpointSpec{
-		APIID:       "ka20001",
+		APIID:       APIIDSectorCurrent,
 		Method:      http.MethodPost,
-		Path:        "/api/dostk/sect",
+		Path:        PathSector,
 		ContentType: "application/json;charset=UTF-8",
 	}
 	endpointSectorByPrice = endpointSpec{
-		APIID:       "ka20002",
+		APIID:       APIIDSectorByPrice,
 		Method:      http.MethodPost,
-		Path:        "/api/dostk/sect",
+		Path:        PathSector,
 		ContentType: "application/json;charset=UTF-8",
 	}
 	endpointVolumeRank = endpointSpec{
-		APIID:       "ka10030",
+		APIID:       APIIDVolumeRank,
 		Method:      http.MethodPost,
-		Path:        "/api/dostk/rkinfo",
+		Path:        PathRankingInfo,
 		ContentType: "application/json;charset=UTF-8",
 	}
 	endpointChangeRateRank = endpointSpec{
-		APIID:       "ka10027",
+		APIID:       APIIDChangeRateRank,
 		Method:      http.MethodPost,
-		Path:        "/api/dostk/rkinfo",
+		Path:        PathRankingInfo,
 		ContentType: "application/json;charset=UTF-8",
 	}
 	endpointELWDetail = endpointSpec{
-		APIID:       "ka30012",
+		APIID:       APIIDELWDetail,
 		Method:      http.MethodPost,
-		Path:        "/api/dostk/elw",
+		Path:        PathELW,
 		ContentType: "application/json;charset=UTF-8",
 	}
 
 	endpointAccountBalance = endpointSpec{
-		APIID:       "kt00005",
+		APIID:       APIIDAccountBalance,
 		Method:      http.MethodPost,
-		Path:        "/api/dostk/acnt",
+		Path:        PathAccount,
 		ContentType: "application/json;charset=UTF-8",
 	}
 	endpointAccountPositions = endpointSpec{
-		APIID:       "kt00018",
+		APIID:       APIIDAccountPositions,
 		Method:      http.MethodPost,
-		Path:        "/api/dostk/acnt",
+		Path:        PathAccount,
 		ContentType: "application/json;charset=UTF-8",
 	}
 	endpointUnsettledOrders = endpointSpec{
-		APIID:       "ka10075",
+		APIID:       APIIDUnsettledOrders,
 		Method:      http.MethodPost,
-		Path:        "/api/dostk/acnt",
+		Path:        PathAccount,
 		ContentType: "application/json;charset=UTF-8",
 	}
 	endpointOrderExecutions = endpointSpec{
-		APIID:       "ka10076",
+		APIID:       APIIDOrderExecutions,
 		Method:      http.MethodPost,
-		Path:        "/api/dostk/acnt",
+		Path:        PathAccount,
 		ContentType: "application/json;charset=UTF-8",
 	}
 	endpointAccountDepositDetail = endpointSpec{
-		APIID:       "kt00001",
+		APIID:       APIIDAccountDepositDetail,
 		Method:      http.MethodPost,
-		Path:        "/api/dostk/acnt",
+		Path:        PathAccount,
 		ContentType: "application/json;charset=UTF-8",
 	}
 	endpointAccountOrderExecutionDetail = endpointSpec{
-		APIID:       "kt00007",
+		APIID:       APIIDAccountOrderExecutionDetail,
 		Method:      http.MethodPost,
-		Path:        "/api/dostk/acnt",
+		Path:        PathAccount,
 		ContentType: "application/json;charset=UTF-8",
 	}
 	endpointAccountOrderExecutionStatus = endpointSpec{
-		APIID:       "kt00009",
+		APIID:       APIIDAccountOrderExecutionStatus,
 		Method:      http.MethodPost,
-		Path:        "/api/dostk/acnt",
+		Path:        PathAccount,
 		ContentType: "application/json;charset=UTF-8",
 	}
 	endpointAccountOrderableWithdrawable = endpointSpec{
-		APIID:       "kt00010",
+		APIID:       APIIDAccountOrderableWithdrawable,
 		Method:      http.MethodPost,
-		Path:        "/api/dostk/acnt",
+		Path:        PathAccount,
 		ContentType: "application/json;charset=UTF-8",
 	}
 	endpointAccountMarginDetail = endpointSpec{
-		APIID:       "kt00013",
+		APIID:       APIIDAccountMarginDetail,
 		Method:      http.MethodPost,
-		Path:        "/api/dostk/acnt",
+		Path:        PathAccount,
 		ContentType: "application/json;charset=UTF-8",
 	}
 
 	endpointTickChart = endpointSpec{
-		APIID:       "ka10079",
+		APIID:       APIIDTickChart,
 		Method:      http.MethodPost,
-		Path:        "/api/dostk/chart",
+		Path:        PathChart,
 		ContentType: "application/json;charset=UTF-8",
 	}
 	endpointInvestorByStockChart = endpointSpec{
-		APIID:       "ka10060",
+		APIID:       APIIDInvestorByStockChart,
 		Method:      http.MethodPost,
-		Path:        "/api/dostk/chart",
+		Path:        PathChart,
 		ContentType: "application/json;charset=UTF-8",
 	}
 	endpointDailyChart = endpointSpec{
-		APIID:       "ka10081",
+		APIID:       APIIDDailyChart,
 		Method:      http.MethodPost,
-		Path:        "/api/dostk/chart",
+		Path:        PathChart,
 		ContentType: "application/json;charset=UTF-8",
 	}
 	endpointWeeklyChart = endpointSpec{
-		APIID:       "ka10082",
+		APIID:       APIIDWeeklyChart,
 		Method:      http.MethodPost,
-		Path:        "/api/dostk/chart",
+		Path:        PathChart,
 		ContentType: "application/json;charset=UTF-8",
 	}
 	endpointMonthlyChart = endpointSpec{
-		APIID:       "ka10083",
+		APIID:       APIIDMonthlyChart,
 		Method:      http.MethodPost,
-		Path:        "/api/dostk/chart",
+		Path:        PathChart,
 		ContentType: "application/json;charset=UTF-8",
 	}
 
 	endpointPlaceBuyOrder = endpointSpec{
-		APIID:       "kt10000",
+		APIID:       APIIDPlaceBuyOrder,
 		Method:      http.MethodPost,
-		Path:        "/api/dostk/ordr",
+		Path:        PathOrder,
 		ContentType: "application/json;charset=UTF-8",
 	}
 	endpointPlaceSellOrder = endpointSpec{
-		APIID:       "kt10001",
+		APIID:       APIIDPlaceSellOrder,
 		Method:      http.MethodPost,
-		Path:        "/api/dostk/ordr",
+		Path:        PathOrder,
 		ContentType: "application/json;charset=UTF-8",
 	}
 	endpointModifyOrder = endpointSpec{
-		APIID:       "kt10002",
+		APIID:       APIIDModifyOrder,
 		Method:      http.MethodPost,
-		Path:        "/api/dostk/ordr",
+		Path:        PathOrder,
 		ContentType: "application/json;charset=UTF-8",
 	}
 	endpointCancelOrder = endpointSpec{
-		APIID:       "kt10003",
+		APIID:       APIIDCancelOrder,
 		Method:      http.MethodPost,
-		Path:        "/api/dostk/ordr",
+		Path:        PathOrder,
 		ContentType: "application/json;charset=UTF-8",
 	}
 )

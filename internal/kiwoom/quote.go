@@ -65,6 +65,7 @@ func (c *Client) InquireExecutionInfo(ctx context.Context, symbol string) (map[s
 // InquireVolumeRank fetches domestic volume ranking via ka10030.
 func (c *Client) InquireVolumeRank(ctx context.Context, body map[string]interface{}) (map[string]interface{}, error) {
 	payload := cloneBody(body)
+	setDefaultPayload(payload, "stex_tp", "0")
 	setDefaultPayload(payload, "mrkt_tp", "000")
 	setDefaultPayload(payload, "sort_tp", "1")
 	setDefaultPayload(payload, "mang_stk_incls", "0")
@@ -79,6 +80,7 @@ func (c *Client) InquireVolumeRank(ctx context.Context, body map[string]interfac
 // InquireChangeRateRank fetches domestic change-rate ranking via ka10027.
 func (c *Client) InquireChangeRateRank(ctx context.Context, body map[string]interface{}) (map[string]interface{}, error) {
 	payload := cloneBody(body)
+	setDefaultPayload(payload, "stex_tp", "0")
 	setDefaultPayload(payload, "mrkt_tp", "000")
 	setDefaultPayload(payload, "sort_tp", "1")
 	setDefaultPayload(payload, "trde_qty_cnd", "0")

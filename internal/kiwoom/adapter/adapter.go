@@ -16,10 +16,11 @@ import (
 
 // Adapter adapts Kiwoom APIs into broker.Broker.
 type Adapter struct {
-	client    *kiwoom.Client
-	accountID string
-	sandbox   bool
-	orderDir  string
+	client     *kiwoom.Client
+	accountID  string
+	sandbox    bool
+	orderDir   string
+	dispatcher *endpointDispatcher
 
 	mu     sync.RWMutex
 	orders map[string]orderContext
@@ -52,6 +53,7 @@ func NewAdapterWithOptions(sandbox bool, accountID string, opts Options) *Adapte
 		orderDir:  strings.TrimSpace(opts.OrderContextDir),
 		orders:    make(map[string]orderContext),
 	}
+	a.dispatcher = newEndpointDispatcher(a)
 	_ = a.loadOrderContexts()
 	return a
 }

@@ -196,6 +196,15 @@ func (s *Server) routes() {
 		fuego.OptionQuery("account_id", "Optional account selector when multiple KIS accounts exist."),
 	)
 
+	// Kiwoom endpoint dispatcher (calls supported Kiwoom endpoints by path + api_id)
+	fuego.Post(s.router, "/kiwoom/{path...}", s.handleKiwoomProxy,
+		fuego.OptionTags("Kiwoom"),
+		fuego.OptionSummary("Call Kiwoom endpoint by path"),
+		fuego.OptionDescription("Calls Kiwoom endpoints implemented in krsec by path. api_id in request body is required."),
+		fuego.OptionPath("path", "Kiwoom API path under /api. Accepts wildcard segments."),
+		fuego.OptionQuery("account_id", "Optional account selector when multiple Kiwoom accounts exist."),
+	)
+
 	// Quotes
 	fuego.Get(s.router, "/quotes/{market}/{symbol}", s.handleGetQuote,
 		fuego.OptionTags("Quotes"),
