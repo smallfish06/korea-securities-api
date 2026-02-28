@@ -13,7 +13,7 @@ func (c *Client) GetInstrumentInfo(ctx context.Context, symbol string) (*Instrum
 		return nil, broker.ErrInvalidSymbol
 	}
 
-	res, err := c.call(ctx, "ka10100", map[string]interface{}{
+	res, err := c.call(ctx, endpointInstrumentInfo, map[string]interface{}{
 		"stk_cd": symbol,
 	}, callOptions{})
 	if err != nil {

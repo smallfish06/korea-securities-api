@@ -41,19 +41,6 @@ func (m *memoryTokenManager) WaitForAuth(string) {
 	m.waitCalls++
 }
 
-func TestLookupAPISpec_KnownTR(t *testing.T) {
-	spec, ok, err := LookupAPISpec("kt10000")
-	if err != nil {
-		t.Fatalf("LookupAPISpec error: %v", err)
-	}
-	if !ok {
-		t.Fatal("expected kt10000 spec to exist")
-	}
-	if spec.Path != "/api/dostk/ordr" {
-		t.Fatalf("path = %q, want /api/dostk/ordr", spec.Path)
-	}
-}
-
 func TestClientGetDomesticQuote_UsesAuthAndAPIIDHeader(t *testing.T) {
 	var gotAuth string
 	var gotAPIID string

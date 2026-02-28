@@ -10,20 +10,20 @@ import (
 
 // GetDailyChart fetches daily candles from ka10081.
 func (c *Client) GetDailyChart(ctx context.Context, symbol, baseDate string) ([]ChartCandle, error) {
-	return c.getChart(ctx, "ka10081", symbol, baseDate)
+	return c.getChart(ctx, endpointDailyChart, symbol, baseDate)
 }
 
 // GetWeeklyChart fetches weekly candles from ka10082.
 func (c *Client) GetWeeklyChart(ctx context.Context, symbol, baseDate string) ([]ChartCandle, error) {
-	return c.getChart(ctx, "ka10082", symbol, baseDate)
+	return c.getChart(ctx, endpointWeeklyChart, symbol, baseDate)
 }
 
 // GetMonthlyChart fetches monthly candles from ka10083.
 func (c *Client) GetMonthlyChart(ctx context.Context, symbol, baseDate string) ([]ChartCandle, error) {
-	return c.getChart(ctx, "ka10083", symbol, baseDate)
+	return c.getChart(ctx, endpointMonthlyChart, symbol, baseDate)
 }
 
-func (c *Client) getChart(ctx context.Context, apiID, symbol, baseDate string) ([]ChartCandle, error) {
+func (c *Client) getChart(ctx context.Context, endpoint endpointSpec, symbol, baseDate string) ([]ChartCandle, error) {
 	symbol = normalizeSymbolCode(symbol)
 	if symbol == "" {
 		return nil, broker.ErrInvalidSymbol
@@ -33,7 +33,7 @@ func (c *Client) getChart(ctx context.Context, apiID, symbol, baseDate string) (
 		baseDate = time.Now().Format("20060102")
 	}
 
-	res, err := c.call(ctx, apiID, map[string]interface{}{
+	res, err := c.call(ctx, endpoint, map[string]interface{}{
 		"stk_cd":       symbol,
 		"base_dt":      baseDate,
 		"upd_stkpc_tp": "1",

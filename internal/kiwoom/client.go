@@ -135,41 +135,29 @@ func (c *Client) isTokenValid() bool {
 	return time.Now().Before(expiresAt.Add(-2 * time.Minute))
 }
 
-// Catalog returns all known Kiwoom API specs.
-func (c *Client) Catalog() ([]APISpec, error) {
-	return ListAPISpecs()
-}
-
-// call executes one Kiwoom REST API request by api-id.
-func (c *Client) call(ctx context.Context, apiID string, body map[string]interface{}, opts callOptions) (*callResult, error) {
-	spec, ok, err := LookupAPISpec(apiID)
-	if err != nil {
-		return nil, err
-	}
-	if !ok {
-		return nil, fmt.Errorf("unknown kiwoom api-id: %s", apiID)
-	}
-	if strings.Contains(strings.ToLower(spec.Path), "websocket") || strings.HasPrefix(strings.ToLower(spec.RealDomain), "wss://") {
-		return nil, fmt.Errorf("api-id %s is websocket-only and not supported by REST call", apiID)
+// call executes one Kiwoom REST API request with a concrete endpoint spec.
+func (c *Client) call(ctx context.Context, endpoint endpointSpec, body map[string]interface{}, opts callOptions) (*callResult, error) {
+	if strings.TrimSpace(endpoint.APIID) == "" || strings.TrimSpace(endpoint.Method) == "" || strings.TrimSpace(endpoint.Path) == "" {
+		return nil, fmt.Errorf("invalid endpoint spec")
 	}
 	if body == nil {
 		body = map[string]interface{}{}
 	}
 
-	headers, result, err := c.doRequest(ctx, spec, apiID, body, opts)
+	headers, result, err := c.doRequest(ctx, endpoint, body, opts)
 	if err != nil {
 		return nil, err
 	}
 
 	if code := parseReturnCode(result["return_code"]); code != 0 {
 		msg := strings.TrimSpace(toString(result["return_msg"]))
-		return nil, wrapCallError(apiID, code, msg)
+		return nil, wrapCallError(endpoint.APIID, code, msg)
 	}
 
 	return &callResult{Headers: headers, Body: result}, nil
 }
 
-func (c *Client) doRequest(ctx context.Context, spec APISpec, apiID string, body map[string]interface{}, opts callOptions) (http.Header, map[string]interface{}, error) {
+func (c *Client) doRequest(ctx context.Context, endpoint endpointSpec, body map[string]interface{}, opts callOptions) (http.Header, map[string]interface{}, error) {
 	c.apiLimiter.Wait()
 
 	if !c.isTokenValid() {
@@ -182,25 +170,25 @@ func (c *Client) doRequest(ctx context.Context, spec APISpec, apiID string, body
 		}
 	}
 
-	url := strings.TrimRight(c.baseURL, "/") + spec.Path
+	url := strings.TrimRight(c.baseURL, "/") + endpoint.Path
 	payload, err := json.Marshal(body)
 	if err != nil {
 		return nil, nil, fmt.Errorf("marshal request body: %w", err)
 	}
 
-	req, err := http.NewRequestWithContext(ctx, spec.Method, url, bytes.NewReader(payload))
+	req, err := http.NewRequestWithContext(ctx, endpoint.Method, url, bytes.NewReader(payload))
 	if err != nil {
 		return nil, nil, fmt.Errorf("create request: %w", err)
 	}
 
 	token, _ := c.getToken()
 	req.Header.Set("Authorization", "Bearer "+token)
-	if strings.TrimSpace(spec.ContentType) != "" {
-		req.Header.Set("Content-Type", spec.ContentType)
+	if strings.TrimSpace(endpoint.ContentType) != "" {
+		req.Header.Set("Content-Type", endpoint.ContentType)
 	} else {
 		req.Header.Set("Content-Type", "application/json;charset=UTF-8")
 	}
-	req.Header.Set("api-id", apiID)
+	req.Header.Set("api-id", endpoint.APIID)
 
 	if cont := strings.TrimSpace(opts.ContYN); cont != "" {
 		req.Header.Set("cont-yn", cont)
@@ -232,13 +220,13 @@ func (c *Client) doRequest(ctx context.Context, spec APISpec, apiID string, body
 			if code == 0 {
 				code = resp.StatusCode
 			}
-			return nil, nil, wrapCallError(apiID, code, msg)
+			return nil, nil, wrapCallError(endpoint.APIID, code, msg)
 		}
 		msg := strings.TrimSpace(string(bodyBytes))
 		if msg == "" {
 			msg = http.StatusText(resp.StatusCode)
 		}
-		return nil, nil, wrapCallError(apiID, resp.StatusCode, msg)
+		return nil, nil, wrapCallError(endpoint.APIID, resp.StatusCode, msg)
 	}
 
 	out := make(map[string]interface{})

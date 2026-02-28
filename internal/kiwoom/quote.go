@@ -13,7 +13,7 @@ func (c *Client) GetDomesticQuote(ctx context.Context, symbol string) (*Domestic
 		return nil, broker.ErrInvalidSymbol
 	}
 
-	res, err := c.call(ctx, "ka10001", map[string]interface{}{
+	res, err := c.call(ctx, endpointDomesticQuote, map[string]interface{}{
 		"stk_cd": symbol,
 	}, callOptions{})
 	if err != nil {

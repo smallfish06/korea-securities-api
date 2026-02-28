@@ -12,7 +12,7 @@ func (c *Client) GetAccountBalance(ctx context.Context, exchange string) (*Accou
 		exchange = "KRX"
 	}
 
-	res, err := c.call(ctx, "kt00005", map[string]interface{}{
+	res, err := c.call(ctx, endpointAccountBalance, map[string]interface{}{
 		"dmst_stex_tp": exchange,
 	}, callOptions{})
 	if err != nil {
@@ -48,7 +48,7 @@ func (c *Client) GetAccountPositions(ctx context.Context, queryType, exchange st
 		exchange = "KRX"
 	}
 
-	res, err := c.call(ctx, "kt00018", map[string]interface{}{
+	res, err := c.call(ctx, endpointAccountPositions, map[string]interface{}{
 		"qry_tp":       queryType,
 		"dmst_stex_tp": exchange,
 	}, callOptions{})
@@ -96,7 +96,7 @@ func (c *Client) GetUnsettledOrders(ctx context.Context, symbol string) ([]Unset
 		body["all_stk_tp"] = "1"
 	}
 
-	res, err := c.call(ctx, "ka10075", body, callOptions{})
+	res, err := c.call(ctx, endpointUnsettledOrders, body, callOptions{})
 	if err != nil {
 		return nil, err
 	}
@@ -138,7 +138,7 @@ func (c *Client) GetOrderExecutions(ctx context.Context, symbol string) ([]Order
 		body["stk_cd"] = symbol
 	}
 
-	res, err := c.call(ctx, "ka10076", body, callOptions{})
+	res, err := c.call(ctx, endpointOrderExecutions, body, callOptions{})
 	if err != nil {
 		return nil, err
 	}

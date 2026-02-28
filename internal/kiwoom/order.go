@@ -23,17 +23,17 @@ func (c *Client) PlaceStockOrder(ctx context.Context, req PlaceStockOrderRequest
 		return nil, broker.ErrInvalidOrderRequest
 	}
 
-	var apiID string
+	var endpoint endpointSpec
 	switch req.Side {
 	case StockOrderSideBuy:
-		apiID = "kt10000"
+		endpoint = endpointPlaceBuyOrder
 	case StockOrderSideSell:
-		apiID = "kt10001"
+		endpoint = endpointPlaceSellOrder
 	default:
 		return nil, broker.ErrInvalidOrderRequest
 	}
 
-	res, err := c.call(ctx, apiID, map[string]interface{}{
+	res, err := c.call(ctx, endpoint, map[string]interface{}{
 		"dmst_stex_tp": req.Exchange,
 		"stk_cd":       req.Symbol,
 		"ord_qty":      fmt.Sprintf("%d", req.Quantity),
@@ -69,7 +69,7 @@ func (c *Client) CancelStockOrder(ctx context.Context, req CancelStockOrderReque
 		return nil, broker.ErrInvalidOrderRequest
 	}
 
-	res, err := c.call(ctx, "kt10003", map[string]interface{}{
+	res, err := c.call(ctx, endpointCancelOrder, map[string]interface{}{
 		"dmst_stex_tp": req.Exchange,
 		"orig_ord_no":  req.OriginalID,
 		"stk_cd":       req.Symbol,
@@ -98,7 +98,7 @@ func (c *Client) ModifyStockOrder(ctx context.Context, req ModifyStockOrderReque
 		return nil, broker.ErrInvalidOrderRequest
 	}
 
-	res, err := c.call(ctx, "kt10002", map[string]interface{}{
+	res, err := c.call(ctx, endpointModifyOrder, map[string]interface{}{
 		"dmst_stex_tp": req.Exchange,
 		"orig_ord_no":  req.OriginalID,
 		"stk_cd":       req.Symbol,
