@@ -10,6 +10,6 @@ linters:
     - gocritic
     - misspell
     - gofmt
-issues:
+run:
   exclude-dirs:
     - vendor
