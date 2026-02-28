@@ -1,7 +1,6 @@
 package server
 
 import (
-	"context"
 	"net/http"
 
 	"github.com/go-fuego/fuego"
@@ -61,24 +60,4 @@ func (s *Server) handleAccountsSummary(c fuego.ContextNoBody) (Response, error) 
 		OK:   true,
 		Data: summary,
 	})
-}
-
-// Authenticate all accounts
-func (s *Server) authenticateAll(ctx context.Context) error {
-	for _, account := range s.accounts {
-		brk := s.getBroker(account.AccountID)
-		if brk == nil {
-			continue
-		}
-
-		creds := broker.Credentials{
-			AppKey:    account.AppKey,
-			AppSecret: account.AppSecret,
-		}
-
-		if _, err := brk.Authenticate(ctx, creds); err != nil {
-			return err
-		}
-	}
-	return nil
 }

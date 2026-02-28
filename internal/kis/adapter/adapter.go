@@ -47,16 +47,6 @@ type orderContext struct {
 	UpdatedAt    time.Time
 }
 
-// NewAdapter creates a new KIS adapter
-func NewAdapter(sandbox bool, accountID string) *Adapter {
-	return NewAdapterWithOptions(sandbox, accountID, Options{})
-}
-
-// NewAdapterWithTokenManager creates a new KIS adapter with an injected token manager.
-func NewAdapterWithTokenManager(sandbox bool, accountID string, tokenManager kis.TokenManager) *Adapter {
-	return NewAdapterWithOptions(sandbox, accountID, Options{TokenManager: tokenManager})
-}
-
 // NewAdapterWithOptions creates a new KIS adapter with injectable dependencies.
 func NewAdapterWithOptions(sandbox bool, accountID string, opts Options) *Adapter {
 	// accountID 형식: "12345678-01" 또는 "12345678"

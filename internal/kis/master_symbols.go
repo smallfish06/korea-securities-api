@@ -42,7 +42,6 @@ var (
 	masterSymbolsMu            sync.RWMutex
 	masterSymbolsBootstrapping bool
 	masterSymbolsLoaded        bool
-	masterSymbolsErr           error
 	masterSymbolsCount         int
 	masterSymbols              = masterSymbolsIndex{
 		byMarketSymbol: make(map[string]MasterSymbol),
@@ -131,14 +130,12 @@ func (c *Client) rebuildMasterSymbols(ctx context.Context, force bool) (int, err
 	masterSymbolsMu.Lock()
 	masterSymbolsBootstrapping = false
 	if err != nil {
-		masterSymbolsErr = err
 		masterSymbolsMu.Unlock()
 		return 0, err
 	}
 	masterSymbols = idx
 	masterSymbolsCount = count
 	masterSymbolsLoaded = true
-	masterSymbolsErr = nil
 	masterSymbolsMu.Unlock()
 	return count, nil
 }
@@ -257,7 +254,7 @@ func downloadMasterPayload(ctx context.Context, httpClient *http.Client, rawURL 
 	if err != nil {
 		return nil, err
 	}
-	defer resp.Body.Close()
+	defer func() { _ = resp.Body.Close() }()
 	if resp.StatusCode >= 400 {
 		return nil, fmt.Errorf("download %s: HTTP %d", u, resp.StatusCode)
 	}
@@ -280,7 +277,7 @@ func downloadMasterPayload(ctx context.Context, httpClient *http.Client, rawURL 
 				continue
 			}
 			data, err := io.ReadAll(rc)
-			rc.Close()
+			_ = rc.Close()
 			if err == nil {
 				return data, nil
 			}

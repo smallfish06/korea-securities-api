@@ -223,7 +223,7 @@ func (tm *FileTokenManager) loadAll() {
 			tm.tokens[te.AppKey] = &te
 		} else {
 			// Delete expired token file
-			os.Remove(filePath)
+			_ = os.Remove(filePath)
 		}
 	}
 }

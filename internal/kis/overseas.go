@@ -14,7 +14,7 @@ func (c *Client) InquireOverseasPrice(ctx context.Context, exchangeCode, symbol 
 	trID := "HHDFS00000300"
 
 	// 거래소코드 매핑
-	excd := "NAS" // 기본값: NASDAQ
+	var excd string
 	switch exchangeCode {
 	case "NASDAQ":
 		excd = "NAS"

@@ -43,16 +43,6 @@ type orderContext struct {
 	UpdatedAt    time.Time          `json:"updated_at"`
 }
 
-// NewAdapter creates a Kiwoom adapter.
-func NewAdapter(sandbox bool, accountID string) *Adapter {
-	return NewAdapterWithOptions(sandbox, accountID, Options{})
-}
-
-// NewAdapterWithTokenManager creates a Kiwoom adapter with injected token manager.
-func NewAdapterWithTokenManager(sandbox bool, accountID string, tm kiwoom.TokenManager) *Adapter {
-	return NewAdapterWithOptions(sandbox, accountID, Options{TokenManager: tm})
-}
-
 // NewAdapterWithOptions creates a Kiwoom adapter with injectable internals.
 func NewAdapterWithOptions(sandbox bool, accountID string, opts Options) *Adapter {
 	a := &Adapter{
@@ -216,11 +206,7 @@ func (a *Adapter) GetBalance(ctx context.Context, accountID string) (*broker.Bal
 }
 
 // GetPositions retrieves account stock positions.
-func (a *Adapter) GetPositions(ctx context.Context, accountID string) ([]broker.Position, error) {
-	if strings.TrimSpace(accountID) == "" {
-		accountID = a.accountID
-	}
-
+func (a *Adapter) GetPositions(ctx context.Context, _ string) ([]broker.Position, error) {
 	positionsResp, err := a.client.GetAccountPositions(ctx, "0", "KRX")
 	if err != nil {
 		return nil, err

@@ -259,21 +259,3 @@ func respond(c interface{ SetStatus(int) }, status int, data Response) (Response
 	c.SetStatus(status)
 	return data, nil
 }
-
-// Authenticate triggers authentication with the broker (legacy)
-func (s *Server) authenticate(ctx context.Context) error {
-	if len(s.accounts) == 0 {
-		return fmt.Errorf("no accounts configured")
-	}
-	account := s.accounts[0]
-	creds := broker.Credentials{
-		AppKey:    account.AppKey,
-		AppSecret: account.AppSecret,
-	}
-	brk := s.getFirstBroker()
-	if brk == nil {
-		return fmt.Errorf("no broker available")
-	}
-	_, err := brk.Authenticate(ctx, creds)
-	return err
-}

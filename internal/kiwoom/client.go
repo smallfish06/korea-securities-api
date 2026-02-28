@@ -220,7 +220,7 @@ func (c *Client) doRequest(ctx context.Context, spec APISpec, apiID string, body
 	if err != nil {
 		return nil, nil, fmt.Errorf("do request: %w", err)
 	}
-	defer resp.Body.Close()
+	defer func() { _ = resp.Body.Close() }()
 
 	bodyBytes, err := io.ReadAll(resp.Body)
 	if err != nil {

@@ -23,7 +23,7 @@ func (c *Client) PlaceStockOrder(ctx context.Context, req PlaceStockOrderRequest
 		return nil, broker.ErrInvalidOrderRequest
 	}
 
-	apiID := "kt10000"
+	var apiID string
 	switch req.Side {
 	case StockOrderSideBuy:
 		apiID = "kt10000"

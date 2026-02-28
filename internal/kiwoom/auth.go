@@ -63,7 +63,7 @@ func (c *Client) Authenticate(ctx context.Context, creds broker.Credentials) (*b
 	if err != nil {
 		return nil, fmt.Errorf("do auth request: %w", err)
 	}
-	defer resp.Body.Close()
+	defer func() { _ = resp.Body.Close() }()
 
 	bodyBytes, err := io.ReadAll(resp.Body)
 	if err != nil {

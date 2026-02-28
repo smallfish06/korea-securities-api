@@ -188,7 +188,6 @@ func resetMasterSymbolsStateForTest() {
 
 	masterSymbolsBootstrapping = false
 	masterSymbolsLoaded = false
-	masterSymbolsErr = nil
 	masterSymbolsCount = 0
 	masterSymbols = masterSymbolsIndex{
 		byMarketSymbol: make(map[string]MasterSymbol),
