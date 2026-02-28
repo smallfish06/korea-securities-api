@@ -9,12 +9,12 @@ import (
 	"strings"
 	"time"
 
-	"github.com/smallfish06/krsec/internal/config"
 	"github.com/smallfish06/krsec/internal/kis"
 	kisadapter "github.com/smallfish06/krsec/internal/kis/adapter"
 	"github.com/smallfish06/krsec/internal/kiwoom"
 	kiwoomadapter "github.com/smallfish06/krsec/internal/kiwoom/adapter"
 	"github.com/smallfish06/krsec/pkg/broker"
+	"github.com/smallfish06/krsec/pkg/config"
 )
 
 type accountResult struct {

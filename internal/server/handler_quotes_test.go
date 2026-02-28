@@ -7,9 +7,10 @@ import (
 	"testing"
 	"time"
 
-	"github.com/smallfish06/krsec/internal/config"
-	"github.com/smallfish06/krsec/pkg/broker"
 	"github.com/stretchr/testify/mock"
+
+	"github.com/smallfish06/krsec/pkg/broker"
+	"github.com/smallfish06/krsec/pkg/config"
 )
 
 func TestHandleGetOHLCV_ParsesOptions(t *testing.T) {

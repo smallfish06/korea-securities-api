@@ -6,8 +6,8 @@ import (
 	"log"
 	"os"
 
-	"github.com/smallfish06/krsec/internal/config"
 	"github.com/smallfish06/krsec/internal/server"
+	"github.com/smallfish06/krsec/pkg/config"
 )
 
 var (

@@ -8,10 +8,10 @@ import (
 	"log"
 	"time"
 
-	"github.com/smallfish06/krsec/internal/config"
 	"github.com/smallfish06/krsec/internal/kis"
 	kisadapter "github.com/smallfish06/krsec/internal/kis/adapter"
 	"github.com/smallfish06/krsec/pkg/broker"
+	"github.com/smallfish06/krsec/pkg/config"
 )
 
 type result struct {

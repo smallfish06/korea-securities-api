@@ -7,6 +7,7 @@ import (
 	"strings"
 
 	"github.com/go-fuego/fuego"
+
 	"github.com/smallfish06/krsec/pkg/broker"
 )
 

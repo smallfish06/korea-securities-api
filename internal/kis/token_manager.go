@@ -6,12 +6,13 @@ import (
 	"encoding/hex"
 	"encoding/json"
 	"fmt"
-	"github.com/smallfish06/krsec/internal/ratelimit"
 	"os"
 	"path/filepath"
 	"strings"
 	"sync"
 	"time"
+
+	"github.com/smallfish06/krsec/internal/ratelimit"
 )
 
 // TokenManager defines token cache and token-issuance throttling behavior.

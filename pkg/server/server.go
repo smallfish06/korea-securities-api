@@ -4,9 +4,10 @@ import (
 	"strings"
 
 	"github.com/go-fuego/fuego"
-	"github.com/smallfish06/krsec/internal/config"
+
 	internalserver "github.com/smallfish06/krsec/internal/server"
 	"github.com/smallfish06/krsec/pkg/broker"
+	"github.com/smallfish06/krsec/pkg/config"
 )
 
 // Account describes an externally supplied account/broker binding.
@@ -70,4 +71,15 @@ func toInternalAccounts(accounts []Account) []config.AccountConfig {
 		})
 	}
 	return out
+}
+
+// RunFromConfigFile loads a config.yaml and starts the server.
+// This is the simplest way to embed krsec in another project.
+func RunFromConfigFile(path string) error {
+	cfg, err := config.Load(path)
+	if err != nil {
+		return err
+	}
+	srv := internalserver.New(cfg)
+	return srv.Run()
 }

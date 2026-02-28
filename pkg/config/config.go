@@ -7,8 +7,9 @@ import (
 	"regexp"
 	"strings"
 
-	"github.com/smallfish06/krsec/pkg/broker"
 	"gopkg.in/yaml.v3"
+
+	"github.com/smallfish06/krsec/pkg/broker"
 )
 
 // Config represents the application configuration
