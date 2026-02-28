@@ -1,0 +1,33 @@
+name: Bug report
+description: 버그 신고
+labels: ["bug"]
+body:
+  - type: textarea
+    id: description
+    attributes:
+      label: 설명
+      description: 무엇이 잘못되었나요?
+    validations:
+      required: true
+  - type: textarea
+    id: reproduce
+    attributes:
+      label: 재현 방법
+      description: 버그를 재현하는 단계
+  - type: textarea
+    id: expected
+    attributes:
+      label: 기대 동작
+  - type: input
+    id: version
+    attributes:
+      label: 버전
+      placeholder: "v0.1.0"
+  - type: dropdown
+    id: broker
+    attributes:
+      label: 증권사
+      options:
+        - KIS (한국투자증권)
+        - Kiwoom (키움증권)
+        - 기타

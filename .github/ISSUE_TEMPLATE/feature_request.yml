@@ -1,0 +1,14 @@
+name: Feature request
+description: 기능 제안
+labels: ["enhancement"]
+body:
+  - type: textarea
+    id: description
+    attributes:
+      label: 어떤 기능이 필요한가요?
+    validations:
+      required: true
+  - type: textarea
+    id: alternatives
+    attributes:
+      label: 현재 대안이 있나요?
