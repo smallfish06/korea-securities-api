@@ -1,6 +1,7 @@
 package server
 
 import (
+	"errors"
 	"net/http"
 	"net/http/httptest"
 	"testing"
@@ -41,6 +42,39 @@ func TestHandleGetOHLCV_ParsesOptions(t *testing.T) {
 	}
 	if captured.To.Format("2006-01-02") != "2026-01-31" {
 		t.Fatalf("unexpected to: %s", captured.To.Format("2006-01-02"))
+	}
+}
+
+func TestHandleGetQuote_InvalidSymbolReturnsBadRequest(t *testing.T) {
+	t.Parallel()
+
+	b := newMockBroker(t, "KIS")
+	b.On("GetQuote", mock.Anything, "KRX", "BAD").Return((*broker.Quote)(nil), broker.ErrInvalidSymbol).Once()
+
+	s := newOrderTestServer(
+		map[string]broker.Broker{"acc1": b},
+		[]config.AccountConfig{{AccountID: "acc1"}},
+	)
+
+	req := httptest.NewRequest(http.MethodGet, "/quotes/KRX/BAD", nil)
+	rr := performFiberRequest(t, s, req)
+
+	if rr.Code != http.StatusBadRequest {
+		t.Fatalf("expected 400, got %d body=%s", rr.Code, rr.Body.String())
+	}
+}
+
+func TestStatusFromBrokerError_DefaultAndTyped(t *testing.T) {
+	t.Parallel()
+
+	if got := statusFromBrokerError(broker.ErrInvalidMarket, http.StatusInternalServerError); got != http.StatusBadRequest {
+		t.Fatalf("invalid market status = %d, want 400", got)
+	}
+	if got := statusFromBrokerError(broker.ErrOrderNotFound, http.StatusInternalServerError); got != http.StatusNotFound {
+		t.Fatalf("order not found status = %d, want 404", got)
+	}
+	if got := statusFromBrokerError(errors.New("unknown"), http.StatusInternalServerError); got != http.StatusInternalServerError {
+		t.Fatalf("unknown status = %d, want 500", got)
 	}
 }
 

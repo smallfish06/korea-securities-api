@@ -13,6 +13,8 @@ import (
 	"github.com/smallfish06/korea-securities-api/internal/config"
 	"github.com/smallfish06/korea-securities-api/internal/kis"
 	kisadapter "github.com/smallfish06/korea-securities-api/internal/kis/adapter"
+	"github.com/smallfish06/korea-securities-api/internal/kiwoom"
+	kiwoomadapter "github.com/smallfish06/korea-securities-api/internal/kiwoom/adapter"
 	"github.com/smallfish06/korea-securities-api/pkg/broker"
 )
 
@@ -61,11 +63,12 @@ func newBaseServer(cfg *config.Config) *Server {
 }
 
 // New creates a new server instance.
-// This constructor wires built-in brokers from config (currently KIS).
+// This constructor wires built-in brokers from config (currently KIS, Kiwoom).
 func New(cfg *config.Config) *Server {
 	s := newBaseServer(cfg)
 
-	tokenManager := kis.NewFileTokenManagerWithDir(cfg.Storage.TokenDir)
+	kisTokenManager := kis.NewFileTokenManagerWithDir(cfg.Storage.TokenDir)
+	kiwoomTokenManager := kiwoom.NewFileTokenManagerWithDir(cfg.Storage.TokenDir)
 
 	// Initialize brokers for each account
 	for _, account := range cfg.Accounts {
@@ -73,7 +76,7 @@ func New(cfg *config.Config) *Server {
 		switch account.Broker {
 		case "kis":
 			adapter := kisadapter.NewAdapterWithOptions(account.Sandbox, account.AccountID, kisadapter.Options{
-				TokenManager:    tokenManager,
+				TokenManager:    kisTokenManager,
 				OrderContextDir: cfg.Storage.OrderContextDir,
 			})
 			creds := broker.Credentials{
@@ -114,6 +117,23 @@ func New(cfg *config.Config) *Server {
 					log.Printf("Reloaded %d symbol records for account %s", count, name)
 				}
 			}(account.Name, adapter)
+			brk = adapter
+		case "kiwoom":
+			adapter := kiwoomadapter.NewAdapterWithOptions(account.Sandbox, account.AccountID, kiwoomadapter.Options{
+				TokenManager:    kiwoomTokenManager,
+				OrderContextDir: cfg.Storage.OrderContextDir,
+			})
+			creds := broker.Credentials{
+				AppKey:    account.AppKey,
+				AppSecret: account.AppSecret,
+			}
+			go func(name string, a *kiwoomadapter.Adapter, c broker.Credentials) {
+				if _, err := a.Authenticate(context.Background(), c); err != nil {
+					log.Printf("Warning: failed to authenticate account %s: %v", name, err)
+				} else {
+					log.Printf("Authenticated account %s", name)
+				}
+			}(account.Name, adapter, creds)
 			brk = adapter
 		default:
 			log.Printf("Warning: unknown broker type: %s", account.Broker)

@@ -34,7 +34,7 @@ func (s *Server) handleAuthToken(c fuego.ContextWithBody[AuthTokenRequest]) (Res
 
 	token, err := brk.Authenticate(c.Context(), req.Credentials)
 	if err != nil {
-		return respond(c, http.StatusUnauthorized, Response{
+		return respond(c, statusFromBrokerError(err, http.StatusUnauthorized), Response{
 			OK:    false,
 			Error: err.Error(),
 		})

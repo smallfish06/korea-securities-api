@@ -59,7 +59,7 @@ func (s *Server) handleGetOrder(c fuego.ContextNoBody) (Response, error) {
 	}
 
 	if firstErr != nil {
-		return respond(c, http.StatusInternalServerError, Response{
+		return respond(c, statusFromBrokerError(firstErr, http.StatusInternalServerError), Response{
 			OK:    false,
 			Error: firstErr.Error(),
 		})
@@ -118,7 +118,7 @@ func (s *Server) handleGetOrderFills(c fuego.ContextNoBody) (Response, error) {
 	}
 
 	if firstErr != nil {
-		return respond(c, http.StatusInternalServerError, Response{
+		return respond(c, statusFromBrokerError(firstErr, http.StatusInternalServerError), Response{
 			OK:    false,
 			Error: firstErr.Error(),
 		})
@@ -169,13 +169,7 @@ func (s *Server) handlePlaceOrder(c fuego.ContextWithBody[broker.OrderRequest]) 
 
 	result, err := brk.PlaceOrder(c.Context(), req)
 	if err != nil {
-		status := http.StatusInternalServerError
-		if errors.Is(err, broker.ErrInvalidOrderRequest) {
-			status = http.StatusBadRequest
-		}
-		if errors.Is(err, broker.ErrOrderNotFound) {
-			status = http.StatusNotFound
-		}
+		status := statusFromBrokerError(err, http.StatusInternalServerError)
 		return respond(c, status, Response{
 			OK:    false,
 			Error: err.Error(),
@@ -221,10 +215,7 @@ func (s *Server) handleCancelOrder(c fuego.ContextNoBody) (Response, error) {
 	}
 
 	if firstErr != nil {
-		status := http.StatusInternalServerError
-		if errors.Is(firstErr, broker.ErrInvalidOrderRequest) {
-			status = http.StatusBadRequest
-		}
+		status := statusFromBrokerError(firstErr, http.StatusInternalServerError)
 		return respond(c, status, Response{
 			OK:    false,
 			Error: firstErr.Error(),
@@ -279,10 +270,7 @@ func (s *Server) handleModifyOrder(c fuego.ContextWithBody[broker.ModifyOrderReq
 	}
 
 	if firstErr != nil {
-		status := http.StatusInternalServerError
-		if errors.Is(firstErr, broker.ErrInvalidOrderRequest) {
-			status = http.StatusBadRequest
-		}
+		status := statusFromBrokerError(firstErr, http.StatusInternalServerError)
 		return respond(c, status, Response{
 			OK:    false,
 			Error: firstErr.Error(),

@@ -10,9 +10,11 @@ storage:
   order_context_dir: ".kr-broker/orders"
 
 # enum-like guide
-# - broker: ["kis"]  # currently supported (strict)
+# - broker: ["kis", "kiwoom"]  # currently supported (strict)
 # - sandbox: [true, false]
-# - account_id format: "12345678-01" (recommended), "12345678" (also accepted)
+# - account_id format:
+#   - kis: "12345678-01" (recommended), "12345678" (also accepted -> normalized to -01)
+#   - kiwoom: "1234567890" (10 digits)
 accounts:
   - name: "메인계좌"
     broker: "kis"     # expected: "kis"
@@ -27,6 +29,13 @@ accounts:
     app_key: "YOUR_KIS_APP_KEY"
     app_secret: "YOUR_KIS_APP_SECRET"
     account_id: "87654321-01"
+
+  - name: "키움계좌"
+    broker: "kiwoom"  # expected: "kiwoom"
+    sandbox: false
+    app_key: "YOUR_KIWOOM_APP_KEY"
+    app_secret: "YOUR_KIWOOM_APP_SECRET"
+    account_id: "1234567890"
 
 # 같은 증권사라도 계좌별로 별도 설정 가능
 # app_key/app_secret이 같으면 동일하게 입력해도 됨

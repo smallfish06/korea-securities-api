@@ -21,7 +21,7 @@ func (s *Server) handleGetBalance(c fuego.ContextNoBody) (Response, error) {
 
 	balance, err := brk.GetBalance(c.Context(), accountID)
 	if err != nil {
-		return respond(c, http.StatusInternalServerError, Response{
+		return respond(c, statusFromBrokerError(err, http.StatusInternalServerError), Response{
 			OK:    false,
 			Error: err.Error(),
 		})
@@ -48,7 +48,7 @@ func (s *Server) handleGetPositions(c fuego.ContextNoBody) (Response, error) {
 
 	positions, err := brk.GetPositions(c.Context(), accountID)
 	if err != nil {
-		return respond(c, http.StatusInternalServerError, Response{
+		return respond(c, statusFromBrokerError(err, http.StatusInternalServerError), Response{
 			OK:    false,
 			Error: err.Error(),
 		})

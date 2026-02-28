@@ -26,7 +26,7 @@ func (s *Server) handleGetQuote(c fuego.ContextNoBody) (Response, error) {
 
 	quote, err := brk.GetQuote(c.Context(), market, symbol)
 	if err != nil {
-		return respond(c, http.StatusInternalServerError, Response{
+		return respond(c, statusFromBrokerError(err, http.StatusInternalServerError), Response{
 			OK:    false,
 			Error: err.Error(),
 		})
@@ -61,7 +61,7 @@ func (s *Server) handleGetOHLCV(c fuego.ContextNoBody) (Response, error) {
 	}
 	ohlcv, err := brk.GetOHLCV(c.Context(), market, symbol, opts)
 	if err != nil {
-		return respond(c, http.StatusInternalServerError, Response{
+		return respond(c, statusFromBrokerError(err, http.StatusInternalServerError), Response{
 			OK:    false,
 			Error: err.Error(),
 		})

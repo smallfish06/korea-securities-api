@@ -143,6 +143,29 @@ accounts:
 	}
 }
 
+func TestLoadRejectsInvalidKiwoomAccountID(t *testing.T) {
+	path := writeTempConfig(t, `
+server:
+  host: "0.0.0.0"
+  port: 8080
+accounts:
+  - name: "main"
+    broker: kiwoom
+    sandbox: false
+    app_key: "k"
+    app_secret: "s"
+    account_id: "12345678-01"
+`)
+
+	_, err := Load(path)
+	if err == nil {
+		t.Fatal("Load() expected error, got nil")
+	}
+	if !strings.Contains(err.Error(), "for kiwoom") {
+		t.Fatalf("unexpected error: %v", err)
+	}
+}
+
 func TestLoadRejectsUnknownField(t *testing.T) {
 	path := writeTempConfig(t, `
 server:

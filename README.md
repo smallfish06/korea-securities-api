@@ -19,6 +19,7 @@
 - **해외 주식** — 미국(NASDAQ/NYSE/AMEX), 홍콩, 중국, 일본, 베트남
 - **종목 마스터** — 서버 시작 시 KIS `.mst`/`.cod` 파일 자동 로딩 (24시간 리로드)
 - **주문 컨텍스트 영속화** — 서버 재시작 후에도 주문 조회/정정/취소 복구
+- **키움 전체 API 카탈로그** — 공식 가이드 기준 207개 API ID 내장
 - **OpenAPI / Swagger UI** — 자동 생성
 - **라이브러리 사용** — `pkg/broker`와 `pkg/server`를 import해서 커스텀 브로커 연결 가능
 
@@ -27,7 +28,7 @@
 | Broker | Status |
 |---|---|
 | 한국투자증권 (KIS) | ✅ Production ready |
-| 키움증권 | 🚧 In progress |
+| 키움증권 (Kiwoom) | ✅ Implemented |
 | LS증권 | Planned |
 
 ## Quick Start
@@ -62,7 +63,18 @@ accounts:
     app_key: "YOUR_APP_KEY"
     app_secret: "YOUR_APP_SECRET"
     account_id: "12345678-01"
+
+  - name: "kiwoom-main"
+    broker: kiwoom
+    sandbox: false
+    app_key: "YOUR_KIWOOM_APP_KEY"
+    app_secret: "YOUR_KIWOOM_APP_SECRET"
+    account_id: "1234567890"
 ```
+
+`account_id` 규칙:
+- `kis`: `12345678-01` 또는 `12345678` (`-01` 자동 보정)
+- `kiwoom`: `1234567890` (10자리)
 
 ### Run
 
@@ -93,6 +105,15 @@ kr-broker -config config.yaml
 ### Examples
 
 ```bash
+# KIS 잔고/포지션 조회 (서버 없이 실행)
+go run ./examples/kis-balance -config config.yaml
+
+# 키움 잔고/포지션 조회 (서버 없이 실행)
+go run ./examples/kiwoom-balance -config config.yaml
+
+# 전체 계좌 잔고/포지션 조회 (서버 없이 실행)
+go run ./examples/all-balances -config config.yaml
+
 # 삼성전자 현재가
 curl http://localhost:8080/quotes/KRX/005930
 
@@ -155,7 +176,7 @@ See [`examples/`](./examples) for more.
 ├── internal/
 │   ├── kis/             # KIS raw API client
 │   │   └── adapter/     # KIS → broker.Broker adapter
-│   ├── kiwoom/          # Kiwoom (WIP)
+│   ├── kiwoom/          # Kiwoom raw client + adapter
 │   ├── config/          # YAML config loader
 │   └── server/          # Internal HTTP handlers
 └── examples/
@@ -177,6 +198,13 @@ make mock      # Regenerate mocks (mockery v3)
 2. APP Key / APP Secret 발급
 3. 모의투자 계좌 개설 (sandbox 테스트용)
 4. `config.yaml`에 입력
+
+## Kiwoom API Setup
+
+1. [키움 REST API](https://openapi.kiwoom.com/)에서 앱 등록
+2. App Key / Secret Key 발급
+3. 계좌번호(10자리) 확인
+4. `config.yaml`에 `broker: kiwoom` 계정 추가
 
 ## License
 
