@@ -6,6 +6,7 @@ import (
 	"io"
 	"net/http"
 	"net/http/httptest"
+	"strings"
 	"testing"
 )
 
@@ -118,5 +119,61 @@ func TestNormalizeOverseasExchangeCode(t *testing.T) {
 		if got != want {
 			t.Fatalf("normalizeOverseasExchangeCode(%q) = %q, want %q", in, got, want)
 		}
+	}
+}
+
+func TestInquireOverseasPrice_UsesOverseasPricePath(t *testing.T) {
+	t.Parallel()
+
+	ts := httptest.NewServer(http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
+		if r.URL.Path != "/uapi/overseas-price/v1/quotations/price" {
+			t.Fatalf("unexpected path: %s", r.URL.Path)
+		}
+		if r.Method != http.MethodGet {
+			t.Fatalf("unexpected method: %s", r.Method)
+		}
+		if got := r.Header.Get("tr_id"); got != "HHDFS00000300" {
+			t.Fatalf("unexpected tr_id: %s", got)
+		}
+		if got := r.URL.Query().Get("EXCD"); got != "NAS" {
+			t.Fatalf("unexpected EXCD: %s", got)
+		}
+		if got := r.URL.Query().Get("SYMB"); got != "AAPL" {
+			t.Fatalf("unexpected SYMB: %s", got)
+		}
+		if got := r.URL.Query().Get("AUTH"); got != "" {
+			t.Fatalf("unexpected AUTH: %s", got)
+		}
+
+		w.Header().Set("Content-Type", "application/json")
+		_, _ = w.Write([]byte(`{
+			"rt_cd":"0",
+			"msg_cd":"00000",
+			"msg1":"ok",
+			"output":{
+				"rsym":"DNASAAPL",
+				"symb_desc":"APPLE INC",
+				"last":"220.12",
+				"open":"219.00",
+				"high":"221.00",
+				"low":"218.10",
+				"prdy_vrss":"1.12",
+				"prdy_vrss_sign":"2",
+				"t_xvol":"1234567"
+			}
+		}`))
+	}))
+	defer ts.Close()
+
+	client := newAuthedTestClient(ts.URL)
+	resp, err := client.InquireOverseasPrice(context.Background(), "NASDAQ", "AAPL")
+	if err != nil {
+		t.Fatalf("InquireOverseasPrice returned error: %v", err)
+	}
+	if !resp.IsSuccess() {
+		t.Fatalf("expected success response, got: %+v", resp)
+	}
+	if got := strings.TrimSpace(resp.Output.Last); got != "220.12" {
+		t.Fatalf("unexpected last price: %s", got)
 	}
 }

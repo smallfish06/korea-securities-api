@@ -26,7 +26,7 @@ func (c *Client) InquireOverseasPrice(ctx context.Context, exchangeCode, symbol 
 		excd = exchangeCode // 그대로 사용
 	}
 
-	path := fmt.Sprintf("/uapi/overseas-stock/v1/quotations/inquire-price?AUTH=&EXCD=%s&SYMB=%s",
+	path := fmt.Sprintf("/uapi/overseas-price/v1/quotations/price?AUTH=&EXCD=%s&SYMB=%s",
 		excd, symbol)
 
 	var resp OverseasPriceResponse
