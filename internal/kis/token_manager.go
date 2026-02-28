@@ -135,7 +135,7 @@ func (tm *FileTokenManager) WaitForAuth(appKey string) {
 	}
 	tm.authLimitersMu.Unlock()
 
-	limiter.Wait(context.Background())
+	_ = limiter.Wait(context.Background())
 }
 
 // tokenDir returns the directory where tokens are stored.

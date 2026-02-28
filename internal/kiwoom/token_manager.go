@@ -6,12 +6,13 @@ import (
 	"encoding/hex"
 	"encoding/json"
 	"fmt"
-	"github.com/smallfish06/krsec/internal/ratelimit"
 	"os"
 	"path/filepath"
 	"strings"
 	"sync"
 	"time"
+
+	"github.com/smallfish06/krsec/internal/ratelimit"
 )
 
 // TokenManager defines token cache and token-issuance throttling behavior.
@@ -118,7 +119,7 @@ func (tm *FileTokenManager) WaitForAuth(appKey string) {
 		tm.authLimiters[appKey] = limiter
 	}
 	tm.authMu.Unlock()
-	limiter.Wait(context.Background())
+	_ = limiter.Wait(context.Background())
 }
 
 func (tm *FileTokenManager) tokenDir() (string, error) {
