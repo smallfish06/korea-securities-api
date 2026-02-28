@@ -18,7 +18,8 @@ func (c *Client) InquireBondPrice(ctx context.Context, isinCode string) (*BondPr
 
 	today := time.Now().Format("20060102")
 	path := fmt.Sprintf(
-		"/uapi/domestic-bond/v1/quotations/inquire-price?FID_COND_MRKT_DIV_CODE=J&FID_INPUT_ISCD=%s&FID_INPUT_DATE_1=%s&FID_INPUT_DATE_2=%s&FID_PERIOD_DIV_CODE=D&FID_ORG_ADJ_PRC=0",
+		"%s?FID_COND_MRKT_DIV_CODE=J&FID_INPUT_ISCD=%s&FID_INPUT_DATE_1=%s&FID_INPUT_DATE_2=%s&FID_PERIOD_DIV_CODE=D&FID_ORG_ADJ_PRC=0",
+		PathDomesticBondInquirePrice,
 		isinCode, today, today,
 	)
 
@@ -53,7 +54,7 @@ func (c *Client) InquireBondBalance(ctx context.Context, accountNo, accountProdu
 	maxPages := 10
 
 	for page := 0; page < maxPages; page++ {
-		path := fmt.Sprintf("/uapi/domestic-bond/v1/trading/inquire-balance?CANO=%s&ACNT_PRDT_CD=%s&INQR_CNDT=00&PDNO=&BUY_DT=&CTX_AREA_FK200=%s&CTX_AREA_NK200=%s",
+		path := fmt.Sprintf("%s?CANO=%s&ACNT_PRDT_CD=%s&INQR_CNDT=00&PDNO=&BUY_DT=&CTX_AREA_FK200=%s&CTX_AREA_NK200=%s", PathDomesticBondInquireBalance,
 			cano, acntPrdtCd, url.QueryEscape(strings.TrimSpace(ctxFK)), url.QueryEscape(strings.TrimSpace(ctxNK)))
 
 		var resp BondBalanceResponse
@@ -126,7 +127,8 @@ func (c *Client) InquireBondDaily(ctx context.Context, isinCode string, startDat
 	}
 
 	path := fmt.Sprintf(
-		"/uapi/domestic-bond/v1/quotations/inquire-price?FID_COND_MRKT_DIV_CODE=J&FID_INPUT_ISCD=%s&FID_INPUT_DATE_1=%s&FID_INPUT_DATE_2=%s&FID_PERIOD_DIV_CODE=D&FID_ORG_ADJ_PRC=0",
+		"%s?FID_COND_MRKT_DIV_CODE=J&FID_INPUT_ISCD=%s&FID_INPUT_DATE_1=%s&FID_INPUT_DATE_2=%s&FID_PERIOD_DIV_CODE=D&FID_ORG_ADJ_PRC=0",
+		PathDomesticBondInquirePrice,
 		isinCode, startDate, endDate,
 	)
 

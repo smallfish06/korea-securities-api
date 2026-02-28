@@ -16,7 +16,7 @@ func (c *Client) InquireStockBasicInfo(ctx context.Context, symbol, prdtTypeCode
 		prdtTypeCode = "300"
 	}
 
-	path := fmt.Sprintf("/uapi/domestic-stock/v1/quotations/search-stock-info?PRDT_TYPE_CD=%s&PDNO=%s",
+	path := fmt.Sprintf("%s?PRDT_TYPE_CD=%s&PDNO=%s", PathDomesticStockSearchStockInfo,
 		url.QueryEscape(prdtTypeCode),
 		url.QueryEscape(symbol),
 	)
@@ -42,7 +42,7 @@ func (c *Client) InquireProductBasicInfo(ctx context.Context, symbol, prdtTypeCo
 		prdtTypeCode = "300"
 	}
 
-	path := fmt.Sprintf("/uapi/domestic-stock/v1/quotations/search-info?PRDT_TYPE_CD=%s&PDNO=%s",
+	path := fmt.Sprintf("%s?PRDT_TYPE_CD=%s&PDNO=%s", PathDomesticStockSearchInfo,
 		url.QueryEscape(prdtTypeCode),
 		url.QueryEscape(symbol),
 	)
@@ -68,7 +68,7 @@ func (c *Client) InquireOverseasProductBasicInfo(ctx context.Context, symbol, pr
 		prdtTypeCode = "512"
 	}
 
-	path := fmt.Sprintf("/uapi/overseas-price/v1/quotations/search-info?PRDT_TYPE_CD=%s&PDNO=%s",
+	path := fmt.Sprintf("%s?PRDT_TYPE_CD=%s&PDNO=%s", PathOverseasPriceSearchInfo,
 		url.QueryEscape(prdtTypeCode),
 		url.QueryEscape(symbol),
 	)

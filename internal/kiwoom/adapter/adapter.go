@@ -58,7 +58,7 @@ func NewAdapterWithOptions(sandbox bool, accountID string, opts Options) *Adapte
 
 // Name returns broker name.
 func (a *Adapter) Name() string {
-	return "KIWOOM"
+	return broker.NameKiwoom
 }
 
 // Authenticate authenticates with Kiwoom.

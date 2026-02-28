@@ -59,14 +59,14 @@ func NewClientWithTokenManager(sandbox bool, tokenManager TokenManager) *Client 
 		httpClient: &http.Client{
 			Timeout: 30 * time.Second,
 		},
-		apiLimiter:   ratelimit.New("kis", 15, 3), // 15 req/s, burst 3
+		apiLimiter:   ratelimit.New(broker.CodeKIS, 15, 3), // 15 req/s, burst 3
 		tokenManager: tokenManager,
 	}
 }
 
 // Name returns the broker name
 func (c *Client) Name() string {
-	return "KIS"
+	return broker.NameKIS
 }
 
 // SetCredentials sets the app key and secret

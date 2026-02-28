@@ -55,7 +55,7 @@ func (c *Client) PlaceOrder(ctx context.Context, req broker.OrderRequest) (*brok
 	}
 
 	var resp OrderResponse
-	if err := c.doRequest(ctx, "POST", "/uapi/domestic-stock/v1/trading/order-cash", trID, reqBody, &resp); err != nil {
+	if err := c.doRequest(ctx, "POST", PathDomesticStockTradingOrderCash, trID, reqBody, &resp); err != nil {
 		return nil, fmt.Errorf("place order: %w", err)
 	}
 

@@ -40,7 +40,7 @@ type QuoteResponse struct {
 func (c *Client) GetQuote(ctx context.Context, market, symbol string) (*broker.Quote, error) {
 	// KIS API 경로: /uapi/domestic-stock/v1/quotations/inquire-price
 	// Query params: FID_COND_MRKT_DIV_CODE=J&FID_INPUT_ISCD={symbol}
-	path := fmt.Sprintf("/uapi/domestic-stock/v1/quotations/inquire-price?FID_COND_MRKT_DIV_CODE=J&FID_INPUT_ISCD=%s", symbol)
+	path := fmt.Sprintf("%s?FID_COND_MRKT_DIV_CODE=J&FID_INPUT_ISCD=%s", PathDomesticStockInquirePrice, symbol)
 
 	var resp QuoteResponse
 	if err := c.doRequest(ctx, "GET", path, "FHKST01010100", nil, &resp); err != nil {
@@ -101,7 +101,7 @@ type OHLCVResponse struct {
 func (c *Client) GetOHLCV(ctx context.Context, market, symbol string, opts broker.OHLCVOpts) ([]broker.OHLCV, error) {
 	// KIS API: /uapi/domestic-stock/v1/quotations/inquire-daily-itemchartprice
 	// Query: FID_COND_MRKT_DIV_CODE=J&FID_INPUT_ISCD={symbol}&FID_PERIOD_DIV_CODE=D&FID_ORG_ADJ_PRC=0
-	path := fmt.Sprintf("/uapi/domestic-stock/v1/quotations/inquire-daily-itemchartprice?FID_COND_MRKT_DIV_CODE=J&FID_INPUT_ISCD=%s&FID_PERIOD_DIV_CODE=D&FID_ORG_ADJ_PRC=0", symbol)
+	path := fmt.Sprintf("%s?FID_COND_MRKT_DIV_CODE=J&FID_INPUT_ISCD=%s&FID_PERIOD_DIV_CODE=D&FID_ORG_ADJ_PRC=0", PathDomesticStockInquireDailyItemChartPrice, symbol)
 
 	var resp OHLCVResponse
 	if err := c.doRequest(ctx, "GET", path, "FHKST01010400", nil, &resp); err != nil {

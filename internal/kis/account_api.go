@@ -21,7 +21,7 @@ func (c *Client) InquireAccountBalance(ctx context.Context, accountNo, accountPr
 	}
 
 	// 종합 계좌 조회 (주식+채권+예수금)
-	path := fmt.Sprintf("/uapi/domestic-stock/v1/trading/inquire-balance?CANO=%s&ACNT_PRDT_CD=%s&AFHR_FLPR_YN=N&INQR_DVSN=02&UNPR_DVSN=01&FUND_STTL_ICLD_YN=Y&FNCG_AMT_AUTO_RDPT_YN=Y&OFL_YN=&PRCS_DVSN=01&CTX_AREA_FK100=&CTX_AREA_NK100=",
+	path := fmt.Sprintf("%s?CANO=%s&ACNT_PRDT_CD=%s&AFHR_FLPR_YN=N&INQR_DVSN=02&UNPR_DVSN=01&FUND_STTL_ICLD_YN=Y&FNCG_AMT_AUTO_RDPT_YN=Y&OFL_YN=&PRCS_DVSN=01&CTX_AREA_FK100=&CTX_AREA_NK100=", PathDomesticStockTradingInquireBalance,
 		cano, acntPrdtCd)
 
 	var resp AccountBalanceResponse
@@ -55,7 +55,7 @@ func (c *Client) InquireOverseasBalanceRaw(ctx context.Context, accountNo, accou
 	q.Set("CTX_AREA_NK200", ctxNK200)
 
 	return c.getRaw(ctx,
-		encodeQuery("/uapi/overseas-stock/v1/trading/inquire-balance", q),
+		encodeQuery(PathOverseasStockTradingInquireBalance, q),
 		trID,
 	)
 }
@@ -78,7 +78,7 @@ func (c *Client) InquireOverseasPsAmount(ctx context.Context, accountNo, account
 	q.Set("ITEM_CD", itemCd)
 
 	return c.getRaw(ctx,
-		encodeQuery("/uapi/overseas-stock/v1/trading/inquire-psamount", q),
+		encodeQuery(PathOverseasStockTradingInquirePsAmount, q),
 		trID,
 	)
 }
@@ -103,7 +103,7 @@ func (c *Client) InquirePossibleOrder(ctx context.Context, accountNo, accountPro
 	q.Set("OVRS_ICLD_YN", overseasIncludedYN)
 
 	return c.getRaw(ctx,
-		encodeQuery("/uapi/domestic-stock/v1/trading/inquire-psbl-order", q),
+		encodeQuery(PathDomesticStockTradingInquirePsblOrder, q),
 		trID,
 	)
 }
@@ -126,7 +126,7 @@ func (c *Client) InquirePeriodTradeProfit(ctx context.Context, accountNo, accoun
 	q.Set("CTX_AREA_FK100", ctxFK100)
 
 	return c.getRaw(ctx,
-		encodeQuery("/uapi/domestic-stock/v1/trading/inquire-period-trade-profit", q),
+		encodeQuery(PathDomesticStockTradingInquirePeriodTradeProfit, q),
 		"TTTC8715R",
 	)
 }

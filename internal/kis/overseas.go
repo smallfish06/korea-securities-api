@@ -27,7 +27,7 @@ func (c *Client) InquireOverseasPrice(ctx context.Context, exchangeCode, symbol 
 		excd = exchangeCode // 그대로 사용
 	}
 
-	path := fmt.Sprintf("/uapi/overseas-price/v1/quotations/price?AUTH=&EXCD=%s&SYMB=%s",
+	path := fmt.Sprintf("%s?AUTH=&EXCD=%s&SYMB=%s", PathOverseasPricePrice,
 		excd, symbol)
 
 	var resp OverseasPriceResponse
@@ -59,7 +59,7 @@ func (c *Client) InquireOverseasDailyChartPrice(ctx context.Context, marketDiv, 
 	q.Set("FID_PERIOD_DIV_CODE", periodDiv)
 
 	return c.getRaw(ctx,
-		encodeQuery("/uapi/overseas-price/v1/quotations/inquire-daily-chartprice", q),
+		encodeQuery(PathOverseasPriceInquireDailyChartPrice, q),
 		"FHKST03030100",
 	)
 }
@@ -82,7 +82,7 @@ func (c *Client) InquireOverseasDailyPrice(ctx context.Context, auth, exchangeCo
 	q.Set("MODP", modp)
 
 	return c.getRaw(ctx,
-		encodeQuery("/uapi/overseas-price/v1/quotations/dailyprice", q),
+		encodeQuery(PathOverseasPriceDailyPrice, q),
 		"HHDFS76240000",
 	)
 }
@@ -96,7 +96,7 @@ func (c *Client) InquireOverseasPriceDetail(ctx context.Context, auth, exchangeC
 	q.Set("SYMB", symbol)
 
 	return c.getRaw(ctx,
-		encodeQuery("/uapi/overseas-price/v1/quotations/price-detail", q),
+		encodeQuery(PathOverseasPricePriceDetail, q),
 		"HHDFS76200200",
 	)
 }
@@ -115,7 +115,7 @@ func (c *Client) InquireOverseasTick(ctx context.Context, exchangeCode, tday, sy
 	q.Set("KEYB", keyb)
 
 	return c.getRaw(ctx,
-		encodeQuery("/uapi/overseas-price/v1/quotations/inquire-ccnl", q),
+		encodeQuery(PathOverseasPriceInquireCcnl, q),
 		"HHDFS76200300",
 	)
 }
@@ -141,7 +141,7 @@ func (c *Client) InquireOverseasUpdownRate(ctx context.Context, exchangeCode, nd
 	q.Set("KEYB", keyb)
 
 	return c.getRaw(ctx,
-		encodeQuery("/uapi/overseas-stock/v1/ranking/updown-rate", q),
+		encodeQuery(PathOverseasStockRankingUpdownRate, q),
 		"HHDFS76290000",
 	)
 }
@@ -173,7 +173,7 @@ func (c *Client) InquireOverseasTimeItemChartPrice(ctx context.Context, auth, ex
 	q.Set("KEYB", keyb)
 
 	return c.getRaw(ctx,
-		encodeQuery("/uapi/overseas-price/v1/quotations/inquire-time-itemchartprice", q),
+		encodeQuery(PathOverseasPriceInquireTimeItemChart, q),
 		"HHDFS76950200",
 	)
 }
@@ -219,7 +219,7 @@ func (c *Client) OrderOverseas(
 	}
 
 	var resp OrderResponse
-	if err := c.doRequest(ctx, "POST", "/uapi/overseas-stock/v1/trading/order", trID, req, &resp); err != nil {
+	if err := c.doRequest(ctx, "POST", PathOverseasStockTradingOrder, trID, req, &resp); err != nil {
 		return nil, fmt.Errorf("order overseas: %w", err)
 	}
 	if resp.RetCode != "0" {
@@ -255,7 +255,7 @@ func (c *Client) OrderOverseasRvseCncl(
 	}
 
 	var resp OrderResponse
-	if err := c.doRequest(ctx, "POST", "/uapi/overseas-stock/v1/trading/order-rvsecncl", trID, req, &resp); err != nil {
+	if err := c.doRequest(ctx, "POST", PathOverseasStockTradingOrderRvseCncl, trID, req, &resp); err != nil {
 		return nil, fmt.Errorf("order overseas revise/cancel: %w", err)
 	}
 	if resp.RetCode != "0" {

@@ -21,6 +21,7 @@ type Adapter struct {
 	accountPrdtCD string // 계좌 상품 코드 (예: "01")
 	sandbox       bool
 	orderDir      string
+	dispatcher    *endpointDispatcher
 
 	mu     sync.RWMutex
 	orders map[string]orderContext // key: order id
@@ -68,6 +69,7 @@ func NewAdapterWithOptions(sandbox bool, accountID string, opts Options) *Adapte
 		orderDir:      strings.TrimSpace(opts.OrderContextDir),
 		orders:        make(map[string]orderContext),
 	}
+	a.dispatcher = newEndpointDispatcher(a)
 	if err := a.loadOrderContexts(); err != nil {
 		log.Printf("Warning: failed to load persisted orders for %s-%s: %v", cano, acntPrdtCD, err)
 	}
@@ -76,7 +78,7 @@ func NewAdapterWithOptions(sandbox bool, accountID string, opts Options) *Adapte
 
 // Name returns the broker name
 func (a *Adapter) Name() string {
-	return "KIS"
+	return broker.NameKIS
 }
 
 // Authenticate authenticates with the broker

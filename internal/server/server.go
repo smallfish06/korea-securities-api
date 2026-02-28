@@ -74,7 +74,7 @@ func New(cfg *config.Config) *Server {
 	for _, account := range cfg.Accounts {
 		var brk broker.Broker
 		switch account.Broker {
-		case "kis":
+		case broker.CodeKIS:
 			adapter := kisadapter.NewAdapterWithOptions(account.Sandbox, account.AccountID, kisadapter.Options{
 				TokenManager:    kisTokenManager,
 				OrderContextDir: cfg.Storage.OrderContextDir,
@@ -118,7 +118,7 @@ func New(cfg *config.Config) *Server {
 				}
 			}(account.Name, adapter)
 			brk = adapter
-		case "kiwoom":
+		case broker.CodeKiwoom:
 			adapter := kiwoomadapter.NewAdapterWithOptions(account.Sandbox, account.AccountID, kiwoomadapter.Options{
 				TokenManager:    kiwoomTokenManager,
 				OrderContextDir: cfg.Storage.OrderContextDir,
@@ -185,6 +185,15 @@ func (s *Server) routes() {
 		fuego.OptionTags("Auth"),
 		fuego.OptionSummary("Issue broker auth token"),
 		fuego.OptionDescription("Authenticate with a broker and receive an access token."),
+	)
+
+	// KIS endpoint dispatcher (calls supported KIS endpoints by path)
+	fuego.Post(s.router, "/kis/{path...}", s.handleKISProxy,
+		fuego.OptionTags("KIS"),
+		fuego.OptionSummary("Call KIS endpoint by path"),
+		fuego.OptionDescription("Calls KIS endpoints implemented in krsec by path. Example path: overseas-price/v1/quotations/price"),
+		fuego.OptionPath("path", "KIS API path under /uapi. Accepts wildcard segments."),
+		fuego.OptionQuery("account_id", "Optional account selector when multiple KIS accounts exist."),
 	)
 
 	// Quotes

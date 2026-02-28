@@ -52,7 +52,7 @@ func (c *Client) InquireDailyCcld(
 	q.Set("CTX_AREA_FK100", "")
 	q.Set("CTX_AREA_NK100", "")
 
-	path := "/uapi/domestic-stock/v1/trading/inquire-daily-ccld?" + q.Encode()
+	path := PathDomesticStockTradingInquireDailyCcld + "?" + q.Encode()
 
 	var resp DomesticDailyCcldResponse
 	if err := c.doRequest(ctx, "GET", path, trID, nil, &resp); err != nil {
@@ -120,7 +120,7 @@ func (c *Client) InquireOverseasCcnl(
 		q.Set("CTX_AREA_NK200", ctxNK)
 		q.Set("CTX_AREA_FK200", ctxFK)
 
-		path := "/uapi/overseas-stock/v1/trading/inquire-ccnl?" + q.Encode()
+		path := PathOverseasStockTradingInquireCcnl + "?" + q.Encode()
 
 		var resp OverseasCcnlResponse
 		if err := c.doRequest(ctx, "GET", path, trID, nil, &resp); err != nil {

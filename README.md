@@ -51,6 +51,7 @@ krsec -config config.yaml
 
 | Method | Path | 설명 |
 |---|---|---|
+| `POST` | `/kis/{path...}` | KIS 엔드포인트 호출 (`/uapi` 경로를 구현된 함수로 매핑) |
 | `GET` | `/quotes/{market}/{symbol}` | 현재가 |
 | `GET` | `/quotes/{market}/{symbol}/ohlcv` | 일봉 |
 | `GET` | `/instruments/{market}/{symbol}` | 종목 정보 |
@@ -70,6 +71,19 @@ curl http://localhost:8080/quotes/KRX/005930
 
 ```json
 {"ok": true, "data": {"symbol": "005930", "price": 70000, ...}, "broker": "KIS"}
+```
+
+```bash
+curl -X POST http://localhost:8080/kis/overseas-price/v1/quotations/price \
+  -H "Content-Type: application/json" \
+  -d '{
+    "tr_id": "HHDFS00000300",
+    "params": {
+      "AUTH": "",
+      "EXCD": "NAS",
+      "SYMB": "AAPL"
+    }
+  }'
 ```
 
 ## 라이브러리로 사용

@@ -7,6 +7,7 @@ import (
 	"regexp"
 	"strings"
 
+	"github.com/smallfish06/krsec/pkg/broker"
 	"gopkg.in/yaml.v3"
 )
 
@@ -32,7 +33,7 @@ type StorageConfig struct {
 // AccountConfig represents a broker account configuration
 type AccountConfig struct {
 	Name      string `yaml:"name"`
-	Broker    string `yaml:"broker"` // currently supported: "kis", "kiwoom"
+	Broker    string `yaml:"broker"` // currently supported: broker.CodeKIS, broker.CodeKiwoom
 	Sandbox   bool   `yaml:"sandbox"`
 	AppKey    string `yaml:"app_key"`
 	AppSecret string `yaml:"app_secret"`
@@ -69,10 +70,10 @@ func (c *Config) Validate() error {
 
 		acc.Broker = strings.ToLower(strings.TrimSpace(acc.Broker))
 		switch acc.Broker {
-		case "kis":
-		case "kiwoom":
+		case broker.CodeKIS:
+		case broker.CodeKiwoom:
 		default:
-			return fmt.Errorf("accounts[%d].broker unsupported value %q (expected: kis|kiwoom)", i, acc.Broker)
+			return fmt.Errorf("accounts[%d].broker unsupported value %q (expected: %s|%s)", i, acc.Broker, broker.CodeKIS, broker.CodeKiwoom)
 		}
 
 		acc.AppKey = strings.TrimSpace(acc.AppKey)
@@ -86,16 +87,16 @@ func (c *Config) Validate() error {
 
 		accountID := strings.TrimSpace(acc.AccountID)
 		switch acc.Broker {
-		case "kis":
+		case broker.CodeKIS:
 			if !accountIDPattern.MatchString(accountID) {
-				return fmt.Errorf("accounts[%d].account_id invalid format %q for kis (expected: 12345678 or 12345678-01)", i, accountID)
+				return fmt.Errorf("accounts[%d].account_id invalid format %q for %s (expected: 12345678 or 12345678-01)", i, accountID, broker.CodeKIS)
 			}
 			if len(accountID) == 8 {
 				accountID += "-01"
 			}
-		case "kiwoom":
+		case broker.CodeKiwoom:
 			if !kiwoomAccountIDPattern.MatchString(accountID) {
-				return fmt.Errorf("accounts[%d].account_id invalid format %q for kiwoom (expected: 10-digit number)", i, accountID)
+				return fmt.Errorf("accounts[%d].account_id invalid format %q for %s (expected: 10-digit number)", i, accountID, broker.CodeKiwoom)
 			}
 		}
 		acc.AccountID = accountID

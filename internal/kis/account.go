@@ -55,7 +55,7 @@ func (c *Client) GetBalance(ctx context.Context, accountID string) (*broker.Bala
 	cano := accountID[:8]
 	acntPrdtCd := accountID[9:11]
 
-	path := fmt.Sprintf("/uapi/domestic-stock/v1/trading/inquire-balance?CANO=%s&ACNT_PRDT_CD=%s&AFHR_FLPR_YN=N&OFL_YN=N&INQR_DVSN=01&UNPR_DVSN=01&FUND_STTL_ICLD_YN=N&FNCG_AMT_AUTO_RDPT_YN=N&PRCS_DVSN=00&CTX_AREA_FK100=&CTX_AREA_NK100=",
+	path := fmt.Sprintf("%s?CANO=%s&ACNT_PRDT_CD=%s&AFHR_FLPR_YN=N&OFL_YN=N&INQR_DVSN=01&UNPR_DVSN=01&FUND_STTL_ICLD_YN=N&FNCG_AMT_AUTO_RDPT_YN=N&PRCS_DVSN=00&CTX_AREA_FK100=&CTX_AREA_NK100=", PathDomesticStockTradingInquireBalance,
 		cano, acntPrdtCd)
 
 	var resp BalanceResponse
@@ -96,7 +96,7 @@ func (c *Client) GetPositions(ctx context.Context, accountID string) ([]broker.P
 	cano := accountID[:8]
 	acntPrdtCd := accountID[9:11]
 
-	path := fmt.Sprintf("/uapi/domestic-stock/v1/trading/inquire-balance?CANO=%s&ACNT_PRDT_CD=%s&AFHR_FLPR_YN=N&OFL_YN=N&INQR_DVSN=01&UNPR_DVSN=01&FUND_STTL_ICLD_YN=N&FNCG_AMT_AUTO_RDPT_YN=N&PRCS_DVSN=00&CTX_AREA_FK100=&CTX_AREA_NK100=",
+	path := fmt.Sprintf("%s?CANO=%s&ACNT_PRDT_CD=%s&AFHR_FLPR_YN=N&OFL_YN=N&INQR_DVSN=01&UNPR_DVSN=01&FUND_STTL_ICLD_YN=N&FNCG_AMT_AUTO_RDPT_YN=N&PRCS_DVSN=00&CTX_AREA_FK100=&CTX_AREA_NK100=", PathDomesticStockTradingInquireBalance,
 		cano, acntPrdtCd)
 
 	var resp BalanceResponse

@@ -81,14 +81,14 @@ func NewClientWithTokenManager(sandbox bool, tm TokenManager) *Client {
 		httpClient: &http.Client{
 			Timeout: 30 * time.Second,
 		},
-		apiLimiter:   ratelimit.New("kiwoom", 8, 2), // 8 req/s, burst 2
+		apiLimiter:   ratelimit.New(broker.CodeKiwoom, 8, 2), // 8 req/s, burst 2
 		tokenManager: tm,
 	}
 }
 
 // Name returns broker name.
 func (c *Client) Name() string {
-	return "KIWOOM"
+	return broker.NameKiwoom
 }
 
 // SetCredentials sets app credentials on this client.

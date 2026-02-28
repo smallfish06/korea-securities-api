@@ -20,7 +20,7 @@ func (c *Client) InquirePrice(ctx context.Context, market, symbol string) (*Stoc
 		fidCondMrktDivCode = "Q"
 	}
 
-	path := fmt.Sprintf("/uapi/domestic-stock/v1/quotations/inquire-price?fid_cond_mrkt_div_code=%s&fid_input_iscd=%s",
+	path := fmt.Sprintf("%s?fid_cond_mrkt_div_code=%s&fid_input_iscd=%s", PathDomesticStockInquirePrice,
 		fidCondMrktDivCode, symbol)
 
 	var resp StockPriceResponse
@@ -54,7 +54,7 @@ func (c *Client) InquireDailyPrice(ctx context.Context, market, symbol string, s
 		fidOrgAdjPrc = "1"
 	}
 
-	path := fmt.Sprintf("/uapi/domestic-stock/v1/quotations/inquire-daily-price?fid_cond_mrkt_div_code=%s&fid_input_iscd=%s&fid_period_div_code=D&fid_org_adj_prc=%s",
+	path := fmt.Sprintf("%s?fid_cond_mrkt_div_code=%s&fid_input_iscd=%s&fid_period_div_code=D&fid_org_adj_prc=%s", PathDomesticStockInquireDailyPrice,
 		fidCondMrktDivCode, symbol, fidOrgAdjPrc)
 
 	var resp StockDailyPriceResponse
@@ -84,7 +84,7 @@ func (c *Client) InquireBalance(ctx context.Context, accountNo, accountProductCo
 		acntPrdtCd = "01" // 기본값
 	}
 
-	path := fmt.Sprintf("/uapi/domestic-stock/v1/trading/inquire-balance?CANO=%s&ACNT_PRDT_CD=%s&AFHR_FLPR_YN=N&INQR_DVSN=01&UNPR_DVSN=01&FUND_STTL_ICLD_YN=N&FNCG_AMT_AUTO_RDPT_YN=N&OFL_YN=&PRCS_DVSN=00&CTX_AREA_FK100=&CTX_AREA_NK100=",
+	path := fmt.Sprintf("%s?CANO=%s&ACNT_PRDT_CD=%s&AFHR_FLPR_YN=N&INQR_DVSN=01&UNPR_DVSN=01&FUND_STTL_ICLD_YN=N&FNCG_AMT_AUTO_RDPT_YN=N&OFL_YN=&PRCS_DVSN=00&CTX_AREA_FK100=&CTX_AREA_NK100=", PathDomesticStockTradingInquireBalance,
 		cano, acntPrdtCd)
 
 	var resp StockBalanceResponse
@@ -114,7 +114,7 @@ func (c *Client) InquirePossibleRvseCncl(ctx context.Context, accountNo, account
 	}
 
 	// INQR_DVSN_1: 0(주문), INQR_DVSN_2: 0(전체)
-	path := fmt.Sprintf("/uapi/domestic-stock/v1/trading/inquire-psbl-rvsecncl?CANO=%s&ACNT_PRDT_CD=%s&CTX_AREA_FK100=&CTX_AREA_NK100=&INQR_DVSN_1=0&INQR_DVSN_2=0",
+	path := fmt.Sprintf("%s?CANO=%s&ACNT_PRDT_CD=%s&CTX_AREA_FK100=&CTX_AREA_NK100=&INQR_DVSN_1=0&INQR_DVSN_2=0", PathDomesticStockTradingInquirePsblRvseCncl,
 		cano, acntPrdtCd)
 
 	var resp StockRvseCnclResponse
@@ -167,7 +167,7 @@ func (c *Client) OrderCash(ctx context.Context, accountNo, accountProductCode, s
 	}
 
 	var resp OrderResponse
-	if err := c.doRequest(ctx, "POST", "/uapi/domestic-stock/v1/trading/order-cash", trID, req, &resp); err != nil {
+	if err := c.doRequest(ctx, "POST", PathDomesticStockTradingOrderCash, trID, req, &resp); err != nil {
 		return nil, fmt.Errorf("order cash: %w", err)
 	}
 
@@ -213,7 +213,7 @@ func (c *Client) OrderRvseCncl(
 	}
 
 	var resp OrderResponse
-	if err := c.doRequest(ctx, "POST", "/uapi/domestic-stock/v1/trading/order-rvsecncl", trID, req, &resp); err != nil {
+	if err := c.doRequest(ctx, "POST", PathDomesticStockTradingOrderRvseCncl, trID, req, &resp); err != nil {
 		return nil, fmt.Errorf("order revise/cancel: %w", err)
 	}
 	if resp.RetCode != "0" {
@@ -234,7 +234,7 @@ func (c *Client) InquireAskingPriceExpCcn(ctx context.Context, marketDiv, symbol
 	q.Set("FID_INPUT_ISCD", symbol)
 
 	return c.getRaw(ctx,
-		encodeQuery("/uapi/domestic-stock/v1/quotations/inquire-asking-price-exp-ccn", q),
+		encodeQuery(PathDomesticStockInquireAskingPriceExpCcn, q),
 		"FHKST01010200",
 	)
 }
@@ -250,7 +250,7 @@ func (c *Client) InquireCcnl(ctx context.Context, marketDiv, symbol string) (*Ra
 	q.Set("FID_INPUT_ISCD", symbol)
 
 	return c.getRaw(ctx,
-		encodeQuery("/uapi/domestic-stock/v1/quotations/inquire-ccnl", q),
+		encodeQuery(PathDomesticStockInquireCcnl, q),
 		"FHKST01010300",
 	)
 }
@@ -267,7 +267,7 @@ func (c *Client) InquireTimeItemConclusion(ctx context.Context, marketDiv, symbo
 	q.Set("FID_INPUT_HOUR_1", inputHour1)
 
 	return c.getRaw(ctx,
-		encodeQuery("/uapi/domestic-stock/v1/quotations/inquire-time-itemconclusion", q),
+		encodeQuery(PathDomesticStockInquireTimeItemConclusion, q),
 		"FHPST01060000",
 	)
 }
@@ -283,7 +283,7 @@ func (c *Client) InquireMember(ctx context.Context, marketDiv, symbol string) (*
 	q.Set("FID_INPUT_ISCD", symbol)
 
 	return c.getRaw(ctx,
-		encodeQuery("/uapi/domestic-stock/v1/quotations/inquire-member", q),
+		encodeQuery(PathDomesticStockInquireMember, q),
 		"FHKST01010600",
 	)
 }
@@ -303,7 +303,7 @@ func (c *Client) InquireComponentStockPrice(ctx context.Context, marketDiv, symb
 	q.Set("FID_COND_SCR_DIV_CODE", screenDiv)
 
 	return c.getRaw(ctx,
-		encodeQuery("/uapi/etfetn/v1/quotations/inquire-component-stock-price", q),
+		encodeQuery(PathETFETNComponentStockPrice, q),
 		"FHKST121600C0",
 	)
 }
@@ -361,7 +361,7 @@ func (c *Client) InquireVolumeRank(ctx context.Context, p VolumeRankParams) (*Ra
 	q.Set("FID_INPUT_DATE_1", p.InputDate1)
 
 	return c.getRaw(ctx,
-		encodeQuery("/uapi/domestic-stock/v1/quotations/volume-rank", q),
+		encodeQuery(PathDomesticStockVolumeRank, q),
 		"FHPST01710000",
 	)
 }
@@ -413,7 +413,7 @@ func (c *Client) InquireMarketCapRank(ctx context.Context, p MarketCapRankParams
 	q.Set("fid_vol_cnt", p.VolCnt)
 
 	return c.getRaw(ctx,
-		encodeQuery("/uapi/domestic-stock/v1/ranking/market-cap", q),
+		encodeQuery(PathDomesticStockRankingMarketCap, q),
 		"FHPST01740000",
 	)
 }
@@ -429,7 +429,7 @@ func (c *Client) InquireIndexPrice(ctx context.Context, marketDiv, indexCode str
 	q.Set("FID_INPUT_ISCD", indexCode)
 
 	return c.getRaw(ctx,
-		encodeQuery("/uapi/domestic-stock/v1/quotations/inquire-index-price", q),
+		encodeQuery(PathDomesticStockInquireIndexPrice, q),
 		"FHPUP02100000",
 	)
 }
@@ -450,7 +450,7 @@ func (c *Client) InquireIndexDailyPrice(ctx context.Context, periodDiv, marketDi
 	q.Set("FID_INPUT_DATE_1", inputDate1)
 
 	return c.getRaw(ctx,
-		encodeQuery("/uapi/domestic-stock/v1/quotations/inquire-index-daily-price", q),
+		encodeQuery(PathDomesticStockInquireIndexDailyPrice, q),
 		"FHPUP02120000",
 	)
 }
@@ -472,7 +472,7 @@ func (c *Client) InquireDailyIndexChartPrice(ctx context.Context, marketDiv, ind
 	q.Set("FID_PERIOD_DIV_CODE", periodDiv)
 
 	return c.getRaw(ctx,
-		encodeQuery("/uapi/domestic-stock/v1/quotations/inquire-daily-indexchartprice", q),
+		encodeQuery(PathDomesticStockInquireDailyIndexChart, q),
 		"FHKUP03500100",
 	)
 }
@@ -489,7 +489,7 @@ func (c *Client) InquireDividend(ctx context.Context, cts, gb1, fromDate, toDate
 	q.Set("HIGH_GB", highGb)
 
 	return c.getRaw(ctx,
-		encodeQuery("/uapi/domestic-stock/v1/ksdinfo/dividend", q),
+		encodeQuery(PathDomesticStockDividend, q),
 		"HHKDB669102C0",
 	)
 }
@@ -509,7 +509,7 @@ func (c *Client) InquireFinancialRatio(ctx context.Context, divClsCode, marketDi
 	q.Set("fid_input_iscd", symbol)
 
 	return c.getRaw(ctx,
-		encodeQuery("/uapi/domestic-stock/v1/finance/financial-ratio", q),
+		encodeQuery(PathDomesticStockFinancialRatio, q),
 		"FHKST66430300",
 	)
 }
