@@ -32,7 +32,7 @@ type StorageConfig struct {
 // AccountConfig represents a broker account configuration
 type AccountConfig struct {
 	Name      string `yaml:"name"`
-	Broker    string `yaml:"broker"` // currently supported: "kis"
+	Broker    string `yaml:"broker"` // currently supported: "kis", "kiwoom"
 	Sandbox   bool   `yaml:"sandbox"`
 	AppKey    string `yaml:"app_key"`
 	AppSecret string `yaml:"app_secret"`
@@ -40,6 +40,7 @@ type AccountConfig struct {
 }
 
 var accountIDPattern = regexp.MustCompile(`^\d{8}(-\d{2})?$`)
+var kiwoomAccountIDPattern = regexp.MustCompile(`^\d{10}$`)
 
 // Validate validates and normalizes configuration values.
 func (c *Config) Validate() error {
@@ -69,8 +70,9 @@ func (c *Config) Validate() error {
 		acc.Broker = strings.ToLower(strings.TrimSpace(acc.Broker))
 		switch acc.Broker {
 		case "kis":
+		case "kiwoom":
 		default:
-			return fmt.Errorf("accounts[%d].broker unsupported value %q (expected: kis)", i, acc.Broker)
+			return fmt.Errorf("accounts[%d].broker unsupported value %q (expected: kis|kiwoom)", i, acc.Broker)
 		}
 
 		acc.AppKey = strings.TrimSpace(acc.AppKey)
@@ -83,11 +85,18 @@ func (c *Config) Validate() error {
 		}
 
 		accountID := strings.TrimSpace(acc.AccountID)
-		if !accountIDPattern.MatchString(accountID) {
-			return fmt.Errorf("accounts[%d].account_id invalid format %q (expected: 12345678 or 12345678-01)", i, accountID)
-		}
-		if len(accountID) == 8 {
-			accountID += "-01"
+		switch acc.Broker {
+		case "kis":
+			if !accountIDPattern.MatchString(accountID) {
+				return fmt.Errorf("accounts[%d].account_id invalid format %q for kis (expected: 12345678 or 12345678-01)", i, accountID)
+			}
+			if len(accountID) == 8 {
+				accountID += "-01"
+			}
+		case "kiwoom":
+			if !kiwoomAccountIDPattern.MatchString(accountID) {
+				return fmt.Errorf("accounts[%d].account_id invalid format %q for kiwoom (expected: 10-digit number)", i, accountID)
+			}
 		}
 		acc.AccountID = accountID
 

@@ -6,7 +6,7 @@ import (
 	"net/http"
 
 	"github.com/go-fuego/fuego"
-	"github.com/smallfish06/kr-broker-api/pkg/broker"
+	"github.com/smallfish06/korea-securities-api/pkg/broker"
 )
 
 type instrumentGetter interface {

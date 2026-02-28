@@ -10,7 +10,7 @@ import (
 	"strings"
 	"time"
 
-	"github.com/smallfish06/kr-broker-api/pkg/broker"
+	"github.com/smallfish06/korea-securities-api/pkg/broker"
 )
 
 // TokenResponse represents the KIS token response

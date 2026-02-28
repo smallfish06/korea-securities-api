@@ -6,8 +6,8 @@ import (
 	"log"
 	"os"
 
-	"github.com/smallfish06/kr-broker-api/internal/config"
-	"github.com/smallfish06/kr-broker-api/internal/server"
+	"github.com/smallfish06/korea-securities-api/internal/config"
+	"github.com/smallfish06/korea-securities-api/internal/server"
 )
 
 var (

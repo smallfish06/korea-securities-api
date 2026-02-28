@@ -1,4 +1,4 @@
-module github.com/smallfish06/kr-broker-api
+module github.com/smallfish06/korea-securities-api
 
 go 1.26
 

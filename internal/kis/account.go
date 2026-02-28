@@ -5,7 +5,7 @@ import (
 	"fmt"
 	"strconv"
 
-	"github.com/smallfish06/kr-broker-api/pkg/broker"
+	"github.com/smallfish06/korea-securities-api/pkg/broker"
 )
 
 // BalanceResponse represents KIS balance response

@@ -8,9 +8,9 @@ import (
 	"testing"
 	"time"
 
-	"github.com/smallfish06/kr-broker-api/internal/config"
-	servermock "github.com/smallfish06/kr-broker-api/internal/server/mock"
-	"github.com/smallfish06/kr-broker-api/pkg/broker"
+	"github.com/smallfish06/korea-securities-api/internal/config"
+	servermock "github.com/smallfish06/korea-securities-api/internal/server/mock"
+	"github.com/smallfish06/korea-securities-api/pkg/broker"
 	testifymock "github.com/stretchr/testify/mock"
 )
 

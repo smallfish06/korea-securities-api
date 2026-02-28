@@ -1,8 +1,8 @@
-# kr-broker-api
+# korea-securities-api
 
-[![CI](https://github.com/smallfish06/kr-broker-api/actions/workflows/ci.yml/badge.svg)](https://github.com/smallfish06/kr-broker-api/actions/workflows/ci.yml)
-[![Go Reference](https://pkg.go.dev/badge/github.com/smallfish06/kr-broker-api.svg)](https://pkg.go.dev/github.com/smallfish06/kr-broker-api)
-[![Go Report Card](https://goreportcard.com/badge/github.com/smallfish06/kr-broker-api)](https://goreportcard.com/report/github.com/smallfish06/kr-broker-api)
+[![CI](https://github.com/smallfish06/korea-securities-api/actions/workflows/ci.yml/badge.svg)](https://github.com/smallfish06/korea-securities-api/actions/workflows/ci.yml)
+[![Go Reference](https://pkg.go.dev/badge/github.com/smallfish06/korea-securities-api.svg)](https://pkg.go.dev/github.com/smallfish06/korea-securities-api)
+[![Go Report Card](https://goreportcard.com/badge/github.com/smallfish06/korea-securities-api)](https://goreportcard.com/report/github.com/smallfish06/korea-securities-api)
 [![License: Apache 2.0](https://img.shields.io/badge/License-Apache_2.0-blue.svg)](LICENSE)
 
 한국 증권사 REST API를 하나의 통일된 인터페이스로 제공하는 Go 게이트웨이.
@@ -35,10 +35,10 @@
 ### Install
 
 ```bash
-go install github.com/smallfish06/kr-broker-api/cmd/kr-broker@latest
+go install github.com/smallfish06/korea-securities-api/cmd/kr-broker@latest
 ```
 
-Or download a pre-built binary from the [Releases](https://github.com/smallfish06/kr-broker-api/releases) page.
+Or download a pre-built binary from the [Releases](https://github.com/smallfish06/korea-securities-api/releases) page.
 
 ### Configure
 
@@ -122,8 +122,8 @@ All responses follow a consistent format:
 
 ```go
 import (
-    "github.com/smallfish06/kr-broker-api/pkg/broker"
-    apiserver "github.com/smallfish06/kr-broker-api/pkg/server"
+    "github.com/smallfish06/korea-securities-api/pkg/broker"
+    apiserver "github.com/smallfish06/korea-securities-api/pkg/server"
 )
 
 func main() {

@@ -41,6 +41,6 @@ changelog:
 release:
   github:
     owner: smallfish06
-    name: kr-broker-api
+    name: korea-securities-api
   draft: false
   prerelease: auto

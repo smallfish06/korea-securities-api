@@ -1,6 +1,6 @@
 package server
 
-import "github.com/smallfish06/kr-broker-api/pkg/broker"
+import "github.com/smallfish06/korea-securities-api/pkg/broker"
 
 // BrokerWithExtras is a test-oriented interface for server handlers.
 //
