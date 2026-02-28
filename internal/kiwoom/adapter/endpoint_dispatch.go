@@ -96,9 +96,31 @@ func (d *endpointDispatcher) dispatchDocumentedCustom(path string) endpointDispa
 		if d.adapter == nil || d.adapter.client == nil {
 			return nil, fmt.Errorf("%w: kiwoom client is not initialized", broker.ErrInvalidOrderRequest)
 		}
-		resp, err := d.adapter.client.CallCustom(ctx, apiID, path, fieldsToBody(fields))
+		payload := fieldsToBody(fields)
+		applyDocumentedCustomDefaults(apiID, payload)
+		resp, err := d.adapter.client.CallCustom(ctx, apiID, path, payload)
 		return marshalMap(resp, err)
 	}
+}
+
+func applyDocumentedCustomDefaults(apiID string, payload map[string]interface{}) {
+	switch strings.ToLower(strings.TrimSpace(apiID)) {
+	case "ka50079", "ka50080":
+		if payloadFieldEmpty(payload, "tic_scope") {
+			payload["tic_scope"] = "1"
+		}
+	}
+}
+
+func payloadFieldEmpty(payload map[string]interface{}, key string) bool {
+	if payload == nil {
+		return true
+	}
+	v, ok := payload[key]
+	if !ok || v == nil {
+		return true
+	}
+	return strings.TrimSpace(fmt.Sprint(v)) == ""
 }
 
 // CallEndpoint dispatches a Kiwoom endpoint path/api_id to implemented client methods.
@@ -458,9 +480,18 @@ func marshalMap(v interface{}, err error) (map[string]interface{}, error) {
 	if err != nil {
 		return nil, fmt.Errorf("marshal response: %w", err)
 	}
+
+	// Most Kiwoom responses are JSON objects. Some typed wrappers return arrays;
+	// wrap those as {"items": [...]} to keep CallEndpoint's map contract.
 	out := make(map[string]interface{})
-	if err := json.Unmarshal(data, &out); err != nil {
-		return nil, fmt.Errorf("decode response map: %w", err)
+	if err := json.Unmarshal(data, &out); err == nil {
+		return out, nil
 	}
-	return out, nil
+
+	items := make([]interface{}, 0)
+	if err := json.Unmarshal(data, &items); err == nil {
+		return map[string]interface{}{"items": items}, nil
+	}
+
+	return nil, fmt.Errorf("decode response map: expected object or array")
 }

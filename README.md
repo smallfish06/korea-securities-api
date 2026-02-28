@@ -115,6 +115,10 @@ internal/server/      HTTP 핸들러
 examples/             사용 예시
 ```
 
+## 범위
+
+REST API만 지원합니다. WebSocket(실시간 시세, 실시간 체결 등)은 지원 범위에 포함되지 않습니다.
+
 ## 개발
 
 ```bash

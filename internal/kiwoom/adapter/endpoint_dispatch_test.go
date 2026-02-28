@@ -4,6 +4,7 @@ import (
 	"context"
 	"errors"
 	"net/http"
+	"reflect"
 	"testing"
 
 	"github.com/smallfish06/krsec/internal/kiwoom"
@@ -98,5 +99,43 @@ func TestCallEndpoint_ValidRouteMissingSymbol(t *testing.T) {
 	}
 	if !errors.Is(err, broker.ErrInvalidSymbol) {
 		t.Fatalf("expected ErrInvalidSymbol, got %v", err)
+	}
+}
+
+func TestMarshalMap_ArrayWrappedAsItems(t *testing.T) {
+	t.Parallel()
+
+	out, err := marshalMap([]string{"a", "b"}, nil)
+	if err != nil {
+		t.Fatalf("marshalMap error: %v", err)
+	}
+
+	raw, ok := out["items"]
+	if !ok {
+		t.Fatalf("items key missing: %#v", out)
+	}
+	items, ok := raw.([]interface{})
+	if !ok {
+		t.Fatalf("items type = %T, want []interface{}", raw)
+	}
+	want := []interface{}{"a", "b"}
+	if !reflect.DeepEqual(items, want) {
+		t.Fatalf("items = %#v, want %#v", items, want)
+	}
+}
+
+func TestApplyDocumentedCustomDefaults_TicScope(t *testing.T) {
+	t.Parallel()
+
+	payload := map[string]interface{}{}
+	applyDocumentedCustomDefaults("ka50079", payload)
+	if payload["tic_scope"] != "1" {
+		t.Fatalf("tic_scope = %#v, want \"1\"", payload["tic_scope"])
+	}
+
+	payload2 := map[string]interface{}{"tic_scope": "5"}
+	applyDocumentedCustomDefaults("ka50080", payload2)
+	if payload2["tic_scope"] != "5" {
+		t.Fatalf("tic_scope = %#v, want \"5\"", payload2["tic_scope"])
 	}
 }
