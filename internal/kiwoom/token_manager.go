@@ -1,10 +1,12 @@
 package kiwoom
 
 import (
+	"context"
 	"crypto/sha256"
 	"encoding/hex"
 	"encoding/json"
 	"fmt"
+	"github.com/smallfish06/krsec/internal/ratelimit"
 	"os"
 	"path/filepath"
 	"strings"
@@ -23,7 +25,7 @@ type TokenManager interface {
 type FileTokenManager struct {
 	mu           sync.RWMutex
 	tokens       map[string]*tokenEntry
-	authLimiters map[string]*RateLimiter
+	authLimiters map[string]*ratelimit.Limiter
 	authMu       sync.Mutex
 	dir          string
 }
@@ -48,7 +50,7 @@ func NewFileTokenManager() *FileTokenManager {
 func NewFileTokenManagerWithDir(dir string) *FileTokenManager {
 	tm := &FileTokenManager{
 		tokens:       make(map[string]*tokenEntry),
-		authLimiters: make(map[string]*RateLimiter),
+		authLimiters: make(map[string]*ratelimit.Limiter),
 		dir:          strings.TrimSpace(dir),
 	}
 	tm.loadAll()
@@ -112,11 +114,11 @@ func (tm *FileTokenManager) WaitForAuth(appKey string) {
 	tm.authMu.Lock()
 	limiter, ok := tm.authLimiters[appKey]
 	if !ok {
-		limiter = NewRateLimiter(1.0 / 60.0)
+		limiter = ratelimit.New("kiwoom-auth", 1.0/60.0, 1)
 		tm.authLimiters[appKey] = limiter
 	}
 	tm.authMu.Unlock()
-	limiter.Wait()
+	limiter.Wait(context.Background())
 }
 
 func (tm *FileTokenManager) tokenDir() (string, error) {

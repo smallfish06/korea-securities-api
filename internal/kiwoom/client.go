@@ -12,6 +12,7 @@ import (
 	"sync"
 	"time"
 
+	"github.com/smallfish06/krsec/internal/ratelimit"
 	"github.com/smallfish06/krsec/pkg/broker"
 )
 
@@ -33,7 +34,7 @@ type Client struct {
 	accessToken string
 	expiresAt   time.Time
 
-	apiLimiter   *RateLimiter
+	apiLimiter   *ratelimit.Limiter
 	tokenManager TokenManager
 }
 
@@ -69,7 +70,7 @@ func NewClientWithTokenManager(sandbox bool, tm TokenManager) *Client {
 		httpClient: &http.Client{
 			Timeout: 30 * time.Second,
 		},
-		apiLimiter:   NewRateLimiter(8.0),
+		apiLimiter:   ratelimit.New("kiwoom", 8, 2), // 8 req/s, burst 2
 		tokenManager: tm,
 	}
 }
@@ -158,7 +159,9 @@ func (c *Client) call(ctx context.Context, endpoint endpointSpec, body map[strin
 }
 
 func (c *Client) doRequest(ctx context.Context, endpoint endpointSpec, body map[string]interface{}, opts callOptions) (http.Header, map[string]interface{}, error) {
-	c.apiLimiter.Wait()
+	if err := c.apiLimiter.Wait(ctx); err != nil {
+		return nil, nil, err
+	}
 
 	if !c.isTokenValid() {
 		appKey, appSecret := c.getCredentials()

@@ -11,6 +11,7 @@ import (
 	"sync"
 	"time"
 
+	"github.com/smallfish06/krsec/internal/ratelimit"
 	"github.com/smallfish06/krsec/pkg/broker"
 )
 
@@ -32,7 +33,7 @@ type Client struct {
 	accessToken string
 	expiresAt   time.Time
 
-	apiLimiter   *RateLimiter // Rate limiter for API requests (15/sec)
+	apiLimiter   *ratelimit.Limiter
 	tokenManager TokenManager
 }
 
@@ -57,7 +58,7 @@ func NewClientWithTokenManager(sandbox bool, tokenManager TokenManager) *Client 
 		httpClient: &http.Client{
 			Timeout: 30 * time.Second,
 		},
-		apiLimiter:   NewRateLimiter(15.0), // 15 requests/sec (conservative, KIS allows 20)
+		apiLimiter:   ratelimit.New("kis", 15, 3), // 15 req/s, burst 3
 		tokenManager: tokenManager,
 	}
 }
@@ -122,7 +123,9 @@ func (c *Client) isTokenValid() bool {
 // doRequest performs an HTTP request with authentication headers
 func (c *Client) doRequest(ctx context.Context, method, path string, trID string, body interface{}, result interface{}) error {
 	// Apply rate limiting
-	c.apiLimiter.Wait()
+	if err := c.apiLimiter.Wait(ctx); err != nil {
+		return err
+	}
 
 	// Check token validity
 	if !c.isTokenValid() {

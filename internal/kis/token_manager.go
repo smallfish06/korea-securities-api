@@ -1,10 +1,12 @@
 package kis
 
 import (
+	"context"
 	"crypto/sha256"
 	"encoding/hex"
 	"encoding/json"
 	"fmt"
+	"github.com/smallfish06/krsec/internal/ratelimit"
 	"os"
 	"path/filepath"
 	"strings"
@@ -25,7 +27,7 @@ type FileTokenManager struct {
 	mu     sync.RWMutex
 	tokens map[string]*tokenEntry // key: appkey
 
-	authLimiters   map[string]*RateLimiter // appkey -> rate limiter for token issuance
+	authLimiters   map[string]*ratelimit.Limiter // appkey -> rate limiter for token issuance
 	authLimitersMu sync.Mutex
 	dir            string
 }
@@ -52,7 +54,7 @@ func NewFileTokenManager() *FileTokenManager {
 func NewFileTokenManagerWithDir(dir string) *FileTokenManager {
 	tm := &FileTokenManager{
 		tokens:       make(map[string]*tokenEntry),
-		authLimiters: make(map[string]*RateLimiter),
+		authLimiters: make(map[string]*ratelimit.Limiter),
 		dir:          strings.TrimSpace(dir),
 	}
 	tm.loadAll()
@@ -128,12 +130,12 @@ func (tm *FileTokenManager) WaitForAuth(appKey string) {
 	limiter, exists := tm.authLimiters[appKey]
 	if !exists {
 		// 1 request per 60 seconds = 1/60 per second
-		limiter = NewRateLimiter(1.0 / 60.0)
+		limiter = ratelimit.New("kis-auth", 1.0/60.0, 1)
 		tm.authLimiters[appKey] = limiter
 	}
 	tm.authLimitersMu.Unlock()
 
-	limiter.Wait()
+	limiter.Wait(context.Background())
 }
 
 // tokenDir returns the directory where tokens are stored.
