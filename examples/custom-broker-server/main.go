@@ -3,7 +3,6 @@ package main
 import (
 	"context"
 	"flag"
-	"fmt"
 	"log"
 	"strconv"
 	"strings"
@@ -316,7 +315,7 @@ func main() {
 }
 
 func sampleOrder() string {
-	return fmt.Sprintf(`{"symbol":"005930","market":"KRX","side":"buy","type":"market","quantity":1}`)
+	return `{"symbol":"005930","market":"KRX","side":"buy","type":"market","quantity":1}`
 }
 
 func max(a, b float64) float64 {

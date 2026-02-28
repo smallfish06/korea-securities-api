@@ -52,14 +52,15 @@ func main() {
 	}
 
 	ctx, cancel := context.WithTimeout(context.Background(), *timeout)
-	defer cancel()
 
 	if _, err := adapter.Authenticate(ctx, creds); err != nil {
+		cancel()
 		log.Fatalf("authenticate: %v", err)
 	}
 
 	bal, err := adapter.GetBalance(ctx, account.AccountID)
 	if err != nil {
+		cancel()
 		log.Fatalf("get balance: %v", err)
 	}
 
@@ -74,10 +75,12 @@ func main() {
 	if *withPositions {
 		pos, err := adapter.GetPositions(ctx, account.AccountID)
 		if err != nil {
+			cancel()
 			log.Fatalf("get positions: %v", err)
 		}
 		out.Positions = pos
 	}
+	cancel()
 
 	data, err := json.MarshalIndent(out, "", "  ")
 	if err != nil {
