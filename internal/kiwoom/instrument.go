@@ -6,8 +6,8 @@ import (
 	"github.com/smallfish06/korea-securities-api/pkg/broker"
 )
 
-// GetInstrumentInfo fetches ka10100.
-func (c *Client) GetInstrumentInfo(ctx context.Context, symbol string) (*InstrumentInfo, error) {
+// InquireInstrumentInfo fetches ka10100.
+func (c *Client) InquireInstrumentInfo(ctx context.Context, symbol string) (*InstrumentInfo, error) {
 	symbol = normalizeSymbolCode(symbol)
 	if symbol == "" {
 		return nil, broker.ErrInvalidSymbol

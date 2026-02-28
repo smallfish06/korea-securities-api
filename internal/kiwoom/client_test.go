@@ -41,7 +41,7 @@ func (m *memoryTokenManager) WaitForAuth(string) {
 	m.waitCalls++
 }
 
-func TestClientGetDomesticQuote_UsesAuthAndAPIIDHeader(t *testing.T) {
+func TestClientInquirePrice_UsesAuthAndAPIIDHeader(t *testing.T) {
 	var gotAuth string
 	var gotAPIID string
 	var gotSymbol string
@@ -91,9 +91,9 @@ func TestClientGetDomesticQuote_UsesAuthAndAPIIDHeader(t *testing.T) {
 		t.Fatalf("Authenticate error: %v", err)
 	}
 
-	quote, err := c.GetDomesticQuote(context.Background(), "005930")
+	quote, err := c.InquirePrice(context.Background(), "005930")
 	if err != nil {
-		t.Fatalf("GetDomesticQuote error: %v", err)
+		t.Fatalf("InquirePrice error: %v", err)
 	}
 
 	if tm.setCalls != 1 {
@@ -113,7 +113,7 @@ func TestClientGetDomesticQuote_UsesAuthAndAPIIDHeader(t *testing.T) {
 	}
 }
 
-func TestClientGetDomesticQuote_ReturnCodeError(t *testing.T) {
+func TestClientInquirePrice_ReturnCodeError(t *testing.T) {
 	ts := httptest.NewServer(http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
 		switch r.URL.Path {
 		case "/oauth2/token":
@@ -139,7 +139,7 @@ func TestClientGetDomesticQuote_ReturnCodeError(t *testing.T) {
 	c.SetBaseURL(ts.URL)
 	c.SetCredentials("k", "s")
 
-	_, err := c.GetDomesticQuote(context.Background(), "BAD")
+	_, err := c.InquirePrice(context.Background(), "BAD")
 	if err == nil {
 		t.Fatal("expected error, got nil")
 	}

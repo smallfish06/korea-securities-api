@@ -6,8 +6,8 @@ import (
 	"github.com/smallfish06/korea-securities-api/pkg/broker"
 )
 
-// GetDomesticQuote fetches ka10001 and returns typed quote fields.
-func (c *Client) GetDomesticQuote(ctx context.Context, symbol string) (*DomesticQuote, error) {
+// InquirePrice fetches ka10001 and returns typed quote fields.
+func (c *Client) InquirePrice(ctx context.Context, symbol string) (*DomesticQuote, error) {
 	symbol = normalizeSymbolCode(symbol)
 	if symbol == "" {
 		return nil, broker.ErrInvalidSymbol

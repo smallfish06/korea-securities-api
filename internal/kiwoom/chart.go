@@ -8,18 +8,18 @@ import (
 	"github.com/smallfish06/korea-securities-api/pkg/broker"
 )
 
-// GetDailyChart fetches daily candles from ka10081.
-func (c *Client) GetDailyChart(ctx context.Context, symbol, baseDate string) ([]ChartCandle, error) {
+// InquireDailyPrice fetches daily candles from ka10081.
+func (c *Client) InquireDailyPrice(ctx context.Context, symbol, baseDate string) ([]ChartCandle, error) {
 	return c.getChart(ctx, endpointDailyChart, symbol, baseDate)
 }
 
-// GetWeeklyChart fetches weekly candles from ka10082.
-func (c *Client) GetWeeklyChart(ctx context.Context, symbol, baseDate string) ([]ChartCandle, error) {
+// InquireWeeklyPrice fetches weekly candles from ka10082.
+func (c *Client) InquireWeeklyPrice(ctx context.Context, symbol, baseDate string) ([]ChartCandle, error) {
 	return c.getChart(ctx, endpointWeeklyChart, symbol, baseDate)
 }
 
-// GetMonthlyChart fetches monthly candles from ka10083.
-func (c *Client) GetMonthlyChart(ctx context.Context, symbol, baseDate string) ([]ChartCandle, error) {
+// InquireMonthlyPrice fetches monthly candles from ka10083.
+func (c *Client) InquireMonthlyPrice(ctx context.Context, symbol, baseDate string) ([]ChartCandle, error) {
 	return c.getChart(ctx, endpointMonthlyChart, symbol, baseDate)
 }
 

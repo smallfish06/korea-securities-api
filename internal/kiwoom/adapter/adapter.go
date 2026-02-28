@@ -76,7 +76,7 @@ func (a *Adapter) GetQuote(ctx context.Context, market, symbol string) (*broker.
 		return nil, err
 	}
 
-	quote, err := a.client.GetDomesticQuote(ctx, symbol)
+	quote, err := a.client.InquirePrice(ctx, symbol)
 	if err != nil {
 		return nil, err
 	}
@@ -132,11 +132,11 @@ func (a *Adapter) GetOHLCV(ctx context.Context, market, symbol string, opts brok
 
 	switch interval {
 	case "1d", "d", "day", "daily":
-		candles, err = a.client.GetDailyChart(ctx, symbol, baseDate)
+		candles, err = a.client.InquireDailyPrice(ctx, symbol, baseDate)
 	case "1w", "w", "week", "weekly":
-		candles, err = a.client.GetWeeklyChart(ctx, symbol, baseDate)
+		candles, err = a.client.InquireWeeklyPrice(ctx, symbol, baseDate)
 	case "1mo", "mo", "month", "monthly":
-		candles, err = a.client.GetMonthlyChart(ctx, symbol, baseDate)
+		candles, err = a.client.InquireMonthlyPrice(ctx, symbol, baseDate)
 	default:
 		return nil, fmt.Errorf("unsupported interval for kiwoom: %s", opts.Interval)
 	}
@@ -178,7 +178,7 @@ func (a *Adapter) GetBalance(ctx context.Context, accountID string) (*broker.Bal
 		accountID = a.accountID
 	}
 
-	bal, err := a.client.GetAccountBalance(ctx, "KRX")
+	bal, err := a.client.InquireBalance(ctx, "KRX")
 	if err != nil {
 		return nil, err
 	}
@@ -207,7 +207,7 @@ func (a *Adapter) GetBalance(ctx context.Context, accountID string) (*broker.Bal
 
 // GetPositions retrieves account stock positions.
 func (a *Adapter) GetPositions(ctx context.Context, _ string) ([]broker.Position, error) {
-	positionsResp, err := a.client.GetAccountPositions(ctx, "0", "KRX")
+	positionsResp, err := a.client.InquirePositions(ctx, "0", "KRX")
 	if err != nil {
 		return nil, err
 	}
@@ -484,7 +484,7 @@ func (a *Adapter) GetOrderFills(ctx context.Context, orderID string) ([]broker.O
 	}
 	meta, hasContext := a.getOrderContext(orderID)
 
-	executions, err := a.client.GetOrderExecutions(ctx, meta.Symbol)
+	executions, err := a.client.InquireOrderExecutions(ctx, meta.Symbol)
 	if err != nil {
 		return nil, err
 	}
@@ -538,7 +538,7 @@ func (a *Adapter) GetInstrument(ctx context.Context, market, symbol string) (*br
 		return nil, broker.ErrInvalidSymbol
 	}
 
-	info, err := a.client.GetInstrumentInfo(ctx, symbol)
+	info, err := a.client.InquireInstrumentInfo(ctx, symbol)
 	if err != nil {
 		return nil, err
 	}
@@ -569,7 +569,7 @@ func (a *Adapter) GetInstrument(ctx context.Context, market, symbol string) (*br
 }
 
 func (a *Adapter) fetchUnsettled(ctx context.Context, symbol string) ([]kiwoom.UnsettledOrder, error) {
-	return a.client.GetUnsettledOrders(ctx, symbol)
+	return a.client.InquireUnsettledOrders(ctx, symbol)
 }
 
 func (a *Adapter) storeOrderContext(orderID string, meta orderContext) {

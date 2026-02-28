@@ -5,8 +5,8 @@ import (
 	"strings"
 )
 
-// GetAccountBalance fetches kt00005.
-func (c *Client) GetAccountBalance(ctx context.Context, exchange string) (*AccountBalance, error) {
+// InquireBalance fetches kt00005.
+func (c *Client) InquireBalance(ctx context.Context, exchange string) (*AccountBalance, error) {
 	exchange = strings.ToUpper(strings.TrimSpace(exchange))
 	if exchange == "" {
 		exchange = "KRX"
@@ -37,8 +37,8 @@ func (c *Client) GetAccountBalance(ctx context.Context, exchange string) (*Accou
 	}, nil
 }
 
-// GetAccountPositions fetches kt00018.
-func (c *Client) GetAccountPositions(ctx context.Context, queryType, exchange string) ([]AccountPosition, error) {
+// InquirePositions fetches kt00018.
+func (c *Client) InquirePositions(ctx context.Context, queryType, exchange string) ([]AccountPosition, error) {
 	queryType = strings.TrimSpace(queryType)
 	if queryType == "" {
 		queryType = "0"
@@ -83,8 +83,8 @@ func (c *Client) GetAccountPositions(ctx context.Context, queryType, exchange st
 	return positions, nil
 }
 
-// GetUnsettledOrders fetches ka10075.
-func (c *Client) GetUnsettledOrders(ctx context.Context, symbol string) ([]UnsettledOrder, error) {
+// InquireUnsettledOrders fetches ka10075.
+func (c *Client) InquireUnsettledOrders(ctx context.Context, symbol string) ([]UnsettledOrder, error) {
 	body := map[string]interface{}{
 		"all_stk_tp": "0",
 		"trde_tp":    "0",
@@ -126,8 +126,8 @@ func (c *Client) GetUnsettledOrders(ctx context.Context, symbol string) ([]Unset
 	return orders, nil
 }
 
-// GetOrderExecutions fetches ka10076.
-func (c *Client) GetOrderExecutions(ctx context.Context, symbol string) ([]OrderExecution, error) {
+// InquireOrderExecutions fetches ka10076.
+func (c *Client) InquireOrderExecutions(ctx context.Context, symbol string) ([]OrderExecution, error) {
 	body := map[string]interface{}{
 		"qry_tp":  "0",
 		"sell_tp": "0",
