@@ -23,6 +23,40 @@ func (c *Client) InquireMonthlyPrice(ctx context.Context, symbol, baseDate strin
 	return c.getChart(ctx, endpointMonthlyChart, symbol, baseDate)
 }
 
+// InquireTickChart fetches domestic tick chart via ka10079.
+func (c *Client) InquireTickChart(ctx context.Context, symbol, baseDate string) (map[string]interface{}, error) {
+	symbol = normalizeSymbolCode(symbol)
+	if symbol == "" {
+		return nil, broker.ErrInvalidSymbol
+	}
+	baseDate = strings.TrimSpace(baseDate)
+	if baseDate == "" {
+		baseDate = time.Now().Format("20060102")
+	}
+	body := map[string]interface{}{
+		"stk_cd":       symbol,
+		"base_dt":      baseDate,
+		"upd_stkpc_tp": "1",
+		"tic_scope":    "1",
+	}
+	return c.callRaw(ctx, endpointTickChart, body)
+}
+
+// InquireInvestorByStockChart fetches investor trend chart via ka10060.
+func (c *Client) InquireInvestorByStockChart(ctx context.Context, symbol string, body map[string]interface{}) (map[string]interface{}, error) {
+	symbol = normalizeSymbolCode(symbol)
+	if symbol == "" {
+		return nil, broker.ErrInvalidSymbol
+	}
+	payload := cloneBody(body)
+	setDefaultPayload(payload, "dt", time.Now().Format("20060102"))
+	setDefaultPayload(payload, "trde_tp", "0")
+	setDefaultPayload(payload, "amt_qty_tp", "1")
+	setDefaultPayload(payload, "unit_tp", "1")
+	payload["stk_cd"] = symbol
+	return c.callRaw(ctx, endpointInvestorByStockChart, payload)
+}
+
 func (c *Client) getChart(ctx context.Context, endpoint endpointSpec, symbol, baseDate string) ([]ChartCandle, error) {
 	symbol = normalizeSymbolCode(symbol)
 	if symbol == "" {

@@ -3,6 +3,7 @@ package kis
 import (
 	"context"
 	"fmt"
+	"net/url"
 	"strings"
 )
 
@@ -39,6 +40,142 @@ func (c *Client) InquireOverseasPrice(ctx context.Context, exchangeCode, symbol 
 	}
 
 	return &resp, nil
+}
+
+// InquireOverseasDailyChartPrice retrieves overseas day/week/month/year chart.
+// TR_ID: FHKST03030100
+func (c *Client) InquireOverseasDailyChartPrice(ctx context.Context, marketDiv, symbol, fromDate, toDate, periodDiv string) (*RawResponse, error) {
+	if marketDiv == "" {
+		marketDiv = "N"
+	}
+	if periodDiv == "" {
+		periodDiv = "D"
+	}
+	q := url.Values{}
+	q.Set("FID_COND_MRKT_DIV_CODE", marketDiv)
+	q.Set("FID_INPUT_ISCD", symbol)
+	q.Set("FID_INPUT_DATE_1", fromDate)
+	q.Set("FID_INPUT_DATE_2", toDate)
+	q.Set("FID_PERIOD_DIV_CODE", periodDiv)
+
+	return c.getRaw(ctx,
+		encodeQuery("/uapi/overseas-price/v1/quotations/inquire-daily-chartprice", q),
+		"FHKST03030100",
+	)
+}
+
+// InquireOverseasDailyPrice retrieves overseas period quotes.
+// TR_ID: HHDFS76240000
+func (c *Client) InquireOverseasDailyPrice(ctx context.Context, auth, exchangeCode, symbol, gubn, bymd, modp string) (*RawResponse, error) {
+	if gubn == "" {
+		gubn = "0"
+	}
+	if modp == "" {
+		modp = "0"
+	}
+	q := url.Values{}
+	q.Set("AUTH", auth)
+	q.Set("EXCD", exchangeCode)
+	q.Set("SYMB", symbol)
+	q.Set("GUBN", gubn)
+	q.Set("BYMD", bymd)
+	q.Set("MODP", modp)
+
+	return c.getRaw(ctx,
+		encodeQuery("/uapi/overseas-price/v1/quotations/dailyprice", q),
+		"HHDFS76240000",
+	)
+}
+
+// InquireOverseasPriceDetail retrieves overseas orderbook/detail snapshot.
+// TR_ID: HHDFS76200200
+func (c *Client) InquireOverseasPriceDetail(ctx context.Context, auth, exchangeCode, symbol string) (*RawResponse, error) {
+	q := url.Values{}
+	q.Set("AUTH", auth)
+	q.Set("EXCD", exchangeCode)
+	q.Set("SYMB", symbol)
+
+	return c.getRaw(ctx,
+		encodeQuery("/uapi/overseas-price/v1/quotations/price-detail", q),
+		"HHDFS76200200",
+	)
+}
+
+// InquireOverseasTick retrieves overseas execution/tick details.
+// TR_ID: HHDFS76200300
+func (c *Client) InquireOverseasTick(ctx context.Context, exchangeCode, tday, symbol, auth, keyb string) (*RawResponse, error) {
+	if tday == "" {
+		tday = "0"
+	}
+	q := url.Values{}
+	q.Set("EXCD", exchangeCode)
+	q.Set("TDAY", tday)
+	q.Set("SYMB", symbol)
+	q.Set("AUTH", auth)
+	q.Set("KEYB", keyb)
+
+	return c.getRaw(ctx,
+		encodeQuery("/uapi/overseas-price/v1/quotations/inquire-ccnl", q),
+		"HHDFS76200300",
+	)
+}
+
+// InquireOverseasUpdownRate retrieves overseas up/down rank.
+// TR_ID: HHDFS76290000
+func (c *Client) InquireOverseasUpdownRate(ctx context.Context, exchangeCode, nday, gubn, volRange, auth, keyb string) (*RawResponse, error) {
+	if nday == "" {
+		nday = "0"
+	}
+	if gubn == "" {
+		gubn = "1"
+	}
+	if volRange == "" {
+		volRange = "0"
+	}
+	q := url.Values{}
+	q.Set("EXCD", exchangeCode)
+	q.Set("NDAY", nday)
+	q.Set("GUBN", gubn)
+	q.Set("VOL_RANG", volRange)
+	q.Set("AUTH", auth)
+	q.Set("KEYB", keyb)
+
+	return c.getRaw(ctx,
+		encodeQuery("/uapi/overseas-stock/v1/ranking/updown-rate", q),
+		"HHDFS76290000",
+	)
+}
+
+// InquireOverseasTimeItemChartPrice retrieves overseas intraday time chart/ticks.
+// TR_ID: HHDFS76950200
+func (c *Client) InquireOverseasTimeItemChartPrice(ctx context.Context, auth, exchangeCode, symbol, nmin, pinc, next, nrec, fill, keyb string) (*RawResponse, error) {
+	if nmin == "" {
+		nmin = "1"
+	}
+	if pinc == "" {
+		pinc = "1"
+	}
+	if next == "" {
+		next = "0"
+	}
+	if nrec == "" {
+		nrec = "120"
+	}
+	q := url.Values{}
+	q.Set("AUTH", auth)
+	q.Set("EXCD", exchangeCode)
+	q.Set("SYMB", symbol)
+	q.Set("NMIN", nmin)
+	q.Set("PINC", pinc)
+	q.Set("NEXT", next)
+	q.Set("NREC", nrec)
+	q.Set("FILL", fill)
+	q.Set("KEYB", keyb)
+
+	return c.getRaw(ctx,
+		encodeQuery("/uapi/overseas-price/v1/quotations/inquire-time-itemchartprice", q),
+		"HHDFS76950200",
+	)
 }
 
 // IsSuccess checks if response is successful

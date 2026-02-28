@@ -37,10 +37,12 @@ type StockPriceOutput struct {
 
 // StockDailyPriceResponse represents KIS daily price inquiry response
 type StockDailyPriceResponse struct {
-	RtCD   string                  `json:"rt_cd"`
-	MsgCD  string                  `json:"msg_cd"`
-	Msg1   string                  `json:"msg1"`
-	Output []StockDailyPriceOutput `json:"output"`
+	RtCD    string                  `json:"rt_cd"`
+	MsgCD   string                  `json:"msg_cd"`
+	Msg1    string                  `json:"msg1"`
+	Output  []StockDailyPriceOutput `json:"output,omitempty"`
+	Output1 []StockDailyPriceOutput `json:"output1,omitempty"`
+	Output2 map[string]string       `json:"output2,omitempty"`
 }
 
 // StockDailyPriceOutput represents daily OHLCV data
@@ -503,6 +505,21 @@ type OverseasCcnlItem struct {
 	SpltBuyAttrNm string `json:"splt_buy_attr_name"`
 }
 
+// RawResponse is a flexible envelope for KIS APIs that return varying output schemas.
+type RawResponse struct {
+	RtCD         string      `json:"rt_cd"`
+	MsgCD        string      `json:"msg_cd"`
+	Msg1         string      `json:"msg1"`
+	Output       interface{} `json:"output,omitempty"`
+	Output1      interface{} `json:"output1,omitempty"`
+	Output2      interface{} `json:"output2,omitempty"`
+	CtxAreaFK100 string      `json:"ctx_area_fk100,omitempty"`
+	CtxAreaNK100 string      `json:"ctx_area_nk100,omitempty"`
+	CtxAreaFK200 string      `json:"ctx_area_fk200,omitempty"`
+	CtxAreaNK200 string      `json:"ctx_area_nk200,omitempty"`
+	Keyb         string      `json:"keyb,omitempty"`
+}
+
 // ====================
 // Common Response
 // ====================
@@ -517,6 +534,10 @@ type ErrorResponse struct {
 // IsSuccess checks if the response indicates success
 func (e *ErrorResponse) IsSuccess() bool {
 	return e.RtCD == "0"
+}
+
+func (r *RawResponse) IsSuccess() bool {
+	return r.RtCD == "0"
 }
 
 // ParseKISDate parses KIS date strings (YYYYMMDD)

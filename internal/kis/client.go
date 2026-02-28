@@ -8,6 +8,7 @@ import (
 	"io"
 	"log"
 	"net/http"
+	"net/url"
 	"sync"
 	"time"
 
@@ -187,4 +188,19 @@ func (c *Client) doRequest(ctx context.Context, method, path string, trID string
 	}
 
 	return nil
+}
+
+func (c *Client) getRaw(ctx context.Context, path, trID string) (*RawResponse, error) {
+	var resp RawResponse
+	if err := c.doRequest(ctx, "GET", path, trID, nil, &resp); err != nil {
+		return nil, err
+	}
+	if !resp.IsSuccess() {
+		return nil, fmt.Errorf("KIS API error: %s (%s)", resp.Msg1, resp.MsgCD)
+	}
+	return &resp, nil
+}
+
+func encodeQuery(basePath string, values url.Values) string {
+	return basePath + "?" + values.Encode()
 }

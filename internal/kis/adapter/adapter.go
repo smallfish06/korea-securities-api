@@ -172,8 +172,9 @@ func (a *Adapter) GetOHLCV(ctx context.Context, market, symbol string, opts brok
 		return nil, err
 	}
 
-	result := make([]broker.OHLCV, 0, len(resp.Output))
-	for _, item := range resp.Output {
+	rows := resp.Rows()
+	result := make([]broker.OHLCV, 0, len(rows))
+	for _, item := range rows {
 		timestamp, _ := time.Parse("20060102", item.StckBsopDate)
 		open, _ := strconv.ParseFloat(item.StckOprc, 64)
 		high, _ := strconv.ParseFloat(item.StckHgpr, 64)

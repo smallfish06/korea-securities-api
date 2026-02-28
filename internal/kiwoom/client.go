@@ -51,6 +51,17 @@ type callResult struct {
 	Body    map[string]interface{}
 }
 
+func cloneBody(body map[string]interface{}) map[string]interface{} {
+	if body == nil {
+		return map[string]interface{}{}
+	}
+	out := make(map[string]interface{}, len(body))
+	for k, v := range body {
+		out[k] = v
+	}
+	return out
+}
+
 // NewClient creates a new Kiwoom client.
 func NewClient(sandbox bool) *Client {
 	return NewClientWithTokenManager(sandbox, nil)
@@ -156,6 +167,47 @@ func (c *Client) call(ctx context.Context, endpoint endpointSpec, body map[strin
 	}
 
 	return &callResult{Headers: headers, Body: result}, nil
+}
+
+func (c *Client) callRaw(ctx context.Context, endpoint endpointSpec, body map[string]interface{}) (map[string]interface{}, error) {
+	res, err := c.call(ctx, endpoint, body, callOptions{})
+	if err != nil {
+		return nil, err
+	}
+	return cloneBody(res.Body), nil
+}
+
+func (c *Client) callRawAllowCodes(ctx context.Context, endpoint endpointSpec, body map[string]interface{}, allowedCodes ...int) (map[string]interface{}, error) {
+	_, result, err := c.doRequest(ctx, endpoint, body, callOptions{})
+	if err != nil {
+		return nil, err
+	}
+
+	if code := parseReturnCode(result["return_code"]); code != 0 && !containsCode(allowedCodes, code) {
+		msg := strings.TrimSpace(toString(result["return_msg"]))
+		return nil, wrapCallError(endpoint.APIID, code, msg)
+	}
+	return cloneBody(result), nil
+}
+
+// CallCustom exposes a typed Kiwoom REST call for APIs not yet wrapped in this client.
+func (c *Client) CallCustom(ctx context.Context, apiID, path string, body map[string]interface{}) (map[string]interface{}, error) {
+	endpoint := endpointSpec{
+		APIID:       strings.TrimSpace(apiID),
+		Method:      http.MethodPost,
+		Path:        strings.TrimSpace(path),
+		ContentType: "application/json;charset=UTF-8",
+	}
+	return c.callRaw(ctx, endpoint, body)
+}
+
+func containsCode(codes []int, target int) bool {
+	for _, c := range codes {
+		if c == target {
+			return true
+		}
+	}
+	return false
 }
 
 func (c *Client) doRequest(ctx context.Context, endpoint endpointSpec, body map[string]interface{}, opts callOptions) (http.Header, map[string]interface{}, error) {
