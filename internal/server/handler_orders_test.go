@@ -52,17 +52,17 @@ func decodeResponse(t *testing.T, rr *httptest.ResponseRecorder) Response {
 	return resp
 }
 
-func TestHandlePlaceOrder_RequiresAccountIDInMultiAccountMode(t *testing.T) {
+func TestHandlePlaceOrder_BodyAccountMismatchReturnsBadRequest(t *testing.T) {
 	t.Parallel()
 
 	b := newMockBroker(t, "KIS")
 	s := newOrderTestServer(
-		map[string]broker.Broker{"acc1": b},
+		map[string]broker.Broker{"acc1": b, "acc2": b},
 		[]config.AccountConfig{{AccountID: "acc1"}, {AccountID: "acc2"}},
 	)
 
-	body := []byte(`{"symbol":"005930","market":"KRX","side":"buy","type":"limit","quantity":1,"price":70000}`)
-	req := httptest.NewRequest(http.MethodPost, "/orders", bytes.NewReader(body))
+	body := []byte(`{"account_id":"acc2","symbol":"005930","market":"KRX","side":"buy","type":"limit","quantity":1,"price":70000}`)
+	req := httptest.NewRequest(http.MethodPost, "/accounts/acc1/orders", bytes.NewReader(body))
 	rr := performFiberRequest(t, s, req)
 
 	if rr.Code != http.StatusBadRequest {
@@ -90,8 +90,8 @@ func TestHandlePlaceOrder_UsesBrokerDomainShape(t *testing.T) {
 		[]config.AccountConfig{{AccountID: "acc1"}},
 	)
 
-	body := []byte(`{"account_id":"acc1","symbol":"005930","market":"KRX","side":"buy","type":"limit","quantity":1,"price":70000}`)
-	req := httptest.NewRequest(http.MethodPost, "/orders", bytes.NewReader(body))
+	body := []byte(`{"symbol":"005930","market":"KRX","side":"buy","type":"limit","quantity":1,"price":70000}`)
+	req := httptest.NewRequest(http.MethodPost, "/accounts/acc1/orders", bytes.NewReader(body))
 	rr := performFiberRequest(t, s, req)
 
 	if rr.Code != http.StatusOK {
@@ -121,7 +121,7 @@ func TestHandleGetOrder_ReturnsDomainOrderResult(t *testing.T) {
 		[]config.AccountConfig{{AccountID: "acc1"}},
 	)
 
-	req := httptest.NewRequest(http.MethodGet, "/orders/000123", nil)
+	req := httptest.NewRequest(http.MethodGet, "/accounts/acc1/orders/000123", nil)
 	rr := performFiberRequest(t, s, req)
 
 	if rr.Code != http.StatusOK {
@@ -146,7 +146,7 @@ func TestHandleGetOrder_Returns404WhenOrderNotFound(t *testing.T) {
 		[]config.AccountConfig{{AccountID: "acc1"}},
 	)
 
-	req := httptest.NewRequest(http.MethodGet, "/orders/000123", nil)
+	req := httptest.NewRequest(http.MethodGet, "/accounts/acc1/orders/000123", nil)
 	rr := performFiberRequest(t, s, req)
 
 	if rr.Code != http.StatusNotFound {
@@ -154,7 +154,7 @@ func TestHandleGetOrder_Returns404WhenOrderNotFound(t *testing.T) {
 	}
 }
 
-func TestHandleCancelOrder_TriesOtherBrokerWhenNotFound(t *testing.T) {
+func TestHandleCancelOrder_UsesPathAccountBrokerOnly(t *testing.T) {
 	t.Parallel()
 
 	firstCalled := false
@@ -163,25 +163,28 @@ func TestHandleCancelOrder_TriesOtherBrokerWhenNotFound(t *testing.T) {
 	b1 := newMockBroker(t, "KIS-1")
 	b1.On("CancelOrder", testifymock.Anything, "000123").Run(func(args testifymock.Arguments) {
 		firstCalled = true
-	}).Return(broker.ErrOrderNotFound).Once()
+	}).Return(nil).Once()
 	b2 := newMockBroker(t, "KIS-2")
 	b2.On("CancelOrder", testifymock.Anything, "000123").Run(func(args testifymock.Arguments) {
 		secondCalled = true
-	}).Return(nil).Once()
+	}).Return(nil).Maybe()
 
 	s := newOrderTestServer(
 		map[string]broker.Broker{"acc1": b1, "acc2": b2},
 		[]config.AccountConfig{{AccountID: "acc1"}, {AccountID: "acc2"}},
 	)
 
-	req := httptest.NewRequest(http.MethodDelete, "/orders/000123?account_id=acc1", nil)
+	req := httptest.NewRequest(http.MethodDelete, "/accounts/acc1/orders/000123", nil)
 	rr := performFiberRequest(t, s, req)
 
 	if rr.Code != http.StatusOK {
 		t.Fatalf("expected 200, got %d", rr.Code)
 	}
-	if !firstCalled || !secondCalled {
-		t.Fatalf("expected both brokers to be attempted")
+	if !firstCalled {
+		t.Fatalf("expected first broker to be attempted")
+	}
+	if secondCalled {
+		t.Fatalf("expected second broker not to be attempted")
 	}
 	resp := decodeResponse(t, rr)
 	if !resp.OK {
@@ -194,15 +197,13 @@ func TestHandleCancelOrder_Returns404WhenOrderNotFound(t *testing.T) {
 
 	b1 := newMockBroker(t, "KIS-1")
 	b1.On("CancelOrder", testifymock.Anything, "000123").Return(broker.ErrOrderNotFound).Once()
-	b2 := newMockBroker(t, "KIS-2")
-	b2.On("CancelOrder", testifymock.Anything, "000123").Return(broker.ErrOrderNotFound).Once()
 
 	s := newOrderTestServer(
-		map[string]broker.Broker{"acc1": b1, "acc2": b2},
-		[]config.AccountConfig{{AccountID: "acc1"}, {AccountID: "acc2"}},
+		map[string]broker.Broker{"acc1": b1},
+		[]config.AccountConfig{{AccountID: "acc1"}},
 	)
 
-	req := httptest.NewRequest(http.MethodDelete, "/orders/000123", nil)
+	req := httptest.NewRequest(http.MethodDelete, "/accounts/acc1/orders/000123", nil)
 	rr := performFiberRequest(t, s, req)
 
 	if rr.Code != http.StatusNotFound {
@@ -219,16 +220,14 @@ func TestHandleModifyOrder_Returns404WhenOrderNotFound(t *testing.T) {
 
 	b1 := newMockBroker(t, "KIS-1")
 	b1.On("ModifyOrder", testifymock.Anything, "000123", testifymock.Anything).Return((*broker.OrderResult)(nil), broker.ErrOrderNotFound).Once()
-	b2 := newMockBroker(t, "KIS-2")
-	b2.On("ModifyOrder", testifymock.Anything, "000123", testifymock.Anything).Return((*broker.OrderResult)(nil), broker.ErrOrderNotFound).Once()
 
 	s := newOrderTestServer(
-		map[string]broker.Broker{"acc1": b1, "acc2": b2},
-		[]config.AccountConfig{{AccountID: "acc1"}, {AccountID: "acc2"}},
+		map[string]broker.Broker{"acc1": b1},
+		[]config.AccountConfig{{AccountID: "acc1"}},
 	)
 
 	body := []byte(`{"quantity":1,"price":70000}`)
-	req := httptest.NewRequest(http.MethodPut, "/orders/000123", bytes.NewReader(body))
+	req := httptest.NewRequest(http.MethodPut, "/accounts/acc1/orders/000123", bytes.NewReader(body))
 	rr := performFiberRequest(t, s, req)
 
 	if rr.Code != http.StatusNotFound {
@@ -259,7 +258,7 @@ func TestHandleGetOrderFills_ReturnsDomainFills(t *testing.T) {
 		[]config.AccountConfig{{AccountID: "acc1"}},
 	)
 
-	req := httptest.NewRequest(http.MethodGet, "/orders/000123/fills", nil)
+	req := httptest.NewRequest(http.MethodGet, "/accounts/acc1/orders/000123/fills", nil)
 	rr := performFiberRequest(t, s, req)
 
 	if rr.Code != http.StatusOK {
@@ -284,7 +283,7 @@ func TestHandleGetOrderFills_Returns404WhenOrderNotFound(t *testing.T) {
 		[]config.AccountConfig{{AccountID: "acc1"}},
 	)
 
-	req := httptest.NewRequest(http.MethodGet, "/orders/000123/fills", nil)
+	req := httptest.NewRequest(http.MethodGet, "/accounts/acc1/orders/000123/fills", nil)
 	rr := performFiberRequest(t, s, req)
 
 	if rr.Code != http.StatusNotFound {

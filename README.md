@@ -57,11 +57,11 @@ kr-broker -config config.yaml
 | `GET` | `/accounts/{id}/balance` | 잔고 |
 | `GET` | `/accounts/{id}/positions` | 포지션 |
 | `GET` | `/accounts/summary` | 멀티계좌 통합 잔고 |
-| `POST` | `/orders` | 주문 |
-| `GET` | `/orders/{id}` | 주문 상태 |
-| `GET` | `/orders/{id}/fills` | 체결내역 |
-| `PUT` | `/orders/{id}` | 주문 정정 |
-| `DELETE` | `/orders/{id}` | 주문 취소 |
+| `POST` | `/accounts/{account_id}/orders` | 주문 |
+| `GET` | `/accounts/{account_id}/orders/{id}` | 주문 상태 |
+| `GET` | `/accounts/{account_id}/orders/{id}/fills` | 체결내역 |
+| `PUT` | `/accounts/{account_id}/orders/{id}` | 주문 정정 |
+| `DELETE` | `/accounts/{account_id}/orders/{id}` | 주문 취소 |
 | `GET` | `/swagger/` | Swagger UI |
 
 ```bash

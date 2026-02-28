@@ -18,126 +18,91 @@ type orderFillsGetter interface {
 	GetOrderFills(ctx context.Context, orderID string) ([]broker.OrderFill, error)
 }
 
-// handleGetOrder handles GET /orders/{order_id}
+// handleGetOrder handles GET /accounts/{account_id}/orders/{order_id}
 func (s *Server) handleGetOrder(c fuego.ContextNoBody) (Response, error) {
+	accountID := c.PathParam("account_id")
 	orderID := c.PathParam("order_id")
-	accountID := c.QueryParam("account_id")
-	if accountID != "" {
-		if _, ok := s.getBrokerStrict(accountID); !ok {
-			return respond(c, http.StatusNotFound, Response{OK: false, Error: "account not found"})
-		}
+	brk, ok := s.getBrokerStrict(accountID)
+	if !ok {
+		return respond(c, http.StatusNotFound, Response{OK: false, Error: "account not found"})
 	}
 
-	candidates := s.orderBrokerCandidates(accountID)
-	if len(candidates) == 0 {
-		return respond(c, http.StatusServiceUnavailable, Response{OK: false, Error: "no broker available"})
-	}
-
-	var firstErr error
-	supported := false
-	for _, brk := range candidates {
-		getter, ok := brk.(orderGetter)
-		if !ok {
-			continue
-		}
-		supported = true
-
-		result, err := getter.GetOrder(c.Context(), orderID)
-		if err == nil {
-			return respond(c, http.StatusOK, Response{
-				OK:     true,
-				Data:   result,
-				Broker: brk.Name(),
-			})
-		}
-		if errors.Is(err, broker.ErrOrderNotFound) {
-			continue
-		}
-		if firstErr == nil {
-			firstErr = err
-		}
-	}
-
-	if firstErr != nil {
-		return respond(c, statusFromBrokerError(firstErr, http.StatusInternalServerError), Response{
-			OK:    false,
-			Error: firstErr.Error(),
-		})
-	}
-	if !supported {
+	getter, ok := brk.(orderGetter)
+	if !ok {
 		return respond(c, http.StatusNotImplemented, Response{
 			OK:    false,
 			Error: "order status lookup not supported by broker",
 		})
 	}
 
-	return respond(c, http.StatusNotFound, Response{
+	result, err := getter.GetOrder(c.Context(), orderID)
+	if err == nil {
+		return respond(c, http.StatusOK, Response{
+			OK:     true,
+			Data:   result,
+			Broker: brk.Name(),
+		})
+	}
+	if errors.Is(err, broker.ErrOrderNotFound) {
+		return respond(c, http.StatusNotFound, Response{
+			OK:    false,
+			Error: "order not found",
+		})
+	}
+
+	return respond(c, statusFromBrokerError(err, http.StatusInternalServerError), Response{
 		OK:    false,
-		Error: "order not found",
+		Error: err.Error(),
 	})
 }
 
-// handleGetOrderFills handles GET /orders/{order_id}/fills
+// handleGetOrderFills handles GET /accounts/{account_id}/orders/{order_id}/fills
 func (s *Server) handleGetOrderFills(c fuego.ContextNoBody) (Response, error) {
+	accountID := c.PathParam("account_id")
 	orderID := c.PathParam("order_id")
-	accountID := c.QueryParam("account_id")
-	if accountID != "" {
-		if _, ok := s.getBrokerStrict(accountID); !ok {
-			return respond(c, http.StatusNotFound, Response{OK: false, Error: "account not found"})
-		}
+	brk, ok := s.getBrokerStrict(accountID)
+	if !ok {
+		return respond(c, http.StatusNotFound, Response{OK: false, Error: "account not found"})
 	}
 
-	candidates := s.orderBrokerCandidates(accountID)
-	if len(candidates) == 0 {
-		return respond(c, http.StatusServiceUnavailable, Response{OK: false, Error: "no broker available"})
-	}
-
-	var firstErr error
-	supported := false
-	for _, brk := range candidates {
-		getter, ok := brk.(orderFillsGetter)
-		if !ok {
-			continue
-		}
-		supported = true
-
-		fills, err := getter.GetOrderFills(c.Context(), orderID)
-		if err == nil {
-			return respond(c, http.StatusOK, Response{
-				OK:     true,
-				Data:   fills,
-				Broker: brk.Name(),
-			})
-		}
-		if errors.Is(err, broker.ErrOrderNotFound) {
-			continue
-		}
-		if firstErr == nil {
-			firstErr = err
-		}
-	}
-
-	if firstErr != nil {
-		return respond(c, statusFromBrokerError(firstErr, http.StatusInternalServerError), Response{
-			OK:    false,
-			Error: firstErr.Error(),
-		})
-	}
-	if !supported {
+	getter, ok := brk.(orderFillsGetter)
+	if !ok {
 		return respond(c, http.StatusNotImplemented, Response{
 			OK:    false,
 			Error: "order fills lookup not supported by broker",
 		})
 	}
 
-	return respond(c, http.StatusNotFound, Response{
+	fills, err := getter.GetOrderFills(c.Context(), orderID)
+	if err == nil {
+		return respond(c, http.StatusOK, Response{
+			OK:     true,
+			Data:   fills,
+			Broker: brk.Name(),
+		})
+	}
+	if errors.Is(err, broker.ErrOrderNotFound) {
+		return respond(c, http.StatusNotFound, Response{
+			OK:    false,
+			Error: "order not found",
+		})
+	}
+
+	return respond(c, statusFromBrokerError(err, http.StatusInternalServerError), Response{
 		OK:    false,
-		Error: "order not found",
+		Error: err.Error(),
 	})
 }
 
-// handlePlaceOrder handles POST /orders
+// handlePlaceOrder handles POST /accounts/{account_id}/orders
 func (s *Server) handlePlaceOrder(c fuego.ContextWithBody[broker.OrderRequest]) (Response, error) {
+	accountID := c.PathParam("account_id")
+
+	brk, ok := s.getBrokerStrict(accountID)
+	if !ok {
+		return respond(c, http.StatusNotFound, Response{OK: false, Error: "account not found"})
+	}
+
 	req, err := c.Body()
 	if err != nil {
 		return respond(c, http.StatusBadRequest, Response{
@@ -146,26 +111,13 @@ func (s *Server) handlePlaceOrder(c fuego.ContextWithBody[broker.OrderRequest]) 
 		})
 	}
 
-	if req.AccountID == "" && len(s.accounts) > 1 {
+	if req.AccountID != "" && !sameAccountID(req.AccountID, accountID) {
 		return respond(c, http.StatusBadRequest, Response{
 			OK:    false,
-			Error: "account_id is required in multi-account mode",
+			Error: "account_id in body does not match path",
 		})
 	}
-
-	var brk broker.Broker
-	if req.AccountID != "" {
-		var ok bool
-		brk, ok = s.getBrokerStrict(req.AccountID)
-		if !ok {
-			return respond(c, http.StatusNotFound, Response{OK: false, Error: "account not found"})
-		}
-	} else {
-		brk = s.getFirstBroker()
-	}
-	if brk == nil {
-		return respond(c, http.StatusServiceUnavailable, Response{OK: false, Error: "no broker available"})
-	}
+	req.AccountID = accountID
 
 	result, err := brk.PlaceOrder(c.Context(), req)
 	if err != nil {
@@ -183,54 +135,44 @@ func (s *Server) handlePlaceOrder(c fuego.ContextWithBody[broker.OrderRequest]) 
 	})
 }
 
-// handleCancelOrder handles DELETE /orders/{order_id}
+// handleCancelOrder handles DELETE /accounts/{account_id}/orders/{order_id}
 func (s *Server) handleCancelOrder(c fuego.ContextNoBody) (Response, error) {
+	accountID := c.PathParam("account_id")
 	orderID := c.PathParam("order_id")
-	accountID := c.QueryParam("account_id")
-	if accountID != "" {
-		if _, ok := s.getBrokerStrict(accountID); !ok {
-			return respond(c, http.StatusNotFound, Response{OK: false, Error: "account not found"})
-		}
-	}
-	candidates := s.orderBrokerCandidates(accountID)
-	if len(candidates) == 0 {
-		return respond(c, http.StatusServiceUnavailable, Response{OK: false, Error: "no broker available"})
+	brk, ok := s.getBrokerStrict(accountID)
+	if !ok {
+		return respond(c, http.StatusNotFound, Response{OK: false, Error: "account not found"})
 	}
 
-	var firstErr error
-	for _, brk := range candidates {
-		err := brk.CancelOrder(c.Context(), orderID)
-		if err == nil {
-			return respond(c, http.StatusOK, Response{
-				OK:     true,
-				Broker: brk.Name(),
-			})
-		}
-		if errors.Is(err, broker.ErrOrderNotFound) {
-			continue
-		}
-		if firstErr == nil {
-			firstErr = err
-		}
-	}
-
-	if firstErr != nil {
-		status := statusFromBrokerError(firstErr, http.StatusInternalServerError)
-		return respond(c, status, Response{
-			OK:    false,
-			Error: firstErr.Error(),
+	err := brk.CancelOrder(c.Context(), orderID)
+	if err == nil {
+		return respond(c, http.StatusOK, Response{
+			OK:     true,
+			Broker: brk.Name(),
 		})
 	}
 
-	return respond(c, http.StatusNotFound, Response{
+	if errors.Is(err, broker.ErrOrderNotFound) {
+		return respond(c, http.StatusNotFound, Response{
+			OK:    false,
+			Error: "order not found",
+		})
+	}
+
+	return respond(c, statusFromBrokerError(err, http.StatusInternalServerError), Response{
 		OK:    false,
-		Error: "order not found",
+		Error: err.Error(),
 	})
 }
 
-// handleModifyOrder handles PUT /orders/{order_id}
+// handleModifyOrder handles PUT /accounts/{account_id}/orders/{order_id}
 func (s *Server) handleModifyOrder(c fuego.ContextWithBody[broker.ModifyOrderRequest]) (Response, error) {
+	accountID := c.PathParam("account_id")
 	orderID := c.PathParam("order_id")
+	brk, ok := s.getBrokerStrict(accountID)
+	if !ok {
+		return respond(c, http.StatusNotFound, Response{OK: false, Error: "account not found"})
+	}
 
 	req, err := c.Body()
 	if err != nil {
@@ -240,46 +182,25 @@ func (s *Server) handleModifyOrder(c fuego.ContextWithBody[broker.ModifyOrderReq
 		})
 	}
 
-	accountID := c.QueryParam("account_id")
-	if accountID != "" {
-		if _, ok := s.getBrokerStrict(accountID); !ok {
-			return respond(c, http.StatusNotFound, Response{OK: false, Error: "account not found"})
-		}
-	}
-	candidates := s.orderBrokerCandidates(accountID)
-	if len(candidates) == 0 {
-		return respond(c, http.StatusServiceUnavailable, Response{OK: false, Error: "no broker available"})
-	}
-
-	var firstErr error
-	for _, brk := range candidates {
-		result, err := brk.ModifyOrder(c.Context(), orderID, req)
-		if err == nil {
-			return respond(c, http.StatusOK, Response{
-				OK:     true,
-				Data:   result,
-				Broker: brk.Name(),
-			})
-		}
-		if errors.Is(err, broker.ErrOrderNotFound) {
-			continue
-		}
-		if firstErr == nil {
-			firstErr = err
-		}
-	}
-
-	if firstErr != nil {
-		status := statusFromBrokerError(firstErr, http.StatusInternalServerError)
-		return respond(c, status, Response{
-			OK:    false,
-			Error: firstErr.Error(),
+	result, err := brk.ModifyOrder(c.Context(), orderID, req)
+	if err == nil {
+		return respond(c, http.StatusOK, Response{
+			OK:     true,
+			Data:   result,
+			Broker: brk.Name(),
 		})
 	}
 
-	return respond(c, http.StatusNotFound, Response{
+	if errors.Is(err, broker.ErrOrderNotFound) {
+		return respond(c, http.StatusNotFound, Response{
+			OK:    false,
+			Error: "order not found",
+		})
+	}
+
+	return respond(c, statusFromBrokerError(err, http.StatusInternalServerError), Response{
 		OK:    false,
-		Error: "order not found",
+		Error: err.Error(),
 	})
 }
 
@@ -315,4 +236,19 @@ func (s *Server) getBrokerStrict(accountID string) (broker.Broker, bool) {
 		}
 	}
 	return nil, false
+}
+
+func sameAccountID(a, b string) bool {
+	a = strings.TrimSpace(a)
+	b = strings.TrimSpace(b)
+	if a == b {
+		return true
+	}
+	if strings.TrimSuffix(a, "-01") == strings.TrimSuffix(b, "-01") {
+		return true
+	}
+	if strings.HasPrefix(a, b+"-") || strings.HasPrefix(b, a+"-") {
+		return true
+	}
+	return false
 }

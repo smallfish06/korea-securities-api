@@ -40,7 +40,7 @@ type StockDailyPriceResponse struct {
 	RtCD   string                  `json:"rt_cd"`
 	MsgCD  string                  `json:"msg_cd"`
 	Msg1   string                  `json:"msg1"`
-	Output []StockDailyPriceOutput `json:"output2"` // 일봉은 output2
+	Output []StockDailyPriceOutput `json:"output"`
 }
 
 // StockDailyPriceOutput represents daily OHLCV data

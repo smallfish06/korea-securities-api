@@ -207,7 +207,7 @@ func (b *demoBroker) ModifyOrder(_ context.Context, orderID string, req broker.M
 	return &ord.result, nil
 }
 
-// Optional capability for GET /orders/{order_id}
+// Optional capability for GET /accounts/{account_id}/orders/{order_id}
 func (b *demoBroker) GetOrder(_ context.Context, orderID string) (*broker.OrderResult, error) {
 	b.mu.RLock()
 	defer b.mu.RUnlock()
@@ -220,7 +220,7 @@ func (b *demoBroker) GetOrder(_ context.Context, orderID string) (*broker.OrderR
 	return &result, nil
 }
 
-// Optional capability for GET /orders/{order_id}/fills
+// Optional capability for GET /accounts/{account_id}/orders/{order_id}/fills
 func (b *demoBroker) GetOrderFills(_ context.Context, orderID string) ([]broker.OrderFill, error) {
 	b.mu.RLock()
 	defer b.mu.RUnlock()
@@ -306,8 +306,8 @@ func main() {
 	log.Printf("Swagger UI  : http://%s:%d/swagger/", *host, *port)
 	log.Printf("Try: curl http://%s:%d/quotes/KRX/005930", *host, *port)
 	log.Printf("Try: curl http://%s:%d/accounts/%s/balance", *host, *port, *accountID)
-	log.Printf("Try: curl -X POST http://%s:%d/orders -H 'Content-Type: application/json' -d '%s'",
-		*host, *port, sampleOrder(*accountID),
+	log.Printf("Try: curl -X POST http://%s:%d/accounts/%s/orders -H 'Content-Type: application/json' -d '%s'",
+		*host, *port, *accountID, sampleOrder(),
 	)
 
 	if err := srv.Run(); err != nil {
@@ -315,8 +315,8 @@ func main() {
 	}
 }
 
-func sampleOrder(accountID string) string {
-	return fmt.Sprintf(`{"account_id":"%s","symbol":"005930","market":"KRX","side":"buy","type":"market","quantity":1}`, accountID)
+func sampleOrder() string {
+	return fmt.Sprintf(`{"symbol":"005930","market":"KRX","side":"buy","type":"market","quantity":1}`)
 }
 
 func max(a, b float64) float64 {

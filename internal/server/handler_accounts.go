@@ -11,8 +11,8 @@ import (
 func (s *Server) handleGetBalance(c fuego.ContextNoBody) (Response, error) {
 	accountID := c.PathParam("account_id")
 
-	brk := s.getBroker(accountID)
-	if brk == nil {
+	brk, ok := s.getBrokerStrict(accountID)
+	if !ok {
 		return respond(c, http.StatusNotFound, Response{
 			OK:    false,
 			Error: "account not found",
@@ -38,8 +38,8 @@ func (s *Server) handleGetBalance(c fuego.ContextNoBody) (Response, error) {
 func (s *Server) handleGetPositions(c fuego.ContextNoBody) (Response, error) {
 	accountID := c.PathParam("account_id")
 
-	brk := s.getBroker(accountID)
-	if brk == nil {
+	brk, ok := s.getBrokerStrict(accountID)
+	if !ok {
 		return respond(c, http.StatusNotFound, Response{
 			OK:    false,
 			Error: "account not found",
