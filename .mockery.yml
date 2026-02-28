@@ -9,6 +9,6 @@ pkgname: mock
 structname: Mock{{.InterfaceName}}
 
 packages:
-  github.com/smallfish06/kr-broker-api:
+  github.com/smallfish06/krsec:
     config:
       recursive: true

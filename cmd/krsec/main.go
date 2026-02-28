@@ -22,7 +22,7 @@ func main() {
 	flag.Parse()
 
 	if *showVersion {
-		fmt.Printf("kr-broker %s (commit: %s, built: %s)\n", version, commit, date)
+		fmt.Printf("krsec %s (commit: %s, built: %s)\n", version, commit, date)
 		os.Exit(0)
 	}
 

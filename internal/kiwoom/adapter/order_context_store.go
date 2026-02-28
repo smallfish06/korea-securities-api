@@ -116,7 +116,7 @@ func (a *Adapter) orderContextFilePath() (string, error) {
 		if err != nil {
 			return "", err
 		}
-		baseDir = filepath.Join(home, ".kr-broker", "orders")
+		baseDir = filepath.Join(home, ".krsec", "orders")
 	}
 
 	env := "real"

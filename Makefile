@@ -2,11 +2,11 @@
 
 # Build the application
 build:
-	go build -o bin/kr-broker ./cmd/kr-broker
+	go build -o bin/krsec ./cmd/krsec
 
 # Run the application
 run:
-	go run ./cmd/kr-broker -config config.yaml
+	go run ./cmd/krsec -config config.yaml
 
 # Run tests
 test:

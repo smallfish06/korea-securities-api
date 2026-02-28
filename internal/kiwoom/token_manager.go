@@ -130,20 +130,20 @@ func (tm *FileTokenManager) tokenDir() (string, error) {
 func defaultTokenDir(cwd string) (string, error) {
 	if strings.TrimSpace(cwd) != "" {
 		if root, ok := findProjectRoot(cwd); ok {
-			return filepath.Join(root, ".kr-broker", "tokens"), nil
+			return filepath.Join(root, ".krsec", "tokens"), nil
 		}
 	}
 
 	cacheDir, err := os.UserCacheDir()
 	if err == nil && strings.TrimSpace(cacheDir) != "" {
-		return filepath.Join(cacheDir, "kr-broker", "tokens"), nil
+		return filepath.Join(cacheDir, "krsec", "tokens"), nil
 	}
 
 	home, err := os.UserHomeDir()
 	if err != nil {
 		return "", fmt.Errorf("get user home dir: %w", err)
 	}
-	return filepath.Join(home, ".kr-broker", "tokens"), nil
+	return filepath.Join(home, ".krsec", "tokens"), nil
 }
 
 func findProjectRoot(start string) (string, bool) {

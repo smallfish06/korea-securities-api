@@ -7,12 +7,12 @@ import (
 )
 
 func TestTokenDir_UsesConfiguredDir(t *testing.T) {
-	tm := NewFileTokenManagerWithDir("/tmp/kr-broker-token-cache")
+	tm := NewFileTokenManagerWithDir("/tmp/krsec-token-cache")
 	got, err := tm.tokenDir()
 	if err != nil {
 		t.Fatalf("tokenDir returned error: %v", err)
 	}
-	if got != "/tmp/kr-broker-token-cache" {
+	if got != "/tmp/krsec-token-cache" {
 		t.Fatalf("unexpected token dir: got=%q", got)
 	}
 }
@@ -41,7 +41,7 @@ func TestFindProjectRoot(t *testing.T) {
 func TestDefaultTokenDir_UsesProjectRoot(t *testing.T) {
 	base := t.TempDir()
 	root := filepath.Join(base, "repo")
-	sub := filepath.Join(root, "cmd", "kr-broker")
+	sub := filepath.Join(root, "cmd", "krsec")
 
 	if err := os.MkdirAll(sub, 0o755); err != nil {
 		t.Fatalf("mkdir failed: %v", err)
@@ -55,7 +55,7 @@ func TestDefaultTokenDir_UsesProjectRoot(t *testing.T) {
 		t.Fatalf("defaultTokenDir returned error: %v", err)
 	}
 
-	want := filepath.Join(root, ".kr-broker", "tokens")
+	want := filepath.Join(root, ".krsec", "tokens")
 	if got != want {
 		t.Fatalf("unexpected token dir: got=%q want=%q", got, want)
 	}

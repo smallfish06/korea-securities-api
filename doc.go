@@ -11,5 +11,5 @@
 //
 // Or run the standalone server:
 //
-//	kr-broker -config config.yaml
+//	krsec -config config.yaml
 package koreasecurities

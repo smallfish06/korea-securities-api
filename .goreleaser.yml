@@ -5,8 +5,8 @@ before:
     - go mod tidy
 
 builds:
-  - main: ./cmd/kr-broker
-    binary: kr-broker
+  - main: ./cmd/krsec
+    binary: krsec
     env:
       - CGO_ENABLED=0
     goos:

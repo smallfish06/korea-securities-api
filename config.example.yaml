@@ -4,10 +4,10 @@ server:
 
 storage:
   # Optional (빈 값이면 기본 경로 사용)
-  # token_dir 기본값: <project-root>/.kr-broker/tokens
-  # order_context_dir 기본값: ~/.kr-broker/orders
-  token_dir: ".kr-broker/tokens"
-  order_context_dir: ".kr-broker/orders"
+  # token_dir 기본값: <project-root>/.krsec/tokens
+  # order_context_dir 기본값: ~/.krsec/orders
+  token_dir: ".krsec/tokens"
+  order_context_dir: ".krsec/orders"
 
 # enum-like guide
 # - broker: ["kis", "kiwoom"]  # currently supported (strict)

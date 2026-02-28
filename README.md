@@ -17,7 +17,7 @@
 ## 설치
 
 ```bash
-go install github.com/smallfish06/krsec/cmd/kr-broker@latest
+go install github.com/smallfish06/krsec/cmd/krsec@latest
 ```
 
 바이너리: [Releases](https://github.com/smallfish06/krsec/releases)
@@ -44,7 +44,7 @@ accounts:
 ## 실행
 
 ```bash
-kr-broker -config config.yaml
+krsec -config config.yaml
 ```
 
 ## API
@@ -91,7 +91,7 @@ srv.Run()
 ## 구조
 
 ```
-cmd/kr-broker/        서버
+cmd/krsec/        서버
 pkg/broker/           공개 인터페이스
 pkg/server/           임베드 가능한 HTTP 서버
 internal/kis/         KIS 클라이언트 + 어댑터

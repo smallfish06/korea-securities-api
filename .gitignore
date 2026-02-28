@@ -21,7 +21,7 @@ go.work.sum
 config.yaml
 *.env
 .env
-.kr-broker
+.krsec
 
 # IDE
 .vscode/
