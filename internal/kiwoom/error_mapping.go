@@ -7,7 +7,7 @@ import (
 	"fmt"
 	"strings"
 
-	"github.com/smallfish06/korea-securities-api/pkg/broker"
+	"github.com/smallfish06/krsec/pkg/broker"
 )
 
 func wrapCallError(apiID string, code int, msg string) error {

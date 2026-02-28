@@ -1,16 +1,15 @@
-// Package krbrokapi provides a unified gateway for Korean securities broker APIs.
+// Package koreasecurities provides a unified gateway for Korean securities
+// broker APIs.
 //
-// korea-securities-api abstracts away the differences between Korean broker REST APIs
-// (KIS, Kiwoom, LS, etc.) behind a single, consistent interface. It can be used
-// as a standalone HTTP server or embedded as a Go library.
+// This module abstracts away the differences between Korean broker REST APIs
+// (KIS, Kiwoom, LS, etc.) behind a single [github.com/smallfish06/krsec/pkg/broker.Broker] interface.
 //
-// # Standalone server
+// Most users will import one of the sub-packages:
 //
-//	make build && ./bin/kr-broker -config config.yaml
+//   - [github.com/smallfish06/krsec/pkg/broker] — common interface and types
+//   - [github.com/smallfish06/krsec/pkg/server] — embeddable HTTP server
 //
-// # Library usage
+// Or run the standalone server:
 //
-// Import [github.com/smallfish06/korea-securities-api/pkg/broker] for the common
-// interface and types, and [github.com/smallfish06/korea-securities-api/pkg/server]
-// to spin up an HTTP server with your own broker implementations.
-package krbrokapi
+//	kr-broker -config config.yaml
+package koreasecurities

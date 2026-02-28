@@ -43,6 +43,6 @@ changelog:
 release:
   github:
     owner: smallfish06
-    name: korea-securities-api
+    name: krsec
   draft: false
   prerelease: auto

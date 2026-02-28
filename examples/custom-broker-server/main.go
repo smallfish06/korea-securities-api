@@ -9,8 +9,8 @@ import (
 	"sync"
 	"time"
 
-	"github.com/smallfish06/korea-securities-api/pkg/broker"
-	apiserver "github.com/smallfish06/korea-securities-api/pkg/server"
+	"github.com/smallfish06/krsec/pkg/broker"
+	apiserver "github.com/smallfish06/krsec/pkg/server"
 )
 
 type demoOrder struct {

@@ -1,4 +1,4 @@
-module github.com/smallfish06/korea-securities-api
+module github.com/smallfish06/krsec
 
 go 1.26
 

@@ -6,7 +6,7 @@ import (
 	"strconv"
 	"time"
 
-	"github.com/smallfish06/korea-securities-api/pkg/broker"
+	"github.com/smallfish06/krsec/pkg/broker"
 )
 
 // QuoteResponse represents KIS quote response

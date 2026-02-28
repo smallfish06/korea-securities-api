@@ -5,7 +5,7 @@ import (
 	"fmt"
 	"strings"
 
-	"github.com/smallfish06/korea-securities-api/pkg/broker"
+	"github.com/smallfish06/krsec/pkg/broker"
 )
 
 // PlaceStockOrder places kt10000 (buy) or kt10001 (sell).

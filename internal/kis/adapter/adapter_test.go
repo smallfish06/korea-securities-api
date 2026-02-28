@@ -6,8 +6,8 @@ import (
 	"testing"
 	"time"
 
-	"github.com/smallfish06/korea-securities-api/internal/kis"
-	"github.com/smallfish06/korea-securities-api/pkg/broker"
+	"github.com/smallfish06/krsec/internal/kis"
+	"github.com/smallfish06/krsec/pkg/broker"
 )
 
 func TestToKISOverseasExchange(t *testing.T) {

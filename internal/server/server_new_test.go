@@ -3,7 +3,7 @@ package server
 import (
 	"testing"
 
-	"github.com/smallfish06/korea-securities-api/internal/config"
+	"github.com/smallfish06/krsec/internal/config"
 )
 
 func TestNew_WiresKiwoomBroker(t *testing.T) {

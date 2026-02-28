@@ -3,7 +3,7 @@ package kiwoom
 import (
 	"context"
 
-	"github.com/smallfish06/korea-securities-api/pkg/broker"
+	"github.com/smallfish06/krsec/pkg/broker"
 )
 
 // InquirePrice fetches ka10001 and returns typed quote fields.

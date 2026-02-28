@@ -5,8 +5,8 @@ import (
 	"net/http/httptest"
 	"testing"
 
-	"github.com/smallfish06/korea-securities-api/internal/config"
-	"github.com/smallfish06/korea-securities-api/pkg/broker"
+	"github.com/smallfish06/krsec/internal/config"
+	"github.com/smallfish06/krsec/pkg/broker"
 )
 
 func TestHandleGetBalance_UnknownAccountReturnsNotFound(t *testing.T) {

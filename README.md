@@ -1,7 +1,7 @@
-# korea-securities-api
+# krsec
 
-[![CI](https://github.com/smallfish06/korea-securities-api/actions/workflows/ci.yml/badge.svg)](https://github.com/smallfish06/korea-securities-api/actions/workflows/ci.yml)
-[![Go Reference](https://pkg.go.dev/badge/github.com/smallfish06/korea-securities-api.svg)](https://pkg.go.dev/github.com/smallfish06/korea-securities-api)
+[![CI](https://github.com/smallfish06/krsec/actions/workflows/ci.yml/badge.svg)](https://github.com/smallfish06/krsec/actions/workflows/ci.yml)
+[![Go Reference](https://pkg.go.dev/badge/github.com/smallfish06/krsec.svg)](https://pkg.go.dev/github.com/smallfish06/krsec)
 [![License: Apache 2.0](https://img.shields.io/badge/License-Apache_2.0-blue.svg)](LICENSE)
 
 한국 증권사 REST API 통합 게이트웨이. 증권사마다 다른 인증, 파라미터, 응답 구조를 `broker.Broker` 인터페이스 하나로 통일합니다.
@@ -17,10 +17,10 @@
 ## 설치
 
 ```bash
-go install github.com/smallfish06/korea-securities-api/cmd/kr-broker@latest
+go install github.com/smallfish06/krsec/cmd/kr-broker@latest
 ```
 
-바이너리: [Releases](https://github.com/smallfish06/korea-securities-api/releases)
+바이너리: [Releases](https://github.com/smallfish06/krsec/releases)
 
 ## 설정
 
@@ -76,8 +76,8 @@ curl http://localhost:8080/quotes/KRX/005930
 
 ```go
 import (
-    "github.com/smallfish06/korea-securities-api/pkg/broker"
-    apiserver "github.com/smallfish06/korea-securities-api/pkg/server"
+    "github.com/smallfish06/krsec/pkg/broker"
+    apiserver "github.com/smallfish06/krsec/pkg/server"
 )
 
 srv := apiserver.New(apiserver.Options{

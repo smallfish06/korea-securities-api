@@ -5,7 +5,7 @@ import (
 	"strings"
 	"time"
 
-	"github.com/smallfish06/korea-securities-api/pkg/broker"
+	"github.com/smallfish06/krsec/pkg/broker"
 )
 
 // InquireDailyPrice fetches daily candles from ka10081.

@@ -10,12 +10,12 @@ import (
 
 	"github.com/getkin/kin-openapi/openapi3"
 	"github.com/go-fuego/fuego"
-	"github.com/smallfish06/korea-securities-api/internal/config"
-	"github.com/smallfish06/korea-securities-api/internal/kis"
-	kisadapter "github.com/smallfish06/korea-securities-api/internal/kis/adapter"
-	"github.com/smallfish06/korea-securities-api/internal/kiwoom"
-	kiwoomadapter "github.com/smallfish06/korea-securities-api/internal/kiwoom/adapter"
-	"github.com/smallfish06/korea-securities-api/pkg/broker"
+	"github.com/smallfish06/krsec/internal/config"
+	"github.com/smallfish06/krsec/internal/kis"
+	kisadapter "github.com/smallfish06/krsec/internal/kis/adapter"
+	"github.com/smallfish06/krsec/internal/kiwoom"
+	kiwoomadapter "github.com/smallfish06/krsec/internal/kiwoom/adapter"
+	"github.com/smallfish06/krsec/pkg/broker"
 )
 
 // Server represents the HTTP server

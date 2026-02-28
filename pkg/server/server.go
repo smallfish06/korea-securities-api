@@ -4,9 +4,9 @@ import (
 	"strings"
 
 	"github.com/go-fuego/fuego"
-	"github.com/smallfish06/korea-securities-api/internal/config"
-	internalserver "github.com/smallfish06/korea-securities-api/internal/server"
-	"github.com/smallfish06/korea-securities-api/pkg/broker"
+	"github.com/smallfish06/krsec/internal/config"
+	internalserver "github.com/smallfish06/krsec/internal/server"
+	"github.com/smallfish06/krsec/pkg/broker"
 )
 
 // Account describes an externally supplied account/broker binding.

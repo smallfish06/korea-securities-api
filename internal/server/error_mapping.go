@@ -4,7 +4,7 @@ import (
 	"errors"
 	"net/http"
 
-	"github.com/smallfish06/korea-securities-api/pkg/broker"
+	"github.com/smallfish06/krsec/pkg/broker"
 )
 
 func statusFromBrokerError(err error, fallback int) int {

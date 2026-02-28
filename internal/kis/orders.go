@@ -5,7 +5,7 @@ import (
 	"fmt"
 	"time"
 
-	"github.com/smallfish06/korea-securities-api/pkg/broker"
+	"github.com/smallfish06/krsec/pkg/broker"
 )
 
 // OrderResponse represents KIS order response
