@@ -9,4 +9,3 @@ linters:
     - gosimple
     - gocritic
     - misspell
-    - gofmt
