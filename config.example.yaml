@@ -1,0 +1,32 @@
+server:
+  host: "0.0.0.0"
+  port: 9090
+
+storage:
+  # Optional (빈 값이면 기본 경로 사용)
+  # token_dir 기본값: <project-root>/.kr-broker/tokens
+  # order_context_dir 기본값: ~/.kr-broker/orders
+  token_dir: ".kr-broker/tokens"
+  order_context_dir: ".kr-broker/orders"
+
+# enum-like guide
+# - broker: ["kis"]  # currently supported (strict)
+# - sandbox: [true, false]
+# - account_id format: "12345678-01" (recommended), "12345678" (also accepted)
+accounts:
+  - name: "메인계좌"
+    broker: "kis"     # expected: "kis"
+    sandbox: false    # true = 모의투자, false = 실전투자
+    app_key: "YOUR_KIS_APP_KEY"
+    app_secret: "YOUR_KIS_APP_SECRET"
+    account_id: "12345678-01"
+
+  - name: "서브계좌"
+    broker: "kis"     # expected: "kis"
+    sandbox: false
+    app_key: "YOUR_KIS_APP_KEY"
+    app_secret: "YOUR_KIS_APP_SECRET"
+    account_id: "87654321-01"
+
+# 같은 증권사라도 계좌별로 별도 설정 가능
+# app_key/app_secret이 같으면 동일하게 입력해도 됨

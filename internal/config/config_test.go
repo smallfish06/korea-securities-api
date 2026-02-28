@@ -1,0 +1,197 @@
+package config
+
+import (
+	"os"
+	"path/filepath"
+	"strings"
+	"testing"
+)
+
+func writeTempConfig(t *testing.T, body string) string {
+	t.Helper()
+	dir := t.TempDir()
+	path := filepath.Join(dir, "config.yaml")
+	if err := os.WriteFile(path, []byte(body), 0o600); err != nil {
+		t.Fatalf("write temp config: %v", err)
+	}
+	return path
+}
+
+func TestLoadValidConfigNormalizesValues(t *testing.T) {
+	path := writeTempConfig(t, `
+server:
+  host: "127.0.0.1"
+  port: 9090
+accounts:
+  - name: "main"
+    broker: KIS
+    sandbox: true
+    app_key: "k"
+    app_secret: "s"
+    account_id: "12345678"
+`)
+
+	cfg, err := Load(path)
+	if err != nil {
+		t.Fatalf("Load() unexpected error: %v", err)
+	}
+	if len(cfg.Accounts) != 1 {
+		t.Fatalf("accounts length = %d, want 1", len(cfg.Accounts))
+	}
+	if cfg.Accounts[0].Broker != "kis" {
+		t.Fatalf("broker = %q, want %q", cfg.Accounts[0].Broker, "kis")
+	}
+	if cfg.Accounts[0].AccountID != "12345678-01" {
+		t.Fatalf("account_id = %q, want %q", cfg.Accounts[0].AccountID, "12345678-01")
+	}
+}
+
+func TestLoadStorageConfig(t *testing.T) {
+	path := writeTempConfig(t, `
+server:
+  host: "127.0.0.1"
+  port: 9090
+storage:
+  token_dir: "  .cache/tokens  "
+  order_context_dir: "  .cache/orders  "
+accounts:
+  - name: "main"
+    broker: kis
+    sandbox: true
+    app_key: "k"
+    app_secret: "s"
+    account_id: "12345678-01"
+`)
+
+	cfg, err := Load(path)
+	if err != nil {
+		t.Fatalf("Load() unexpected error: %v", err)
+	}
+	if cfg.Storage.TokenDir != ".cache/tokens" {
+		t.Fatalf("token_dir = %q, want %q", cfg.Storage.TokenDir, ".cache/tokens")
+	}
+	if cfg.Storage.OrderContextDir != ".cache/orders" {
+		t.Fatalf("order_context_dir = %q, want %q", cfg.Storage.OrderContextDir, ".cache/orders")
+	}
+}
+
+func TestLoadRejectsLegacyKISConfig(t *testing.T) {
+	path := writeTempConfig(t, `
+server:
+  host: "0.0.0.0"
+  port: 8080
+kis:
+  sandbox: false
+  app_key: "k"
+  app_secret: "s"
+  account_id: "87654321-01"
+`)
+
+	_, err := Load(path)
+	if err != nil {
+		if !strings.Contains(err.Error(), "field kis not found in type config.Config") {
+			t.Fatalf("unexpected error: %v", err)
+		}
+		return
+	}
+	t.Fatal("Load() expected error, got nil")
+}
+
+func TestLoadRejectsUnsupportedBroker(t *testing.T) {
+	path := writeTempConfig(t, `
+server:
+  host: "0.0.0.0"
+  port: 8080
+accounts:
+  - name: "main"
+    broker: future
+    sandbox: false
+    app_key: "k"
+    app_secret: "s"
+    account_id: "12345678-01"
+`)
+
+	_, err := Load(path)
+	if err == nil {
+		t.Fatal("Load() expected error, got nil")
+	}
+	if !strings.Contains(err.Error(), "broker unsupported value") {
+		t.Fatalf("unexpected error: %v", err)
+	}
+}
+
+func TestLoadRejectsInvalidAccountID(t *testing.T) {
+	path := writeTempConfig(t, `
+server:
+  host: "0.0.0.0"
+  port: 8080
+accounts:
+  - name: "main"
+    broker: kis
+    sandbox: false
+    app_key: "k"
+    app_secret: "s"
+    account_id: "12-01"
+`)
+
+	_, err := Load(path)
+	if err == nil {
+		t.Fatal("Load() expected error, got nil")
+	}
+	if !strings.Contains(err.Error(), "account_id invalid format") {
+		t.Fatalf("unexpected error: %v", err)
+	}
+}
+
+func TestLoadRejectsUnknownField(t *testing.T) {
+	path := writeTempConfig(t, `
+server:
+  host: "0.0.0.0"
+  port: 8080
+accounts:
+  - name: "main"
+    broker: kis
+    sandbox: false
+    app_key: "k"
+    app_secret: "s"
+    account_id: "12345678-01"
+    not_allowed: true
+`)
+
+	_, err := Load(path)
+	if err == nil {
+		t.Fatal("Load() expected error, got nil")
+	}
+	if !strings.Contains(err.Error(), "not found in type") {
+		t.Fatalf("unexpected error: %v", err)
+	}
+}
+
+func TestLoadRejectsDuplicateAccountID(t *testing.T) {
+	path := writeTempConfig(t, `
+server:
+  host: "0.0.0.0"
+  port: 8080
+accounts:
+  - name: "main"
+    broker: kis
+    sandbox: false
+    app_key: "k1"
+    app_secret: "s1"
+    account_id: "12345678"
+  - name: "sub"
+    broker: kis
+    sandbox: false
+    app_key: "k2"
+    app_secret: "s2"
+    account_id: "12345678-01"
+`)
+
+	_, err := Load(path)
+	if err == nil {
+		t.Fatal("Load() expected error, got nil")
+	}
+	if !strings.Contains(err.Error(), "duplicate account_id") {
+		t.Fatalf("unexpected error: %v", err)
+	}
+}

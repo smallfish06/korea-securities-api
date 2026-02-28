@@ -1,0 +1,14 @@
+all: true
+force-file-write: true
+formatter: goimports
+template: testify
+include-auto-generated: false
+dir: '{{.InterfaceDir}}/mock'
+filename: '{{.InterfaceName | snakecase}}_mock.go'
+pkgname: mock
+structname: Mock{{.InterfaceName}}
+
+packages:
+  github.com/smallfish06/kr-broker-api:
+    config:
+      recursive: true
