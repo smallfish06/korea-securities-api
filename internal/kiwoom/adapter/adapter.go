@@ -2,8 +2,10 @@ package adapter
 
 import (
 	"context"
+	"encoding/json"
 	"fmt"
 	"math"
+	"reflect"
 	"sort"
 	"strconv"
 	"strings"
@@ -11,6 +13,7 @@ import (
 	"time"
 
 	"github.com/smallfish06/krsec/internal/kiwoom"
+	kiwoomspecs "github.com/smallfish06/krsec/internal/kiwoom/specs"
 	"github.com/smallfish06/krsec/pkg/broker"
 )
 
@@ -83,26 +86,32 @@ func (a *Adapter) GetQuote(ctx context.Context, market, symbol string) (*broker.
 		return nil, err
 	}
 
-	price := normalizedPrice(quote.Price)
-	prevClose := normalizedPrice(quote.BasePrice)
-	if prevClose == 0 && (price != 0 || quote.Change != 0) {
-		prevClose = price - quote.Change
+	price := normalizedPrice(parseFloatString(quote.CurPrc))
+	prevClose := normalizedPrice(parseFloatString(quote.BasePric))
+	change := parseFloatString(quote.PredPre)
+	if prevClose == 0 && (price != 0 || change != 0) {
+		prevClose = price - change
+	}
+
+	symbolOut := normalizeSymbol(quote.StkCd)
+	if symbolOut == "" {
+		symbolOut = symbol
 	}
 
 	return &broker.Quote{
-		Symbol:     symbol,
+		Symbol:     symbolOut,
 		Market:     normalizeOutputMarket(market),
 		Price:      price,
-		Open:       normalizedPrice(quote.Open),
-		High:       normalizedPrice(quote.High),
-		Low:        normalizedPrice(quote.Low),
+		Open:       normalizedPrice(parseFloatString(quote.OpenPric)),
+		High:       normalizedPrice(parseFloatString(quote.HighPric)),
+		Low:        normalizedPrice(parseFloatString(quote.LowPric)),
 		Close:      price,
 		PrevClose:  prevClose,
-		Change:     quote.Change,
-		ChangeRate: quote.ChangeRate,
-		Volume:     quote.Volume,
-		UpperLimit: normalizedPrice(quote.UpperLimit),
-		LowerLimit: normalizedPrice(quote.LowerLimit),
+		Change:     change,
+		ChangeRate: parseFloatString(quote.FluRt),
+		Volume:     parseIntString(quote.TrdeQty),
+		UpperLimit: normalizedPrice(parseFloatString(quote.UplPric)),
+		LowerLimit: normalizedPrice(parseFloatString(quote.LstPric)),
 		Timestamp:  time.Now(),
 	}, nil
 }
@@ -128,36 +137,52 @@ func (a *Adapter) GetOHLCV(ctx context.Context, market, symbol string, opts brok
 	}
 
 	var (
-		candles []kiwoom.ChartCandle
-		err     error
+		rows []map[string]interface{}
+		err  error
 	)
 
 	switch interval {
 	case "1d", "d", "day", "daily":
-		candles, err = a.client.InquireDailyPrice(ctx, symbol, baseDate)
+		resp, e := a.client.InquireDailyPrice(ctx, symbol, baseDate)
+		err = e
+		if e == nil {
+			rows = decodeObjectArray(resp.StkDtPoleChartQry)
+		}
 	case "1w", "w", "week", "weekly":
-		candles, err = a.client.InquireWeeklyPrice(ctx, symbol, baseDate)
+		resp, e := a.client.InquireWeeklyPrice(ctx, symbol, baseDate)
+		err = e
+		if e == nil {
+			rows = decodeObjectArray(resp.StkStkPoleChartQry)
+		}
 	case "1mo", "mo", "month", "monthly":
-		candles, err = a.client.InquireMonthlyPrice(ctx, symbol, baseDate)
+		resp, e := a.client.InquireMonthlyPrice(ctx, symbol, baseDate)
+		err = e
+		if e == nil {
+			rows = decodeObjectArray(resp.StkMthPoleChartQry)
+		}
 	default:
 		return nil, fmt.Errorf("unsupported interval for kiwoom: %s", opts.Interval)
 	}
 	if err != nil {
 		return nil, err
 	}
-	if len(candles) == 0 {
+	if len(rows) == 0 {
 		return []broker.OHLCV{}, nil
 	}
 
-	out := make([]broker.OHLCV, 0, len(candles))
-	for _, candle := range candles {
+	out := make([]broker.OHLCV, 0, len(rows))
+	for _, row := range rows {
+		dt, ok := parseDateYYYYMMDDString(asAnyString(row["dt"]))
+		if !ok {
+			continue
+		}
 		item := broker.OHLCV{
-			Timestamp: candle.Date,
-			Open:      normalizedPrice(candle.Open),
-			High:      normalizedPrice(candle.High),
-			Low:       normalizedPrice(candle.Low),
-			Close:     normalizedPrice(candle.Close),
-			Volume:    candle.Volume,
+			Timestamp: dt,
+			Open:      normalizedPrice(asAnyFloat(row["open_pric"])),
+			High:      normalizedPrice(asAnyFloat(row["high_pric"])),
+			Low:       normalizedPrice(asAnyFloat(row["low_pric"])),
+			Close:     normalizedPrice(asAnyFloat(row["cur_prc"])),
+			Volume:    asAnyInt(row["trde_qty"]),
 		}
 		if !opts.From.IsZero() && item.Timestamp.Before(startOfDay(opts.From)) {
 			continue
@@ -185,25 +210,24 @@ func (a *Adapter) GetBalance(ctx context.Context, accountID string) (*broker.Bal
 		return nil, err
 	}
 
-	totalAssets := bal.PresumedAssetAmount
-	if totalAssets == 0 {
-		totalAssets = bal.Deposit + bal.EvaluationTotal
-	}
+	deposit := parseFloatString(bal.Entr)
+	evaluationTotal := parseFloatString(bal.EvltAmtTot)
+	totalAssets := deposit + evaluationTotal
 
 	return &broker.Balance{
 		AccountID:        strings.TrimSpace(accountID),
-		Cash:             bal.Deposit,
+		Cash:             deposit,
 		TotalAssets:      totalAssets,
-		BuyingPower:      bal.OrderableAmount,
-		WithdrawableCash: bal.WithdrawableAmount,
-		ReceivableAmount: bal.DepositD2,
-		ProfitLoss:       bal.TotalProfitLoss,
-		ProfitLossPct:    bal.TotalProfitLossRate,
-		PositionCost:     bal.StockBuyTotalAmount,
-		PositionValue:    bal.EvaluationTotal,
-		SettlementT1:     bal.DepositD1,
-		Unsettled:        bal.UnsettledStockAmount,
-		LoanBalance:      bal.CreditLoanTotal,
+		BuyingPower:      parseFloatString(bal.OrdAlowa),
+		WithdrawableCash: parseFloatString(bal.OrdAlowa),
+		ReceivableAmount: parseFloatString(bal.EntrD2),
+		ProfitLoss:       parseFloatString(bal.TotPlTot),
+		ProfitLossPct:    parseFloatString(bal.TotPlRt),
+		PositionCost:     parseFloatString(bal.StkBuyTotAmt),
+		PositionValue:    evaluationTotal,
+		SettlementT1:     parseFloatString(bal.EntrD1),
+		Unsettled:        parseFloatString(bal.UnclStkAmt),
+		LoanBalance:      parseFloatString(bal.CrdLoanTot),
 	}, nil
 }
 
@@ -213,38 +237,40 @@ func (a *Adapter) GetPositions(ctx context.Context, _ string) ([]broker.Position
 	if err != nil {
 		return nil, err
 	}
-	if len(positionsResp) == 0 {
+	rows := decodeObjectArray(positionsResp.AcntEvltRemnIndvTot)
+	if len(rows) == 0 {
 		return []broker.Position{}, nil
 	}
 
-	positions := make([]broker.Position, 0, len(positionsResp))
-	for _, row := range positionsResp {
-		symbol := normalizeSymbol(row.StockCode)
+	positions := make([]broker.Position, 0, len(rows))
+	for _, row := range rows {
+		symbol := normalizeSymbol(asAnyString(row["stk_cd"]))
 		if symbol == "" {
 			continue
 		}
-		if row.RemainingQty == 0 {
+		remainingQty := asAnyInt(row["rmnd_qty"])
+		if remainingQty == 0 {
 			continue
 		}
 
 		positions = append(positions, broker.Position{
 			Symbol:        symbol,
-			Name:          row.StockName,
+			Name:          asAnyString(row["stk_nm"]),
 			Market:        "KRX",
 			MarketCode:    "KRX",
 			AssetType:     broker.AssetStock,
-			Quantity:      row.RemainingQty,
-			OrderableQty:  row.TradableQty,
-			TodayBuyQty:   row.TodayBuyQty,
-			TodaySellQty:  row.TodaySellQty,
-			AvgPrice:      normalizedPrice(row.PurchasePrice),
-			CurrentPrice:  normalizedPrice(row.CurrentPrice),
-			PurchaseValue: normalizedPrice(row.PurchaseAmount),
-			MarketValue:   normalizedPrice(row.EvaluationAmount),
-			ProfitLoss:    row.EvaluationProfit,
-			ProfitLossPct: row.ProfitRate,
-			WeightPct:     row.WeightRate,
-			LoanDate:      row.CreditLoanDate,
+			Quantity:      remainingQty,
+			OrderableQty:  asAnyInt(row["trde_able_qty"]),
+			TodayBuyQty:   asAnyInt(row["tdy_buyq"]),
+			TodaySellQty:  asAnyInt(row["tdy_sellq"]),
+			AvgPrice:      normalizedPrice(asAnyFloat(row["pur_pric"])),
+			CurrentPrice:  normalizedPrice(asAnyFloat(row["cur_prc"])),
+			PurchaseValue: normalizedPrice(asAnyFloat(row["pur_amt"])),
+			MarketValue:   normalizedPrice(asAnyFloat(row["evlt_amt"])),
+			ProfitLoss:    asAnyFloat(row["evltv_prft"]),
+			ProfitLossPct: asAnyFloat(row["prft_rt"]),
+			WeightPct:     asAnyFloat(row["poss_rt"]),
+			LoanDate:      asAnyString(row["crd_loan_dt"]),
 		})
 	}
 	return positions, nil
@@ -271,20 +297,19 @@ func (a *Adapter) PlaceOrder(ctx context.Context, req broker.OrderRequest) (*bro
 		side = kiwoom.StockOrderSideSell
 	}
 
-	ack, err := a.client.PlaceStockOrder(ctx, kiwoom.PlaceStockOrderRequest{
-		Side:           side,
-		Exchange:       exchange,
-		Symbol:         symbol,
-		Quantity:       req.Quantity,
-		OrderPrice:     orderPrice,
-		TradeType:      tradeType,
-		ConditionPrice: "",
+	ack, err := a.client.PlaceStockOrder(ctx, side, kiwoomspecs.KiwoomApiDostkOrdrKt10000Request{
+		DmstStexTp: exchange,
+		StkCd:      symbol,
+		OrdQty:     fmt.Sprintf("%d", req.Quantity),
+		OrdUv:      orderPrice,
+		TrdeTp:     tradeType,
+		CondUv:     "",
 	})
 	if err != nil {
 		return nil, err
 	}
 
-	orderID := strings.TrimSpace(ack.OrderNumber)
+	orderID := strings.TrimSpace(ack.OrdNo)
 	if orderID == "" {
 		return nil, fmt.Errorf("missing order id in kiwoom response")
 	}
@@ -305,7 +330,7 @@ func (a *Adapter) PlaceOrder(ctx context.Context, req broker.OrderRequest) (*bro
 		OrderID:      orderID,
 		Status:       broker.OrderStatusPending,
 		RemainingQty: req.Quantity,
-		Message:      strings.TrimSpace(ack.ReturnMsg),
+		Message:      "",
 		Timestamp:    time.Now(),
 	}, nil
 }
@@ -324,11 +349,11 @@ func (a *Adapter) CancelOrder(ctx context.Context, orderID string) error {
 		cancelQty = 1
 	}
 
-	ack, err := a.client.CancelStockOrder(ctx, kiwoom.CancelStockOrderRequest{
-		Exchange:   meta.Exchange,
-		OriginalID: meta.OrderID,
-		Symbol:     meta.Symbol,
-		CancelQty:  cancelQty,
+	ack, err := a.client.CancelStockOrder(ctx, kiwoomspecs.KiwoomApiDostkOrdrKt10003Request{
+		DmstStexTp: meta.Exchange,
+		OrigOrdNo:  meta.OrderID,
+		StkCd:      meta.Symbol,
+		CnclQty:    fmt.Sprintf("%d", cancelQty),
 	})
 	if err != nil {
 		return err
@@ -339,7 +364,7 @@ func (a *Adapter) CancelOrder(ctx context.Context, orderID string) error {
 	meta.UpdatedAt = time.Now()
 	a.storeOrderContext(meta.OrderID, meta)
 
-	newID := strings.TrimSpace(ack.OrderNumber)
+	newID := strings.TrimSpace(ack.OrdNo)
 	if newID != "" && newID != meta.OrderID {
 		meta.OrderID = newID
 		a.storeOrderContext(newID, meta)
@@ -366,19 +391,19 @@ func (a *Adapter) ModifyOrder(ctx context.Context, orderID string, req broker.Mo
 		return nil, broker.ErrInvalidOrderRequest
 	}
 
-	ack, err := a.client.ModifyStockOrder(ctx, kiwoom.ModifyStockOrderRequest{
-		Exchange:       meta.Exchange,
-		OriginalID:     meta.OrderID,
-		Symbol:         meta.Symbol,
-		ModifyQty:      newQty,
-		ModifyPrice:    formatPrice(newPrice),
-		ConditionPrice: "",
+	ack, err := a.client.ModifyStockOrder(ctx, kiwoomspecs.KiwoomApiDostkOrdrKt10002Request{
+		DmstStexTp: meta.Exchange,
+		OrigOrdNo:  meta.OrderID,
+		StkCd:      meta.Symbol,
+		MdfyQty:    fmt.Sprintf("%d", newQty),
+		MdfyUv:     formatPrice(newPrice),
+		MdfyCondUv: "",
 	})
 	if err != nil {
 		return nil, err
 	}
 
-	newOrderID := strings.TrimSpace(ack.OrderNumber)
+	newOrderID := strings.TrimSpace(ack.OrdNo)
 	if newOrderID == "" {
 		newOrderID = orderID
 	}
@@ -398,7 +423,7 @@ func (a *Adapter) ModifyOrder(ctx context.Context, orderID string, req broker.Mo
 		OrderID:      newOrderID,
 		Status:       broker.OrderStatusPending,
 		RemainingQty: newQty,
-		Message:      strings.TrimSpace(ack.ReturnMsg),
+		Message:      "",
 		Timestamp:    time.Now(),
 	}, nil
 }
@@ -413,32 +438,32 @@ func (a *Adapter) GetOrder(ctx context.Context, orderID string) (*broker.OrderRe
 	unsettled, err := a.fetchUnsettled(ctx, meta.Symbol)
 	if err == nil {
 		for _, row := range unsettled {
-			if strings.TrimSpace(row.OrderNumber) != strings.TrimSpace(orderID) {
+			if strings.TrimSpace(asAnyString(row["ord_no"])) != strings.TrimSpace(orderID) {
 				continue
 			}
-			ordQty := row.OrderQty
-			remaining := row.UnsettledQty
+			ordQty := asAnyInt(row["ord_qty"])
+			remaining := asAnyInt(row["oso_qty"])
 			filled := ordQty - remaining
 			if filled < 0 {
 				filled = 0
 			}
-			status := mapOrderStatus(row.OrderStatus, remaining)
+			status := mapOrderStatus(asAnyString(row["ord_stt"]), remaining)
 			result := &broker.OrderResult{
 				OrderID:        orderID,
 				Status:         status,
 				FilledQuantity: filled,
 				RemainingQty:   remaining,
-				AvgFilledPrice: normalizedPrice(row.ConcludedPrice),
-				Message:        row.OrderStatus,
+				AvgFilledPrice: normalizedPrice(asAnyFloat(row["cntr_pric"])),
+				Message:        asAnyString(row["ord_stt"]),
 				Timestamp:      time.Now(),
 			}
 			meta.OrderID = orderID
-			meta.Symbol = normalizeSymbol(row.StockCode)
+			meta.Symbol = normalizeSymbol(asAnyString(row["stk_cd"]))
 			meta.Exchange = exchangeFromUnsettledRow(row)
 			meta.Quantity = ordQty
 			meta.RemainingQty = remaining
-			meta.Price = normalizedPrice(row.OrderPrice)
-			meta.Side = sideFromKiwoomOrderText(row.OrderSideText)
+			meta.Price = normalizedPrice(asAnyFloat(row["ord_pric"]))
+			meta.Side = sideFromKiwoomOrderText(asAnyString(row["io_tp_nm"]))
 			meta.Status = status
 			meta.UpdatedAt = time.Now()
 			a.storeOrderContext(orderID, meta)
@@ -486,10 +511,11 @@ func (a *Adapter) GetOrderFills(ctx context.Context, orderID string) ([]broker.O
 	}
 	meta, hasContext := a.getOrderContext(orderID)
 
-	executions, err := a.client.InquireOrderExecutions(ctx, meta.Symbol)
+	executionResp, err := a.client.InquireOrderExecutions(ctx, meta.Symbol)
 	if err != nil {
 		return nil, err
 	}
+	executions := decodeObjectArray(executionResp.Cntr)
 	if len(executions) == 0 {
 		if hasContext {
 			return []broker.OrderFill{}, nil
@@ -499,25 +525,25 @@ func (a *Adapter) GetOrderFills(ctx context.Context, orderID string) ([]broker.O
 
 	fills := make([]broker.OrderFill, 0)
 	for _, row := range executions {
-		if strings.TrimSpace(row.OrderNumber) != strings.TrimSpace(orderID) {
+		if strings.TrimSpace(asAnyString(row["ord_no"])) != strings.TrimSpace(orderID) {
 			continue
 		}
-		qty := row.ExecutionQty
+		qty := asAnyInt(row["cntr_qty"])
 		if qty <= 0 {
 			continue
 		}
-		price := normalizedPrice(row.ExecutionPrice)
+		price := normalizedPrice(asAnyFloat(row["cntr_pric"]))
 		fills = append(fills, broker.OrderFill{
 			OrderID:   orderID,
-			Symbol:    normalizeSymbol(row.StockCode),
-			Market:    mapStexCodeToMarket(row.ExchangeCode, row.ExchangeText),
-			Side:      sideFromKiwoomText(row.OrderSideText),
+			Symbol:    normalizeSymbol(asAnyString(row["stk_cd"])),
+			Market:    mapStexCodeToMarket(asAnyString(row["stex_tp"]), asAnyString(row["stex_tp_txt"])),
+			Side:      sideFromKiwoomText(asAnyString(row["io_tp_nm"])),
 			Quantity:  qty,
 			Price:     price,
 			Amount:    float64(qty) * price,
 			Currency:  "KRW",
-			FilledAt:  parseOrderTime(row.OrderTime),
-			RawStatus: strings.TrimSpace(row.OrderStatus),
+			FilledAt:  parseOrderTime(asAnyString(row["ord_tm"])),
+			RawStatus: strings.TrimSpace(asAnyString(row["ord_stt"])),
 		})
 	}
 
@@ -547,7 +573,7 @@ func (a *Adapter) GetInstrument(ctx context.Context, market, symbol string) (*br
 
 	marketOut := normalizeOutputMarket(market)
 	if marketOut == "" {
-		marketOut = marketFromCode(info.MarketCode, info.MarketName)
+		marketOut = marketFromCode(info.Marketcode, info.Marketname)
 	}
 
 	state := strings.TrimSpace(info.State)
@@ -558,20 +584,24 @@ func (a *Adapter) GetInstrument(ctx context.Context, market, symbol string) (*br
 		Symbol:       normalizeSymbol(info.Code),
 		Market:       marketOut,
 		Name:         firstNonEmpty(info.Name, symbol),
-		Exchange:     firstNonEmpty(info.MarketName, marketOut),
+		Exchange:     firstNonEmpty(info.Marketname, marketOut),
 		Currency:     "KRW",
 		Country:      "KR",
 		AssetType:    broker.AssetStock,
-		Sector:       info.SectorName,
-		ListedShares: info.ListCount,
+		Sector:       info.Upname,
+		ListedShares: parseIntString(info.Listcount),
 		IsListed:     listed,
 		IsSuspended:  suspended,
-		ListingDate:  info.RegDay,
+		ListingDate:  info.Regday,
 	}, nil
 }
 
-func (a *Adapter) fetchUnsettled(ctx context.Context, symbol string) ([]kiwoom.UnsettledOrder, error) {
-	return a.client.InquireUnsettledOrders(ctx, symbol)
+func (a *Adapter) fetchUnsettled(ctx context.Context, symbol string) ([]map[string]interface{}, error) {
+	resp, err := a.client.InquireUnsettledOrders(ctx, symbol)
+	if err != nil {
+		return nil, err
+	}
+	return decodeObjectArray(resp.Oso), nil
 }
 
 func (a *Adapter) storeOrderContext(orderID string, meta orderContext) {
@@ -611,18 +641,19 @@ func (a *Adapter) resolveOrderContext(ctx context.Context, orderID string) (orde
 		return orderContext{}, err
 	}
 	for _, row := range rows {
-		if strings.TrimSpace(row.OrderNumber) != orderID {
+		if strings.TrimSpace(asAnyString(row["ord_no"])) != orderID {
 			continue
 		}
+		remainingQty := asAnyInt(row["oso_qty"])
 		meta := orderContext{
 			OrderID:      orderID,
-			Symbol:       normalizeSymbol(row.StockCode),
+			Symbol:       normalizeSymbol(asAnyString(row["stk_cd"])),
 			Exchange:     exchangeFromUnsettledRow(row),
-			Quantity:     row.OrderQty,
-			RemainingQty: row.UnsettledQty,
-			Price:        normalizedPrice(row.OrderPrice),
-			Side:         sideFromKiwoomOrderText(row.OrderSideText),
-			Status:       mapOrderStatus(row.OrderStatus, row.UnsettledQty),
+			Quantity:     asAnyInt(row["ord_qty"]),
+			RemainingQty: remainingQty,
+			Price:        normalizedPrice(asAnyFloat(row["ord_pric"])),
+			Side:         sideFromKiwoomOrderText(asAnyString(row["io_tp_nm"])),
+			Status:       mapOrderStatus(asAnyString(row["ord_stt"]), remainingQty),
 			UpdatedAt:    time.Now(),
 		}
 		a.storeOrderContext(orderID, meta)
@@ -699,14 +730,14 @@ func mapOrderStatus(raw string, remaining int64) broker.OrderStatus {
 	}
 }
 
-func exchangeFromUnsettledRow(row kiwoom.UnsettledOrder) string {
-	if txt := strings.ToUpper(strings.TrimSpace(row.ExchangeText)); txt != "" {
+func exchangeFromUnsettledRow(row map[string]interface{}) string {
+	if txt := strings.ToUpper(strings.TrimSpace(asAnyString(row["stex_tp_txt"]))); txt != "" {
 		switch txt {
 		case "KRX", "NXT", "SOR":
 			return txt
 		}
 	}
-	return mapStexCodeToMarket(row.ExchangeCode, row.ExchangeText)
+	return mapStexCodeToMarket(asAnyString(row["stex_tp"]), asAnyString(row["stex_tp_txt"]))
 }
 
 func mapStexCodeToMarket(code, text string) string {
@@ -745,6 +776,132 @@ func sideFromKiwoomOrderText(v string) broker.OrderSide {
 		return broker.OrderSideSell
 	}
 	return broker.OrderSideBuy
+}
+
+func parseFloatString(raw string) float64 {
+	s := strings.TrimSpace(raw)
+	s = strings.ReplaceAll(s, ",", "")
+	s = strings.TrimPrefix(s, "+")
+	if s == "" {
+		return 0
+	}
+	f, err := strconv.ParseFloat(s, 64)
+	if err != nil {
+		return 0
+	}
+	return f
+}
+
+func parseIntString(raw string) int64 {
+	s := strings.TrimSpace(raw)
+	s = strings.ReplaceAll(s, ",", "")
+	s = strings.TrimPrefix(s, "+")
+	if s == "" {
+		return 0
+	}
+	if n, err := strconv.ParseInt(s, 10, 64); err == nil {
+		return n
+	}
+	f, err := strconv.ParseFloat(s, 64)
+	if err != nil {
+		return 0
+	}
+	return int64(f)
+}
+
+func asAnyString(v interface{}) string {
+	switch t := v.(type) {
+	case nil:
+		return ""
+	case string:
+		return strings.TrimSpace(t)
+	default:
+		return strings.TrimSpace(fmt.Sprint(v))
+	}
+}
+
+func asAnyFloat(v interface{}) float64 {
+	return parseFloatString(asAnyString(v))
+}
+
+func asAnyInt(v interface{}) int64 {
+	return parseIntString(asAnyString(v))
+}
+
+func parseDateYYYYMMDDString(value string) (time.Time, bool) {
+	value = strings.TrimSpace(value)
+	if value == "" {
+		return time.Time{}, false
+	}
+	t, err := time.Parse("20060102", value)
+	if err != nil {
+		return time.Time{}, false
+	}
+	return t, true
+}
+
+func decodeObjectArray(raw interface{}) []map[string]interface{} {
+	switch t := raw.(type) {
+	case nil:
+		return nil
+	case json.RawMessage:
+		return decodeObjectArrayFromJSON(t)
+	case []byte:
+		return decodeObjectArrayFromJSON(t)
+	case []map[string]interface{}:
+		return t
+	}
+
+	rv := reflect.ValueOf(raw)
+	if !rv.IsValid() {
+		return nil
+	}
+	if rv.Kind() != reflect.Slice && rv.Kind() != reflect.Array {
+		return nil
+	}
+
+	out := make([]map[string]interface{}, 0, rv.Len())
+	for i := 0; i < rv.Len(); i++ {
+		item := rv.Index(i).Interface()
+		switch row := item.(type) {
+		case map[string]interface{}:
+			out = append(out, row)
+		default:
+			encoded, err := json.Marshal(item)
+			if err != nil || len(encoded) == 0 {
+				continue
+			}
+			m := make(map[string]interface{})
+			if err := json.Unmarshal(encoded, &m); err != nil {
+				continue
+			}
+			out = append(out, m)
+		}
+	}
+	return out
+}
+
+func decodeObjectArrayFromJSON(raw []byte) []map[string]interface{} {
+	if len(raw) == 0 {
+		return nil
+	}
+	items := make([]map[string]interface{}, 0)
+	if err := json.Unmarshal(raw, &items); err == nil {
+		return items
+	}
+	generic := make([]interface{}, 0)
+	if err := json.Unmarshal(raw, &generic); err != nil {
+		return nil
+	}
+	out := make([]map[string]interface{}, 0, len(generic))
+	for _, item := range generic {
+		row, ok := item.(map[string]interface{})
+		if !ok {
+			continue
+		}
+		out = append(out, row)
+	}
+	return out
 }
 
 func parseOrderTime(v string) time.Time {

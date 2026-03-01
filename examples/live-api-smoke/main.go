@@ -2,6 +2,7 @@ package main
 
 import (
 	"context"
+	"flag"
 	"fmt"
 	"net/http"
 	"os"
@@ -13,6 +14,7 @@ import (
 	kisadapter "github.com/smallfish06/krsec/internal/kis/adapter"
 	"github.com/smallfish06/krsec/internal/kiwoom"
 	kiwoomadapter "github.com/smallfish06/krsec/internal/kiwoom/adapter"
+	kiwoomspecs "github.com/smallfish06/krsec/internal/kiwoom/specs"
 	"github.com/smallfish06/krsec/pkg/broker"
 	"github.com/smallfish06/krsec/pkg/config"
 )
@@ -36,7 +38,10 @@ type endpointCase struct {
 }
 
 func main() {
-	cfg, err := config.Load("config.yaml")
+	configPath := flag.String("config", "config.yaml", "path to config file")
+	flag.Parse()
+
+	cfg, err := config.Load(*configPath)
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "load config: %v\n", err)
 		os.Exit(1)
@@ -144,66 +149,85 @@ func runKiwoomAccount(results *[]smokeResult, acc config.AccountConfig, tm kiwoo
 	})
 	creds := broker.Credentials{AppKey: acc.AppKey, AppSecret: acc.AppSecret}
 
-	runCase(results, "KIWOOM", acc.AccountID, "auth", false, func(ctx context.Context) error {
+	nextAllowed := time.Now()
+	runKiwoomCase := func(caseName string, expectError bool, fn func(context.Context) error) {
+		if wait := time.Until(nextAllowed); wait > 0 {
+			time.Sleep(wait)
+		}
+		runCase(results, "KIWOOM", acc.AccountID, caseName, expectError, fn)
+		nextAllowed = time.Now().Add(120 * time.Millisecond)
+	}
+
+	runKiwoomCase("auth", false, func(ctx context.Context) error {
 		_, err := a.Authenticate(ctx, creds)
 		return err
 	})
 
-	runCase(results, "KIWOOM", acc.AccountID, "GetQuote(KRX,005930)", false, func(ctx context.Context) error {
+	runKiwoomCase("GetQuote(KRX,005930)", false, func(ctx context.Context) error {
 		_, err := a.GetQuote(ctx, "KRX", "005930")
 		return err
 	})
-	runCase(results, "KIWOOM", acc.AccountID, "GetOHLCV(KRX,005930,1d)", false, func(ctx context.Context) error {
+	runKiwoomCase("GetOHLCV(KRX,005930,1d)", false, func(ctx context.Context) error {
 		_, err := a.GetOHLCV(ctx, "KRX", "005930", broker.OHLCVOpts{Interval: "1d", Limit: 10})
 		return err
 	})
-	runCase(results, "KIWOOM", acc.AccountID, "GetOHLCV(KRX,005930,1w)", false, func(ctx context.Context) error {
+	runKiwoomCase("GetOHLCV(KRX,005930,1w)", false, func(ctx context.Context) error {
 		_, err := a.GetOHLCV(ctx, "KRX", "005930", broker.OHLCVOpts{Interval: "1w", Limit: 10})
 		return err
 	})
-	runCase(results, "KIWOOM", acc.AccountID, "GetOHLCV(KRX,005930,1mo)", false, func(ctx context.Context) error {
+	runKiwoomCase("GetOHLCV(KRX,005930,1mo)", false, func(ctx context.Context) error {
 		_, err := a.GetOHLCV(ctx, "KRX", "005930", broker.OHLCVOpts{Interval: "1mo", Limit: 10})
 		return err
 	})
-	runCase(results, "KIWOOM", acc.AccountID, "GetBalance", false, func(ctx context.Context) error {
-		_, err := a.GetBalance(ctx, acc.AccountID)
-		return err
-	})
-	runCase(results, "KIWOOM", acc.AccountID, "GetPositions", false, func(ctx context.Context) error {
+	if acc.Sandbox {
+		*results = append(*results, smokeResult{
+			Broker:   "KIWOOM",
+			Account:  acc.AccountID,
+			CaseName: "GetBalance",
+			Status:   "SKIP",
+			Detail:   "not provided in kiwoom sandbox (RC9000)",
+		})
+	} else {
+		runKiwoomCase("GetBalance", false, func(ctx context.Context) error {
+			_, err := a.GetBalance(ctx, acc.AccountID)
+			return err
+		})
+	}
+	runKiwoomCase("GetPositions", false, func(ctx context.Context) error {
 		_, err := a.GetPositions(ctx, acc.AccountID)
 		return err
 	})
-	runCase(results, "KIWOOM", acc.AccountID, "GetInstrument(KRX,005930)", false, func(ctx context.Context) error {
+	runKiwoomCase("GetInstrument(KRX,005930)", false, func(ctx context.Context) error {
 		_, err := a.GetInstrument(ctx, "KRX", "005930")
 		return err
 	})
 
 	// CallEndpoint tests for all Kiwoom API_IDs
-	for _, tc := range buildKiwoomEndpointCases() {
+	for _, tc := range buildKiwoomEndpointCases(acc.Sandbox) {
 		tc := tc
-		runCase(results, "KIWOOM", acc.AccountID, "CallEndpoint "+tc.Name, tc.ExpectError, func(ctx context.Context) error {
+		runKiwoomCase("CallEndpoint "+tc.Name, tc.ExpectError, func(ctx context.Context) error {
 			_, err := a.CallEndpoint(ctx, tc.Method, tc.Path, tc.TRID, cloneMap(tc.Fields))
 			return err
 		})
 	}
 
 	// Fake order/cancel tests
-	runCase(results, "KIWOOM", acc.AccountID, "GetOrder(fake)", true, func(ctx context.Context) error {
+	runKiwoomCase("GetOrder(fake)", true, func(ctx context.Context) error {
 		_, err := a.GetOrder(ctx, "0000000000")
 		return err
 	})
-	runCase(results, "KIWOOM", acc.AccountID, "GetOrderFills(fake)", true, func(ctx context.Context) error {
+	runKiwoomCase("GetOrderFills(fake)", true, func(ctx context.Context) error {
 		_, err := a.GetOrderFills(ctx, "0000000000")
 		return err
 	})
-	runCase(results, "KIWOOM", acc.AccountID, "CancelOrder(fake)", true, func(ctx context.Context) error {
+	runKiwoomCase("CancelOrder(fake)", true, func(ctx context.Context) error {
 		return a.CancelOrder(ctx, "0000000000")
 	})
-	runCase(results, "KIWOOM", acc.AccountID, "ModifyOrder(fake)", true, func(ctx context.Context) error {
+	runKiwoomCase("ModifyOrder(fake)", true, func(ctx context.Context) error {
 		_, err := a.ModifyOrder(ctx, "0000000000", broker.ModifyOrderRequest{Price: 1000, Quantity: 1})
 		return err
 	})
-	runCase(results, "KIWOOM", acc.AccountID, "PlaceOrder(dry-run invalid)", true, func(ctx context.Context) error {
+	runKiwoomCase("PlaceOrder(dry-run invalid)", true, func(ctx context.Context) error {
 		_, err := a.PlaceOrder(ctx, broker.OrderRequest{
 			AccountID: acc.AccountID,
 			Market:    "KRX",
@@ -312,49 +336,69 @@ func splitKISAccountID(accountID string) (string, string) {
 	return id, "01"
 }
 
-func buildKiwoomEndpointCases() []endpointCase {
-	return []endpointCase{
+func buildKiwoomEndpointCases(sandbox bool) []endpointCase {
+	cases := []endpointCase{
 		// 시세 조회
-		{Name: "domestic-quote", Method: http.MethodPost, Path: kiwoom.PathStockInfo, TRID: kiwoom.APIIDDomesticQuote, Fields: map[string]string{"stk_cd": "005930"}},
-		{Name: "execution-info", Method: http.MethodPost, Path: kiwoom.PathStockInfo, TRID: kiwoom.APIIDDomesticExecutionInfo, Fields: map[string]string{"stk_cd": "005930"}},
-		{Name: "orderbook", Method: http.MethodPost, Path: kiwoom.PathMarketCond, TRID: kiwoom.APIIDDomesticOrderBook, Fields: map[string]string{"stk_cd": "005930"}},
-		{Name: "instrument-info", Method: http.MethodPost, Path: kiwoom.PathStockInfo, TRID: kiwoom.APIIDInstrumentInfo, Fields: map[string]string{"stk_cd": "005930"}},
-		{Name: "investor-by-stock", Method: http.MethodPost, Path: kiwoom.PathStockInfo, TRID: kiwoom.APIIDInvestorByStock, Fields: map[string]string{"stk_cd": "005930"}},
+		{Name: "domestic-quote", Method: http.MethodPost, Path: kiwoom.PathStockInfo, TRID: kiwoomspecs.KiwoomAPIIDKa10001, Fields: map[string]string{"stk_cd": "005930"}},
+		{Name: "execution-info", Method: http.MethodPost, Path: kiwoom.PathStockInfo, TRID: kiwoomspecs.KiwoomAPIIDKa10003, Fields: map[string]string{"stk_cd": "005930"}},
+		{Name: "orderbook", Method: http.MethodPost, Path: kiwoom.PathMarketCond, TRID: kiwoomspecs.KiwoomAPIIDKa10004, Fields: map[string]string{"stk_cd": "005930"}},
+		{Name: "orderbook-level2", Method: http.MethodPost, Path: kiwoom.PathMarketCond, TRID: kiwoomspecs.KiwoomAPIIDKa10005, Fields: map[string]string{"stk_cd": "005930"}},
+		{Name: "orderbook-level3", Method: http.MethodPost, Path: kiwoom.PathMarketCond, TRID: kiwoomspecs.KiwoomAPIIDKa10006, Fields: map[string]string{"stk_cd": "005930"}},
+		{Name: "orderbook-level4", Method: http.MethodPost, Path: kiwoom.PathMarketCond, TRID: kiwoomspecs.KiwoomAPIIDKa10007, Fields: map[string]string{"stk_cd": "005930"}},
+		{Name: "instrument-info", Method: http.MethodPost, Path: kiwoom.PathStockInfo, TRID: kiwoomspecs.KiwoomAPIIDKa10100, Fields: map[string]string{"stk_cd": "005930"}},
+		{Name: "investor-by-stock", Method: http.MethodPost, Path: kiwoom.PathStockInfo, TRID: kiwoomspecs.KiwoomAPIIDKa10059, Fields: map[string]string{"stk_cd": "005930"}},
+		{Name: "stock-velocity", Method: http.MethodPost, Path: kiwoom.PathStockInfo, TRID: kiwoomspecs.KiwoomAPIIDKa10095, Fields: map[string]string{"stk_cd": "005930"}},
 		// 업종
-		{Name: "sector-current", Method: http.MethodPost, Path: kiwoom.PathSector, TRID: kiwoom.APIIDSectorCurrent, Fields: map[string]string{"upcode": "001"}},
-		{Name: "sector-by-price", Method: http.MethodPost, Path: kiwoom.PathSector, TRID: kiwoom.APIIDSectorByPrice, Fields: map[string]string{"upcode": "001"}},
+		{Name: "sector-by-stock", Method: http.MethodPost, Path: kiwoom.PathSector, TRID: kiwoomspecs.KiwoomAPIIDKa10010, Fields: map[string]string{"stk_cd": "005930"}},
+		{Name: "sector-current", Method: http.MethodPost, Path: kiwoom.PathSector, TRID: kiwoomspecs.KiwoomAPIIDKa20001, Fields: map[string]string{"inds_cd": "001"}},
+		{Name: "sector-by-price", Method: http.MethodPost, Path: kiwoom.PathSector, TRID: kiwoomspecs.KiwoomAPIIDKa20002, Fields: map[string]string{"inds_cd": "001"}},
+		{Name: "sector-index-price", Method: http.MethodPost, Path: kiwoom.PathSector, TRID: kiwoomspecs.KiwoomAPIIDKa20003, Fields: map[string]string{"inds_cd": "001"}},
 		// 랭킹
-		{Name: "volume-rank", Method: http.MethodPost, Path: kiwoom.PathRankingInfo, TRID: kiwoom.APIIDVolumeRank, Fields: map[string]string{}},
-		{Name: "change-rate-rank", Method: http.MethodPost, Path: kiwoom.PathRankingInfo, TRID: kiwoom.APIIDChangeRateRank, Fields: map[string]string{}},
+		{Name: "volume-rank", Method: http.MethodPost, Path: kiwoom.PathRankingInfo, TRID: kiwoomspecs.KiwoomAPIIDKa10030, Fields: map[string]string{}},
+		{Name: "change-rate-rank", Method: http.MethodPost, Path: kiwoom.PathRankingInfo, TRID: kiwoomspecs.KiwoomAPIIDKa10027, Fields: map[string]string{}},
+		{Name: "investor-rank-by-stock", Method: http.MethodPost, Path: kiwoom.PathRankingInfo, TRID: kiwoomspecs.KiwoomAPIIDKa10040, Fields: map[string]string{"stk_cd": "005930"}},
+		{Name: "trade-activity-by-stock", Method: http.MethodPost, Path: kiwoom.PathRankingInfo, TRID: kiwoomspecs.KiwoomAPIIDKa10053, Fields: map[string]string{"stk_cd": "005930"}},
 		// ELW
-		{Name: "elw-detail", Method: http.MethodPost, Path: kiwoom.PathELW, TRID: kiwoom.APIIDELWDetail, Fields: map[string]string{"stk_cd": "58F137"}},
+		{Name: "elw-detail", Method: http.MethodPost, Path: kiwoom.PathELW, TRID: kiwoomspecs.KiwoomAPIIDKa30012, Fields: map[string]string{"stk_cd": "58F137"}},
 		// 계좌
-		{Name: "account-balance", Method: http.MethodPost, Path: kiwoom.PathAccount, TRID: kiwoom.APIIDAccountBalance, Fields: map[string]string{}},
-		{Name: "account-positions", Method: http.MethodPost, Path: kiwoom.PathAccount, TRID: kiwoom.APIIDAccountPositions, Fields: map[string]string{}},
-		{Name: "account-deposit", Method: http.MethodPost, Path: kiwoom.PathAccount, TRID: kiwoom.APIIDAccountDepositDetail, Fields: map[string]string{"qry_tp": "3"}},
-		{Name: "account-order-exec-detail", Method: http.MethodPost, Path: kiwoom.PathAccount, TRID: kiwoom.APIIDAccountOrderExecutionDetail, Fields: map[string]string{}},
-		{Name: "account-order-exec-status", Method: http.MethodPost, Path: kiwoom.PathAccount, TRID: kiwoom.APIIDAccountOrderExecutionStatus, Fields: map[string]string{}},
-		{Name: "account-orderable", Method: http.MethodPost, Path: kiwoom.PathAccount, TRID: kiwoom.APIIDAccountOrderableWithdrawable, Fields: map[string]string{"stk_cd": "005930", "trde_tp": "2", "uv": "1000"}},
-		{Name: "account-margin", Method: http.MethodPost, Path: kiwoom.PathAccount, TRID: kiwoom.APIIDAccountMarginDetail, Fields: map[string]string{}},
-		{Name: "unsettled-orders", Method: http.MethodPost, Path: kiwoom.PathAccount, TRID: kiwoom.APIIDUnsettledOrders, Fields: map[string]string{}},
-		{Name: "order-executions", Method: http.MethodPost, Path: kiwoom.PathAccount, TRID: kiwoom.APIIDOrderExecutions, Fields: map[string]string{}},
+		{Name: "account-balance", Method: http.MethodPost, Path: kiwoom.PathAccount, TRID: kiwoomspecs.KiwoomAPIIDKt00005, Fields: map[string]string{}},
+		{Name: "account-positions", Method: http.MethodPost, Path: kiwoom.PathAccount, TRID: kiwoomspecs.KiwoomAPIIDKt00018, Fields: map[string]string{}},
+		{Name: "account-deposit", Method: http.MethodPost, Path: kiwoom.PathAccount, TRID: kiwoomspecs.KiwoomAPIIDKt00001, Fields: map[string]string{"qry_tp": "3"}},
+		{Name: "account-order-exec-detail", Method: http.MethodPost, Path: kiwoom.PathAccount, TRID: kiwoomspecs.KiwoomAPIIDKt00007, Fields: map[string]string{}},
+		{Name: "account-order-exec-status", Method: http.MethodPost, Path: kiwoom.PathAccount, TRID: kiwoomspecs.KiwoomAPIIDKt00009, Fields: map[string]string{}},
+		{Name: "account-orderable", Method: http.MethodPost, Path: kiwoom.PathAccount, TRID: kiwoomspecs.KiwoomAPIIDKt00010, Fields: map[string]string{"stk_cd": "005930", "trde_tp": "2", "uv": "1000"}},
+		{Name: "account-margin", Method: http.MethodPost, Path: kiwoom.PathAccount, TRID: kiwoomspecs.KiwoomAPIIDKt00013, Fields: map[string]string{}},
+		{Name: "unsettled-orders", Method: http.MethodPost, Path: kiwoom.PathAccount, TRID: kiwoomspecs.KiwoomAPIIDKa10075, Fields: map[string]string{}},
+		{Name: "order-executions", Method: http.MethodPost, Path: kiwoom.PathAccount, TRID: kiwoomspecs.KiwoomAPIIDKa10076, Fields: map[string]string{}},
 		// 차트
-		{Name: "daily-chart", Method: http.MethodPost, Path: kiwoom.PathChart, TRID: kiwoom.APIIDDailyChart, Fields: map[string]string{"stk_cd": "005930"}},
-		{Name: "weekly-chart", Method: http.MethodPost, Path: kiwoom.PathChart, TRID: kiwoom.APIIDWeeklyChart, Fields: map[string]string{"stk_cd": "005930"}},
-		{Name: "monthly-chart", Method: http.MethodPost, Path: kiwoom.PathChart, TRID: kiwoom.APIIDMonthlyChart, Fields: map[string]string{"stk_cd": "005930"}},
-		{Name: "tick-chart", Method: http.MethodPost, Path: kiwoom.PathChart, TRID: kiwoom.APIIDTickChart, Fields: map[string]string{"stk_cd": "005930"}},
-		{Name: "investor-chart", Method: http.MethodPost, Path: kiwoom.PathChart, TRID: kiwoom.APIIDInvestorByStockChart, Fields: map[string]string{"stk_cd": "005930"}},
+		{Name: "daily-chart", Method: http.MethodPost, Path: kiwoom.PathChart, TRID: kiwoomspecs.KiwoomAPIIDKa10081, Fields: map[string]string{"stk_cd": "005930"}},
+		{Name: "weekly-chart", Method: http.MethodPost, Path: kiwoom.PathChart, TRID: kiwoomspecs.KiwoomAPIIDKa10082, Fields: map[string]string{"stk_cd": "005930"}},
+		{Name: "monthly-chart", Method: http.MethodPost, Path: kiwoom.PathChart, TRID: kiwoomspecs.KiwoomAPIIDKa10083, Fields: map[string]string{"stk_cd": "005930"}},
+		{Name: "tick-chart", Method: http.MethodPost, Path: kiwoom.PathChart, TRID: kiwoomspecs.KiwoomAPIIDKa10079, Fields: map[string]string{"stk_cd": "005930"}},
+		{Name: "investor-chart", Method: http.MethodPost, Path: kiwoom.PathChart, TRID: kiwoomspecs.KiwoomAPIIDKa10060, Fields: map[string]string{"stk_cd": "005930"}},
 		// 문서 등록 strict 라우트
-		{Name: "documented-stock-agent", Method: http.MethodPost, Path: kiwoom.PathStockInfo, TRID: "ka10002", Fields: map[string]string{"stk_cd": "005930"}},
-		{Name: "documented-theme-list", Method: http.MethodPost, Path: kiwoom.PathTheme, TRID: "ka90001", Fields: map[string]string{"qry_tp": "0", "date_tp": "10", "flu_pl_amt_tp": "1", "stex_tp": "1"}},
-		{Name: "documented-foreign-inst", Method: http.MethodPost, Path: kiwoom.PathForeignInst, TRID: "ka10008", Fields: map[string]string{"stk_cd": "005930"}},
-		{Name: "documented-short-sell", Method: http.MethodPost, Path: kiwoom.PathShortSell, TRID: "ka10014", Fields: map[string]string{"stk_cd": "005930", "strt_dt": "20250501", "end_dt": "20250519"}},
+		{Name: "documented-stock-agent", Method: http.MethodPost, Path: kiwoom.PathStockInfo, TRID: kiwoomspecs.KiwoomAPIIDKa10002, Fields: map[string]string{"stk_cd": "005930"}},
+		{Name: "documented-theme-list", Method: http.MethodPost, Path: kiwoom.PathTheme, TRID: kiwoomspecs.KiwoomAPIIDKa90001, Fields: map[string]string{"qry_tp": "0", "date_tp": "10", "flu_pl_amt_tp": "1", "stex_tp": "1"}},
+		{Name: "documented-foreign-inst", Method: http.MethodPost, Path: kiwoom.PathForeignInst, TRID: kiwoomspecs.KiwoomAPIIDKa10008, Fields: map[string]string{"stk_cd": "005930"}},
+		{Name: "documented-short-sell", Method: http.MethodPost, Path: kiwoom.PathShortSell, TRID: kiwoomspecs.KiwoomAPIIDKa10014, Fields: map[string]string{"stk_cd": "005930", "strt_dt": "20250501", "end_dt": "20250519"}},
 		// 주문 (dry-run, 에러 기대)
-		{Name: "place-buy-order", Method: http.MethodPost, Path: kiwoom.PathOrder, TRID: kiwoom.APIIDPlaceBuyOrder, Fields: map[string]string{"stk_cd": "000000", "ord_qty": "0", "ord_unpr": "1"}, ExpectError: true},
-		{Name: "place-sell-order", Method: http.MethodPost, Path: kiwoom.PathOrder, TRID: kiwoom.APIIDPlaceSellOrder, Fields: map[string]string{"stk_cd": "000000", "ord_qty": "0", "ord_unpr": "1"}, ExpectError: true},
-		{Name: "modify-order", Method: http.MethodPost, Path: kiwoom.PathOrder, TRID: kiwoom.APIIDModifyOrder, Fields: map[string]string{"orgn_odno": "0000000000", "ord_qty": "1", "ord_unpr": "1000"}, ExpectError: true},
-		{Name: "cancel-order", Method: http.MethodPost, Path: kiwoom.PathOrder, TRID: kiwoom.APIIDCancelOrder, Fields: map[string]string{"orgn_odno": "0000000000", "ord_qty": "1"}, ExpectError: true},
+		{Name: "place-buy-order", Method: http.MethodPost, Path: kiwoom.PathOrder, TRID: kiwoomspecs.KiwoomAPIIDKt10000, Fields: map[string]string{"stk_cd": "000000", "ord_qty": "0", "ord_unpr": "1"}, ExpectError: true},
+		{Name: "place-sell-order", Method: http.MethodPost, Path: kiwoom.PathOrder, TRID: kiwoomspecs.KiwoomAPIIDKt10001, Fields: map[string]string{"stk_cd": "000000", "ord_qty": "0", "ord_unpr": "1"}, ExpectError: true},
+		{Name: "modify-order", Method: http.MethodPost, Path: kiwoom.PathOrder, TRID: kiwoomspecs.KiwoomAPIIDKt10002, Fields: map[string]string{"orgn_odno": "0000000000", "ord_qty": "1", "ord_unpr": "1000"}, ExpectError: true},
+		{Name: "cancel-order", Method: http.MethodPost, Path: kiwoom.PathOrder, TRID: kiwoomspecs.KiwoomAPIIDKt10003, Fields: map[string]string{"orgn_odno": "0000000000", "ord_qty": "1"}, ExpectError: true},
 	}
+	if !sandbox {
+		return cases
+	}
+
+	filtered := make([]endpointCase, 0, len(cases))
+	for _, tc := range cases {
+		if tc.Name == "account-balance" {
+			continue
+		}
+		filtered = append(filtered, tc)
+	}
+	return filtered
 }
 
 func cloneMap(in map[string]string) map[string]string {

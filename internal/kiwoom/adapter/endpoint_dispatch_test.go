@@ -4,18 +4,36 @@ import (
 	"context"
 	"errors"
 	"net/http"
-	"reflect"
 	"testing"
 
 	"github.com/smallfish06/krsec/internal/kiwoom"
+	kiwoomspecs "github.com/smallfish06/krsec/internal/kiwoom/specs"
 	"github.com/smallfish06/krsec/pkg/broker"
 )
+
+func TestNewEndpointDispatcher_CoversAllDocumentedKiwoomPathAPIID(t *testing.T) {
+	t.Parallel()
+
+	d := newEndpointDispatcher(&Adapter{})
+	for _, spec := range kiwoomspecs.DocumentedKiwoomEndpointSpecs {
+		key := endpointRouteKey{
+			path:  normalizeEndpointPath(spec.Path),
+			apiID: normalizeEndpointAPIID(spec.APIID),
+		}
+		if key.path == "" || key.apiID == "" {
+			continue
+		}
+		if _, ok := d.routes[key]; !ok {
+			t.Fatalf("missing route for %s/%s", key.path, key.apiID)
+		}
+	}
+}
 
 func TestCallEndpoint_RequiresAPIID(t *testing.T) {
 	t.Parallel()
 	a := &Adapter{}
 
-	_, err := a.CallEndpoint(context.Background(), http.MethodPost, kiwoom.PathStockInfo, "", map[string]string{"stk_cd": "005930"})
+	_, err := a.CallEndpoint(context.Background(), http.MethodPost, kiwoom.PathStockInfo, "", map[string]interface{}{"stk_cd": "005930"})
 	if err == nil {
 		t.Fatalf("expected error")
 	}
@@ -28,7 +46,7 @@ func TestCallEndpoint_UnsupportedPath(t *testing.T) {
 	t.Parallel()
 	a := &Adapter{}
 
-	_, err := a.CallEndpoint(context.Background(), http.MethodPost, "/api/unknown/path", kiwoom.APIIDDomesticQuote, map[string]string{})
+	_, err := a.CallEndpoint(context.Background(), http.MethodPost, "/api/unknown/path", "ka10001", map[string]interface{}{})
 	if err == nil {
 		t.Fatalf("expected error")
 	}
@@ -41,7 +59,7 @@ func TestCallEndpoint_UnsupportedPathMethodValidation(t *testing.T) {
 	t.Parallel()
 	a := &Adapter{}
 
-	_, err := a.CallEndpoint(context.Background(), http.MethodGet, "/api/unknown/path", "zz99999", map[string]string{})
+	_, err := a.CallEndpoint(context.Background(), http.MethodGet, "/api/unknown/path", "zz99999", map[string]interface{}{})
 	if err == nil {
 		t.Fatalf("expected error")
 	}
@@ -54,7 +72,7 @@ func TestCallEndpoint_UnsupportedAPIIDOnKnownPath(t *testing.T) {
 	t.Parallel()
 	a := &Adapter{}
 
-	_, err := a.CallEndpoint(context.Background(), http.MethodPost, kiwoom.PathStockInfo, "zz99999", map[string]string{"stk_cd": "005930"})
+	_, err := a.CallEndpoint(context.Background(), http.MethodPost, kiwoom.PathStockInfo, "zz99999", map[string]interface{}{"stk_cd": "005930"})
 	if err == nil {
 		t.Fatalf("expected error")
 	}
@@ -67,7 +85,20 @@ func TestCallEndpoint_DocumentedRouteRequiresClient(t *testing.T) {
 	t.Parallel()
 	a := &Adapter{}
 
-	_, err := a.CallEndpoint(context.Background(), http.MethodPost, kiwoom.PathStockInfo, "ka10002", map[string]string{"stk_cd": "005930"})
+	_, err := a.CallEndpoint(context.Background(), http.MethodPost, kiwoom.PathStockInfo, "ka10002", map[string]interface{}{"stk_cd": "005930"})
+	if err == nil {
+		t.Fatalf("expected error")
+	}
+	if !errors.Is(err, broker.ErrInvalidOrderRequest) {
+		t.Fatalf("expected ErrInvalidOrderRequest, got %v", err)
+	}
+}
+
+func TestCallEndpoint_DocumentedRouteMissingRequiredField(t *testing.T) {
+	t.Parallel()
+	a := &Adapter{}
+
+	_, err := a.CallEndpoint(context.Background(), "", kiwoom.PathStockInfo, "ka10002", map[string]interface{}{})
 	if err == nil {
 		t.Fatalf("expected error")
 	}
@@ -80,7 +111,7 @@ func TestCallEndpoint_MethodValidation(t *testing.T) {
 	t.Parallel()
 	a := &Adapter{}
 
-	_, err := a.CallEndpoint(context.Background(), http.MethodGet, kiwoom.PathStockInfo, kiwoom.APIIDDomesticQuote, map[string]string{"stk_cd": "005930"})
+	_, err := a.CallEndpoint(context.Background(), http.MethodGet, kiwoom.PathStockInfo, "ka10001", map[string]interface{}{"stk_cd": "005930"})
 	if err == nil {
 		t.Fatalf("expected error")
 	}
@@ -93,34 +124,12 @@ func TestCallEndpoint_ValidRouteMissingSymbol(t *testing.T) {
 	t.Parallel()
 	a := &Adapter{}
 
-	_, err := a.CallEndpoint(context.Background(), http.MethodPost, kiwoom.PathStockInfo, kiwoom.APIIDDomesticQuote, map[string]string{})
+	_, err := a.CallEndpoint(context.Background(), "", kiwoom.PathStockInfo, "ka10001", map[string]interface{}{})
 	if err == nil {
 		t.Fatalf("expected error")
 	}
 	if !errors.Is(err, broker.ErrInvalidSymbol) {
 		t.Fatalf("expected ErrInvalidSymbol, got %v", err)
-	}
-}
-
-func TestMarshalMap_ArrayWrappedAsItems(t *testing.T) {
-	t.Parallel()
-
-	out, err := marshalMap([]string{"a", "b"}, nil)
-	if err != nil {
-		t.Fatalf("marshalMap error: %v", err)
-	}
-
-	raw, ok := out["items"]
-	if !ok {
-		t.Fatalf("items key missing: %#v", out)
-	}
-	items, ok := raw.([]interface{})
-	if !ok {
-		t.Fatalf("items type = %T, want []interface{}", raw)
-	}
-	want := []interface{}{"a", "b"}
-	if !reflect.DeepEqual(items, want) {
-		t.Fatalf("items = %#v, want %#v", items, want)
 	}
 }
 

@@ -2,38 +2,69 @@ package kiwoom
 
 import (
 	"context"
+	"strings"
 
+	kiwoomspecs "github.com/smallfish06/krsec/internal/kiwoom/specs"
 	"github.com/smallfish06/krsec/pkg/broker"
 )
 
-// InquireInstrumentInfo fetches ka10100.
-func (c *Client) InquireInstrumentInfo(ctx context.Context, symbol string) (*InstrumentInfo, error) {
-	symbol = normalizeSymbolCode(symbol)
-	if symbol == "" {
+// InquireInstrumentInfoByRequest fetches ka10100.
+func (c *Client) InquireInstrumentInfoByRequest(
+	ctx context.Context,
+	req kiwoomspecs.KiwoomApiDostkStkinfoKa10100Request,
+) (*kiwoomspecs.KiwoomApiDostkStkinfoKa10100Response, error) {
+	req.StkCd = normalizeSymbolCode(req.StkCd)
+	if req.StkCd == "" {
 		return nil, broker.ErrInvalidSymbol
 	}
 
-	res, err := c.call(ctx, endpointInstrumentInfo, map[string]interface{}{
-		"stk_cd": symbol,
-	}, callOptions{})
+	resObj, err := c.CallDocumentedEndpoint(ctx, "ka10100", PathStockInfo, &req)
 	if err != nil {
 		return nil, err
 	}
-
-	info := &InstrumentInfo{
-		Code:       normalizeSymbolCode(asString(res.Body["code"])),
-		Name:       asString(res.Body["name"]),
-		ListCount:  asInt64(res.Body["listCount"]),
-		RegDay:     asString(res.Body["regDay"]),
-		State:      asString(res.Body["state"]),
-		MarketCode: asString(res.Body["marketCode"]),
-		MarketName: asString(res.Body["marketName"]),
-		SectorName: asString(res.Body["upName"]),
-		ReturnMsg:  asString(res.Body["return_msg"]),
-		ReturnCode: parseReturnCode(res.Body["return_code"]),
+	out := &kiwoomspecs.KiwoomApiDostkStkinfoKa10100Response{}
+	if err := bindResponseObject(resObj, out); err != nil {
+		return nil, err
 	}
-	if info.Code == "" {
+
+	// Some upstream payloads still use camelCase keys that can bypass exact tag names.
+	// Fill missing fields via map fallback to preserve compatibility.
+	if strings.TrimSpace(out.Code) == "" {
+		res, err := responseBodyMap(resObj)
+		if err != nil {
+			return nil, err
+		}
+		out.Code = asString(firstValue(res, "code"))
+		out.Name = asString(firstValue(res, "name"))
+		out.Listcount = asString(firstValue(res, "listCount", "listcount"))
+		out.Regday = asString(firstValue(res, "regDay", "regday"))
+		out.State = asString(firstValue(res, "state"))
+		out.Marketcode = asString(firstValue(res, "marketCode", "marketcode"))
+		out.Marketname = asString(firstValue(res, "marketName", "marketname"))
+		out.Upname = asString(firstValue(res, "upName", "upname"))
+	}
+	out.Code = normalizeSymbolCode(out.Code)
+	if out.Code == "" {
 		return nil, broker.ErrInstrumentNotFound
 	}
-	return info, nil
+	return out, nil
+}
+
+// InquireInstrumentInfo fetches ka10100.
+func (c *Client) InquireInstrumentInfo(
+	ctx context.Context,
+	symbol string,
+) (*kiwoomspecs.KiwoomApiDostkStkinfoKa10100Response, error) {
+	return c.InquireInstrumentInfoByRequest(ctx, kiwoomspecs.KiwoomApiDostkStkinfoKa10100Request{
+		StkCd: symbol,
+	})
+}
+
+func firstValue(m map[string]interface{}, keys ...string) interface{} {
+	for _, key := range keys {
+		if v, ok := m[key]; ok {
+			return v
+		}
+	}
+	return nil
 }

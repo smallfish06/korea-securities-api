@@ -5,114 +5,149 @@ import (
 	"fmt"
 	"strings"
 
+	kiwoomspecs "github.com/smallfish06/krsec/internal/kiwoom/specs"
 	"github.com/smallfish06/krsec/pkg/broker"
 )
 
 // PlaceStockOrder places kt10000 (buy) or kt10001 (sell).
-func (c *Client) PlaceStockOrder(ctx context.Context, req PlaceStockOrderRequest) (*OrderAck, error) {
-	req.Symbol = normalizeSymbolCode(req.Symbol)
-	if req.Symbol == "" || req.Quantity <= 0 {
-		return nil, broker.ErrInvalidOrderRequest
-	}
-	req.Exchange = strings.ToUpper(strings.TrimSpace(req.Exchange))
-	if req.Exchange == "" {
-		req.Exchange = "KRX"
-	}
-	req.TradeType = strings.TrimSpace(req.TradeType)
-	if req.TradeType == "" {
-		return nil, broker.ErrInvalidOrderRequest
-	}
-
-	var endpoint endpointSpec
-	switch req.Side {
+func (c *Client) PlaceStockOrder(
+	ctx context.Context,
+	side StockOrderSide,
+	req kiwoomspecs.KiwoomApiDostkOrdrKt10000Request,
+) (*kiwoomspecs.KiwoomApiDostkOrdrKt10000Response, error) {
+	switch side {
 	case StockOrderSideBuy:
-		endpoint = endpointPlaceBuyOrder
+		return c.PlaceBuyOrder(ctx, req)
 	case StockOrderSideSell:
-		endpoint = endpointPlaceSellOrder
+		return c.PlaceSellOrder(ctx, kiwoomspecs.KiwoomApiDostkOrdrKt10001Request(req))
 	default:
 		return nil, broker.ErrInvalidOrderRequest
 	}
+}
 
-	res, err := c.call(ctx, endpoint, map[string]interface{}{
-		"dmst_stex_tp": req.Exchange,
-		"stk_cd":       req.Symbol,
-		"ord_qty":      fmt.Sprintf("%d", req.Quantity),
-		"ord_uv":       strings.TrimSpace(req.OrderPrice),
-		"trde_tp":      req.TradeType,
-		"cond_uv":      strings.TrimSpace(req.ConditionPrice),
-	}, callOptions{})
+// PlaceBuyOrder places kt10000.
+func (c *Client) PlaceBuyOrder(
+	ctx context.Context,
+	req kiwoomspecs.KiwoomApiDostkOrdrKt10000Request,
+) (*kiwoomspecs.KiwoomApiDostkOrdrKt10000Response, error) {
+	req.StkCd = normalizeSymbolCode(req.StkCd)
+	if req.StkCd == "" || asInt64(req.OrdQty) <= 0 {
+		return nil, broker.ErrInvalidOrderRequest
+	}
+	req.DmstStexTp = strings.ToUpper(strings.TrimSpace(req.DmstStexTp))
+	if req.DmstStexTp == "" {
+		req.DmstStexTp = "KRX"
+	}
+	req.OrdQty = strings.TrimSpace(req.OrdQty)
+	req.OrdUv = strings.TrimSpace(req.OrdUv)
+	req.TrdeTp = strings.TrimSpace(req.TrdeTp)
+	req.CondUv = strings.TrimSpace(req.CondUv)
+	if req.TrdeTp == "" {
+		return nil, broker.ErrInvalidOrderRequest
+	}
+
+	respObj, err := c.CallDocumentedEndpoint(ctx, "kt10000", PathOrder, &req)
 	if err != nil {
 		return nil, err
 	}
-
-	orderID := asString(res.Body["ord_no"])
-	if orderID == "" {
-		return nil, fmt.Errorf("missing order id in kiwoom response")
+	out := &kiwoomspecs.KiwoomApiDostkOrdrKt10000Response{}
+	if err := bindResponseObject(respObj, out); err != nil {
+		return nil, err
 	}
 
-	return &OrderAck{
-		OrderNumber: orderID,
-		ReturnMsg:   asString(res.Body["return_msg"]),
-		ReturnCode:  parseReturnCode(res.Body["return_code"]),
-	}, nil
+	if strings.TrimSpace(out.OrdNo) == "" {
+		return nil, fmt.Errorf("missing order id in kiwoom response")
+	}
+	return out, nil
+}
+
+// PlaceSellOrder places kt10001.
+func (c *Client) PlaceSellOrder(
+	ctx context.Context,
+	req kiwoomspecs.KiwoomApiDostkOrdrKt10001Request,
+) (*kiwoomspecs.KiwoomApiDostkOrdrKt10000Response, error) {
+	req.StkCd = normalizeSymbolCode(req.StkCd)
+	if req.StkCd == "" || asInt64(req.OrdQty) <= 0 {
+		return nil, broker.ErrInvalidOrderRequest
+	}
+	req.DmstStexTp = strings.ToUpper(strings.TrimSpace(req.DmstStexTp))
+	if req.DmstStexTp == "" {
+		req.DmstStexTp = "KRX"
+	}
+	req.OrdQty = strings.TrimSpace(req.OrdQty)
+	req.OrdUv = strings.TrimSpace(req.OrdUv)
+	req.TrdeTp = strings.TrimSpace(req.TrdeTp)
+	req.CondUv = strings.TrimSpace(req.CondUv)
+	if req.TrdeTp == "" {
+		return nil, broker.ErrInvalidOrderRequest
+	}
+
+	respObj, err := c.CallDocumentedEndpoint(ctx, "kt10001", PathOrder, &req)
+	if err != nil {
+		return nil, err
+	}
+	out := &kiwoomspecs.KiwoomApiDostkOrdrKt10000Response{}
+	if err := bindResponseObject(respObj, out); err != nil {
+		return nil, err
+	}
+	if strings.TrimSpace(out.OrdNo) == "" {
+		return nil, fmt.Errorf("missing order id in kiwoom response")
+	}
+	return out, nil
 }
 
 // CancelStockOrder cancels order through kt10003.
-func (c *Client) CancelStockOrder(ctx context.Context, req CancelStockOrderRequest) (*OrderAck, error) {
-	req.Exchange = strings.ToUpper(strings.TrimSpace(req.Exchange))
-	if req.Exchange == "" {
-		req.Exchange = "KRX"
+func (c *Client) CancelStockOrder(
+	ctx context.Context,
+	req kiwoomspecs.KiwoomApiDostkOrdrKt10003Request,
+) (*kiwoomspecs.KiwoomApiDostkOrdrKt10003Response, error) {
+	req.DmstStexTp = strings.ToUpper(strings.TrimSpace(req.DmstStexTp))
+	if req.DmstStexTp == "" {
+		req.DmstStexTp = "KRX"
 	}
-	req.Symbol = normalizeSymbolCode(req.Symbol)
-	req.OriginalID = strings.TrimSpace(req.OriginalID)
-	if req.Symbol == "" || req.OriginalID == "" || req.CancelQty <= 0 {
+	req.StkCd = normalizeSymbolCode(req.StkCd)
+	req.OrigOrdNo = strings.TrimSpace(req.OrigOrdNo)
+	req.CnclQty = strings.TrimSpace(req.CnclQty)
+	if req.StkCd == "" || req.OrigOrdNo == "" || asInt64(req.CnclQty) <= 0 {
 		return nil, broker.ErrInvalidOrderRequest
 	}
 
-	res, err := c.call(ctx, endpointCancelOrder, map[string]interface{}{
-		"dmst_stex_tp": req.Exchange,
-		"orig_ord_no":  req.OriginalID,
-		"stk_cd":       req.Symbol,
-		"cncl_qty":     fmt.Sprintf("%d", req.CancelQty),
-	}, callOptions{})
+	respObj, err := c.CallDocumentedEndpoint(ctx, "kt10003", PathOrder, &req)
 	if err != nil {
 		return nil, err
 	}
-
-	return &OrderAck{
-		OrderNumber: asString(res.Body["ord_no"]),
-		ReturnMsg:   asString(res.Body["return_msg"]),
-		ReturnCode:  parseReturnCode(res.Body["return_code"]),
-	}, nil
+	out := &kiwoomspecs.KiwoomApiDostkOrdrKt10003Response{}
+	if err := bindResponseObject(respObj, out); err != nil {
+		return nil, err
+	}
+	return out, nil
 }
 
 // ModifyStockOrder modifies order through kt10002.
-func (c *Client) ModifyStockOrder(ctx context.Context, req ModifyStockOrderRequest) (*OrderAck, error) {
-	req.Exchange = strings.ToUpper(strings.TrimSpace(req.Exchange))
-	if req.Exchange == "" {
-		req.Exchange = "KRX"
+func (c *Client) ModifyStockOrder(
+	ctx context.Context,
+	req kiwoomspecs.KiwoomApiDostkOrdrKt10002Request,
+) (*kiwoomspecs.KiwoomApiDostkOrdrKt10002Response, error) {
+	req.DmstStexTp = strings.ToUpper(strings.TrimSpace(req.DmstStexTp))
+	if req.DmstStexTp == "" {
+		req.DmstStexTp = "KRX"
 	}
-	req.Symbol = normalizeSymbolCode(req.Symbol)
-	req.OriginalID = strings.TrimSpace(req.OriginalID)
-	if req.Symbol == "" || req.OriginalID == "" || req.ModifyQty <= 0 || strings.TrimSpace(req.ModifyPrice) == "" {
+	req.StkCd = normalizeSymbolCode(req.StkCd)
+	req.OrigOrdNo = strings.TrimSpace(req.OrigOrdNo)
+	req.MdfyQty = strings.TrimSpace(req.MdfyQty)
+	req.MdfyUv = strings.TrimSpace(req.MdfyUv)
+	req.MdfyCondUv = strings.TrimSpace(req.MdfyCondUv)
+	if req.StkCd == "" || req.OrigOrdNo == "" || asInt64(req.MdfyQty) <= 0 || req.MdfyUv == "" {
 		return nil, broker.ErrInvalidOrderRequest
 	}
 
-	res, err := c.call(ctx, endpointModifyOrder, map[string]interface{}{
-		"dmst_stex_tp": req.Exchange,
-		"orig_ord_no":  req.OriginalID,
-		"stk_cd":       req.Symbol,
-		"mdfy_qty":     fmt.Sprintf("%d", req.ModifyQty),
-		"mdfy_uv":      strings.TrimSpace(req.ModifyPrice),
-		"mdfy_cond_uv": strings.TrimSpace(req.ConditionPrice),
-	}, callOptions{})
+	respObj, err := c.CallDocumentedEndpoint(ctx, "kt10002", PathOrder, &req)
 	if err != nil {
 		return nil, err
 	}
-
-	return &OrderAck{
-		OrderNumber: asString(res.Body["ord_no"]),
-		ReturnMsg:   asString(res.Body["return_msg"]),
-		ReturnCode:  parseReturnCode(res.Body["return_code"]),
-	}, nil
+	out := &kiwoomspecs.KiwoomApiDostkOrdrKt10002Response{}
+	if err := bindResponseObject(respObj, out); err != nil {
+		return nil, err
+	}
+	return out, nil
 }

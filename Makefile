@@ -1,4 +1,6 @@
-.PHONY: build run test clean deps mock kis-spec-fetch kis-spec-generate kis-spec-refresh kis-spec-check kis-spec-all
+.PHONY: build run test clean deps mock \
+	kis-spec-fetch kis-spec-generate kis-spec-refresh kis-spec-check kis-spec-all \
+	kiwoom-spec-fetch kiwoom-spec-generate kiwoom-spec-refresh kiwoom-spec-check kiwoom-spec-all
 
 # Build the application
 build:
@@ -59,3 +61,22 @@ kis-spec-check:
 
 # Run full KIS spec workflow end-to-end
 kis-spec-all: kis-spec-fetch kis-spec-generate kis-spec-refresh kis-spec-check
+
+# Fetch latest documented Kiwoom snapshot from portal (network required)
+kiwoom-spec-fetch:
+	go run ./cmd/kiwoom-specgen fetch --out internal/kiwoom/specs/documented_endpoints.json
+
+# Generate Kiwoom documented spec Go file from snapshot
+kiwoom-spec-generate:
+	go run ./cmd/kiwoom-specgen generate --in internal/kiwoom/specs/documented_endpoints.json --spec-out internal/kiwoom/specs/documented_specs_generated.go --types-out internal/kiwoom/specs/documented_endpoint_types_generated.go
+
+# Refresh snapshot + regenerate Kiwoom documented Go files
+kiwoom-spec-refresh:
+	go run ./cmd/kiwoom-specgen refresh --snapshot internal/kiwoom/specs/documented_endpoints.json --spec-out internal/kiwoom/specs/documented_specs_generated.go --types-out internal/kiwoom/specs/documented_endpoint_types_generated.go
+
+# Verify generated Kiwoom documented files are up to date
+kiwoom-spec-check:
+	go run ./cmd/kiwoom-specgen check --in internal/kiwoom/specs/documented_endpoints.json --spec-out internal/kiwoom/specs/documented_specs_generated.go --types-out internal/kiwoom/specs/documented_endpoint_types_generated.go
+
+# Run full Kiwoom spec workflow end-to-end
+kiwoom-spec-all: kiwoom-spec-fetch kiwoom-spec-generate kiwoom-spec-refresh kiwoom-spec-check
