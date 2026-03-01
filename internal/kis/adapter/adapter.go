@@ -13,6 +13,7 @@ import (
 	"time"
 
 	"github.com/smallfish06/krsec/internal/kis"
+	kisspecs "github.com/smallfish06/krsec/internal/kis/specs"
 	"github.com/smallfish06/krsec/pkg/broker"
 )
 
@@ -656,7 +657,7 @@ func (a *Adapter) PlaceOrder(ctx context.Context, req broker.OrderRequest) (*bro
 		if err != nil {
 			return nil, err
 		}
-		reqFields := kis.KISOverseasStockV1TradingOrderRequest{
+		reqFields := kisspecs.KISOverseasStockV1TradingOrderRequest{
 			Cano:         cano,
 			AcntPrdtCd:   acntPrdtCD,
 			OvrsExcgCd:   ovrsExcg,
@@ -666,7 +667,7 @@ func (a *Adapter) PlaceOrder(ctx context.Context, req broker.OrderRequest) (*bro
 			OrdSvrDvsnCd: "0",
 			OrdDvsn:      "00",
 		}
-		resp, err := callEndpointDecoded[kis.KISOverseasStockV1TradingOrder](
+		resp, err := callEndpointDecoded[kisspecs.KISOverseasStockV1TradingOrder](
 			a,
 			ctx,
 			http.MethodPost,
@@ -716,7 +717,7 @@ func (a *Adapter) PlaceOrder(ctx context.Context, req broker.OrderRequest) (*bro
 		trID = "V" + trID[1:]
 	}
 
-	reqFields := kis.KISDomesticStockV1TradingOrderCashRequest{
+	reqFields := kisspecs.KISDomesticStockV1TradingOrderCashRequest{
 		Cano:       cano,
 		AcntPrdtCd: acntPrdtCD,
 		Pdno:       req.Symbol,
@@ -724,7 +725,7 @@ func (a *Adapter) PlaceOrder(ctx context.Context, req broker.OrderRequest) (*bro
 		OrdQty:     strconv.Itoa(int(req.Quantity)),
 		OrdUnpr:    strconv.Itoa(int(req.Price)),
 	}
-	resp, err := callEndpointDecoded[kis.KISDomesticStockV1TradingOrderCash](
+	resp, err := callEndpointDecoded[kisspecs.KISDomesticStockV1TradingOrderCash](
 		a,
 		ctx,
 		http.MethodPost,
@@ -776,7 +777,7 @@ func (a *Adapter) CancelOrder(ctx context.Context, orderID string) error {
 		if trErr != nil {
 			return trErr
 		}
-		reqFields := kis.KISOverseasStockV1TradingOrderRvsecnclRequest{
+		reqFields := kisspecs.KISOverseasStockV1TradingOrderRvsecnclRequest{
 			Cano:           meta.CANO,
 			AcntPrdtCd:     meta.AccountPrdt,
 			OvrsExcgCd:     meta.ExchangeCode,
@@ -786,7 +787,7 @@ func (a *Adapter) CancelOrder(ctx context.Context, orderID string) error {
 			OrdQty:         strconv.Itoa(meta.OrderQty),
 			OvrsOrdUnpr:    "0",
 		}
-		_, err = callEndpointDecoded[kis.KISOverseasStockV1TradingOrderRvsecncl](
+		_, err = callEndpointDecoded[kisspecs.KISOverseasStockV1TradingOrderRvsecncl](
 			a,
 			ctx,
 			http.MethodPost,
@@ -799,7 +800,7 @@ func (a *Adapter) CancelOrder(ctx context.Context, orderID string) error {
 		if a.sandbox {
 			trID = "VTTC0803U"
 		}
-		reqFields := kis.KISDomesticStockV1TradingOrderRvsecnclRequest{
+		reqFields := kisspecs.KISDomesticStockV1TradingOrderRvsecnclRequest{
 			Cano:            meta.CANO,
 			AcntPrdtCd:      meta.AccountPrdt,
 			KrxFwdgOrdOrgno: meta.OrderOrgNo,
@@ -810,7 +811,7 @@ func (a *Adapter) CancelOrder(ctx context.Context, orderID string) error {
 			OrdUnpr:         strconv.Itoa(int(meta.OrderPrice)),
 			QtyAllOrdYn:     "Y",
 		}
-		_, err = callEndpointDecoded[kis.KISDomesticStockV1TradingOrderRvsecncl](
+		_, err = callEndpointDecoded[kisspecs.KISDomesticStockV1TradingOrderRvsecncl](
 			a,
 			ctx,
 			http.MethodPost,
@@ -863,7 +864,7 @@ func (a *Adapter) ModifyOrder(ctx context.Context, orderID string, req broker.Mo
 		if trErr != nil {
 			return nil, trErr
 		}
-		reqFields := kis.KISOverseasStockV1TradingOrderRvsecnclRequest{
+		reqFields := kisspecs.KISOverseasStockV1TradingOrderRvsecnclRequest{
 			Cano:           meta.CANO,
 			AcntPrdtCd:     meta.AccountPrdt,
 			OvrsExcgCd:     meta.ExchangeCode,
@@ -873,7 +874,7 @@ func (a *Adapter) ModifyOrder(ctx context.Context, orderID string, req broker.Mo
 			OrdQty:         strconv.Itoa(newQty),
 			OvrsOrdUnpr:    fmt.Sprintf("%.4f", newPrice),
 		}
-		decoded, err := callEndpointDecoded[kis.KISOverseasStockV1TradingOrderRvsecncl](
+		decoded, err := callEndpointDecoded[kisspecs.KISOverseasStockV1TradingOrderRvsecncl](
 			a,
 			ctx,
 			http.MethodPost,
@@ -894,7 +895,7 @@ func (a *Adapter) ModifyOrder(ctx context.Context, orderID string, req broker.Mo
 		if a.sandbox {
 			trID = "VTTC0803U"
 		}
-		reqFields := kis.KISDomesticStockV1TradingOrderRvsecnclRequest{
+		reqFields := kisspecs.KISDomesticStockV1TradingOrderRvsecnclRequest{
 			Cano:            meta.CANO,
 			AcntPrdtCd:      meta.AccountPrdt,
 			KrxFwdgOrdOrgno: meta.OrderOrgNo,
@@ -905,7 +906,7 @@ func (a *Adapter) ModifyOrder(ctx context.Context, orderID string, req broker.Mo
 			OrdUnpr:         strconv.Itoa(int(newPrice)),
 			QtyAllOrdYn:     "N",
 		}
-		decoded, err := callEndpointDecoded[kis.KISDomesticStockV1TradingOrderRvsecncl](
+		decoded, err := callEndpointDecoded[kisspecs.KISDomesticStockV1TradingOrderRvsecncl](
 			a,
 			ctx,
 			http.MethodPost,

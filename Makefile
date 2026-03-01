@@ -1,4 +1,4 @@
-.PHONY: build run test clean deps mock kis-spec-fetch kis-spec-generate kis-spec-refresh kis-spec-check
+.PHONY: build run test clean deps mock kis-spec-fetch kis-spec-generate kis-spec-refresh kis-spec-check kis-spec-all
 
 # Build the application
 build:
@@ -47,12 +47,15 @@ kis-spec-fetch:
 
 # Generate KIS documented spec/type Go files from snapshot
 kis-spec-generate:
-	go run ./cmd/kis-specgen generate --in internal/kis/specs/documented_endpoints.json --spec-out internal/kis/adapter/documented_specs.go --types-out internal/kis/documented_endpoint_types_generated.go
+	go run ./cmd/kis-specgen generate --in internal/kis/specs/documented_endpoints.json --spec-out internal/kis/specs/documented_specs_generated.go --types-out internal/kis/specs/documented_endpoint_types_generated.go
 
 # Refresh snapshot + regenerate KIS documented Go files
 kis-spec-refresh:
-	go run ./cmd/kis-specgen refresh --snapshot internal/kis/specs/documented_endpoints.json --spec-out internal/kis/adapter/documented_specs.go --types-out internal/kis/documented_endpoint_types_generated.go
+	go run ./cmd/kis-specgen refresh --snapshot internal/kis/specs/documented_endpoints.json --spec-out internal/kis/specs/documented_specs_generated.go --types-out internal/kis/specs/documented_endpoint_types_generated.go
 
 # Verify generated KIS documented files are up to date
 kis-spec-check:
-	go run ./cmd/kis-specgen check --in internal/kis/specs/documented_endpoints.json --spec-out internal/kis/adapter/documented_specs.go --types-out internal/kis/documented_endpoint_types_generated.go
+	go run ./cmd/kis-specgen check --in internal/kis/specs/documented_endpoints.json --spec-out internal/kis/specs/documented_specs_generated.go --types-out internal/kis/specs/documented_endpoint_types_generated.go
+
+# Run full KIS spec workflow end-to-end
+kis-spec-all: kis-spec-fetch kis-spec-generate kis-spec-refresh kis-spec-check

@@ -5,6 +5,8 @@ import (
 	"net/http"
 	"net/http/httptest"
 	"testing"
+
+	kisspecs "github.com/smallfish06/krsec/internal/kis/specs"
 )
 
 func TestDocumentedEndpointResponseFactoryCoverage(t *testing.T) {
@@ -22,7 +24,7 @@ func TestNewDocumentedEndpointResponse_KnownAndUnknown(t *testing.T) {
 	if got == nil {
 		t.Fatal("expected typed response for known path")
 	}
-	if _, ok := got.(*KISDomesticStockV1QuotationsInquirePrice); !ok {
+	if _, ok := got.(*kisspecs.KISDomesticStockV1QuotationsInquirePrice); !ok {
 		t.Fatalf("unexpected type: %T", got)
 	}
 

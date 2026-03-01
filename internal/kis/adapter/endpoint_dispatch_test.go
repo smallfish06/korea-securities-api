@@ -7,6 +7,7 @@ import (
 	"testing"
 
 	"github.com/smallfish06/krsec/internal/kis"
+	kisspecs "github.com/smallfish06/krsec/internal/kis/specs"
 )
 
 func TestNewEndpointDispatcher_IncludesRequiredKISRoutes(t *testing.T) {
@@ -42,7 +43,7 @@ func TestNewEndpointDispatcher_CoversAllDocumentedKISPaths(t *testing.T) {
 
 	d := newEndpointDispatcher(&Adapter{})
 
-	if got, want := len(d.routes), len(documentedKISEndpointSpecs); got != want {
+	if got, want := len(d.routes), len(kisspecs.DocumentedKISEndpointSpecs); got != want {
 		t.Fatalf("unexpected route count: got=%d want=%d", got, want)
 	}
 }

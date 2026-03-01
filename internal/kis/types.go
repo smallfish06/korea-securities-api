@@ -1,38 +1,42 @@
 package kis
 
-import "time"
+import (
+	"time"
+
+	kisspecs "github.com/smallfish06/krsec/internal/kis/specs"
+)
 
 // Legacy KIS DTO aliases. Keep these names stable while sourcing fields from
 // generated documented endpoint types.
-type StockPriceOutput = KISDomesticStockV1QuotationsInquirePriceOutputItem
+type StockPriceOutput = kisspecs.KISDomesticStockV1QuotationsInquirePriceOutputItem
 
-type StockDailyPriceOutput = KISDomesticStockV1QuotationsInquireDailyPriceOutputItem
+type StockDailyPriceOutput = kisspecs.KISDomesticStockV1QuotationsInquireDailyPriceOutputItem
 
-type StockBalanceOutput = KISDomesticStockV1TradingInquireBalanceOutput1Item
+type StockBalanceOutput = kisspecs.KISDomesticStockV1TradingInquireBalanceOutput1Item
 
-type StockBalanceSummary = KISDomesticStockV1TradingInquireBalanceOutput2Item
+type StockBalanceSummary = kisspecs.KISDomesticStockV1TradingInquireBalanceOutput2Item
 
-type BondPriceOutput = KISDomesticBondV1QuotationsInquirePriceOutputItem
+type BondPriceOutput = kisspecs.KISDomesticBondV1QuotationsInquirePriceOutputItem
 
-type BondBalanceOutput = KISDomesticBondV1TradingInquireBalanceOutputItem
+type BondBalanceOutput = kisspecs.KISDomesticBondV1TradingInquireBalanceOutputItem
 
-type OverseasPriceOutput = KISOverseasPriceV1QuotationsPriceDetailOutputItem
+type OverseasPriceOutput = kisspecs.KISOverseasPriceV1QuotationsPriceDetailOutputItem
 
-type StockBasicInfoOutput = KISDomesticStockV1QuotationsSearchStockInfoOutputItem
+type StockBasicInfoOutput = kisspecs.KISDomesticStockV1QuotationsSearchStockInfoOutputItem
 
-type ProductBasicInfoOutput = KISDomesticStockV1QuotationsSearchInfoOutputItem
+type ProductBasicInfoOutput = kisspecs.KISDomesticStockV1QuotationsSearchInfoOutputItem
 
-type OverseasProductBasicInfoOutput = KISOverseasPriceV1QuotationsSearchInfoOutputItem
+type OverseasProductBasicInfoOutput = kisspecs.KISOverseasPriceV1QuotationsSearchInfoOutputItem
 
-type StockRvseCnclCandidate = KISDomesticStockV1TradingInquirePsblRvsecnclOutputItem
+type StockRvseCnclCandidate = kisspecs.KISDomesticStockV1TradingInquirePsblRvsecnclOutputItem
 
-type DomesticDailyCcldItem = KISDomesticStockV1TradingInquireDailyCcldOutput1Item
+type DomesticDailyCcldItem = kisspecs.KISDomesticStockV1TradingInquireDailyCcldOutput1Item
 
-type OverseasCcnlItem = KISOverseasStockV1TradingInquireCcnlOutputItem
+type OverseasCcnlItem = kisspecs.KISOverseasStockV1TradingInquireCcnlOutputItem
 
 // ErrorResponse represents KIS API error response.
 // Kept as a thin alias for compatibility.
-type ErrorResponse = DocumentedResponseBase
+type ErrorResponse = kisspecs.DocumentedResponseBase
 
 // ParseKISDate parses KIS date strings (YYYYMMDD)
 func ParseKISDate(s string) (time.Time, error) {

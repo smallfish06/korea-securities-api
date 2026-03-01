@@ -8,6 +8,7 @@ import (
 	"strings"
 
 	"github.com/smallfish06/krsec/internal/kis"
+	kisspecs "github.com/smallfish06/krsec/internal/kis/specs"
 	"github.com/smallfish06/krsec/pkg/broker"
 )
 
@@ -48,14 +49,14 @@ func (r endpointRoute) allows(method string) bool {
 func newEndpointDispatcher(adapter *Adapter) *endpointDispatcher {
 	d := &endpointDispatcher{
 		adapter: adapter,
-		routes:  make(map[string]endpointRoute, len(documentedKISEndpointSpecs)),
+		routes:  make(map[string]endpointRoute, len(kisspecs.DocumentedKISEndpointSpecs)),
 	}
 	d.registerDocumentedKISRoutes()
 	return d
 }
 
 func (d *endpointDispatcher) registerDocumentedKISRoutes() {
-	for path, spec := range documentedKISEndpointSpecs {
+	for path, spec := range kisspecs.DocumentedKISEndpointSpecs {
 		p := path
 		method := strings.ToUpper(strings.TrimSpace(spec.Method))
 		if method == "" {
@@ -65,7 +66,7 @@ func (d *endpointDispatcher) registerDocumentedKISRoutes() {
 	}
 }
 
-func (d *endpointDispatcher) dispatchDocumentedKISEndpoint(path string, spec documentedKISEndpointSpec) endpointDispatchFunc {
+func (d *endpointDispatcher) dispatchDocumentedKISEndpoint(path string, spec kisspecs.KISEndpointSpec) endpointDispatchFunc {
 	return func(ctx context.Context, method string, trID string, fields map[string]string) (map[string]interface{}, error) {
 		for _, req := range spec.RequiredFields {
 			k := strings.ToUpper(strings.TrimSpace(req))
