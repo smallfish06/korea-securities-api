@@ -12,61 +12,61 @@ type KISDomesticBondV1QuotationsAvgUnit struct {
 }
 
 type KISDomesticBondV1QuotationsAvgUnitOutput1Item struct {
-	EvluDt           string `json:"evlu_dt,omitempty"`
-	Pdno             string `json:"pdno,omitempty"`
-	PrdtTypeCd       string `json:"prdt_type_cd,omitempty"`
-	PrdtName         string `json:"prdt_name,omitempty"`
-	KisUnpr          string `json:"kis_unpr,omitempty"`
-	KbpUnpr          string `json:"kbp_unpr,omitempty"`
-	NiceEvluUnpr     string `json:"nice_evlu_unpr,omitempty"`
-	FnpUnpr          string `json:"fnp_unpr,omitempty"`
-	AvgEvluUnpr      string `json:"avg_evlu_unpr,omitempty"`
-	KisCrdtGradText  string `json:"kis_crdt_grad_text,omitempty"`
-	KbpCrdtGradText  string `json:"kbp_crdt_grad_text,omitempty"`
-	NiceCrdtGradText string `json:"nice_crdt_grad_text,omitempty"`
-	FnpCrdtGradText  string `json:"fnp_crdt_grad_text,omitempty"`
-	ChngYn           string `json:"chng_yn,omitempty"`
-	KisErngRt        string `json:"kis_erng_rt,omitempty"`
-	KbpErngRt        string `json:"kbp_erng_rt,omitempty"`
-	NiceEvluErngRt   string `json:"nice_evlu_erng_rt,omitempty"`
-	FnpErngRt        string `json:"fnp_erng_rt,omitempty"`
-	AvgEvluErngRt    string `json:"avg_evlu_erng_rt,omitempty"`
-	KisRfUnpr        string `json:"kis_rf_unpr,omitempty"`
-	KbpRfUnpr        string `json:"kbp_rf_unpr,omitempty"`
-	NiceEvluRfUnpr   string `json:"nice_evlu_rf_unpr,omitempty"`
-	AvgEvluRfUnpr    string `json:"avg_evlu_rf_unpr,omitempty"`
+	EvluDt           string `json:"evlu_dt"`
+	Pdno             string `json:"pdno"`
+	PrdtTypeCd       string `json:"prdt_type_cd"`
+	PrdtName         string `json:"prdt_name"`
+	KisUnpr          string `json:"kis_unpr"`
+	KbpUnpr          string `json:"kbp_unpr"`
+	NiceEvluUnpr     string `json:"nice_evlu_unpr"`
+	FnpUnpr          string `json:"fnp_unpr"`
+	AvgEvluUnpr      string `json:"avg_evlu_unpr"`
+	KisCrdtGradText  string `json:"kis_crdt_grad_text"`
+	KbpCrdtGradText  string `json:"kbp_crdt_grad_text"`
+	NiceCrdtGradText string `json:"nice_crdt_grad_text"`
+	FnpCrdtGradText  string `json:"fnp_crdt_grad_text"`
+	ChngYn           string `json:"chng_yn"`
+	KisErngRt        string `json:"kis_erng_rt"`
+	KbpErngRt        string `json:"kbp_erng_rt"`
+	NiceEvluErngRt   string `json:"nice_evlu_erng_rt"`
+	FnpErngRt        string `json:"fnp_erng_rt"`
+	AvgEvluErngRt    string `json:"avg_evlu_erng_rt"`
+	KisRfUnpr        string `json:"kis_rf_unpr"`
+	KbpRfUnpr        string `json:"kbp_rf_unpr"`
+	NiceEvluRfUnpr   string `json:"nice_evlu_rf_unpr"`
+	AvgEvluRfUnpr    string `json:"avg_evlu_rf_unpr"`
 }
 
 type KISDomesticBondV1QuotationsAvgUnitOutput2Item struct {
-	EvluDt      string `json:"evlu_dt,omitempty"`
-	Pdno        string `json:"pdno,omitempty"`
-	PrdtTypeCd  string `json:"prdt_type_cd,omitempty"`
-	PrdtName    string `json:"prdt_name,omitempty"`
-	KisEvluAmt  string `json:"kis_evlu_amt,omitempty"`
-	KbpEvluAmt  string `json:"kbp_evlu_amt,omitempty"`
-	NiceEvluAmt string `json:"nice_evlu_amt,omitempty"`
-	FnpEvluAmt  string `json:"fnp_evlu_amt,omitempty"`
-	AvgEvluAmt  string `json:"avg_evlu_amt,omitempty"`
-	ChngYn      string `json:"chng_yn,omitempty"`
+	EvluDt      string `json:"evlu_dt"`
+	Pdno        string `json:"pdno"`
+	PrdtTypeCd  string `json:"prdt_type_cd"`
+	PrdtName    string `json:"prdt_name"`
+	KisEvluAmt  string `json:"kis_evlu_amt"`
+	KbpEvluAmt  string `json:"kbp_evlu_amt"`
+	NiceEvluAmt string `json:"nice_evlu_amt"`
+	FnpEvluAmt  string `json:"fnp_evlu_amt"`
+	AvgEvluAmt  string `json:"avg_evlu_amt"`
+	ChngYn      string `json:"chng_yn"`
 }
 
 type KISDomesticBondV1QuotationsAvgUnitOutput3Item struct {
-	EvluDt           string `json:"evlu_dt,omitempty"`
-	Pdno             string `json:"pdno,omitempty"`
-	PrdtTypeCd       string `json:"prdt_type_cd,omitempty"`
-	PrdtName         string `json:"prdt_name,omitempty"`
-	KisCrcyCd        string `json:"kis_crcy_cd,omitempty"`
-	KisEvluUnitPric  string `json:"kis_evlu_unit_pric,omitempty"`
-	KisEvluPric      string `json:"kis_evlu_pric,omitempty"`
-	KbpCrcyCd        string `json:"kbp_crcy_cd,omitempty"`
-	KbpEvluUnitPric  string `json:"kbp_evlu_unit_pric,omitempty"`
-	KbpEvluPric      string `json:"kbp_evlu_pric,omitempty"`
-	NiceCrcyCd       string `json:"nice_crcy_cd,omitempty"`
-	NiceEvluUnitPric string `json:"nice_evlu_unit_pric,omitempty"`
-	NiceEvluPric     string `json:"nice_evlu_pric,omitempty"`
-	AvgEvluUnitPric  string `json:"avg_evlu_unit_pric,omitempty"`
-	AvgEvluPric      string `json:"avg_evlu_pric,omitempty"`
-	ChngYn           string `json:"chng_yn,omitempty"`
+	EvluDt           string `json:"evlu_dt"`
+	Pdno             string `json:"pdno"`
+	PrdtTypeCd       string `json:"prdt_type_cd"`
+	PrdtName         string `json:"prdt_name"`
+	KisCrcyCd        string `json:"kis_crcy_cd"`
+	KisEvluUnitPric  string `json:"kis_evlu_unit_pric"`
+	KisEvluPric      string `json:"kis_evlu_pric"`
+	KbpCrcyCd        string `json:"kbp_crcy_cd"`
+	KbpEvluUnitPric  string `json:"kbp_evlu_unit_pric"`
+	KbpEvluPric      string `json:"kbp_evlu_pric"`
+	NiceCrcyCd       string `json:"nice_crcy_cd"`
+	NiceEvluUnitPric string `json:"nice_evlu_unit_pric"`
+	NiceEvluPric     string `json:"nice_evlu_pric"`
+	AvgEvluUnitPric  string `json:"avg_evlu_unit_pric"`
+	AvgEvluPric      string `json:"avg_evlu_pric"`
+	ChngYn           string `json:"chng_yn"`
 }
 
 type KISDomesticBondV1QuotationsAvgUnitRequest struct {
@@ -85,40 +85,40 @@ type KISDomesticBondV1QuotationsInquireAskingPrice struct {
 }
 
 type KISDomesticBondV1QuotationsInquireAskingPriceOutputItem struct {
-	AsprAcptHour  string `json:"aspr_acpt_hour,omitempty"`
-	BondAskp1     string `json:"bond_askp1,omitempty"`
-	BondAskp2     string `json:"bond_askp2,omitempty"`
-	BondAskp3     string `json:"bond_askp3,omitempty"`
-	BondAskp4     string `json:"bond_askp4,omitempty"`
-	BondAskp5     string `json:"bond_askp5,omitempty"`
-	BondBidp1     string `json:"bond_bidp1,omitempty"`
-	BondBidp2     string `json:"bond_bidp2,omitempty"`
-	BondBidp3     string `json:"bond_bidp3,omitempty"`
-	BondBidp4     string `json:"bond_bidp4,omitempty"`
-	BondBidp5     string `json:"bond_bidp5,omitempty"`
-	AskpRsqn1     string `json:"askp_rsqn1,omitempty"`
-	AskpRsqn2     string `json:"askp_rsqn2,omitempty"`
-	AskpRsqn3     string `json:"askp_rsqn3,omitempty"`
-	AskpRsqn4     string `json:"askp_rsqn4,omitempty"`
-	AskpRsqn5     string `json:"askp_rsqn5,omitempty"`
-	BidpRsqn1     string `json:"bidp_rsqn1,omitempty"`
-	BidpRsqn2     string `json:"bidp_rsqn2,omitempty"`
-	BidpRsqn3     string `json:"bidp_rsqn3,omitempty"`
-	BidpRsqn4     string `json:"bidp_rsqn4,omitempty"`
-	BidpRsqn5     string `json:"bidp_rsqn5,omitempty"`
-	TotalAskpRsqn string `json:"total_askp_rsqn,omitempty"`
-	TotalBidpRsqn string `json:"total_bidp_rsqn,omitempty"`
-	NtbyAsprRsqn  string `json:"ntby_aspr_rsqn,omitempty"`
-	SelnErnnRate1 string `json:"seln_ernn_rate1,omitempty"`
-	SelnErnnRate2 string `json:"seln_ernn_rate2,omitempty"`
-	SelnErnnRate3 string `json:"seln_ernn_rate3,omitempty"`
-	SelnErnnRate4 string `json:"seln_ernn_rate4,omitempty"`
-	SelnErnnRate5 string `json:"seln_ernn_rate5,omitempty"`
-	ShnuErnnRate1 string `json:"shnu_ernn_rate1,omitempty"`
-	ShnuErnnRate2 string `json:"shnu_ernn_rate2,omitempty"`
-	ShnuErnnRate3 string `json:"shnu_ernn_rate3,omitempty"`
-	ShnuErnnRate4 string `json:"shnu_ernn_rate4,omitempty"`
-	ShnuErnnRate5 string `json:"shnu_ernn_rate5,omitempty"`
+	AsprAcptHour  string `json:"aspr_acpt_hour"`
+	BondAskp1     string `json:"bond_askp1"`
+	BondAskp2     string `json:"bond_askp2"`
+	BondAskp3     string `json:"bond_askp3"`
+	BondAskp4     string `json:"bond_askp4"`
+	BondAskp5     string `json:"bond_askp5"`
+	BondBidp1     string `json:"bond_bidp1"`
+	BondBidp2     string `json:"bond_bidp2"`
+	BondBidp3     string `json:"bond_bidp3"`
+	BondBidp4     string `json:"bond_bidp4"`
+	BondBidp5     string `json:"bond_bidp5"`
+	AskpRsqn1     string `json:"askp_rsqn1"`
+	AskpRsqn2     string `json:"askp_rsqn2"`
+	AskpRsqn3     string `json:"askp_rsqn3"`
+	AskpRsqn4     string `json:"askp_rsqn4"`
+	AskpRsqn5     string `json:"askp_rsqn5"`
+	BidpRsqn1     string `json:"bidp_rsqn1"`
+	BidpRsqn2     string `json:"bidp_rsqn2"`
+	BidpRsqn3     string `json:"bidp_rsqn3"`
+	BidpRsqn4     string `json:"bidp_rsqn4"`
+	BidpRsqn5     string `json:"bidp_rsqn5"`
+	TotalAskpRsqn string `json:"total_askp_rsqn"`
+	TotalBidpRsqn string `json:"total_bidp_rsqn"`
+	NtbyAsprRsqn  string `json:"ntby_aspr_rsqn"`
+	SelnErnnRate1 string `json:"seln_ernn_rate1"`
+	SelnErnnRate2 string `json:"seln_ernn_rate2"`
+	SelnErnnRate3 string `json:"seln_ernn_rate3"`
+	SelnErnnRate4 string `json:"seln_ernn_rate4"`
+	SelnErnnRate5 string `json:"seln_ernn_rate5"`
+	ShnuErnnRate1 string `json:"shnu_ernn_rate1"`
+	ShnuErnnRate2 string `json:"shnu_ernn_rate2"`
+	ShnuErnnRate3 string `json:"shnu_ernn_rate3"`
+	ShnuErnnRate4 string `json:"shnu_ernn_rate4"`
+	ShnuErnnRate5 string `json:"shnu_ernn_rate5"`
 }
 
 type KISDomesticBondV1QuotationsInquireAskingPriceRequest struct {
@@ -132,13 +132,13 @@ type KISDomesticBondV1QuotationsInquireCcnl struct {
 }
 
 type KISDomesticBondV1QuotationsInquireCcnlOutputItem struct {
-	StckCntgHour string `json:"stck_cntg_hour,omitempty"`
-	BondPrpr     string `json:"bond_prpr,omitempty"`
-	BondPrdyVrss string `json:"bond_prdy_vrss,omitempty"`
-	PrdyVrssSign string `json:"prdy_vrss_sign,omitempty"`
-	PrdyCtrt     string `json:"prdy_ctrt,omitempty"`
-	CntgVol      string `json:"cntg_vol,omitempty"`
-	AcmlVol      string `json:"acml_vol,omitempty"`
+	StckCntgHour string `json:"stck_cntg_hour"`
+	BondPrpr     string `json:"bond_prpr"`
+	BondPrdyVrss string `json:"bond_prdy_vrss"`
+	PrdyVrssSign string `json:"prdy_vrss_sign"`
+	PrdyCtrt     string `json:"prdy_ctrt"`
+	CntgVol      string `json:"cntg_vol"`
+	AcmlVol      string `json:"acml_vol"`
 }
 
 type KISDomesticBondV1QuotationsInquireCcnlRequest struct {
@@ -152,12 +152,12 @@ type KISDomesticBondV1QuotationsInquireDailyItemchartprice struct {
 }
 
 type KISDomesticBondV1QuotationsInquireDailyItemchartpriceOutputItem struct {
-	StckBsopDate string `json:"stck_bsop_date,omitempty"`
-	BondOprc     string `json:"bond_oprc,omitempty"`
-	BondHgpr     string `json:"bond_hgpr,omitempty"`
-	BondLwpr     string `json:"bond_lwpr,omitempty"`
-	BondPrpr     string `json:"bond_prpr,omitempty"`
-	AcmlVol      string `json:"acml_vol,omitempty"`
+	StckBsopDate string `json:"stck_bsop_date"`
+	BondOprc     string `json:"bond_oprc"`
+	BondHgpr     string `json:"bond_hgpr"`
+	BondLwpr     string `json:"bond_lwpr"`
+	BondPrpr     string `json:"bond_prpr"`
+	AcmlVol      string `json:"acml_vol"`
 }
 
 type KISDomesticBondV1QuotationsInquireDailyItemchartpriceRequest struct {
@@ -171,15 +171,15 @@ type KISDomesticBondV1QuotationsInquireDailyPrice struct {
 }
 
 type KISDomesticBondV1QuotationsInquireDailyPriceOutputItem struct {
-	StckBsopDate string `json:"stck_bsop_date,omitempty"`
-	BondPrpr     string `json:"bond_prpr,omitempty"`
-	BondPrdyVrss string `json:"bond_prdy_vrss,omitempty"`
-	PrdyVrssSign string `json:"prdy_vrss_sign,omitempty"`
-	PrdyCtrt     string `json:"prdy_ctrt,omitempty"`
-	AcmlVol      string `json:"acml_vol,omitempty"`
-	BondOprc     string `json:"bond_oprc,omitempty"`
-	BondHgpr     string `json:"bond_hgpr,omitempty"`
-	BondLwpr     string `json:"bond_lwpr,omitempty"`
+	StckBsopDate string `json:"stck_bsop_date"`
+	BondPrpr     string `json:"bond_prpr"`
+	BondPrdyVrss string `json:"bond_prdy_vrss"`
+	PrdyVrssSign string `json:"prdy_vrss_sign"`
+	PrdyCtrt     string `json:"prdy_ctrt"`
+	AcmlVol      string `json:"acml_vol"`
+	BondOprc     string `json:"bond_oprc"`
+	BondHgpr     string `json:"bond_hgpr"`
+	BondLwpr     string `json:"bond_lwpr"`
 }
 
 type KISDomesticBondV1QuotationsInquireDailyPriceRequest struct {
@@ -193,23 +193,23 @@ type KISDomesticBondV1QuotationsInquirePrice struct {
 }
 
 type KISDomesticBondV1QuotationsInquirePriceOutputItem struct {
-	StndIscd     string `json:"stnd_iscd,omitempty"`
-	HtsKorIsnm   string `json:"hts_kor_isnm,omitempty"`
-	BondPrpr     string `json:"bond_prpr,omitempty"`
-	PrdyVrssSign string `json:"prdy_vrss_sign,omitempty"`
-	BondPrdyVrss string `json:"bond_prdy_vrss,omitempty"`
-	PrdyCtrt     string `json:"prdy_ctrt,omitempty"`
-	AcmlVol      string `json:"acml_vol,omitempty"`
-	BondPrdyClpr string `json:"bond_prdy_clpr,omitempty"`
-	BondOprc     string `json:"bond_oprc,omitempty"`
-	BondHgpr     string `json:"bond_hgpr,omitempty"`
-	BondLwpr     string `json:"bond_lwpr,omitempty"`
-	ErnnRate     string `json:"ernn_rate,omitempty"`
-	OprcErt      string `json:"oprc_ert,omitempty"`
-	HgprErt      string `json:"hgpr_ert,omitempty"`
-	LwprErt      string `json:"lwpr_ert,omitempty"`
-	BondMxpr     string `json:"bond_mxpr,omitempty"`
-	BondLlam     string `json:"bond_llam,omitempty"`
+	StndIscd     string `json:"stnd_iscd"`
+	HtsKorIsnm   string `json:"hts_kor_isnm"`
+	BondPrpr     string `json:"bond_prpr"`
+	PrdyVrssSign string `json:"prdy_vrss_sign"`
+	BondPrdyVrss string `json:"bond_prdy_vrss"`
+	PrdyCtrt     string `json:"prdy_ctrt"`
+	AcmlVol      string `json:"acml_vol"`
+	BondPrdyClpr string `json:"bond_prdy_clpr"`
+	BondOprc     string `json:"bond_oprc"`
+	BondHgpr     string `json:"bond_hgpr"`
+	BondLwpr     string `json:"bond_lwpr"`
+	ErnnRate     string `json:"ernn_rate"`
+	OprcErt      string `json:"oprc_ert"`
+	HgprErt      string `json:"hgpr_ert"`
+	LwprErt      string `json:"lwpr_ert"`
+	BondMxpr     string `json:"bond_mxpr"`
+	BondLlam     string `json:"bond_llam"`
 }
 
 type KISDomesticBondV1QuotationsInquirePriceRequest struct {
@@ -223,92 +223,92 @@ type KISDomesticBondV1QuotationsIssueInfo struct {
 }
 
 type KISDomesticBondV1QuotationsIssueInfoOutputItem struct {
-	Pdno                  string `json:"pdno,omitempty"`
-	PrdtTypeCd            string `json:"prdt_type_cd,omitempty"`
-	PrdtName              string `json:"prdt_name,omitempty"`
-	PrdtEngName           string `json:"prdt_eng_name,omitempty"`
-	IvstHeedPrdtYn        string `json:"ivst_heed_prdt_yn,omitempty"`
-	ExtsYn                string `json:"exts_yn,omitempty"`
-	BondClsfCd            string `json:"bond_clsf_cd,omitempty"`
-	BondClsfKorName       string `json:"bond_clsf_kor_name,omitempty"`
-	Papr                  string `json:"papr,omitempty"`
-	IntMnedDvsnCd         string `json:"int_mned_dvsn_cd,omitempty"`
-	RvnuShapCd            string `json:"rvnu_shap_cd,omitempty"`
-	IssuAmt               string `json:"issu_amt,omitempty"`
-	LstgRmnd              string `json:"lstg_rmnd,omitempty"`
-	IntDfrmMcnt           string `json:"int_dfrm_mcnt,omitempty"`
-	BondIntDfrmMthdCd     string `json:"bond_int_dfrm_mthd_cd,omitempty"`
-	SpltRdptRcnt          string `json:"splt_rdpt_rcnt,omitempty"`
-	PrcaDfmtTermMcnt      string `json:"prca_dfmt_term_mcnt,omitempty"`
-	IntAnapDvsnCd         string `json:"int_anap_dvsn_cd,omitempty"`
-	BondRghtDvsnCd        string `json:"bond_rght_dvsn_cd,omitempty"`
-	PrdtPclcText          string `json:"prdt_pclc_text,omitempty"`
-	PrdtAbrvName          string `json:"prdt_abrv_name,omitempty"`
-	PrdtEngAbrvName       string `json:"prdt_eng_abrv_name,omitempty"`
-	SprxPsblYn            string `json:"sprx_psbl_yn,omitempty"`
-	PbffPplcOfrgMthdCd    string `json:"pbff_pplc_ofrg_mthd_cd,omitempty"`
-	CmcoCd                string `json:"cmco_cd,omitempty"`
-	IssuIsttCd            string `json:"issu_istt_cd,omitempty"`
-	IssuIsttName          string `json:"issu_istt_name,omitempty"`
-	PniaDfrmAgcyIsttCd    string `json:"pnia_dfrm_agcy_istt_cd,omitempty"`
-	DsctEcRt              string `json:"dsct_ec_rt,omitempty"`
-	SrfcInrt              string `json:"srfc_inrt,omitempty"`
-	ExpdRdptRt            string `json:"expd_rdpt_rt,omitempty"`
-	ExpdAsrcErngRt        string `json:"expd_asrc_erng_rt,omitempty"`
-	BondGrteIsttName      string `json:"bond_grte_istt_name,omitempty"`
-	IntDfrmDayTypeCd      string `json:"int_dfrm_day_type_cd,omitempty"`
-	KsdIntCalcUnitCd      string `json:"ksd_int_calc_unit_cd,omitempty"`
-	IntWuntUderPrcsDvsnCd string `json:"int_wunt_uder_prcs_dvsn_cd,omitempty"`
-	RvnuDt                string `json:"rvnu_dt,omitempty"`
-	IssuDt                string `json:"issu_dt,omitempty"`
-	LstgDt                string `json:"lstg_dt,omitempty"`
-	ExpdDt                string `json:"expd_dt,omitempty"`
-	RdptDt                string `json:"rdpt_dt,omitempty"`
-	SbstPric              string `json:"sbst_pric,omitempty"`
-	RgbfIntDfrmDt         string `json:"rgbf_int_dfrm_dt,omitempty"`
-	NxtmIntDfrmDt         string `json:"nxtm_int_dfrm_dt,omitempty"`
-	FrstIntDfrmDt         string `json:"frst_int_dfrm_dt,omitempty"`
-	EcisPric              string `json:"ecis_pric,omitempty"`
-	RghtStckStdPdno       string `json:"rght_stck_std_pdno,omitempty"`
-	EcisOpngDt            string `json:"ecis_opng_dt,omitempty"`
-	EcisEndDt             string `json:"ecis_end_dt,omitempty"`
-	BondRvnuMthdCd        string `json:"bond_rvnu_mthd_cd,omitempty"`
-	OprtStfno             string `json:"oprt_stfno,omitempty"`
-	OprtStffName          string `json:"oprt_stff_name,omitempty"`
-	RgbfIntDfrmWday       string `json:"rgbf_int_dfrm_wday,omitempty"`
-	NxtmIntDfrmWday       string `json:"nxtm_int_dfrm_wday,omitempty"`
-	KisCrdtGradText       string `json:"kis_crdt_grad_text,omitempty"`
-	KbpCrdtGradText       string `json:"kbp_crdt_grad_text,omitempty"`
-	NiceCrdtGradText      string `json:"nice_crdt_grad_text,omitempty"`
-	FnpCrdtGradText       string `json:"fnp_crdt_grad_text,omitempty"`
-	DpsiPsblYn            string `json:"dpsi_psbl_yn,omitempty"`
-	PniaIntCalcUnpr       string `json:"pnia_int_calc_unpr,omitempty"`
-	PrcmIdxBondYn         string `json:"prcm_idx_bond_yn,omitempty"`
-	ExpdExtsSrdpRcnt      string `json:"expd_exts_srdp_rcnt,omitempty"`
-	ExpdExtsSrdpRt        string `json:"expd_exts_srdp_rt,omitempty"`
-	LoanPsblYn            string `json:"loan_psbl_yn,omitempty"`
-	GrteDvsnCd            string `json:"grte_dvsn_cd,omitempty"`
-	FnrrRankDvsnCd        string `json:"fnrr_rank_dvsn_cd,omitempty"`
-	KrxLstgAbolDvsnCd     string `json:"krx_lstg_abol_dvsn_cd,omitempty"`
-	AsstRqdiDvsnCd        string `json:"asst_rqdi_dvsn_cd,omitempty"`
-	OpcbDvsnCd            string `json:"opcb_dvsn_cd,omitempty"`
-	CrfdItemYn            string `json:"crfd_item_yn,omitempty"`
-	CrfdItemRstcCclcDt    string `json:"crfd_item_rstc_cclc_dt,omitempty"`
-	BondNmprUnitPric      string `json:"bond_nmpr_unit_pric,omitempty"`
-	IvstHeedBondDvsnName  string `json:"ivst_heed_bond_dvsn_name,omitempty"`
-	AddErngRt             string `json:"add_erng_rt,omitempty"`
-	AddErngRtAplyDt       string `json:"add_erng_rt_aply_dt,omitempty"`
-	BondTrStopDvsnCd      string `json:"bond_tr_stop_dvsn_cd,omitempty"`
-	IvstHeedBondDvsnCd    string `json:"ivst_heed_bond_dvsn_cd,omitempty"`
-	PclrCndtText          string `json:"pclr_cndt_text,omitempty"`
-	HbbdYn                string `json:"hbbd_yn,omitempty"`
-	CdtlCptlSctyTypeCd    string `json:"cdtl_cptl_scty_type_cd,omitempty"`
-	ElecSctyYn            string `json:"elec_scty_yn,omitempty"`
-	Sq1ClopEcisOpngDt     string `json:"sq1_clop_ecis_opng_dt,omitempty"`
-	FrstErlmStfno         string `json:"frst_erlm_stfno,omitempty"`
-	FrstErlmDt            string `json:"frst_erlm_dt,omitempty"`
-	FrstErlmTmd           string `json:"frst_erlm_tmd,omitempty"`
-	TlgRcvgDtlDtime       string `json:"tlg_rcvg_dtl_dtime,omitempty"`
+	Pdno                  string `json:"pdno"`
+	PrdtTypeCd            string `json:"prdt_type_cd"`
+	PrdtName              string `json:"prdt_name"`
+	PrdtEngName           string `json:"prdt_eng_name"`
+	IvstHeedPrdtYn        string `json:"ivst_heed_prdt_yn"`
+	ExtsYn                string `json:"exts_yn"`
+	BondClsfCd            string `json:"bond_clsf_cd"`
+	BondClsfKorName       string `json:"bond_clsf_kor_name"`
+	Papr                  string `json:"papr"`
+	IntMnedDvsnCd         string `json:"int_mned_dvsn_cd"`
+	RvnuShapCd            string `json:"rvnu_shap_cd"`
+	IssuAmt               string `json:"issu_amt"`
+	LstgRmnd              string `json:"lstg_rmnd"`
+	IntDfrmMcnt           string `json:"int_dfrm_mcnt"`
+	BondIntDfrmMthdCd     string `json:"bond_int_dfrm_mthd_cd"`
+	SpltRdptRcnt          string `json:"splt_rdpt_rcnt"`
+	PrcaDfmtTermMcnt      string `json:"prca_dfmt_term_mcnt"`
+	IntAnapDvsnCd         string `json:"int_anap_dvsn_cd"`
+	BondRghtDvsnCd        string `json:"bond_rght_dvsn_cd"`
+	PrdtPclcText          string `json:"prdt_pclc_text"`
+	PrdtAbrvName          string `json:"prdt_abrv_name"`
+	PrdtEngAbrvName       string `json:"prdt_eng_abrv_name"`
+	SprxPsblYn            string `json:"sprx_psbl_yn"`
+	PbffPplcOfrgMthdCd    string `json:"pbff_pplc_ofrg_mthd_cd"`
+	CmcoCd                string `json:"cmco_cd"`
+	IssuIsttCd            string `json:"issu_istt_cd"`
+	IssuIsttName          string `json:"issu_istt_name"`
+	PniaDfrmAgcyIsttCd    string `json:"pnia_dfrm_agcy_istt_cd"`
+	DsctEcRt              string `json:"dsct_ec_rt"`
+	SrfcInrt              string `json:"srfc_inrt"`
+	ExpdRdptRt            string `json:"expd_rdpt_rt"`
+	ExpdAsrcErngRt        string `json:"expd_asrc_erng_rt"`
+	BondGrteIsttName      string `json:"bond_grte_istt_name"`
+	IntDfrmDayTypeCd      string `json:"int_dfrm_day_type_cd"`
+	KsdIntCalcUnitCd      string `json:"ksd_int_calc_unit_cd"`
+	IntWuntUderPrcsDvsnCd string `json:"int_wunt_uder_prcs_dvsn_cd"`
+	RvnuDt                string `json:"rvnu_dt"`
+	IssuDt                string `json:"issu_dt"`
+	LstgDt                string `json:"lstg_dt"`
+	ExpdDt                string `json:"expd_dt"`
+	RdptDt                string `json:"rdpt_dt"`
+	SbstPric              string `json:"sbst_pric"`
+	RgbfIntDfrmDt         string `json:"rgbf_int_dfrm_dt"`
+	NxtmIntDfrmDt         string `json:"nxtm_int_dfrm_dt"`
+	FrstIntDfrmDt         string `json:"frst_int_dfrm_dt"`
+	EcisPric              string `json:"ecis_pric"`
+	RghtStckStdPdno       string `json:"rght_stck_std_pdno"`
+	EcisOpngDt            string `json:"ecis_opng_dt"`
+	EcisEndDt             string `json:"ecis_end_dt"`
+	BondRvnuMthdCd        string `json:"bond_rvnu_mthd_cd"`
+	OprtStfno             string `json:"oprt_stfno"`
+	OprtStffName          string `json:"oprt_stff_name"`
+	RgbfIntDfrmWday       string `json:"rgbf_int_dfrm_wday"`
+	NxtmIntDfrmWday       string `json:"nxtm_int_dfrm_wday"`
+	KisCrdtGradText       string `json:"kis_crdt_grad_text"`
+	KbpCrdtGradText       string `json:"kbp_crdt_grad_text"`
+	NiceCrdtGradText      string `json:"nice_crdt_grad_text"`
+	FnpCrdtGradText       string `json:"fnp_crdt_grad_text"`
+	DpsiPsblYn            string `json:"dpsi_psbl_yn"`
+	PniaIntCalcUnpr       string `json:"pnia_int_calc_unpr"`
+	PrcmIdxBondYn         string `json:"prcm_idx_bond_yn"`
+	ExpdExtsSrdpRcnt      string `json:"expd_exts_srdp_rcnt"`
+	ExpdExtsSrdpRt        string `json:"expd_exts_srdp_rt"`
+	LoanPsblYn            string `json:"loan_psbl_yn"`
+	GrteDvsnCd            string `json:"grte_dvsn_cd"`
+	FnrrRankDvsnCd        string `json:"fnrr_rank_dvsn_cd"`
+	KrxLstgAbolDvsnCd     string `json:"krx_lstg_abol_dvsn_cd"`
+	AsstRqdiDvsnCd        string `json:"asst_rqdi_dvsn_cd"`
+	OpcbDvsnCd            string `json:"opcb_dvsn_cd"`
+	CrfdItemYn            string `json:"crfd_item_yn"`
+	CrfdItemRstcCclcDt    string `json:"crfd_item_rstc_cclc_dt"`
+	BondNmprUnitPric      string `json:"bond_nmpr_unit_pric"`
+	IvstHeedBondDvsnName  string `json:"ivst_heed_bond_dvsn_name"`
+	AddErngRt             string `json:"add_erng_rt"`
+	AddErngRtAplyDt       string `json:"add_erng_rt_aply_dt"`
+	BondTrStopDvsnCd      string `json:"bond_tr_stop_dvsn_cd"`
+	IvstHeedBondDvsnCd    string `json:"ivst_heed_bond_dvsn_cd"`
+	PclrCndtText          string `json:"pclr_cndt_text"`
+	HbbdYn                string `json:"hbbd_yn"`
+	CdtlCptlSctyTypeCd    string `json:"cdtl_cptl_scty_type_cd"`
+	ElecSctyYn            string `json:"elec_scty_yn"`
+	Sq1ClopEcisOpngDt     string `json:"sq1_clop_ecis_opng_dt"`
+	FrstErlmStfno         string `json:"frst_erlm_stfno"`
+	FrstErlmDt            string `json:"frst_erlm_dt"`
+	FrstErlmTmd           string `json:"frst_erlm_tmd"`
+	TlgRcvgDtlDtime       string `json:"tlg_rcvg_dtl_dtime"`
 }
 
 type KISDomesticBondV1QuotationsIssueInfoRequest struct {
@@ -322,87 +322,87 @@ type KISDomesticBondV1QuotationsSearchBondInfo struct {
 }
 
 type KISDomesticBondV1QuotationsSearchBondInfoOutputItem struct {
-	Pdno                    string `json:"pdno,omitempty"`
-	PrdtTypeCd              string `json:"prdt_type_cd,omitempty"`
-	KsdBondItemName         string `json:"ksd_bond_item_name,omitempty"`
-	KsdBondItemEngName      string `json:"ksd_bond_item_eng_name,omitempty"`
-	KsdBondLstgTypeCd       string `json:"ksd_bond_lstg_type_cd,omitempty"`
-	KsdOfrgDvsnCd           string `json:"ksd_ofrg_dvsn_cd,omitempty"`
-	KsdBondIntDfrmDvsnCd    string `json:"ksd_bond_int_dfrm_dvsn_cd,omitempty"`
-	IssuDt                  string `json:"issu_dt,omitempty"`
-	RdptDt                  string `json:"rdpt_dt,omitempty"`
-	RvnuDt                  string `json:"rvnu_dt,omitempty"`
-	IsoCrcyCd               string `json:"iso_crcy_cd,omitempty"`
-	MdwyRdptDt              string `json:"mdwy_rdpt_dt,omitempty"`
-	KsdRcvgBondDsctRt       string `json:"ksd_rcvg_bond_dsct_rt,omitempty"`
-	KsdRcvgBondSrfcInrt     string `json:"ksd_rcvg_bond_srfc_inrt,omitempty"`
-	BondExpdRdptRt          string `json:"bond_expd_rdpt_rt,omitempty"`
-	KsdPrcaRdptMthdCd       string `json:"ksd_prca_rdpt_mthd_cd,omitempty"`
-	IntCaltmMcnt            string `json:"int_caltm_mcnt,omitempty"`
-	KsdIntCalcUnitCd        string `json:"ksd_int_calc_unit_cd,omitempty"`
-	UvalCutDvsnCd           string `json:"uval_cut_dvsn_cd,omitempty"`
-	UvalCutDcptDgit         string `json:"uval_cut_dcpt_dgit,omitempty"`
-	KsdDydvCaltmAplyDvsnCd  string `json:"ksd_dydv_caltm_aply_dvsn_cd,omitempty"`
-	DydvCalcDcnt            string `json:"dydv_calc_dcnt,omitempty"`
-	BondExpdAsrcErngRt      string `json:"bond_expd_asrc_erng_rt,omitempty"`
-	PadfPlacHdofName        string `json:"padf_plac_hdof_name,omitempty"`
-	LstgDt                  string `json:"lstg_dt,omitempty"`
-	LstgAbolDt              string `json:"lstg_abol_dt,omitempty"`
-	KsdBondIssuMthdCd       string `json:"ksd_bond_issu_mthd_cd,omitempty"`
-	LapsIndfYn              string `json:"laps_indf_yn,omitempty"`
-	KsdLhdyPniaDfrmMthdCd   string `json:"ksd_lhdy_pnia_dfrm_mthd_cd,omitempty"`
-	FrstIntDfrmDt           string `json:"frst_int_dfrm_dt,omitempty"`
-	KsdPrcmLnkgGvbdYn       string `json:"ksd_prcm_lnkg_gvbd_yn,omitempty"`
-	DpsiEndDt               string `json:"dpsi_end_dt,omitempty"`
-	DpsiStrtDt              string `json:"dpsi_strt_dt,omitempty"`
-	DpsiPsblYn              string `json:"dpsi_psbl_yn,omitempty"`
-	AtypRdptBondErlmYn      string `json:"atyp_rdpt_bond_erlm_yn,omitempty"`
-	DshnOccrYn              string `json:"dshn_occr_yn,omitempty"`
-	ExpdExtsYn              string `json:"expd_exts_yn,omitempty"`
-	PclrPtcrText            string `json:"pclr_ptcr_text,omitempty"`
-	DpsiPsblExcpStatCd      string `json:"dpsi_psbl_excp_stat_cd,omitempty"`
-	ExpdExtsSrdpRcnt        string `json:"expd_exts_srdp_rcnt,omitempty"`
-	ExpdExtsSrdpRt          string `json:"expd_exts_srdp_rt,omitempty"`
-	ExpdRdptRt              string `json:"expd_rdpt_rt,omitempty"`
-	ExpdAsrcErngRt          string `json:"expd_asrc_erng_rt,omitempty"`
-	BondIntDfrmMthdCd       string `json:"bond_int_dfrm_mthd_cd,omitempty"`
-	IntDfrmDayTypeCd        string `json:"int_dfrm_day_type_cd,omitempty"`
-	PrcaDfmtTermMcnt        string `json:"prca_dfmt_term_mcnt,omitempty"`
-	SpltRdptRcnt            string `json:"splt_rdpt_rcnt,omitempty"`
-	RgbfIntDfrmDt           string `json:"rgbf_int_dfrm_dt,omitempty"`
-	NxtmIntDfrmDt           string `json:"nxtm_int_dfrm_dt,omitempty"`
-	SprxPsblYn              string `json:"sprx_psbl_yn,omitempty"`
-	IctxRtDvsnCd            string `json:"ictx_rt_dvsn_cd,omitempty"`
-	BondClsfCd              string `json:"bond_clsf_cd,omitempty"`
-	BondClsfKorName         string `json:"bond_clsf_kor_name,omitempty"`
-	IntMnedDvsnCd           string `json:"int_mned_dvsn_cd,omitempty"`
-	PniaIntCalcUnpr         string `json:"pnia_int_calc_unpr,omitempty"`
-	FrnIntr                 string `json:"frn_intr,omitempty"`
-	AplyDayPrcmIdxLnkgCefc  string `json:"aply_day_prcm_idx_lnkg_cefc,omitempty"`
-	KsdExpdDydvCalcBassCd   string `json:"ksd_expd_dydv_calc_bass_cd,omitempty"`
-	ExpdDydvCalcDcnt        string `json:"expd_dydv_calc_dcnt,omitempty"`
-	KsdCbbwDvsnCd           string `json:"ksd_cbbw_dvsn_cd,omitempty"`
-	CrfdItemYn              string `json:"crfd_item_yn,omitempty"`
-	PniaBankOfdyDfrmMthdCd  string `json:"pnia_bank_ofdy_dfrm_mthd_cd,omitempty"`
-	QibYn                   string `json:"qib_yn,omitempty"`
-	QibCclcDt               string `json:"qib_cclc_dt,omitempty"`
-	CsbdYn                  string `json:"csbd_yn,omitempty"`
-	CsbdCclcDt              string `json:"csbd_cclc_dt,omitempty"`
-	KsdOpcbYn               string `json:"ksd_opcb_yn,omitempty"`
-	KsdSodnYn               string `json:"ksd_sodn_yn,omitempty"`
-	KsdRqdiSctyYn           string `json:"ksd_rqdi_scty_yn,omitempty"`
-	ElecSctyYn              string `json:"elec_scty_yn,omitempty"`
-	RghtEcisMbdyDvsnCd      string `json:"rght_ecis_mbdy_dvsn_cd,omitempty"`
-	IntRkngMthdDvsnCd       string `json:"int_rkng_mthd_dvsn_cd,omitempty"`
-	OfrgDvsnCd              string `json:"ofrg_dvsn_cd,omitempty"`
-	KsdTotIssuAmt           string `json:"ksd_tot_issu_amt,omitempty"`
-	NextIndfChkEclsYn       string `json:"next_indf_chk_ecls_yn,omitempty"`
-	KsdBondIntrDvsnCd       string `json:"ksd_bond_intr_dvsn_cd,omitempty"`
-	KsdInrtAplyDvsnCd       string `json:"ksd_inrt_aply_dvsn_cd,omitempty"`
-	KrxIssuIsttCd           string `json:"krx_issu_istt_cd,omitempty"`
-	KsdIndfFrqcUderCalcCd   string `json:"ksd_indf_frqc_uder_calc_cd,omitempty"`
-	KsdIndfFrqcUderCalcDcnt string `json:"ksd_indf_frqc_uder_calc_dcnt,omitempty"`
-	TlgRcvgDtlDtime         string `json:"tlg_rcvg_dtl_dtime,omitempty"`
+	Pdno                    string `json:"pdno"`
+	PrdtTypeCd              string `json:"prdt_type_cd"`
+	KsdBondItemName         string `json:"ksd_bond_item_name"`
+	KsdBondItemEngName      string `json:"ksd_bond_item_eng_name"`
+	KsdBondLstgTypeCd       string `json:"ksd_bond_lstg_type_cd"`
+	KsdOfrgDvsnCd           string `json:"ksd_ofrg_dvsn_cd"`
+	KsdBondIntDfrmDvsnCd    string `json:"ksd_bond_int_dfrm_dvsn_cd"`
+	IssuDt                  string `json:"issu_dt"`
+	RdptDt                  string `json:"rdpt_dt"`
+	RvnuDt                  string `json:"rvnu_dt"`
+	IsoCrcyCd               string `json:"iso_crcy_cd"`
+	MdwyRdptDt              string `json:"mdwy_rdpt_dt"`
+	KsdRcvgBondDsctRt       string `json:"ksd_rcvg_bond_dsct_rt"`
+	KsdRcvgBondSrfcInrt     string `json:"ksd_rcvg_bond_srfc_inrt"`
+	BondExpdRdptRt          string `json:"bond_expd_rdpt_rt"`
+	KsdPrcaRdptMthdCd       string `json:"ksd_prca_rdpt_mthd_cd"`
+	IntCaltmMcnt            string `json:"int_caltm_mcnt"`
+	KsdIntCalcUnitCd        string `json:"ksd_int_calc_unit_cd"`
+	UvalCutDvsnCd           string `json:"uval_cut_dvsn_cd"`
+	UvalCutDcptDgit         string `json:"uval_cut_dcpt_dgit"`
+	KsdDydvCaltmAplyDvsnCd  string `json:"ksd_dydv_caltm_aply_dvsn_cd"`
+	DydvCalcDcnt            string `json:"dydv_calc_dcnt"`
+	BondExpdAsrcErngRt      string `json:"bond_expd_asrc_erng_rt"`
+	PadfPlacHdofName        string `json:"padf_plac_hdof_name"`
+	LstgDt                  string `json:"lstg_dt"`
+	LstgAbolDt              string `json:"lstg_abol_dt"`
+	KsdBondIssuMthdCd       string `json:"ksd_bond_issu_mthd_cd"`
+	LapsIndfYn              string `json:"laps_indf_yn"`
+	KsdLhdyPniaDfrmMthdCd   string `json:"ksd_lhdy_pnia_dfrm_mthd_cd"`
+	FrstIntDfrmDt           string `json:"frst_int_dfrm_dt"`
+	KsdPrcmLnkgGvbdYn       string `json:"ksd_prcm_lnkg_gvbd_yn"`
+	DpsiEndDt               string `json:"dpsi_end_dt"`
+	DpsiStrtDt              string `json:"dpsi_strt_dt"`
+	DpsiPsblYn              string `json:"dpsi_psbl_yn"`
+	AtypRdptBondErlmYn      string `json:"atyp_rdpt_bond_erlm_yn"`
+	DshnOccrYn              string `json:"dshn_occr_yn"`
+	ExpdExtsYn              string `json:"expd_exts_yn"`
+	PclrPtcrText            string `json:"pclr_ptcr_text"`
+	DpsiPsblExcpStatCd      string `json:"dpsi_psbl_excp_stat_cd"`
+	ExpdExtsSrdpRcnt        string `json:"expd_exts_srdp_rcnt"`
+	ExpdExtsSrdpRt          string `json:"expd_exts_srdp_rt"`
+	ExpdRdptRt              string `json:"expd_rdpt_rt"`
+	ExpdAsrcErngRt          string `json:"expd_asrc_erng_rt"`
+	BondIntDfrmMthdCd       string `json:"bond_int_dfrm_mthd_cd"`
+	IntDfrmDayTypeCd        string `json:"int_dfrm_day_type_cd"`
+	PrcaDfmtTermMcnt        string `json:"prca_dfmt_term_mcnt"`
+	SpltRdptRcnt            string `json:"splt_rdpt_rcnt"`
+	RgbfIntDfrmDt           string `json:"rgbf_int_dfrm_dt"`
+	NxtmIntDfrmDt           string `json:"nxtm_int_dfrm_dt"`
+	SprxPsblYn              string `json:"sprx_psbl_yn"`
+	IctxRtDvsnCd            string `json:"ictx_rt_dvsn_cd"`
+	BondClsfCd              string `json:"bond_clsf_cd"`
+	BondClsfKorName         string `json:"bond_clsf_kor_name"`
+	IntMnedDvsnCd           string `json:"int_mned_dvsn_cd"`
+	PniaIntCalcUnpr         string `json:"pnia_int_calc_unpr"`
+	FrnIntr                 string `json:"frn_intr"`
+	AplyDayPrcmIdxLnkgCefc  string `json:"aply_day_prcm_idx_lnkg_cefc"`
+	KsdExpdDydvCalcBassCd   string `json:"ksd_expd_dydv_calc_bass_cd"`
+	ExpdDydvCalcDcnt        string `json:"expd_dydv_calc_dcnt"`
+	KsdCbbwDvsnCd           string `json:"ksd_cbbw_dvsn_cd"`
+	CrfdItemYn              string `json:"crfd_item_yn"`
+	PniaBankOfdyDfrmMthdCd  string `json:"pnia_bank_ofdy_dfrm_mthd_cd"`
+	QibYn                   string `json:"qib_yn"`
+	QibCclcDt               string `json:"qib_cclc_dt"`
+	CsbdYn                  string `json:"csbd_yn"`
+	CsbdCclcDt              string `json:"csbd_cclc_dt"`
+	KsdOpcbYn               string `json:"ksd_opcb_yn"`
+	KsdSodnYn               string `json:"ksd_sodn_yn"`
+	KsdRqdiSctyYn           string `json:"ksd_rqdi_scty_yn"`
+	ElecSctyYn              string `json:"elec_scty_yn"`
+	RghtEcisMbdyDvsnCd      string `json:"rght_ecis_mbdy_dvsn_cd"`
+	IntRkngMthdDvsnCd       string `json:"int_rkng_mthd_dvsn_cd"`
+	OfrgDvsnCd              string `json:"ofrg_dvsn_cd"`
+	KsdTotIssuAmt           string `json:"ksd_tot_issu_amt"`
+	NextIndfChkEclsYn       string `json:"next_indf_chk_ecls_yn"`
+	KsdBondIntrDvsnCd       string `json:"ksd_bond_intr_dvsn_cd"`
+	KsdInrtAplyDvsnCd       string `json:"ksd_inrt_aply_dvsn_cd"`
+	KrxIssuIsttCd           string `json:"krx_issu_istt_cd"`
+	KsdIndfFrqcUderCalcCd   string `json:"ksd_indf_frqc_uder_calc_cd"`
+	KsdIndfFrqcUderCalcDcnt string `json:"ksd_indf_frqc_uder_calc_dcnt"`
+	TlgRcvgDtlDtime         string `json:"tlg_rcvg_dtl_dtime"`
 }
 
 type KISDomesticBondV1QuotationsSearchBondInfoRequest struct {
@@ -416,9 +416,9 @@ type KISDomesticBondV1TradingBuy struct {
 }
 
 type KISDomesticBondV1TradingBuyOutputItem struct {
-	KrxFwdgOrdOrgno string `json:"krx_fwdg_ord_orgno,omitempty"`
-	Odno            string `json:"odno,omitempty"`
-	OrdTmd          string `json:"ord_tmd,omitempty"`
+	KrxFwdgOrdOrgno string `json:"krx_fwdg_ord_orgno"`
+	Odno            string `json:"odno"`
+	OrdTmd          string `json:"ord_tmd"`
 }
 
 type KISDomesticBondV1TradingBuyRequest struct {
@@ -441,18 +441,18 @@ type KISDomesticBondV1TradingInquireBalance struct {
 }
 
 type KISDomesticBondV1TradingInquireBalanceOutputItem struct {
-	Pdno       string `json:"pdno,omitempty"`
-	PrdtName   string `json:"prdt_name,omitempty"`
-	BuyDt      string `json:"buy_dt,omitempty"`
-	BuySqno    string `json:"buy_sqno,omitempty"`
-	CblcQty    string `json:"cblc_qty,omitempty"`
-	AgrxQty    string `json:"agrx_qty,omitempty"`
-	SprxQty    string `json:"sprx_qty,omitempty"`
-	Exdt       string `json:"exdt,omitempty"`
-	BuyErngRt  string `json:"buy_erng_rt,omitempty"`
-	BuyUnpr    string `json:"buy_unpr,omitempty"`
-	BuyAmt     string `json:"buy_amt,omitempty"`
-	OrdPsblQty string `json:"ord_psbl_qty,omitempty"`
+	Pdno       string `json:"pdno"`
+	PrdtName   string `json:"prdt_name"`
+	BuyDt      string `json:"buy_dt"`
+	BuySqno    string `json:"buy_sqno"`
+	CblcQty    string `json:"cblc_qty"`
+	AgrxQty    string `json:"agrx_qty"`
+	SprxQty    string `json:"sprx_qty"`
+	Exdt       string `json:"exdt"`
+	BuyErngRt  string `json:"buy_erng_rt"`
+	BuyUnpr    string `json:"buy_unpr"`
+	BuyAmt     string `json:"buy_amt"`
+	OrdPsblQty string `json:"ord_psbl_qty"`
 }
 
 type KISDomesticBondV1TradingInquireBalanceRequest struct {
@@ -472,34 +472,34 @@ type KISDomesticBondV1TradingInquireDailyCcld struct {
 }
 
 type KISDomesticBondV1TradingInquireDailyCcldOutput1Item struct {
-	TotOrdQty          string `json:"tot_ord_qty,omitempty"`
-	TotCcldQtySmtl     string `json:"tot_ccld_qty_smtl,omitempty"`
-	TotBondCcldAvgUnpr string `json:"tot_bond_ccld_avg_unpr,omitempty"`
-	TotCcldAmtSmtl     string `json:"tot_ccld_amt_smtl,omitempty"`
+	TotOrdQty          string `json:"tot_ord_qty"`
+	TotCcldQtySmtl     string `json:"tot_ccld_qty_smtl"`
+	TotBondCcldAvgUnpr string `json:"tot_bond_ccld_avg_unpr"`
+	TotCcldAmtSmtl     string `json:"tot_ccld_amt_smtl"`
 }
 
 type KISDomesticBondV1TradingInquireDailyCcldOutput2Item struct {
-	OrdDt              string `json:"ord_dt,omitempty"`
-	Odno               string `json:"odno,omitempty"`
-	OrgnOdno           string `json:"orgn_odno,omitempty"`
-	OrdDvsnName        string `json:"ord_dvsn_name,omitempty"`
-	SllBuyDvsnCdName   string `json:"sll_buy_dvsn_cd_name,omitempty"`
-	ShtnPdno           string `json:"shtn_pdno,omitempty"`
-	PrdtAbrvName       string `json:"prdt_abrv_name,omitempty"`
-	OrdQty             string `json:"ord_qty,omitempty"`
-	BondOrdUnpr        string `json:"bond_ord_unpr,omitempty"`
-	OrdTmd             string `json:"ord_tmd,omitempty"`
-	TotCcldQty         string `json:"tot_ccld_qty,omitempty"`
-	BondAvgUnpr        string `json:"bond_avg_unpr,omitempty"`
-	TotCcldAmt         string `json:"tot_ccld_amt,omitempty"`
-	LoanDt             string `json:"loan_dt,omitempty"`
-	BuyDt              string `json:"buy_dt,omitempty"`
-	SamtMketPtciYnName string `json:"samt_mket_ptci_yn_name,omitempty"`
-	SprxPsblYnIfom     string `json:"sprx_psbl_yn_ifom,omitempty"`
-	OrdMdiaDvsnName    string `json:"ord_mdia_dvsn_name,omitempty"`
-	SllBuyDvsnCd       string `json:"sll_buy_dvsn_cd,omitempty"`
-	NccsQty            string `json:"nccs_qty,omitempty"`
-	OrdGnoBrno         string `json:"ord_gno_brno,omitempty"`
+	OrdDt              string `json:"ord_dt"`
+	Odno               string `json:"odno"`
+	OrgnOdno           string `json:"orgn_odno"`
+	OrdDvsnName        string `json:"ord_dvsn_name"`
+	SllBuyDvsnCdName   string `json:"sll_buy_dvsn_cd_name"`
+	ShtnPdno           string `json:"shtn_pdno"`
+	PrdtAbrvName       string `json:"prdt_abrv_name"`
+	OrdQty             string `json:"ord_qty"`
+	BondOrdUnpr        string `json:"bond_ord_unpr"`
+	OrdTmd             string `json:"ord_tmd"`
+	TotCcldQty         string `json:"tot_ccld_qty"`
+	BondAvgUnpr        string `json:"bond_avg_unpr"`
+	TotCcldAmt         string `json:"tot_ccld_amt"`
+	LoanDt             string `json:"loan_dt"`
+	BuyDt              string `json:"buy_dt"`
+	SamtMketPtciYnName string `json:"samt_mket_ptci_yn_name"`
+	SprxPsblYnIfom     string `json:"sprx_psbl_yn_ifom"`
+	OrdMdiaDvsnName    string `json:"ord_mdia_dvsn_name"`
+	SllBuyDvsnCd       string `json:"sll_buy_dvsn_cd"`
+	NccsQty            string `json:"nccs_qty"`
+	OrdGnoBrno         string `json:"ord_gno_brno"`
 }
 
 type KISDomesticBondV1TradingInquireDailyCcldRequest struct {
@@ -521,13 +521,13 @@ type KISDomesticBondV1TradingInquirePsblOrder struct {
 }
 
 type KISDomesticBondV1TradingInquirePsblOrderOutputItem struct {
-	OrdPsblCash  string `json:"ord_psbl_cash,omitempty"`
-	OrdPsblSbst  string `json:"ord_psbl_sbst,omitempty"`
-	RusePsblAmt  string `json:"ruse_psbl_amt,omitempty"`
-	BondOrdUnpr2 string `json:"bond_ord_unpr2,omitempty"`
-	BuyPsblAmt   string `json:"buy_psbl_amt,omitempty"`
-	BuyPsblQty   string `json:"buy_psbl_qty,omitempty"`
-	CmaEvluAmt   string `json:"cma_evlu_amt,omitempty"`
+	OrdPsblCash  string `json:"ord_psbl_cash"`
+	OrdPsblSbst  string `json:"ord_psbl_sbst"`
+	RusePsblAmt  string `json:"ruse_psbl_amt"`
+	BondOrdUnpr2 string `json:"bond_ord_unpr2"`
+	BuyPsblAmt   string `json:"buy_psbl_amt"`
+	BuyPsblQty   string `json:"buy_psbl_qty"`
+	CmaEvluAmt   string `json:"cma_evlu_amt"`
 }
 
 type KISDomesticBondV1TradingInquirePsblOrderRequest struct {
@@ -544,21 +544,21 @@ type KISDomesticBondV1TradingInquirePsblRvsecncl struct {
 }
 
 type KISDomesticBondV1TradingInquirePsblRvsecnclOutputItem struct {
-	Odno             string `json:"odno,omitempty"`
-	Pdno             string `json:"pdno,omitempty"`
-	RvseCnclDvsnName string `json:"rvse_cncl_dvsn_name,omitempty"`
-	OrdQty           string `json:"ord_qty,omitempty"`
-	BondOrdUnpr      string `json:"bond_ord_unpr,omitempty"`
-	OrdTmd           string `json:"ord_tmd,omitempty"`
-	TotCcldQty       string `json:"tot_ccld_qty,omitempty"`
-	TotCcldAmt       string `json:"tot_ccld_amt,omitempty"`
-	OrdPsblQty       string `json:"ord_psbl_qty,omitempty"`
-	OrgnOdno         string `json:"orgn_odno,omitempty"`
-	SllBuyDvsnCd     string `json:"sll_buy_dvsn_cd,omitempty"`
-	OrdDvsnCd        string `json:"ord_dvsn_cd,omitempty"`
-	MgcoAptmOdno     string `json:"mgco_aptm_odno,omitempty"`
-	SamtMketPtciYn   string `json:"samt_mket_ptci_yn,omitempty"`
-	PrdtAbrvName     string `json:"prdt_abrv_name,omitempty"`
+	Odno             string `json:"odno"`
+	Pdno             string `json:"pdno"`
+	RvseCnclDvsnName string `json:"rvse_cncl_dvsn_name"`
+	OrdQty           string `json:"ord_qty"`
+	BondOrdUnpr      string `json:"bond_ord_unpr"`
+	OrdTmd           string `json:"ord_tmd"`
+	TotCcldQty       string `json:"tot_ccld_qty"`
+	TotCcldAmt       string `json:"tot_ccld_amt"`
+	OrdPsblQty       string `json:"ord_psbl_qty"`
+	OrgnOdno         string `json:"orgn_odno"`
+	SllBuyDvsnCd     string `json:"sll_buy_dvsn_cd"`
+	OrdDvsnCd        string `json:"ord_dvsn_cd"`
+	MgcoAptmOdno     string `json:"mgco_aptm_odno"`
+	SamtMketPtciYn   string `json:"samt_mket_ptci_yn"`
+	PrdtAbrvName     string `json:"prdt_abrv_name"`
 }
 
 type KISDomesticBondV1TradingInquirePsblRvsecnclRequest struct {
@@ -576,9 +576,9 @@ type KISDomesticBondV1TradingOrderRvsecncl struct {
 }
 
 type KISDomesticBondV1TradingOrderRvsecnclOutputItem struct {
-	KrxFwdgOrdOrgno string `json:"krx_fwdg_ord_orgno,omitempty"`
-	Odno            string `json:"odno,omitempty"`
-	OrdTmd          string `json:"ord_tmd,omitempty"`
+	KrxFwdgOrdOrgno string `json:"krx_fwdg_ord_orgno"`
+	Odno            string `json:"odno"`
+	OrdTmd          string `json:"ord_tmd"`
 }
 
 type KISDomesticBondV1TradingOrderRvsecnclRequest struct {
@@ -601,9 +601,9 @@ type KISDomesticBondV1TradingSell struct {
 }
 
 type KISDomesticBondV1TradingSellOutputItem struct {
-	KrxFwdgOrdOrgno string `json:"krx_fwdg_ord_orgno,omitempty"`
-	Odno            string `json:"odno,omitempty"`
-	OrdTmd          string `json:"ord_tmd,omitempty"`
+	KrxFwdgOrdOrgno string `json:"krx_fwdg_ord_orgno"`
+	Odno            string `json:"odno"`
+	OrdTmd          string `json:"ord_tmd"`
 }
 
 type KISDomesticBondV1TradingSellRequest struct {
@@ -631,91 +631,91 @@ type KISDomesticFutureoptionV1QuotationsDisplayBoardCallput struct {
 }
 
 type KISDomesticFutureoptionV1QuotationsDisplayBoardCallputOutput1Item struct {
-	Acpr             string `json:"acpr,omitempty"`
-	UnchPrpr         string `json:"unch_prpr,omitempty"`
-	OptnShrnIscd     string `json:"optn_shrn_iscd,omitempty"`
-	OptnPrpr         string `json:"optn_prpr,omitempty"`
-	OptnPrdyVrss     string `json:"optn_prdy_vrss,omitempty"`
-	PrdyVrssSign     string `json:"prdy_vrss_sign,omitempty"`
-	OptnPrdyCtrt     string `json:"optn_prdy_ctrt,omitempty"`
-	OptnBidp         string `json:"optn_bidp,omitempty"`
-	OptnAskp         string `json:"optn_askp,omitempty"`
-	TmvlVal          string `json:"tmvl_val,omitempty"`
-	NmixSdpr         string `json:"nmix_sdpr,omitempty"`
-	AcmlVol          string `json:"acml_vol,omitempty"`
-	SelnRsqn         string `json:"seln_rsqn,omitempty"`
-	ShnuRsqn         string `json:"shnu_rsqn,omitempty"`
-	AcmlTrPbmn       string `json:"acml_tr_pbmn,omitempty"`
-	HtsOtstStplQty   string `json:"hts_otst_stpl_qty,omitempty"`
-	OtstStplQtyIcdc  string `json:"otst_stpl_qty_icdc,omitempty"`
-	DeltaVal         string `json:"delta_val,omitempty"`
-	Gama             string `json:"gama,omitempty"`
-	Vega             string `json:"vega,omitempty"`
-	Theta            string `json:"theta,omitempty"`
-	Rho              string `json:"rho,omitempty"`
-	HtsIntsVltl      string `json:"hts_ints_vltl,omitempty"`
-	InvlVal          string `json:"invl_val,omitempty"`
-	Esdg             string `json:"esdg,omitempty"`
-	Dprt             string `json:"dprt,omitempty"`
-	HistVltl         string `json:"hist_vltl,omitempty"`
-	HtsThpr          string `json:"hts_thpr,omitempty"`
-	OptnOprc         string `json:"optn_oprc,omitempty"`
-	OptnHgpr         string `json:"optn_hgpr,omitempty"`
-	OptnLwpr         string `json:"optn_lwpr,omitempty"`
-	OptnMxpr         string `json:"optn_mxpr,omitempty"`
-	OptnLlam         string `json:"optn_llam,omitempty"`
-	AtmClsName       string `json:"atm_cls_name,omitempty"`
-	RgbfVrssIcdc     string `json:"rgbf_vrss_icdc,omitempty"`
-	TotalAskpRsqn    string `json:"total_askp_rsqn,omitempty"`
-	TotalBidpRsqn    string `json:"total_bidp_rsqn,omitempty"`
-	FutsAntcCnpr     string `json:"futs_antc_cnpr,omitempty"`
-	FutsAntcCntgVrss string `json:"futs_antc_cntg_vrss,omitempty"`
-	AntcCntgVrssSign string `json:"antc_cntg_vrss_sign,omitempty"`
-	AntcCntgPrdyCtrt string `json:"antc_cntg_prdy_ctrt,omitempty"`
+	Acpr             string `json:"acpr"`
+	UnchPrpr         string `json:"unch_prpr"`
+	OptnShrnIscd     string `json:"optn_shrn_iscd"`
+	OptnPrpr         string `json:"optn_prpr"`
+	OptnPrdyVrss     string `json:"optn_prdy_vrss"`
+	PrdyVrssSign     string `json:"prdy_vrss_sign"`
+	OptnPrdyCtrt     string `json:"optn_prdy_ctrt"`
+	OptnBidp         string `json:"optn_bidp"`
+	OptnAskp         string `json:"optn_askp"`
+	TmvlVal          string `json:"tmvl_val"`
+	NmixSdpr         string `json:"nmix_sdpr"`
+	AcmlVol          string `json:"acml_vol"`
+	SelnRsqn         string `json:"seln_rsqn"`
+	ShnuRsqn         string `json:"shnu_rsqn"`
+	AcmlTrPbmn       string `json:"acml_tr_pbmn"`
+	HtsOtstStplQty   string `json:"hts_otst_stpl_qty"`
+	OtstStplQtyIcdc  string `json:"otst_stpl_qty_icdc"`
+	DeltaVal         string `json:"delta_val"`
+	Gama             string `json:"gama"`
+	Vega             string `json:"vega"`
+	Theta            string `json:"theta"`
+	Rho              string `json:"rho"`
+	HtsIntsVltl      string `json:"hts_ints_vltl"`
+	InvlVal          string `json:"invl_val"`
+	Esdg             string `json:"esdg"`
+	Dprt             string `json:"dprt"`
+	HistVltl         string `json:"hist_vltl"`
+	HtsThpr          string `json:"hts_thpr"`
+	OptnOprc         string `json:"optn_oprc"`
+	OptnHgpr         string `json:"optn_hgpr"`
+	OptnLwpr         string `json:"optn_lwpr"`
+	OptnMxpr         string `json:"optn_mxpr"`
+	OptnLlam         string `json:"optn_llam"`
+	AtmClsName       string `json:"atm_cls_name"`
+	RgbfVrssIcdc     string `json:"rgbf_vrss_icdc"`
+	TotalAskpRsqn    string `json:"total_askp_rsqn"`
+	TotalBidpRsqn    string `json:"total_bidp_rsqn"`
+	FutsAntcCnpr     string `json:"futs_antc_cnpr"`
+	FutsAntcCntgVrss string `json:"futs_antc_cntg_vrss"`
+	AntcCntgVrssSign string `json:"antc_cntg_vrss_sign"`
+	AntcCntgPrdyCtrt string `json:"antc_cntg_prdy_ctrt"`
 }
 
 type KISDomesticFutureoptionV1QuotationsDisplayBoardCallputOutput2Item struct {
-	Acpr             string `json:"acpr,omitempty"`
-	UnchPrpr         string `json:"unch_prpr,omitempty"`
-	OptnShrnIscd     string `json:"optn_shrn_iscd,omitempty"`
-	OptnPrpr         string `json:"optn_prpr,omitempty"`
-	OptnPrdyVrss     string `json:"optn_prdy_vrss,omitempty"`
-	PrdyVrssSign     string `json:"prdy_vrss_sign,omitempty"`
-	OptnPrdyCtrt     string `json:"optn_prdy_ctrt,omitempty"`
-	OptnBidp         string `json:"optn_bidp,omitempty"`
-	OptnAskp         string `json:"optn_askp,omitempty"`
-	TmvlVal          string `json:"tmvl_val,omitempty"`
-	NmixSdpr         string `json:"nmix_sdpr,omitempty"`
-	AcmlVol          string `json:"acml_vol,omitempty"`
-	SelnRsqn         string `json:"seln_rsqn,omitempty"`
-	ShnuRsqn         string `json:"shnu_rsqn,omitempty"`
-	AcmlTrPbmn       string `json:"acml_tr_pbmn,omitempty"`
-	HtsOtstStplQty   string `json:"hts_otst_stpl_qty,omitempty"`
-	OtstStplQtyIcdc  string `json:"otst_stpl_qty_icdc,omitempty"`
-	DeltaVal         string `json:"delta_val,omitempty"`
-	Gama             string `json:"gama,omitempty"`
-	Vega             string `json:"vega,omitempty"`
-	Theta            string `json:"theta,omitempty"`
-	Rho              string `json:"rho,omitempty"`
-	HtsIntsVltl      string `json:"hts_ints_vltl,omitempty"`
-	InvlVal          string `json:"invl_val,omitempty"`
-	Esdg             string `json:"esdg,omitempty"`
-	Dprt             string `json:"dprt,omitempty"`
-	HistVltl         string `json:"hist_vltl,omitempty"`
-	HtsThpr          string `json:"hts_thpr,omitempty"`
-	OptnOprc         string `json:"optn_oprc,omitempty"`
-	OptnHgpr         string `json:"optn_hgpr,omitempty"`
-	OptnLwpr         string `json:"optn_lwpr,omitempty"`
-	OptnMxpr         string `json:"optn_mxpr,omitempty"`
-	OptnLlam         string `json:"optn_llam,omitempty"`
-	AtmClsName       string `json:"atm_cls_name,omitempty"`
-	RgbfVrssIcdc     string `json:"rgbf_vrss_icdc,omitempty"`
-	TotalAskpRsqn    string `json:"total_askp_rsqn,omitempty"`
-	TotalBidpRsqn    string `json:"total_bidp_rsqn,omitempty"`
-	FutsAntcCnpr     string `json:"futs_antc_cnpr,omitempty"`
-	FutsAntcCntgVrss string `json:"futs_antc_cntg_vrss,omitempty"`
-	AntcCntgVrssSign string `json:"antc_cntg_vrss_sign,omitempty"`
-	AntcCntgPrdyCtrt string `json:"antc_cntg_prdy_ctrt,omitempty"`
+	Acpr             string `json:"acpr"`
+	UnchPrpr         string `json:"unch_prpr"`
+	OptnShrnIscd     string `json:"optn_shrn_iscd"`
+	OptnPrpr         string `json:"optn_prpr"`
+	OptnPrdyVrss     string `json:"optn_prdy_vrss"`
+	PrdyVrssSign     string `json:"prdy_vrss_sign"`
+	OptnPrdyCtrt     string `json:"optn_prdy_ctrt"`
+	OptnBidp         string `json:"optn_bidp"`
+	OptnAskp         string `json:"optn_askp"`
+	TmvlVal          string `json:"tmvl_val"`
+	NmixSdpr         string `json:"nmix_sdpr"`
+	AcmlVol          string `json:"acml_vol"`
+	SelnRsqn         string `json:"seln_rsqn"`
+	ShnuRsqn         string `json:"shnu_rsqn"`
+	AcmlTrPbmn       string `json:"acml_tr_pbmn"`
+	HtsOtstStplQty   string `json:"hts_otst_stpl_qty"`
+	OtstStplQtyIcdc  string `json:"otst_stpl_qty_icdc"`
+	DeltaVal         string `json:"delta_val"`
+	Gama             string `json:"gama"`
+	Vega             string `json:"vega"`
+	Theta            string `json:"theta"`
+	Rho              string `json:"rho"`
+	HtsIntsVltl      string `json:"hts_ints_vltl"`
+	InvlVal          string `json:"invl_val"`
+	Esdg             string `json:"esdg"`
+	Dprt             string `json:"dprt"`
+	HistVltl         string `json:"hist_vltl"`
+	HtsThpr          string `json:"hts_thpr"`
+	OptnOprc         string `json:"optn_oprc"`
+	OptnHgpr         string `json:"optn_hgpr"`
+	OptnLwpr         string `json:"optn_lwpr"`
+	OptnMxpr         string `json:"optn_mxpr"`
+	OptnLlam         string `json:"optn_llam"`
+	AtmClsName       string `json:"atm_cls_name"`
+	RgbfVrssIcdc     string `json:"rgbf_vrss_icdc"`
+	TotalAskpRsqn    string `json:"total_askp_rsqn"`
+	TotalBidpRsqn    string `json:"total_bidp_rsqn"`
+	FutsAntcCnpr     string `json:"futs_antc_cnpr"`
+	FutsAntcCntgVrss string `json:"futs_antc_cntg_vrss"`
+	AntcCntgVrssSign string `json:"antc_cntg_vrss_sign"`
+	AntcCntgPrdyCtrt string `json:"antc_cntg_prdy_ctrt"`
 }
 
 type KISDomesticFutureoptionV1QuotationsDisplayBoardCallputRequest struct {
@@ -733,26 +733,26 @@ type KISDomesticFutureoptionV1QuotationsDisplayBoardFutures struct {
 }
 
 type KISDomesticFutureoptionV1QuotationsDisplayBoardFuturesOutput1Item struct {
-	FutsShrnIscd     string `json:"futs_shrn_iscd,omitempty"`
-	HtsKorIsnm       string `json:"hts_kor_isnm,omitempty"`
-	FutsPrpr         string `json:"futs_prpr,omitempty"`
-	FutsPrdyVrss     string `json:"futs_prdy_vrss,omitempty"`
-	PrdyVrssSign     string `json:"prdy_vrss_sign,omitempty"`
-	FutsPrdyCtrt     string `json:"futs_prdy_ctrt,omitempty"`
-	HtsThpr          string `json:"hts_thpr,omitempty"`
-	AcmlVol          string `json:"acml_vol,omitempty"`
-	FutsAskp         string `json:"futs_askp,omitempty"`
-	FutsBidp         string `json:"futs_bidp,omitempty"`
-	HtsOtstStplQty   string `json:"hts_otst_stpl_qty,omitempty"`
-	FutsHgpr         string `json:"futs_hgpr,omitempty"`
-	FutsLwpr         string `json:"futs_lwpr,omitempty"`
-	HtsRmnnDynu      string `json:"hts_rmnn_dynu,omitempty"`
-	TotalAskpRsqn    string `json:"total_askp_rsqn,omitempty"`
-	TotalBidpRsqn    string `json:"total_bidp_rsqn,omitempty"`
-	FutsAntcCnpr     string `json:"futs_antc_cnpr,omitempty"`
-	FutsAntcCntgVrss string `json:"futs_antc_cntg_vrss,omitempty"`
-	AntcCntgVrssSign string `json:"antc_cntg_vrss_sign,omitempty"`
-	AntcCntgPrdyCtrt string `json:"antc_cntg_prdy_ctrt,omitempty"`
+	FutsShrnIscd     string `json:"futs_shrn_iscd"`
+	HtsKorIsnm       string `json:"hts_kor_isnm"`
+	FutsPrpr         string `json:"futs_prpr"`
+	FutsPrdyVrss     string `json:"futs_prdy_vrss"`
+	PrdyVrssSign     string `json:"prdy_vrss_sign"`
+	FutsPrdyCtrt     string `json:"futs_prdy_ctrt"`
+	HtsThpr          string `json:"hts_thpr"`
+	AcmlVol          string `json:"acml_vol"`
+	FutsAskp         string `json:"futs_askp"`
+	FutsBidp         string `json:"futs_bidp"`
+	HtsOtstStplQty   string `json:"hts_otst_stpl_qty"`
+	FutsHgpr         string `json:"futs_hgpr"`
+	FutsLwpr         string `json:"futs_lwpr"`
+	HtsRmnnDynu      string `json:"hts_rmnn_dynu"`
+	TotalAskpRsqn    string `json:"total_askp_rsqn"`
+	TotalBidpRsqn    string `json:"total_bidp_rsqn"`
+	FutsAntcCnpr     string `json:"futs_antc_cnpr"`
+	FutsAntcCntgVrss string `json:"futs_antc_cntg_vrss"`
+	AntcCntgVrssSign string `json:"antc_cntg_vrss_sign"`
+	AntcCntgPrdyCtrt string `json:"antc_cntg_prdy_ctrt"`
 }
 
 type KISDomesticFutureoptionV1QuotationsDisplayBoardFuturesRequest struct {
@@ -767,8 +767,8 @@ type KISDomesticFutureoptionV1QuotationsDisplayBoardOptionList struct {
 }
 
 type KISDomesticFutureoptionV1QuotationsDisplayBoardOptionListOutput1Item struct {
-	MtrtYymmCode string `json:"mtrt_yymm_code,omitempty"`
-	MtrtYymm     string `json:"mtrt_yymm,omitempty"`
+	MtrtYymmCode string `json:"mtrt_yymm_code"`
+	MtrtYymm     string `json:"mtrt_yymm"`
 }
 
 type KISDomesticFutureoptionV1QuotationsDisplayBoardOptionListRequest struct {
@@ -784,20 +784,20 @@ type KISDomesticFutureoptionV1QuotationsDisplayBoardTop struct {
 }
 
 type KISDomesticFutureoptionV1QuotationsDisplayBoardTopOutput1Item struct {
-	UnasPrpr         string `json:"unas_prpr,omitempty"`
-	UnasPrdyVrss     string `json:"unas_prdy_vrss,omitempty"`
-	UnasPrdyVrssSign string `json:"unas_prdy_vrss_sign,omitempty"`
-	UnasPrdyCtrt     string `json:"unas_prdy_ctrt,omitempty"`
-	UnasAcmlVol      string `json:"unas_acml_vol,omitempty"`
-	HtsKorIsnm       string `json:"hts_kor_isnm,omitempty"`
-	FutsPrpr         string `json:"futs_prpr,omitempty"`
-	FutsPrdyVrss     string `json:"futs_prdy_vrss,omitempty"`
-	PrdyVrssSign     string `json:"prdy_vrss_sign,omitempty"`
-	FutsPrdyCtrt     string `json:"futs_prdy_ctrt,omitempty"`
+	UnasPrpr         string `json:"unas_prpr"`
+	UnasPrdyVrss     string `json:"unas_prdy_vrss"`
+	UnasPrdyVrssSign string `json:"unas_prdy_vrss_sign"`
+	UnasPrdyCtrt     string `json:"unas_prdy_ctrt"`
+	UnasAcmlVol      string `json:"unas_acml_vol"`
+	HtsKorIsnm       string `json:"hts_kor_isnm"`
+	FutsPrpr         string `json:"futs_prpr"`
+	FutsPrdyVrss     string `json:"futs_prdy_vrss"`
+	PrdyVrssSign     string `json:"prdy_vrss_sign"`
+	FutsPrdyCtrt     string `json:"futs_prdy_ctrt"`
 }
 
 type KISDomesticFutureoptionV1QuotationsDisplayBoardTopOutput2Item struct {
-	HtsRmnnDynu string `json:"hts_rmnn_dynu,omitempty"`
+	HtsRmnnDynu string `json:"hts_rmnn_dynu"`
 }
 
 type KISDomesticFutureoptionV1QuotationsDisplayBoardTopRequest struct {
@@ -816,20 +816,20 @@ type KISDomesticFutureoptionV1QuotationsExpPriceTrend struct {
 }
 
 type KISDomesticFutureoptionV1QuotationsExpPriceTrendOutput1Item struct {
-	HtsKorIsnm       string `json:"hts_kor_isnm,omitempty"`
-	FutsAntcCnpr     string `json:"futs_antc_cnpr,omitempty"`
-	AntcCntgVrssSign string `json:"antc_cntg_vrss_sign,omitempty"`
-	FutsAntcCntgVrss string `json:"futs_antc_cntg_vrss,omitempty"`
-	AntcCntgPrdyCtrt string `json:"antc_cntg_prdy_ctrt,omitempty"`
-	FutsSdpr         string `json:"futs_sdpr,omitempty"`
+	HtsKorIsnm       string `json:"hts_kor_isnm"`
+	FutsAntcCnpr     string `json:"futs_antc_cnpr"`
+	AntcCntgVrssSign string `json:"antc_cntg_vrss_sign"`
+	FutsAntcCntgVrss string `json:"futs_antc_cntg_vrss"`
+	AntcCntgPrdyCtrt string `json:"antc_cntg_prdy_ctrt"`
+	FutsSdpr         string `json:"futs_sdpr"`
 }
 
 type KISDomesticFutureoptionV1QuotationsExpPriceTrendOutput2Item struct {
-	StckCntgHour     string `json:"stck_cntg_hour,omitempty"`
-	FutsAntcCnpr     string `json:"futs_antc_cnpr,omitempty"`
-	AntcCntgVrssSign string `json:"antc_cntg_vrss_sign,omitempty"`
-	FutsAntcCntgVrss string `json:"futs_antc_cntg_vrss,omitempty"`
-	AntcCntgPrdyCtrt string `json:"antc_cntg_prdy_ctrt,omitempty"`
+	StckCntgHour     string `json:"stck_cntg_hour"`
+	FutsAntcCnpr     string `json:"futs_antc_cnpr"`
+	AntcCntgVrssSign string `json:"antc_cntg_vrss_sign"`
+	FutsAntcCntgVrss string `json:"futs_antc_cntg_vrss"`
+	AntcCntgPrdyCtrt string `json:"antc_cntg_prdy_ctrt"`
 }
 
 type KISDomesticFutureoptionV1QuotationsExpPriceTrendRequest struct {
@@ -844,52 +844,52 @@ type KISDomesticFutureoptionV1QuotationsInquireAskingPrice struct {
 }
 
 type KISDomesticFutureoptionV1QuotationsInquireAskingPriceOutput1Item struct {
-	HtsKorIsnm   string `json:"hts_kor_isnm,omitempty"`
-	FutsPrpr     string `json:"futs_prpr,omitempty"`
-	PrdyVrssSign string `json:"prdy_vrss_sign,omitempty"`
-	FutsPrdyVrss string `json:"futs_prdy_vrss,omitempty"`
-	FutsPrdyCtrt string `json:"futs_prdy_ctrt,omitempty"`
-	AcmlVol      string `json:"acml_vol,omitempty"`
-	FutsPrdyClpr string `json:"futs_prdy_clpr,omitempty"`
-	FutsShrnIscd string `json:"futs_shrn_iscd,omitempty"`
+	HtsKorIsnm   string `json:"hts_kor_isnm"`
+	FutsPrpr     string `json:"futs_prpr"`
+	PrdyVrssSign string `json:"prdy_vrss_sign"`
+	FutsPrdyVrss string `json:"futs_prdy_vrss"`
+	FutsPrdyCtrt string `json:"futs_prdy_ctrt"`
+	AcmlVol      string `json:"acml_vol"`
+	FutsPrdyClpr string `json:"futs_prdy_clpr"`
+	FutsShrnIscd string `json:"futs_shrn_iscd"`
 }
 
 type KISDomesticFutureoptionV1QuotationsInquireAskingPriceOutput2Item struct {
-	FutsAskp1     string `json:"futs_askp1,omitempty"`
-	FutsAskp2     string `json:"futs_askp2,omitempty"`
-	FutsAskp3     string `json:"futs_askp3,omitempty"`
-	FutsAskp4     string `json:"futs_askp4,omitempty"`
-	FutsAskp5     string `json:"futs_askp5,omitempty"`
-	FutsBidp1     string `json:"futs_bidp1,omitempty"`
-	FutsBidp2     string `json:"futs_bidp2,omitempty"`
-	FutsBidp3     string `json:"futs_bidp3,omitempty"`
-	FutsBidp4     string `json:"futs_bidp4,omitempty"`
-	FutsBidp5     string `json:"futs_bidp5,omitempty"`
-	AskpRsqn1     string `json:"askp_rsqn1,omitempty"`
-	AskpRsqn2     string `json:"askp_rsqn2,omitempty"`
-	AskpRsqn3     string `json:"askp_rsqn3,omitempty"`
-	AskpRsqn4     string `json:"askp_rsqn4,omitempty"`
-	AskpRsqn5     string `json:"askp_rsqn5,omitempty"`
-	BidpRsqn1     string `json:"bidp_rsqn1,omitempty"`
-	BidpRsqn2     string `json:"bidp_rsqn2,omitempty"`
-	BidpRsqn3     string `json:"bidp_rsqn3,omitempty"`
-	BidpRsqn4     string `json:"bidp_rsqn4,omitempty"`
-	BidpRsqn5     string `json:"bidp_rsqn5,omitempty"`
-	AskpCsnu1     string `json:"askp_csnu1,omitempty"`
-	AskpCsnu2     string `json:"askp_csnu2,omitempty"`
-	AskpCsnu3     string `json:"askp_csnu3,omitempty"`
-	AskpCsnu4     string `json:"askp_csnu4,omitempty"`
-	AskpCsnu5     string `json:"askp_csnu5,omitempty"`
-	BidpCsnu1     string `json:"bidp_csnu1,omitempty"`
-	BidpCsnu2     string `json:"bidp_csnu2,omitempty"`
-	BidpCsnu3     string `json:"bidp_csnu3,omitempty"`
-	BidpCsnu4     string `json:"bidp_csnu4,omitempty"`
-	BidpCsnu5     string `json:"bidp_csnu5,omitempty"`
-	TotalAskpRsqn string `json:"total_askp_rsqn,omitempty"`
-	TotalBidpRsqn string `json:"total_bidp_rsqn,omitempty"`
-	TotalAskpCsnu string `json:"total_askp_csnu,omitempty"`
-	TotalBidpCsnu string `json:"total_bidp_csnu,omitempty"`
-	AsprAcptHour  string `json:"aspr_acpt_hour,omitempty"`
+	FutsAskp1     string `json:"futs_askp1"`
+	FutsAskp2     string `json:"futs_askp2"`
+	FutsAskp3     string `json:"futs_askp3"`
+	FutsAskp4     string `json:"futs_askp4"`
+	FutsAskp5     string `json:"futs_askp5"`
+	FutsBidp1     string `json:"futs_bidp1"`
+	FutsBidp2     string `json:"futs_bidp2"`
+	FutsBidp3     string `json:"futs_bidp3"`
+	FutsBidp4     string `json:"futs_bidp4"`
+	FutsBidp5     string `json:"futs_bidp5"`
+	AskpRsqn1     string `json:"askp_rsqn1"`
+	AskpRsqn2     string `json:"askp_rsqn2"`
+	AskpRsqn3     string `json:"askp_rsqn3"`
+	AskpRsqn4     string `json:"askp_rsqn4"`
+	AskpRsqn5     string `json:"askp_rsqn5"`
+	BidpRsqn1     string `json:"bidp_rsqn1"`
+	BidpRsqn2     string `json:"bidp_rsqn2"`
+	BidpRsqn3     string `json:"bidp_rsqn3"`
+	BidpRsqn4     string `json:"bidp_rsqn4"`
+	BidpRsqn5     string `json:"bidp_rsqn5"`
+	AskpCsnu1     string `json:"askp_csnu1"`
+	AskpCsnu2     string `json:"askp_csnu2"`
+	AskpCsnu3     string `json:"askp_csnu3"`
+	AskpCsnu4     string `json:"askp_csnu4"`
+	AskpCsnu5     string `json:"askp_csnu5"`
+	BidpCsnu1     string `json:"bidp_csnu1"`
+	BidpCsnu2     string `json:"bidp_csnu2"`
+	BidpCsnu3     string `json:"bidp_csnu3"`
+	BidpCsnu4     string `json:"bidp_csnu4"`
+	BidpCsnu5     string `json:"bidp_csnu5"`
+	TotalAskpRsqn string `json:"total_askp_rsqn"`
+	TotalBidpRsqn string `json:"total_bidp_rsqn"`
+	TotalAskpCsnu string `json:"total_askp_csnu"`
+	TotalBidpCsnu string `json:"total_bidp_csnu"`
+	AsprAcptHour  string `json:"aspr_acpt_hour"`
 }
 
 type KISDomesticFutureoptionV1QuotationsInquireAskingPriceRequest struct {
@@ -951,58 +951,58 @@ type KISDomesticFutureoptionV1QuotationsInquirePrice struct {
 }
 
 type KISDomesticFutureoptionV1QuotationsInquirePriceOutput1Item struct {
-	HtsKorIsnm       string `json:"hts_kor_isnm,omitempty"`
-	FutsPrpr         string `json:"futs_prpr,omitempty"`
-	FutsPrdyVrss     string `json:"futs_prdy_vrss,omitempty"`
-	PrdyVrssSign     string `json:"prdy_vrss_sign,omitempty"`
-	FutsPrdyClpr     string `json:"futs_prdy_clpr,omitempty"`
-	FutsPrdyCtrt     string `json:"futs_prdy_ctrt,omitempty"`
-	AcmlVol          string `json:"acml_vol,omitempty"`
-	AcmlTrPbmn       string `json:"acml_tr_pbmn,omitempty"`
-	HtsOtstStplQty   string `json:"hts_otst_stpl_qty,omitempty"`
-	OtstStplQtyIcdc  string `json:"otst_stpl_qty_icdc,omitempty"`
-	FutsOprc         string `json:"futs_oprc,omitempty"`
-	FutsHgpr         string `json:"futs_hgpr,omitempty"`
-	FutsLwpr         string `json:"futs_lwpr,omitempty"`
-	FutsMxpr         string `json:"futs_mxpr,omitempty"`
-	FutsLlam         string `json:"futs_llam,omitempty"`
-	Basis            string `json:"basis,omitempty"`
-	FutsSdpr         string `json:"futs_sdpr,omitempty"`
-	HtsThpr          string `json:"hts_thpr,omitempty"`
-	Dprt             string `json:"dprt,omitempty"`
-	CrbrAplyMxpr     string `json:"crbr_aply_mxpr,omitempty"`
-	CrbrAplyLlam     string `json:"crbr_aply_llam,omitempty"`
-	FutsLastTrDate   string `json:"futs_last_tr_date,omitempty"`
-	HtsRmnnDynu      string `json:"hts_rmnn_dynu,omitempty"`
-	FutsLstnMedmHgpr string `json:"futs_lstn_medm_hgpr,omitempty"`
-	FutsLstnMedmLwpr string `json:"futs_lstn_medm_lwpr,omitempty"`
-	DeltaVal         string `json:"delta_val,omitempty"`
-	Gama             string `json:"gama,omitempty"`
-	Theta            string `json:"theta,omitempty"`
-	Vega             string `json:"vega,omitempty"`
-	Rho              string `json:"rho,omitempty"`
-	HistVltl         string `json:"hist_vltl,omitempty"`
-	HtsIntsVltl      string `json:"hts_ints_vltl,omitempty"`
-	MrktBasis        string `json:"mrkt_basis,omitempty"`
-	Acpr             string `json:"acpr,omitempty"`
+	HtsKorIsnm       string `json:"hts_kor_isnm"`
+	FutsPrpr         string `json:"futs_prpr"`
+	FutsPrdyVrss     string `json:"futs_prdy_vrss"`
+	PrdyVrssSign     string `json:"prdy_vrss_sign"`
+	FutsPrdyClpr     string `json:"futs_prdy_clpr"`
+	FutsPrdyCtrt     string `json:"futs_prdy_ctrt"`
+	AcmlVol          string `json:"acml_vol"`
+	AcmlTrPbmn       string `json:"acml_tr_pbmn"`
+	HtsOtstStplQty   string `json:"hts_otst_stpl_qty"`
+	OtstStplQtyIcdc  string `json:"otst_stpl_qty_icdc"`
+	FutsOprc         string `json:"futs_oprc"`
+	FutsHgpr         string `json:"futs_hgpr"`
+	FutsLwpr         string `json:"futs_lwpr"`
+	FutsMxpr         string `json:"futs_mxpr"`
+	FutsLlam         string `json:"futs_llam"`
+	Basis            string `json:"basis"`
+	FutsSdpr         string `json:"futs_sdpr"`
+	HtsThpr          string `json:"hts_thpr"`
+	Dprt             string `json:"dprt"`
+	CrbrAplyMxpr     string `json:"crbr_aply_mxpr"`
+	CrbrAplyLlam     string `json:"crbr_aply_llam"`
+	FutsLastTrDate   string `json:"futs_last_tr_date"`
+	HtsRmnnDynu      string `json:"hts_rmnn_dynu"`
+	FutsLstnMedmHgpr string `json:"futs_lstn_medm_hgpr"`
+	FutsLstnMedmLwpr string `json:"futs_lstn_medm_lwpr"`
+	DeltaVal         string `json:"delta_val"`
+	Gama             string `json:"gama"`
+	Theta            string `json:"theta"`
+	Vega             string `json:"vega"`
+	Rho              string `json:"rho"`
+	HistVltl         string `json:"hist_vltl"`
+	HtsIntsVltl      string `json:"hts_ints_vltl"`
+	MrktBasis        string `json:"mrkt_basis"`
+	Acpr             string `json:"acpr"`
 }
 
 type KISDomesticFutureoptionV1QuotationsInquirePriceOutput2Item struct {
-	BstpClsCode      string `json:"bstp_cls_code,omitempty"`
-	HtsKorIsnm       string `json:"hts_kor_isnm,omitempty"`
-	BstpNmixPrpr     string `json:"bstp_nmix_prpr,omitempty"`
-	PrdyVrssSign     string `json:"prdy_vrss_sign,omitempty"`
-	BstpNmixPrdyVrss string `json:"bstp_nmix_prdy_vrss,omitempty"`
-	BstpNmixPrdyCtrt string `json:"bstp_nmix_prdy_ctrt,omitempty"`
+	BstpClsCode      string `json:"bstp_cls_code"`
+	HtsKorIsnm       string `json:"hts_kor_isnm"`
+	BstpNmixPrpr     string `json:"bstp_nmix_prpr"`
+	PrdyVrssSign     string `json:"prdy_vrss_sign"`
+	BstpNmixPrdyVrss string `json:"bstp_nmix_prdy_vrss"`
+	BstpNmixPrdyCtrt string `json:"bstp_nmix_prdy_ctrt"`
 }
 
 type KISDomesticFutureoptionV1QuotationsInquirePriceOutput3Item struct {
-	BstpClsCode      string `json:"bstp_cls_code,omitempty"`
-	HtsKorIsnm       string `json:"hts_kor_isnm,omitempty"`
-	BstpNmixPrpr     string `json:"bstp_nmix_prpr,omitempty"`
-	PrdyVrssSign     string `json:"prdy_vrss_sign,omitempty"`
-	BstpNmixPrdyVrss string `json:"bstp_nmix_prdy_vrss,omitempty"`
-	BstpNmixPrdyCtrt string `json:"bstp_nmix_prdy_ctrt,omitempty"`
+	BstpClsCode      string `json:"bstp_cls_code"`
+	HtsKorIsnm       string `json:"hts_kor_isnm"`
+	BstpNmixPrpr     string `json:"bstp_nmix_prpr"`
+	PrdyVrssSign     string `json:"prdy_vrss_sign"`
+	BstpNmixPrdyVrss string `json:"bstp_nmix_prdy_vrss"`
+	BstpNmixPrdyCtrt string `json:"bstp_nmix_prdy_ctrt"`
 }
 
 type KISDomesticFutureoptionV1QuotationsInquirePriceRequest struct {
@@ -1017,48 +1017,48 @@ type KISDomesticFutureoptionV1QuotationsInquireTimeFuopchartprice struct {
 }
 
 type KISDomesticFutureoptionV1QuotationsInquireTimeFuopchartpriceOutput1Item struct {
-	FutsPrdyVrss         string `json:"futs_prdy_vrss,omitempty"`
-	PrdyVrssSign         string `json:"prdy_vrss_sign,omitempty"`
-	FutsPrdyCtrt         string `json:"futs_prdy_ctrt,omitempty"`
-	FutsPrdyClpr         string `json:"futs_prdy_clpr,omitempty"`
-	PrdyNmix             string `json:"prdy_nmix,omitempty"`
-	AcmlVol              string `json:"acml_vol,omitempty"`
-	AcmlTrPbmn           string `json:"acml_tr_pbmn,omitempty"`
-	HtsKorIsnm           string `json:"hts_kor_isnm,omitempty"`
-	FutsPrpr             string `json:"futs_prpr,omitempty"`
-	FutsShrnIscd         string `json:"futs_shrn_iscd,omitempty"`
-	PrdyVol              string `json:"prdy_vol,omitempty"`
-	FutsMxpr             string `json:"futs_mxpr,omitempty"`
-	FutsLlam             string `json:"futs_llam,omitempty"`
-	FutsOprc             string `json:"futs_oprc,omitempty"`
-	FutsHgpr             string `json:"futs_hgpr,omitempty"`
-	FutsLwpr             string `json:"futs_lwpr,omitempty"`
-	FutsPrdyOprc         string `json:"futs_prdy_oprc,omitempty"`
-	FutsPrdyHgpr         string `json:"futs_prdy_hgpr,omitempty"`
-	FutsPrdyLwpr         string `json:"futs_prdy_lwpr,omitempty"`
-	FutsAskp             string `json:"futs_askp,omitempty"`
-	FutsBidp             string `json:"futs_bidp,omitempty"`
-	Basis                string `json:"basis,omitempty"`
-	Kospi200Nmix         string `json:"kospi200_nmix,omitempty"`
-	Kospi200PrdyVrss     string `json:"kospi200_prdy_vrss,omitempty"`
-	Kospi200PrdyCtrt     string `json:"kospi200_prdy_ctrt,omitempty"`
-	Kospi200PrdyVrssSign string `json:"kospi200_prdy_vrss_sign,omitempty"`
-	HtsOtstStplQty       string `json:"hts_otst_stpl_qty,omitempty"`
-	OtstStplQtyIcdc      string `json:"otst_stpl_qty_icdc,omitempty"`
-	TdayRltv             string `json:"tday_rltv,omitempty"`
-	HtsThpr              string `json:"hts_thpr,omitempty"`
-	Dprt                 string `json:"dprt,omitempty"`
+	FutsPrdyVrss         string `json:"futs_prdy_vrss"`
+	PrdyVrssSign         string `json:"prdy_vrss_sign"`
+	FutsPrdyCtrt         string `json:"futs_prdy_ctrt"`
+	FutsPrdyClpr         string `json:"futs_prdy_clpr"`
+	PrdyNmix             string `json:"prdy_nmix"`
+	AcmlVol              string `json:"acml_vol"`
+	AcmlTrPbmn           string `json:"acml_tr_pbmn"`
+	HtsKorIsnm           string `json:"hts_kor_isnm"`
+	FutsPrpr             string `json:"futs_prpr"`
+	FutsShrnIscd         string `json:"futs_shrn_iscd"`
+	PrdyVol              string `json:"prdy_vol"`
+	FutsMxpr             string `json:"futs_mxpr"`
+	FutsLlam             string `json:"futs_llam"`
+	FutsOprc             string `json:"futs_oprc"`
+	FutsHgpr             string `json:"futs_hgpr"`
+	FutsLwpr             string `json:"futs_lwpr"`
+	FutsPrdyOprc         string `json:"futs_prdy_oprc"`
+	FutsPrdyHgpr         string `json:"futs_prdy_hgpr"`
+	FutsPrdyLwpr         string `json:"futs_prdy_lwpr"`
+	FutsAskp             string `json:"futs_askp"`
+	FutsBidp             string `json:"futs_bidp"`
+	Basis                string `json:"basis"`
+	Kospi200Nmix         string `json:"kospi200_nmix"`
+	Kospi200PrdyVrss     string `json:"kospi200_prdy_vrss"`
+	Kospi200PrdyCtrt     string `json:"kospi200_prdy_ctrt"`
+	Kospi200PrdyVrssSign string `json:"kospi200_prdy_vrss_sign"`
+	HtsOtstStplQty       string `json:"hts_otst_stpl_qty"`
+	OtstStplQtyIcdc      string `json:"otst_stpl_qty_icdc"`
+	TdayRltv             string `json:"tday_rltv"`
+	HtsThpr              string `json:"hts_thpr"`
+	Dprt                 string `json:"dprt"`
 }
 
 type KISDomesticFutureoptionV1QuotationsInquireTimeFuopchartpriceOutput2Item struct {
-	StckBsopDate string `json:"stck_bsop_date,omitempty"`
-	StckCntgHour string `json:"stck_cntg_hour,omitempty"`
-	FutsPrpr     string `json:"futs_prpr,omitempty"`
-	FutsOprc     string `json:"futs_oprc,omitempty"`
-	FutsHgpr     string `json:"futs_hgpr,omitempty"`
-	FutsLwpr     string `json:"futs_lwpr,omitempty"`
-	CntgVol      string `json:"cntg_vol,omitempty"`
-	AcmlTrPbmn   string `json:"acml_tr_pbmn,omitempty"`
+	StckBsopDate string `json:"stck_bsop_date"`
+	StckCntgHour string `json:"stck_cntg_hour"`
+	FutsPrpr     string `json:"futs_prpr"`
+	FutsOprc     string `json:"futs_oprc"`
+	FutsHgpr     string `json:"futs_hgpr"`
+	FutsLwpr     string `json:"futs_lwpr"`
+	CntgVol      string `json:"cntg_vol"`
+	AcmlTrPbmn   string `json:"acml_tr_pbmn"`
 }
 
 type KISDomesticFutureoptionV1QuotationsInquireTimeFuopchartpriceRequest struct {
@@ -1080,56 +1080,56 @@ type KISDomesticFutureoptionV1TradingInquireBalance struct {
 }
 
 type KISDomesticFutureoptionV1TradingInquireBalanceOutput1Item struct {
-	Cano           string `json:"cano,omitempty"`
-	AcntPrdtCd     string `json:"acnt_prdt_cd,omitempty"`
-	Pdno           string `json:"pdno,omitempty"`
-	PrdtTypeCd     string `json:"prdt_type_cd,omitempty"`
-	ShtnPdno       string `json:"shtn_pdno,omitempty"`
-	PrdtName       string `json:"prdt_name,omitempty"`
-	SllBuyDvsnName string `json:"sll_buy_dvsn_name,omitempty"`
-	CblcQty        string `json:"cblc_qty,omitempty"`
-	ExccUnpr       string `json:"excc_unpr,omitempty"`
-	CcldAvgUnpr1   string `json:"ccld_avg_unpr1,omitempty"`
-	IdxClpr        string `json:"idx_clpr,omitempty"`
-	PchsAmt        string `json:"pchs_amt,omitempty"`
-	EvluAmt        string `json:"evlu_amt,omitempty"`
-	EvluPflsAmt    string `json:"evlu_pfls_amt,omitempty"`
-	TradPflsAmt    string `json:"trad_pfls_amt,omitempty"`
-	LqdPsblQty     string `json:"lqd_psbl_qty,omitempty"`
+	Cano           string `json:"cano"`
+	AcntPrdtCd     string `json:"acnt_prdt_cd"`
+	Pdno           string `json:"pdno"`
+	PrdtTypeCd     string `json:"prdt_type_cd"`
+	ShtnPdno       string `json:"shtn_pdno"`
+	PrdtName       string `json:"prdt_name"`
+	SllBuyDvsnName string `json:"sll_buy_dvsn_name"`
+	CblcQty        string `json:"cblc_qty"`
+	ExccUnpr       string `json:"excc_unpr"`
+	CcldAvgUnpr1   string `json:"ccld_avg_unpr1"`
+	IdxClpr        string `json:"idx_clpr"`
+	PchsAmt        string `json:"pchs_amt"`
+	EvluAmt        string `json:"evlu_amt"`
+	EvluPflsAmt    string `json:"evlu_pfls_amt"`
+	TradPflsAmt    string `json:"trad_pfls_amt"`
+	LqdPsblQty     string `json:"lqd_psbl_qty"`
 }
 
 type KISDomesticFutureoptionV1TradingInquireBalanceOutput2Item struct {
-	DncaCash        string `json:"dnca_cash,omitempty"`
-	FrcrDnclAmt     string `json:"frcr_dncl_amt,omitempty"`
-	DncaSbst        string `json:"dnca_sbst,omitempty"`
-	TotDnclAmt      string `json:"tot_dncl_amt,omitempty"`
-	TotCcldAmt      string `json:"tot_ccld_amt,omitempty"`
-	CashMgna        string `json:"cash_mgna,omitempty"`
-	SbstMgna        string `json:"sbst_mgna,omitempty"`
-	MgnaTota        string `json:"mgna_tota,omitempty"`
-	OptDfpa         string `json:"opt_dfpa,omitempty"`
-	ThdtDfpa        string `json:"thdt_dfpa,omitempty"`
-	RnwlDfpa        string `json:"rnwl_dfpa,omitempty"`
-	Fee             string `json:"fee,omitempty"`
-	NxdyDnca        string `json:"nxdy_dnca,omitempty"`
-	NxdyDnclAmt     string `json:"nxdy_dncl_amt,omitempty"`
-	PrsmDpast       string `json:"prsm_dpast,omitempty"`
-	PrsmDpastAmt    string `json:"prsm_dpast_amt,omitempty"`
-	PprtOrdPsblCash string `json:"pprt_ord_psbl_cash,omitempty"`
-	AddMgnaCash     string `json:"add_mgna_cash,omitempty"`
-	AddMgnaTota     string `json:"add_mgna_tota,omitempty"`
-	FutrTradPflsAmt string `json:"futr_trad_pfls_amt,omitempty"`
-	OptTradPflsAmt  string `json:"opt_trad_pfls_amt,omitempty"`
-	FutrEvluPflsAmt string `json:"futr_evlu_pfls_amt,omitempty"`
-	OptEvluPflsAmt  string `json:"opt_evlu_pfls_amt,omitempty"`
-	TradPflsAmtSmtl string `json:"trad_pfls_amt_smtl,omitempty"`
-	EvluPflsAmtSmtl string `json:"evlu_pfls_amt_smtl,omitempty"`
-	WdrwPsblTotAmt  string `json:"wdrw_psbl_tot_amt,omitempty"`
-	OrdPsblCash     string `json:"ord_psbl_cash,omitempty"`
-	OrdPsblSbst     string `json:"ord_psbl_sbst,omitempty"`
-	OrdPsblTota     string `json:"ord_psbl_tota,omitempty"`
-	PchsAmtSmtl     string `json:"pchs_amt_smtl,omitempty"`
-	EvluAmtSmtl     string `json:"evlu_amt_smtl,omitempty"`
+	DncaCash        string `json:"dnca_cash"`
+	FrcrDnclAmt     string `json:"frcr_dncl_amt"`
+	DncaSbst        string `json:"dnca_sbst"`
+	TotDnclAmt      string `json:"tot_dncl_amt"`
+	TotCcldAmt      string `json:"tot_ccld_amt"`
+	CashMgna        string `json:"cash_mgna"`
+	SbstMgna        string `json:"sbst_mgna"`
+	MgnaTota        string `json:"mgna_tota"`
+	OptDfpa         string `json:"opt_dfpa"`
+	ThdtDfpa        string `json:"thdt_dfpa"`
+	RnwlDfpa        string `json:"rnwl_dfpa"`
+	Fee             string `json:"fee"`
+	NxdyDnca        string `json:"nxdy_dnca"`
+	NxdyDnclAmt     string `json:"nxdy_dncl_amt"`
+	PrsmDpast       string `json:"prsm_dpast"`
+	PrsmDpastAmt    string `json:"prsm_dpast_amt"`
+	PprtOrdPsblCash string `json:"pprt_ord_psbl_cash"`
+	AddMgnaCash     string `json:"add_mgna_cash"`
+	AddMgnaTota     string `json:"add_mgna_tota"`
+	FutrTradPflsAmt string `json:"futr_trad_pfls_amt"`
+	OptTradPflsAmt  string `json:"opt_trad_pfls_amt"`
+	FutrEvluPflsAmt string `json:"futr_evlu_pfls_amt"`
+	OptEvluPflsAmt  string `json:"opt_evlu_pfls_amt"`
+	TradPflsAmtSmtl string `json:"trad_pfls_amt_smtl"`
+	EvluPflsAmtSmtl string `json:"evlu_pfls_amt_smtl"`
+	WdrwPsblTotAmt  string `json:"wdrw_psbl_tot_amt"`
+	OrdPsblCash     string `json:"ord_psbl_cash"`
+	OrdPsblSbst     string `json:"ord_psbl_sbst"`
+	OrdPsblTota     string `json:"ord_psbl_tota"`
+	PchsAmtSmtl     string `json:"pchs_amt_smtl"`
+	EvluAmtSmtl     string `json:"evlu_amt_smtl"`
 }
 
 type KISDomesticFutureoptionV1TradingInquireBalanceRequest struct {
@@ -1148,33 +1148,33 @@ type KISDomesticFutureoptionV1TradingInquireBalanceSettlementPl struct {
 }
 
 type KISDomesticFutureoptionV1TradingInquireBalanceSettlementPlOutput2Item struct {
-	NxdyDnca      string `json:"nxdy_dnca,omitempty"`
-	MmgaCash      string `json:"mmga_cash,omitempty"`
-	BrkgMgnaCash  string `json:"brkg_mgna_cash,omitempty"`
-	OptBuyChgs    string `json:"opt_buy_chgs,omitempty"`
-	OptLqdEvluAmt string `json:"opt_lqd_evlu_amt,omitempty"`
-	DncaSbst      string `json:"dnca_sbst,omitempty"`
-	MmgaTota      string `json:"mmga_tota,omitempty"`
-	BrkgMgnaTota  string `json:"brkg_mgna_tota,omitempty"`
-	OptSllChgs    string `json:"opt_sll_chgs,omitempty"`
-	Fee           string `json:"fee,omitempty"`
-	ThdtDfpa      string `json:"thdt_dfpa,omitempty"`
-	RnwlDfpa      string `json:"rnwl_dfpa,omitempty"`
-	DncaCash      string `json:"dnca_cash,omitempty"`
+	NxdyDnca      string `json:"nxdy_dnca"`
+	MmgaCash      string `json:"mmga_cash"`
+	BrkgMgnaCash  string `json:"brkg_mgna_cash"`
+	OptBuyChgs    string `json:"opt_buy_chgs"`
+	OptLqdEvluAmt string `json:"opt_lqd_evlu_amt"`
+	DncaSbst      string `json:"dnca_sbst"`
+	MmgaTota      string `json:"mmga_tota"`
+	BrkgMgnaTota  string `json:"brkg_mgna_tota"`
+	OptSllChgs    string `json:"opt_sll_chgs"`
+	Fee           string `json:"fee"`
+	ThdtDfpa      string `json:"thdt_dfpa"`
+	RnwlDfpa      string `json:"rnwl_dfpa"`
+	DncaCash      string `json:"dnca_cash"`
 }
 
 type KISDomesticFutureoptionV1TradingInquireBalanceSettlementPlOutput1Item struct {
-	Pdno         string `json:"pdno,omitempty"`
-	PrdtName     string `json:"prdt_name,omitempty"`
-	TradDvsnName string `json:"trad_dvsn_name,omitempty"`
-	BfdyCblcQty  string `json:"bfdy_cblc_qty,omitempty"`
-	NewQty       string `json:"new_qty,omitempty"`
-	MnplRpchQty  string `json:"mnpl_rpch_qty,omitempty"`
-	CblcQty      string `json:"cblc_qty,omitempty"`
-	CblcAmt      string `json:"cblc_amt,omitempty"`
-	TradPflsAmt  string `json:"trad_pfls_amt,omitempty"`
-	EvluAmt      string `json:"evlu_amt,omitempty"`
-	EvluPflsAmt  string `json:"evlu_pfls_amt,omitempty"`
+	Pdno         string `json:"pdno"`
+	PrdtName     string `json:"prdt_name"`
+	TradDvsnName string `json:"trad_dvsn_name"`
+	BfdyCblcQty  string `json:"bfdy_cblc_qty"`
+	NewQty       string `json:"new_qty"`
+	MnplRpchQty  string `json:"mnpl_rpch_qty"`
+	CblcQty      string `json:"cblc_qty"`
+	CblcAmt      string `json:"cblc_amt"`
+	TradPflsAmt  string `json:"trad_pfls_amt"`
+	EvluAmt      string `json:"evlu_amt"`
+	EvluPflsAmt  string `json:"evlu_pfls_amt"`
 }
 
 type KISDomesticFutureoptionV1TradingInquireBalanceSettlementPlRequest struct {
@@ -1192,54 +1192,54 @@ type KISDomesticFutureoptionV1TradingInquireBalanceValuationPl struct {
 }
 
 type KISDomesticFutureoptionV1TradingInquireBalanceValuationPlOutput2Item struct {
-	DncaCash        string `json:"dnca_cash,omitempty"`
-	FrcrDnclAmt     string `json:"frcr_dncl_amt,omitempty"`
-	DncaSbst        string `json:"dnca_sbst,omitempty"`
-	TotDnclAmt      string `json:"tot_dncl_amt,omitempty"`
-	TotCcldAmt      string `json:"tot_ccld_amt,omitempty"`
-	CashMgna        string `json:"cash_mgna,omitempty"`
-	SbstMgna        string `json:"sbst_mgna,omitempty"`
-	MgnaTota        string `json:"mgna_tota,omitempty"`
-	OptDfpa         string `json:"opt_dfpa,omitempty"`
-	ThdtDfpa        string `json:"thdt_dfpa,omitempty"`
-	RnwlDfpa        string `json:"rnwl_dfpa,omitempty"`
-	Fee             string `json:"fee,omitempty"`
-	NxdyDnca        string `json:"nxdy_dnca,omitempty"`
-	NxdyDnclAmt     string `json:"nxdy_dncl_amt,omitempty"`
-	PrsmDpast       string `json:"prsm_dpast,omitempty"`
-	PrsmDpastAmt    string `json:"prsm_dpast_amt,omitempty"`
-	PprtOrdPsblCash string `json:"pprt_ord_psbl_cash,omitempty"`
-	AddMgnaCash     string `json:"add_mgna_cash,omitempty"`
-	AddMgnaTota     string `json:"add_mgna_tota,omitempty"`
-	FutrTradPflsAmt string `json:"futr_trad_pfls_amt,omitempty"`
-	OptTradPflsAmt  string `json:"opt_trad_pfls_amt,omitempty"`
-	FutrEvluPflsAmt string `json:"futr_evlu_pfls_amt,omitempty"`
-	OptEvluPflsAmt  string `json:"opt_evlu_pfls_amt,omitempty"`
-	TradPflsAmtSmtl string `json:"trad_pfls_amt_smtl,omitempty"`
-	EvluPflsAmtSmtl string `json:"evlu_pfls_amt_smtl,omitempty"`
-	WdrwPsblTotAmt  string `json:"wdrw_psbl_tot_amt,omitempty"`
-	OrdPsblCash     string `json:"ord_psbl_cash,omitempty"`
-	OrdPsblSbst     string `json:"ord_psbl_sbst,omitempty"`
-	OrdPsblTota     string `json:"ord_psbl_tota,omitempty"`
+	DncaCash        string `json:"dnca_cash"`
+	FrcrDnclAmt     string `json:"frcr_dncl_amt"`
+	DncaSbst        string `json:"dnca_sbst"`
+	TotDnclAmt      string `json:"tot_dncl_amt"`
+	TotCcldAmt      string `json:"tot_ccld_amt"`
+	CashMgna        string `json:"cash_mgna"`
+	SbstMgna        string `json:"sbst_mgna"`
+	MgnaTota        string `json:"mgna_tota"`
+	OptDfpa         string `json:"opt_dfpa"`
+	ThdtDfpa        string `json:"thdt_dfpa"`
+	RnwlDfpa        string `json:"rnwl_dfpa"`
+	Fee             string `json:"fee"`
+	NxdyDnca        string `json:"nxdy_dnca"`
+	NxdyDnclAmt     string `json:"nxdy_dncl_amt"`
+	PrsmDpast       string `json:"prsm_dpast"`
+	PrsmDpastAmt    string `json:"prsm_dpast_amt"`
+	PprtOrdPsblCash string `json:"pprt_ord_psbl_cash"`
+	AddMgnaCash     string `json:"add_mgna_cash"`
+	AddMgnaTota     string `json:"add_mgna_tota"`
+	FutrTradPflsAmt string `json:"futr_trad_pfls_amt"`
+	OptTradPflsAmt  string `json:"opt_trad_pfls_amt"`
+	FutrEvluPflsAmt string `json:"futr_evlu_pfls_amt"`
+	OptEvluPflsAmt  string `json:"opt_evlu_pfls_amt"`
+	TradPflsAmtSmtl string `json:"trad_pfls_amt_smtl"`
+	EvluPflsAmtSmtl string `json:"evlu_pfls_amt_smtl"`
+	WdrwPsblTotAmt  string `json:"wdrw_psbl_tot_amt"`
+	OrdPsblCash     string `json:"ord_psbl_cash"`
+	OrdPsblSbst     string `json:"ord_psbl_sbst"`
+	OrdPsblTota     string `json:"ord_psbl_tota"`
 }
 
 type KISDomesticFutureoptionV1TradingInquireBalanceValuationPlOutput1Item struct {
-	Cano           string `json:"cano,omitempty"`
-	AcntPrdtCd     string `json:"acnt_prdt_cd,omitempty"`
-	Pdno           string `json:"pdno,omitempty"`
-	PrdtTypeCd     string `json:"prdt_type_cd,omitempty"`
-	ShtnPdno       string `json:"shtn_pdno,omitempty"`
-	PrdtName       string `json:"prdt_name,omitempty"`
-	SllBuyDvsnName string `json:"sll_buy_dvsn_name,omitempty"`
-	CblcQty1       string `json:"cblc_qty1,omitempty"`
-	ExccUnpr       string `json:"excc_unpr,omitempty"`
-	CcldAvgUnpr1   string `json:"ccld_avg_unpr1,omitempty"`
-	IdxClpr        string `json:"idx_clpr,omitempty"`
-	PchsAmt        string `json:"pchs_amt,omitempty"`
-	EvluAmt        string `json:"evlu_amt,omitempty"`
-	EvluPflsAmt    string `json:"evlu_pfls_amt,omitempty"`
-	TradPflsAmt    string `json:"trad_pfls_amt,omitempty"`
-	LqdPsblQty     string `json:"lqd_psbl_qty,omitempty"`
+	Cano           string `json:"cano"`
+	AcntPrdtCd     string `json:"acnt_prdt_cd"`
+	Pdno           string `json:"pdno"`
+	PrdtTypeCd     string `json:"prdt_type_cd"`
+	ShtnPdno       string `json:"shtn_pdno"`
+	PrdtName       string `json:"prdt_name"`
+	SllBuyDvsnName string `json:"sll_buy_dvsn_name"`
+	CblcQty1       string `json:"cblc_qty1"`
+	ExccUnpr       string `json:"excc_unpr"`
+	CcldAvgUnpr1   string `json:"ccld_avg_unpr1"`
+	IdxClpr        string `json:"idx_clpr"`
+	PchsAmt        string `json:"pchs_amt"`
+	EvluAmt        string `json:"evlu_amt"`
+	EvluPflsAmt    string `json:"evlu_pfls_amt"`
+	TradPflsAmt    string `json:"trad_pfls_amt"`
+	LqdPsblQty     string `json:"lqd_psbl_qty"`
 }
 
 type KISDomesticFutureoptionV1TradingInquireBalanceValuationPlRequest struct {
@@ -1260,41 +1260,41 @@ type KISDomesticFutureoptionV1TradingInquireCcnl struct {
 }
 
 type KISDomesticFutureoptionV1TradingInquireCcnlOutput1Item struct {
-	OrdGnoBrno           string `json:"ord_gno_brno,omitempty"`
-	Cano                 string `json:"cano,omitempty"`
-	CsacName             string `json:"csac_name,omitempty"`
-	AcntPrdtCd           string `json:"acnt_prdt_cd,omitempty"`
-	OrdDt                string `json:"ord_dt,omitempty"`
-	Odno                 string `json:"odno,omitempty"`
-	OrgnOdno             string `json:"orgn_odno,omitempty"`
-	SllBuyDvsnCd         string `json:"sll_buy_dvsn_cd,omitempty"`
-	TradDvsnName         string `json:"trad_dvsn_name,omitempty"`
-	NmprTypeCd           string `json:"nmpr_type_cd,omitempty"`
-	NmprTypeName         string `json:"nmpr_type_name,omitempty"`
-	Pdno                 string `json:"pdno,omitempty"`
-	PrdtName             string `json:"prdt_name,omitempty"`
-	PrdtTypeCd           string `json:"prdt_type_cd,omitempty"`
-	OrdQty               string `json:"ord_qty,omitempty"`
-	OrdIdx               string `json:"ord_idx,omitempty"`
-	Qty                  string `json:"qty,omitempty"`
-	OrdTmd               string `json:"ord_tmd,omitempty"`
-	TotCcldQty           string `json:"tot_ccld_qty,omitempty"`
-	AvgIdx               string `json:"avg_idx,omitempty"`
-	TotCcldAmt           string `json:"tot_ccld_amt,omitempty"`
-	RjctQty              string `json:"rjct_qty,omitempty"`
-	IngrTradRjctRsonCd   string `json:"ingr_trad_rjct_rson_cd,omitempty"`
-	IngrTradRjctRsonName string `json:"ingr_trad_rjct_rson_name,omitempty"`
-	OrdStfno             string `json:"ord_stfno,omitempty"`
-	SprdItemYn           string `json:"sprd_item_yn,omitempty"`
-	OrdIpAddr            string `json:"ord_ip_addr,omitempty"`
+	OrdGnoBrno           string `json:"ord_gno_brno"`
+	Cano                 string `json:"cano"`
+	CsacName             string `json:"csac_name"`
+	AcntPrdtCd           string `json:"acnt_prdt_cd"`
+	OrdDt                string `json:"ord_dt"`
+	Odno                 string `json:"odno"`
+	OrgnOdno             string `json:"orgn_odno"`
+	SllBuyDvsnCd         string `json:"sll_buy_dvsn_cd"`
+	TradDvsnName         string `json:"trad_dvsn_name"`
+	NmprTypeCd           string `json:"nmpr_type_cd"`
+	NmprTypeName         string `json:"nmpr_type_name"`
+	Pdno                 string `json:"pdno"`
+	PrdtName             string `json:"prdt_name"`
+	PrdtTypeCd           string `json:"prdt_type_cd"`
+	OrdQty               string `json:"ord_qty"`
+	OrdIdx               string `json:"ord_idx"`
+	Qty                  string `json:"qty"`
+	OrdTmd               string `json:"ord_tmd"`
+	TotCcldQty           string `json:"tot_ccld_qty"`
+	AvgIdx               string `json:"avg_idx"`
+	TotCcldAmt           string `json:"tot_ccld_amt"`
+	RjctQty              string `json:"rjct_qty"`
+	IngrTradRjctRsonCd   string `json:"ingr_trad_rjct_rson_cd"`
+	IngrTradRjctRsonName string `json:"ingr_trad_rjct_rson_name"`
+	OrdStfno             string `json:"ord_stfno"`
+	SprdItemYn           string `json:"sprd_item_yn"`
+	OrdIpAddr            string `json:"ord_ip_addr"`
 }
 
 type KISDomesticFutureoptionV1TradingInquireCcnlOutput2Item struct {
-	TotOrdQty      string `json:"tot_ord_qty,omitempty"`
-	TotCcldAmtSmtl string `json:"tot_ccld_amt_smtl,omitempty"`
-	TotCcldQtySmtl string `json:"tot_ccld_qty_smtl,omitempty"`
-	FeeSmtl        string `json:"fee_smtl,omitempty"`
-	CtacTlno       string `json:"ctac_tlno,omitempty"`
+	TotOrdQty      string `json:"tot_ord_qty"`
+	TotCcldAmtSmtl string `json:"tot_ccld_amt_smtl"`
+	TotCcldQtySmtl string `json:"tot_ccld_qty_smtl"`
+	FeeSmtl        string `json:"fee_smtl"`
+	CtacTlno       string `json:"ctac_tlno"`
 }
 
 type KISDomesticFutureoptionV1TradingInquireCcnlRequest struct {
@@ -1319,23 +1319,23 @@ type KISDomesticFutureoptionV1TradingInquireCcnlBstime struct {
 }
 
 type KISDomesticFutureoptionV1TradingInquireCcnlBstimeOutput1Item struct {
-	Pdno       string `json:"pdno,omitempty"`
-	PrdtName   string `json:"prdt_name,omitempty"`
-	Odno       string `json:"odno,omitempty"`
-	TrTypeName string `json:"tr_type_name,omitempty"`
-	LastSttldt string `json:"last_sttldt,omitempty"`
-	CcldIdx    string `json:"ccld_idx,omitempty"`
-	CcldQty    string `json:"ccld_qty,omitempty"`
-	TradAmt    string `json:"trad_amt,omitempty"`
-	Fee        string `json:"fee,omitempty"`
-	CcldBtwn   string `json:"ccld_btwn,omitempty"`
+	Pdno       string `json:"pdno"`
+	PrdtName   string `json:"prdt_name"`
+	Odno       string `json:"odno"`
+	TrTypeName string `json:"tr_type_name"`
+	LastSttldt string `json:"last_sttldt"`
+	CcldIdx    string `json:"ccld_idx"`
+	CcldQty    string `json:"ccld_qty"`
+	TradAmt    string `json:"trad_amt"`
+	Fee        string `json:"fee"`
+	CcldBtwn   string `json:"ccld_btwn"`
 }
 
 type KISDomesticFutureoptionV1TradingInquireCcnlBstimeOutput2Item struct {
-	TotCcldQtySmtl string `json:"tot_ccld_qty_smtl,omitempty"`
-	TotCcldAmtSmtl string `json:"tot_ccld_amt_smtl,omitempty"`
-	FeeAdjt        string `json:"fee_adjt,omitempty"`
-	FeeSmtl        string `json:"fee_smtl,omitempty"`
+	TotCcldQtySmtl string `json:"tot_ccld_qty_smtl"`
+	TotCcldAmtSmtl string `json:"tot_ccld_amt_smtl"`
+	FeeAdjt        string `json:"fee_adjt"`
+	FeeSmtl        string `json:"fee_smtl"`
 }
 
 type KISDomesticFutureoptionV1TradingInquireCcnlBstimeRequest struct {
@@ -1355,43 +1355,43 @@ type KISDomesticFutureoptionV1TradingInquireDailyAmountFee struct {
 }
 
 type KISDomesticFutureoptionV1TradingInquireDailyAmountFeeOutput1Item struct {
-	OrdDt      string `json:"ord_dt,omitempty"`
-	Pdno       string `json:"pdno,omitempty"`
-	ItemName   string `json:"item_name,omitempty"`
-	SllAgrmAmt string `json:"sll_agrm_amt,omitempty"`
-	SllFee     string `json:"sll_fee,omitempty"`
-	BuyAgrmAmt string `json:"buy_agrm_amt,omitempty"`
-	BuyFee     string `json:"buy_fee,omitempty"`
-	TotFeeSmtl string `json:"tot_fee_smtl,omitempty"`
-	TradPfls   string `json:"trad_pfls,omitempty"`
+	OrdDt      string `json:"ord_dt"`
+	Pdno       string `json:"pdno"`
+	ItemName   string `json:"item_name"`
+	SllAgrmAmt string `json:"sll_agrm_amt"`
+	SllFee     string `json:"sll_fee"`
+	BuyAgrmAmt string `json:"buy_agrm_amt"`
+	BuyFee     string `json:"buy_fee"`
+	TotFeeSmtl string `json:"tot_fee_smtl"`
+	TradPfls   string `json:"trad_pfls"`
 }
 
 type KISDomesticFutureoptionV1TradingInquireDailyAmountFeeOutput2Item struct {
-	FutrAgrm        string `json:"futr_agrm,omitempty"`
-	FutrAgrmAmt     string `json:"futr_agrm_amt,omitempty"`
-	FutrAgrmAmtSmtl string `json:"futr_agrm_amt_smtl,omitempty"`
-	FutrSllFeeSmtl  string `json:"futr_sll_fee_smtl,omitempty"`
-	FutrBuyFeeSmtl  string `json:"futr_buy_fee_smtl,omitempty"`
-	FutrFeeSmtl     string `json:"futr_fee_smtl,omitempty"`
-	OptAgrm         string `json:"opt_agrm,omitempty"`
-	OptAgrmAmt      string `json:"opt_agrm_amt,omitempty"`
-	OptAgrmAmtSmtl  string `json:"opt_agrm_amt_smtl,omitempty"`
-	OptSllFeeSmtl   string `json:"opt_sll_fee_smtl,omitempty"`
-	OptBuyFeeSmtl   string `json:"opt_buy_fee_smtl,omitempty"`
-	OptFeeSmtl      string `json:"opt_fee_smtl,omitempty"`
-	PrdtFutrAgrm    string `json:"prdt_futr_agrm,omitempty"`
-	PrdtFuop        string `json:"prdt_fuop,omitempty"`
-	PrdtFutrEvluAmt string `json:"prdt_futr_evlu_amt,omitempty"`
-	FutrFee         string `json:"futr_fee,omitempty"`
-	OptFee          string `json:"opt_fee,omitempty"`
-	Fee             string `json:"fee,omitempty"`
-	SllAgrmAmt      string `json:"sll_agrm_amt,omitempty"`
-	BuyAgrmAmt      string `json:"buy_agrm_amt,omitempty"`
-	AgrmAmtSmtl     string `json:"agrm_amt_smtl,omitempty"`
-	SllFee          string `json:"sll_fee,omitempty"`
-	BuyFee          string `json:"buy_fee,omitempty"`
-	FeeSmtl         string `json:"fee_smtl,omitempty"`
-	TradPflsSmtl    string `json:"trad_pfls_smtl,omitempty"`
+	FutrAgrm        string `json:"futr_agrm"`
+	FutrAgrmAmt     string `json:"futr_agrm_amt"`
+	FutrAgrmAmtSmtl string `json:"futr_agrm_amt_smtl"`
+	FutrSllFeeSmtl  string `json:"futr_sll_fee_smtl"`
+	FutrBuyFeeSmtl  string `json:"futr_buy_fee_smtl"`
+	FutrFeeSmtl     string `json:"futr_fee_smtl"`
+	OptAgrm         string `json:"opt_agrm"`
+	OptAgrmAmt      string `json:"opt_agrm_amt"`
+	OptAgrmAmtSmtl  string `json:"opt_agrm_amt_smtl"`
+	OptSllFeeSmtl   string `json:"opt_sll_fee_smtl"`
+	OptBuyFeeSmtl   string `json:"opt_buy_fee_smtl"`
+	OptFeeSmtl      string `json:"opt_fee_smtl"`
+	PrdtFutrAgrm    string `json:"prdt_futr_agrm"`
+	PrdtFuop        string `json:"prdt_fuop"`
+	PrdtFutrEvluAmt string `json:"prdt_futr_evlu_amt"`
+	FutrFee         string `json:"futr_fee"`
+	OptFee          string `json:"opt_fee"`
+	Fee             string `json:"fee"`
+	SllAgrmAmt      string `json:"sll_agrm_amt"`
+	BuyAgrmAmt      string `json:"buy_agrm_amt"`
+	AgrmAmtSmtl     string `json:"agrm_amt_smtl"`
+	SllFee          string `json:"sll_fee"`
+	BuyFee          string `json:"buy_fee"`
+	FeeSmtl         string `json:"fee_smtl"`
+	TradPflsSmtl    string `json:"trad_pfls_smtl"`
 }
 
 type KISDomesticFutureoptionV1TradingInquireDailyAmountFeeRequest struct {
@@ -1409,36 +1409,36 @@ type KISDomesticFutureoptionV1TradingInquireDeposit struct {
 }
 
 type KISDomesticFutureoptionV1TradingInquireDepositOutputItem struct {
-	DncaTota            string `json:"dnca_tota,omitempty"`
-	BfdyChckAmt         string `json:"bfdy_chck_amt,omitempty"`
-	ThdtChckAmt         string `json:"thdt_chck_amt,omitempty"`
-	RlthUwdlDposAmt     string `json:"rlth_uwdl_dpos_amt,omitempty"`
-	BrkgMgnaCash        string `json:"brkg_mgna_cash,omitempty"`
-	WdrwPsblTotAmt      string `json:"wdrw_psbl_tot_amt,omitempty"`
-	OrdPsblCash         string `json:"ord_psbl_cash,omitempty"`
-	OrdPsblTota         string `json:"ord_psbl_tota,omitempty"`
-	DncaSbst            string `json:"dnca_sbst,omitempty"`
-	SctsSbstAmt         string `json:"scts_sbst_amt,omitempty"`
-	FrcrEvluAmt         string `json:"frcr_evlu_amt,omitempty"`
-	BrkgMgnaSbst        string `json:"brkg_mgna_sbst,omitempty"`
-	SbstRlsePsblAmt     string `json:"sbst_rlse_psbl_amt,omitempty"`
-	MtncRt              string `json:"mtnc_rt,omitempty"`
-	AddMgnaTota         string `json:"add_mgna_tota,omitempty"`
-	AddMgnaCash         string `json:"add_mgna_cash,omitempty"`
-	Rcva                string `json:"rcva,omitempty"`
-	FutrTradPfls        string `json:"futr_trad_pfls,omitempty"`
-	OptTradPflsAmt      string `json:"opt_trad_pfls_amt,omitempty"`
-	TradPflsSmtl        string `json:"trad_pfls_smtl,omitempty"`
-	FutrEvluPflsAmt     string `json:"futr_evlu_pfls_amt,omitempty"`
-	OptEvluPflsAmt      string `json:"opt_evlu_pfls_amt,omitempty"`
-	EvluPflsSmtl        string `json:"evlu_pfls_smtl,omitempty"`
-	ExccDfpa            string `json:"excc_dfpa,omitempty"`
-	OptDfpa             string `json:"opt_dfpa,omitempty"`
-	BrkgFee             string `json:"brkg_fee,omitempty"`
-	NxdyDnca            string `json:"nxdy_dnca,omitempty"`
-	PrsmDpastAmt        string `json:"prsm_dpast_amt,omitempty"`
-	CashMntnAmt         string `json:"cash_mntn_amt,omitempty"`
-	HackAcdtAcntMoveAmt string `json:"hack_acdt_acnt_move_amt,omitempty"`
+	DncaTota            string `json:"dnca_tota"`
+	BfdyChckAmt         string `json:"bfdy_chck_amt"`
+	ThdtChckAmt         string `json:"thdt_chck_amt"`
+	RlthUwdlDposAmt     string `json:"rlth_uwdl_dpos_amt"`
+	BrkgMgnaCash        string `json:"brkg_mgna_cash"`
+	WdrwPsblTotAmt      string `json:"wdrw_psbl_tot_amt"`
+	OrdPsblCash         string `json:"ord_psbl_cash"`
+	OrdPsblTota         string `json:"ord_psbl_tota"`
+	DncaSbst            string `json:"dnca_sbst"`
+	SctsSbstAmt         string `json:"scts_sbst_amt"`
+	FrcrEvluAmt         string `json:"frcr_evlu_amt"`
+	BrkgMgnaSbst        string `json:"brkg_mgna_sbst"`
+	SbstRlsePsblAmt     string `json:"sbst_rlse_psbl_amt"`
+	MtncRt              string `json:"mtnc_rt"`
+	AddMgnaTota         string `json:"add_mgna_tota"`
+	AddMgnaCash         string `json:"add_mgna_cash"`
+	Rcva                string `json:"rcva"`
+	FutrTradPfls        string `json:"futr_trad_pfls"`
+	OptTradPflsAmt      string `json:"opt_trad_pfls_amt"`
+	TradPflsSmtl        string `json:"trad_pfls_smtl"`
+	FutrEvluPflsAmt     string `json:"futr_evlu_pfls_amt"`
+	OptEvluPflsAmt      string `json:"opt_evlu_pfls_amt"`
+	EvluPflsSmtl        string `json:"evlu_pfls_smtl"`
+	ExccDfpa            string `json:"excc_dfpa"`
+	OptDfpa             string `json:"opt_dfpa"`
+	BrkgFee             string `json:"brkg_fee"`
+	NxdyDnca            string `json:"nxdy_dnca"`
+	PrsmDpastAmt        string `json:"prsm_dpast_amt"`
+	CashMntnAmt         string `json:"cash_mntn_amt"`
+	HackAcdtAcntMoveAmt string `json:"hack_acdt_acnt_move_amt"`
 }
 
 type KISDomesticFutureoptionV1TradingInquireDepositRequest struct {
@@ -1453,60 +1453,60 @@ type KISDomesticFutureoptionV1TradingInquireNgtBalance struct {
 }
 
 type KISDomesticFutureoptionV1TradingInquireNgtBalanceOutput2Item struct {
-	DncaCash        string `json:"dnca_cash,omitempty"`
-	FrcrDnclAmt     string `json:"frcr_dncl_amt,omitempty"`
-	DncaSbst        string `json:"dnca_sbst,omitempty"`
-	TotDnclAmt      string `json:"tot_dncl_amt,omitempty"`
-	CashMgna        string `json:"cash_mgna,omitempty"`
-	SbstMgna        string `json:"sbst_mgna,omitempty"`
-	MgnaTota        string `json:"mgna_tota,omitempty"`
-	OptDfpa         string `json:"opt_dfpa,omitempty"`
-	ThdtDfpa        string `json:"thdt_dfpa,omitempty"`
-	RnwlDfpa        string `json:"rnwl_dfpa,omitempty"`
-	Fee             string `json:"fee,omitempty"`
-	NxdyDnca        string `json:"nxdy_dnca,omitempty"`
-	NxdyDnclAmt     string `json:"nxdy_dncl_amt,omitempty"`
-	PrsmDpast       string `json:"prsm_dpast,omitempty"`
-	PprtOrdPsblCash string `json:"pprt_ord_psbl_cash,omitempty"`
-	AddMgnaCash     string `json:"add_mgna_cash,omitempty"`
-	AddMgnaTota     string `json:"add_mgna_tota,omitempty"`
-	FutrTradPflsAmt string `json:"futr_trad_pfls_amt,omitempty"`
-	OptTradPflsAmt  string `json:"opt_trad_pfls_amt,omitempty"`
-	FutrEvluPflsAmt string `json:"futr_evlu_pfls_amt,omitempty"`
-	OptEvluPflsAmt  string `json:"opt_evlu_pfls_amt,omitempty"`
-	TradPflsAmtSmtl string `json:"trad_pfls_amt_smtl,omitempty"`
-	EvluPflsAmtSmtl string `json:"evlu_pfls_amt_smtl,omitempty"`
-	WdrwPsblTotAmt  string `json:"wdrw_psbl_tot_amt,omitempty"`
-	OrdPsblCash     string `json:"ord_psbl_cash,omitempty"`
-	OrdPsblSbst     string `json:"ord_psbl_sbst,omitempty"`
-	OrdPsblTota     string `json:"ord_psbl_tota,omitempty"`
-	MmgaTotAmt      string `json:"mmga_tot_amt,omitempty"`
-	MmgaCashAmt     string `json:"mmga_cash_amt,omitempty"`
-	MtncRt          string `json:"mtnc_rt,omitempty"`
-	IsfcAmt         string `json:"isfc_amt,omitempty"`
-	PchsAmtSmtl     string `json:"pchs_amt_smtl,omitempty"`
-	EvluAmtSmtl     string `json:"evlu_amt_smtl,omitempty"`
+	DncaCash        string `json:"dnca_cash"`
+	FrcrDnclAmt     string `json:"frcr_dncl_amt"`
+	DncaSbst        string `json:"dnca_sbst"`
+	TotDnclAmt      string `json:"tot_dncl_amt"`
+	CashMgna        string `json:"cash_mgna"`
+	SbstMgna        string `json:"sbst_mgna"`
+	MgnaTota        string `json:"mgna_tota"`
+	OptDfpa         string `json:"opt_dfpa"`
+	ThdtDfpa        string `json:"thdt_dfpa"`
+	RnwlDfpa        string `json:"rnwl_dfpa"`
+	Fee             string `json:"fee"`
+	NxdyDnca        string `json:"nxdy_dnca"`
+	NxdyDnclAmt     string `json:"nxdy_dncl_amt"`
+	PrsmDpast       string `json:"prsm_dpast"`
+	PprtOrdPsblCash string `json:"pprt_ord_psbl_cash"`
+	AddMgnaCash     string `json:"add_mgna_cash"`
+	AddMgnaTota     string `json:"add_mgna_tota"`
+	FutrTradPflsAmt string `json:"futr_trad_pfls_amt"`
+	OptTradPflsAmt  string `json:"opt_trad_pfls_amt"`
+	FutrEvluPflsAmt string `json:"futr_evlu_pfls_amt"`
+	OptEvluPflsAmt  string `json:"opt_evlu_pfls_amt"`
+	TradPflsAmtSmtl string `json:"trad_pfls_amt_smtl"`
+	EvluPflsAmtSmtl string `json:"evlu_pfls_amt_smtl"`
+	WdrwPsblTotAmt  string `json:"wdrw_psbl_tot_amt"`
+	OrdPsblCash     string `json:"ord_psbl_cash"`
+	OrdPsblSbst     string `json:"ord_psbl_sbst"`
+	OrdPsblTota     string `json:"ord_psbl_tota"`
+	MmgaTotAmt      string `json:"mmga_tot_amt"`
+	MmgaCashAmt     string `json:"mmga_cash_amt"`
+	MtncRt          string `json:"mtnc_rt"`
+	IsfcAmt         string `json:"isfc_amt"`
+	PchsAmtSmtl     string `json:"pchs_amt_smtl"`
+	EvluAmtSmtl     string `json:"evlu_amt_smtl"`
 }
 
 type KISDomesticFutureoptionV1TradingInquireNgtBalanceOutput1Item struct {
-	Cano           string `json:"cano,omitempty"`
-	AcntPrdtCd     string `json:"acnt_prdt_cd,omitempty"`
-	Pdno           string `json:"pdno,omitempty"`
-	PrdtTypeCd     string `json:"prdt_type_cd,omitempty"`
-	ShtnPdno       string `json:"shtn_pdno,omitempty"`
-	PrdtName       string `json:"prdt_name,omitempty"`
-	SllBuyDvsnName string `json:"sll_buy_dvsn_name,omitempty"`
-	SllBuyDvsnCd   string `json:"sll_buy_dvsn_cd,omitempty"`
-	TradDvsnName   string `json:"trad_dvsn_name,omitempty"`
-	CblcQty        string `json:"cblc_qty,omitempty"`
-	ExccUnpr       string `json:"excc_unpr,omitempty"`
-	CcldAvgUnpr1   string `json:"ccld_avg_unpr1,omitempty"`
-	IdxClpr        string `json:"idx_clpr,omitempty"`
-	PchsAmt        string `json:"pchs_amt,omitempty"`
-	EvluAmt        string `json:"evlu_amt,omitempty"`
-	EvluPflsAmt    string `json:"evlu_pfls_amt,omitempty"`
-	TradPflsAmt    string `json:"trad_pfls_amt,omitempty"`
-	LqdPsblQty     string `json:"lqd_psbl_qty,omitempty"`
+	Cano           string `json:"cano"`
+	AcntPrdtCd     string `json:"acnt_prdt_cd"`
+	Pdno           string `json:"pdno"`
+	PrdtTypeCd     string `json:"prdt_type_cd"`
+	ShtnPdno       string `json:"shtn_pdno"`
+	PrdtName       string `json:"prdt_name"`
+	SllBuyDvsnName string `json:"sll_buy_dvsn_name"`
+	SllBuyDvsnCd   string `json:"sll_buy_dvsn_cd"`
+	TradDvsnName   string `json:"trad_dvsn_name"`
+	CblcQty        string `json:"cblc_qty"`
+	ExccUnpr       string `json:"excc_unpr"`
+	CcldAvgUnpr1   string `json:"ccld_avg_unpr1"`
+	IdxClpr        string `json:"idx_clpr"`
+	PchsAmt        string `json:"pchs_amt"`
+	EvluAmt        string `json:"evlu_amt"`
+	EvluPflsAmt    string `json:"evlu_pfls_amt"`
+	TradPflsAmt    string `json:"trad_pfls_amt"`
+	LqdPsblQty     string `json:"lqd_psbl_qty"`
 }
 
 type KISDomesticFutureoptionV1TradingInquireNgtBalanceRequest struct {
@@ -1526,42 +1526,42 @@ type KISDomesticFutureoptionV1TradingInquireNgtCcnl struct {
 }
 
 type KISDomesticFutureoptionV1TradingInquireNgtCcnlOutput2Item struct {
-	TotOrdQty      string `json:"tot_ord_qty,omitempty"`
-	TotCcldQty     string `json:"tot_ccld_qty,omitempty"`
-	TotCcldQtySmtl string `json:"tot_ccld_qty_SMTL,omitempty"`
-	TotCcldAmt     string `json:"tot_ccld_amt,omitempty"`
-	TotCcldAmtSmtl string `json:"tot_ccld_amt_SMTL,omitempty"`
-	Fee            string `json:"fee,omitempty"`
-	CtacTlno       string `json:"ctac_tlno,omitempty"`
+	TotOrdQty      string `json:"tot_ord_qty"`
+	TotCcldQty     string `json:"tot_ccld_qty"`
+	TotCcldQtySmtl string `json:"tot_ccld_qty_SMTL"`
+	TotCcldAmt     string `json:"tot_ccld_amt"`
+	TotCcldAmtSmtl string `json:"tot_ccld_amt_SMTL"`
+	Fee            string `json:"fee"`
+	CtacTlno       string `json:"ctac_tlno"`
 }
 
 type KISDomesticFutureoptionV1TradingInquireNgtCcnlOutput1Item struct {
-	OrdGnoBrno           string `json:"ord_gno_brno,omitempty"`
-	Cano                 string `json:"cano,omitempty"`
-	CsacName             string `json:"csac_name,omitempty"`
-	AcntPrdtCd           string `json:"acnt_prdt_cd,omitempty"`
-	OrdDt                string `json:"ord_dt,omitempty"`
-	Odno                 string `json:"odno,omitempty"`
-	OrgnOdno             string `json:"orgn_odno,omitempty"`
-	SllBuyDvsnCd         string `json:"sll_buy_dvsn_cd,omitempty"`
-	TradDvsnName         string `json:"trad_dvsn_name,omitempty"`
-	NmprTypeName         string `json:"nmpr_type_name,omitempty"`
-	Pdno                 string `json:"pdno,omitempty"`
-	PrdtName             string `json:"prdt_name,omitempty"`
-	PrdtTypeCd           string `json:"prdt_type_cd,omitempty"`
-	OrdQty               string `json:"ord_qty,omitempty"`
-	OrdIdx4              string `json:"ord_idx4,omitempty"`
-	Qty                  string `json:"qty,omitempty"`
-	OrdTmd               string `json:"ord_tmd,omitempty"`
-	TotCcldQty           string `json:"tot_ccld_qty,omitempty"`
-	AvgIdx               string `json:"avg_idx,omitempty"`
-	TotCcldAmt           string `json:"tot_ccld_amt,omitempty"`
-	RjctQty              string `json:"rjct_qty,omitempty"`
-	IngrTradRjctRsonCd   string `json:"ingr_trad_rjct_rson_cd,omitempty"`
-	IngrTradRjctRsonName string `json:"ingr_trad_rjct_rson_name,omitempty"`
-	OrdStfno             string `json:"ord_stfno,omitempty"`
-	SprdItemYn           string `json:"sprd_item_yn,omitempty"`
-	OrdIpAddr            string `json:"ord_ip_addr,omitempty"`
+	OrdGnoBrno           string `json:"ord_gno_brno"`
+	Cano                 string `json:"cano"`
+	CsacName             string `json:"csac_name"`
+	AcntPrdtCd           string `json:"acnt_prdt_cd"`
+	OrdDt                string `json:"ord_dt"`
+	Odno                 string `json:"odno"`
+	OrgnOdno             string `json:"orgn_odno"`
+	SllBuyDvsnCd         string `json:"sll_buy_dvsn_cd"`
+	TradDvsnName         string `json:"trad_dvsn_name"`
+	NmprTypeName         string `json:"nmpr_type_name"`
+	Pdno                 string `json:"pdno"`
+	PrdtName             string `json:"prdt_name"`
+	PrdtTypeCd           string `json:"prdt_type_cd"`
+	OrdQty               string `json:"ord_qty"`
+	OrdIdx4              string `json:"ord_idx4"`
+	Qty                  string `json:"qty"`
+	OrdTmd               string `json:"ord_tmd"`
+	TotCcldQty           string `json:"tot_ccld_qty"`
+	AvgIdx               string `json:"avg_idx"`
+	TotCcldAmt           string `json:"tot_ccld_amt"`
+	RjctQty              string `json:"rjct_qty"`
+	IngrTradRjctRsonCd   string `json:"ingr_trad_rjct_rson_cd"`
+	IngrTradRjctRsonName string `json:"ingr_trad_rjct_rson_name"`
+	OrdStfno             string `json:"ord_stfno"`
+	SprdItemYn           string `json:"sprd_item_yn"`
+	OrdIpAddr            string `json:"ord_ip_addr"`
 }
 
 type KISDomesticFutureoptionV1TradingInquireNgtCcnlRequest struct {
@@ -1587,12 +1587,12 @@ type KISDomesticFutureoptionV1TradingInquirePsblNgtOrder struct {
 }
 
 type KISDomesticFutureoptionV1TradingInquirePsblNgtOrderOutputItem struct {
-	MaxOrdPsblQty string `json:"max_ord_psbl_qty,omitempty"`
-	TotPsblQty    string `json:"tot_psbl_qty,omitempty"`
-	LqdPsblQty    string `json:"lqd_psbl_qty,omitempty"`
-	LqdPsblQty1   string `json:"lqd_psbl_qty_1,omitempty"`
-	OrdPsblQty    string `json:"ord_psbl_qty,omitempty"`
-	BassIdx       string `json:"bass_idx,omitempty"`
+	MaxOrdPsblQty string `json:"max_ord_psbl_qty"`
+	TotPsblQty    string `json:"tot_psbl_qty"`
+	LqdPsblQty    string `json:"lqd_psbl_qty"`
+	LqdPsblQty1   string `json:"lqd_psbl_qty_1"`
+	OrdPsblQty    string `json:"ord_psbl_qty"`
+	BassIdx       string `json:"bass_idx"`
 }
 
 type KISDomesticFutureoptionV1TradingInquirePsblNgtOrderRequest struct {
@@ -1611,10 +1611,10 @@ type KISDomesticFutureoptionV1TradingInquirePsblOrder struct {
 }
 
 type KISDomesticFutureoptionV1TradingInquirePsblOrderOutputItem struct {
-	TotPsblQty  string `json:"tot_psbl_qty,omitempty"`
-	LqdPsblQty1 string `json:"lqd_psbl_qty1,omitempty"`
-	OrdPsblQty  string `json:"ord_psbl_qty,omitempty"`
-	BassIdx     string `json:"bass_idx,omitempty"`
+	TotPsblQty  string `json:"tot_psbl_qty"`
+	LqdPsblQty1 string `json:"lqd_psbl_qty1"`
+	OrdPsblQty  string `json:"ord_psbl_qty"`
+	BassIdx     string `json:"bass_idx"`
 }
 
 type KISDomesticFutureoptionV1TradingInquirePsblOrderRequest struct {
@@ -1628,29 +1628,29 @@ type KISDomesticFutureoptionV1TradingNgtMarginDetail struct {
 }
 
 type KISDomesticFutureoptionV1TradingNgtMarginDetailOutput1Item struct {
-	CashAmt string `json:"cash_amt,omitempty"`
-	TotAmt  string `json:"tot_amt,omitempty"`
+	CashAmt string `json:"cash_amt"`
+	TotAmt  string `json:"tot_amt"`
 }
 
 type KISDomesticFutureoptionV1TradingNgtMarginDetailOutput2Item struct {
-	CashAmt string `json:"cash_amt,omitempty"`
-	SbstAmt string `json:"sbst_amt,omitempty"`
-	TotAmt  string `json:"tot_amt,omitempty"`
+	CashAmt string `json:"cash_amt"`
+	SbstAmt string `json:"sbst_amt"`
+	TotAmt  string `json:"tot_amt"`
 }
 
 type KISDomesticFutureoptionV1TradingNgtMarginDetailOutput3Item struct {
-	BaseDpsaGdatGradCd    string `json:"base_dpsa_gdat_grad_cd,omitempty"`
-	BfdySbstSllCcldAmt    string `json:"bfdy_sbst_sll_ccld_amt,omitempty"`
-	BfdySbstSllSbstAmt    string `json:"bfdy_sbst_sll_sbst_amt,omitempty"`
-	ExccDfpa              string `json:"excc_dfpa,omitempty"`
-	FeeAmt                string `json:"fee_amt,omitempty"`
-	NxdyDnclAmt           string `json:"nxdy_dncl_amt,omitempty"`
-	OptBaseDpsaGdatGradCd string `json:"opt_base_dpsa_gdat_grad_cd,omitempty"`
-	OptBuyExusAcntYn      string `json:"opt_buy_exus_acnt_yn,omitempty"`
-	OptDfpa               string `json:"opt_dfpa,omitempty"`
-	PrsmDpastAmt          string `json:"prsm_dpast_amt,omitempty"`
-	ThdtSbstSllCcldAmt    string `json:"thdt_sbst_sll_ccld_amt,omitempty"`
-	ThdtSbstSllSbstAmt    string `json:"thdt_sbst_sll_sbst_amt,omitempty"`
+	BaseDpsaGdatGradCd    string `json:"base_dpsa_gdat_grad_cd"`
+	BfdySbstSllCcldAmt    string `json:"bfdy_sbst_sll_ccld_amt"`
+	BfdySbstSllSbstAmt    string `json:"bfdy_sbst_sll_sbst_amt"`
+	ExccDfpa              string `json:"excc_dfpa"`
+	FeeAmt                string `json:"fee_amt"`
+	NxdyDnclAmt           string `json:"nxdy_dncl_amt"`
+	OptBaseDpsaGdatGradCd string `json:"opt_base_dpsa_gdat_grad_cd"`
+	OptBuyExusAcntYn      string `json:"opt_buy_exus_acnt_yn"`
+	OptDfpa               string `json:"opt_dfpa"`
+	PrsmDpastAmt          string `json:"prsm_dpast_amt"`
+	ThdtSbstSllCcldAmt    string `json:"thdt_sbst_sll_ccld_amt"`
+	ThdtSbstSllSbstAmt    string `json:"thdt_sbst_sll_sbst_amt"`
 }
 
 type KISDomesticFutureoptionV1TradingNgtMarginDetailRequest struct {
@@ -1665,12 +1665,12 @@ type KISDomesticFutureoptionV1TradingOrder struct {
 }
 
 type KISDomesticFutureoptionV1TradingOrderOutputItem struct {
-	AcntName     string `json:"ACNT_NAME,omitempty"`
-	TradDvsnName string `json:"TRAD_DVSN_NAME,omitempty"`
-	ItemName     string `json:"ITEM_NAME,omitempty"`
-	OrdTmd       string `json:"ORD_TMD,omitempty"`
-	OrdGnoBrno   string `json:"ORD_GNO_BRNO,omitempty"`
-	Odno         string `json:"ODNO,omitempty"`
+	AcntName     string `json:"ACNT_NAME"`
+	TradDvsnName string `json:"TRAD_DVSN_NAME"`
+	ItemName     string `json:"ITEM_NAME"`
+	OrdTmd       string `json:"ORD_TMD"`
+	OrdGnoBrno   string `json:"ORD_GNO_BRNO"`
+	Odno         string `json:"ODNO"`
 }
 
 type KISDomesticFutureoptionV1TradingOrderRequest struct {
@@ -1690,13 +1690,13 @@ type KISDomesticFutureoptionV1TradingOrderRvsecncl struct {
 }
 
 type KISDomesticFutureoptionV1TradingOrderRvsecnclOutputItem struct {
-	AcntName     string `json:"ACNT_NAME,omitempty"`
-	TradDvsnName string `json:"TRAD_DVSN_NAME,omitempty"`
-	ItemName     string `json:"ITEM_NAME,omitempty"`
-	OrdTmd       string `json:"ORD_TMD,omitempty"`
-	OrdGnoBrno   string `json:"ORD_GNO_BRNO,omitempty"`
-	OrgnOdno     string `json:"ORGN_ODNO,omitempty"`
-	Odno         string `json:"ODNO,omitempty"`
+	AcntName     string `json:"ACNT_NAME"`
+	TradDvsnName string `json:"TRAD_DVSN_NAME"`
+	ItemName     string `json:"ITEM_NAME"`
+	OrdTmd       string `json:"ORD_TMD"`
+	OrdGnoBrno   string `json:"ORD_GNO_BRNO"`
+	OrgnOdno     string `json:"ORGN_ODNO"`
+	Odno         string `json:"ODNO"`
 }
 
 type KISDomesticFutureoptionV1TradingOrderRvsecnclRequest struct {
@@ -1719,17 +1719,17 @@ type KISDomesticStockV1FinanceBalanceSheet struct {
 }
 
 type KISDomesticStockV1FinanceBalanceSheetOutputItem struct {
-	StacYymm  string `json:"stac_yymm,omitempty"`
-	Cras      string `json:"cras,omitempty"`
-	Fxas      string `json:"fxas,omitempty"`
-	TotalAset string `json:"total_aset,omitempty"`
-	FlowLblt  string `json:"flow_lblt,omitempty"`
-	FixLblt   string `json:"fix_lblt,omitempty"`
-	TotalLblt string `json:"total_lblt,omitempty"`
-	Cpfn      string `json:"cpfn,omitempty"`
-	CfpSurp   string `json:"cfp_surp,omitempty"`
-	PrfiSurp  string `json:"prfi_surp,omitempty"`
-	TotalCptl string `json:"total_cptl,omitempty"`
+	StacYymm  string `json:"stac_yymm"`
+	Cras      string `json:"cras"`
+	Fxas      string `json:"fxas"`
+	TotalAset string `json:"total_aset"`
+	FlowLblt  string `json:"flow_lblt"`
+	FixLblt   string `json:"fix_lblt"`
+	TotalLblt string `json:"total_lblt"`
+	Cpfn      string `json:"cpfn"`
+	CfpSurp   string `json:"cfp_surp"`
+	PrfiSurp  string `json:"prfi_surp"`
+	TotalCptl string `json:"total_cptl"`
 }
 
 type KISDomesticStockV1FinanceBalanceSheetRequest struct {
@@ -1744,16 +1744,16 @@ type KISDomesticStockV1FinanceFinancialRatio struct {
 }
 
 type KISDomesticStockV1FinanceFinancialRatioOutputItem struct {
-	StacYymm     string `json:"stac_yymm,omitempty"`
-	Grs          string `json:"grs,omitempty"`
-	BsopPrfiInrt string `json:"bsop_prfi_inrt,omitempty"`
-	NtinInrt     string `json:"ntin_inrt,omitempty"`
-	RoeVal       string `json:"roe_val,omitempty"`
-	Eps          string `json:"eps,omitempty"`
-	Sps          string `json:"sps,omitempty"`
-	Bps          string `json:"bps,omitempty"`
-	RsrvRate     string `json:"rsrv_rate,omitempty"`
-	LbltRate     string `json:"lblt_rate,omitempty"`
+	StacYymm     string `json:"stac_yymm"`
+	Grs          string `json:"grs"`
+	BsopPrfiInrt string `json:"bsop_prfi_inrt"`
+	NtinInrt     string `json:"ntin_inrt"`
+	RoeVal       string `json:"roe_val"`
+	Eps          string `json:"eps"`
+	Sps          string `json:"sps"`
+	Bps          string `json:"bps"`
+	RsrvRate     string `json:"rsrv_rate"`
+	LbltRate     string `json:"lblt_rate"`
 }
 
 type KISDomesticStockV1FinanceFinancialRatioRequest struct {
@@ -1768,11 +1768,11 @@ type KISDomesticStockV1FinanceGrowthRatio struct {
 }
 
 type KISDomesticStockV1FinanceGrowthRatioOutputItem struct {
-	StacYymm     string `json:"stac_yymm,omitempty"`
-	Grs          string `json:"grs,omitempty"`
-	BsopPrfiInrt string `json:"bsop_prfi_inrt,omitempty"`
-	EqutInrt     string `json:"equt_inrt,omitempty"`
-	TotlAsetInrt string `json:"totl_aset_inrt,omitempty"`
+	StacYymm     string `json:"stac_yymm"`
+	Grs          string `json:"grs"`
+	BsopPrfiInrt string `json:"bsop_prfi_inrt"`
+	EqutInrt     string `json:"equt_inrt"`
+	TotlAsetInrt string `json:"totl_aset_inrt"`
 }
 
 type KISDomesticStockV1FinanceGrowthRatioRequest struct {
@@ -1787,19 +1787,19 @@ type KISDomesticStockV1FinanceIncomeStatement struct {
 }
 
 type KISDomesticStockV1FinanceIncomeStatementOutputItem struct {
-	StacYymm     string `json:"stac_yymm,omitempty"`
-	SaleAccount  string `json:"sale_account,omitempty"`
-	SaleCost     string `json:"sale_cost,omitempty"`
-	SaleTotlPrfi string `json:"sale_totl_prfi,omitempty"`
-	DeprCost     string `json:"depr_cost,omitempty"`
-	SellMang     string `json:"sell_mang,omitempty"`
-	BsopPrti     string `json:"bsop_prti,omitempty"`
-	BsopNonErnn  string `json:"bsop_non_ernn,omitempty"`
-	BsopNonExpn  string `json:"bsop_non_expn,omitempty"`
-	OpPrfi       string `json:"op_prfi,omitempty"`
-	SpecPrfi     string `json:"spec_prfi,omitempty"`
-	SpecLoss     string `json:"spec_loss,omitempty"`
-	ThtrNtin     string `json:"thtr_ntin,omitempty"`
+	StacYymm     string `json:"stac_yymm"`
+	SaleAccount  string `json:"sale_account"`
+	SaleCost     string `json:"sale_cost"`
+	SaleTotlPrfi string `json:"sale_totl_prfi"`
+	DeprCost     string `json:"depr_cost"`
+	SellMang     string `json:"sell_mang"`
+	BsopPrti     string `json:"bsop_prti"`
+	BsopNonErnn  string `json:"bsop_non_ernn"`
+	BsopNonExpn  string `json:"bsop_non_expn"`
+	OpPrfi       string `json:"op_prfi"`
+	SpecPrfi     string `json:"spec_prfi"`
+	SpecLoss     string `json:"spec_loss"`
+	ThtrNtin     string `json:"thtr_ntin"`
 }
 
 type KISDomesticStockV1FinanceIncomeStatementRequest struct {
@@ -1814,11 +1814,11 @@ type KISDomesticStockV1FinanceOtherMajorRatios struct {
 }
 
 type KISDomesticStockV1FinanceOtherMajorRatiosOutputItem struct {
-	StacYymm   string `json:"stac_yymm,omitempty"`
-	PayoutRate string `json:"payout_rate,omitempty"`
-	Eva        string `json:"eva,omitempty"`
-	Ebitda     string `json:"ebitda,omitempty"`
-	EvEbitda   string `json:"ev_ebitda,omitempty"`
+	StacYymm   string `json:"stac_yymm"`
+	PayoutRate string `json:"payout_rate"`
+	Eva        string `json:"eva"`
+	Ebitda     string `json:"ebitda"`
+	EvEbitda   string `json:"ev_ebitda"`
 }
 
 type KISDomesticStockV1FinanceOtherMajorRatiosRequest struct {
@@ -1833,11 +1833,11 @@ type KISDomesticStockV1FinanceProfitRatio struct {
 }
 
 type KISDomesticStockV1FinanceProfitRatioOutputItem struct {
-	StacYymm         string `json:"stac_yymm,omitempty"`
-	CptlNtinRate     string `json:"cptl_ntin_rate,omitempty"`
-	SelfCptlNtinInrt string `json:"self_cptl_ntin_inrt,omitempty"`
-	SaleNtinRate     string `json:"sale_ntin_rate,omitempty"`
-	SaleTotlRate     string `json:"sale_totl_rate,omitempty"`
+	StacYymm         string `json:"stac_yymm"`
+	CptlNtinRate     string `json:"cptl_ntin_rate"`
+	SelfCptlNtinInrt string `json:"self_cptl_ntin_inrt"`
+	SaleNtinRate     string `json:"sale_ntin_rate"`
+	SaleTotlRate     string `json:"sale_totl_rate"`
 }
 
 type KISDomesticStockV1FinanceProfitRatioRequest struct {
@@ -1852,11 +1852,11 @@ type KISDomesticStockV1FinanceStabilityRatio struct {
 }
 
 type KISDomesticStockV1FinanceStabilityRatioOutputItem struct {
-	StacYymm string `json:"stac_yymm,omitempty"`
-	LbltRate string `json:"lblt_rate,omitempty"`
-	BramDepn string `json:"bram_depn,omitempty"`
-	CrntRate string `json:"crnt_rate,omitempty"`
-	QuckRate string `json:"quck_rate,omitempty"`
+	StacYymm string `json:"stac_yymm"`
+	LbltRate string `json:"lblt_rate"`
+	BramDepn string `json:"bram_depn"`
+	CrntRate string `json:"crnt_rate"`
+	QuckRate string `json:"quck_rate"`
 }
 
 type KISDomesticStockV1FinanceStabilityRatioRequest struct {
@@ -1871,17 +1871,17 @@ type KISDomesticStockV1KsdinfoBonusIssue struct {
 }
 
 type KISDomesticStockV1KsdinfoBonusIssueOutput1Item struct {
-	RecordDate     string `json:"record_date,omitempty"`
-	ShtCd          string `json:"sht_cd,omitempty"`
-	IsinName       string `json:"isin_name,omitempty"`
-	FixRate        string `json:"fix_rate,omitempty"`
-	OddRecPrice    string `json:"odd_rec_price,omitempty"`
-	RightDt        string `json:"right_dt,omitempty"`
-	OddPayDt       string `json:"odd_pay_dt,omitempty"`
-	ListDate       string `json:"list_date,omitempty"`
-	TotIssueStkQty string `json:"tot_issue_stk_qty,omitempty"`
-	IssueStkQty    string `json:"issue_stk_qty,omitempty"`
-	StkKind        string `json:"stk_kind,omitempty"`
+	RecordDate     string `json:"record_date"`
+	ShtCd          string `json:"sht_cd"`
+	IsinName       string `json:"isin_name"`
+	FixRate        string `json:"fix_rate"`
+	OddRecPrice    string `json:"odd_rec_price"`
+	RightDt        string `json:"right_dt"`
+	OddPayDt       string `json:"odd_pay_dt"`
+	ListDate       string `json:"list_date"`
+	TotIssueStkQty string `json:"tot_issue_stk_qty"`
+	IssueStkQty    string `json:"issue_stk_qty"`
+	StkKind        string `json:"stk_kind"`
 }
 
 type KISDomesticStockV1KsdinfoBonusIssueRequest struct {
@@ -1897,15 +1897,15 @@ type KISDomesticStockV1KsdinfoCapDcrs struct {
 }
 
 type KISDomesticStockV1KsdinfoCapDcrsOutput1Item struct {
-	RecordDate    string `json:"record_date,omitempty"`
-	ShtCd         string `json:"sht_cd,omitempty"`
-	IsinName      string `json:"isin_name,omitempty"`
-	StkKind       string `json:"stk_kind,omitempty"`
-	ReduceCapType string `json:"reduce_cap_type,omitempty"`
-	ReduceCapRate string `json:"reduce_cap_rate,omitempty"`
-	CompWay       string `json:"comp_way,omitempty"`
-	TdStopDt      string `json:"td_stop_dt,omitempty"`
-	ListDt        string `json:"list_dt,omitempty"`
+	RecordDate    string `json:"record_date"`
+	ShtCd         string `json:"sht_cd"`
+	IsinName      string `json:"isin_name"`
+	StkKind       string `json:"stk_kind"`
+	ReduceCapType string `json:"reduce_cap_type"`
+	ReduceCapRate string `json:"reduce_cap_rate"`
+	CompWay       string `json:"comp_way"`
+	TdStopDt      string `json:"td_stop_dt"`
+	ListDt        string `json:"list_dt"`
 }
 
 type KISDomesticStockV1KsdinfoCapDcrsRequest struct {
@@ -1921,19 +1921,19 @@ type KISDomesticStockV1KsdinfoDividend struct {
 }
 
 type KISDomesticStockV1KsdinfoDividendOutput1Item struct {
-	RecordDate    string `json:"record_date,omitempty"`
-	ShtCd         string `json:"sht_cd,omitempty"`
-	IsinName      string `json:"isin_name,omitempty"`
-	DiviKind      string `json:"divi_kind,omitempty"`
-	FaceVal       string `json:"face_val,omitempty"`
-	PerStoDiviAmt string `json:"per_sto_divi_amt,omitempty"`
-	DiviRate      string `json:"divi_rate,omitempty"`
-	StkDiviRate   string `json:"stk_divi_rate,omitempty"`
-	DiviPayDt     string `json:"divi_pay_dt,omitempty"`
-	StkDivPayDt   string `json:"stk_div_pay_dt,omitempty"`
-	OddPayDt      string `json:"odd_pay_dt,omitempty"`
-	StkKind       string `json:"stk_kind,omitempty"`
-	HighDiviGb    string `json:"high_divi_gb,omitempty"`
+	RecordDate    string `json:"record_date"`
+	ShtCd         string `json:"sht_cd"`
+	IsinName      string `json:"isin_name"`
+	DiviKind      string `json:"divi_kind"`
+	FaceVal       string `json:"face_val"`
+	PerStoDiviAmt string `json:"per_sto_divi_amt"`
+	DiviRate      string `json:"divi_rate"`
+	StkDiviRate   string `json:"stk_divi_rate"`
+	DiviPayDt     string `json:"divi_pay_dt"`
+	StkDivPayDt   string `json:"stk_div_pay_dt"`
+	OddPayDt      string `json:"odd_pay_dt"`
+	StkKind       string `json:"stk_kind"`
+	HighDiviGb    string `json:"high_divi_gb"`
 }
 
 type KISDomesticStockV1KsdinfoDividendRequest struct {
@@ -1951,15 +1951,15 @@ type KISDomesticStockV1KsdinfoForfeit struct {
 }
 
 type KISDomesticStockV1KsdinfoForfeitOutput1Item struct {
-	RecordDate   string `json:"record_date,omitempty"`
-	ShtCd        string `json:"sht_cd,omitempty"`
-	IsinName     string `json:"isin_name,omitempty"`
-	SubscrDt     string `json:"subscr_dt,omitempty"`
-	SubscrPrice  string `json:"subscr_price,omitempty"`
-	SubscrStkQty string `json:"subscr_stk_qty,omitempty"`
-	RefundDt     string `json:"refund_dt,omitempty"`
-	ListDt       string `json:"list_dt,omitempty"`
-	LeadMgr      string `json:"lead_mgr,omitempty"`
+	RecordDate   string `json:"record_date"`
+	ShtCd        string `json:"sht_cd"`
+	IsinName     string `json:"isin_name"`
+	SubscrDt     string `json:"subscr_dt"`
+	SubscrPrice  string `json:"subscr_price"`
+	SubscrStkQty string `json:"subscr_stk_qty"`
+	RefundDt     string `json:"refund_dt"`
+	ListDt       string `json:"list_dt"`
+	LeadMgr      string `json:"lead_mgr"`
 }
 
 type KISDomesticStockV1KsdinfoForfeitRequest struct {
@@ -1975,14 +1975,14 @@ type KISDomesticStockV1KsdinfoListInfo struct {
 }
 
 type KISDomesticStockV1KsdinfoListInfoOutput1Item struct {
-	ListDt         string `json:"list_dt,omitempty"`
-	ShtCd          string `json:"sht_cd,omitempty"`
-	IsinName       string `json:"isin_name,omitempty"`
-	StkKind        string `json:"stk_kind,omitempty"`
-	IssueType      string `json:"issue_type,omitempty"`
-	IssueStkQty    string `json:"issue_stk_qty,omitempty"`
-	TotIssueStkQty string `json:"tot_issue_stk_qty,omitempty"`
-	IssuePrice     string `json:"issue_price,omitempty"`
+	ListDt         string `json:"list_dt"`
+	ShtCd          string `json:"sht_cd"`
+	IsinName       string `json:"isin_name"`
+	StkKind        string `json:"stk_kind"`
+	IssueType      string `json:"issue_type"`
+	IssueStkQty    string `json:"issue_stk_qty"`
+	TotIssueStkQty string `json:"tot_issue_stk_qty"`
+	IssuePrice     string `json:"issue_price"`
 }
 
 type KISDomesticStockV1KsdinfoListInfoRequest struct {
@@ -1998,12 +1998,12 @@ type KISDomesticStockV1KsdinfoMandDeposit struct {
 }
 
 type KISDomesticStockV1KsdinfoMandDepositOutput1Item struct {
-	ShtCd              string `json:"sht_cd,omitempty"`
-	IsinName           string `json:"isin_name,omitempty"`
-	StkQty             string `json:"stk_qty,omitempty"`
-	DepoDate           string `json:"depo_date,omitempty"`
-	DepoReason         string `json:"depo_reason,omitempty"`
-	TotIssueQtyPerRate string `json:"tot_issue_qty_per_rate,omitempty"`
+	ShtCd              string `json:"sht_cd"`
+	IsinName           string `json:"isin_name"`
+	StkQty             string `json:"stk_qty"`
+	DepoDate           string `json:"depo_date"`
+	DepoReason         string `json:"depo_reason"`
+	TotIssueQtyPerRate string `json:"tot_issue_qty_per_rate"`
 }
 
 type KISDomesticStockV1KsdinfoMandDepositRequest struct {
@@ -2019,20 +2019,20 @@ type KISDomesticStockV1KsdinfoMergerSplit struct {
 }
 
 type KISDomesticStockV1KsdinfoMergerSplitOutput1Item struct {
-	RecordDate     string `json:"record_date,omitempty"`
-	ShtCd          string `json:"sht_cd,omitempty"`
-	OppCustCd      string `json:"opp_cust_cd,omitempty"`
-	OppCustNm      string `json:"opp_cust_nm,omitempty"`
-	CustCd         string `json:"cust_cd,omitempty"`
-	CustNm         string `json:"cust_nm,omitempty"`
-	MergeType      string `json:"merge_type,omitempty"`
-	MergeRate      string `json:"merge_rate,omitempty"`
-	TdStopDt       string `json:"td_stop_dt,omitempty"`
-	ListDt         string `json:"list_dt,omitempty"`
-	OddAmtPayDt    string `json:"odd_amt_pay_dt,omitempty"`
-	TotIssueStkQty string `json:"tot_issue_stk_qty,omitempty"`
-	IssueStkQty    string `json:"issue_stk_qty,omitempty"`
-	Seq            string `json:"seq,omitempty"`
+	RecordDate     string `json:"record_date"`
+	ShtCd          string `json:"sht_cd"`
+	OppCustCd      string `json:"opp_cust_cd"`
+	OppCustNm      string `json:"opp_cust_nm"`
+	CustCd         string `json:"cust_cd"`
+	CustNm         string `json:"cust_nm"`
+	MergeType      string `json:"merge_type"`
+	MergeRate      string `json:"merge_rate"`
+	TdStopDt       string `json:"td_stop_dt"`
+	ListDt         string `json:"list_dt"`
+	OddAmtPayDt    string `json:"odd_amt_pay_dt"`
+	TotIssueStkQty string `json:"tot_issue_stk_qty"`
+	IssueStkQty    string `json:"issue_stk_qty"`
+	Seq            string `json:"seq"`
 }
 
 type KISDomesticStockV1KsdinfoMergerSplitRequest struct {
@@ -2048,19 +2048,19 @@ type KISDomesticStockV1KsdinfoPaidinCapin struct {
 }
 
 type KISDomesticStockV1KsdinfoPaidinCapinOutputItem struct {
-	RecordDate     string `json:"record_date,omitempty"`
-	ShtCd          string `json:"sht_cd,omitempty"`
-	IsinName       string `json:"isin_name,omitempty"`
-	TotIssueStkQty string `json:"tot_issue_stk_qty,omitempty"`
-	IssueStkQty    string `json:"issue_stk_qty,omitempty"`
-	FixRate        string `json:"fix_rate,omitempty"`
-	DiscRate       string `json:"disc_rate,omitempty"`
-	FixPrice       string `json:"fix_price,omitempty"`
-	RightDt        string `json:"right_dt,omitempty"`
-	SubTermFt      string `json:"sub_term_ft,omitempty"`
-	SubTerm        string `json:"sub_term,omitempty"`
-	ListDate       string `json:"list_date,omitempty"`
-	StkKind        string `json:"stk_kind,omitempty"`
+	RecordDate     string `json:"record_date"`
+	ShtCd          string `json:"sht_cd"`
+	IsinName       string `json:"isin_name"`
+	TotIssueStkQty string `json:"tot_issue_stk_qty"`
+	IssueStkQty    string `json:"issue_stk_qty"`
+	FixRate        string `json:"fix_rate"`
+	DiscRate       string `json:"disc_rate"`
+	FixPrice       string `json:"fix_price"`
+	RightDt        string `json:"right_dt"`
+	SubTermFt      string `json:"sub_term_ft"`
+	SubTerm        string `json:"sub_term"`
+	ListDate       string `json:"list_date"`
+	StkKind        string `json:"stk_kind"`
 }
 
 type KISDomesticStockV1KsdinfoPaidinCapinRequest struct {
@@ -2077,19 +2077,19 @@ type KISDomesticStockV1KsdinfoPubOffer struct {
 }
 
 type KISDomesticStockV1KsdinfoPubOfferOutput1Item struct {
-	RecordDate   string `json:"record_date,omitempty"`
-	ShtCd        string `json:"sht_cd,omitempty"`
-	IsinName     string `json:"isin_name,omitempty"`
-	FixSubscrPri string `json:"fix_subscr_pri,omitempty"`
-	FaceValue    string `json:"face_value,omitempty"`
-	SubscrDt     string `json:"subscr_dt,omitempty"`
-	PayDt        string `json:"pay_dt,omitempty"`
-	RefundDt     string `json:"refund_dt,omitempty"`
-	ListDt       string `json:"list_dt,omitempty"`
-	LeadMgr      string `json:"lead_mgr,omitempty"`
-	PubBfCap     string `json:"pub_bf_cap,omitempty"`
-	PubAfCap     string `json:"pub_af_cap,omitempty"`
-	AssignStkQty string `json:"assign_stk_qty,omitempty"`
+	RecordDate   string `json:"record_date"`
+	ShtCd        string `json:"sht_cd"`
+	IsinName     string `json:"isin_name"`
+	FixSubscrPri string `json:"fix_subscr_pri"`
+	FaceValue    string `json:"face_value"`
+	SubscrDt     string `json:"subscr_dt"`
+	PayDt        string `json:"pay_dt"`
+	RefundDt     string `json:"refund_dt"`
+	ListDt       string `json:"list_dt"`
+	LeadMgr      string `json:"lead_mgr"`
+	PubBfCap     string `json:"pub_bf_cap"`
+	PubAfCap     string `json:"pub_af_cap"`
+	AssignStkQty string `json:"assign_stk_qty"`
 }
 
 type KISDomesticStockV1KsdinfoPubOfferRequest struct {
@@ -2105,15 +2105,15 @@ type KISDomesticStockV1KsdinfoPurreq struct {
 }
 
 type KISDomesticStockV1KsdinfoPurreqOutput1Item struct {
-	RecordDate     string `json:"record_date,omitempty"`
-	ShtCd          string `json:"sht_cd,omitempty"`
-	IsinName       string `json:"isin_name,omitempty"`
-	StkKind        string `json:"stk_kind,omitempty"`
-	OppOpiRcptTerm string `json:"opp_opi_rcpt_term,omitempty"`
-	BuyReqRcptTerm string `json:"buy_req_rcpt_term,omitempty"`
-	BuyReqPrice    string `json:"buy_req_price,omitempty"`
-	BuyAmtPayDt    string `json:"buy_amt_pay_dt,omitempty"`
-	GetMeetDt      string `json:"get_meet_dt,omitempty"`
+	RecordDate     string `json:"record_date"`
+	ShtCd          string `json:"sht_cd"`
+	IsinName       string `json:"isin_name"`
+	StkKind        string `json:"stk_kind"`
+	OppOpiRcptTerm string `json:"opp_opi_rcpt_term"`
+	BuyReqRcptTerm string `json:"buy_req_rcpt_term"`
+	BuyReqPrice    string `json:"buy_req_price"`
+	BuyAmtPayDt    string `json:"buy_amt_pay_dt"`
+	GetMeetDt      string `json:"get_meet_dt"`
 }
 
 type KISDomesticStockV1KsdinfoPurreqRequest struct {
@@ -2129,13 +2129,13 @@ type KISDomesticStockV1KsdinfoRevSplit struct {
 }
 
 type KISDomesticStockV1KsdinfoRevSplitOutput1Item struct {
-	RecordDate     string `json:"record_date,omitempty"`
-	ShtCd          string `json:"sht_cd,omitempty"`
-	IsinName       string `json:"isin_name,omitempty"`
-	InterBfFaceAmt string `json:"inter_bf_face_amt,omitempty"`
-	InterAfFaceAmt string `json:"inter_af_face_amt,omitempty"`
-	TdStopDt       string `json:"td_stop_dt,omitempty"`
-	ListDt         string `json:"list_dt,omitempty"`
+	RecordDate     string `json:"record_date"`
+	ShtCd          string `json:"sht_cd"`
+	IsinName       string `json:"isin_name"`
+	InterBfFaceAmt string `json:"inter_bf_face_amt"`
+	InterAfFaceAmt string `json:"inter_af_face_amt"`
+	TdStopDt       string `json:"td_stop_dt"`
+	ListDt         string `json:"list_dt"`
 }
 
 type KISDomesticStockV1KsdinfoRevSplitRequest struct {
@@ -2152,13 +2152,13 @@ type KISDomesticStockV1KsdinfoSharehldMeet struct {
 }
 
 type KISDomesticStockV1KsdinfoSharehldMeetOutput1Item struct {
-	RecordDate  string `json:"record_date,omitempty"`
-	ShtCd       string `json:"sht_cd,omitempty"`
-	IsinName    string `json:"isin_name,omitempty"`
-	GenMeetDt   string `json:"gen_meet_dt,omitempty"`
-	GenMeetType string `json:"gen_meet_type,omitempty"`
-	Agenda      string `json:"agenda,omitempty"`
-	VoteTotQty  string `json:"vote_tot_qty,omitempty"`
+	RecordDate  string `json:"record_date"`
+	ShtCd       string `json:"sht_cd"`
+	IsinName    string `json:"isin_name"`
+	GenMeetDt   string `json:"gen_meet_dt"`
+	GenMeetType string `json:"gen_meet_type"`
+	Agenda      string `json:"agenda"`
+	VoteTotQty  string `json:"vote_tot_qty"`
 }
 
 type KISDomesticStockV1KsdinfoSharehldMeetRequest struct {
@@ -2174,23 +2174,23 @@ type KISDomesticStockV1QuotationsCaptureUplowprice struct {
 }
 
 type KISDomesticStockV1QuotationsCaptureUplowpriceOutputItem struct {
-	MkscShrnIscd    string `json:"mksc_shrn_iscd,omitempty"`
-	HtsKorIsnm      string `json:"hts_kor_isnm,omitempty"`
-	StckPrpr        string `json:"stck_prpr,omitempty"`
-	PrdyVrssSign    string `json:"prdy_vrss_sign,omitempty"`
-	PrdyVrss        string `json:"prdy_vrss,omitempty"`
-	PrdyCtrt        string `json:"prdy_ctrt,omitempty"`
-	AcmlVol         string `json:"acml_vol,omitempty"`
-	TotalAskpRsqn   string `json:"total_askp_rsqn,omitempty"`
-	TotalBidpRsqn   string `json:"total_bidp_rsqn,omitempty"`
-	AskpRsqn1       string `json:"askp_rsqn1,omitempty"`
-	BidpRsqn1       string `json:"bidp_rsqn1,omitempty"`
-	PrdyVol         string `json:"prdy_vol,omitempty"`
-	SelnCnqn        string `json:"seln_cnqn,omitempty"`
-	ShnuCnqn        string `json:"shnu_cnqn,omitempty"`
-	StckLlam        string `json:"stck_llam,omitempty"`
-	StckMxpr        string `json:"stck_mxpr,omitempty"`
-	PrdyVrssVolRate string `json:"prdy_vrss_vol_rate,omitempty"`
+	MkscShrnIscd    string `json:"mksc_shrn_iscd"`
+	HtsKorIsnm      string `json:"hts_kor_isnm"`
+	StckPrpr        string `json:"stck_prpr"`
+	PrdyVrssSign    string `json:"prdy_vrss_sign"`
+	PrdyVrss        string `json:"prdy_vrss"`
+	PrdyCtrt        string `json:"prdy_ctrt"`
+	AcmlVol         string `json:"acml_vol"`
+	TotalAskpRsqn   string `json:"total_askp_rsqn"`
+	TotalBidpRsqn   string `json:"total_bidp_rsqn"`
+	AskpRsqn1       string `json:"askp_rsqn1"`
+	BidpRsqn1       string `json:"bidp_rsqn1"`
+	PrdyVol         string `json:"prdy_vol"`
+	SelnCnqn        string `json:"seln_cnqn"`
+	ShnuCnqn        string `json:"shnu_cnqn"`
+	StckLlam        string `json:"stck_llam"`
+	StckMxpr        string `json:"stck_mxpr"`
+	PrdyVrssVolRate string `json:"prdy_vrss_vol_rate"`
 }
 
 type KISDomesticStockV1QuotationsCaptureUplowpriceRequest struct {
@@ -2212,12 +2212,12 @@ type KISDomesticStockV1QuotationsChkHoliday struct {
 }
 
 type KISDomesticStockV1QuotationsChkHolidayOutputItem struct {
-	BassDt     string `json:"bass_dt,omitempty"`
-	WdayDvsnCd string `json:"wday_dvsn_cd,omitempty"`
-	BzdyYn     string `json:"bzdy_yn,omitempty"`
-	TrDayYn    string `json:"tr_day_yn,omitempty"`
-	OpndYn     string `json:"opnd_yn,omitempty"`
-	SttlDayYn  string `json:"sttl_day_yn,omitempty"`
+	BassDt     string `json:"bass_dt"`
+	WdayDvsnCd string `json:"wday_dvsn_cd"`
+	BzdyYn     string `json:"bzdy_yn"`
+	TrDayYn    string `json:"tr_day_yn"`
+	OpndYn     string `json:"opnd_yn"`
+	SttlDayYn  string `json:"sttl_day_yn"`
 }
 
 type KISDomesticStockV1QuotationsChkHolidayRequest struct {
@@ -2233,23 +2233,23 @@ type KISDomesticStockV1QuotationsCompInterest struct {
 }
 
 type KISDomesticStockV1QuotationsCompInterestOutput1Item struct {
-	BcdtCode         string `json:"bcdt_code,omitempty"`
-	HtsKorIsnm       string `json:"hts_kor_isnm,omitempty"`
-	BondMnrtPrpr     string `json:"bond_mnrt_prpr,omitempty"`
-	PrdyVrssSign     string `json:"prdy_vrss_sign,omitempty"`
-	BondMnrtPrdyVrss string `json:"bond_mnrt_prdy_vrss,omitempty"`
-	PrdyCtrt         string `json:"prdy_ctrt,omitempty"`
-	StckBsopDate     string `json:"stck_bsop_date,omitempty"`
+	BcdtCode         string `json:"bcdt_code"`
+	HtsKorIsnm       string `json:"hts_kor_isnm"`
+	BondMnrtPrpr     string `json:"bond_mnrt_prpr"`
+	PrdyVrssSign     string `json:"prdy_vrss_sign"`
+	BondMnrtPrdyVrss string `json:"bond_mnrt_prdy_vrss"`
+	PrdyCtrt         string `json:"prdy_ctrt"`
+	StckBsopDate     string `json:"stck_bsop_date"`
 }
 
 type KISDomesticStockV1QuotationsCompInterestOutput2Item struct {
-	BcdtCode         string `json:"bcdt_code,omitempty"`
-	HtsKorIsnm       string `json:"hts_kor_isnm,omitempty"`
-	BondMnrtPrpr     string `json:"bond_mnrt_prpr,omitempty"`
-	PrdyVrssSign     string `json:"prdy_vrss_sign,omitempty"`
-	BondMnrtPrdyVrss string `json:"bond_mnrt_prdy_vrss,omitempty"`
-	BstpNmixPrdyCtrt string `json:"bstp_nmix_prdy_ctrt,omitempty"`
-	StckBsopDate     string `json:"stck_bsop_date,omitempty"`
+	BcdtCode         string `json:"bcdt_code"`
+	HtsKorIsnm       string `json:"hts_kor_isnm"`
+	BondMnrtPrpr     string `json:"bond_mnrt_prpr"`
+	PrdyVrssSign     string `json:"prdy_vrss_sign"`
+	BondMnrtPrdyVrss string `json:"bond_mnrt_prdy_vrss"`
+	BstpNmixPrdyCtrt string `json:"bstp_nmix_prdy_ctrt"`
+	StckBsopDate     string `json:"stck_bsop_date"`
 }
 
 type KISDomesticStockV1QuotationsCompInterestRequest struct {
@@ -2265,106 +2265,106 @@ type KISDomesticStockV1QuotationsCompProgramTradeDaily struct {
 }
 
 type KISDomesticStockV1QuotationsCompProgramTradeDailyOutputItem struct {
-	StckBsopDate           string `json:"stck_bsop_date,omitempty"`
-	NabtEntmSelnTrPbmn     string `json:"nabt_entm_seln_tr_pbmn,omitempty"`
-	NabtOnslSelnVol        string `json:"nabt_onsl_seln_vol,omitempty"`
-	WholOnslSelnTrPbmn     string `json:"whol_onsl_seln_tr_pbmn,omitempty"`
-	ArbtSmtnShnuVol        string `json:"arbt_smtn_shnu_vol,omitempty"`
-	NabtSmtnShnuTrPbmn     string `json:"nabt_smtn_shnu_tr_pbmn,omitempty"`
-	ArbtEntmNtbyQty        string `json:"arbt_entm_ntby_qty,omitempty"`
-	NabtEntmNtbyTrPbmn     string `json:"nabt_entm_ntby_tr_pbmn,omitempty"`
-	ArbtEntmSelnVol        string `json:"arbt_entm_seln_vol,omitempty"`
-	NabtEntmSelnVolRate    string `json:"nabt_entm_seln_vol_rate,omitempty"`
-	NabtOnslSelnVolRate    string `json:"nabt_onsl_seln_vol_rate,omitempty"`
-	WholOnslSelnTrPbmnRate string `json:"whol_onsl_seln_tr_pbmn_rate,omitempty"`
-	ArbtSmtmShunVolRate    string `json:"arbt_smtm_shun_vol_rate,omitempty"`
-	NabtSmtmShunTrPbmnRate string `json:"nabt_smtm_shun_tr_pbmn_rate,omitempty"`
-	ArbtEntmNtbyQtyRate    string `json:"arbt_entm_ntby_qty_rate,omitempty"`
-	NabtEntmNtbyTrPbmnRate string `json:"nabt_entm_ntby_tr_pbmn_rate,omitempty"`
-	ArbtEntmSelnVolRate    string `json:"arbt_entm_seln_vol_rate,omitempty"`
-	NabtEntmSelnTrPbmnRate string `json:"nabt_entm_seln_tr_pbmn_rate,omitempty"`
-	NabtOnslSelnTrPbmn     string `json:"nabt_onsl_seln_tr_pbmn,omitempty"`
-	WholSmtnSelnVol        string `json:"whol_smtn_seln_vol,omitempty"`
-	ArbtSmtnShnuTrPbmn     string `json:"arbt_smtn_shnu_tr_pbmn,omitempty"`
-	WholEntmShnuVol        string `json:"whol_entm_shnu_vol,omitempty"`
-	ArbtEntmNtbyTrPbmn     string `json:"arbt_entm_ntby_tr_pbmn,omitempty"`
-	NabtOnslNtbyQty        string `json:"nabt_onsl_ntby_qty,omitempty"`
-	ArbtEntmSelnTrPbmn     string `json:"arbt_entm_seln_tr_pbmn,omitempty"`
-	NabtOnslSelnTrPbmnRate string `json:"nabt_onsl_seln_tr_pbmn_rate,omitempty"`
-	WholSelnVolRate        string `json:"whol_seln_vol_rate,omitempty"`
-	ArbtSmtmShunTrPbmnRate string `json:"arbt_smtm_shun_tr_pbmn_rate,omitempty"`
-	WholEntmShnuVolRate    string `json:"whol_entm_shnu_vol_rate,omitempty"`
-	ArbtEntmNtbyTrPbmnRate string `json:"arbt_entm_ntby_tr_pbmn_rate,omitempty"`
-	NabtOnslNtbyQtyRate    string `json:"nabt_onsl_ntby_qty_rate,omitempty"`
-	ArbtEntmSelnTrPbmnRate string `json:"arbt_entm_seln_tr_pbmn_rate,omitempty"`
-	NabtSmtnSelnVol        string `json:"nabt_smtn_seln_vol,omitempty"`
-	WholSmtnSelnTrPbmn     string `json:"whol_smtn_seln_tr_pbmn,omitempty"`
-	NabtEntmShnuVol        string `json:"nabt_entm_shnu_vol,omitempty"`
-	WholEntmShnuTrPbmn     string `json:"whol_entm_shnu_tr_pbmn,omitempty"`
-	ArbtOnslNtbyQty        string `json:"arbt_onsl_ntby_qty,omitempty"`
-	NabtOnslNtbyTrPbmn     string `json:"nabt_onsl_ntby_tr_pbmn,omitempty"`
-	ArbtOnslSelnTrPbmn     string `json:"arbt_onsl_seln_tr_pbmn,omitempty"`
-	NabtSmtmSelnVolRate    string `json:"nabt_smtm_seln_vol_rate,omitempty"`
-	WholSelnTrPbmnRate     string `json:"whol_seln_tr_pbmn_rate,omitempty"`
-	NabtEntmShnuVolRate    string `json:"nabt_entm_shnu_vol_rate,omitempty"`
-	WholEntmShnuTrPbmnRate string `json:"whol_entm_shnu_tr_pbmn_rate,omitempty"`
-	ArbtOnslNtbyQtyRate    string `json:"arbt_onsl_ntby_qty_rate,omitempty"`
-	NabtOnslNtbyTrPbmnRate string `json:"nabt_onsl_ntby_tr_pbmn_rate,omitempty"`
-	ArbtOnslSelnTrPbmnRate string `json:"arbt_onsl_seln_tr_pbmn_rate,omitempty"`
-	NabtSmtnSelnTrPbmn     string `json:"nabt_smtn_seln_tr_pbmn,omitempty"`
-	ArbtEntmShnuVol        string `json:"arbt_entm_shnu_vol,omitempty"`
-	NabtEntmShnuTrPbmn     string `json:"nabt_entm_shnu_tr_pbmn,omitempty"`
-	WholOnslShnuVol        string `json:"whol_onsl_shnu_vol,omitempty"`
-	ArbtOnslNtbyTrPbmn     string `json:"arbt_onsl_ntby_tr_pbmn,omitempty"`
-	NabtSmtnNtbyQty        string `json:"nabt_smtn_ntby_qty,omitempty"`
-	ArbtOnslSelnVol        string `json:"arbt_onsl_seln_vol,omitempty"`
-	NabtSmtmSelnTrPbmnRate string `json:"nabt_smtm_seln_tr_pbmn_rate,omitempty"`
-	ArbtEntmShnuVolRate    string `json:"arbt_entm_shnu_vol_rate,omitempty"`
-	NabtEntmShnuTrPbmnRate string `json:"nabt_entm_shnu_tr_pbmn_rate,omitempty"`
-	WholOnslShnuTrPbmn     string `json:"whol_onsl_shnu_tr_pbmn,omitempty"`
-	ArbtOnslNtbyTrPbmnRate string `json:"arbt_onsl_ntby_tr_pbmn_rate,omitempty"`
-	NabtSmtmNtbyQtyRate    string `json:"nabt_smtm_ntby_qty_rate,omitempty"`
-	ArbtOnslSelnVolRate    string `json:"arbt_onsl_seln_vol_rate,omitempty"`
-	WholEntmSelnVol        string `json:"whol_entm_seln_vol,omitempty"`
-	ArbtEntmShnuTrPbmn     string `json:"arbt_entm_shnu_tr_pbmn,omitempty"`
-	NabtOnslShnuVol        string `json:"nabt_onsl_shnu_vol,omitempty"`
-	WholOnslShnuTrPbmnRate string `json:"whol_onsl_shnu_tr_pbmn_rate,omitempty"`
-	ArbtSmtnNtbyQty        string `json:"arbt_smtn_ntby_qty,omitempty"`
-	NabtSmtnNtbyTrPbmn     string `json:"nabt_smtn_ntby_tr_pbmn,omitempty"`
-	ArbtSmtnSelnVol        string `json:"arbt_smtn_seln_vol,omitempty"`
-	WholEntmSelnTrPbmn     string `json:"whol_entm_seln_tr_pbmn,omitempty"`
-	ArbtEntmShnuTrPbmnRate string `json:"arbt_entm_shnu_tr_pbmn_rate,omitempty"`
-	NabtOnslShnuVolRate    string `json:"nabt_onsl_shnu_vol_rate,omitempty"`
-	WholOnslShnuVolRate    string `json:"whol_onsl_shnu_vol_rate,omitempty"`
-	ArbtSmtmNtbyQtyRate    string `json:"arbt_smtm_ntby_qty_rate,omitempty"`
-	NabtSmtmNtbyTrPbmnRate string `json:"nabt_smtm_ntby_tr_pbmn_rate,omitempty"`
-	ArbtSmtmSelnVolRate    string `json:"arbt_smtm_seln_vol_rate,omitempty"`
-	WholEntmSelnVolRate    string `json:"whol_entm_seln_vol_rate,omitempty"`
-	ArbtOnslShnuVol        string `json:"arbt_onsl_shnu_vol,omitempty"`
-	NabtOnslShnuTrPbmn     string `json:"nabt_onsl_shnu_tr_pbmn,omitempty"`
-	WholSmtnShnuVol        string `json:"whol_smtn_shnu_vol,omitempty"`
-	ArbtSmtnNtbyTrPbmn     string `json:"arbt_smtn_ntby_tr_pbmn,omitempty"`
-	WholEntmNtbyQty        string `json:"whol_entm_ntby_qty,omitempty"`
-	ArbtSmtnSelnTrPbmn     string `json:"arbt_smtn_seln_tr_pbmn,omitempty"`
-	WholEntmSelnTrPbmnRate string `json:"whol_entm_seln_tr_pbmn_rate,omitempty"`
-	ArbtOnslShnuVolRate    string `json:"arbt_onsl_shnu_vol_rate,omitempty"`
-	NabtOnslShnuTrPbmnRate string `json:"nabt_onsl_shnu_tr_pbmn_rate,omitempty"`
-	WholShunVolRate        string `json:"whol_shun_vol_rate,omitempty"`
-	ArbtSmtmNtbyTrPbmnRate string `json:"arbt_smtm_ntby_tr_pbmn_rate,omitempty"`
-	WholEntmNtbyQtyRate    string `json:"whol_entm_ntby_qty_rate,omitempty"`
-	ArbtSmtmSelnTrPbmnRate string `json:"arbt_smtm_seln_tr_pbmn_rate,omitempty"`
-	WholOnslSelnVol        string `json:"whol_onsl_seln_vol,omitempty"`
-	ArbtOnslShnuTrPbmn     string `json:"arbt_onsl_shnu_tr_pbmn,omitempty"`
-	NabtSmtnShnuVol        string `json:"nabt_smtn_shnu_vol,omitempty"`
-	WholSmtnShnuTrPbmn     string `json:"whol_smtn_shnu_tr_pbmn,omitempty"`
-	NabtEntmNtbyQty        string `json:"nabt_entm_ntby_qty,omitempty"`
-	WholEntmNtbyTrPbmn     string `json:"whol_entm_ntby_tr_pbmn,omitempty"`
-	NabtEntmSelnVol        string `json:"nabt_entm_seln_vol,omitempty"`
-	WholOnslSelnVolRate    string `json:"whol_onsl_seln_vol_rate,omitempty"`
-	ArbtOnslShnuTrPbmnRate string `json:"arbt_onsl_shnu_tr_pbmn_rate,omitempty"`
-	NabtSmtmShunVolRate    string `json:"nabt_smtm_shun_vol_rate,omitempty"`
-	WholShunTrPbmnRate     string `json:"whol_shun_tr_pbmn_rate,omitempty"`
-	NabtEntmNtbyQtyRate    string `json:"nabt_entm_ntby_qty_rate,omitempty"`
+	StckBsopDate           string `json:"stck_bsop_date"`
+	NabtEntmSelnTrPbmn     string `json:"nabt_entm_seln_tr_pbmn"`
+	NabtOnslSelnVol        string `json:"nabt_onsl_seln_vol"`
+	WholOnslSelnTrPbmn     string `json:"whol_onsl_seln_tr_pbmn"`
+	ArbtSmtnShnuVol        string `json:"arbt_smtn_shnu_vol"`
+	NabtSmtnShnuTrPbmn     string `json:"nabt_smtn_shnu_tr_pbmn"`
+	ArbtEntmNtbyQty        string `json:"arbt_entm_ntby_qty"`
+	NabtEntmNtbyTrPbmn     string `json:"nabt_entm_ntby_tr_pbmn"`
+	ArbtEntmSelnVol        string `json:"arbt_entm_seln_vol"`
+	NabtEntmSelnVolRate    string `json:"nabt_entm_seln_vol_rate"`
+	NabtOnslSelnVolRate    string `json:"nabt_onsl_seln_vol_rate"`
+	WholOnslSelnTrPbmnRate string `json:"whol_onsl_seln_tr_pbmn_rate"`
+	ArbtSmtmShunVolRate    string `json:"arbt_smtm_shun_vol_rate"`
+	NabtSmtmShunTrPbmnRate string `json:"nabt_smtm_shun_tr_pbmn_rate"`
+	ArbtEntmNtbyQtyRate    string `json:"arbt_entm_ntby_qty_rate"`
+	NabtEntmNtbyTrPbmnRate string `json:"nabt_entm_ntby_tr_pbmn_rate"`
+	ArbtEntmSelnVolRate    string `json:"arbt_entm_seln_vol_rate"`
+	NabtEntmSelnTrPbmnRate string `json:"nabt_entm_seln_tr_pbmn_rate"`
+	NabtOnslSelnTrPbmn     string `json:"nabt_onsl_seln_tr_pbmn"`
+	WholSmtnSelnVol        string `json:"whol_smtn_seln_vol"`
+	ArbtSmtnShnuTrPbmn     string `json:"arbt_smtn_shnu_tr_pbmn"`
+	WholEntmShnuVol        string `json:"whol_entm_shnu_vol"`
+	ArbtEntmNtbyTrPbmn     string `json:"arbt_entm_ntby_tr_pbmn"`
+	NabtOnslNtbyQty        string `json:"nabt_onsl_ntby_qty"`
+	ArbtEntmSelnTrPbmn     string `json:"arbt_entm_seln_tr_pbmn"`
+	NabtOnslSelnTrPbmnRate string `json:"nabt_onsl_seln_tr_pbmn_rate"`
+	WholSelnVolRate        string `json:"whol_seln_vol_rate"`
+	ArbtSmtmShunTrPbmnRate string `json:"arbt_smtm_shun_tr_pbmn_rate"`
+	WholEntmShnuVolRate    string `json:"whol_entm_shnu_vol_rate"`
+	ArbtEntmNtbyTrPbmnRate string `json:"arbt_entm_ntby_tr_pbmn_rate"`
+	NabtOnslNtbyQtyRate    string `json:"nabt_onsl_ntby_qty_rate"`
+	ArbtEntmSelnTrPbmnRate string `json:"arbt_entm_seln_tr_pbmn_rate"`
+	NabtSmtnSelnVol        string `json:"nabt_smtn_seln_vol"`
+	WholSmtnSelnTrPbmn     string `json:"whol_smtn_seln_tr_pbmn"`
+	NabtEntmShnuVol        string `json:"nabt_entm_shnu_vol"`
+	WholEntmShnuTrPbmn     string `json:"whol_entm_shnu_tr_pbmn"`
+	ArbtOnslNtbyQty        string `json:"arbt_onsl_ntby_qty"`
+	NabtOnslNtbyTrPbmn     string `json:"nabt_onsl_ntby_tr_pbmn"`
+	ArbtOnslSelnTrPbmn     string `json:"arbt_onsl_seln_tr_pbmn"`
+	NabtSmtmSelnVolRate    string `json:"nabt_smtm_seln_vol_rate"`
+	WholSelnTrPbmnRate     string `json:"whol_seln_tr_pbmn_rate"`
+	NabtEntmShnuVolRate    string `json:"nabt_entm_shnu_vol_rate"`
+	WholEntmShnuTrPbmnRate string `json:"whol_entm_shnu_tr_pbmn_rate"`
+	ArbtOnslNtbyQtyRate    string `json:"arbt_onsl_ntby_qty_rate"`
+	NabtOnslNtbyTrPbmnRate string `json:"nabt_onsl_ntby_tr_pbmn_rate"`
+	ArbtOnslSelnTrPbmnRate string `json:"arbt_onsl_seln_tr_pbmn_rate"`
+	NabtSmtnSelnTrPbmn     string `json:"nabt_smtn_seln_tr_pbmn"`
+	ArbtEntmShnuVol        string `json:"arbt_entm_shnu_vol"`
+	NabtEntmShnuTrPbmn     string `json:"nabt_entm_shnu_tr_pbmn"`
+	WholOnslShnuVol        string `json:"whol_onsl_shnu_vol"`
+	ArbtOnslNtbyTrPbmn     string `json:"arbt_onsl_ntby_tr_pbmn"`
+	NabtSmtnNtbyQty        string `json:"nabt_smtn_ntby_qty"`
+	ArbtOnslSelnVol        string `json:"arbt_onsl_seln_vol"`
+	NabtSmtmSelnTrPbmnRate string `json:"nabt_smtm_seln_tr_pbmn_rate"`
+	ArbtEntmShnuVolRate    string `json:"arbt_entm_shnu_vol_rate"`
+	NabtEntmShnuTrPbmnRate string `json:"nabt_entm_shnu_tr_pbmn_rate"`
+	WholOnslShnuTrPbmn     string `json:"whol_onsl_shnu_tr_pbmn"`
+	ArbtOnslNtbyTrPbmnRate string `json:"arbt_onsl_ntby_tr_pbmn_rate"`
+	NabtSmtmNtbyQtyRate    string `json:"nabt_smtm_ntby_qty_rate"`
+	ArbtOnslSelnVolRate    string `json:"arbt_onsl_seln_vol_rate"`
+	WholEntmSelnVol        string `json:"whol_entm_seln_vol"`
+	ArbtEntmShnuTrPbmn     string `json:"arbt_entm_shnu_tr_pbmn"`
+	NabtOnslShnuVol        string `json:"nabt_onsl_shnu_vol"`
+	WholOnslShnuTrPbmnRate string `json:"whol_onsl_shnu_tr_pbmn_rate"`
+	ArbtSmtnNtbyQty        string `json:"arbt_smtn_ntby_qty"`
+	NabtSmtnNtbyTrPbmn     string `json:"nabt_smtn_ntby_tr_pbmn"`
+	ArbtSmtnSelnVol        string `json:"arbt_smtn_seln_vol"`
+	WholEntmSelnTrPbmn     string `json:"whol_entm_seln_tr_pbmn"`
+	ArbtEntmShnuTrPbmnRate string `json:"arbt_entm_shnu_tr_pbmn_rate"`
+	NabtOnslShnuVolRate    string `json:"nabt_onsl_shnu_vol_rate"`
+	WholOnslShnuVolRate    string `json:"whol_onsl_shnu_vol_rate"`
+	ArbtSmtmNtbyQtyRate    string `json:"arbt_smtm_ntby_qty_rate"`
+	NabtSmtmNtbyTrPbmnRate string `json:"nabt_smtm_ntby_tr_pbmn_rate"`
+	ArbtSmtmSelnVolRate    string `json:"arbt_smtm_seln_vol_rate"`
+	WholEntmSelnVolRate    string `json:"whol_entm_seln_vol_rate"`
+	ArbtOnslShnuVol        string `json:"arbt_onsl_shnu_vol"`
+	NabtOnslShnuTrPbmn     string `json:"nabt_onsl_shnu_tr_pbmn"`
+	WholSmtnShnuVol        string `json:"whol_smtn_shnu_vol"`
+	ArbtSmtnNtbyTrPbmn     string `json:"arbt_smtn_ntby_tr_pbmn"`
+	WholEntmNtbyQty        string `json:"whol_entm_ntby_qty"`
+	ArbtSmtnSelnTrPbmn     string `json:"arbt_smtn_seln_tr_pbmn"`
+	WholEntmSelnTrPbmnRate string `json:"whol_entm_seln_tr_pbmn_rate"`
+	ArbtOnslShnuVolRate    string `json:"arbt_onsl_shnu_vol_rate"`
+	NabtOnslShnuTrPbmnRate string `json:"nabt_onsl_shnu_tr_pbmn_rate"`
+	WholShunVolRate        string `json:"whol_shun_vol_rate"`
+	ArbtSmtmNtbyTrPbmnRate string `json:"arbt_smtm_ntby_tr_pbmn_rate"`
+	WholEntmNtbyQtyRate    string `json:"whol_entm_ntby_qty_rate"`
+	ArbtSmtmSelnTrPbmnRate string `json:"arbt_smtm_seln_tr_pbmn_rate"`
+	WholOnslSelnVol        string `json:"whol_onsl_seln_vol"`
+	ArbtOnslShnuTrPbmn     string `json:"arbt_onsl_shnu_tr_pbmn"`
+	NabtSmtnShnuVol        string `json:"nabt_smtn_shnu_vol"`
+	WholSmtnShnuTrPbmn     string `json:"whol_smtn_shnu_tr_pbmn"`
+	NabtEntmNtbyQty        string `json:"nabt_entm_ntby_qty"`
+	WholEntmNtbyTrPbmn     string `json:"whol_entm_ntby_tr_pbmn"`
+	NabtEntmSelnVol        string `json:"nabt_entm_seln_vol"`
+	WholOnslSelnVolRate    string `json:"whol_onsl_seln_vol_rate"`
+	ArbtOnslShnuTrPbmnRate string `json:"arbt_onsl_shnu_tr_pbmn_rate"`
+	NabtSmtmShunVolRate    string `json:"nabt_smtm_shun_vol_rate"`
+	WholShunTrPbmnRate     string `json:"whol_shun_tr_pbmn_rate"`
+	NabtEntmNtbyQtyRate    string `json:"nabt_entm_ntby_qty_rate"`
 }
 
 type KISDomesticStockV1QuotationsCompProgramTradeDailyRequest struct {
@@ -2380,24 +2380,24 @@ type KISDomesticStockV1QuotationsCompProgramTradeToday struct {
 }
 
 type KISDomesticStockV1QuotationsCompProgramTradeTodayOutput1Item struct {
-	BsopHour               string `json:"bsop_hour,omitempty"`
-	ArbtSmtnSelnTrPbmn     string `json:"arbt_smtn_seln_tr_pbmn,omitempty"`
-	ArbtSmtmSelnTrPbmnRate string `json:"arbt_smtm_seln_tr_pbmn_rate,omitempty"`
-	ArbtSmtnShnuTrPbmn     string `json:"arbt_smtn_shnu_tr_pbmn,omitempty"`
-	ArbtSmtmShunTrPbmnRate string `json:"arbt_smtm_shun_tr_pbmn_rate,omitempty"`
-	NabtSmtnSelnTrPbmn     string `json:"nabt_smtn_seln_tr_pbmn,omitempty"`
-	NabtSmtmSelnTrPbmnRate string `json:"nabt_smtm_seln_tr_pbmn_rate,omitempty"`
-	NabtSmtnShnuTrPbmn     string `json:"nabt_smtn_shnu_tr_pbmn,omitempty"`
-	NabtSmtmShunTrPbmnRate string `json:"nabt_smtm_shun_tr_pbmn_rate,omitempty"`
-	ArbtSmtnNtbyTrPbmn     string `json:"arbt_smtn_ntby_tr_pbmn,omitempty"`
-	ArbtSmtmNtbyTrPbmnRate string `json:"arbt_smtm_ntby_tr_pbmn_rate,omitempty"`
-	NabtSmtnNtbyTrPbmn     string `json:"nabt_smtn_ntby_tr_pbmn,omitempty"`
-	NabtSmtmNtbyTrPbmnRate string `json:"nabt_smtm_ntby_tr_pbmn_rate,omitempty"`
-	WholSmtnNtbyTrPbmn     string `json:"whol_smtn_ntby_tr_pbmn,omitempty"`
-	WholNtbyTrPbmnRate     string `json:"whol_ntby_tr_pbmn_rate,omitempty"`
-	BstpNmixPrpr           string `json:"bstp_nmix_prpr,omitempty"`
-	BstpNmixPrdyVrss       string `json:"bstp_nmix_prdy_vrss,omitempty"`
-	PrdyVrssSign           string `json:"prdy_vrss_sign,omitempty"`
+	BsopHour               string `json:"bsop_hour"`
+	ArbtSmtnSelnTrPbmn     string `json:"arbt_smtn_seln_tr_pbmn"`
+	ArbtSmtmSelnTrPbmnRate string `json:"arbt_smtm_seln_tr_pbmn_rate"`
+	ArbtSmtnShnuTrPbmn     string `json:"arbt_smtn_shnu_tr_pbmn"`
+	ArbtSmtmShunTrPbmnRate string `json:"arbt_smtm_shun_tr_pbmn_rate"`
+	NabtSmtnSelnTrPbmn     string `json:"nabt_smtn_seln_tr_pbmn"`
+	NabtSmtmSelnTrPbmnRate string `json:"nabt_smtm_seln_tr_pbmn_rate"`
+	NabtSmtnShnuTrPbmn     string `json:"nabt_smtn_shnu_tr_pbmn"`
+	NabtSmtmShunTrPbmnRate string `json:"nabt_smtm_shun_tr_pbmn_rate"`
+	ArbtSmtnNtbyTrPbmn     string `json:"arbt_smtn_ntby_tr_pbmn"`
+	ArbtSmtmNtbyTrPbmnRate string `json:"arbt_smtm_ntby_tr_pbmn_rate"`
+	NabtSmtnNtbyTrPbmn     string `json:"nabt_smtn_ntby_tr_pbmn"`
+	NabtSmtmNtbyTrPbmnRate string `json:"nabt_smtm_ntby_tr_pbmn_rate"`
+	WholSmtnNtbyTrPbmn     string `json:"whol_smtn_ntby_tr_pbmn"`
+	WholNtbyTrPbmnRate     string `json:"whol_ntby_tr_pbmn_rate"`
+	BstpNmixPrpr           string `json:"bstp_nmix_prpr"`
+	BstpNmixPrdyVrss       string `json:"bstp_nmix_prdy_vrss"`
+	PrdyVrssSign           string `json:"prdy_vrss_sign"`
 }
 
 type KISDomesticStockV1QuotationsCompProgramTradeTodayRequest struct {
@@ -2415,9 +2415,9 @@ type KISDomesticStockV1QuotationsCreditByCompany struct {
 }
 
 type KISDomesticStockV1QuotationsCreditByCompanyOutputItem struct {
-	StckShrnIscd string `json:"stck_shrn_iscd,omitempty"`
-	HtsKorIsnm   string `json:"hts_kor_isnm,omitempty"`
-	CrdtRate     string `json:"crdt_rate,omitempty"`
+	StckShrnIscd string `json:"stck_shrn_iscd"`
+	HtsKorIsnm   string `json:"hts_kor_isnm"`
+	CrdtRate     string `json:"crdt_rate"`
 }
 
 type KISDomesticStockV1QuotationsCreditByCompanyRequest struct {
@@ -2434,32 +2434,32 @@ type KISDomesticStockV1QuotationsDailyCreditBalance struct {
 }
 
 type KISDomesticStockV1QuotationsDailyCreditBalanceOutputItem struct {
-	DealDate         string `json:"deal_date,omitempty"`
-	StckPrpr         string `json:"stck_prpr,omitempty"`
-	PrdyVrssSign     string `json:"prdy_vrss_sign,omitempty"`
-	PrdyVrss         string `json:"prdy_vrss,omitempty"`
-	PrdyCtrt         string `json:"prdy_ctrt,omitempty"`
-	AcmlVol          string `json:"acml_vol,omitempty"`
-	StlmDate         string `json:"stlm_date,omitempty"`
-	WholLoanNewStcn  string `json:"whol_loan_new_stcn,omitempty"`
-	WholLoanRdmpStcn string `json:"whol_loan_rdmp_stcn,omitempty"`
-	WholLoanRmndStcn string `json:"whol_loan_rmnd_stcn,omitempty"`
-	WholLoanNewAmt   string `json:"whol_loan_new_amt,omitempty"`
-	WholLoanRdmpAmt  string `json:"whol_loan_rdmp_amt,omitempty"`
-	WholLoanRmndAmt  string `json:"whol_loan_rmnd_amt,omitempty"`
-	WholLoanRmndRate string `json:"whol_loan_rmnd_rate,omitempty"`
-	WholLoanGvrt     string `json:"whol_loan_gvrt,omitempty"`
-	WholStlnNewStcn  string `json:"whol_stln_new_stcn,omitempty"`
-	WholStlnRdmpStcn string `json:"whol_stln_rdmp_stcn,omitempty"`
-	WholStlnRmndStcn string `json:"whol_stln_rmnd_stcn,omitempty"`
-	WholStlnNewAmt   string `json:"whol_stln_new_amt,omitempty"`
-	WholStlnRdmpAmt  string `json:"whol_stln_rdmp_amt,omitempty"`
-	WholStlnRmndAmt  string `json:"whol_stln_rmnd_amt,omitempty"`
-	WholStlnRmndRate string `json:"whol_stln_rmnd_rate,omitempty"`
-	WholStlnGvrt     string `json:"whol_stln_gvrt,omitempty"`
-	StckOprc         string `json:"stck_oprc,omitempty"`
-	StckHgpr         string `json:"stck_hgpr,omitempty"`
-	StckLwpr         string `json:"stck_lwpr,omitempty"`
+	DealDate         string `json:"deal_date"`
+	StckPrpr         string `json:"stck_prpr"`
+	PrdyVrssSign     string `json:"prdy_vrss_sign"`
+	PrdyVrss         string `json:"prdy_vrss"`
+	PrdyCtrt         string `json:"prdy_ctrt"`
+	AcmlVol          string `json:"acml_vol"`
+	StlmDate         string `json:"stlm_date"`
+	WholLoanNewStcn  string `json:"whol_loan_new_stcn"`
+	WholLoanRdmpStcn string `json:"whol_loan_rdmp_stcn"`
+	WholLoanRmndStcn string `json:"whol_loan_rmnd_stcn"`
+	WholLoanNewAmt   string `json:"whol_loan_new_amt"`
+	WholLoanRdmpAmt  string `json:"whol_loan_rdmp_amt"`
+	WholLoanRmndAmt  string `json:"whol_loan_rmnd_amt"`
+	WholLoanRmndRate string `json:"whol_loan_rmnd_rate"`
+	WholLoanGvrt     string `json:"whol_loan_gvrt"`
+	WholStlnNewStcn  string `json:"whol_stln_new_stcn"`
+	WholStlnRdmpStcn string `json:"whol_stln_rdmp_stcn"`
+	WholStlnRmndStcn string `json:"whol_stln_rmnd_stcn"`
+	WholStlnNewAmt   string `json:"whol_stln_new_amt"`
+	WholStlnRdmpAmt  string `json:"whol_stln_rdmp_amt"`
+	WholStlnRmndAmt  string `json:"whol_stln_rmnd_amt"`
+	WholStlnRmndRate string `json:"whol_stln_rmnd_rate"`
+	WholStlnGvrt     string `json:"whol_stln_gvrt"`
+	StckOprc         string `json:"stck_oprc"`
+	StckHgpr         string `json:"stck_hgpr"`
+	StckLwpr         string `json:"stck_lwpr"`
 }
 
 type KISDomesticStockV1QuotationsDailyCreditBalanceRequest struct {
@@ -2475,17 +2475,17 @@ type KISDomesticStockV1QuotationsDailyLoanTrans struct {
 }
 
 type KISDomesticStockV1QuotationsDailyLoanTransOutput1Item struct {
-	BsopDate     string `json:"bsop_date,omitempty"`
-	StckPrpr     string `json:"stck_prpr,omitempty"`
-	PrdyVrssSign string `json:"prdy_vrss_sign,omitempty"`
-	PrdyVrss     string `json:"prdy_vrss,omitempty"`
-	PrdyCtrt     string `json:"prdy_ctrt,omitempty"`
-	AcmlVol      string `json:"acml_vol,omitempty"`
-	NewStcn      string `json:"new_stcn,omitempty"`
-	RdmpStcn     string `json:"rdmp_stcn,omitempty"`
-	PrdyRmndVrss string `json:"prdy_rmnd_vrss,omitempty"`
-	RmndStcn     string `json:"rmnd_stcn,omitempty"`
-	RmndAmt      string `json:"rmnd_amt,omitempty"`
+	BsopDate     string `json:"bsop_date"`
+	StckPrpr     string `json:"stck_prpr"`
+	PrdyVrssSign string `json:"prdy_vrss_sign"`
+	PrdyVrss     string `json:"prdy_vrss"`
+	PrdyCtrt     string `json:"prdy_ctrt"`
+	AcmlVol      string `json:"acml_vol"`
+	NewStcn      string `json:"new_stcn"`
+	RdmpStcn     string `json:"rdmp_stcn"`
+	PrdyRmndVrss string `json:"prdy_rmnd_vrss"`
+	RmndStcn     string `json:"rmnd_stcn"`
+	RmndAmt      string `json:"rmnd_amt"`
 }
 
 type KISDomesticStockV1QuotationsDailyLoanTransRequest struct {
@@ -2503,36 +2503,36 @@ type KISDomesticStockV1QuotationsDailyShortSale struct {
 }
 
 type KISDomesticStockV1QuotationsDailyShortSaleOutput1Item struct {
-	StckPrpr     string `json:"stck_prpr,omitempty"`
-	PrdyVrss     string `json:"prdy_vrss,omitempty"`
-	PrdyVrssSign string `json:"prdy_vrss_sign,omitempty"`
-	PrdyCtrt     string `json:"prdy_ctrt,omitempty"`
-	AcmlVol      string `json:"acml_vol,omitempty"`
-	PrdyVol      string `json:"prdy_vol,omitempty"`
+	StckPrpr     string `json:"stck_prpr"`
+	PrdyVrss     string `json:"prdy_vrss"`
+	PrdyVrssSign string `json:"prdy_vrss_sign"`
+	PrdyCtrt     string `json:"prdy_ctrt"`
+	AcmlVol      string `json:"acml_vol"`
+	PrdyVol      string `json:"prdy_vol"`
 }
 
 type KISDomesticStockV1QuotationsDailyShortSaleOutput2Item struct {
-	StckBsopDate        string `json:"stck_bsop_date,omitempty"`
-	StckClpr            string `json:"stck_clpr,omitempty"`
-	PrdyVrss            string `json:"prdy_vrss,omitempty"`
-	PrdyVrssSign        string `json:"prdy_vrss_sign,omitempty"`
-	PrdyCtrt            string `json:"prdy_ctrt,omitempty"`
-	AcmlVol             string `json:"acml_vol,omitempty"`
-	StndVolSmtn         string `json:"stnd_vol_smtn,omitempty"`
-	SstsCntgQty         string `json:"ssts_cntg_qty,omitempty"`
-	SstsVolRlim         string `json:"ssts_vol_rlim,omitempty"`
-	AcmlSstsCntgQty     string `json:"acml_ssts_cntg_qty,omitempty"`
-	AcmlSstsCntgQtyRlim string `json:"acml_ssts_cntg_qty_rlim,omitempty"`
-	AcmlTrPbmn          string `json:"acml_tr_pbmn,omitempty"`
-	StndTrPbmnSmtn      string `json:"stnd_tr_pbmn_smtn,omitempty"`
-	SstsTrPbmn          string `json:"ssts_tr_pbmn,omitempty"`
-	SstsTrPbmnRlim      string `json:"ssts_tr_pbmn_rlim,omitempty"`
-	AcmlSstsTrPbmn      string `json:"acml_ssts_tr_pbmn,omitempty"`
-	AcmlSstsTrPbmnRlim  string `json:"acml_ssts_tr_pbmn_rlim,omitempty"`
-	StckOprc            string `json:"stck_oprc,omitempty"`
-	StckHgpr            string `json:"stck_hgpr,omitempty"`
-	StckLwpr            string `json:"stck_lwpr,omitempty"`
-	AvrgPrc             string `json:"avrg_prc,omitempty"`
+	StckBsopDate        string `json:"stck_bsop_date"`
+	StckClpr            string `json:"stck_clpr"`
+	PrdyVrss            string `json:"prdy_vrss"`
+	PrdyVrssSign        string `json:"prdy_vrss_sign"`
+	PrdyCtrt            string `json:"prdy_ctrt"`
+	AcmlVol             string `json:"acml_vol"`
+	StndVolSmtn         string `json:"stnd_vol_smtn"`
+	SstsCntgQty         string `json:"ssts_cntg_qty"`
+	SstsVolRlim         string `json:"ssts_vol_rlim"`
+	AcmlSstsCntgQty     string `json:"acml_ssts_cntg_qty"`
+	AcmlSstsCntgQtyRlim string `json:"acml_ssts_cntg_qty_rlim"`
+	AcmlTrPbmn          string `json:"acml_tr_pbmn"`
+	StndTrPbmnSmtn      string `json:"stnd_tr_pbmn_smtn"`
+	SstsTrPbmn          string `json:"ssts_tr_pbmn"`
+	SstsTrPbmnRlim      string `json:"ssts_tr_pbmn_rlim"`
+	AcmlSstsTrPbmn      string `json:"acml_ssts_tr_pbmn"`
+	AcmlSstsTrPbmnRlim  string `json:"acml_ssts_tr_pbmn_rlim"`
+	StckOprc            string `json:"stck_oprc"`
+	StckHgpr            string `json:"stck_hgpr"`
+	StckLwpr            string `json:"stck_lwpr"`
+	AvrgPrc             string `json:"avrg_prc"`
 }
 
 type KISDomesticStockV1QuotationsDailyShortSaleRequest struct {
@@ -2551,34 +2551,34 @@ type KISDomesticStockV1QuotationsEstimatePerform struct {
 }
 
 type KISDomesticStockV1QuotationsEstimatePerformOutput1Item struct {
-	ShtCd         string `json:"sht_cd,omitempty"`
-	ItemKorNm     string `json:"item_kor_nm,omitempty"`
-	Name1         string `json:"name1,omitempty"`
-	Name2         string `json:"name2,omitempty"`
-	Estdate       string `json:"estdate,omitempty"`
-	RcmdName      string `json:"rcmd_name,omitempty"`
-	Capital       string `json:"capital,omitempty"`
-	FornItemLmtrt string `json:"forn_item_lmtrt,omitempty"`
+	ShtCd         string `json:"sht_cd"`
+	ItemKorNm     string `json:"item_kor_nm"`
+	Name1         string `json:"name1"`
+	Name2         string `json:"name2"`
+	Estdate       string `json:"estdate"`
+	RcmdName      string `json:"rcmd_name"`
+	Capital       string `json:"capital"`
+	FornItemLmtrt string `json:"forn_item_lmtrt"`
 }
 
 type KISDomesticStockV1QuotationsEstimatePerformOutput2Item struct {
-	Data1 string `json:"data1,omitempty"`
-	Data2 string `json:"data2,omitempty"`
-	Data3 string `json:"data3,omitempty"`
-	Data4 string `json:"data4,omitempty"`
-	Data5 string `json:"data5,omitempty"`
+	Data1 string `json:"data1"`
+	Data2 string `json:"data2"`
+	Data3 string `json:"data3"`
+	Data4 string `json:"data4"`
+	Data5 string `json:"data5"`
 }
 
 type KISDomesticStockV1QuotationsEstimatePerformOutput3Item struct {
-	Data1 string `json:"data1,omitempty"`
-	Data2 string `json:"data2,omitempty"`
-	Data3 string `json:"data3,omitempty"`
-	Data4 string `json:"data4,omitempty"`
-	Data5 string `json:"data5,omitempty"`
+	Data1 string `json:"data1"`
+	Data2 string `json:"data2"`
+	Data3 string `json:"data3"`
+	Data4 string `json:"data4"`
+	Data5 string `json:"data5"`
 }
 
 type KISDomesticStockV1QuotationsEstimatePerformOutput4Item struct {
-	Dt string `json:"dt,omitempty"`
+	Dt string `json:"dt"`
 }
 
 type KISDomesticStockV1QuotationsEstimatePerformRequest struct {
@@ -2591,15 +2591,15 @@ type KISDomesticStockV1QuotationsExpClosingPrice struct {
 }
 
 type KISDomesticStockV1QuotationsExpClosingPriceOutput1Item struct {
-	StckShrnIscd     string `json:"stck_shrn_iscd,omitempty"`
-	HtsKorIsnm       string `json:"hts_kor_isnm,omitempty"`
-	StckPrpr         string `json:"stck_prpr,omitempty"`
-	PrdyVrss         string `json:"prdy_vrss,omitempty"`
-	PrdyVrssSign     string `json:"prdy_vrss_sign,omitempty"`
-	PrdyCtrt         string `json:"prdy_ctrt,omitempty"`
-	SdprVrssPrpr     string `json:"sdpr_vrss_prpr,omitempty"`
-	SdprVrssPrprRate string `json:"sdpr_vrss_prpr_rate,omitempty"`
-	CntgVol          string `json:"cntg_vol,omitempty"`
+	StckShrnIscd     string `json:"stck_shrn_iscd"`
+	HtsKorIsnm       string `json:"hts_kor_isnm"`
+	StckPrpr         string `json:"stck_prpr"`
+	PrdyVrss         string `json:"prdy_vrss"`
+	PrdyVrssSign     string `json:"prdy_vrss_sign"`
+	PrdyCtrt         string `json:"prdy_ctrt"`
+	SdprVrssPrpr     string `json:"sdpr_vrss_prpr"`
+	SdprVrssPrprRate string `json:"sdpr_vrss_prpr_rate"`
+	CntgVol          string `json:"cntg_vol"`
 }
 
 type KISDomesticStockV1QuotationsExpClosingPriceRequest struct {
@@ -2616,13 +2616,13 @@ type KISDomesticStockV1QuotationsExpIndexTrend struct {
 }
 
 type KISDomesticStockV1QuotationsExpIndexTrendOutputItem struct {
-	StckCntgHour     string `json:"stck_cntg_hour,omitempty"`
-	BstpNmixPrpr     string `json:"bstp_nmix_prpr,omitempty"`
-	PrdyVrssSign     string `json:"prdy_vrss_sign,omitempty"`
-	BstpNmixPrdyVrss string `json:"bstp_nmix_prdy_vrss,omitempty"`
-	PrdyCtrt         string `json:"prdy_ctrt,omitempty"`
-	AcmlVol          string `json:"acml_vol,omitempty"`
-	AcmlTrPbmn       string `json:"acml_tr_pbmn,omitempty"`
+	StckCntgHour     string `json:"stck_cntg_hour"`
+	BstpNmixPrpr     string `json:"bstp_nmix_prpr"`
+	PrdyVrssSign     string `json:"prdy_vrss_sign"`
+	BstpNmixPrdyVrss string `json:"bstp_nmix_prdy_vrss"`
+	PrdyCtrt         string `json:"prdy_ctrt"`
+	AcmlVol          string `json:"acml_vol"`
+	AcmlTrPbmn       string `json:"acml_tr_pbmn"`
 }
 
 type KISDomesticStockV1QuotationsExpIndexTrendRequest struct {
@@ -2639,23 +2639,23 @@ type KISDomesticStockV1QuotationsExpPriceTrend struct {
 }
 
 type KISDomesticStockV1QuotationsExpPriceTrendOutput1Item struct {
-	RprsMrktKorName  string `json:"rprs_mrkt_kor_name,omitempty"`
-	AntcCnpr         string `json:"antc_cnpr,omitempty"`
-	AntcCntgVrssSign string `json:"antc_cntg_vrss_sign,omitempty"`
-	AntcCntgVrss     string `json:"antc_cntg_vrss,omitempty"`
-	AntcCntgPrdyCtrt string `json:"antc_cntg_prdy_ctrt,omitempty"`
-	AntcVol          string `json:"antc_vol,omitempty"`
-	AntcTrPbmn       string `json:"antc_tr_pbmn,omitempty"`
+	RprsMrktKorName  string `json:"rprs_mrkt_kor_name"`
+	AntcCnpr         string `json:"antc_cnpr"`
+	AntcCntgVrssSign string `json:"antc_cntg_vrss_sign"`
+	AntcCntgVrss     string `json:"antc_cntg_vrss"`
+	AntcCntgPrdyCtrt string `json:"antc_cntg_prdy_ctrt"`
+	AntcVol          string `json:"antc_vol"`
+	AntcTrPbmn       string `json:"antc_tr_pbmn"`
 }
 
 type KISDomesticStockV1QuotationsExpPriceTrendOutput2Item struct {
-	StckBsopDate string `json:"stck_bsop_date,omitempty"`
-	StckCntgHour string `json:"stck_cntg_hour,omitempty"`
-	StckPrpr     string `json:"stck_prpr,omitempty"`
-	PrdyVrssSign string `json:"prdy_vrss_sign,omitempty"`
-	PrdyVrss     string `json:"prdy_vrss,omitempty"`
-	PrdyCtrt     string `json:"prdy_ctrt,omitempty"`
-	AcmlVol      string `json:"acml_vol,omitempty"`
+	StckBsopDate string `json:"stck_bsop_date"`
+	StckCntgHour string `json:"stck_cntg_hour"`
+	StckPrpr     string `json:"stck_prpr"`
+	PrdyVrssSign string `json:"prdy_vrss_sign"`
+	PrdyVrss     string `json:"prdy_vrss"`
+	PrdyCtrt     string `json:"prdy_ctrt"`
+	AcmlVol      string `json:"acml_vol"`
 }
 
 type KISDomesticStockV1QuotationsExpPriceTrendRequest struct {
@@ -2671,28 +2671,28 @@ type KISDomesticStockV1QuotationsExpTotalIndex struct {
 }
 
 type KISDomesticStockV1QuotationsExpTotalIndexOutput1Item struct {
-	BstpNmixPrpr     string `json:"bstp_nmix_prpr,omitempty"`
-	BstpNmixPrdyVrss string `json:"bstp_nmix_prdy_vrss,omitempty"`
-	PrdyVrssSign     string `json:"prdy_vrss_sign,omitempty"`
-	PrdyCtrt         string `json:"prdy_ctrt,omitempty"`
-	AcmlVol          string `json:"acml_vol,omitempty"`
-	AscnIssuCnt      string `json:"ascn_issu_cnt,omitempty"`
-	DownIssuCnt      string `json:"down_issu_cnt,omitempty"`
-	StnrIssuCnt      string `json:"stnr_issu_cnt,omitempty"`
-	BstpClsCode      string `json:"bstp_cls_code,omitempty"`
+	BstpNmixPrpr     string `json:"bstp_nmix_prpr"`
+	BstpNmixPrdyVrss string `json:"bstp_nmix_prdy_vrss"`
+	PrdyVrssSign     string `json:"prdy_vrss_sign"`
+	PrdyCtrt         string `json:"prdy_ctrt"`
+	AcmlVol          string `json:"acml_vol"`
+	AscnIssuCnt      string `json:"ascn_issu_cnt"`
+	DownIssuCnt      string `json:"down_issu_cnt"`
+	StnrIssuCnt      string `json:"stnr_issu_cnt"`
+	BstpClsCode      string `json:"bstp_cls_code"`
 }
 
 type KISDomesticStockV1QuotationsExpTotalIndexOutput2Item struct {
-	HtsKorIsnm       string `json:"hts_kor_isnm,omitempty"`
-	BstpNmixPrpr     string `json:"bstp_nmix_prpr,omitempty"`
-	BstpNmixPrdyVrss string `json:"bstp_nmix_prdy_vrss,omitempty"`
-	PrdyVrssSign     string `json:"prdy_vrss_sign,omitempty"`
-	BstpNmixPrdyCtrt string `json:"bstp_nmix_prdy_ctrt,omitempty"`
-	AcmlVol          string `json:"acml_vol,omitempty"`
-	NmixSdpr         string `json:"nmix_sdpr,omitempty"`
-	AscnIssuCnt      string `json:"ascn_issu_cnt,omitempty"`
-	StnrIssuCnt      string `json:"stnr_issu_cnt,omitempty"`
-	DownIssuCnt      string `json:"down_issu_cnt,omitempty"`
+	HtsKorIsnm       string `json:"hts_kor_isnm"`
+	BstpNmixPrpr     string `json:"bstp_nmix_prpr"`
+	BstpNmixPrdyVrss string `json:"bstp_nmix_prdy_vrss"`
+	PrdyVrssSign     string `json:"prdy_vrss_sign"`
+	BstpNmixPrdyCtrt string `json:"bstp_nmix_prdy_ctrt"`
+	AcmlVol          string `json:"acml_vol"`
+	NmixSdpr         string `json:"nmix_sdpr"`
+	AscnIssuCnt      string `json:"ascn_issu_cnt"`
+	StnrIssuCnt      string `json:"stnr_issu_cnt"`
+	DownIssuCnt      string `json:"down_issu_cnt"`
 }
 
 type KISDomesticStockV1QuotationsExpTotalIndexRequest struct {
@@ -2709,32 +2709,32 @@ type KISDomesticStockV1QuotationsForeignInstitutionTotal struct {
 }
 
 type KISDomesticStockV1QuotationsForeignInstitutionTotalOutputItem struct {
-	HtsKorIsnm        string `json:"hts_kor_isnm,omitempty"`
-	MkscShrnIscd      string `json:"mksc_shrn_iscd,omitempty"`
-	NtbyQty           string `json:"ntby_qty,omitempty"`
-	StckPrpr          string `json:"stck_prpr,omitempty"`
-	PrdyVrssSign      string `json:"prdy_vrss_sign,omitempty"`
-	PrdyVrss          string `json:"prdy_vrss,omitempty"`
-	PrdyCtrt          string `json:"prdy_ctrt,omitempty"`
-	AcmlVol           string `json:"acml_vol,omitempty"`
-	FrgnNtbyQty       string `json:"frgn_ntby_qty,omitempty"`
-	OrgnNtbyQty       string `json:"orgn_ntby_qty,omitempty"`
-	IvtrNtbyQty       string `json:"ivtr_ntby_qty,omitempty"`
-	BankNtbyQty       string `json:"bank_ntby_qty,omitempty"`
-	InsuNtbyQty       string `json:"insu_ntby_qty,omitempty"`
-	MrbnNtbyQty       string `json:"mrbn_ntby_qty,omitempty"`
-	FundNtbyQty       string `json:"fund_ntby_qty,omitempty"`
-	EtcOrgtNtbyVol    string `json:"etc_orgt_ntby_vol,omitempty"`
-	EtcCorpNtbyVol    string `json:"etc_corp_ntby_vol,omitempty"`
-	FrgnNtbyTrPbmn    string `json:"frgn_ntby_tr_pbmn,omitempty"`
-	OrgnNtbyTrPbmn    string `json:"orgn_ntby_tr_pbmn,omitempty"`
-	IvtrNtbyTrPbmn    string `json:"ivtr_ntby_tr_pbmn,omitempty"`
-	BankNtbyTrPbmn    string `json:"bank_ntby_tr_pbmn,omitempty"`
-	InsuNtbyTrPbmn    string `json:"insu_ntby_tr_pbmn,omitempty"`
-	MrbnNtbyTrPbmn    string `json:"mrbn_ntby_tr_pbmn,omitempty"`
-	FundNtbyTrPbmn    string `json:"fund_ntby_tr_pbmn,omitempty"`
-	EtcOrgtNtbyTrPbmn string `json:"etc_orgt_ntby_tr_pbmn,omitempty"`
-	EtcCorpNtbyTrPbmn string `json:"etc_corp_ntby_tr_pbmn,omitempty"`
+	HtsKorIsnm        string `json:"hts_kor_isnm"`
+	MkscShrnIscd      string `json:"mksc_shrn_iscd"`
+	NtbyQty           string `json:"ntby_qty"`
+	StckPrpr          string `json:"stck_prpr"`
+	PrdyVrssSign      string `json:"prdy_vrss_sign"`
+	PrdyVrss          string `json:"prdy_vrss"`
+	PrdyCtrt          string `json:"prdy_ctrt"`
+	AcmlVol           string `json:"acml_vol"`
+	FrgnNtbyQty       string `json:"frgn_ntby_qty"`
+	OrgnNtbyQty       string `json:"orgn_ntby_qty"`
+	IvtrNtbyQty       string `json:"ivtr_ntby_qty"`
+	BankNtbyQty       string `json:"bank_ntby_qty"`
+	InsuNtbyQty       string `json:"insu_ntby_qty"`
+	MrbnNtbyQty       string `json:"mrbn_ntby_qty"`
+	FundNtbyQty       string `json:"fund_ntby_qty"`
+	EtcOrgtNtbyVol    string `json:"etc_orgt_ntby_vol"`
+	EtcCorpNtbyVol    string `json:"etc_corp_ntby_vol"`
+	FrgnNtbyTrPbmn    string `json:"frgn_ntby_tr_pbmn"`
+	OrgnNtbyTrPbmn    string `json:"orgn_ntby_tr_pbmn"`
+	IvtrNtbyTrPbmn    string `json:"ivtr_ntby_tr_pbmn"`
+	BankNtbyTrPbmn    string `json:"bank_ntby_tr_pbmn"`
+	InsuNtbyTrPbmn    string `json:"insu_ntby_tr_pbmn"`
+	MrbnNtbyTrPbmn    string `json:"mrbn_ntby_tr_pbmn"`
+	FundNtbyTrPbmn    string `json:"fund_ntby_tr_pbmn"`
+	EtcOrgtNtbyTrPbmn string `json:"etc_orgt_ntby_tr_pbmn"`
+	EtcCorpNtbyTrPbmn string `json:"etc_corp_ntby_tr_pbmn"`
 }
 
 type KISDomesticStockV1QuotationsForeignInstitutionTotalRequest struct {
@@ -2752,16 +2752,16 @@ type KISDomesticStockV1QuotationsFrgnmemPchsTrend struct {
 }
 
 type KISDomesticStockV1QuotationsFrgnmemPchsTrendOutputItem struct {
-	BsopHour        string `json:"bsop_hour,omitempty"`
-	StckPrpr        string `json:"stck_prpr,omitempty"`
-	PrdyVrss        string `json:"prdy_vrss,omitempty"`
-	PrdyVrssSign    string `json:"prdy_vrss_sign,omitempty"`
-	PrdyCtrt        string `json:"prdy_ctrt,omitempty"`
-	AcmlVol         string `json:"acml_vol,omitempty"`
-	FrgnSelnVol     string `json:"frgn_seln_vol,omitempty"`
-	FrgnShnuVol     string `json:"frgn_shnu_vol,omitempty"`
-	GlobNtbyQty     string `json:"glob_ntby_qty,omitempty"`
-	FrgnNtbyQtyIcdc string `json:"frgn_ntby_qty_icdc,omitempty"`
+	BsopHour        string `json:"bsop_hour"`
+	StckPrpr        string `json:"stck_prpr"`
+	PrdyVrss        string `json:"prdy_vrss"`
+	PrdyVrssSign    string `json:"prdy_vrss_sign"`
+	PrdyCtrt        string `json:"prdy_ctrt"`
+	AcmlVol         string `json:"acml_vol"`
+	FrgnSelnVol     string `json:"frgn_seln_vol"`
+	FrgnShnuVol     string `json:"frgn_shnu_vol"`
+	GlobNtbyQty     string `json:"glob_ntby_qty"`
+	FrgnNtbyQtyIcdc string `json:"frgn_ntby_qty_icdc"`
 }
 
 type KISDomesticStockV1QuotationsFrgnmemPchsTrendRequest struct {
@@ -2776,16 +2776,16 @@ type KISDomesticStockV1QuotationsFrgnmemTradeEstimate struct {
 }
 
 type KISDomesticStockV1QuotationsFrgnmemTradeEstimateOutputItem struct {
-	StckShrnIscd     string `json:"stck_shrn_iscd,omitempty"`
-	HtsKorIsnm       string `json:"hts_kor_isnm,omitempty"`
-	GlobNtslQty      string `json:"glob_ntsl_qty,omitempty"`
-	StckPrpr         string `json:"stck_prpr,omitempty"`
-	PrdyVrss         string `json:"prdy_vrss,omitempty"`
-	PrdyVrssSign     string `json:"prdy_vrss_sign,omitempty"`
-	PrdyCtrt         string `json:"prdy_ctrt,omitempty"`
-	AcmlVol          string `json:"acml_vol,omitempty"`
-	GlobTotalSelnQty string `json:"glob_total_seln_qty,omitempty"`
-	GlobTotalShnuQty string `json:"glob_total_shnu_qty,omitempty"`
+	StckShrnIscd     string `json:"stck_shrn_iscd"`
+	HtsKorIsnm       string `json:"hts_kor_isnm"`
+	GlobNtslQty      string `json:"glob_ntsl_qty"`
+	StckPrpr         string `json:"stck_prpr"`
+	PrdyVrss         string `json:"prdy_vrss"`
+	PrdyVrssSign     string `json:"prdy_vrss_sign"`
+	PrdyCtrt         string `json:"prdy_ctrt"`
+	AcmlVol          string `json:"acml_vol"`
+	GlobTotalSelnQty string `json:"glob_total_seln_qty"`
+	GlobTotalShnuQty string `json:"glob_total_shnu_qty"`
 }
 
 type KISDomesticStockV1QuotationsFrgnmemTradeEstimateRequest struct {
@@ -2803,21 +2803,21 @@ type KISDomesticStockV1QuotationsFrgnmemTradeTrend struct {
 }
 
 type KISDomesticStockV1QuotationsFrgnmemTradeTrendOutput1Item struct {
-	TotalSelnQty string `json:"total_seln_qty,omitempty"`
-	TotalShnuQty string `json:"total_shnu_qty,omitempty"`
+	TotalSelnQty string `json:"total_seln_qty"`
+	TotalShnuQty string `json:"total_shnu_qty"`
 }
 
 type KISDomesticStockV1QuotationsFrgnmemTradeTrendOutput2Item struct {
-	BsopHour        string `json:"bsop_hour,omitempty"`
-	MbcrName        string `json:"mbcr_name,omitempty"`
-	HtsKorIsnm      string `json:"hts_kor_isnm,omitempty"`
-	StckPrpr        string `json:"stck_prpr,omitempty"`
-	PrdyVrss        string `json:"prdy_vrss,omitempty"`
-	PrdyVrssSign    string `json:"prdy_vrss_sign,omitempty"`
-	CntgVol         string `json:"cntg_vol,omitempty"`
-	AcmlNtbyQty     string `json:"acml_ntby_qty,omitempty"`
-	GlobNtbyQty     string `json:"glob_ntby_qty,omitempty"`
-	FrgnNtbyQtyIcdc string `json:"frgn_ntby_qty_icdc,omitempty"`
+	BsopHour        string `json:"bsop_hour"`
+	MbcrName        string `json:"mbcr_name"`
+	HtsKorIsnm      string `json:"hts_kor_isnm"`
+	StckPrpr        string `json:"stck_prpr"`
+	PrdyVrss        string `json:"prdy_vrss"`
+	PrdyVrssSign    string `json:"prdy_vrss_sign"`
+	CntgVol         string `json:"cntg_vol"`
+	AcmlNtbyQty     string `json:"acml_ntby_qty"`
+	GlobNtbyQty     string `json:"glob_ntby_qty"`
+	FrgnNtbyQtyIcdc string `json:"frgn_ntby_qty_icdc"`
 }
 
 type KISDomesticStockV1QuotationsFrgnmemTradeTrendRequest struct {
@@ -2836,93 +2836,93 @@ type KISDomesticStockV1QuotationsInquireAskingPriceExpCcn struct {
 }
 
 type KISDomesticStockV1QuotationsInquireAskingPriceExpCcnOutput1Item struct {
-	AsprAcptHour      string `json:"aspr_acpt_hour,omitempty"`
-	Askp1             string `json:"askp1,omitempty"`
-	Askp2             string `json:"askp2,omitempty"`
-	Askp3             string `json:"askp3,omitempty"`
-	Askp4             string `json:"askp4,omitempty"`
-	Askp5             string `json:"askp5,omitempty"`
-	Askp6             string `json:"askp6,omitempty"`
-	Askp7             string `json:"askp7,omitempty"`
-	Askp8             string `json:"askp8,omitempty"`
-	Askp9             string `json:"askp9,omitempty"`
-	Askp10            string `json:"askp10,omitempty"`
-	Bidp1             string `json:"bidp1,omitempty"`
-	Bidp2             string `json:"bidp2,omitempty"`
-	Bidp3             string `json:"bidp3,omitempty"`
-	Bidp4             string `json:"bidp4,omitempty"`
-	Bidp5             string `json:"bidp5,omitempty"`
-	Bidp6             string `json:"bidp6,omitempty"`
-	Bidp7             string `json:"bidp7,omitempty"`
-	Bidp8             string `json:"bidp8,omitempty"`
-	Bidp9             string `json:"bidp9,omitempty"`
-	Bidp10            string `json:"bidp10,omitempty"`
-	AskpRsqn1         string `json:"askp_rsqn1,omitempty"`
-	AskpRsqn2         string `json:"askp_rsqn2,omitempty"`
-	AskpRsqn3         string `json:"askp_rsqn3,omitempty"`
-	AskpRsqn4         string `json:"askp_rsqn4,omitempty"`
-	AskpRsqn5         string `json:"askp_rsqn5,omitempty"`
-	AskpRsqn6         string `json:"askp_rsqn6,omitempty"`
-	AskpRsqn7         string `json:"askp_rsqn7,omitempty"`
-	AskpRsqn8         string `json:"askp_rsqn8,omitempty"`
-	AskpRsqn9         string `json:"askp_rsqn9,omitempty"`
-	AskpRsqn10        string `json:"askp_rsqn10,omitempty"`
-	BidpRsqn1         string `json:"bidp_rsqn1,omitempty"`
-	BidpRsqn2         string `json:"bidp_rsqn2,omitempty"`
-	BidpRsqn3         string `json:"bidp_rsqn3,omitempty"`
-	BidpRsqn4         string `json:"bidp_rsqn4,omitempty"`
-	BidpRsqn5         string `json:"bidp_rsqn5,omitempty"`
-	BidpRsqn6         string `json:"bidp_rsqn6,omitempty"`
-	BidpRsqn7         string `json:"bidp_rsqn7,omitempty"`
-	BidpRsqn8         string `json:"bidp_rsqn8,omitempty"`
-	BidpRsqn9         string `json:"bidp_rsqn9,omitempty"`
-	BidpRsqn10        string `json:"bidp_rsqn10,omitempty"`
-	AskpRsqnIcdc1     string `json:"askp_rsqn_icdc1,omitempty"`
-	AskpRsqnIcdc2     string `json:"askp_rsqn_icdc2,omitempty"`
-	AskpRsqnIcdc3     string `json:"askp_rsqn_icdc3,omitempty"`
-	AskpRsqnIcdc4     string `json:"askp_rsqn_icdc4,omitempty"`
-	AskpRsqnIcdc5     string `json:"askp_rsqn_icdc5,omitempty"`
-	AskpRsqnIcdc6     string `json:"askp_rsqn_icdc6,omitempty"`
-	AskpRsqnIcdc7     string `json:"askp_rsqn_icdc7,omitempty"`
-	AskpRsqnIcdc8     string `json:"askp_rsqn_icdc8,omitempty"`
-	AskpRsqnIcdc9     string `json:"askp_rsqn_icdc9,omitempty"`
-	AskpRsqnIcdc10    string `json:"askp_rsqn_icdc10,omitempty"`
-	BidpRsqnIcdc1     string `json:"bidp_rsqn_icdc1,omitempty"`
-	BidpRsqnIcdc2     string `json:"bidp_rsqn_icdc2,omitempty"`
-	BidpRsqnIcdc3     string `json:"bidp_rsqn_icdc3,omitempty"`
-	BidpRsqnIcdc4     string `json:"bidp_rsqn_icdc4,omitempty"`
-	BidpRsqnIcdc5     string `json:"bidp_rsqn_icdc5,omitempty"`
-	BidpRsqnIcdc6     string `json:"bidp_rsqn_icdc6,omitempty"`
-	BidpRsqnIcdc7     string `json:"bidp_rsqn_icdc7,omitempty"`
-	BidpRsqnIcdc8     string `json:"bidp_rsqn_icdc8,omitempty"`
-	BidpRsqnIcdc9     string `json:"bidp_rsqn_icdc9,omitempty"`
-	BidpRsqnIcdc10    string `json:"bidp_rsqn_icdc10,omitempty"`
-	TotalAskpRsqn     string `json:"total_askp_rsqn,omitempty"`
-	TotalBidpRsqn     string `json:"total_bidp_rsqn,omitempty"`
-	TotalAskpRsqnIcdc string `json:"total_askp_rsqn_icdc,omitempty"`
-	TotalBidpRsqnIcdc string `json:"total_bidp_rsqn_icdc,omitempty"`
-	OvtmTotalAskpIcdc string `json:"ovtm_total_askp_icdc,omitempty"`
-	OvtmTotalBidpIcdc string `json:"ovtm_total_bidp_icdc,omitempty"`
-	OvtmTotalAskpRsqn string `json:"ovtm_total_askp_rsqn,omitempty"`
-	OvtmTotalBidpRsqn string `json:"ovtm_total_bidp_rsqn,omitempty"`
-	NtbyAsprRsqn      string `json:"ntby_aspr_rsqn,omitempty"`
-	NewMkopClsCode    string `json:"new_mkop_cls_code,omitempty"`
+	AsprAcptHour      string `json:"aspr_acpt_hour"`
+	Askp1             string `json:"askp1"`
+	Askp2             string `json:"askp2"`
+	Askp3             string `json:"askp3"`
+	Askp4             string `json:"askp4"`
+	Askp5             string `json:"askp5"`
+	Askp6             string `json:"askp6"`
+	Askp7             string `json:"askp7"`
+	Askp8             string `json:"askp8"`
+	Askp9             string `json:"askp9"`
+	Askp10            string `json:"askp10"`
+	Bidp1             string `json:"bidp1"`
+	Bidp2             string `json:"bidp2"`
+	Bidp3             string `json:"bidp3"`
+	Bidp4             string `json:"bidp4"`
+	Bidp5             string `json:"bidp5"`
+	Bidp6             string `json:"bidp6"`
+	Bidp7             string `json:"bidp7"`
+	Bidp8             string `json:"bidp8"`
+	Bidp9             string `json:"bidp9"`
+	Bidp10            string `json:"bidp10"`
+	AskpRsqn1         string `json:"askp_rsqn1"`
+	AskpRsqn2         string `json:"askp_rsqn2"`
+	AskpRsqn3         string `json:"askp_rsqn3"`
+	AskpRsqn4         string `json:"askp_rsqn4"`
+	AskpRsqn5         string `json:"askp_rsqn5"`
+	AskpRsqn6         string `json:"askp_rsqn6"`
+	AskpRsqn7         string `json:"askp_rsqn7"`
+	AskpRsqn8         string `json:"askp_rsqn8"`
+	AskpRsqn9         string `json:"askp_rsqn9"`
+	AskpRsqn10        string `json:"askp_rsqn10"`
+	BidpRsqn1         string `json:"bidp_rsqn1"`
+	BidpRsqn2         string `json:"bidp_rsqn2"`
+	BidpRsqn3         string `json:"bidp_rsqn3"`
+	BidpRsqn4         string `json:"bidp_rsqn4"`
+	BidpRsqn5         string `json:"bidp_rsqn5"`
+	BidpRsqn6         string `json:"bidp_rsqn6"`
+	BidpRsqn7         string `json:"bidp_rsqn7"`
+	BidpRsqn8         string `json:"bidp_rsqn8"`
+	BidpRsqn9         string `json:"bidp_rsqn9"`
+	BidpRsqn10        string `json:"bidp_rsqn10"`
+	AskpRsqnIcdc1     string `json:"askp_rsqn_icdc1"`
+	AskpRsqnIcdc2     string `json:"askp_rsqn_icdc2"`
+	AskpRsqnIcdc3     string `json:"askp_rsqn_icdc3"`
+	AskpRsqnIcdc4     string `json:"askp_rsqn_icdc4"`
+	AskpRsqnIcdc5     string `json:"askp_rsqn_icdc5"`
+	AskpRsqnIcdc6     string `json:"askp_rsqn_icdc6"`
+	AskpRsqnIcdc7     string `json:"askp_rsqn_icdc7"`
+	AskpRsqnIcdc8     string `json:"askp_rsqn_icdc8"`
+	AskpRsqnIcdc9     string `json:"askp_rsqn_icdc9"`
+	AskpRsqnIcdc10    string `json:"askp_rsqn_icdc10"`
+	BidpRsqnIcdc1     string `json:"bidp_rsqn_icdc1"`
+	BidpRsqnIcdc2     string `json:"bidp_rsqn_icdc2"`
+	BidpRsqnIcdc3     string `json:"bidp_rsqn_icdc3"`
+	BidpRsqnIcdc4     string `json:"bidp_rsqn_icdc4"`
+	BidpRsqnIcdc5     string `json:"bidp_rsqn_icdc5"`
+	BidpRsqnIcdc6     string `json:"bidp_rsqn_icdc6"`
+	BidpRsqnIcdc7     string `json:"bidp_rsqn_icdc7"`
+	BidpRsqnIcdc8     string `json:"bidp_rsqn_icdc8"`
+	BidpRsqnIcdc9     string `json:"bidp_rsqn_icdc9"`
+	BidpRsqnIcdc10    string `json:"bidp_rsqn_icdc10"`
+	TotalAskpRsqn     string `json:"total_askp_rsqn"`
+	TotalBidpRsqn     string `json:"total_bidp_rsqn"`
+	TotalAskpRsqnIcdc string `json:"total_askp_rsqn_icdc"`
+	TotalBidpRsqnIcdc string `json:"total_bidp_rsqn_icdc"`
+	OvtmTotalAskpIcdc string `json:"ovtm_total_askp_icdc"`
+	OvtmTotalBidpIcdc string `json:"ovtm_total_bidp_icdc"`
+	OvtmTotalAskpRsqn string `json:"ovtm_total_askp_rsqn"`
+	OvtmTotalBidpRsqn string `json:"ovtm_total_bidp_rsqn"`
+	NtbyAsprRsqn      string `json:"ntby_aspr_rsqn"`
+	NewMkopClsCode    string `json:"new_mkop_cls_code"`
 }
 
 type KISDomesticStockV1QuotationsInquireAskingPriceExpCcnOutput2Item struct {
-	AntcMkopClsCode  string `json:"antc_mkop_cls_code,omitempty"`
-	StckPrpr         string `json:"stck_prpr,omitempty"`
-	StckOprc         string `json:"stck_oprc,omitempty"`
-	StckHgpr         string `json:"stck_hgpr,omitempty"`
-	StckLwpr         string `json:"stck_lwpr,omitempty"`
-	StckSdpr         string `json:"stck_sdpr,omitempty"`
-	AntcCnpr         string `json:"antc_cnpr,omitempty"`
-	AntcCntgVrssSign string `json:"antc_cntg_vrss_sign,omitempty"`
-	AntcCntgVrss     string `json:"antc_cntg_vrss,omitempty"`
-	AntcCntgPrdyCtrt string `json:"antc_cntg_prdy_ctrt,omitempty"`
-	AntcVol          string `json:"antc_vol,omitempty"`
-	StckShrnIscd     string `json:"stck_shrn_iscd,omitempty"`
-	ViClsCode        string `json:"vi_cls_code,omitempty"`
+	AntcMkopClsCode  string `json:"antc_mkop_cls_code"`
+	StckPrpr         string `json:"stck_prpr"`
+	StckOprc         string `json:"stck_oprc"`
+	StckHgpr         string `json:"stck_hgpr"`
+	StckLwpr         string `json:"stck_lwpr"`
+	StckSdpr         string `json:"stck_sdpr"`
+	AntcCnpr         string `json:"antc_cnpr"`
+	AntcCntgVrssSign string `json:"antc_cntg_vrss_sign"`
+	AntcCntgVrss     string `json:"antc_cntg_vrss"`
+	AntcCntgPrdyCtrt string `json:"antc_cntg_prdy_ctrt"`
+	AntcVol          string `json:"antc_vol"`
+	StckShrnIscd     string `json:"stck_shrn_iscd"`
+	ViClsCode        string `json:"vi_cls_code"`
 }
 
 type KISDomesticStockV1QuotationsInquireAskingPriceExpCcnRequest struct {
@@ -2936,13 +2936,13 @@ type KISDomesticStockV1QuotationsInquireCcnl struct {
 }
 
 type KISDomesticStockV1QuotationsInquireCcnlOutputItem struct {
-	StckCntgHour string `json:"stck_cntg_hour,omitempty"`
-	StckPrpr     string `json:"stck_prpr,omitempty"`
-	PrdyVrss     string `json:"prdy_vrss,omitempty"`
-	PrdyVrssSign string `json:"prdy_vrss_sign,omitempty"`
-	CntgVol      string `json:"cntg_vol,omitempty"`
-	TdayRltv     string `json:"tday_rltv,omitempty"`
-	PrdyCtrt     string `json:"prdy_ctrt,omitempty"`
+	StckCntgHour string `json:"stck_cntg_hour"`
+	StckPrpr     string `json:"stck_prpr"`
+	PrdyVrss     string `json:"prdy_vrss"`
+	PrdyVrssSign string `json:"prdy_vrss_sign"`
+	CntgVol      string `json:"cntg_vol"`
+	TdayRltv     string `json:"tday_rltv"`
+	PrdyCtrt     string `json:"prdy_ctrt"`
 }
 
 type KISDomesticStockV1QuotationsInquireCcnlRequest struct {
@@ -2957,32 +2957,32 @@ type KISDomesticStockV1QuotationsInquireDailyIndexchartprice struct {
 }
 
 type KISDomesticStockV1QuotationsInquireDailyIndexchartpriceOutput1Item struct {
-	PrdyVrssSign     string `json:"prdy_vrss_sign,omitempty"`
-	BstpNmixPrdyCtrt string `json:"bstp_nmix_prdy_ctrt,omitempty"`
-	PrdyNmix         string `json:"prdy_nmix,omitempty"`
-	AcmlVol          string `json:"acml_vol,omitempty"`
-	AcmlTrPbmn       string `json:"acml_tr_pbmn,omitempty"`
-	HtsKorIsnm       string `json:"hts_kor_isnm,omitempty"`
-	BstpNmixPrpr     string `json:"bstp_nmix_prpr,omitempty"`
-	BstpClsCode      string `json:"bstp_cls_code,omitempty"`
-	PrdyVol          string `json:"prdy_vol,omitempty"`
-	BstpNmixOprc     string `json:"bstp_nmix_oprc,omitempty"`
-	BstpNmixHgpr     string `json:"bstp_nmix_hgpr,omitempty"`
-	BstpNmixLwpr     string `json:"bstp_nmix_lwpr,omitempty"`
-	FutsPrdyOprc     string `json:"futs_prdy_oprc,omitempty"`
-	FutsPrdyHgpr     string `json:"futs_prdy_hgpr,omitempty"`
-	FutsPrdyLwpr     string `json:"futs_prdy_lwpr,omitempty"`
+	PrdyVrssSign     string `json:"prdy_vrss_sign"`
+	BstpNmixPrdyCtrt string `json:"bstp_nmix_prdy_ctrt"`
+	PrdyNmix         string `json:"prdy_nmix"`
+	AcmlVol          string `json:"acml_vol"`
+	AcmlTrPbmn       string `json:"acml_tr_pbmn"`
+	HtsKorIsnm       string `json:"hts_kor_isnm"`
+	BstpNmixPrpr     string `json:"bstp_nmix_prpr"`
+	BstpClsCode      string `json:"bstp_cls_code"`
+	PrdyVol          string `json:"prdy_vol"`
+	BstpNmixOprc     string `json:"bstp_nmix_oprc"`
+	BstpNmixHgpr     string `json:"bstp_nmix_hgpr"`
+	BstpNmixLwpr     string `json:"bstp_nmix_lwpr"`
+	FutsPrdyOprc     string `json:"futs_prdy_oprc"`
+	FutsPrdyHgpr     string `json:"futs_prdy_hgpr"`
+	FutsPrdyLwpr     string `json:"futs_prdy_lwpr"`
 }
 
 type KISDomesticStockV1QuotationsInquireDailyIndexchartpriceOutput2Item struct {
-	StckBsopDate string `json:"stck_bsop_date,omitempty"`
-	BstpNmixPrpr string `json:"bstp_nmix_prpr,omitempty"`
-	BstpNmixOprc string `json:"bstp_nmix_oprc,omitempty"`
-	BstpNmixHgpr string `json:"bstp_nmix_hgpr,omitempty"`
-	BstpNmixLwpr string `json:"bstp_nmix_lwpr,omitempty"`
-	AcmlVol      string `json:"acml_vol,omitempty"`
-	AcmlTrPbmn   string `json:"acml_tr_pbmn,omitempty"`
-	ModYn        string `json:"mod_yn,omitempty"`
+	StckBsopDate string `json:"stck_bsop_date"`
+	BstpNmixPrpr string `json:"bstp_nmix_prpr"`
+	BstpNmixOprc string `json:"bstp_nmix_oprc"`
+	BstpNmixHgpr string `json:"bstp_nmix_hgpr"`
+	BstpNmixLwpr string `json:"bstp_nmix_lwpr"`
+	AcmlVol      string `json:"acml_vol"`
+	AcmlTrPbmn   string `json:"acml_tr_pbmn"`
+	ModYn        string `json:"mod_yn"`
 }
 
 type KISDomesticStockV1QuotationsInquireDailyIndexchartpriceRequest struct {
@@ -3000,52 +3000,52 @@ type KISDomesticStockV1QuotationsInquireDailyItemchartprice struct {
 }
 
 type KISDomesticStockV1QuotationsInquireDailyItemchartpriceOutput1Item struct {
-	PrdyVrss             string `json:"prdy_vrss,omitempty"`
-	PrdyVrssSign         string `json:"prdy_vrss_sign,omitempty"`
-	PrdyCtrt             string `json:"prdy_ctrt,omitempty"`
-	StckPrdyClpr         string `json:"stck_prdy_clpr,omitempty"`
-	AcmlVol              string `json:"acml_vol,omitempty"`
-	AcmlTrPbmn           string `json:"acml_tr_pbmn,omitempty"`
-	HtsKorIsnm           string `json:"hts_kor_isnm,omitempty"`
-	StckPrpr             string `json:"stck_prpr,omitempty"`
-	StckShrnIscd         string `json:"stck_shrn_iscd,omitempty"`
-	PrdyVol              string `json:"prdy_vol,omitempty"`
-	StckMxpr             string `json:"stck_mxpr,omitempty"`
-	StckLlam             string `json:"stck_llam,omitempty"`
-	StckOprc             string `json:"stck_oprc,omitempty"`
-	StckHgpr             string `json:"stck_hgpr,omitempty"`
-	StckLwpr             string `json:"stck_lwpr,omitempty"`
-	StckPrdyOprc         string `json:"stck_prdy_oprc,omitempty"`
-	StckPrdyHgpr         string `json:"stck_prdy_hgpr,omitempty"`
-	StckPrdyLwpr         string `json:"stck_prdy_lwpr,omitempty"`
-	Askp                 string `json:"askp,omitempty"`
-	Bidp                 string `json:"bidp,omitempty"`
-	PrdyVrssVol          string `json:"prdy_vrss_vol,omitempty"`
-	VolTnrt              string `json:"vol_tnrt,omitempty"`
-	StckFcam             string `json:"stck_fcam,omitempty"`
-	LstnStcn             string `json:"lstn_stcn,omitempty"`
-	Cpfn                 string `json:"cpfn,omitempty"`
-	HtsAvls              string `json:"hts_avls,omitempty"`
-	Per                  string `json:"per,omitempty"`
-	Eps                  string `json:"eps,omitempty"`
-	Pbr                  string `json:"pbr,omitempty"`
-	ItewholLoanRmndRatem string `json:"itewhol_loan_rmnd_ratem,omitempty"`
+	PrdyVrss             string `json:"prdy_vrss"`
+	PrdyVrssSign         string `json:"prdy_vrss_sign"`
+	PrdyCtrt             string `json:"prdy_ctrt"`
+	StckPrdyClpr         string `json:"stck_prdy_clpr"`
+	AcmlVol              string `json:"acml_vol"`
+	AcmlTrPbmn           string `json:"acml_tr_pbmn"`
+	HtsKorIsnm           string `json:"hts_kor_isnm"`
+	StckPrpr             string `json:"stck_prpr"`
+	StckShrnIscd         string `json:"stck_shrn_iscd"`
+	PrdyVol              string `json:"prdy_vol"`
+	StckMxpr             string `json:"stck_mxpr"`
+	StckLlam             string `json:"stck_llam"`
+	StckOprc             string `json:"stck_oprc"`
+	StckHgpr             string `json:"stck_hgpr"`
+	StckLwpr             string `json:"stck_lwpr"`
+	StckPrdyOprc         string `json:"stck_prdy_oprc"`
+	StckPrdyHgpr         string `json:"stck_prdy_hgpr"`
+	StckPrdyLwpr         string `json:"stck_prdy_lwpr"`
+	Askp                 string `json:"askp"`
+	Bidp                 string `json:"bidp"`
+	PrdyVrssVol          string `json:"prdy_vrss_vol"`
+	VolTnrt              string `json:"vol_tnrt"`
+	StckFcam             string `json:"stck_fcam"`
+	LstnStcn             string `json:"lstn_stcn"`
+	Cpfn                 string `json:"cpfn"`
+	HtsAvls              string `json:"hts_avls"`
+	Per                  string `json:"per"`
+	Eps                  string `json:"eps"`
+	Pbr                  string `json:"pbr"`
+	ItewholLoanRmndRatem string `json:"itewhol_loan_rmnd_ratem"`
 }
 
 type KISDomesticStockV1QuotationsInquireDailyItemchartpriceOutput2Item struct {
-	StckBsopDate string `json:"stck_bsop_date,omitempty"`
-	StckClpr     string `json:"stck_clpr,omitempty"`
-	StckOprc     string `json:"stck_oprc,omitempty"`
-	StckHgpr     string `json:"stck_hgpr,omitempty"`
-	StckLwpr     string `json:"stck_lwpr,omitempty"`
-	AcmlVol      string `json:"acml_vol,omitempty"`
-	AcmlTrPbmn   string `json:"acml_tr_pbmn,omitempty"`
-	FlngClsCode  string `json:"flng_cls_code,omitempty"`
-	PrttRate     string `json:"prtt_rate,omitempty"`
-	ModYn        string `json:"mod_yn,omitempty"`
-	PrdyVrssSign string `json:"prdy_vrss_sign,omitempty"`
-	PrdyVrss     string `json:"prdy_vrss,omitempty"`
-	RevlIssuReas string `json:"revl_issu_reas,omitempty"`
+	StckBsopDate string `json:"stck_bsop_date"`
+	StckClpr     string `json:"stck_clpr"`
+	StckOprc     string `json:"stck_oprc"`
+	StckHgpr     string `json:"stck_hgpr"`
+	StckLwpr     string `json:"stck_lwpr"`
+	AcmlVol      string `json:"acml_vol"`
+	AcmlTrPbmn   string `json:"acml_tr_pbmn"`
+	FlngClsCode  string `json:"flng_cls_code"`
+	PrttRate     string `json:"prtt_rate"`
+	ModYn        string `json:"mod_yn"`
+	PrdyVrssSign string `json:"prdy_vrss_sign"`
+	PrdyVrss     string `json:"prdy_vrss"`
+	RevlIssuReas string `json:"revl_issu_reas"`
 }
 
 type KISDomesticStockV1QuotationsInquireDailyItemchartpriceRequest struct {
@@ -3064,37 +3064,37 @@ type KISDomesticStockV1QuotationsInquireDailyOvertimeprice struct {
 }
 
 type KISDomesticStockV1QuotationsInquireDailyOvertimepriceOutput1Item struct {
-	OvtmUntpPrpr             string `json:"ovtm_untp_prpr,omitempty"`
-	OvtmUntpPrdyVrss         string `json:"ovtm_untp_prdy_vrss,omitempty"`
-	OvtmUntpPrdyVrssSign     string `json:"ovtm_untp_prdy_vrss_sign,omitempty"`
-	OvtmUntpPrdyCtrt         string `json:"ovtm_untp_prdy_ctrt,omitempty"`
-	OvtmUntpVol              string `json:"ovtm_untp_vol,omitempty"`
-	OvtmUntpTrPbmn           string `json:"ovtm_untp_tr_pbmn,omitempty"`
-	OvtmUntpMxpr             string `json:"ovtm_untp_mxpr,omitempty"`
-	OvtmUntpLlam             string `json:"ovtm_untp_llam,omitempty"`
-	OvtmUntpOprc             string `json:"ovtm_untp_oprc,omitempty"`
-	OvtmUntpHgpr             string `json:"ovtm_untp_hgpr,omitempty"`
-	OvtmUntpLwpr             string `json:"ovtm_untp_lwpr,omitempty"`
-	OvtmUntpAntcCnpr         string `json:"ovtm_untp_antc_cnpr,omitempty"`
-	OvtmUntpAntcCntgVrss     string `json:"ovtm_untp_antc_cntg_vrss,omitempty"`
-	OvtmUntpAntcCntgVrssSign string `json:"ovtm_untp_antc_cntg_vrss_sign,omitempty"`
-	OvtmUntpAntcCntgCtrt     string `json:"ovtm_untp_antc_cntg_ctrt,omitempty"`
-	OvtmUntpAntcVol          string `json:"ovtm_untp_antc_vol,omitempty"`
+	OvtmUntpPrpr             string `json:"ovtm_untp_prpr"`
+	OvtmUntpPrdyVrss         string `json:"ovtm_untp_prdy_vrss"`
+	OvtmUntpPrdyVrssSign     string `json:"ovtm_untp_prdy_vrss_sign"`
+	OvtmUntpPrdyCtrt         string `json:"ovtm_untp_prdy_ctrt"`
+	OvtmUntpVol              string `json:"ovtm_untp_vol"`
+	OvtmUntpTrPbmn           string `json:"ovtm_untp_tr_pbmn"`
+	OvtmUntpMxpr             string `json:"ovtm_untp_mxpr"`
+	OvtmUntpLlam             string `json:"ovtm_untp_llam"`
+	OvtmUntpOprc             string `json:"ovtm_untp_oprc"`
+	OvtmUntpHgpr             string `json:"ovtm_untp_hgpr"`
+	OvtmUntpLwpr             string `json:"ovtm_untp_lwpr"`
+	OvtmUntpAntcCnpr         string `json:"ovtm_untp_antc_cnpr"`
+	OvtmUntpAntcCntgVrss     string `json:"ovtm_untp_antc_cntg_vrss"`
+	OvtmUntpAntcCntgVrssSign string `json:"ovtm_untp_antc_cntg_vrss_sign"`
+	OvtmUntpAntcCntgCtrt     string `json:"ovtm_untp_antc_cntg_ctrt"`
+	OvtmUntpAntcVol          string `json:"ovtm_untp_antc_vol"`
 }
 
 type KISDomesticStockV1QuotationsInquireDailyOvertimepriceOutput2Item struct {
-	StckBsopDate         string `json:"stck_bsop_date,omitempty"`
-	OvtmUntpPrpr         string `json:"ovtm_untp_prpr,omitempty"`
-	OvtmUntpPrdyVrss     string `json:"ovtm_untp_prdy_vrss,omitempty"`
-	OvtmUntpPrdyVrssSign string `json:"ovtm_untp_prdy_vrss_sign,omitempty"`
-	OvtmUntpPrdyCtrt     string `json:"ovtm_untp_prdy_ctrt,omitempty"`
-	OvtmUntpVol          string `json:"ovtm_untp_vol,omitempty"`
-	StckClpr             string `json:"stck_clpr,omitempty"`
-	PrdyVrss             string `json:"prdy_vrss,omitempty"`
-	PrdyVrssSign         string `json:"prdy_vrss_sign,omitempty"`
-	PrdyCtrt             string `json:"prdy_ctrt,omitempty"`
-	AcmlVol              string `json:"acml_vol,omitempty"`
-	OvtmUntpTrPbmn       string `json:"ovtm_untp_tr_pbmn,omitempty"`
+	StckBsopDate         string `json:"stck_bsop_date"`
+	OvtmUntpPrpr         string `json:"ovtm_untp_prpr"`
+	OvtmUntpPrdyVrss     string `json:"ovtm_untp_prdy_vrss"`
+	OvtmUntpPrdyVrssSign string `json:"ovtm_untp_prdy_vrss_sign"`
+	OvtmUntpPrdyCtrt     string `json:"ovtm_untp_prdy_ctrt"`
+	OvtmUntpVol          string `json:"ovtm_untp_vol"`
+	StckClpr             string `json:"stck_clpr"`
+	PrdyVrss             string `json:"prdy_vrss"`
+	PrdyVrssSign         string `json:"prdy_vrss_sign"`
+	PrdyCtrt             string `json:"prdy_ctrt"`
+	AcmlVol              string `json:"acml_vol"`
+	OvtmUntpTrPbmn       string `json:"ovtm_untp_tr_pbmn"`
 }
 
 type KISDomesticStockV1QuotationsInquireDailyOvertimepriceRequest struct {
@@ -3108,20 +3108,20 @@ type KISDomesticStockV1QuotationsInquireDailyPrice struct {
 }
 
 type KISDomesticStockV1QuotationsInquireDailyPriceOutputItem struct {
-	StckBsopDate    string `json:"stck_bsop_date,omitempty"`
-	StckOprc        string `json:"stck_oprc,omitempty"`
-	StckHgpr        string `json:"stck_hgpr,omitempty"`
-	StckLwpr        string `json:"stck_lwpr,omitempty"`
-	StckClpr        string `json:"stck_clpr,omitempty"`
-	AcmlVol         string `json:"acml_vol,omitempty"`
-	PrdyVrssVolRate string `json:"prdy_vrss_vol_rate,omitempty"`
-	PrdyVrss        string `json:"prdy_vrss,omitempty"`
-	PrdyVrssSign    string `json:"prdy_vrss_sign,omitempty"`
-	PrdyCtrt        string `json:"prdy_ctrt,omitempty"`
-	HtsFrgnEhrt     string `json:"hts_frgn_ehrt,omitempty"`
-	FrgnNtbyQty     string `json:"frgn_ntby_qty,omitempty"`
-	FlngClsCode     string `json:"flng_cls_code,omitempty"`
-	AcmlPrttRate    string `json:"acml_prtt_rate,omitempty"`
+	StckBsopDate    string `json:"stck_bsop_date"`
+	StckOprc        string `json:"stck_oprc"`
+	StckHgpr        string `json:"stck_hgpr"`
+	StckLwpr        string `json:"stck_lwpr"`
+	StckClpr        string `json:"stck_clpr"`
+	AcmlVol         string `json:"acml_vol"`
+	PrdyVrssVolRate string `json:"prdy_vrss_vol_rate"`
+	PrdyVrss        string `json:"prdy_vrss"`
+	PrdyVrssSign    string `json:"prdy_vrss_sign"`
+	PrdyCtrt        string `json:"prdy_ctrt"`
+	HtsFrgnEhrt     string `json:"hts_frgn_ehrt"`
+	FrgnNtbyQty     string `json:"frgn_ntby_qty"`
+	FlngClsCode     string `json:"flng_cls_code"`
+	AcmlPrttRate    string `json:"acml_prtt_rate"`
 }
 
 type KISDomesticStockV1QuotationsInquireDailyPriceRequest struct {
@@ -3138,14 +3138,14 @@ type KISDomesticStockV1QuotationsInquireDailyTradeVolume struct {
 }
 
 type KISDomesticStockV1QuotationsInquireDailyTradeVolumeOutput1Item struct {
-	ShnuCnqnSmtn string `json:"shnu_cnqn_smtn,omitempty"`
-	SelnCnqnSmtn string `json:"seln_cnqn_smtn,omitempty"`
+	ShnuCnqnSmtn string `json:"shnu_cnqn_smtn"`
+	SelnCnqnSmtn string `json:"seln_cnqn_smtn"`
 }
 
 type KISDomesticStockV1QuotationsInquireDailyTradeVolumeOutput2Item struct {
-	StckBsopDate string `json:"stck_bsop_date,omitempty"`
-	TotalSelnQty string `json:"total_seln_qty,omitempty"`
-	TotalShnuQty string `json:"total_shnu_qty,omitempty"`
+	StckBsopDate string `json:"stck_bsop_date"`
+	TotalSelnQty string `json:"total_seln_qty"`
+	TotalShnuQty string `json:"total_shnu_qty"`
 }
 
 type KISDomesticStockV1QuotationsInquireDailyTradeVolumeRequest struct {
@@ -3162,44 +3162,44 @@ type KISDomesticStockV1QuotationsInquireElwPrice struct {
 }
 
 type KISDomesticStockV1QuotationsInquireElwPriceOutput1Item struct {
-	ElwShrnIscd      string `json:"elw_shrn_iscd,omitempty"`
-	HtsKorIsnm       string `json:"hts_kor_isnm,omitempty"`
-	ElwPrpr          string `json:"elw_prpr,omitempty"`
-	PrdyVrss         string `json:"prdy_vrss,omitempty"`
-	PrdyVrssSign     string `json:"prdy_vrss_sign,omitempty"`
-	PrdyCtrt         string `json:"prdy_ctrt,omitempty"`
-	AcmlVol          string `json:"acml_vol,omitempty"`
-	PrdyVrssVolRate  string `json:"prdy_vrss_vol_rate,omitempty"`
-	UnasShrnIscd     string `json:"unas_shrn_iscd,omitempty"`
-	UnasIsnm         string `json:"unas_isnm,omitempty"`
-	UnasPrpr         string `json:"unas_prpr,omitempty"`
-	UnasPrdyVrss     string `json:"unas_prdy_vrss,omitempty"`
-	UnasPrdyVrssSign string `json:"unas_prdy_vrss_sign,omitempty"`
-	UnasPrdyCtrt     string `json:"unas_prdy_ctrt,omitempty"`
-	Bidp             string `json:"bidp,omitempty"`
-	Askp             string `json:"askp,omitempty"`
-	AcmlTrPbmn       string `json:"acml_tr_pbmn,omitempty"`
-	VolTnrt          string `json:"vol_tnrt,omitempty"`
-	ElwOprc          string `json:"elw_oprc,omitempty"`
-	ElwHgpr          string `json:"elw_hgpr,omitempty"`
-	ElwLwpr          string `json:"elw_lwpr,omitempty"`
-	StckPrdyClpr     string `json:"stck_prdy_clpr,omitempty"`
-	HtsThpr          string `json:"hts_thpr,omitempty"`
-	Dprt             string `json:"dprt,omitempty"`
-	AtmClsName       string `json:"atm_cls_name,omitempty"`
-	HtsIntsVltl      string `json:"hts_ints_vltl,omitempty"`
-	Acpr             string `json:"acpr,omitempty"`
-	PvtScndDmrsPrc   string `json:"pvt_scnd_dmrs_prc,omitempty"`
-	PvtFrstDmrsPrc   string `json:"pvt_frst_dmrs_prc,omitempty"`
-	PvtPontVal       string `json:"pvt_pont_val,omitempty"`
-	PvtFrstDmspPrc   string `json:"pvt_frst_dmsp_prc,omitempty"`
-	PvtScndDmspPrc   string `json:"pvt_scnd_dmsp_prc,omitempty"`
-	DmspVal          string `json:"dmsp_val,omitempty"`
-	DmrsVal          string `json:"dmrs_val,omitempty"`
-	ElwSdpr          string `json:"elw_sdpr,omitempty"`
-	ApprchRate       string `json:"apprch_rate,omitempty"`
-	TickConvPrc      string `json:"tick_conv_prc,omitempty"`
-	InvtEpmdCntt     string `json:"invt_epmd_cntt,omitempty"`
+	ElwShrnIscd      string `json:"elw_shrn_iscd"`
+	HtsKorIsnm       string `json:"hts_kor_isnm"`
+	ElwPrpr          string `json:"elw_prpr"`
+	PrdyVrss         string `json:"prdy_vrss"`
+	PrdyVrssSign     string `json:"prdy_vrss_sign"`
+	PrdyCtrt         string `json:"prdy_ctrt"`
+	AcmlVol          string `json:"acml_vol"`
+	PrdyVrssVolRate  string `json:"prdy_vrss_vol_rate"`
+	UnasShrnIscd     string `json:"unas_shrn_iscd"`
+	UnasIsnm         string `json:"unas_isnm"`
+	UnasPrpr         string `json:"unas_prpr"`
+	UnasPrdyVrss     string `json:"unas_prdy_vrss"`
+	UnasPrdyVrssSign string `json:"unas_prdy_vrss_sign"`
+	UnasPrdyCtrt     string `json:"unas_prdy_ctrt"`
+	Bidp             string `json:"bidp"`
+	Askp             string `json:"askp"`
+	AcmlTrPbmn       string `json:"acml_tr_pbmn"`
+	VolTnrt          string `json:"vol_tnrt"`
+	ElwOprc          string `json:"elw_oprc"`
+	ElwHgpr          string `json:"elw_hgpr"`
+	ElwLwpr          string `json:"elw_lwpr"`
+	StckPrdyClpr     string `json:"stck_prdy_clpr"`
+	HtsThpr          string `json:"hts_thpr"`
+	Dprt             string `json:"dprt"`
+	AtmClsName       string `json:"atm_cls_name"`
+	HtsIntsVltl      string `json:"hts_ints_vltl"`
+	Acpr             string `json:"acpr"`
+	PvtScndDmrsPrc   string `json:"pvt_scnd_dmrs_prc"`
+	PvtFrstDmrsPrc   string `json:"pvt_frst_dmrs_prc"`
+	PvtPontVal       string `json:"pvt_pont_val"`
+	PvtFrstDmspPrc   string `json:"pvt_frst_dmsp_prc"`
+	PvtScndDmspPrc   string `json:"pvt_scnd_dmsp_prc"`
+	DmspVal          string `json:"dmsp_val"`
+	DmrsVal          string `json:"dmrs_val"`
+	ElwSdpr          string `json:"elw_sdpr"`
+	ApprchRate       string `json:"apprch_rate"`
+	TickConvPrc      string `json:"tick_conv_prc"`
+	InvtEpmdCntt     string `json:"invt_epmd_cntt"`
 }
 
 type KISDomesticStockV1QuotationsInquireElwPriceRequest struct {
@@ -3214,39 +3214,39 @@ type KISDomesticStockV1QuotationsInquireIndexCategoryPrice struct {
 }
 
 type KISDomesticStockV1QuotationsInquireIndexCategoryPriceOutput1Item struct {
-	BstpNmixPrpr         string `json:"bstp_nmix_prpr,omitempty"`
-	BstpNmixPrdyVrss     string `json:"bstp_nmix_prdy_vrss,omitempty"`
-	PrdyVrssSign         string `json:"prdy_vrss_sign,omitempty"`
-	BstpNmixPrdyCtrt     string `json:"bstp_nmix_prdy_ctrt,omitempty"`
-	AcmlVol              string `json:"acml_vol,omitempty"`
-	AcmlTrPbmn           string `json:"acml_tr_pbmn,omitempty"`
-	BstpNmixOprc         string `json:"bstp_nmix_oprc,omitempty"`
-	BstpNmixHgpr         string `json:"bstp_nmix_hgpr,omitempty"`
-	BstpNmixLwpr         string `json:"bstp_nmix_lwpr,omitempty"`
-	PrdyVol              string `json:"prdy_vol,omitempty"`
-	AscnIssuCnt          string `json:"ascn_issu_cnt,omitempty"`
-	DownIssuCnt          string `json:"down_issu_cnt,omitempty"`
-	StnrIssuCnt          string `json:"stnr_issu_cnt,omitempty"`
-	UplmIssuCnt          string `json:"uplm_issu_cnt,omitempty"`
-	LslmIssuCnt          string `json:"lslm_issu_cnt,omitempty"`
-	PrdyTrPbmn           string `json:"prdy_tr_pbmn,omitempty"`
-	DryyBstpNmixHgprDate string `json:"dryy_bstp_nmix_hgpr_date,omitempty"`
-	DryyBstpNmixHgpr     string `json:"dryy_bstp_nmix_hgpr,omitempty"`
-	DryyBstpNmixLwpr     string `json:"dryy_bstp_nmix_lwpr,omitempty"`
-	DryyBstpNmixLwprDate string `json:"dryy_bstp_nmix_lwpr_date,omitempty"`
+	BstpNmixPrpr         string `json:"bstp_nmix_prpr"`
+	BstpNmixPrdyVrss     string `json:"bstp_nmix_prdy_vrss"`
+	PrdyVrssSign         string `json:"prdy_vrss_sign"`
+	BstpNmixPrdyCtrt     string `json:"bstp_nmix_prdy_ctrt"`
+	AcmlVol              string `json:"acml_vol"`
+	AcmlTrPbmn           string `json:"acml_tr_pbmn"`
+	BstpNmixOprc         string `json:"bstp_nmix_oprc"`
+	BstpNmixHgpr         string `json:"bstp_nmix_hgpr"`
+	BstpNmixLwpr         string `json:"bstp_nmix_lwpr"`
+	PrdyVol              string `json:"prdy_vol"`
+	AscnIssuCnt          string `json:"ascn_issu_cnt"`
+	DownIssuCnt          string `json:"down_issu_cnt"`
+	StnrIssuCnt          string `json:"stnr_issu_cnt"`
+	UplmIssuCnt          string `json:"uplm_issu_cnt"`
+	LslmIssuCnt          string `json:"lslm_issu_cnt"`
+	PrdyTrPbmn           string `json:"prdy_tr_pbmn"`
+	DryyBstpNmixHgprDate string `json:"dryy_bstp_nmix_hgpr_date"`
+	DryyBstpNmixHgpr     string `json:"dryy_bstp_nmix_hgpr"`
+	DryyBstpNmixLwpr     string `json:"dryy_bstp_nmix_lwpr"`
+	DryyBstpNmixLwprDate string `json:"dryy_bstp_nmix_lwpr_date"`
 }
 
 type KISDomesticStockV1QuotationsInquireIndexCategoryPriceOutput2Item struct {
-	BstpClsCode      string `json:"bstp_cls_code,omitempty"`
-	HtsKorIsnm       string `json:"hts_kor_isnm,omitempty"`
-	BstpNmixPrpr     string `json:"bstp_nmix_prpr,omitempty"`
-	BstpNmixPrdyVrss string `json:"bstp_nmix_prdy_vrss,omitempty"`
-	PrdyVrssSign     string `json:"prdy_vrss_sign,omitempty"`
-	BstpNmixPrdyCtrt string `json:"bstp_nmix_prdy_ctrt,omitempty"`
-	AcmlVol          string `json:"acml_vol,omitempty"`
-	AcmlTrPbmn       string `json:"acml_tr_pbmn,omitempty"`
-	AcmlVolRlim      string `json:"acml_vol_rlim,omitempty"`
-	AcmlTrPbmnRlim   string `json:"acml_tr_pbmn_rlim,omitempty"`
+	BstpClsCode      string `json:"bstp_cls_code"`
+	HtsKorIsnm       string `json:"hts_kor_isnm"`
+	BstpNmixPrpr     string `json:"bstp_nmix_prpr"`
+	BstpNmixPrdyVrss string `json:"bstp_nmix_prdy_vrss"`
+	PrdyVrssSign     string `json:"prdy_vrss_sign"`
+	BstpNmixPrdyCtrt string `json:"bstp_nmix_prdy_ctrt"`
+	AcmlVol          string `json:"acml_vol"`
+	AcmlTrPbmn       string `json:"acml_tr_pbmn"`
+	AcmlVolRlim      string `json:"acml_vol_rlim"`
+	AcmlTrPbmnRlim   string `json:"acml_tr_pbmn_rlim"`
 }
 
 type KISDomesticStockV1QuotationsInquireIndexCategoryPriceRequest struct {
@@ -3264,42 +3264,42 @@ type KISDomesticStockV1QuotationsInquireIndexDailyPrice struct {
 }
 
 type KISDomesticStockV1QuotationsInquireIndexDailyPriceOutput1Item struct {
-	BstpNmixPrpr         string `json:"bstp_nmix_prpr,omitempty"`
-	BstpNmixPrdyVrss     string `json:"bstp_nmix_prdy_vrss,omitempty"`
-	PrdyVrssSign         string `json:"prdy_vrss_sign,omitempty"`
-	BstpNmixPrdyCtrt     string `json:"bstp_nmix_prdy_ctrt,omitempty"`
-	AcmlVol              string `json:"acml_vol,omitempty"`
-	AcmlTrPbmn           string `json:"acml_tr_pbmn,omitempty"`
-	BstpNmixOprc         string `json:"bstp_nmix_oprc,omitempty"`
-	BstpNmixHgpr         string `json:"bstp_nmix_hgpr,omitempty"`
-	BstpNmixLwpr         string `json:"bstp_nmix_lwpr,omitempty"`
-	PrdyVol              string `json:"prdy_vol,omitempty"`
-	AscnIssuCnt          string `json:"ascn_issu_cnt,omitempty"`
-	DownIssuCnt          string `json:"down_issu_cnt,omitempty"`
-	StnrIssuCnt          string `json:"stnr_issu_cnt,omitempty"`
-	UplmIssuCnt          string `json:"uplm_issu_cnt,omitempty"`
-	LslmIssuCnt          string `json:"lslm_issu_cnt,omitempty"`
-	PrdyTrPbmn           string `json:"prdy_tr_pbmn,omitempty"`
-	DryyBstpNmixHgprDate string `json:"dryy_bstp_nmix_hgpr_date,omitempty"`
-	DryyBstpNmixHgpr     string `json:"dryy_bstp_nmix_hgpr,omitempty"`
-	DryyBstpNmixLwpr     string `json:"dryy_bstp_nmix_lwpr,omitempty"`
-	DryyBstpNmixLwprDate string `json:"dryy_bstp_nmix_lwpr_date,omitempty"`
+	BstpNmixPrpr         string `json:"bstp_nmix_prpr"`
+	BstpNmixPrdyVrss     string `json:"bstp_nmix_prdy_vrss"`
+	PrdyVrssSign         string `json:"prdy_vrss_sign"`
+	BstpNmixPrdyCtrt     string `json:"bstp_nmix_prdy_ctrt"`
+	AcmlVol              string `json:"acml_vol"`
+	AcmlTrPbmn           string `json:"acml_tr_pbmn"`
+	BstpNmixOprc         string `json:"bstp_nmix_oprc"`
+	BstpNmixHgpr         string `json:"bstp_nmix_hgpr"`
+	BstpNmixLwpr         string `json:"bstp_nmix_lwpr"`
+	PrdyVol              string `json:"prdy_vol"`
+	AscnIssuCnt          string `json:"ascn_issu_cnt"`
+	DownIssuCnt          string `json:"down_issu_cnt"`
+	StnrIssuCnt          string `json:"stnr_issu_cnt"`
+	UplmIssuCnt          string `json:"uplm_issu_cnt"`
+	LslmIssuCnt          string `json:"lslm_issu_cnt"`
+	PrdyTrPbmn           string `json:"prdy_tr_pbmn"`
+	DryyBstpNmixHgprDate string `json:"dryy_bstp_nmix_hgpr_date"`
+	DryyBstpNmixHgpr     string `json:"dryy_bstp_nmix_hgpr"`
+	DryyBstpNmixLwpr     string `json:"dryy_bstp_nmix_lwpr"`
+	DryyBstpNmixLwprDate string `json:"dryy_bstp_nmix_lwpr_date"`
 }
 
 type KISDomesticStockV1QuotationsInquireIndexDailyPriceOutput2Item struct {
-	StckBsopDate     string `json:"stck_bsop_date,omitempty"`
-	BstpNmixPrpr     string `json:"bstp_nmix_prpr,omitempty"`
-	PrdyVrssSign     string `json:"prdy_vrss_sign,omitempty"`
-	BstpNmixPrdyVrss string `json:"bstp_nmix_prdy_vrss,omitempty"`
-	BstpNmixPrdyCtrt string `json:"bstp_nmix_prdy_ctrt,omitempty"`
-	BstpNmixOprc     string `json:"bstp_nmix_oprc,omitempty"`
-	BstpNmixHgpr     string `json:"bstp_nmix_hgpr,omitempty"`
-	BstpNmixLwpr     string `json:"bstp_nmix_lwpr,omitempty"`
-	AcmlVolRlim      string `json:"acml_vol_rlim,omitempty"`
-	AcmlVol          string `json:"acml_vol,omitempty"`
-	AcmlTrPbmn       string `json:"acml_tr_pbmn,omitempty"`
-	InvtNewPsdg      string `json:"invt_new_psdg,omitempty"`
-	D20Dsrt          string `json:"d20_dsrt,omitempty"`
+	StckBsopDate     string `json:"stck_bsop_date"`
+	BstpNmixPrpr     string `json:"bstp_nmix_prpr"`
+	PrdyVrssSign     string `json:"prdy_vrss_sign"`
+	BstpNmixPrdyVrss string `json:"bstp_nmix_prdy_vrss"`
+	BstpNmixPrdyCtrt string `json:"bstp_nmix_prdy_ctrt"`
+	BstpNmixOprc     string `json:"bstp_nmix_oprc"`
+	BstpNmixHgpr     string `json:"bstp_nmix_hgpr"`
+	BstpNmixLwpr     string `json:"bstp_nmix_lwpr"`
+	AcmlVolRlim      string `json:"acml_vol_rlim"`
+	AcmlVol          string `json:"acml_vol"`
+	AcmlTrPbmn       string `json:"acml_tr_pbmn"`
+	InvtNewPsdg      string `json:"invt_new_psdg"`
+	D20Dsrt          string `json:"d20_dsrt"`
 }
 
 type KISDomesticStockV1QuotationsInquireIndexDailyPriceRequest struct {
@@ -3315,42 +3315,42 @@ type KISDomesticStockV1QuotationsInquireIndexPrice struct {
 }
 
 type KISDomesticStockV1QuotationsInquireIndexPriceOutputItem struct {
-	BstpNmixPrpr         string `json:"bstp_nmix_prpr,omitempty"`
-	BstpNmixPrdyVrss     string `json:"bstp_nmix_prdy_vrss,omitempty"`
-	PrdyVrssSign         string `json:"prdy_vrss_sign,omitempty"`
-	BstpNmixPrdyCtrt     string `json:"bstp_nmix_prdy_ctrt,omitempty"`
-	AcmlVol              string `json:"acml_vol,omitempty"`
-	PrdyVol              string `json:"prdy_vol,omitempty"`
-	AcmlTrPbmn           string `json:"acml_tr_pbmn,omitempty"`
-	PrdyTrPbmn           string `json:"prdy_tr_pbmn,omitempty"`
-	BstpNmixOprc         string `json:"bstp_nmix_oprc,omitempty"`
-	PrdyNmixVrssNmixOprc string `json:"prdy_nmix_vrss_nmix_oprc,omitempty"`
-	OprcVrssPrprSign     string `json:"oprc_vrss_prpr_sign,omitempty"`
-	BstpNmixOprcPrdyCtrt string `json:"bstp_nmix_oprc_prdy_ctrt,omitempty"`
-	BstpNmixHgpr         string `json:"bstp_nmix_hgpr,omitempty"`
-	PrdyNmixVrssNmixHgpr string `json:"prdy_nmix_vrss_nmix_hgpr,omitempty"`
-	HgprVrssPrprSign     string `json:"hgpr_vrss_prpr_sign,omitempty"`
-	BstpNmixHgprPrdyCtrt string `json:"bstp_nmix_hgpr_prdy_ctrt,omitempty"`
-	BstpNmixLwpr         string `json:"bstp_nmix_lwpr,omitempty"`
-	PrdyClprVrssLwpr     string `json:"prdy_clpr_vrss_lwpr,omitempty"`
-	LwprVrssPrprSign     string `json:"lwpr_vrss_prpr_sign,omitempty"`
-	PrdyClprVrssLwprRate string `json:"prdy_clpr_vrss_lwpr_rate,omitempty"`
-	AscnIssuCnt          string `json:"ascn_issu_cnt,omitempty"`
-	UplmIssuCnt          string `json:"uplm_issu_cnt,omitempty"`
-	StnrIssuCnt          string `json:"stnr_issu_cnt,omitempty"`
-	DownIssuCnt          string `json:"down_issu_cnt,omitempty"`
-	LslmIssuCnt          string `json:"lslm_issu_cnt,omitempty"`
-	DryyBstpNmixHgpr     string `json:"dryy_bstp_nmix_hgpr,omitempty"`
-	DryyHgprVrssPrprRate string `json:"dryy_hgpr_vrss_prpr_rate,omitempty"`
-	DryyBstpNmixHgprDate string `json:"dryy_bstp_nmix_hgpr_date,omitempty"`
-	DryyBstpNmixLwpr     string `json:"dryy_bstp_nmix_lwpr,omitempty"`
-	DryyLwprVrssPrprRate string `json:"dryy_lwpr_vrss_prpr_rate,omitempty"`
-	DryyBstpNmixLwprDate string `json:"dryy_bstp_nmix_lwpr_date,omitempty"`
-	TotalAskpRsqn        string `json:"total_askp_rsqn,omitempty"`
-	TotalBidpRsqn        string `json:"total_bidp_rsqn,omitempty"`
-	SelnRsqnRate         string `json:"seln_rsqn_rate,omitempty"`
-	ShnuRsqnRate         string `json:"shnu_rsqn_rate,omitempty"`
-	NtbyRsqn             string `json:"ntby_rsqn,omitempty"`
+	BstpNmixPrpr         string `json:"bstp_nmix_prpr"`
+	BstpNmixPrdyVrss     string `json:"bstp_nmix_prdy_vrss"`
+	PrdyVrssSign         string `json:"prdy_vrss_sign"`
+	BstpNmixPrdyCtrt     string `json:"bstp_nmix_prdy_ctrt"`
+	AcmlVol              string `json:"acml_vol"`
+	PrdyVol              string `json:"prdy_vol"`
+	AcmlTrPbmn           string `json:"acml_tr_pbmn"`
+	PrdyTrPbmn           string `json:"prdy_tr_pbmn"`
+	BstpNmixOprc         string `json:"bstp_nmix_oprc"`
+	PrdyNmixVrssNmixOprc string `json:"prdy_nmix_vrss_nmix_oprc"`
+	OprcVrssPrprSign     string `json:"oprc_vrss_prpr_sign"`
+	BstpNmixOprcPrdyCtrt string `json:"bstp_nmix_oprc_prdy_ctrt"`
+	BstpNmixHgpr         string `json:"bstp_nmix_hgpr"`
+	PrdyNmixVrssNmixHgpr string `json:"prdy_nmix_vrss_nmix_hgpr"`
+	HgprVrssPrprSign     string `json:"hgpr_vrss_prpr_sign"`
+	BstpNmixHgprPrdyCtrt string `json:"bstp_nmix_hgpr_prdy_ctrt"`
+	BstpNmixLwpr         string `json:"bstp_nmix_lwpr"`
+	PrdyClprVrssLwpr     string `json:"prdy_clpr_vrss_lwpr"`
+	LwprVrssPrprSign     string `json:"lwpr_vrss_prpr_sign"`
+	PrdyClprVrssLwprRate string `json:"prdy_clpr_vrss_lwpr_rate"`
+	AscnIssuCnt          string `json:"ascn_issu_cnt"`
+	UplmIssuCnt          string `json:"uplm_issu_cnt"`
+	StnrIssuCnt          string `json:"stnr_issu_cnt"`
+	DownIssuCnt          string `json:"down_issu_cnt"`
+	LslmIssuCnt          string `json:"lslm_issu_cnt"`
+	DryyBstpNmixHgpr     string `json:"dryy_bstp_nmix_hgpr"`
+	DryyHgprVrssPrprRate string `json:"dryy_hgpr_vrss_prpr_rate"`
+	DryyBstpNmixHgprDate string `json:"dryy_bstp_nmix_hgpr_date"`
+	DryyBstpNmixLwpr     string `json:"dryy_bstp_nmix_lwpr"`
+	DryyLwprVrssPrprRate string `json:"dryy_lwpr_vrss_prpr_rate"`
+	DryyBstpNmixLwprDate string `json:"dryy_bstp_nmix_lwpr_date"`
+	TotalAskpRsqn        string `json:"total_askp_rsqn"`
+	TotalBidpRsqn        string `json:"total_bidp_rsqn"`
+	SelnRsqnRate         string `json:"seln_rsqn_rate"`
+	ShnuRsqnRate         string `json:"shnu_rsqn_rate"`
+	NtbyRsqn             string `json:"ntby_rsqn"`
 }
 
 type KISDomesticStockV1QuotationsInquireIndexPriceRequest struct {
@@ -3364,14 +3364,14 @@ type KISDomesticStockV1QuotationsInquireIndexTickprice struct {
 }
 
 type KISDomesticStockV1QuotationsInquireIndexTickpriceOutputItem struct {
-	StckCntgHour     string `json:"stck_cntg_hour,omitempty"`
-	BstpNmixPrpr     string `json:"bstp_nmix_prpr,omitempty"`
-	BstpNmixPrdyVrss string `json:"bstp_nmix_prdy_vrss,omitempty"`
-	PrdyVrssSign     string `json:"prdy_vrss_sign,omitempty"`
-	BstpNmixPrdyCtrt string `json:"bstp_nmix_prdy_ctrt,omitempty"`
-	AcmlTrPbmn       string `json:"acml_tr_pbmn,omitempty"`
-	AcmlVol          string `json:"acml_vol,omitempty"`
-	CntgVol          string `json:"cntg_vol,omitempty"`
+	StckCntgHour     string `json:"stck_cntg_hour"`
+	BstpNmixPrpr     string `json:"bstp_nmix_prpr"`
+	BstpNmixPrdyVrss string `json:"bstp_nmix_prdy_vrss"`
+	PrdyVrssSign     string `json:"prdy_vrss_sign"`
+	BstpNmixPrdyCtrt string `json:"bstp_nmix_prdy_ctrt"`
+	AcmlTrPbmn       string `json:"acml_tr_pbmn"`
+	AcmlVol          string `json:"acml_vol"`
+	CntgVol          string `json:"cntg_vol"`
 }
 
 type KISDomesticStockV1QuotationsInquireIndexTickpriceRequest struct {
@@ -3385,14 +3385,14 @@ type KISDomesticStockV1QuotationsInquireIndexTimeprice struct {
 }
 
 type KISDomesticStockV1QuotationsInquireIndexTimepriceOutputItem struct {
-	BsopHour         string `json:"bsop_hour,omitempty"`
-	BstpNmixPrpr     string `json:"bstp_nmix_prpr,omitempty"`
-	BstpNmixPrdyVrss string `json:"bstp_nmix_prdy_vrss,omitempty"`
-	PrdyVrssSign     string `json:"prdy_vrss_sign,omitempty"`
-	BstpNmixPrdyCtrt string `json:"bstp_nmix_prdy_ctrt,omitempty"`
-	AcmlTrPbmn       string `json:"acml_tr_pbmn,omitempty"`
-	AcmlVol          string `json:"acml_vol,omitempty"`
-	CntgVol          string `json:"cntg_vol,omitempty"`
+	BsopHour         string `json:"bsop_hour"`
+	BstpNmixPrpr     string `json:"bstp_nmix_prpr"`
+	BstpNmixPrdyVrss string `json:"bstp_nmix_prdy_vrss"`
+	PrdyVrssSign     string `json:"prdy_vrss_sign"`
+	BstpNmixPrdyCtrt string `json:"bstp_nmix_prdy_ctrt"`
+	AcmlTrPbmn       string `json:"acml_tr_pbmn"`
+	AcmlVol          string `json:"acml_vol"`
+	CntgVol          string `json:"cntg_vol"`
 }
 
 type KISDomesticStockV1QuotationsInquireIndexTimepriceRequest struct {
@@ -3407,28 +3407,28 @@ type KISDomesticStockV1QuotationsInquireInvestor struct {
 }
 
 type KISDomesticStockV1QuotationsInquireInvestorOutputItem struct {
-	StckBsopDate   string `json:"stck_bsop_date,omitempty"`
-	StckClpr       string `json:"stck_clpr,omitempty"`
-	PrdyVrss       string `json:"prdy_vrss,omitempty"`
-	PrdyVrssSign   string `json:"prdy_vrss_sign,omitempty"`
-	PrsnNtbyQty    string `json:"prsn_ntby_qty,omitempty"`
-	FrgnNtbyQty    string `json:"frgn_ntby_qty,omitempty"`
-	OrgnNtbyQty    string `json:"orgn_ntby_qty,omitempty"`
-	PrsnNtbyTrPbmn string `json:"prsn_ntby_tr_pbmn,omitempty"`
-	FrgnNtbyTrPbmn string `json:"frgn_ntby_tr_pbmn,omitempty"`
-	OrgnNtbyTrPbmn string `json:"orgn_ntby_tr_pbmn,omitempty"`
-	PrsnShnuVol    string `json:"prsn_shnu_vol,omitempty"`
-	FrgnShnuVol    string `json:"frgn_shnu_vol,omitempty"`
-	OrgnShnuVol    string `json:"orgn_shnu_vol,omitempty"`
-	PrsnShnuTrPbmn string `json:"prsn_shnu_tr_pbmn,omitempty"`
-	FrgnShnuTrPbmn string `json:"frgn_shnu_tr_pbmn,omitempty"`
-	OrgnShnuTrPbmn string `json:"orgn_shnu_tr_pbmn,omitempty"`
-	PrsnSelnVol    string `json:"prsn_seln_vol,omitempty"`
-	FrgnSelnVol    string `json:"frgn_seln_vol,omitempty"`
-	OrgnSelnVol    string `json:"orgn_seln_vol,omitempty"`
-	PrsnSelnTrPbmn string `json:"prsn_seln_tr_pbmn,omitempty"`
-	FrgnSelnTrPbmn string `json:"frgn_seln_tr_pbmn,omitempty"`
-	OrgnSelnTrPbmn string `json:"orgn_seln_tr_pbmn,omitempty"`
+	StckBsopDate   string `json:"stck_bsop_date"`
+	StckClpr       string `json:"stck_clpr"`
+	PrdyVrss       string `json:"prdy_vrss"`
+	PrdyVrssSign   string `json:"prdy_vrss_sign"`
+	PrsnNtbyQty    string `json:"prsn_ntby_qty"`
+	FrgnNtbyQty    string `json:"frgn_ntby_qty"`
+	OrgnNtbyQty    string `json:"orgn_ntby_qty"`
+	PrsnNtbyTrPbmn string `json:"prsn_ntby_tr_pbmn"`
+	FrgnNtbyTrPbmn string `json:"frgn_ntby_tr_pbmn"`
+	OrgnNtbyTrPbmn string `json:"orgn_ntby_tr_pbmn"`
+	PrsnShnuVol    string `json:"prsn_shnu_vol"`
+	FrgnShnuVol    string `json:"frgn_shnu_vol"`
+	OrgnShnuVol    string `json:"orgn_shnu_vol"`
+	PrsnShnuTrPbmn string `json:"prsn_shnu_tr_pbmn"`
+	FrgnShnuTrPbmn string `json:"frgn_shnu_tr_pbmn"`
+	OrgnShnuTrPbmn string `json:"orgn_shnu_tr_pbmn"`
+	PrsnSelnVol    string `json:"prsn_seln_vol"`
+	FrgnSelnVol    string `json:"frgn_seln_vol"`
+	OrgnSelnVol    string `json:"orgn_seln_vol"`
+	PrsnSelnTrPbmn string `json:"prsn_seln_tr_pbmn"`
+	FrgnSelnTrPbmn string `json:"frgn_seln_tr_pbmn"`
+	OrgnSelnTrPbmn string `json:"orgn_seln_tr_pbmn"`
 }
 
 type KISDomesticStockV1QuotationsInquireInvestorRequest struct {
@@ -3442,45 +3442,45 @@ type KISDomesticStockV1QuotationsInquireInvestorDailyByMarket struct {
 }
 
 type KISDomesticStockV1QuotationsInquireInvestorDailyByMarketOutputItem struct {
-	StckBsopDate      string `json:"stck_bsop_date,omitempty"`
-	BstpNmixPrpr      string `json:"bstp_nmix_prpr,omitempty"`
-	BstpNmixPrdyVrss  string `json:"bstp_nmix_prdy_vrss,omitempty"`
-	PrdyVrssSign      string `json:"prdy_vrss_sign,omitempty"`
-	BstpNmixPrdyCtrt  string `json:"bstp_nmix_prdy_ctrt,omitempty"`
-	BstpNmixOprc      string `json:"bstp_nmix_oprc,omitempty"`
-	BstpNmixHgpr      string `json:"bstp_nmix_hgpr,omitempty"`
-	BstpNmixLwpr      string `json:"bstp_nmix_lwpr,omitempty"`
-	StckPrdyClpr      string `json:"stck_prdy_clpr,omitempty"`
-	FrgnNtbyQty       string `json:"frgn_ntby_qty,omitempty"`
-	FrgnRegNtbyQty    string `json:"frgn_reg_ntby_qty,omitempty"`
-	FrgnNregNtbyQty   string `json:"frgn_nreg_ntby_qty,omitempty"`
-	PrsnNtbyQty       string `json:"prsn_ntby_qty,omitempty"`
-	OrgnNtbyQty       string `json:"orgn_ntby_qty,omitempty"`
-	ScrtNtbyQty       string `json:"scrt_ntby_qty,omitempty"`
-	IvtrNtbyQty       string `json:"ivtr_ntby_qty,omitempty"`
-	PeFundNtbyVol     string `json:"pe_fund_ntby_vol,omitempty"`
-	BankNtbyQty       string `json:"bank_ntby_qty,omitempty"`
-	InsuNtbyQty       string `json:"insu_ntby_qty,omitempty"`
-	MrbnNtbyQty       string `json:"mrbn_ntby_qty,omitempty"`
-	FundNtbyQty       string `json:"fund_ntby_qty,omitempty"`
-	EtcNtbyQty        string `json:"etc_ntby_qty,omitempty"`
-	EtcOrgtNtbyVol    string `json:"etc_orgt_ntby_vol,omitempty"`
-	EtcCorpNtbyVol    string `json:"etc_corp_ntby_vol,omitempty"`
-	FrgnNtbyTrPbmn    string `json:"frgn_ntby_tr_pbmn,omitempty"`
-	FrgnRegNtbyPbmn   string `json:"frgn_reg_ntby_pbmn,omitempty"`
-	FrgnNregNtbyPbmn  string `json:"frgn_nreg_ntby_pbmn,omitempty"`
-	PrsnNtbyTrPbmn    string `json:"prsn_ntby_tr_pbmn,omitempty"`
-	OrgnNtbyTrPbmn    string `json:"orgn_ntby_tr_pbmn,omitempty"`
-	ScrtNtbyTrPbmn    string `json:"scrt_ntby_tr_pbmn,omitempty"`
-	IvtrNtbyTrPbmn    string `json:"ivtr_ntby_tr_pbmn,omitempty"`
-	PeFundNtbyTrPbmn  string `json:"pe_fund_ntby_tr_pbmn,omitempty"`
-	BankNtbyTrPbmn    string `json:"bank_ntby_tr_pbmn,omitempty"`
-	InsuNtbyTrPbmn    string `json:"insu_ntby_tr_pbmn,omitempty"`
-	MrbnNtbyTrPbmn    string `json:"mrbn_ntby_tr_pbmn,omitempty"`
-	FundNtbyTrPbmn    string `json:"fund_ntby_tr_pbmn,omitempty"`
-	EtcNtbyTrPbmn     string `json:"etc_ntby_tr_pbmn,omitempty"`
-	EtcOrgtNtbyTrPbmn string `json:"etc_orgt_ntby_tr_pbmn,omitempty"`
-	EtcCorpNtbyTrPbmn string `json:"etc_corp_ntby_tr_pbmn,omitempty"`
+	StckBsopDate      string `json:"stck_bsop_date"`
+	BstpNmixPrpr      string `json:"bstp_nmix_prpr"`
+	BstpNmixPrdyVrss  string `json:"bstp_nmix_prdy_vrss"`
+	PrdyVrssSign      string `json:"prdy_vrss_sign"`
+	BstpNmixPrdyCtrt  string `json:"bstp_nmix_prdy_ctrt"`
+	BstpNmixOprc      string `json:"bstp_nmix_oprc"`
+	BstpNmixHgpr      string `json:"bstp_nmix_hgpr"`
+	BstpNmixLwpr      string `json:"bstp_nmix_lwpr"`
+	StckPrdyClpr      string `json:"stck_prdy_clpr"`
+	FrgnNtbyQty       string `json:"frgn_ntby_qty"`
+	FrgnRegNtbyQty    string `json:"frgn_reg_ntby_qty"`
+	FrgnNregNtbyQty   string `json:"frgn_nreg_ntby_qty"`
+	PrsnNtbyQty       string `json:"prsn_ntby_qty"`
+	OrgnNtbyQty       string `json:"orgn_ntby_qty"`
+	ScrtNtbyQty       string `json:"scrt_ntby_qty"`
+	IvtrNtbyQty       string `json:"ivtr_ntby_qty"`
+	PeFundNtbyVol     string `json:"pe_fund_ntby_vol"`
+	BankNtbyQty       string `json:"bank_ntby_qty"`
+	InsuNtbyQty       string `json:"insu_ntby_qty"`
+	MrbnNtbyQty       string `json:"mrbn_ntby_qty"`
+	FundNtbyQty       string `json:"fund_ntby_qty"`
+	EtcNtbyQty        string `json:"etc_ntby_qty"`
+	EtcOrgtNtbyVol    string `json:"etc_orgt_ntby_vol"`
+	EtcCorpNtbyVol    string `json:"etc_corp_ntby_vol"`
+	FrgnNtbyTrPbmn    string `json:"frgn_ntby_tr_pbmn"`
+	FrgnRegNtbyPbmn   string `json:"frgn_reg_ntby_pbmn"`
+	FrgnNregNtbyPbmn  string `json:"frgn_nreg_ntby_pbmn"`
+	PrsnNtbyTrPbmn    string `json:"prsn_ntby_tr_pbmn"`
+	OrgnNtbyTrPbmn    string `json:"orgn_ntby_tr_pbmn"`
+	ScrtNtbyTrPbmn    string `json:"scrt_ntby_tr_pbmn"`
+	IvtrNtbyTrPbmn    string `json:"ivtr_ntby_tr_pbmn"`
+	PeFundNtbyTrPbmn  string `json:"pe_fund_ntby_tr_pbmn"`
+	BankNtbyTrPbmn    string `json:"bank_ntby_tr_pbmn"`
+	InsuNtbyTrPbmn    string `json:"insu_ntby_tr_pbmn"`
+	MrbnNtbyTrPbmn    string `json:"mrbn_ntby_tr_pbmn"`
+	FundNtbyTrPbmn    string `json:"fund_ntby_tr_pbmn"`
+	EtcNtbyTrPbmn     string `json:"etc_ntby_tr_pbmn"`
+	EtcOrgtNtbyTrPbmn string `json:"etc_orgt_ntby_tr_pbmn"`
+	EtcCorpNtbyTrPbmn string `json:"etc_corp_ntby_tr_pbmn"`
 }
 
 type KISDomesticStockV1QuotationsInquireInvestorDailyByMarketRequest struct {
@@ -3498,78 +3498,78 @@ type KISDomesticStockV1QuotationsInquireInvestorTimeByMarket struct {
 }
 
 type KISDomesticStockV1QuotationsInquireInvestorTimeByMarketOutputItem struct {
-	FrgnSelnVol       string `json:"frgn_seln_vol,omitempty"`
-	FrgnShnuVol       string `json:"frgn_shnu_vol,omitempty"`
-	FrgnNtbyQty       string `json:"frgn_ntby_qty,omitempty"`
-	FrgnSelnTrPbmn    string `json:"frgn_seln_tr_pbmn,omitempty"`
-	FrgnShnuTrPbmn    string `json:"frgn_shnu_tr_pbmn,omitempty"`
-	FrgnNtbyTrPbmn    string `json:"frgn_ntby_tr_pbmn,omitempty"`
-	PrsnSelnVol       string `json:"prsn_seln_vol,omitempty"`
-	PrsnShnuVol       string `json:"prsn_shnu_vol,omitempty"`
-	PrsnNtbyQty       string `json:"prsn_ntby_qty,omitempty"`
-	PrsnSelnTrPbmn    string `json:"prsn_seln_tr_pbmn,omitempty"`
-	PrsnShnuTrPbmn    string `json:"prsn_shnu_tr_pbmn,omitempty"`
-	PrsnNtbyTrPbmn    string `json:"prsn_ntby_tr_pbmn,omitempty"`
-	OrgnSelnVol       string `json:"orgn_seln_vol,omitempty"`
-	OrgnShnuVol       string `json:"orgn_shnu_vol,omitempty"`
-	OrgnNtbyQty       string `json:"orgn_ntby_qty,omitempty"`
-	OrgnSelnTrPbmn    string `json:"orgn_seln_tr_pbmn,omitempty"`
-	OrgnShnuTrPbmn    string `json:"orgn_shnu_tr_pbmn,omitempty"`
-	OrgnNtbyTrPbmn    string `json:"orgn_ntby_tr_pbmn,omitempty"`
-	ScrtSelnVol       string `json:"scrt_seln_vol,omitempty"`
-	ScrtShnuVol       string `json:"scrt_shnu_vol,omitempty"`
-	ScrtNtbyQty       string `json:"scrt_ntby_qty,omitempty"`
-	ScrtSelnTrPbmn    string `json:"scrt_seln_tr_pbmn,omitempty"`
-	ScrtShnuTrPbmn    string `json:"scrt_shnu_tr_pbmn,omitempty"`
-	ScrtNtbyTrPbmn    string `json:"scrt_ntby_tr_pbmn,omitempty"`
-	IvtrSelnVol       string `json:"ivtr_seln_vol,omitempty"`
-	IvtrShnuVol       string `json:"ivtr_shnu_vol,omitempty"`
-	IvtrNtbyQty       string `json:"ivtr_ntby_qty,omitempty"`
-	IvtrSelnTrPbmn    string `json:"ivtr_seln_tr_pbmn,omitempty"`
-	IvtrShnuTrPbmn    string `json:"ivtr_shnu_tr_pbmn,omitempty"`
-	IvtrNtbyTrPbmn    string `json:"ivtr_ntby_tr_pbmn,omitempty"`
-	PeFundSelnTrPbmn  string `json:"pe_fund_seln_tr_pbmn,omitempty"`
-	PeFundSelnVol     string `json:"pe_fund_seln_vol,omitempty"`
-	PeFundNtbyVol     string `json:"pe_fund_ntby_vol,omitempty"`
-	PeFundShnuTrPbmn  string `json:"pe_fund_shnu_tr_pbmn,omitempty"`
-	PeFundShnuVol     string `json:"pe_fund_shnu_vol,omitempty"`
-	PeFundNtbyTrPbmn  string `json:"pe_fund_ntby_tr_pbmn,omitempty"`
-	BankSelnVol       string `json:"bank_seln_vol,omitempty"`
-	BankShnuVol       string `json:"bank_shnu_vol,omitempty"`
-	BankNtbyQty       string `json:"bank_ntby_qty,omitempty"`
-	BankSelnTrPbmn    string `json:"bank_seln_tr_pbmn,omitempty"`
-	BankShnuTrPbmn    string `json:"bank_shnu_tr_pbmn,omitempty"`
-	BankNtbyTrPbmn    string `json:"bank_ntby_tr_pbmn,omitempty"`
-	InsuSelnVol       string `json:"insu_seln_vol,omitempty"`
-	InsuShnuVol       string `json:"insu_shnu_vol,omitempty"`
-	InsuNtbyQty       string `json:"insu_ntby_qty,omitempty"`
-	InsuSelnTrPbmn    string `json:"insu_seln_tr_pbmn,omitempty"`
-	InsuShnuTrPbmn    string `json:"insu_shnu_tr_pbmn,omitempty"`
-	InsuNtbyTrPbmn    string `json:"insu_ntby_tr_pbmn,omitempty"`
-	MrbnSelnVol       string `json:"mrbn_seln_vol,omitempty"`
-	MrbnShnuVol       string `json:"mrbn_shnu_vol,omitempty"`
-	MrbnNtbyQty       string `json:"mrbn_ntby_qty,omitempty"`
-	MrbnSelnTrPbmn    string `json:"mrbn_seln_tr_pbmn,omitempty"`
-	MrbnShnuTrPbmn    string `json:"mrbn_shnu_tr_pbmn,omitempty"`
-	MrbnNtbyTrPbmn    string `json:"mrbn_ntby_tr_pbmn,omitempty"`
-	FundSelnVol       string `json:"fund_seln_vol,omitempty"`
-	FundShnuVol       string `json:"fund_shnu_vol,omitempty"`
-	FundNtbyQty       string `json:"fund_ntby_qty,omitempty"`
-	FundSelnTrPbmn    string `json:"fund_seln_tr_pbmn,omitempty"`
-	FundShnuTrPbmn    string `json:"fund_shnu_tr_pbmn,omitempty"`
-	FundNtbyTrPbmn    string `json:"fund_ntby_tr_pbmn,omitempty"`
-	EtcOrgtSelnVol    string `json:"etc_orgt_seln_vol,omitempty"`
-	EtcOrgtShnuVol    string `json:"etc_orgt_shnu_vol,omitempty"`
-	EtcOrgtNtbyVol    string `json:"etc_orgt_ntby_vol,omitempty"`
-	EtcOrgtSelnTrPbmn string `json:"etc_orgt_seln_tr_pbmn,omitempty"`
-	EtcOrgtShnuTrPbmn string `json:"etc_orgt_shnu_tr_pbmn,omitempty"`
-	EtcOrgtNtbyTrPbmn string `json:"etc_orgt_ntby_tr_pbmn,omitempty"`
-	EtcCorpSelnVol    string `json:"etc_corp_seln_vol,omitempty"`
-	EtcCorpShnuVol    string `json:"etc_corp_shnu_vol,omitempty"`
-	EtcCorpNtbyVol    string `json:"etc_corp_ntby_vol,omitempty"`
-	EtcCorpSelnTrPbmn string `json:"etc_corp_seln_tr_pbmn,omitempty"`
-	EtcCorpShnuTrPbmn string `json:"etc_corp_shnu_tr_pbmn,omitempty"`
-	EtcCorpNtbyTrPbmn string `json:"etc_corp_ntby_tr_pbmn,omitempty"`
+	FrgnSelnVol       string `json:"frgn_seln_vol"`
+	FrgnShnuVol       string `json:"frgn_shnu_vol"`
+	FrgnNtbyQty       string `json:"frgn_ntby_qty"`
+	FrgnSelnTrPbmn    string `json:"frgn_seln_tr_pbmn"`
+	FrgnShnuTrPbmn    string `json:"frgn_shnu_tr_pbmn"`
+	FrgnNtbyTrPbmn    string `json:"frgn_ntby_tr_pbmn"`
+	PrsnSelnVol       string `json:"prsn_seln_vol"`
+	PrsnShnuVol       string `json:"prsn_shnu_vol"`
+	PrsnNtbyQty       string `json:"prsn_ntby_qty"`
+	PrsnSelnTrPbmn    string `json:"prsn_seln_tr_pbmn"`
+	PrsnShnuTrPbmn    string `json:"prsn_shnu_tr_pbmn"`
+	PrsnNtbyTrPbmn    string `json:"prsn_ntby_tr_pbmn"`
+	OrgnSelnVol       string `json:"orgn_seln_vol"`
+	OrgnShnuVol       string `json:"orgn_shnu_vol"`
+	OrgnNtbyQty       string `json:"orgn_ntby_qty"`
+	OrgnSelnTrPbmn    string `json:"orgn_seln_tr_pbmn"`
+	OrgnShnuTrPbmn    string `json:"orgn_shnu_tr_pbmn"`
+	OrgnNtbyTrPbmn    string `json:"orgn_ntby_tr_pbmn"`
+	ScrtSelnVol       string `json:"scrt_seln_vol"`
+	ScrtShnuVol       string `json:"scrt_shnu_vol"`
+	ScrtNtbyQty       string `json:"scrt_ntby_qty"`
+	ScrtSelnTrPbmn    string `json:"scrt_seln_tr_pbmn"`
+	ScrtShnuTrPbmn    string `json:"scrt_shnu_tr_pbmn"`
+	ScrtNtbyTrPbmn    string `json:"scrt_ntby_tr_pbmn"`
+	IvtrSelnVol       string `json:"ivtr_seln_vol"`
+	IvtrShnuVol       string `json:"ivtr_shnu_vol"`
+	IvtrNtbyQty       string `json:"ivtr_ntby_qty"`
+	IvtrSelnTrPbmn    string `json:"ivtr_seln_tr_pbmn"`
+	IvtrShnuTrPbmn    string `json:"ivtr_shnu_tr_pbmn"`
+	IvtrNtbyTrPbmn    string `json:"ivtr_ntby_tr_pbmn"`
+	PeFundSelnTrPbmn  string `json:"pe_fund_seln_tr_pbmn"`
+	PeFundSelnVol     string `json:"pe_fund_seln_vol"`
+	PeFundNtbyVol     string `json:"pe_fund_ntby_vol"`
+	PeFundShnuTrPbmn  string `json:"pe_fund_shnu_tr_pbmn"`
+	PeFundShnuVol     string `json:"pe_fund_shnu_vol"`
+	PeFundNtbyTrPbmn  string `json:"pe_fund_ntby_tr_pbmn"`
+	BankSelnVol       string `json:"bank_seln_vol"`
+	BankShnuVol       string `json:"bank_shnu_vol"`
+	BankNtbyQty       string `json:"bank_ntby_qty"`
+	BankSelnTrPbmn    string `json:"bank_seln_tr_pbmn"`
+	BankShnuTrPbmn    string `json:"bank_shnu_tr_pbmn"`
+	BankNtbyTrPbmn    string `json:"bank_ntby_tr_pbmn"`
+	InsuSelnVol       string `json:"insu_seln_vol"`
+	InsuShnuVol       string `json:"insu_shnu_vol"`
+	InsuNtbyQty       string `json:"insu_ntby_qty"`
+	InsuSelnTrPbmn    string `json:"insu_seln_tr_pbmn"`
+	InsuShnuTrPbmn    string `json:"insu_shnu_tr_pbmn"`
+	InsuNtbyTrPbmn    string `json:"insu_ntby_tr_pbmn"`
+	MrbnSelnVol       string `json:"mrbn_seln_vol"`
+	MrbnShnuVol       string `json:"mrbn_shnu_vol"`
+	MrbnNtbyQty       string `json:"mrbn_ntby_qty"`
+	MrbnSelnTrPbmn    string `json:"mrbn_seln_tr_pbmn"`
+	MrbnShnuTrPbmn    string `json:"mrbn_shnu_tr_pbmn"`
+	MrbnNtbyTrPbmn    string `json:"mrbn_ntby_tr_pbmn"`
+	FundSelnVol       string `json:"fund_seln_vol"`
+	FundShnuVol       string `json:"fund_shnu_vol"`
+	FundNtbyQty       string `json:"fund_ntby_qty"`
+	FundSelnTrPbmn    string `json:"fund_seln_tr_pbmn"`
+	FundShnuTrPbmn    string `json:"fund_shnu_tr_pbmn"`
+	FundNtbyTrPbmn    string `json:"fund_ntby_tr_pbmn"`
+	EtcOrgtSelnVol    string `json:"etc_orgt_seln_vol"`
+	EtcOrgtShnuVol    string `json:"etc_orgt_shnu_vol"`
+	EtcOrgtNtbyVol    string `json:"etc_orgt_ntby_vol"`
+	EtcOrgtSelnTrPbmn string `json:"etc_orgt_seln_tr_pbmn"`
+	EtcOrgtShnuTrPbmn string `json:"etc_orgt_shnu_tr_pbmn"`
+	EtcOrgtNtbyTrPbmn string `json:"etc_orgt_ntby_tr_pbmn"`
+	EtcCorpSelnVol    string `json:"etc_corp_seln_vol"`
+	EtcCorpShnuVol    string `json:"etc_corp_shnu_vol"`
+	EtcCorpNtbyVol    string `json:"etc_corp_ntby_vol"`
+	EtcCorpSelnTrPbmn string `json:"etc_corp_seln_tr_pbmn"`
+	EtcCorpShnuTrPbmn string `json:"etc_corp_shnu_tr_pbmn"`
+	EtcCorpNtbyTrPbmn string `json:"etc_corp_ntby_tr_pbmn"`
 }
 
 type KISDomesticStockV1QuotationsInquireInvestorTimeByMarketRequest struct {
@@ -3583,73 +3583,73 @@ type KISDomesticStockV1QuotationsInquireMember struct {
 }
 
 type KISDomesticStockV1QuotationsInquireMemberOutputItem struct {
-	SelnMbcrNo1          string `json:"seln_mbcr_no1,omitempty"`
-	SelnMbcrNo2          string `json:"seln_mbcr_no2,omitempty"`
-	SelnMbcrNo3          string `json:"seln_mbcr_no3,omitempty"`
-	SelnMbcrNo4          string `json:"seln_mbcr_no4,omitempty"`
-	SelnMbcrNo5          string `json:"seln_mbcr_no5,omitempty"`
-	SelnMbcrName1        string `json:"seln_mbcr_name1,omitempty"`
-	SelnMbcrName2        string `json:"seln_mbcr_name2,omitempty"`
-	SelnMbcrName3        string `json:"seln_mbcr_name3,omitempty"`
-	SelnMbcrName4        string `json:"seln_mbcr_name4,omitempty"`
-	SelnMbcrName5        string `json:"seln_mbcr_name5,omitempty"`
-	TotalSelnQty1        string `json:"total_seln_qty1,omitempty"`
-	TotalSelnQty2        string `json:"total_seln_qty2,omitempty"`
-	TotalSelnQty3        string `json:"total_seln_qty3,omitempty"`
-	TotalSelnQty4        string `json:"total_seln_qty4,omitempty"`
-	TotalSelnQty5        string `json:"total_seln_qty5,omitempty"`
-	SelnMbcrRlim1        string `json:"seln_mbcr_rlim1,omitempty"`
-	SelnMbcrRlim2        string `json:"seln_mbcr_rlim2,omitempty"`
-	SelnMbcrRlim3        string `json:"seln_mbcr_rlim3,omitempty"`
-	SelnMbcrRlim4        string `json:"seln_mbcr_rlim4,omitempty"`
-	SelnMbcrRlim5        string `json:"seln_mbcr_rlim5,omitempty"`
-	SelnQtyIcdc1         string `json:"seln_qty_icdc1,omitempty"`
-	SelnQtyIcdc2         string `json:"seln_qty_icdc2,omitempty"`
-	SelnQtyIcdc3         string `json:"seln_qty_icdc3,omitempty"`
-	SelnQtyIcdc4         string `json:"seln_qty_icdc4,omitempty"`
-	SelnQtyIcdc5         string `json:"seln_qty_icdc5,omitempty"`
-	ShnuMbcrNo1          string `json:"shnu_mbcr_no1,omitempty"`
-	ShnuMbcrNo2          string `json:"shnu_mbcr_no2,omitempty"`
-	ShnuMbcrNo3          string `json:"shnu_mbcr_no3,omitempty"`
-	ShnuMbcrNo4          string `json:"shnu_mbcr_no4,omitempty"`
-	ShnuMbcrNo5          string `json:"shnu_mbcr_no5,omitempty"`
-	ShnuMbcrName1        string `json:"shnu_mbcr_name1,omitempty"`
-	ShnuMbcrName2        string `json:"shnu_mbcr_name2,omitempty"`
-	ShnuMbcrName3        string `json:"shnu_mbcr_name3,omitempty"`
-	ShnuMbcrName4        string `json:"shnu_mbcr_name4,omitempty"`
-	ShnuMbcrName5        string `json:"shnu_mbcr_name5,omitempty"`
-	TotalShnuQty1        string `json:"total_shnu_qty1,omitempty"`
-	TotalShnuQty2        string `json:"total_shnu_qty2,omitempty"`
-	TotalShnuQty3        string `json:"total_shnu_qty3,omitempty"`
-	TotalShnuQty4        string `json:"total_shnu_qty4,omitempty"`
-	TotalShnuQty5        string `json:"total_shnu_qty5,omitempty"`
-	ShnuMbcrRlim1        string `json:"shnu_mbcr_rlim1,omitempty"`
-	ShnuMbcrRlim2        string `json:"shnu_mbcr_rlim2,omitempty"`
-	ShnuMbcrRlim3        string `json:"shnu_mbcr_rlim3,omitempty"`
-	ShnuMbcrRlim4        string `json:"shnu_mbcr_rlim4,omitempty"`
-	ShnuMbcrRlim5        string `json:"shnu_mbcr_rlim5,omitempty"`
-	ShnuQtyIcdc1         string `json:"shnu_qty_icdc1,omitempty"`
-	ShnuQtyIcdc2         string `json:"shnu_qty_icdc2,omitempty"`
-	ShnuQtyIcdc3         string `json:"shnu_qty_icdc3,omitempty"`
-	ShnuQtyIcdc4         string `json:"shnu_qty_icdc4,omitempty"`
-	ShnuQtyIcdc5         string `json:"shnu_qty_icdc5,omitempty"`
-	GlobTotalSelnQty     string `json:"glob_total_seln_qty,omitempty"`
-	GlobSelnRlim         string `json:"glob_seln_rlim,omitempty"`
-	GlobNtbyQty          string `json:"glob_ntby_qty,omitempty"`
-	GlobTotalShnuQty     string `json:"glob_total_shnu_qty,omitempty"`
-	GlobShnuRlim         string `json:"glob_shnu_rlim,omitempty"`
-	SelnMbcrGlobYn1      string `json:"seln_mbcr_glob_yn_1,omitempty"`
-	SelnMbcrGlobYn2      string `json:"seln_mbcr_glob_yn_2,omitempty"`
-	SelnMbcrGlobYn3      string `json:"seln_mbcr_glob_yn_3,omitempty"`
-	SelnMbcrGlobYn4      string `json:"seln_mbcr_glob_yn_4,omitempty"`
-	SelnMbcrGlobYn5      string `json:"seln_mbcr_glob_yn_5,omitempty"`
-	ShnuMbcrGlobYn1      string `json:"shnu_mbcr_glob_yn_1,omitempty"`
-	ShnuMbcrGlobYn2      string `json:"shnu_mbcr_glob_yn_2,omitempty"`
-	ShnuMbcrGlobYn3      string `json:"shnu_mbcr_glob_yn_3,omitempty"`
-	ShnuMbcrGlobYn4      string `json:"shnu_mbcr_glob_yn_4,omitempty"`
-	ShnuMbcrGlobYn5      string `json:"shnu_mbcr_glob_yn_5,omitempty"`
-	GlobTotalSelnQtyIcdc string `json:"glob_total_seln_qty_icdc,omitempty"`
-	GlobTotalShnuQtyIcdc string `json:"glob_total_shnu_qty_icdc,omitempty"`
+	SelnMbcrNo1          string `json:"seln_mbcr_no1"`
+	SelnMbcrNo2          string `json:"seln_mbcr_no2"`
+	SelnMbcrNo3          string `json:"seln_mbcr_no3"`
+	SelnMbcrNo4          string `json:"seln_mbcr_no4"`
+	SelnMbcrNo5          string `json:"seln_mbcr_no5"`
+	SelnMbcrName1        string `json:"seln_mbcr_name1"`
+	SelnMbcrName2        string `json:"seln_mbcr_name2"`
+	SelnMbcrName3        string `json:"seln_mbcr_name3"`
+	SelnMbcrName4        string `json:"seln_mbcr_name4"`
+	SelnMbcrName5        string `json:"seln_mbcr_name5"`
+	TotalSelnQty1        string `json:"total_seln_qty1"`
+	TotalSelnQty2        string `json:"total_seln_qty2"`
+	TotalSelnQty3        string `json:"total_seln_qty3"`
+	TotalSelnQty4        string `json:"total_seln_qty4"`
+	TotalSelnQty5        string `json:"total_seln_qty5"`
+	SelnMbcrRlim1        string `json:"seln_mbcr_rlim1"`
+	SelnMbcrRlim2        string `json:"seln_mbcr_rlim2"`
+	SelnMbcrRlim3        string `json:"seln_mbcr_rlim3"`
+	SelnMbcrRlim4        string `json:"seln_mbcr_rlim4"`
+	SelnMbcrRlim5        string `json:"seln_mbcr_rlim5"`
+	SelnQtyIcdc1         string `json:"seln_qty_icdc1"`
+	SelnQtyIcdc2         string `json:"seln_qty_icdc2"`
+	SelnQtyIcdc3         string `json:"seln_qty_icdc3"`
+	SelnQtyIcdc4         string `json:"seln_qty_icdc4"`
+	SelnQtyIcdc5         string `json:"seln_qty_icdc5"`
+	ShnuMbcrNo1          string `json:"shnu_mbcr_no1"`
+	ShnuMbcrNo2          string `json:"shnu_mbcr_no2"`
+	ShnuMbcrNo3          string `json:"shnu_mbcr_no3"`
+	ShnuMbcrNo4          string `json:"shnu_mbcr_no4"`
+	ShnuMbcrNo5          string `json:"shnu_mbcr_no5"`
+	ShnuMbcrName1        string `json:"shnu_mbcr_name1"`
+	ShnuMbcrName2        string `json:"shnu_mbcr_name2"`
+	ShnuMbcrName3        string `json:"shnu_mbcr_name3"`
+	ShnuMbcrName4        string `json:"shnu_mbcr_name4"`
+	ShnuMbcrName5        string `json:"shnu_mbcr_name5"`
+	TotalShnuQty1        string `json:"total_shnu_qty1"`
+	TotalShnuQty2        string `json:"total_shnu_qty2"`
+	TotalShnuQty3        string `json:"total_shnu_qty3"`
+	TotalShnuQty4        string `json:"total_shnu_qty4"`
+	TotalShnuQty5        string `json:"total_shnu_qty5"`
+	ShnuMbcrRlim1        string `json:"shnu_mbcr_rlim1"`
+	ShnuMbcrRlim2        string `json:"shnu_mbcr_rlim2"`
+	ShnuMbcrRlim3        string `json:"shnu_mbcr_rlim3"`
+	ShnuMbcrRlim4        string `json:"shnu_mbcr_rlim4"`
+	ShnuMbcrRlim5        string `json:"shnu_mbcr_rlim5"`
+	ShnuQtyIcdc1         string `json:"shnu_qty_icdc1"`
+	ShnuQtyIcdc2         string `json:"shnu_qty_icdc2"`
+	ShnuQtyIcdc3         string `json:"shnu_qty_icdc3"`
+	ShnuQtyIcdc4         string `json:"shnu_qty_icdc4"`
+	ShnuQtyIcdc5         string `json:"shnu_qty_icdc5"`
+	GlobTotalSelnQty     string `json:"glob_total_seln_qty"`
+	GlobSelnRlim         string `json:"glob_seln_rlim"`
+	GlobNtbyQty          string `json:"glob_ntby_qty"`
+	GlobTotalShnuQty     string `json:"glob_total_shnu_qty"`
+	GlobShnuRlim         string `json:"glob_shnu_rlim"`
+	SelnMbcrGlobYn1      string `json:"seln_mbcr_glob_yn_1"`
+	SelnMbcrGlobYn2      string `json:"seln_mbcr_glob_yn_2"`
+	SelnMbcrGlobYn3      string `json:"seln_mbcr_glob_yn_3"`
+	SelnMbcrGlobYn4      string `json:"seln_mbcr_glob_yn_4"`
+	SelnMbcrGlobYn5      string `json:"seln_mbcr_glob_yn_5"`
+	ShnuMbcrGlobYn1      string `json:"shnu_mbcr_glob_yn_1"`
+	ShnuMbcrGlobYn2      string `json:"shnu_mbcr_glob_yn_2"`
+	ShnuMbcrGlobYn3      string `json:"shnu_mbcr_glob_yn_3"`
+	ShnuMbcrGlobYn4      string `json:"shnu_mbcr_glob_yn_4"`
+	ShnuMbcrGlobYn5      string `json:"shnu_mbcr_glob_yn_5"`
+	GlobTotalSelnQtyIcdc string `json:"glob_total_seln_qty_icdc"`
+	GlobTotalShnuQtyIcdc string `json:"glob_total_shnu_qty_icdc"`
 }
 
 type KISDomesticStockV1QuotationsInquireMemberRequest struct {
@@ -3663,15 +3663,15 @@ type KISDomesticStockV1QuotationsInquireMemberDaily struct {
 }
 
 type KISDomesticStockV1QuotationsInquireMemberDailyOutputItem struct {
-	StckBsopDate string `json:"stck_bsop_date,omitempty"`
-	TotalSelnQty string `json:"total_seln_qty,omitempty"`
-	TotalShnuQty string `json:"total_shnu_qty,omitempty"`
-	NtbyQty      string `json:"ntby_qty,omitempty"`
-	StckPrpr     string `json:"stck_prpr,omitempty"`
-	PrdyVrss     string `json:"prdy_vrss,omitempty"`
-	PrdyVrssSign string `json:"prdy_vrss_sign,omitempty"`
-	PrdyCtrt     string `json:"prdy_ctrt,omitempty"`
-	AcmlVol      string `json:"acml_vol,omitempty"`
+	StckBsopDate string `json:"stck_bsop_date"`
+	TotalSelnQty string `json:"total_seln_qty"`
+	TotalShnuQty string `json:"total_shnu_qty"`
+	NtbyQty      string `json:"ntby_qty"`
+	StckPrpr     string `json:"stck_prpr"`
+	PrdyVrss     string `json:"prdy_vrss"`
+	PrdyVrssSign string `json:"prdy_vrss_sign"`
+	PrdyCtrt     string `json:"prdy_ctrt"`
+	AcmlVol      string `json:"acml_vol"`
 }
 
 type KISDomesticStockV1QuotationsInquireMemberDailyRequest struct {
@@ -3689,80 +3689,80 @@ type KISDomesticStockV1QuotationsInquireOvertimeAskingPrice struct {
 }
 
 type KISDomesticStockV1QuotationsInquireOvertimeAskingPriceOutput1Item struct {
-	OvtmUntpLastHour          string `json:"ovtm_untp_last_hour,omitempty"`
-	OvtmUntpAskp1             string `json:"ovtm_untp_askp1,omitempty"`
-	OvtmUntpAskp2             string `json:"ovtm_untp_askp2,omitempty"`
-	OvtmUntpAskp3             string `json:"ovtm_untp_askp3,omitempty"`
-	OvtmUntpAskp4             string `json:"ovtm_untp_askp4,omitempty"`
-	OvtmUntpAskp5             string `json:"ovtm_untp_askp5,omitempty"`
-	OvtmUntpAskp6             string `json:"ovtm_untp_askp6,omitempty"`
-	OvtmUntpAskp7             string `json:"ovtm_untp_askp7,omitempty"`
-	OvtmUntpAskp8             string `json:"ovtm_untp_askp8,omitempty"`
-	OvtmUntpAskp9             string `json:"ovtm_untp_askp9,omitempty"`
-	OvtmUntpAskp10            string `json:"ovtm_untp_askp10,omitempty"`
-	OvtmUntpBidp1             string `json:"ovtm_untp_bidp1,omitempty"`
-	OvtmUntpBidp2             string `json:"ovtm_untp_bidp2,omitempty"`
-	OvtmUntpBidp3             string `json:"ovtm_untp_bidp3,omitempty"`
-	OvtmUntpBidp4             string `json:"ovtm_untp_bidp4,omitempty"`
-	OvtmUntpBidp5             string `json:"ovtm_untp_bidp5,omitempty"`
-	OvtmUntpBidp6             string `json:"ovtm_untp_bidp6,omitempty"`
-	OvtmUntpBidp7             string `json:"ovtm_untp_bidp7,omitempty"`
-	OvtmUntpBidp8             string `json:"ovtm_untp_bidp8,omitempty"`
-	OvtmUntpBidp9             string `json:"ovtm_untp_bidp9,omitempty"`
-	OvtmUntpBidp10            string `json:"ovtm_untp_bidp10,omitempty"`
-	OvtmUntpAskpIcdc1         string `json:"ovtm_untp_askp_icdc1,omitempty"`
-	OvtmUntpAskpIcdc2         string `json:"ovtm_untp_askp_icdc2,omitempty"`
-	OvtmUntpAskpIcdc3         string `json:"ovtm_untp_askp_icdc3,omitempty"`
-	OvtmUntpAskpIcdc4         string `json:"ovtm_untp_askp_icdc4,omitempty"`
-	OvtmUntpAskpIcdc5         string `json:"ovtm_untp_askp_icdc5,omitempty"`
-	OvtmUntpAskpIcdc6         string `json:"ovtm_untp_askp_icdc6,omitempty"`
-	OvtmUntpAskpIcdc7         string `json:"ovtm_untp_askp_icdc7,omitempty"`
-	OvtmUntpAskpIcdc8         string `json:"ovtm_untp_askp_icdc8,omitempty"`
-	OvtmUntpAskpIcdc9         string `json:"ovtm_untp_askp_icdc9,omitempty"`
-	OvtmUntpAskpIcdc10        string `json:"ovtm_untp_askp_icdc10,omitempty"`
-	OvtmUntpBidpIcdc1         string `json:"ovtm_untp_bidp_icdc1,omitempty"`
-	OvtmUntpBidpIcdc2         string `json:"ovtm_untp_bidp_icdc2,omitempty"`
-	OvtmUntpBidpIcdc3         string `json:"ovtm_untp_bidp_icdc3,omitempty"`
-	OvtmUntpBidpIcdc4         string `json:"ovtm_untp_bidp_icdc4,omitempty"`
-	OvtmUntpBidpIcdc5         string `json:"ovtm_untp_bidp_icdc5,omitempty"`
-	OvtmUntpBidpIcdc6         string `json:"ovtm_untp_bidp_icdc6,omitempty"`
-	OvtmUntpBidpIcdc7         string `json:"ovtm_untp_bidp_icdc7,omitempty"`
-	OvtmUntpBidpIcdc8         string `json:"ovtm_untp_bidp_icdc8,omitempty"`
-	OvtmUntpBidpIcdc9         string `json:"ovtm_untp_bidp_icdc9,omitempty"`
-	OvtmUntpBidpIcdc10        string `json:"ovtm_untp_bidp_icdc10,omitempty"`
-	OvtmUntpAskpRsqn1         string `json:"ovtm_untp_askp_rsqn1,omitempty"`
-	OvtmUntpAskpRsqn2         string `json:"ovtm_untp_askp_rsqn2,omitempty"`
-	OvtmUntpAskpRsqn3         string `json:"ovtm_untp_askp_rsqn3,omitempty"`
-	OvtmUntpAskpRsqn4         string `json:"ovtm_untp_askp_rsqn4,omitempty"`
-	OvtmUntpAskpRsqn5         string `json:"ovtm_untp_askp_rsqn5,omitempty"`
-	OvtmUntpAskpRsqn6         string `json:"ovtm_untp_askp_rsqn6,omitempty"`
-	OvtmUntpAskpRsqn7         string `json:"ovtm_untp_askp_rsqn7,omitempty"`
-	OvtmUntpAskpRsqn8         string `json:"ovtm_untp_askp_rsqn8,omitempty"`
-	OvtmUntpAskpRsqn9         string `json:"ovtm_untp_askp_rsqn9,omitempty"`
-	OvtmUntpAskpRsqn10        string `json:"ovtm_untp_askp_rsqn10,omitempty"`
-	OvtmUntpBidpRsqn1         string `json:"ovtm_untp_bidp_rsqn1,omitempty"`
-	OvtmUntpBidpRsqn2         string `json:"ovtm_untp_bidp_rsqn2,omitempty"`
-	OvtmUntpBidpRsqn3         string `json:"ovtm_untp_bidp_rsqn3,omitempty"`
-	OvtmUntpBidpRsqn4         string `json:"ovtm_untp_bidp_rsqn4,omitempty"`
-	OvtmUntpBidpRsqn5         string `json:"ovtm_untp_bidp_rsqn5,omitempty"`
-	OvtmUntpBidpRsqn6         string `json:"ovtm_untp_bidp_rsqn6,omitempty"`
-	OvtmUntpBidpRsqn7         string `json:"ovtm_untp_bidp_rsqn7,omitempty"`
-	OvtmUntpBidpRsqn8         string `json:"ovtm_untp_bidp_rsqn8,omitempty"`
-	OvtmUntpBidpRsqn9         string `json:"ovtm_untp_bidp_rsqn9,omitempty"`
-	OvtmUntpBidpRsqn10        string `json:"ovtm_untp_bidp_rsqn10,omitempty"`
-	OvtmUntpTotalAskpRsqn     string `json:"ovtm_untp_total_askp_rsqn,omitempty"`
-	OvtmUntpTotalBidpRsqn     string `json:"ovtm_untp_total_bidp_rsqn,omitempty"`
-	OvtmUntpTotalAskpRsqnIcdc string `json:"ovtm_untp_total_askp_rsqn_icdc,omitempty"`
-	OvtmUntpTotalBidpRsqnIcdc string `json:"ovtm_untp_total_bidp_rsqn_icdc,omitempty"`
-	OvtmUntpNtbyBidpRsqn      string `json:"ovtm_untp_ntby_bidp_rsqn,omitempty"`
-	TotalAskpRsqn             string `json:"total_askp_rsqn,omitempty"`
-	TotalBidpRsqn             string `json:"total_bidp_rsqn,omitempty"`
-	TotalAskpRsqnIcdc         string `json:"total_askp_rsqn_icdc,omitempty"`
-	TotalBidpRsqnIcdc         string `json:"total_bidp_rsqn_icdc,omitempty"`
-	OvtmTotalAskpRsqn         string `json:"ovtm_total_askp_rsqn,omitempty"`
-	OvtmTotalBidpRsqn         string `json:"ovtm_total_bidp_rsqn,omitempty"`
-	OvtmTotalAskpIcdc         string `json:"ovtm_total_askp_icdc,omitempty"`
-	OvtmTotalBidpIcdc         string `json:"ovtm_total_bidp_icdc,omitempty"`
+	OvtmUntpLastHour          string `json:"ovtm_untp_last_hour"`
+	OvtmUntpAskp1             string `json:"ovtm_untp_askp1"`
+	OvtmUntpAskp2             string `json:"ovtm_untp_askp2"`
+	OvtmUntpAskp3             string `json:"ovtm_untp_askp3"`
+	OvtmUntpAskp4             string `json:"ovtm_untp_askp4"`
+	OvtmUntpAskp5             string `json:"ovtm_untp_askp5"`
+	OvtmUntpAskp6             string `json:"ovtm_untp_askp6"`
+	OvtmUntpAskp7             string `json:"ovtm_untp_askp7"`
+	OvtmUntpAskp8             string `json:"ovtm_untp_askp8"`
+	OvtmUntpAskp9             string `json:"ovtm_untp_askp9"`
+	OvtmUntpAskp10            string `json:"ovtm_untp_askp10"`
+	OvtmUntpBidp1             string `json:"ovtm_untp_bidp1"`
+	OvtmUntpBidp2             string `json:"ovtm_untp_bidp2"`
+	OvtmUntpBidp3             string `json:"ovtm_untp_bidp3"`
+	OvtmUntpBidp4             string `json:"ovtm_untp_bidp4"`
+	OvtmUntpBidp5             string `json:"ovtm_untp_bidp5"`
+	OvtmUntpBidp6             string `json:"ovtm_untp_bidp6"`
+	OvtmUntpBidp7             string `json:"ovtm_untp_bidp7"`
+	OvtmUntpBidp8             string `json:"ovtm_untp_bidp8"`
+	OvtmUntpBidp9             string `json:"ovtm_untp_bidp9"`
+	OvtmUntpBidp10            string `json:"ovtm_untp_bidp10"`
+	OvtmUntpAskpIcdc1         string `json:"ovtm_untp_askp_icdc1"`
+	OvtmUntpAskpIcdc2         string `json:"ovtm_untp_askp_icdc2"`
+	OvtmUntpAskpIcdc3         string `json:"ovtm_untp_askp_icdc3"`
+	OvtmUntpAskpIcdc4         string `json:"ovtm_untp_askp_icdc4"`
+	OvtmUntpAskpIcdc5         string `json:"ovtm_untp_askp_icdc5"`
+	OvtmUntpAskpIcdc6         string `json:"ovtm_untp_askp_icdc6"`
+	OvtmUntpAskpIcdc7         string `json:"ovtm_untp_askp_icdc7"`
+	OvtmUntpAskpIcdc8         string `json:"ovtm_untp_askp_icdc8"`
+	OvtmUntpAskpIcdc9         string `json:"ovtm_untp_askp_icdc9"`
+	OvtmUntpAskpIcdc10        string `json:"ovtm_untp_askp_icdc10"`
+	OvtmUntpBidpIcdc1         string `json:"ovtm_untp_bidp_icdc1"`
+	OvtmUntpBidpIcdc2         string `json:"ovtm_untp_bidp_icdc2"`
+	OvtmUntpBidpIcdc3         string `json:"ovtm_untp_bidp_icdc3"`
+	OvtmUntpBidpIcdc4         string `json:"ovtm_untp_bidp_icdc4"`
+	OvtmUntpBidpIcdc5         string `json:"ovtm_untp_bidp_icdc5"`
+	OvtmUntpBidpIcdc6         string `json:"ovtm_untp_bidp_icdc6"`
+	OvtmUntpBidpIcdc7         string `json:"ovtm_untp_bidp_icdc7"`
+	OvtmUntpBidpIcdc8         string `json:"ovtm_untp_bidp_icdc8"`
+	OvtmUntpBidpIcdc9         string `json:"ovtm_untp_bidp_icdc9"`
+	OvtmUntpBidpIcdc10        string `json:"ovtm_untp_bidp_icdc10"`
+	OvtmUntpAskpRsqn1         string `json:"ovtm_untp_askp_rsqn1"`
+	OvtmUntpAskpRsqn2         string `json:"ovtm_untp_askp_rsqn2"`
+	OvtmUntpAskpRsqn3         string `json:"ovtm_untp_askp_rsqn3"`
+	OvtmUntpAskpRsqn4         string `json:"ovtm_untp_askp_rsqn4"`
+	OvtmUntpAskpRsqn5         string `json:"ovtm_untp_askp_rsqn5"`
+	OvtmUntpAskpRsqn6         string `json:"ovtm_untp_askp_rsqn6"`
+	OvtmUntpAskpRsqn7         string `json:"ovtm_untp_askp_rsqn7"`
+	OvtmUntpAskpRsqn8         string `json:"ovtm_untp_askp_rsqn8"`
+	OvtmUntpAskpRsqn9         string `json:"ovtm_untp_askp_rsqn9"`
+	OvtmUntpAskpRsqn10        string `json:"ovtm_untp_askp_rsqn10"`
+	OvtmUntpBidpRsqn1         string `json:"ovtm_untp_bidp_rsqn1"`
+	OvtmUntpBidpRsqn2         string `json:"ovtm_untp_bidp_rsqn2"`
+	OvtmUntpBidpRsqn3         string `json:"ovtm_untp_bidp_rsqn3"`
+	OvtmUntpBidpRsqn4         string `json:"ovtm_untp_bidp_rsqn4"`
+	OvtmUntpBidpRsqn5         string `json:"ovtm_untp_bidp_rsqn5"`
+	OvtmUntpBidpRsqn6         string `json:"ovtm_untp_bidp_rsqn6"`
+	OvtmUntpBidpRsqn7         string `json:"ovtm_untp_bidp_rsqn7"`
+	OvtmUntpBidpRsqn8         string `json:"ovtm_untp_bidp_rsqn8"`
+	OvtmUntpBidpRsqn9         string `json:"ovtm_untp_bidp_rsqn9"`
+	OvtmUntpBidpRsqn10        string `json:"ovtm_untp_bidp_rsqn10"`
+	OvtmUntpTotalAskpRsqn     string `json:"ovtm_untp_total_askp_rsqn"`
+	OvtmUntpTotalBidpRsqn     string `json:"ovtm_untp_total_bidp_rsqn"`
+	OvtmUntpTotalAskpRsqnIcdc string `json:"ovtm_untp_total_askp_rsqn_icdc"`
+	OvtmUntpTotalBidpRsqnIcdc string `json:"ovtm_untp_total_bidp_rsqn_icdc"`
+	OvtmUntpNtbyBidpRsqn      string `json:"ovtm_untp_ntby_bidp_rsqn"`
+	TotalAskpRsqn             string `json:"total_askp_rsqn"`
+	TotalBidpRsqn             string `json:"total_bidp_rsqn"`
+	TotalAskpRsqnIcdc         string `json:"total_askp_rsqn_icdc"`
+	TotalBidpRsqnIcdc         string `json:"total_bidp_rsqn_icdc"`
+	OvtmTotalAskpRsqn         string `json:"ovtm_total_askp_rsqn"`
+	OvtmTotalBidpRsqn         string `json:"ovtm_total_bidp_rsqn"`
+	OvtmTotalAskpIcdc         string `json:"ovtm_total_askp_icdc"`
+	OvtmTotalBidpIcdc         string `json:"ovtm_total_bidp_icdc"`
 }
 
 type KISDomesticStockV1QuotationsInquireOvertimeAskingPriceRequest struct {
@@ -3776,41 +3776,41 @@ type KISDomesticStockV1QuotationsInquireOvertimePrice struct {
 }
 
 type KISDomesticStockV1QuotationsInquireOvertimePriceOutputItem struct {
-	BstpKorIsnm              string `json:"bstp_kor_isnm,omitempty"`
-	MangIssuClsName          string `json:"mang_issu_cls_name,omitempty"`
-	OvtmUntpPrpr             string `json:"ovtm_untp_prpr,omitempty"`
-	OvtmUntpPrdyVrss         string `json:"ovtm_untp_prdy_vrss,omitempty"`
-	OvtmUntpPrdyVrssSign     string `json:"ovtm_untp_prdy_vrss_sign,omitempty"`
-	OvtmUntpPrdyCtrt         string `json:"ovtm_untp_prdy_ctrt,omitempty"`
-	OvtmUntpVol              string `json:"ovtm_untp_vol,omitempty"`
-	OvtmUntpTrPbmn           string `json:"ovtm_untp_tr_pbmn,omitempty"`
-	OvtmUntpMxpr             string `json:"ovtm_untp_mxpr,omitempty"`
-	OvtmUntpLlam             string `json:"ovtm_untp_llam,omitempty"`
-	OvtmUntpOprc             string `json:"ovtm_untp_oprc,omitempty"`
-	OvtmUntpHgpr             string `json:"ovtm_untp_hgpr,omitempty"`
-	OvtmUntpLwpr             string `json:"ovtm_untp_lwpr,omitempty"`
-	MargRate                 string `json:"marg_rate,omitempty"`
-	OvtmUntpAntcCnpr         string `json:"ovtm_untp_antc_cnpr,omitempty"`
-	OvtmUntpAntcCntgVrss     string `json:"ovtm_untp_antc_cntg_vrss,omitempty"`
-	OvtmUntpAntcCntgVrssSign string `json:"ovtm_untp_antc_cntg_vrss_sign,omitempty"`
-	OvtmUntpAntcCntgCtrt     string `json:"ovtm_untp_antc_cntg_ctrt,omitempty"`
-	OvtmUntpAntcCnqn         string `json:"ovtm_untp_antc_cnqn,omitempty"`
-	CrdtAbleYn               string `json:"crdt_able_yn,omitempty"`
-	NewLstnClsName           string `json:"new_lstn_cls_name,omitempty"`
-	SltrYn                   string `json:"sltr_yn,omitempty"`
-	MangIssuYn               string `json:"mang_issu_yn,omitempty"`
-	MrktWarnClsCode          string `json:"mrkt_warn_cls_code,omitempty"`
-	TrhtYn                   string `json:"trht_yn,omitempty"`
-	VlntDealClsName          string `json:"vlnt_deal_cls_name,omitempty"`
-	OvtmUntpSdpr             string `json:"ovtm_untp_sdpr,omitempty"`
-	MrktWarnClsName          string `json:"mrkt_warn_cls_name,omitempty"`
-	RevlIssuReasName         string `json:"revl_issu_reas_name,omitempty"`
-	InsnPbntYn               string `json:"insn_pbnt_yn,omitempty"`
-	FlngClsName              string `json:"flng_cls_name,omitempty"`
-	RprsMrktKorName          string `json:"rprs_mrkt_kor_name,omitempty"`
-	OvtmViClsCode            string `json:"ovtm_vi_cls_code,omitempty"`
-	Bidp                     string `json:"bidp,omitempty"`
-	Askp                     string `json:"askp,omitempty"`
+	BstpKorIsnm              string `json:"bstp_kor_isnm"`
+	MangIssuClsName          string `json:"mang_issu_cls_name"`
+	OvtmUntpPrpr             string `json:"ovtm_untp_prpr"`
+	OvtmUntpPrdyVrss         string `json:"ovtm_untp_prdy_vrss"`
+	OvtmUntpPrdyVrssSign     string `json:"ovtm_untp_prdy_vrss_sign"`
+	OvtmUntpPrdyCtrt         string `json:"ovtm_untp_prdy_ctrt"`
+	OvtmUntpVol              string `json:"ovtm_untp_vol"`
+	OvtmUntpTrPbmn           string `json:"ovtm_untp_tr_pbmn"`
+	OvtmUntpMxpr             string `json:"ovtm_untp_mxpr"`
+	OvtmUntpLlam             string `json:"ovtm_untp_llam"`
+	OvtmUntpOprc             string `json:"ovtm_untp_oprc"`
+	OvtmUntpHgpr             string `json:"ovtm_untp_hgpr"`
+	OvtmUntpLwpr             string `json:"ovtm_untp_lwpr"`
+	MargRate                 string `json:"marg_rate"`
+	OvtmUntpAntcCnpr         string `json:"ovtm_untp_antc_cnpr"`
+	OvtmUntpAntcCntgVrss     string `json:"ovtm_untp_antc_cntg_vrss"`
+	OvtmUntpAntcCntgVrssSign string `json:"ovtm_untp_antc_cntg_vrss_sign"`
+	OvtmUntpAntcCntgCtrt     string `json:"ovtm_untp_antc_cntg_ctrt"`
+	OvtmUntpAntcCnqn         string `json:"ovtm_untp_antc_cnqn"`
+	CrdtAbleYn               string `json:"crdt_able_yn"`
+	NewLstnClsName           string `json:"new_lstn_cls_name"`
+	SltrYn                   string `json:"sltr_yn"`
+	MangIssuYn               string `json:"mang_issu_yn"`
+	MrktWarnClsCode          string `json:"mrkt_warn_cls_code"`
+	TrhtYn                   string `json:"trht_yn"`
+	VlntDealClsName          string `json:"vlnt_deal_cls_name"`
+	OvtmUntpSdpr             string `json:"ovtm_untp_sdpr"`
+	MrktWarnClsName          string `json:"mrkt_warn_cls_name"`
+	RevlIssuReasName         string `json:"revl_issu_reas_name"`
+	InsnPbntYn               string `json:"insn_pbnt_yn"`
+	FlngClsName              string `json:"flng_cls_name"`
+	RprsMrktKorName          string `json:"rprs_mrkt_kor_name"`
+	OvtmViClsCode            string `json:"ovtm_vi_cls_code"`
+	Bidp                     string `json:"bidp"`
+	Askp                     string `json:"askp"`
 }
 
 type KISDomesticStockV1QuotationsInquireOvertimePriceRequest struct {
@@ -3824,88 +3824,88 @@ type KISDomesticStockV1QuotationsInquirePrice struct {
 }
 
 type KISDomesticStockV1QuotationsInquirePriceOutputItem struct {
-	IscdStatClsCode      string `json:"iscd_stat_cls_code,omitempty"`
-	MargRate             string `json:"marg_rate,omitempty"`
-	RprsMrktKorName      string `json:"rprs_mrkt_kor_name,omitempty"`
-	NewHgprLwprClsCode   string `json:"new_hgpr_lwpr_cls_code,omitempty"`
-	BstpKorIsnm          string `json:"bstp_kor_isnm,omitempty"`
-	TempStopYn           string `json:"temp_stop_yn,omitempty"`
-	OprcRangContYn       string `json:"oprc_rang_cont_yn,omitempty"`
-	ClprRangContYn       string `json:"clpr_rang_cont_yn,omitempty"`
-	CrdtAbleYn           string `json:"crdt_able_yn,omitempty"`
-	GrmnRateClsCode      string `json:"grmn_rate_cls_code,omitempty"`
-	ElwPblcYn            string `json:"elw_pblc_yn,omitempty"`
-	StckPrpr             string `json:"stck_prpr,omitempty"`
-	PrdyVrss             string `json:"prdy_vrss,omitempty"`
-	PrdyVrssSign         string `json:"prdy_vrss_sign,omitempty"`
-	PrdyCtrt             string `json:"prdy_ctrt,omitempty"`
-	AcmlTrPbmn           string `json:"acml_tr_pbmn,omitempty"`
-	AcmlVol              string `json:"acml_vol,omitempty"`
-	PrdyVrssVolRate      string `json:"prdy_vrss_vol_rate,omitempty"`
-	StckOprc             string `json:"stck_oprc,omitempty"`
-	StckHgpr             string `json:"stck_hgpr,omitempty"`
-	StckLwpr             string `json:"stck_lwpr,omitempty"`
-	StckMxpr             string `json:"stck_mxpr,omitempty"`
-	StckLlam             string `json:"stck_llam,omitempty"`
-	StckSdpr             string `json:"stck_sdpr,omitempty"`
-	WghnAvrgStckPrc      string `json:"wghn_avrg_stck_prc,omitempty"`
-	HtsFrgnEhrt          string `json:"hts_frgn_ehrt,omitempty"`
-	FrgnNtbyQty          string `json:"frgn_ntby_qty,omitempty"`
-	PgtrNtbyQty          string `json:"pgtr_ntby_qty,omitempty"`
-	PvtScndDmrsPrc       string `json:"pvt_scnd_dmrs_prc,omitempty"`
-	PvtFrstDmrsPrc       string `json:"pvt_frst_dmrs_prc,omitempty"`
-	PvtPontVal           string `json:"pvt_pont_val,omitempty"`
-	PvtFrstDmspPrc       string `json:"pvt_frst_dmsp_prc,omitempty"`
-	PvtScndDmspPrc       string `json:"pvt_scnd_dmsp_prc,omitempty"`
-	DmrsVal              string `json:"dmrs_val,omitempty"`
-	DmspVal              string `json:"dmsp_val,omitempty"`
-	Cpfn                 string `json:"cpfn,omitempty"`
-	RstcWdthPrc          string `json:"rstc_wdth_prc,omitempty"`
-	StckFcam             string `json:"stck_fcam,omitempty"`
-	StckSspr             string `json:"stck_sspr,omitempty"`
-	AsprUnit             string `json:"aspr_unit,omitempty"`
-	HtsDealQtyUnitVal    string `json:"hts_deal_qty_unit_val,omitempty"`
-	LstnStcn             string `json:"lstn_stcn,omitempty"`
-	HtsAvls              string `json:"hts_avls,omitempty"`
-	Per                  string `json:"per,omitempty"`
-	Pbr                  string `json:"pbr,omitempty"`
-	StacMonth            string `json:"stac_month,omitempty"`
-	VolTnrt              string `json:"vol_tnrt,omitempty"`
-	Eps                  string `json:"eps,omitempty"`
-	Bps                  string `json:"bps,omitempty"`
-	D250Hgpr             string `json:"d250_hgpr,omitempty"`
-	D250HgprDate         string `json:"d250_hgpr_date,omitempty"`
-	D250HgprVrssPrprRate string `json:"d250_hgpr_vrss_prpr_rate,omitempty"`
-	D250Lwpr             string `json:"d250_lwpr,omitempty"`
-	D250LwprDate         string `json:"d250_lwpr_date,omitempty"`
-	D250LwprVrssPrprRate string `json:"d250_lwpr_vrss_prpr_rate,omitempty"`
-	StckDryyHgpr         string `json:"stck_dryy_hgpr,omitempty"`
-	DryyHgprVrssPrprRate string `json:"dryy_hgpr_vrss_prpr_rate,omitempty"`
-	DryyHgprDate         string `json:"dryy_hgpr_date,omitempty"`
-	StckDryyLwpr         string `json:"stck_dryy_lwpr,omitempty"`
-	DryyLwprVrssPrprRate string `json:"dryy_lwpr_vrss_prpr_rate,omitempty"`
-	DryyLwprDate         string `json:"dryy_lwpr_date,omitempty"`
-	W52Hgpr              string `json:"w52_hgpr,omitempty"`
-	W52HgprVrssPrprCtrt  string `json:"w52_hgpr_vrss_prpr_ctrt,omitempty"`
-	W52HgprDate          string `json:"w52_hgpr_date,omitempty"`
-	W52Lwpr              string `json:"w52_lwpr,omitempty"`
-	W52LwprVrssPrprCtrt  string `json:"w52_lwpr_vrss_prpr_ctrt,omitempty"`
-	W52LwprDate          string `json:"w52_lwpr_date,omitempty"`
-	WholLoanRmndRate     string `json:"whol_loan_rmnd_rate,omitempty"`
-	SstsYn               string `json:"ssts_yn,omitempty"`
-	StckShrnIscd         string `json:"stck_shrn_iscd,omitempty"`
-	FcamCnnm             string `json:"fcam_cnnm,omitempty"`
-	CpfnCnnm             string `json:"cpfn_cnnm,omitempty"`
-	ApprchRate           string `json:"apprch_rate,omitempty"`
-	FrgnHldnQty          string `json:"frgn_hldn_qty,omitempty"`
-	ViClsCode            string `json:"vi_cls_code,omitempty"`
-	OvtmViClsCode        string `json:"ovtm_vi_cls_code,omitempty"`
-	LastSstsCntgQty      string `json:"last_ssts_cntg_qty,omitempty"`
-	InvtCafulYn          string `json:"invt_caful_yn,omitempty"`
-	MrktWarnClsCode      string `json:"mrkt_warn_cls_code,omitempty"`
-	ShortOverYn          string `json:"short_over_yn,omitempty"`
-	SltrYn               string `json:"sltr_yn,omitempty"`
-	MangIssuClsCode      string `json:"mang_issu_cls_code,omitempty"`
+	IscdStatClsCode      string `json:"iscd_stat_cls_code"`
+	MargRate             string `json:"marg_rate"`
+	RprsMrktKorName      string `json:"rprs_mrkt_kor_name"`
+	NewHgprLwprClsCode   string `json:"new_hgpr_lwpr_cls_code"`
+	BstpKorIsnm          string `json:"bstp_kor_isnm"`
+	TempStopYn           string `json:"temp_stop_yn"`
+	OprcRangContYn       string `json:"oprc_rang_cont_yn"`
+	ClprRangContYn       string `json:"clpr_rang_cont_yn"`
+	CrdtAbleYn           string `json:"crdt_able_yn"`
+	GrmnRateClsCode      string `json:"grmn_rate_cls_code"`
+	ElwPblcYn            string `json:"elw_pblc_yn"`
+	StckPrpr             string `json:"stck_prpr"`
+	PrdyVrss             string `json:"prdy_vrss"`
+	PrdyVrssSign         string `json:"prdy_vrss_sign"`
+	PrdyCtrt             string `json:"prdy_ctrt"`
+	AcmlTrPbmn           string `json:"acml_tr_pbmn"`
+	AcmlVol              string `json:"acml_vol"`
+	PrdyVrssVolRate      string `json:"prdy_vrss_vol_rate"`
+	StckOprc             string `json:"stck_oprc"`
+	StckHgpr             string `json:"stck_hgpr"`
+	StckLwpr             string `json:"stck_lwpr"`
+	StckMxpr             string `json:"stck_mxpr"`
+	StckLlam             string `json:"stck_llam"`
+	StckSdpr             string `json:"stck_sdpr"`
+	WghnAvrgStckPrc      string `json:"wghn_avrg_stck_prc"`
+	HtsFrgnEhrt          string `json:"hts_frgn_ehrt"`
+	FrgnNtbyQty          string `json:"frgn_ntby_qty"`
+	PgtrNtbyQty          string `json:"pgtr_ntby_qty"`
+	PvtScndDmrsPrc       string `json:"pvt_scnd_dmrs_prc"`
+	PvtFrstDmrsPrc       string `json:"pvt_frst_dmrs_prc"`
+	PvtPontVal           string `json:"pvt_pont_val"`
+	PvtFrstDmspPrc       string `json:"pvt_frst_dmsp_prc"`
+	PvtScndDmspPrc       string `json:"pvt_scnd_dmsp_prc"`
+	DmrsVal              string `json:"dmrs_val"`
+	DmspVal              string `json:"dmsp_val"`
+	Cpfn                 string `json:"cpfn"`
+	RstcWdthPrc          string `json:"rstc_wdth_prc"`
+	StckFcam             string `json:"stck_fcam"`
+	StckSspr             string `json:"stck_sspr"`
+	AsprUnit             string `json:"aspr_unit"`
+	HtsDealQtyUnitVal    string `json:"hts_deal_qty_unit_val"`
+	LstnStcn             string `json:"lstn_stcn"`
+	HtsAvls              string `json:"hts_avls"`
+	Per                  string `json:"per"`
+	Pbr                  string `json:"pbr"`
+	StacMonth            string `json:"stac_month"`
+	VolTnrt              string `json:"vol_tnrt"`
+	Eps                  string `json:"eps"`
+	Bps                  string `json:"bps"`
+	D250Hgpr             string `json:"d250_hgpr"`
+	D250HgprDate         string `json:"d250_hgpr_date"`
+	D250HgprVrssPrprRate string `json:"d250_hgpr_vrss_prpr_rate"`
+	D250Lwpr             string `json:"d250_lwpr"`
+	D250LwprDate         string `json:"d250_lwpr_date"`
+	D250LwprVrssPrprRate string `json:"d250_lwpr_vrss_prpr_rate"`
+	StckDryyHgpr         string `json:"stck_dryy_hgpr"`
+	DryyHgprVrssPrprRate string `json:"dryy_hgpr_vrss_prpr_rate"`
+	DryyHgprDate         string `json:"dryy_hgpr_date"`
+	StckDryyLwpr         string `json:"stck_dryy_lwpr"`
+	DryyLwprVrssPrprRate string `json:"dryy_lwpr_vrss_prpr_rate"`
+	DryyLwprDate         string `json:"dryy_lwpr_date"`
+	W52Hgpr              string `json:"w52_hgpr"`
+	W52HgprVrssPrprCtrt  string `json:"w52_hgpr_vrss_prpr_ctrt"`
+	W52HgprDate          string `json:"w52_hgpr_date"`
+	W52Lwpr              string `json:"w52_lwpr"`
+	W52LwprVrssPrprCtrt  string `json:"w52_lwpr_vrss_prpr_ctrt"`
+	W52LwprDate          string `json:"w52_lwpr_date"`
+	WholLoanRmndRate     string `json:"whol_loan_rmnd_rate"`
+	SstsYn               string `json:"ssts_yn"`
+	StckShrnIscd         string `json:"stck_shrn_iscd"`
+	FcamCnnm             string `json:"fcam_cnnm"`
+	CpfnCnnm             string `json:"cpfn_cnnm"`
+	ApprchRate           string `json:"apprch_rate"`
+	FrgnHldnQty          string `json:"frgn_hldn_qty"`
+	ViClsCode            string `json:"vi_cls_code"`
+	OvtmViClsCode        string `json:"ovtm_vi_cls_code"`
+	LastSstsCntgQty      string `json:"last_ssts_cntg_qty"`
+	InvtCafulYn          string `json:"invt_caful_yn"`
+	MrktWarnClsCode      string `json:"mrkt_warn_cls_code"`
+	ShortOverYn          string `json:"short_over_yn"`
+	SltrYn               string `json:"sltr_yn"`
+	MangIssuClsCode      string `json:"mang_issu_cls_code"`
 }
 
 type KISDomesticStockV1QuotationsInquirePriceRequest struct {
@@ -3919,60 +3919,60 @@ type KISDomesticStockV1QuotationsInquirePriceN2 struct {
 }
 
 type KISDomesticStockV1QuotationsInquirePriceN2OutputItem struct {
-	RprsMrktKorName      string `json:"rprs_mrkt_kor_name,omitempty"`
-	NewHgprLwprClsCode   string `json:"new_hgpr_lwpr_cls_code,omitempty"`
-	MxprLlamClsCode      string `json:"mxpr_llam_cls_code,omitempty"`
-	CrdtAbleYn           string `json:"crdt_able_yn,omitempty"`
-	StckMxpr             string `json:"stck_mxpr,omitempty"`
-	ElwPblcYn            string `json:"elw_pblc_yn,omitempty"`
-	PrdyClprVrssOprcRate string `json:"prdy_clpr_vrss_oprc_rate,omitempty"`
-	CrdtRate             string `json:"crdt_rate,omitempty"`
-	MargRate             string `json:"marg_rate,omitempty"`
-	LwprVrssPrpr         string `json:"lwpr_vrss_prpr,omitempty"`
-	LwprVrssPrprSign     string `json:"lwpr_vrss_prpr_sign,omitempty"`
-	PrdyClprVrssLwprRate string `json:"prdy_clpr_vrss_lwpr_rate,omitempty"`
-	StckLwpr             string `json:"stck_lwpr,omitempty"`
-	HgprVrssPrpr         string `json:"hgpr_vrss_prpr,omitempty"`
-	HgprVrssPrprSign     string `json:"hgpr_vrss_prpr_sign,omitempty"`
-	PrdyClprVrssHgprRate string `json:"prdy_clpr_vrss_hgpr_rate,omitempty"`
-	StckHgpr             string `json:"stck_hgpr,omitempty"`
-	OprcVrssPrpr         string `json:"oprc_vrss_prpr,omitempty"`
-	OprcVrssPrprSign     string `json:"oprc_vrss_prpr_sign,omitempty"`
-	MangIssuYn           string `json:"mang_issu_yn,omitempty"`
-	DiviAppClsCode       string `json:"divi_app_cls_code,omitempty"`
-	ShortOverYn          string `json:"short_over_yn,omitempty"`
-	MrktWarnClsCode      string `json:"mrkt_warn_cls_code,omitempty"`
-	InvtCafulYn          string `json:"invt_caful_yn,omitempty"`
-	StangeRunupYn        string `json:"stange_runup_yn,omitempty"`
-	SstsHotYn            string `json:"ssts_hot_yn,omitempty"`
-	LowCurrentYn         string `json:"low_current_yn,omitempty"`
-	ViClsCode            string `json:"vi_cls_code,omitempty"`
-	ShortOverClsCode     string `json:"short_over_cls_code,omitempty"`
-	StckLlam             string `json:"stck_llam,omitempty"`
-	NewLstnClsName       string `json:"new_lstn_cls_name,omitempty"`
-	VlntDealClsName      string `json:"vlnt_deal_cls_name,omitempty"`
-	FlngClsName          string `json:"flng_cls_name,omitempty"`
-	RevlIssuReasName     string `json:"revl_issu_reas_name,omitempty"`
-	MrktWarnClsName      string `json:"mrkt_warn_cls_name,omitempty"`
-	StckSdpr             string `json:"stck_sdpr,omitempty"`
-	BstpClsCode          string `json:"bstp_cls_code,omitempty"`
-	StckPrdyClpr         string `json:"stck_prdy_clpr,omitempty"`
-	InsnPbntYn           string `json:"insn_pbnt_yn,omitempty"`
-	FcamModClsName       string `json:"fcam_mod_cls_name,omitempty"`
-	StckPrpr             string `json:"stck_prpr,omitempty"`
-	PrdyVrss             string `json:"prdy_vrss,omitempty"`
-	PrdyVrssSign         string `json:"prdy_vrss_sign,omitempty"`
-	PrdyCtrt             string `json:"prdy_ctrt,omitempty"`
-	AcmlTrPbmn           string `json:"acml_tr_pbmn,omitempty"`
-	AcmlVol              string `json:"acml_vol,omitempty"`
-	PrdyVrssVolRate      string `json:"prdy_vrss_vol_rate,omitempty"`
-	BstpKorIsnm          string `json:"bstp_kor_isnm,omitempty"`
-	SltrYn               string `json:"sltr_yn,omitempty"`
-	TrhtYn               string `json:"trht_yn,omitempty"`
-	OprcRangContYn       string `json:"oprc_rang_cont_yn,omitempty"`
-	VlntFinClsCode       string `json:"vlnt_fin_cls_code,omitempty"`
-	StckOprc             string `json:"stck_oprc,omitempty"`
-	PrdyVol              string `json:"prdy_vol,omitempty"`
+	RprsMrktKorName      string `json:"rprs_mrkt_kor_name"`
+	NewHgprLwprClsCode   string `json:"new_hgpr_lwpr_cls_code"`
+	MxprLlamClsCode      string `json:"mxpr_llam_cls_code"`
+	CrdtAbleYn           string `json:"crdt_able_yn"`
+	StckMxpr             string `json:"stck_mxpr"`
+	ElwPblcYn            string `json:"elw_pblc_yn"`
+	PrdyClprVrssOprcRate string `json:"prdy_clpr_vrss_oprc_rate"`
+	CrdtRate             string `json:"crdt_rate"`
+	MargRate             string `json:"marg_rate"`
+	LwprVrssPrpr         string `json:"lwpr_vrss_prpr"`
+	LwprVrssPrprSign     string `json:"lwpr_vrss_prpr_sign"`
+	PrdyClprVrssLwprRate string `json:"prdy_clpr_vrss_lwpr_rate"`
+	StckLwpr             string `json:"stck_lwpr"`
+	HgprVrssPrpr         string `json:"hgpr_vrss_prpr"`
+	HgprVrssPrprSign     string `json:"hgpr_vrss_prpr_sign"`
+	PrdyClprVrssHgprRate string `json:"prdy_clpr_vrss_hgpr_rate"`
+	StckHgpr             string `json:"stck_hgpr"`
+	OprcVrssPrpr         string `json:"oprc_vrss_prpr"`
+	OprcVrssPrprSign     string `json:"oprc_vrss_prpr_sign"`
+	MangIssuYn           string `json:"mang_issu_yn"`
+	DiviAppClsCode       string `json:"divi_app_cls_code"`
+	ShortOverYn          string `json:"short_over_yn"`
+	MrktWarnClsCode      string `json:"mrkt_warn_cls_code"`
+	InvtCafulYn          string `json:"invt_caful_yn"`
+	StangeRunupYn        string `json:"stange_runup_yn"`
+	SstsHotYn            string `json:"ssts_hot_yn"`
+	LowCurrentYn         string `json:"low_current_yn"`
+	ViClsCode            string `json:"vi_cls_code"`
+	ShortOverClsCode     string `json:"short_over_cls_code"`
+	StckLlam             string `json:"stck_llam"`
+	NewLstnClsName       string `json:"new_lstn_cls_name"`
+	VlntDealClsName      string `json:"vlnt_deal_cls_name"`
+	FlngClsName          string `json:"flng_cls_name"`
+	RevlIssuReasName     string `json:"revl_issu_reas_name"`
+	MrktWarnClsName      string `json:"mrkt_warn_cls_name"`
+	StckSdpr             string `json:"stck_sdpr"`
+	BstpClsCode          string `json:"bstp_cls_code"`
+	StckPrdyClpr         string `json:"stck_prdy_clpr"`
+	InsnPbntYn           string `json:"insn_pbnt_yn"`
+	FcamModClsName       string `json:"fcam_mod_cls_name"`
+	StckPrpr             string `json:"stck_prpr"`
+	PrdyVrss             string `json:"prdy_vrss"`
+	PrdyVrssSign         string `json:"prdy_vrss_sign"`
+	PrdyCtrt             string `json:"prdy_ctrt"`
+	AcmlTrPbmn           string `json:"acml_tr_pbmn"`
+	AcmlVol              string `json:"acml_vol"`
+	PrdyVrssVolRate      string `json:"prdy_vrss_vol_rate"`
+	BstpKorIsnm          string `json:"bstp_kor_isnm"`
+	SltrYn               string `json:"sltr_yn"`
+	TrhtYn               string `json:"trht_yn"`
+	OprcRangContYn       string `json:"oprc_rang_cont_yn"`
+	VlntFinClsCode       string `json:"vlnt_fin_cls_code"`
+	StckOprc             string `json:"stck_oprc"`
+	PrdyVol              string `json:"prdy_vol"`
 }
 
 type KISDomesticStockV1QuotationsInquirePriceN2Request struct {
@@ -3987,25 +3987,25 @@ type KISDomesticStockV1QuotationsInquireTimeDailychartprice struct {
 }
 
 type KISDomesticStockV1QuotationsInquireTimeDailychartpriceOutput1Item struct {
-	PrdyVrss     string `json:"prdy_vrss,omitempty"`
-	PrdyVrssSign string `json:"prdy_vrss_sign,omitempty"`
-	PrdyCtrt     string `json:"prdy_ctrt,omitempty"`
-	StckPrdyClpr string `json:"stck_prdy_clpr,omitempty"`
-	AcmlVol      string `json:"acml_vol,omitempty"`
-	AcmlTrPbmn   string `json:"acml_tr_pbmn,omitempty"`
-	HtsKorIsnm   string `json:"hts_kor_isnm,omitempty"`
-	StckPrpr     string `json:"stck_prpr,omitempty"`
+	PrdyVrss     string `json:"prdy_vrss"`
+	PrdyVrssSign string `json:"prdy_vrss_sign"`
+	PrdyCtrt     string `json:"prdy_ctrt"`
+	StckPrdyClpr string `json:"stck_prdy_clpr"`
+	AcmlVol      string `json:"acml_vol"`
+	AcmlTrPbmn   string `json:"acml_tr_pbmn"`
+	HtsKorIsnm   string `json:"hts_kor_isnm"`
+	StckPrpr     string `json:"stck_prpr"`
 }
 
 type KISDomesticStockV1QuotationsInquireTimeDailychartpriceOutput2Item struct {
-	StckBsopDate string `json:"stck_bsop_date,omitempty"`
-	StckCntgHour string `json:"stck_cntg_hour,omitempty"`
-	StckPrpr     string `json:"stck_prpr,omitempty"`
-	StckOprc     string `json:"stck_oprc,omitempty"`
-	StckHgpr     string `json:"stck_hgpr,omitempty"`
-	StckLwpr     string `json:"stck_lwpr,omitempty"`
-	CntgVol      string `json:"cntg_vol,omitempty"`
-	AcmlTrPbmn   string `json:"acml_tr_pbmn,omitempty"`
+	StckBsopDate string `json:"stck_bsop_date"`
+	StckCntgHour string `json:"stck_cntg_hour"`
+	StckPrpr     string `json:"stck_prpr"`
+	StckOprc     string `json:"stck_oprc"`
+	StckHgpr     string `json:"stck_hgpr"`
+	StckLwpr     string `json:"stck_lwpr"`
+	CntgVol      string `json:"cntg_vol"`
+	AcmlTrPbmn   string `json:"acml_tr_pbmn"`
 }
 
 type KISDomesticStockV1QuotationsInquireTimeDailychartpriceRequest struct {
@@ -4023,33 +4023,33 @@ type KISDomesticStockV1QuotationsInquireTimeIndexchartprice struct {
 }
 
 type KISDomesticStockV1QuotationsInquireTimeIndexchartpriceOutput1Item struct {
-	BstpNmixPrdyVrss string `json:"bstp_nmix_prdy_vrss,omitempty"`
-	PrdyVrssSign     string `json:"prdy_vrss_sign,omitempty"`
-	BstpNmixPrdyCtrt string `json:"bstp_nmix_prdy_ctrt,omitempty"`
-	PrdyNmix         string `json:"prdy_nmix,omitempty"`
-	AcmlVol          string `json:"acml_vol,omitempty"`
-	AcmlTrPbmn       string `json:"acml_tr_pbmn,omitempty"`
-	HtsKorIsnm       string `json:"hts_kor_isnm,omitempty"`
-	BstpNmixPrpr     string `json:"bstp_nmix_prpr,omitempty"`
-	BstpClsCode      string `json:"bstp_cls_code,omitempty"`
-	PrdyVol          string `json:"prdy_vol,omitempty"`
-	BstpNmixOprc     string `json:"bstp_nmix_oprc,omitempty"`
-	BstpNmixHgpr     string `json:"bstp_nmix_hgpr,omitempty"`
-	BstpNmixLwpr     string `json:"bstp_nmix_lwpr,omitempty"`
-	FutsPrdyOprc     string `json:"futs_prdy_oprc,omitempty"`
-	FutsPrdyHgpr     string `json:"futs_prdy_hgpr,omitempty"`
-	FutsPrdyLwpr     string `json:"futs_prdy_lwpr,omitempty"`
+	BstpNmixPrdyVrss string `json:"bstp_nmix_prdy_vrss"`
+	PrdyVrssSign     string `json:"prdy_vrss_sign"`
+	BstpNmixPrdyCtrt string `json:"bstp_nmix_prdy_ctrt"`
+	PrdyNmix         string `json:"prdy_nmix"`
+	AcmlVol          string `json:"acml_vol"`
+	AcmlTrPbmn       string `json:"acml_tr_pbmn"`
+	HtsKorIsnm       string `json:"hts_kor_isnm"`
+	BstpNmixPrpr     string `json:"bstp_nmix_prpr"`
+	BstpClsCode      string `json:"bstp_cls_code"`
+	PrdyVol          string `json:"prdy_vol"`
+	BstpNmixOprc     string `json:"bstp_nmix_oprc"`
+	BstpNmixHgpr     string `json:"bstp_nmix_hgpr"`
+	BstpNmixLwpr     string `json:"bstp_nmix_lwpr"`
+	FutsPrdyOprc     string `json:"futs_prdy_oprc"`
+	FutsPrdyHgpr     string `json:"futs_prdy_hgpr"`
+	FutsPrdyLwpr     string `json:"futs_prdy_lwpr"`
 }
 
 type KISDomesticStockV1QuotationsInquireTimeIndexchartpriceOutput2Item struct {
-	StckBsopDate string `json:"stck_bsop_date,omitempty"`
-	StckCntgHour string `json:"stck_cntg_hour,omitempty"`
-	BstpNmixPrpr string `json:"bstp_nmix_prpr,omitempty"`
-	BstpNmixOprc string `json:"bstp_nmix_oprc,omitempty"`
-	BstpNmixHgpr string `json:"bstp_nmix_hgpr,omitempty"`
-	BstpNmixLwpr string `json:"bstp_nmix_lwpr,omitempty"`
-	CntgVol      string `json:"cntg_vol,omitempty"`
-	AcmlTrPbmn   string `json:"acml_tr_pbmn,omitempty"`
+	StckBsopDate string `json:"stck_bsop_date"`
+	StckCntgHour string `json:"stck_cntg_hour"`
+	BstpNmixPrpr string `json:"bstp_nmix_prpr"`
+	BstpNmixOprc string `json:"bstp_nmix_oprc"`
+	BstpNmixHgpr string `json:"bstp_nmix_hgpr"`
+	BstpNmixLwpr string `json:"bstp_nmix_lwpr"`
+	CntgVol      string `json:"cntg_vol"`
+	AcmlTrPbmn   string `json:"acml_tr_pbmn"`
 }
 
 type KISDomesticStockV1QuotationsInquireTimeIndexchartpriceRequest struct {
@@ -4067,25 +4067,25 @@ type KISDomesticStockV1QuotationsInquireTimeItemchartprice struct {
 }
 
 type KISDomesticStockV1QuotationsInquireTimeItemchartpriceOutput1Item struct {
-	PrdyVrss     string `json:"prdy_vrss,omitempty"`
-	PrdyVrssSign string `json:"prdy_vrss_sign,omitempty"`
-	PrdyCtrt     string `json:"prdy_ctrt,omitempty"`
-	StckPrdyClpr string `json:"stck_prdy_clpr,omitempty"`
-	AcmlVol      string `json:"acml_vol,omitempty"`
-	AcmlTrPbmn   string `json:"acml_tr_pbmn,omitempty"`
-	HtsKorIsnm   string `json:"hts_kor_isnm,omitempty"`
-	StckPrpr     string `json:"stck_prpr,omitempty"`
+	PrdyVrss     string `json:"prdy_vrss"`
+	PrdyVrssSign string `json:"prdy_vrss_sign"`
+	PrdyCtrt     string `json:"prdy_ctrt"`
+	StckPrdyClpr string `json:"stck_prdy_clpr"`
+	AcmlVol      string `json:"acml_vol"`
+	AcmlTrPbmn   string `json:"acml_tr_pbmn"`
+	HtsKorIsnm   string `json:"hts_kor_isnm"`
+	StckPrpr     string `json:"stck_prpr"`
 }
 
 type KISDomesticStockV1QuotationsInquireTimeItemchartpriceOutput2Item struct {
-	StckBsopDate string `json:"stck_bsop_date,omitempty"`
-	StckCntgHour string `json:"stck_cntg_hour,omitempty"`
-	StckPrpr     string `json:"stck_prpr,omitempty"`
-	StckOprc     string `json:"stck_oprc,omitempty"`
-	StckHgpr     string `json:"stck_hgpr,omitempty"`
-	StckLwpr     string `json:"stck_lwpr,omitempty"`
-	CntgVol      string `json:"cntg_vol,omitempty"`
-	AcmlTrPbmn   string `json:"acml_tr_pbmn,omitempty"`
+	StckBsopDate string `json:"stck_bsop_date"`
+	StckCntgHour string `json:"stck_cntg_hour"`
+	StckPrpr     string `json:"stck_prpr"`
+	StckOprc     string `json:"stck_oprc"`
+	StckHgpr     string `json:"stck_hgpr"`
+	StckLwpr     string `json:"stck_lwpr"`
+	CntgVol      string `json:"cntg_vol"`
+	AcmlTrPbmn   string `json:"acml_tr_pbmn"`
 }
 
 type KISDomesticStockV1QuotationsInquireTimeItemchartpriceRequest struct {
@@ -4103,26 +4103,26 @@ type KISDomesticStockV1QuotationsInquireTimeItemconclusion struct {
 }
 
 type KISDomesticStockV1QuotationsInquireTimeItemconclusionOutput1Item struct {
-	StckPrpr        string `json:"stck_prpr,omitempty"`
-	PrdyVrss        string `json:"prdy_vrss,omitempty"`
-	PrdyVrssSign    string `json:"prdy_vrss_sign,omitempty"`
-	PrdyCtrt        string `json:"prdy_ctrt,omitempty"`
-	AcmlVol         string `json:"acml_vol,omitempty"`
-	PrdyVol         string `json:"prdy_vol,omitempty"`
-	RprsMrktKorName string `json:"rprs_mrkt_kor_name,omitempty"`
+	StckPrpr        string `json:"stck_prpr"`
+	PrdyVrss        string `json:"prdy_vrss"`
+	PrdyVrssSign    string `json:"prdy_vrss_sign"`
+	PrdyCtrt        string `json:"prdy_ctrt"`
+	AcmlVol         string `json:"acml_vol"`
+	PrdyVol         string `json:"prdy_vol"`
+	RprsMrktKorName string `json:"rprs_mrkt_kor_name"`
 }
 
 type KISDomesticStockV1QuotationsInquireTimeItemconclusionOutput2Item struct {
-	StckCntgHour string `json:"stck_cntg_hour,omitempty"`
-	StckPbpr     string `json:"stck_pbpr,omitempty"`
-	PrdyVrss     string `json:"prdy_vrss,omitempty"`
-	PrdyVrssSign string `json:"prdy_vrss_sign,omitempty"`
-	PrdyCtrt     string `json:"prdy_ctrt,omitempty"`
-	Askp         string `json:"askp,omitempty"`
-	Bidp         string `json:"bidp,omitempty"`
-	TdayRltv     string `json:"tday_rltv,omitempty"`
-	AcmlVol      string `json:"acml_vol,omitempty"`
-	Cnqn         string `json:"cnqn,omitempty"`
+	StckCntgHour string `json:"stck_cntg_hour"`
+	StckPbpr     string `json:"stck_pbpr"`
+	PrdyVrss     string `json:"prdy_vrss"`
+	PrdyVrssSign string `json:"prdy_vrss_sign"`
+	PrdyCtrt     string `json:"prdy_ctrt"`
+	Askp         string `json:"askp"`
+	Bidp         string `json:"bidp"`
+	TdayRltv     string `json:"tday_rltv"`
+	AcmlVol      string `json:"acml_vol"`
+	Cnqn         string `json:"cnqn"`
 }
 
 type KISDomesticStockV1QuotationsInquireTimeItemconclusionRequest struct {
@@ -4138,36 +4138,36 @@ type KISDomesticStockV1QuotationsInquireTimeOvertimeconclusion struct {
 }
 
 type KISDomesticStockV1QuotationsInquireTimeOvertimeconclusionOutput1Item struct {
-	OvtmUntpPrpr             string `json:"ovtm_untp_prpr,omitempty"`
-	OvtmUntpPrdyVrss         string `json:"ovtm_untp_prdy_vrss,omitempty"`
-	OvtmUntpPrdyVrssSign     string `json:"ovtm_untp_prdy_vrss_sign,omitempty"`
-	OvtmUntpPrdyCtrt         string `json:"ovtm_untp_prdy_ctrt,omitempty"`
-	OvtmUntpVol              string `json:"ovtm_untp_vol,omitempty"`
-	OvtmUntpTrPbmn           string `json:"ovtm_untp_tr_pbmn,omitempty"`
-	OvtmUntpMxpr             string `json:"ovtm_untp_mxpr,omitempty"`
-	OvtmUntpLlam             string `json:"ovtm_untp_llam,omitempty"`
-	OvtmUntpOprc             string `json:"ovtm_untp_oprc,omitempty"`
-	OvtmUntpHgpr             string `json:"ovtm_untp_hgpr,omitempty"`
-	OvtmUntpLwpr             string `json:"ovtm_untp_lwpr,omitempty"`
-	OvtmUntpAntcCnpr         string `json:"ovtm_untp_antc_cnpr,omitempty"`
-	OvtmUntpAntcCntgVrss     string `json:"ovtm_untp_antc_cntg_vrss,omitempty"`
-	OvtmUntpAntcCntgVrssSign string `json:"ovtm_untp_antc_cntg_vrss_sign,omitempty"`
-	OvtmUntpAntcCntgCtrt     string `json:"ovtm_untp_antc_cntg_ctrt,omitempty"`
-	OvtmUntpAntcVol          string `json:"ovtm_untp_antc_vol,omitempty"`
-	UplmSign                 string `json:"uplm_sign,omitempty"`
-	LslmSign                 string `json:"lslm_sign,omitempty"`
+	OvtmUntpPrpr             string `json:"ovtm_untp_prpr"`
+	OvtmUntpPrdyVrss         string `json:"ovtm_untp_prdy_vrss"`
+	OvtmUntpPrdyVrssSign     string `json:"ovtm_untp_prdy_vrss_sign"`
+	OvtmUntpPrdyCtrt         string `json:"ovtm_untp_prdy_ctrt"`
+	OvtmUntpVol              string `json:"ovtm_untp_vol"`
+	OvtmUntpTrPbmn           string `json:"ovtm_untp_tr_pbmn"`
+	OvtmUntpMxpr             string `json:"ovtm_untp_mxpr"`
+	OvtmUntpLlam             string `json:"ovtm_untp_llam"`
+	OvtmUntpOprc             string `json:"ovtm_untp_oprc"`
+	OvtmUntpHgpr             string `json:"ovtm_untp_hgpr"`
+	OvtmUntpLwpr             string `json:"ovtm_untp_lwpr"`
+	OvtmUntpAntcCnpr         string `json:"ovtm_untp_antc_cnpr"`
+	OvtmUntpAntcCntgVrss     string `json:"ovtm_untp_antc_cntg_vrss"`
+	OvtmUntpAntcCntgVrssSign string `json:"ovtm_untp_antc_cntg_vrss_sign"`
+	OvtmUntpAntcCntgCtrt     string `json:"ovtm_untp_antc_cntg_ctrt"`
+	OvtmUntpAntcVol          string `json:"ovtm_untp_antc_vol"`
+	UplmSign                 string `json:"uplm_sign"`
+	LslmSign                 string `json:"lslm_sign"`
 }
 
 type KISDomesticStockV1QuotationsInquireTimeOvertimeconclusionOutput2Item struct {
-	StckCntgHour string `json:"stck_cntg_hour,omitempty"`
-	StckPrpr     string `json:"stck_prpr,omitempty"`
-	PrdyVrss     string `json:"prdy_vrss,omitempty"`
-	PrdyVrssSign string `json:"prdy_vrss_sign,omitempty"`
-	PrdyCtrt     string `json:"prdy_ctrt,omitempty"`
-	Askp         string `json:"askp,omitempty"`
-	Bidp         string `json:"bidp,omitempty"`
-	AcmlVol      string `json:"acml_vol,omitempty"`
-	CntgVol      string `json:"cntg_vol,omitempty"`
+	StckCntgHour string `json:"stck_cntg_hour"`
+	StckPrpr     string `json:"stck_prpr"`
+	PrdyVrss     string `json:"prdy_vrss"`
+	PrdyVrssSign string `json:"prdy_vrss_sign"`
+	PrdyCtrt     string `json:"prdy_ctrt"`
+	Askp         string `json:"askp"`
+	Bidp         string `json:"bidp"`
+	AcmlVol      string `json:"acml_vol"`
+	CntgVol      string `json:"cntg_vol"`
 }
 
 type KISDomesticStockV1QuotationsInquireTimeOvertimeconclusionRequest struct {
@@ -4182,19 +4182,19 @@ type KISDomesticStockV1QuotationsInquireViStatus struct {
 }
 
 type KISDomesticStockV1QuotationsInquireViStatusOutputItem struct {
-	HtsKorIsnm   string `json:"hts_kor_isnm,omitempty"`
-	MkscShrnIscd string `json:"mksc_shrn_iscd,omitempty"`
-	ViClsCode    string `json:"vi_cls_code,omitempty"`
-	BsopDate     string `json:"bsop_date,omitempty"`
-	CntgViHour   string `json:"cntg_vi_hour,omitempty"`
-	ViCnclHour   string `json:"vi_cncl_hour,omitempty"`
-	ViKindCode   string `json:"vi_kind_code,omitempty"`
-	ViPrc        string `json:"vi_prc,omitempty"`
-	ViStndPrc    string `json:"vi_stnd_prc,omitempty"`
-	ViDprt       string `json:"vi_dprt,omitempty"`
-	ViDmcStndPrc string `json:"vi_dmc_stnd_prc,omitempty"`
-	ViDmcDprt    string `json:"vi_dmc_dprt,omitempty"`
-	ViCount      string `json:"vi_count,omitempty"`
+	HtsKorIsnm   string `json:"hts_kor_isnm"`
+	MkscShrnIscd string `json:"mksc_shrn_iscd"`
+	ViClsCode    string `json:"vi_cls_code"`
+	BsopDate     string `json:"bsop_date"`
+	CntgViHour   string `json:"cntg_vi_hour"`
+	ViCnclHour   string `json:"vi_cncl_hour"`
+	ViKindCode   string `json:"vi_kind_code"`
+	ViPrc        string `json:"vi_prc"`
+	ViStndPrc    string `json:"vi_stnd_prc"`
+	ViDprt       string `json:"vi_dprt"`
+	ViDmcStndPrc string `json:"vi_dmc_stnd_prc"`
+	ViDmcDprt    string `json:"vi_dmc_dprt"`
+	ViCount      string `json:"vi_count"`
 }
 
 type KISDomesticStockV1QuotationsInquireViStatusRequest struct {
@@ -4214,12 +4214,12 @@ type KISDomesticStockV1QuotationsIntstockGrouplist struct {
 }
 
 type KISDomesticStockV1QuotationsIntstockGrouplistOutput2Item struct {
-	Date         string `json:"date,omitempty"`
-	TrnmHour     string `json:"trnm_hour,omitempty"`
-	DataRank     string `json:"data_rank,omitempty"`
-	InterGrpCode string `json:"inter_grp_code,omitempty"`
-	InterGrpName string `json:"inter_grp_name,omitempty"`
-	AskCnt       string `json:"ask_cnt,omitempty"`
+	Date         string `json:"date"`
+	TrnmHour     string `json:"trnm_hour"`
+	DataRank     string `json:"data_rank"`
+	InterGrpCode string `json:"inter_grp_code"`
+	InterGrpName string `json:"inter_grp_name"`
+	AskCnt       string `json:"ask_cnt"`
 }
 
 type KISDomesticStockV1QuotationsIntstockGrouplistRequest struct {
@@ -4234,35 +4234,35 @@ type KISDomesticStockV1QuotationsIntstockMultprice struct {
 }
 
 type KISDomesticStockV1QuotationsIntstockMultpriceOutputItem struct {
-	KospiKosdaqClsName   string `json:"kospi_kosdaq_cls_name,omitempty"`
-	MrktTrtmClsName      string `json:"mrkt_trtm_cls_name,omitempty"`
-	HourClsCode          string `json:"hour_cls_code,omitempty"`
-	InterShrnIscd        string `json:"inter_shrn_iscd,omitempty"`
-	InterKorIsnm         string `json:"inter_kor_isnm,omitempty"`
-	Inter2Prpr           string `json:"inter2_prpr,omitempty"`
-	Inter2PrdyVrss       string `json:"inter2_prdy_vrss,omitempty"`
-	PrdyVrssSign         string `json:"prdy_vrss_sign,omitempty"`
-	PrdyCtrt             string `json:"prdy_ctrt,omitempty"`
-	AcmlVol              string `json:"acml_vol,omitempty"`
-	Inter2Oprc           string `json:"inter2_oprc,omitempty"`
-	Inter2Hgpr           string `json:"inter2_hgpr,omitempty"`
-	Inter2Lwpr           string `json:"inter2_lwpr,omitempty"`
-	Inter2Llam           string `json:"inter2_llam,omitempty"`
-	Inter2Mxpr           string `json:"inter2_mxpr,omitempty"`
-	Inter2Askp           string `json:"inter2_askp,omitempty"`
-	Inter2Bidp           string `json:"inter2_bidp,omitempty"`
-	SelnRsqn             string `json:"seln_rsqn,omitempty"`
-	ShnuRsqn             string `json:"shnu_rsqn,omitempty"`
-	TotalAskpRsqn        string `json:"total_askp_rsqn,omitempty"`
-	TotalBidpRsqn        string `json:"total_bidp_rsqn,omitempty"`
-	AcmlTrPbmn           string `json:"acml_tr_pbmn,omitempty"`
-	Inter2PrdyClpr       string `json:"inter2_prdy_clpr,omitempty"`
-	OprcVrssHgprRate     string `json:"oprc_vrss_hgpr_rate,omitempty"`
-	IntrAntcCntgVrss     string `json:"intr_antc_cntg_vrss,omitempty"`
-	IntrAntcCntgVrssSign string `json:"intr_antc_cntg_vrss_sign,omitempty"`
-	IntrAntcCntgPrdyCtrt string `json:"intr_antc_cntg_prdy_ctrt,omitempty"`
-	IntrAntcVol          string `json:"intr_antc_vol,omitempty"`
-	Inter2Sdpr           string `json:"inter2_sdpr,omitempty"`
+	KospiKosdaqClsName   string `json:"kospi_kosdaq_cls_name"`
+	MrktTrtmClsName      string `json:"mrkt_trtm_cls_name"`
+	HourClsCode          string `json:"hour_cls_code"`
+	InterShrnIscd        string `json:"inter_shrn_iscd"`
+	InterKorIsnm         string `json:"inter_kor_isnm"`
+	Inter2Prpr           string `json:"inter2_prpr"`
+	Inter2PrdyVrss       string `json:"inter2_prdy_vrss"`
+	PrdyVrssSign         string `json:"prdy_vrss_sign"`
+	PrdyCtrt             string `json:"prdy_ctrt"`
+	AcmlVol              string `json:"acml_vol"`
+	Inter2Oprc           string `json:"inter2_oprc"`
+	Inter2Hgpr           string `json:"inter2_hgpr"`
+	Inter2Lwpr           string `json:"inter2_lwpr"`
+	Inter2Llam           string `json:"inter2_llam"`
+	Inter2Mxpr           string `json:"inter2_mxpr"`
+	Inter2Askp           string `json:"inter2_askp"`
+	Inter2Bidp           string `json:"inter2_bidp"`
+	SelnRsqn             string `json:"seln_rsqn"`
+	ShnuRsqn             string `json:"shnu_rsqn"`
+	TotalAskpRsqn        string `json:"total_askp_rsqn"`
+	TotalBidpRsqn        string `json:"total_bidp_rsqn"`
+	AcmlTrPbmn           string `json:"acml_tr_pbmn"`
+	Inter2PrdyClpr       string `json:"inter2_prdy_clpr"`
+	OprcVrssHgprRate     string `json:"oprc_vrss_hgpr_rate"`
+	IntrAntcCntgVrss     string `json:"intr_antc_cntg_vrss"`
+	IntrAntcCntgVrssSign string `json:"intr_antc_cntg_vrss_sign"`
+	IntrAntcCntgPrdyCtrt string `json:"intr_antc_cntg_prdy_ctrt"`
+	IntrAntcVol          string `json:"intr_antc_vol"`
+	Inter2Sdpr           string `json:"inter2_sdpr"`
 }
 
 type KISDomesticStockV1QuotationsIntstockMultpriceRequest struct {
@@ -4335,21 +4335,21 @@ type KISDomesticStockV1QuotationsIntstockStocklistByGroup struct {
 }
 
 type KISDomesticStockV1QuotationsIntstockStocklistByGroupOutput1Item struct {
-	DataRank     string `json:"data_rank,omitempty"`
-	InterGrpName string `json:"inter_grp_name,omitempty"`
+	DataRank     string `json:"data_rank"`
+	InterGrpName string `json:"inter_grp_name"`
 }
 
 type KISDomesticStockV1QuotationsIntstockStocklistByGroupOutput2Item struct {
-	FidMrktClsCode string `json:"fid_mrkt_cls_code,omitempty"`
-	DataRank       string `json:"data_rank,omitempty"`
-	ExchCode       string `json:"exch_code,omitempty"`
-	JongCode       string `json:"jong_code,omitempty"`
-	ColorCode      string `json:"color_code,omitempty"`
-	Memo           string `json:"memo,omitempty"`
-	HtsKorIsnm     string `json:"hts_kor_isnm,omitempty"`
-	FxdtNtbyQty    string `json:"fxdt_ntby_qty,omitempty"`
-	CntgUnpr       string `json:"cntg_unpr,omitempty"`
-	CntgClsCode    string `json:"cntg_cls_code,omitempty"`
+	FidMrktClsCode string `json:"fid_mrkt_cls_code"`
+	DataRank       string `json:"data_rank"`
+	ExchCode       string `json:"exch_code"`
+	JongCode       string `json:"jong_code"`
+	ColorCode      string `json:"color_code"`
+	Memo           string `json:"memo"`
+	HtsKorIsnm     string `json:"hts_kor_isnm"`
+	FxdtNtbyQty    string `json:"fxdt_ntby_qty"`
+	CntgUnpr       string `json:"cntg_unpr"`
+	CntgClsCode    string `json:"cntg_cls_code"`
 }
 
 type KISDomesticStockV1QuotationsIntstockStocklistByGroupRequest struct {
@@ -4369,22 +4369,22 @@ type KISDomesticStockV1QuotationsInvestOpbysec struct {
 }
 
 type KISDomesticStockV1QuotationsInvestOpbysecOutputItem struct {
-	StckBsopDate        string `json:"stck_bsop_date,omitempty"`
-	StckShrnIscd        string `json:"stck_shrn_iscd,omitempty"`
-	HtsKorIsnm          string `json:"hts_kor_isnm,omitempty"`
-	InvtOpnn            string `json:"invt_opnn,omitempty"`
-	InvtOpnnClsCode     string `json:"invt_opnn_cls_code,omitempty"`
-	RgbfInvtOpnn        string `json:"rgbf_invt_opnn,omitempty"`
-	RgbfInvtOpnnClsCode string `json:"rgbf_invt_opnn_cls_code,omitempty"`
-	MbcrName            string `json:"mbcr_name,omitempty"`
-	StckPrpr            string `json:"stck_prpr,omitempty"`
-	PrdyVrss            string `json:"prdy_vrss,omitempty"`
-	PrdyVrssSign        string `json:"prdy_vrss_sign,omitempty"`
-	PrdyCtrt            string `json:"prdy_ctrt,omitempty"`
-	HtsGoalPrc          string `json:"hts_goal_prc,omitempty"`
-	StckPrdyClpr        string `json:"stck_prdy_clpr,omitempty"`
-	StftEsdg            string `json:"stft_esdg,omitempty"`
-	Dprt                string `json:"dprt,omitempty"`
+	StckBsopDate        string `json:"stck_bsop_date"`
+	StckShrnIscd        string `json:"stck_shrn_iscd"`
+	HtsKorIsnm          string `json:"hts_kor_isnm"`
+	InvtOpnn            string `json:"invt_opnn"`
+	InvtOpnnClsCode     string `json:"invt_opnn_cls_code"`
+	RgbfInvtOpnn        string `json:"rgbf_invt_opnn"`
+	RgbfInvtOpnnClsCode string `json:"rgbf_invt_opnn_cls_code"`
+	MbcrName            string `json:"mbcr_name"`
+	StckPrpr            string `json:"stck_prpr"`
+	PrdyVrss            string `json:"prdy_vrss"`
+	PrdyVrssSign        string `json:"prdy_vrss_sign"`
+	PrdyCtrt            string `json:"prdy_ctrt"`
+	HtsGoalPrc          string `json:"hts_goal_prc"`
+	StckPrdyClpr        string `json:"stck_prdy_clpr"`
+	StftEsdg            string `json:"stft_esdg"`
+	Dprt                string `json:"dprt"`
 }
 
 type KISDomesticStockV1QuotationsInvestOpbysecRequest struct {
@@ -4402,18 +4402,18 @@ type KISDomesticStockV1QuotationsInvestOpinion struct {
 }
 
 type KISDomesticStockV1QuotationsInvestOpinionOutputItem struct {
-	StckBsopDate        string `json:"stck_bsop_date,omitempty"`
-	InvtOpnn            string `json:"invt_opnn,omitempty"`
-	InvtOpnnClsCode     string `json:"invt_opnn_cls_code,omitempty"`
-	RgbfInvtOpnn        string `json:"rgbf_invt_opnn,omitempty"`
-	RgbfInvtOpnnClsCode string `json:"rgbf_invt_opnn_cls_code,omitempty"`
-	MbcrName            string `json:"mbcr_name,omitempty"`
-	HtsGoalPrc          string `json:"hts_goal_prc,omitempty"`
-	StckPrdyClpr        string `json:"stck_prdy_clpr,omitempty"`
-	StckNdayEsdg        string `json:"stck_nday_esdg,omitempty"`
-	NdayDprt            string `json:"nday_dprt,omitempty"`
-	StftEsdg            string `json:"stft_esdg,omitempty"`
-	Dprt                string `json:"dprt,omitempty"`
+	StckBsopDate        string `json:"stck_bsop_date"`
+	InvtOpnn            string `json:"invt_opnn"`
+	InvtOpnnClsCode     string `json:"invt_opnn_cls_code"`
+	RgbfInvtOpnn        string `json:"rgbf_invt_opnn"`
+	RgbfInvtOpnnClsCode string `json:"rgbf_invt_opnn_cls_code"`
+	MbcrName            string `json:"mbcr_name"`
+	HtsGoalPrc          string `json:"hts_goal_prc"`
+	StckPrdyClpr        string `json:"stck_prdy_clpr"`
+	StckNdayEsdg        string `json:"stck_nday_esdg"`
+	NdayDprt            string `json:"nday_dprt"`
+	StftEsdg            string `json:"stft_esdg"`
+	Dprt                string `json:"dprt"`
 }
 
 type KISDomesticStockV1QuotationsInvestOpinionRequest struct {
@@ -4430,26 +4430,26 @@ type KISDomesticStockV1QuotationsInvestorProgramTradeToday struct {
 }
 
 type KISDomesticStockV1QuotationsInvestorProgramTradeTodayOutput1Item struct {
-	InvrClsCode string `json:"invr_cls_code,omitempty"`
-	AllSelnQty  string `json:"all_seln_qty,omitempty"`
-	AllSelnAmt  string `json:"all_seln_amt,omitempty"`
-	InvrClsName string `json:"invr_cls_name,omitempty"`
-	AllShnuQty  string `json:"all_shnu_qty,omitempty"`
-	AllShnuAmt  string `json:"all_shnu_amt,omitempty"`
-	AllNtbyAmt  string `json:"all_ntby_amt,omitempty"`
-	ArbtSelnQty string `json:"arbt_seln_qty,omitempty"`
-	AllNtbyQty  string `json:"all_ntby_qty,omitempty"`
-	ArbtShnuQty string `json:"arbt_shnu_qty,omitempty"`
-	ArbtNtbyQty string `json:"arbt_ntby_qty,omitempty"`
-	ArbtSelnAmt string `json:"arbt_seln_amt,omitempty"`
-	ArbtShnuAmt string `json:"arbt_shnu_amt,omitempty"`
-	ArbtNtbyAmt string `json:"arbt_ntby_amt,omitempty"`
-	NabtSelnQty string `json:"nabt_seln_qty,omitempty"`
-	NabtShnuQty string `json:"nabt_shnu_qty,omitempty"`
-	NabtNtbyQty string `json:"nabt_ntby_qty,omitempty"`
-	NabtSelnAmt string `json:"nabt_seln_amt,omitempty"`
-	NabtShnuAmt string `json:"nabt_shnu_amt,omitempty"`
-	NabtNtbyAmt string `json:"nabt_ntby_amt,omitempty"`
+	InvrClsCode string `json:"invr_cls_code"`
+	AllSelnQty  string `json:"all_seln_qty"`
+	AllSelnAmt  string `json:"all_seln_amt"`
+	InvrClsName string `json:"invr_cls_name"`
+	AllShnuQty  string `json:"all_shnu_qty"`
+	AllShnuAmt  string `json:"all_shnu_amt"`
+	AllNtbyAmt  string `json:"all_ntby_amt"`
+	ArbtSelnQty string `json:"arbt_seln_qty"`
+	AllNtbyQty  string `json:"all_ntby_qty"`
+	ArbtShnuQty string `json:"arbt_shnu_qty"`
+	ArbtNtbyQty string `json:"arbt_ntby_qty"`
+	ArbtSelnAmt string `json:"arbt_seln_amt"`
+	ArbtShnuAmt string `json:"arbt_shnu_amt"`
+	ArbtNtbyAmt string `json:"arbt_ntby_amt"`
+	NabtSelnQty string `json:"nabt_seln_qty"`
+	NabtShnuQty string `json:"nabt_shnu_qty"`
+	NabtNtbyQty string `json:"nabt_ntby_qty"`
+	NabtSelnAmt string `json:"nabt_seln_amt"`
+	NabtShnuAmt string `json:"nabt_shnu_amt"`
+	NabtNtbyAmt string `json:"nabt_ntby_amt"`
 }
 
 type KISDomesticStockV1QuotationsInvestorProgramTradeTodayRequest struct {
@@ -4464,117 +4464,117 @@ type KISDomesticStockV1QuotationsInvestorTradeByStockDaily struct {
 }
 
 type KISDomesticStockV1QuotationsInvestorTradeByStockDailyOutput1Item struct {
-	StckPrpr        string `json:"stck_prpr,omitempty"`
-	PrdyVrss        string `json:"prdy_vrss,omitempty"`
-	PrdyVrssSign    string `json:"prdy_vrss_sign,omitempty"`
-	PrdyCtrt        string `json:"prdy_ctrt,omitempty"`
-	AcmlVol         string `json:"acml_vol,omitempty"`
-	PrdyVol         string `json:"prdy_vol,omitempty"`
-	RprsMrktKorName string `json:"rprs_mrkt_kor_name,omitempty"`
+	StckPrpr        string `json:"stck_prpr"`
+	PrdyVrss        string `json:"prdy_vrss"`
+	PrdyVrssSign    string `json:"prdy_vrss_sign"`
+	PrdyCtrt        string `json:"prdy_ctrt"`
+	AcmlVol         string `json:"acml_vol"`
+	PrdyVol         string `json:"prdy_vol"`
+	RprsMrktKorName string `json:"rprs_mrkt_kor_name"`
 }
 
 type KISDomesticStockV1QuotationsInvestorTradeByStockDailyOutput2Item struct {
-	StckBsopDate      string `json:"stck_bsop_date,omitempty"`
-	StckClpr          string `json:"stck_clpr,omitempty"`
-	PrdyVrss          string `json:"prdy_vrss,omitempty"`
-	PrdyVrssSign      string `json:"prdy_vrss_sign,omitempty"`
-	PrdyCtrt          string `json:"prdy_ctrt,omitempty"`
-	AcmlVol           string `json:"acml_vol,omitempty"`
-	AcmlTrPbmn        string `json:"acml_tr_pbmn,omitempty"`
-	StckOprc          string `json:"stck_oprc,omitempty"`
-	StckHgpr          string `json:"stck_hgpr,omitempty"`
-	StckLwpr          string `json:"stck_lwpr,omitempty"`
-	FrgnNtbyQty       string `json:"frgn_ntby_qty,omitempty"`
-	FrgnRegNtbyQty    string `json:"frgn_reg_ntby_qty,omitempty"`
-	FrgnNregNtbyQty   string `json:"frgn_nreg_ntby_qty,omitempty"`
-	PrsnNtbyQty       string `json:"prsn_ntby_qty,omitempty"`
-	OrgnNtbyQty       string `json:"orgn_ntby_qty,omitempty"`
-	ScrtNtbyQty       string `json:"scrt_ntby_qty,omitempty"`
-	IvtrNtbyQty       string `json:"ivtr_ntby_qty,omitempty"`
-	PeFundNtbyVol     string `json:"pe_fund_ntby_vol,omitempty"`
-	BankNtbyQty       string `json:"bank_ntby_qty,omitempty"`
-	InsuNtbyQty       string `json:"insu_ntby_qty,omitempty"`
-	MrbnNtbyQty       string `json:"mrbn_ntby_qty,omitempty"`
-	FundNtbyQty       string `json:"fund_ntby_qty,omitempty"`
-	EtcNtbyQty        string `json:"etc_ntby_qty,omitempty"`
-	EtcCorpNtbyVol    string `json:"etc_corp_ntby_vol,omitempty"`
-	EtcOrgtNtbyVol    string `json:"etc_orgt_ntby_vol,omitempty"`
-	FrgnRegNtbyPbmn   string `json:"frgn_reg_ntby_pbmn,omitempty"`
-	FrgnNtbyTrPbmn    string `json:"frgn_ntby_tr_pbmn,omitempty"`
-	FrgnNregNtbyPbmn  string `json:"frgn_nreg_ntby_pbmn,omitempty"`
-	PrsnNtbyTrPbmn    string `json:"prsn_ntby_tr_pbmn,omitempty"`
-	OrgnNtbyTrPbmn    string `json:"orgn_ntby_tr_pbmn,omitempty"`
-	ScrtNtbyTrPbmn    string `json:"scrt_ntby_tr_pbmn,omitempty"`
-	PeFundNtbyTrPbmn  string `json:"pe_fund_ntby_tr_pbmn,omitempty"`
-	IvtrNtbyTrPbmn    string `json:"ivtr_ntby_tr_pbmn,omitempty"`
-	BankNtbyTrPbmn    string `json:"bank_ntby_tr_pbmn,omitempty"`
-	InsuNtbyTrPbmn    string `json:"insu_ntby_tr_pbmn,omitempty"`
-	MrbnNtbyTrPbmn    string `json:"mrbn_ntby_tr_pbmn,omitempty"`
-	FundNtbyTrPbmn    string `json:"fund_ntby_tr_pbmn,omitempty"`
-	EtcNtbyTrPbmn     string `json:"etc_ntby_tr_pbmn,omitempty"`
-	EtcCorpNtbyTrPbmn string `json:"etc_corp_ntby_tr_pbmn,omitempty"`
-	EtcOrgtNtbyTrPbmn string `json:"etc_orgt_ntby_tr_pbmn,omitempty"`
-	FrgnSelnVol       string `json:"frgn_seln_vol,omitempty"`
-	FrgnShnuVol       string `json:"frgn_shnu_vol,omitempty"`
-	FrgnSelnTrPbmn    string `json:"frgn_seln_tr_pbmn,omitempty"`
-	FrgnShnuTrPbmn    string `json:"frgn_shnu_tr_pbmn,omitempty"`
-	FrgnRegAskpQty    string `json:"frgn_reg_askp_qty,omitempty"`
-	FrgnRegBidpQty    string `json:"frgn_reg_bidp_qty,omitempty"`
-	FrgnRegAskpPbmn   string `json:"frgn_reg_askp_pbmn,omitempty"`
-	FrgnRegBidpPbmn   string `json:"frgn_reg_bidp_pbmn,omitempty"`
-	FrgnNregAskpQty   string `json:"frgn_nreg_askp_qty,omitempty"`
-	FrgnNregBidpQty   string `json:"frgn_nreg_bidp_qty,omitempty"`
-	FrgnNregAskpPbmn  string `json:"frgn_nreg_askp_pbmn,omitempty"`
-	FrgnNregBidpPbmn  string `json:"frgn_nreg_bidp_pbmn,omitempty"`
-	PrsnSelnVol       string `json:"prsn_seln_vol,omitempty"`
-	PrsnShnuVol       string `json:"prsn_shnu_vol,omitempty"`
-	PrsnSelnTrPbmn    string `json:"prsn_seln_tr_pbmn,omitempty"`
-	PrsnShnuTrPbmn    string `json:"prsn_shnu_tr_pbmn,omitempty"`
-	OrgnSelnVol       string `json:"orgn_seln_vol,omitempty"`
-	OrgnShnuVol       string `json:"orgn_shnu_vol,omitempty"`
-	OrgnSelnTrPbmn    string `json:"orgn_seln_tr_pbmn,omitempty"`
-	OrgnShnuTrPbmn    string `json:"orgn_shnu_tr_pbmn,omitempty"`
-	ScrtSelnVol       string `json:"scrt_seln_vol,omitempty"`
-	ScrtShnuVol       string `json:"scrt_shnu_vol,omitempty"`
-	ScrtSelnTrPbmn    string `json:"scrt_seln_tr_pbmn,omitempty"`
-	ScrtShnuTrPbmn    string `json:"scrt_shnu_tr_pbmn,omitempty"`
-	IvtrSelnVol       string `json:"ivtr_seln_vol,omitempty"`
-	IvtrShnuVol       string `json:"ivtr_shnu_vol,omitempty"`
-	IvtrSelnTrPbmn    string `json:"ivtr_seln_tr_pbmn,omitempty"`
-	IvtrShnuTrPbmn    string `json:"ivtr_shnu_tr_pbmn,omitempty"`
-	PeFundSelnTrPbmn  string `json:"pe_fund_seln_tr_pbmn,omitempty"`
-	PeFundSelnVol     string `json:"pe_fund_seln_vol,omitempty"`
-	PeFundShnuTrPbmn  string `json:"pe_fund_shnu_tr_pbmn,omitempty"`
-	PeFundShnuVol     string `json:"pe_fund_shnu_vol,omitempty"`
-	BankSelnVol       string `json:"bank_seln_vol,omitempty"`
-	BankShnuVol       string `json:"bank_shnu_vol,omitempty"`
-	BankSelnTrPbmn    string `json:"bank_seln_tr_pbmn,omitempty"`
-	BankShnuTrPbmn    string `json:"bank_shnu_tr_pbmn,omitempty"`
-	InsuSelnVol       string `json:"insu_seln_vol,omitempty"`
-	InsuShnuVol       string `json:"insu_shnu_vol,omitempty"`
-	InsuSelnTrPbmn    string `json:"insu_seln_tr_pbmn,omitempty"`
-	InsuShnuTrPbmn    string `json:"insu_shnu_tr_pbmn,omitempty"`
-	MrbnSelnVol       string `json:"mrbn_seln_vol,omitempty"`
-	MrbnShnuVol       string `json:"mrbn_shnu_vol,omitempty"`
-	MrbnSelnTrPbmn    string `json:"mrbn_seln_tr_pbmn,omitempty"`
-	MrbnShnuTrPbmn    string `json:"mrbn_shnu_tr_pbmn,omitempty"`
-	FundSelnVol       string `json:"fund_seln_vol,omitempty"`
-	FundShnuVol       string `json:"fund_shnu_vol,omitempty"`
-	FundSelnTrPbmn    string `json:"fund_seln_tr_pbmn,omitempty"`
-	FundShnuTrPbmn    string `json:"fund_shnu_tr_pbmn,omitempty"`
-	EtcSelnVol        string `json:"etc_seln_vol,omitempty"`
-	EtcShnuVol        string `json:"etc_shnu_vol,omitempty"`
-	EtcSelnTrPbmn     string `json:"etc_seln_tr_pbmn,omitempty"`
-	EtcShnuTrPbmn     string `json:"etc_shnu_tr_pbmn,omitempty"`
-	EtcOrgtSelnVol    string `json:"etc_orgt_seln_vol,omitempty"`
-	EtcOrgtShnuVol    string `json:"etc_orgt_shnu_vol,omitempty"`
-	EtcOrgtSelnTrPbmn string `json:"etc_orgt_seln_tr_pbmn,omitempty"`
-	EtcOrgtShnuTrPbmn string `json:"etc_orgt_shnu_tr_pbmn,omitempty"`
-	EtcCorpSelnVol    string `json:"etc_corp_seln_vol,omitempty"`
-	EtcCorpShnuVol    string `json:"etc_corp_shnu_vol,omitempty"`
-	EtcCorpSelnTrPbmn string `json:"etc_corp_seln_tr_pbmn,omitempty"`
-	EtcCorpShnuTrPbmn string `json:"etc_corp_shnu_tr_pbmn,omitempty"`
-	BoldYn            string `json:"bold_yn,omitempty"`
+	StckBsopDate      string `json:"stck_bsop_date"`
+	StckClpr          string `json:"stck_clpr"`
+	PrdyVrss          string `json:"prdy_vrss"`
+	PrdyVrssSign      string `json:"prdy_vrss_sign"`
+	PrdyCtrt          string `json:"prdy_ctrt"`
+	AcmlVol           string `json:"acml_vol"`
+	AcmlTrPbmn        string `json:"acml_tr_pbmn"`
+	StckOprc          string `json:"stck_oprc"`
+	StckHgpr          string `json:"stck_hgpr"`
+	StckLwpr          string `json:"stck_lwpr"`
+	FrgnNtbyQty       string `json:"frgn_ntby_qty"`
+	FrgnRegNtbyQty    string `json:"frgn_reg_ntby_qty"`
+	FrgnNregNtbyQty   string `json:"frgn_nreg_ntby_qty"`
+	PrsnNtbyQty       string `json:"prsn_ntby_qty"`
+	OrgnNtbyQty       string `json:"orgn_ntby_qty"`
+	ScrtNtbyQty       string `json:"scrt_ntby_qty"`
+	IvtrNtbyQty       string `json:"ivtr_ntby_qty"`
+	PeFundNtbyVol     string `json:"pe_fund_ntby_vol"`
+	BankNtbyQty       string `json:"bank_ntby_qty"`
+	InsuNtbyQty       string `json:"insu_ntby_qty"`
+	MrbnNtbyQty       string `json:"mrbn_ntby_qty"`
+	FundNtbyQty       string `json:"fund_ntby_qty"`
+	EtcNtbyQty        string `json:"etc_ntby_qty"`
+	EtcCorpNtbyVol    string `json:"etc_corp_ntby_vol"`
+	EtcOrgtNtbyVol    string `json:"etc_orgt_ntby_vol"`
+	FrgnRegNtbyPbmn   string `json:"frgn_reg_ntby_pbmn"`
+	FrgnNtbyTrPbmn    string `json:"frgn_ntby_tr_pbmn"`
+	FrgnNregNtbyPbmn  string `json:"frgn_nreg_ntby_pbmn"`
+	PrsnNtbyTrPbmn    string `json:"prsn_ntby_tr_pbmn"`
+	OrgnNtbyTrPbmn    string `json:"orgn_ntby_tr_pbmn"`
+	ScrtNtbyTrPbmn    string `json:"scrt_ntby_tr_pbmn"`
+	PeFundNtbyTrPbmn  string `json:"pe_fund_ntby_tr_pbmn"`
+	IvtrNtbyTrPbmn    string `json:"ivtr_ntby_tr_pbmn"`
+	BankNtbyTrPbmn    string `json:"bank_ntby_tr_pbmn"`
+	InsuNtbyTrPbmn    string `json:"insu_ntby_tr_pbmn"`
+	MrbnNtbyTrPbmn    string `json:"mrbn_ntby_tr_pbmn"`
+	FundNtbyTrPbmn    string `json:"fund_ntby_tr_pbmn"`
+	EtcNtbyTrPbmn     string `json:"etc_ntby_tr_pbmn"`
+	EtcCorpNtbyTrPbmn string `json:"etc_corp_ntby_tr_pbmn"`
+	EtcOrgtNtbyTrPbmn string `json:"etc_orgt_ntby_tr_pbmn"`
+	FrgnSelnVol       string `json:"frgn_seln_vol"`
+	FrgnShnuVol       string `json:"frgn_shnu_vol"`
+	FrgnSelnTrPbmn    string `json:"frgn_seln_tr_pbmn"`
+	FrgnShnuTrPbmn    string `json:"frgn_shnu_tr_pbmn"`
+	FrgnRegAskpQty    string `json:"frgn_reg_askp_qty"`
+	FrgnRegBidpQty    string `json:"frgn_reg_bidp_qty"`
+	FrgnRegAskpPbmn   string `json:"frgn_reg_askp_pbmn"`
+	FrgnRegBidpPbmn   string `json:"frgn_reg_bidp_pbmn"`
+	FrgnNregAskpQty   string `json:"frgn_nreg_askp_qty"`
+	FrgnNregBidpQty   string `json:"frgn_nreg_bidp_qty"`
+	FrgnNregAskpPbmn  string `json:"frgn_nreg_askp_pbmn"`
+	FrgnNregBidpPbmn  string `json:"frgn_nreg_bidp_pbmn"`
+	PrsnSelnVol       string `json:"prsn_seln_vol"`
+	PrsnShnuVol       string `json:"prsn_shnu_vol"`
+	PrsnSelnTrPbmn    string `json:"prsn_seln_tr_pbmn"`
+	PrsnShnuTrPbmn    string `json:"prsn_shnu_tr_pbmn"`
+	OrgnSelnVol       string `json:"orgn_seln_vol"`
+	OrgnShnuVol       string `json:"orgn_shnu_vol"`
+	OrgnSelnTrPbmn    string `json:"orgn_seln_tr_pbmn"`
+	OrgnShnuTrPbmn    string `json:"orgn_shnu_tr_pbmn"`
+	ScrtSelnVol       string `json:"scrt_seln_vol"`
+	ScrtShnuVol       string `json:"scrt_shnu_vol"`
+	ScrtSelnTrPbmn    string `json:"scrt_seln_tr_pbmn"`
+	ScrtShnuTrPbmn    string `json:"scrt_shnu_tr_pbmn"`
+	IvtrSelnVol       string `json:"ivtr_seln_vol"`
+	IvtrShnuVol       string `json:"ivtr_shnu_vol"`
+	IvtrSelnTrPbmn    string `json:"ivtr_seln_tr_pbmn"`
+	IvtrShnuTrPbmn    string `json:"ivtr_shnu_tr_pbmn"`
+	PeFundSelnTrPbmn  string `json:"pe_fund_seln_tr_pbmn"`
+	PeFundSelnVol     string `json:"pe_fund_seln_vol"`
+	PeFundShnuTrPbmn  string `json:"pe_fund_shnu_tr_pbmn"`
+	PeFundShnuVol     string `json:"pe_fund_shnu_vol"`
+	BankSelnVol       string `json:"bank_seln_vol"`
+	BankShnuVol       string `json:"bank_shnu_vol"`
+	BankSelnTrPbmn    string `json:"bank_seln_tr_pbmn"`
+	BankShnuTrPbmn    string `json:"bank_shnu_tr_pbmn"`
+	InsuSelnVol       string `json:"insu_seln_vol"`
+	InsuShnuVol       string `json:"insu_shnu_vol"`
+	InsuSelnTrPbmn    string `json:"insu_seln_tr_pbmn"`
+	InsuShnuTrPbmn    string `json:"insu_shnu_tr_pbmn"`
+	MrbnSelnVol       string `json:"mrbn_seln_vol"`
+	MrbnShnuVol       string `json:"mrbn_shnu_vol"`
+	MrbnSelnTrPbmn    string `json:"mrbn_seln_tr_pbmn"`
+	MrbnShnuTrPbmn    string `json:"mrbn_shnu_tr_pbmn"`
+	FundSelnVol       string `json:"fund_seln_vol"`
+	FundShnuVol       string `json:"fund_shnu_vol"`
+	FundSelnTrPbmn    string `json:"fund_seln_tr_pbmn"`
+	FundShnuTrPbmn    string `json:"fund_shnu_tr_pbmn"`
+	EtcSelnVol        string `json:"etc_seln_vol"`
+	EtcShnuVol        string `json:"etc_shnu_vol"`
+	EtcSelnTrPbmn     string `json:"etc_seln_tr_pbmn"`
+	EtcShnuTrPbmn     string `json:"etc_shnu_tr_pbmn"`
+	EtcOrgtSelnVol    string `json:"etc_orgt_seln_vol"`
+	EtcOrgtShnuVol    string `json:"etc_orgt_shnu_vol"`
+	EtcOrgtSelnTrPbmn string `json:"etc_orgt_seln_tr_pbmn"`
+	EtcOrgtShnuTrPbmn string `json:"etc_orgt_shnu_tr_pbmn"`
+	EtcCorpSelnVol    string `json:"etc_corp_seln_vol"`
+	EtcCorpShnuVol    string `json:"etc_corp_shnu_vol"`
+	EtcCorpSelnTrPbmn string `json:"etc_corp_seln_tr_pbmn"`
+	EtcCorpShnuTrPbmn string `json:"etc_corp_shnu_tr_pbmn"`
+	BoldYn            string `json:"bold_yn"`
 }
 
 type KISDomesticStockV1QuotationsInvestorTradeByStockDailyRequest struct {
@@ -4591,10 +4591,10 @@ type KISDomesticStockV1QuotationsInvestorTrendEstimate struct {
 }
 
 type KISDomesticStockV1QuotationsInvestorTrendEstimateOutput2Item struct {
-	BsopHourGb      string `json:"bsop_hour_gb,omitempty"`
-	FrgnFakeNtbyQty string `json:"frgn_fake_ntby_qty,omitempty"`
-	OrgnFakeNtbyQty string `json:"orgn_fake_ntby_qty,omitempty"`
-	SumFakeNtbyQty  string `json:"sum_fake_ntby_qty,omitempty"`
+	BsopHourGb      string `json:"bsop_hour_gb"`
+	FrgnFakeNtbyQty string `json:"frgn_fake_ntby_qty"`
+	OrgnFakeNtbyQty string `json:"orgn_fake_ntby_qty"`
+	SumFakeNtbyQty  string `json:"sum_fake_ntby_qty"`
 }
 
 type KISDomesticStockV1QuotationsInvestorTrendEstimateRequest struct {
@@ -4608,25 +4608,25 @@ type KISDomesticStockV1QuotationsLendableByCompany struct {
 }
 
 type KISDomesticStockV1QuotationsLendableByCompanyOutput1Item struct {
-	Pdno           string `json:"pdno,omitempty"`
-	PrdtName       string `json:"prdt_name,omitempty"`
-	Papr           string `json:"papr,omitempty"`
-	BfdyClpr       string `json:"bfdy_clpr,omitempty"`
-	SbstPrvs       string `json:"sbst_prvs,omitempty"`
-	TrStopDvsnName string `json:"tr_stop_dvsn_name,omitempty"`
-	PsblYnName     string `json:"psbl_yn_name,omitempty"`
-	LmtQty1        string `json:"lmt_qty1,omitempty"`
-	UseQty1        string `json:"use_qty1,omitempty"`
-	TradPsblQty2   string `json:"trad_psbl_qty2,omitempty"`
-	RghtTypeCd     string `json:"rght_type_cd,omitempty"`
-	BassDt         string `json:"bass_dt,omitempty"`
-	PsblYn         string `json:"psbl_yn,omitempty"`
+	Pdno           string `json:"pdno"`
+	PrdtName       string `json:"prdt_name"`
+	Papr           string `json:"papr"`
+	BfdyClpr       string `json:"bfdy_clpr"`
+	SbstPrvs       string `json:"sbst_prvs"`
+	TrStopDvsnName string `json:"tr_stop_dvsn_name"`
+	PsblYnName     string `json:"psbl_yn_name"`
+	LmtQty1        string `json:"lmt_qty1"`
+	UseQty1        string `json:"use_qty1"`
+	TradPsblQty2   string `json:"trad_psbl_qty2"`
+	RghtTypeCd     string `json:"rght_type_cd"`
+	BassDt         string `json:"bass_dt"`
+	PsblYn         string `json:"psbl_yn"`
 }
 
 type KISDomesticStockV1QuotationsLendableByCompanyOutput2Item struct {
-	TotStupLmtQty string `json:"tot_stup_lmt_qty,omitempty"`
-	BrchLmtQty    string `json:"brch_lmt_qty,omitempty"`
-	RqstPsblQty   string `json:"rqst_psbl_qty,omitempty"`
+	TotStupLmtQty string `json:"tot_stup_lmt_qty"`
+	BrchLmtQty    string `json:"brch_lmt_qty"`
+	RqstPsblQty   string `json:"rqst_psbl_qty"`
 }
 
 type KISDomesticStockV1QuotationsLendableByCompanyRequest struct {
@@ -4644,15 +4644,15 @@ type KISDomesticStockV1QuotationsMarketTime struct {
 }
 
 type KISDomesticStockV1QuotationsMarketTimeOutput1Item struct {
-	Date1 string `json:"date1,omitempty"`
-	Date2 string `json:"date2,omitempty"`
-	Date3 string `json:"date3,omitempty"`
-	Date4 string `json:"date4,omitempty"`
-	Date5 string `json:"date5,omitempty"`
-	Today string `json:"today,omitempty"`
-	Time  string `json:"time,omitempty"`
-	STime string `json:"s_time,omitempty"`
-	ETime string `json:"e_time,omitempty"`
+	Date1 string `json:"date1"`
+	Date2 string `json:"date2"`
+	Date3 string `json:"date3"`
+	Date4 string `json:"date4"`
+	Date5 string `json:"date5"`
+	Today string `json:"today"`
+	Time  string `json:"time"`
+	STime string `json:"s_time"`
+	ETime string `json:"e_time"`
 }
 
 type KISDomesticStockV1QuotationsMarketTimeRequest struct {
@@ -4664,23 +4664,23 @@ type KISDomesticStockV1QuotationsMktfunds struct {
 }
 
 type KISDomesticStockV1QuotationsMktfundsOutputItem struct {
-	BsopDate            string `json:"bsop_date,omitempty"`
-	BstpNmixPrpr        string `json:"bstp_nmix_prpr,omitempty"`
-	BstpNmixPrdyVrss    string `json:"bstp_nmix_prdy_vrss,omitempty"`
-	PrdyVrssSign        string `json:"prdy_vrss_sign,omitempty"`
-	PrdyCtrt            string `json:"prdy_ctrt,omitempty"`
-	HtsAvls             string `json:"hts_avls,omitempty"`
-	CustDpmnAmt         string `json:"cust_dpmn_amt,omitempty"`
-	CustDpmnAmtPrdyVrss string `json:"cust_dpmn_amt_prdy_vrss,omitempty"`
-	AmtTnrt             string `json:"amt_tnrt,omitempty"`
-	UnclAmt             string `json:"uncl_amt,omitempty"`
-	CrdtLoanRmnd        string `json:"crdt_loan_rmnd,omitempty"`
-	FutsTfamAmt         string `json:"futs_tfam_amt,omitempty"`
-	SttpAmt             string `json:"sttp_amt,omitempty"`
-	MxtpAmt             string `json:"mxtp_amt,omitempty"`
-	BntpAmt             string `json:"bntp_amt,omitempty"`
-	MmfAmt              string `json:"mmf_amt,omitempty"`
-	SecuLendAmt         string `json:"secu_lend_amt,omitempty"`
+	BsopDate            string `json:"bsop_date"`
+	BstpNmixPrpr        string `json:"bstp_nmix_prpr"`
+	BstpNmixPrdyVrss    string `json:"bstp_nmix_prdy_vrss"`
+	PrdyVrssSign        string `json:"prdy_vrss_sign"`
+	PrdyCtrt            string `json:"prdy_ctrt"`
+	HtsAvls             string `json:"hts_avls"`
+	CustDpmnAmt         string `json:"cust_dpmn_amt"`
+	CustDpmnAmtPrdyVrss string `json:"cust_dpmn_amt_prdy_vrss"`
+	AmtTnrt             string `json:"amt_tnrt"`
+	UnclAmt             string `json:"uncl_amt"`
+	CrdtLoanRmnd        string `json:"crdt_loan_rmnd"`
+	FutsTfamAmt         string `json:"futs_tfam_amt"`
+	SttpAmt             string `json:"sttp_amt"`
+	MxtpAmt             string `json:"mxtp_amt"`
+	BntpAmt             string `json:"bntp_amt"`
+	MmfAmt              string `json:"mmf_amt"`
+	SecuLendAmt         string `json:"secu_lend_amt"`
 }
 
 type KISDomesticStockV1QuotationsMktfundsRequest struct {
@@ -4693,18 +4693,18 @@ type KISDomesticStockV1QuotationsNewsTitle struct {
 }
 
 type KISDomesticStockV1QuotationsNewsTitleOutputItem struct {
-	CnttUsiqSrno     string `json:"cntt_usiq_srno,omitempty"`
-	NewsOferEntpCode string `json:"news_ofer_entp_code,omitempty"`
-	DataDt           string `json:"data_dt,omitempty"`
-	DataTm           string `json:"data_tm,omitempty"`
-	HtsPbntTitlCntt  string `json:"hts_pbnt_titl_cntt,omitempty"`
-	NewsLrdvCode     string `json:"news_lrdv_code,omitempty"`
-	Dorg             string `json:"dorg,omitempty"`
-	Iscd1            string `json:"iscd1,omitempty"`
-	Iscd2            string `json:"iscd2,omitempty"`
-	Iscd3            string `json:"iscd3,omitempty"`
-	Iscd4            string `json:"iscd4,omitempty"`
-	Iscd5            string `json:"iscd5,omitempty"`
+	CnttUsiqSrno     string `json:"cntt_usiq_srno"`
+	NewsOferEntpCode string `json:"news_ofer_entp_code"`
+	DataDt           string `json:"data_dt"`
+	DataTm           string `json:"data_tm"`
+	HtsPbntTitlCntt  string `json:"hts_pbnt_titl_cntt"`
+	NewsLrdvCode     string `json:"news_lrdv_code"`
+	Dorg             string `json:"dorg"`
+	Iscd1            string `json:"iscd1"`
+	Iscd2            string `json:"iscd2"`
+	Iscd3            string `json:"iscd3"`
+	Iscd4            string `json:"iscd4"`
+	Iscd5            string `json:"iscd5"`
 }
 
 type KISDomesticStockV1QuotationsNewsTitleRequest struct {
@@ -4725,24 +4725,24 @@ type KISDomesticStockV1QuotationsPbarTratio struct {
 }
 
 type KISDomesticStockV1QuotationsPbarTratioOutput1Item struct {
-	RprsMrktKorName string `json:"rprs_mrkt_kor_name,omitempty"`
-	StckShrnIscd    string `json:"stck_shrn_iscd,omitempty"`
-	HtsKorIsnm      string `json:"hts_kor_isnm,omitempty"`
-	StckPrpr        string `json:"stck_prpr,omitempty"`
-	PrdyVrssSign    string `json:"prdy_vrss_sign,omitempty"`
-	PrdyVrss        string `json:"prdy_vrss,omitempty"`
-	PrdyCtrt        string `json:"prdy_ctrt,omitempty"`
-	AcmlVol         string `json:"acml_vol,omitempty"`
-	PrdyVol         string `json:"prdy_vol,omitempty"`
-	WghnAvrgStckPrc string `json:"wghn_avrg_stck_prc,omitempty"`
-	LstnStcn        string `json:"lstn_stcn,omitempty"`
+	RprsMrktKorName string `json:"rprs_mrkt_kor_name"`
+	StckShrnIscd    string `json:"stck_shrn_iscd"`
+	HtsKorIsnm      string `json:"hts_kor_isnm"`
+	StckPrpr        string `json:"stck_prpr"`
+	PrdyVrssSign    string `json:"prdy_vrss_sign"`
+	PrdyVrss        string `json:"prdy_vrss"`
+	PrdyCtrt        string `json:"prdy_ctrt"`
+	AcmlVol         string `json:"acml_vol"`
+	PrdyVol         string `json:"prdy_vol"`
+	WghnAvrgStckPrc string `json:"wghn_avrg_stck_prc"`
+	LstnStcn        string `json:"lstn_stcn"`
 }
 
 type KISDomesticStockV1QuotationsPbarTratioOutput2Item struct {
-	DataRank    string `json:"data_rank,omitempty"`
-	StckPrpr    string `json:"stck_prpr,omitempty"`
-	CntgVol     string `json:"cntg_vol,omitempty"`
-	AcmlVolRlim string `json:"acml_vol_rlim,omitempty"`
+	DataRank    string `json:"data_rank"`
+	StckPrpr    string `json:"stck_prpr"`
+	CntgVol     string `json:"cntg_vol"`
+	AcmlVolRlim string `json:"acml_vol_rlim"`
 }
 
 type KISDomesticStockV1QuotationsPbarTratioRequest struct {
@@ -4758,20 +4758,20 @@ type KISDomesticStockV1QuotationsProgramTradeByStock struct {
 }
 
 type KISDomesticStockV1QuotationsProgramTradeByStockOutputItem struct {
-	BsopHour           string `json:"bsop_hour,omitempty"`
-	StckPrpr           string `json:"stck_prpr,omitempty"`
-	PrdyVrss           string `json:"prdy_vrss,omitempty"`
-	PrdyVrssSign       string `json:"prdy_vrss_sign,omitempty"`
-	PrdyCtrt           string `json:"prdy_ctrt,omitempty"`
-	AcmlVol            string `json:"acml_vol,omitempty"`
-	WholSmtnSelnVol    string `json:"whol_smtn_seln_vol,omitempty"`
-	WholSmtnShnuVol    string `json:"whol_smtn_shnu_vol,omitempty"`
-	WholSmtnNtbyQty    string `json:"whol_smtn_ntby_qty,omitempty"`
-	WholSmtnSelnTrPbmn string `json:"whol_smtn_seln_tr_pbmn,omitempty"`
-	WholSmtnShnuTrPbmn string `json:"whol_smtn_shnu_tr_pbmn,omitempty"`
-	WholSmtnNtbyTrPbmn string `json:"whol_smtn_ntby_tr_pbmn,omitempty"`
-	WholNtbyVolIcdc    string `json:"whol_ntby_vol_icdc,omitempty"`
-	WholNtbyTrPbmnIcdc string `json:"whol_ntby_tr_pbmn_icdc,omitempty"`
+	BsopHour           string `json:"bsop_hour"`
+	StckPrpr           string `json:"stck_prpr"`
+	PrdyVrss           string `json:"prdy_vrss"`
+	PrdyVrssSign       string `json:"prdy_vrss_sign"`
+	PrdyCtrt           string `json:"prdy_ctrt"`
+	AcmlVol            string `json:"acml_vol"`
+	WholSmtnSelnVol    string `json:"whol_smtn_seln_vol"`
+	WholSmtnShnuVol    string `json:"whol_smtn_shnu_vol"`
+	WholSmtnNtbyQty    string `json:"whol_smtn_ntby_qty"`
+	WholSmtnSelnTrPbmn string `json:"whol_smtn_seln_tr_pbmn"`
+	WholSmtnShnuTrPbmn string `json:"whol_smtn_shnu_tr_pbmn"`
+	WholSmtnNtbyTrPbmn string `json:"whol_smtn_ntby_tr_pbmn"`
+	WholNtbyVolIcdc    string `json:"whol_ntby_vol_icdc"`
+	WholNtbyTrPbmnIcdc string `json:"whol_ntby_tr_pbmn_icdc"`
 }
 
 type KISDomesticStockV1QuotationsProgramTradeByStockRequest struct {
@@ -4785,21 +4785,21 @@ type KISDomesticStockV1QuotationsProgramTradeByStockDaily struct {
 }
 
 type KISDomesticStockV1QuotationsProgramTradeByStockDailyOutputItem struct {
-	StckBsopDate        string `json:"stck_bsop_date,omitempty"`
-	StckClpr            string `json:"stck_clpr,omitempty"`
-	PrdyVrss            string `json:"prdy_vrss,omitempty"`
-	PrdyVrssSign        string `json:"prdy_vrss_sign,omitempty"`
-	PrdyCtrt            string `json:"prdy_ctrt,omitempty"`
-	AcmlVol             string `json:"acml_vol,omitempty"`
-	AcmlTrPbmn          string `json:"acml_tr_pbmn,omitempty"`
-	WholSmtnSelnVol     string `json:"whol_smtn_seln_vol,omitempty"`
-	WholSmtnShnuVol     string `json:"whol_smtn_shnu_vol,omitempty"`
-	WholSmtnNtbyQty     string `json:"whol_smtn_ntby_qty,omitempty"`
-	WholSmtnSelnTrPbmn  string `json:"whol_smtn_seln_tr_pbmn,omitempty"`
-	WholSmtnShnuTrPbmn  string `json:"whol_smtn_shnu_tr_pbmn,omitempty"`
-	WholSmtnNtbyTrPbmn  string `json:"whol_smtn_ntby_tr_pbmn,omitempty"`
-	WholNtbyVolIcdc     string `json:"whol_ntby_vol_icdc,omitempty"`
-	WholNtbyTrPbmnIcdc2 string `json:"whol_ntby_tr_pbmn_icdc2,omitempty"`
+	StckBsopDate        string `json:"stck_bsop_date"`
+	StckClpr            string `json:"stck_clpr"`
+	PrdyVrss            string `json:"prdy_vrss"`
+	PrdyVrssSign        string `json:"prdy_vrss_sign"`
+	PrdyCtrt            string `json:"prdy_ctrt"`
+	AcmlVol             string `json:"acml_vol"`
+	AcmlTrPbmn          string `json:"acml_tr_pbmn"`
+	WholSmtnSelnVol     string `json:"whol_smtn_seln_vol"`
+	WholSmtnShnuVol     string `json:"whol_smtn_shnu_vol"`
+	WholSmtnNtbyQty     string `json:"whol_smtn_ntby_qty"`
+	WholSmtnSelnTrPbmn  string `json:"whol_smtn_seln_tr_pbmn"`
+	WholSmtnShnuTrPbmn  string `json:"whol_smtn_shnu_tr_pbmn"`
+	WholSmtnNtbyTrPbmn  string `json:"whol_smtn_ntby_tr_pbmn"`
+	WholNtbyVolIcdc     string `json:"whol_ntby_vol_icdc"`
+	WholNtbyTrPbmnIcdc2 string `json:"whol_ntby_tr_pbmn_icdc2"`
 }
 
 type KISDomesticStockV1QuotationsProgramTradeByStockDailyRequest struct {
@@ -4814,30 +4814,30 @@ type KISDomesticStockV1QuotationsPsearchResult struct {
 }
 
 type KISDomesticStockV1QuotationsPsearchResultOutput2Item struct {
-	Code        string `json:"code,omitempty"`
-	Name        string `json:"name,omitempty"`
-	Daebi       string `json:"daebi,omitempty"`
-	Price       string `json:"price,omitempty"`
-	Chgrate     string `json:"chgrate,omitempty"`
-	AcmlVol     string `json:"acml_vol,omitempty"`
-	TradeAmt    string `json:"trade_amt,omitempty"`
-	Change      string `json:"change,omitempty"`
-	Cttr        string `json:"cttr,omitempty"`
-	Open        string `json:"open,omitempty"`
-	High        string `json:"high,omitempty"`
-	Low         string `json:"low,omitempty"`
-	High52      string `json:"high52,omitempty"`
-	Low52       string `json:"low52,omitempty"`
-	Expprice    string `json:"expprice,omitempty"`
-	Expchange   string `json:"expchange,omitempty"`
-	Expchggrate string `json:"expchggrate,omitempty"`
-	Expcvol     string `json:"expcvol,omitempty"`
-	Chgrate2    string `json:"chgrate2,omitempty"`
-	Expdaebi    string `json:"expdaebi,omitempty"`
-	Recprice    string `json:"recprice,omitempty"`
-	Uplmtprice  string `json:"uplmtprice,omitempty"`
-	Dnlmtprice  string `json:"dnlmtprice,omitempty"`
-	Stotprice   string `json:"stotprice,omitempty"`
+	Code        string `json:"code"`
+	Name        string `json:"name"`
+	Daebi       string `json:"daebi"`
+	Price       string `json:"price"`
+	Chgrate     string `json:"chgrate"`
+	AcmlVol     string `json:"acml_vol"`
+	TradeAmt    string `json:"trade_amt"`
+	Change      string `json:"change"`
+	Cttr        string `json:"cttr"`
+	Open        string `json:"open"`
+	High        string `json:"high"`
+	Low         string `json:"low"`
+	High52      string `json:"high52"`
+	Low52       string `json:"low52"`
+	Expprice    string `json:"expprice"`
+	Expchange   string `json:"expchange"`
+	Expchggrate string `json:"expchggrate"`
+	Expcvol     string `json:"expcvol"`
+	Chgrate2    string `json:"chgrate2"`
+	Expdaebi    string `json:"expdaebi"`
+	Recprice    string `json:"recprice"`
+	Uplmtprice  string `json:"uplmtprice"`
+	Dnlmtprice  string `json:"dnlmtprice"`
+	Stotprice   string `json:"stotprice"`
 }
 
 type KISDomesticStockV1QuotationsPsearchResultRequest struct {
@@ -4851,10 +4851,10 @@ type KISDomesticStockV1QuotationsPsearchTitle struct {
 }
 
 type KISDomesticStockV1QuotationsPsearchTitleOutput2Item struct {
-	UserId      string `json:"user_id,omitempty"`
-	Seq         string `json:"seq,omitempty"`
-	GrpNm       string `json:"grp_nm,omitempty"`
-	ConditionNm string `json:"condition_nm,omitempty"`
+	UserId      string `json:"user_id"`
+	Seq         string `json:"seq"`
+	GrpNm       string `json:"grp_nm"`
+	ConditionNm string `json:"condition_nm"`
 }
 
 type KISDomesticStockV1QuotationsPsearchTitleRequest struct {
@@ -4867,26 +4867,26 @@ type KISDomesticStockV1QuotationsSearchInfo struct {
 }
 
 type KISDomesticStockV1QuotationsSearchInfoOutputItem struct {
-	Pdno               string `json:"pdno,omitempty"`
-	PrdtTypeCd         string `json:"prdt_type_cd,omitempty"`
-	PrdtName           string `json:"prdt_name,omitempty"`
-	PrdtName120        string `json:"prdt_name120,omitempty"`
-	PrdtAbrvName       string `json:"prdt_abrv_name,omitempty"`
-	PrdtEngName        string `json:"prdt_eng_name,omitempty"`
-	PrdtEngName120     string `json:"prdt_eng_name120,omitempty"`
-	PrdtEngAbrvName    string `json:"prdt_eng_abrv_name,omitempty"`
-	StdPdno            string `json:"std_pdno,omitempty"`
-	ShtnPdno           string `json:"shtn_pdno,omitempty"`
-	PrdtSaleStatCd     string `json:"prdt_sale_stat_cd,omitempty"`
-	PrdtRiskGradCd     string `json:"prdt_risk_grad_cd,omitempty"`
-	PrdtClsfCd         string `json:"prdt_clsf_cd,omitempty"`
-	PrdtClsfName       string `json:"prdt_clsf_name,omitempty"`
-	SaleStrtDt         string `json:"sale_strt_dt,omitempty"`
-	SaleEndDt          string `json:"sale_end_dt,omitempty"`
-	WrapAsstTypeCd     string `json:"wrap_asst_type_cd,omitempty"`
-	IvstPrdtTypeCd     string `json:"ivst_prdt_type_cd,omitempty"`
-	IvstPrdtTypeCdName string `json:"ivst_prdt_type_cd_name,omitempty"`
-	FrstErlmDt         string `json:"frst_erlm_dt,omitempty"`
+	Pdno               string `json:"pdno"`
+	PrdtTypeCd         string `json:"prdt_type_cd"`
+	PrdtName           string `json:"prdt_name"`
+	PrdtName120        string `json:"prdt_name120"`
+	PrdtAbrvName       string `json:"prdt_abrv_name"`
+	PrdtEngName        string `json:"prdt_eng_name"`
+	PrdtEngName120     string `json:"prdt_eng_name120"`
+	PrdtEngAbrvName    string `json:"prdt_eng_abrv_name"`
+	StdPdno            string `json:"std_pdno"`
+	ShtnPdno           string `json:"shtn_pdno"`
+	PrdtSaleStatCd     string `json:"prdt_sale_stat_cd"`
+	PrdtRiskGradCd     string `json:"prdt_risk_grad_cd"`
+	PrdtClsfCd         string `json:"prdt_clsf_cd"`
+	PrdtClsfName       string `json:"prdt_clsf_name"`
+	SaleStrtDt         string `json:"sale_strt_dt"`
+	SaleEndDt          string `json:"sale_end_dt"`
+	WrapAsstTypeCd     string `json:"wrap_asst_type_cd"`
+	IvstPrdtTypeCd     string `json:"ivst_prdt_type_cd"`
+	IvstPrdtTypeCdName string `json:"ivst_prdt_type_cd_name"`
+	FrstErlmDt         string `json:"frst_erlm_dt"`
 }
 
 type KISDomesticStockV1QuotationsSearchInfoRequest struct {
@@ -4900,73 +4900,73 @@ type KISDomesticStockV1QuotationsSearchStockInfo struct {
 }
 
 type KISDomesticStockV1QuotationsSearchStockInfoOutputItem struct {
-	Pdno                 string `json:"pdno,omitempty"`
-	PrdtTypeCd           string `json:"prdt_type_cd,omitempty"`
-	MketIdCd             string `json:"mket_id_cd,omitempty"`
-	SctyGrpIdCd          string `json:"scty_grp_id_cd,omitempty"`
-	ExcgDvsnCd           string `json:"excg_dvsn_cd,omitempty"`
-	SetlMmdd             string `json:"setl_mmdd,omitempty"`
-	LstgStqt             string `json:"lstg_stqt,omitempty"`
-	LstgCptlAmt          string `json:"lstg_cptl_amt,omitempty"`
-	Cpta                 string `json:"cpta,omitempty"`
-	Papr                 string `json:"papr,omitempty"`
-	IssuPric             string `json:"issu_pric,omitempty"`
-	Kospi200ItemYn       string `json:"kospi200_item_yn,omitempty"`
-	SctsMketLstgDt       string `json:"scts_mket_lstg_dt,omitempty"`
-	SctsMketLstgAbolDt   string `json:"scts_mket_lstg_abol_dt,omitempty"`
-	KosdaqMketLstgDt     string `json:"kosdaq_mket_lstg_dt,omitempty"`
-	KosdaqMketLstgAbolDt string `json:"kosdaq_mket_lstg_abol_dt,omitempty"`
-	FrbdMketLstgDt       string `json:"frbd_mket_lstg_dt,omitempty"`
-	FrbdMketLstgAbolDt   string `json:"frbd_mket_lstg_abol_dt,omitempty"`
-	ReitsKindCd          string `json:"reits_kind_cd,omitempty"`
-	EtfDvsnCd            string `json:"etf_dvsn_cd,omitempty"`
-	OilfFundYn           string `json:"oilf_fund_yn,omitempty"`
-	IdxBztpLclsCd        string `json:"idx_bztp_lcls_cd,omitempty"`
-	IdxBztpMclsCd        string `json:"idx_bztp_mcls_cd,omitempty"`
-	IdxBztpSclsCd        string `json:"idx_bztp_scls_cd,omitempty"`
-	StckKindCd           string `json:"stck_kind_cd,omitempty"`
-	MfndOpngDt           string `json:"mfnd_opng_dt,omitempty"`
-	MfndEndDt            string `json:"mfnd_end_dt,omitempty"`
-	DpsiErlmCnclDt       string `json:"dpsi_erlm_cncl_dt,omitempty"`
-	EtfCuQty             string `json:"etf_cu_qty,omitempty"`
-	PrdtName             string `json:"prdt_name,omitempty"`
-	PrdtName120          string `json:"prdt_name120,omitempty"`
-	PrdtAbrvName         string `json:"prdt_abrv_name,omitempty"`
-	StdPdno              string `json:"std_pdno,omitempty"`
-	PrdtEngName          string `json:"prdt_eng_name,omitempty"`
-	PrdtEngName120       string `json:"prdt_eng_name120,omitempty"`
-	PrdtEngAbrvName      string `json:"prdt_eng_abrv_name,omitempty"`
-	DpsiAptmErlmYn       string `json:"dpsi_aptm_erlm_yn,omitempty"`
-	EtfTxtnTypeCd        string `json:"etf_txtn_type_cd,omitempty"`
-	EtfTypeCd            string `json:"etf_type_cd,omitempty"`
-	LstgAbolDt           string `json:"lstg_abol_dt,omitempty"`
-	NwstOdstDvsnCd       string `json:"nwst_odst_dvsn_cd,omitempty"`
-	SbstPric             string `json:"sbst_pric,omitempty"`
-	ThcoSbstPric         string `json:"thco_sbst_pric,omitempty"`
-	ThcoSbstPricChngDt   string `json:"thco_sbst_pric_chng_dt,omitempty"`
-	TrStopYn             string `json:"tr_stop_yn,omitempty"`
-	AdmnItemYn           string `json:"admn_item_yn,omitempty"`
-	ThdtClpr             string `json:"thdt_clpr,omitempty"`
-	BfdyClpr             string `json:"bfdy_clpr,omitempty"`
-	ClprChngDt           string `json:"clpr_chng_dt,omitempty"`
-	StdIdstClsfCd        string `json:"std_idst_clsf_cd,omitempty"`
-	StdIdstClsfCdName    string `json:"std_idst_clsf_cd_name,omitempty"`
-	IdxBztpLclsCdName    string `json:"idx_bztp_lcls_cd_name,omitempty"`
-	IdxBztpMclsCdName    string `json:"idx_bztp_mcls_cd_name,omitempty"`
-	IdxBztpSclsCdName    string `json:"idx_bztp_scls_cd_name,omitempty"`
-	OcrNo                string `json:"ocr_no,omitempty"`
-	CrfdItemYn           string `json:"crfd_item_yn,omitempty"`
-	ElecSctyYn           string `json:"elec_scty_yn,omitempty"`
-	IssuIsttCd           string `json:"issu_istt_cd,omitempty"`
-	EtfChasErngRtDbnb    string `json:"etf_chas_erng_rt_dbnb,omitempty"`
-	EtfEtnIvstHeedItemYn string `json:"etf_etn_ivst_heed_item_yn,omitempty"`
-	StlnIntRtDvsnCd      string `json:"stln_int_rt_dvsn_cd,omitempty"`
-	FrnrPsnlLmtRt        string `json:"frnr_psnl_lmt_rt,omitempty"`
-	LstgRqsrIssuIsttCd   string `json:"lstg_rqsr_issu_istt_cd,omitempty"`
-	LstgRqsrItemCd       string `json:"lstg_rqsr_item_cd,omitempty"`
-	TrstIsttIssuIsttCd   string `json:"trst_istt_issu_istt_cd,omitempty"`
-	CpttTradTrPsblYn     string `json:"cptt_trad_tr_psbl_yn,omitempty"`
-	NxtTrStopYn          string `json:"nxt_tr_stop_yn,omitempty"`
+	Pdno                 string `json:"pdno"`
+	PrdtTypeCd           string `json:"prdt_type_cd"`
+	MketIdCd             string `json:"mket_id_cd"`
+	SctyGrpIdCd          string `json:"scty_grp_id_cd"`
+	ExcgDvsnCd           string `json:"excg_dvsn_cd"`
+	SetlMmdd             string `json:"setl_mmdd"`
+	LstgStqt             string `json:"lstg_stqt"`
+	LstgCptlAmt          string `json:"lstg_cptl_amt"`
+	Cpta                 string `json:"cpta"`
+	Papr                 string `json:"papr"`
+	IssuPric             string `json:"issu_pric"`
+	Kospi200ItemYn       string `json:"kospi200_item_yn"`
+	SctsMketLstgDt       string `json:"scts_mket_lstg_dt"`
+	SctsMketLstgAbolDt   string `json:"scts_mket_lstg_abol_dt"`
+	KosdaqMketLstgDt     string `json:"kosdaq_mket_lstg_dt"`
+	KosdaqMketLstgAbolDt string `json:"kosdaq_mket_lstg_abol_dt"`
+	FrbdMketLstgDt       string `json:"frbd_mket_lstg_dt"`
+	FrbdMketLstgAbolDt   string `json:"frbd_mket_lstg_abol_dt"`
+	ReitsKindCd          string `json:"reits_kind_cd"`
+	EtfDvsnCd            string `json:"etf_dvsn_cd"`
+	OilfFundYn           string `json:"oilf_fund_yn"`
+	IdxBztpLclsCd        string `json:"idx_bztp_lcls_cd"`
+	IdxBztpMclsCd        string `json:"idx_bztp_mcls_cd"`
+	IdxBztpSclsCd        string `json:"idx_bztp_scls_cd"`
+	StckKindCd           string `json:"stck_kind_cd"`
+	MfndOpngDt           string `json:"mfnd_opng_dt"`
+	MfndEndDt            string `json:"mfnd_end_dt"`
+	DpsiErlmCnclDt       string `json:"dpsi_erlm_cncl_dt"`
+	EtfCuQty             string `json:"etf_cu_qty"`
+	PrdtName             string `json:"prdt_name"`
+	PrdtName120          string `json:"prdt_name120"`
+	PrdtAbrvName         string `json:"prdt_abrv_name"`
+	StdPdno              string `json:"std_pdno"`
+	PrdtEngName          string `json:"prdt_eng_name"`
+	PrdtEngName120       string `json:"prdt_eng_name120"`
+	PrdtEngAbrvName      string `json:"prdt_eng_abrv_name"`
+	DpsiAptmErlmYn       string `json:"dpsi_aptm_erlm_yn"`
+	EtfTxtnTypeCd        string `json:"etf_txtn_type_cd"`
+	EtfTypeCd            string `json:"etf_type_cd"`
+	LstgAbolDt           string `json:"lstg_abol_dt"`
+	NwstOdstDvsnCd       string `json:"nwst_odst_dvsn_cd"`
+	SbstPric             string `json:"sbst_pric"`
+	ThcoSbstPric         string `json:"thco_sbst_pric"`
+	ThcoSbstPricChngDt   string `json:"thco_sbst_pric_chng_dt"`
+	TrStopYn             string `json:"tr_stop_yn"`
+	AdmnItemYn           string `json:"admn_item_yn"`
+	ThdtClpr             string `json:"thdt_clpr"`
+	BfdyClpr             string `json:"bfdy_clpr"`
+	ClprChngDt           string `json:"clpr_chng_dt"`
+	StdIdstClsfCd        string `json:"std_idst_clsf_cd"`
+	StdIdstClsfCdName    string `json:"std_idst_clsf_cd_name"`
+	IdxBztpLclsCdName    string `json:"idx_bztp_lcls_cd_name"`
+	IdxBztpMclsCdName    string `json:"idx_bztp_mcls_cd_name"`
+	IdxBztpSclsCdName    string `json:"idx_bztp_scls_cd_name"`
+	OcrNo                string `json:"ocr_no"`
+	CrfdItemYn           string `json:"crfd_item_yn"`
+	ElecSctyYn           string `json:"elec_scty_yn"`
+	IssuIsttCd           string `json:"issu_istt_cd"`
+	EtfChasErngRtDbnb    string `json:"etf_chas_erng_rt_dbnb"`
+	EtfEtnIvstHeedItemYn string `json:"etf_etn_ivst_heed_item_yn"`
+	StlnIntRtDvsnCd      string `json:"stln_int_rt_dvsn_cd"`
+	FrnrPsnlLmtRt        string `json:"frnr_psnl_lmt_rt"`
+	LstgRqsrIssuIsttCd   string `json:"lstg_rqsr_issu_istt_cd"`
+	LstgRqsrItemCd       string `json:"lstg_rqsr_item_cd"`
+	TrstIsttIssuIsttCd   string `json:"trst_istt_issu_istt_cd"`
+	CpttTradTrPsblYn     string `json:"cptt_trad_tr_psbl_yn"`
+	NxtTrStopYn          string `json:"nxt_tr_stop_yn"`
 }
 
 type KISDomesticStockV1QuotationsSearchStockInfoRequest struct {
@@ -4980,17 +4980,17 @@ type KISDomesticStockV1QuotationsTradprtByamt struct {
 }
 
 type KISDomesticStockV1QuotationsTradprtByamtOutputItem struct {
-	PrprName        string `json:"prpr_name,omitempty"`
-	SmtnAvrgPrpr    string `json:"smtn_avrg_prpr,omitempty"`
-	AcmlVol         string `json:"acml_vol,omitempty"`
-	WholNtbyQtyRate string `json:"whol_ntby_qty_rate,omitempty"`
-	NtbyCntgCsnu    string `json:"ntby_cntg_csnu,omitempty"`
-	SelnCnqnSmtn    string `json:"seln_cnqn_smtn,omitempty"`
-	WholSelnVolRate string `json:"whol_seln_vol_rate,omitempty"`
-	SelnCntgCsnu    string `json:"seln_cntg_csnu,omitempty"`
-	ShnuCnqnSmtn    string `json:"shnu_cnqn_smtn,omitempty"`
-	WholShunVolRate string `json:"whol_shun_vol_rate,omitempty"`
-	ShnuCntgCsnu    string `json:"shnu_cntg_csnu,omitempty"`
+	PrprName        string `json:"prpr_name"`
+	SmtnAvrgPrpr    string `json:"smtn_avrg_prpr"`
+	AcmlVol         string `json:"acml_vol"`
+	WholNtbyQtyRate string `json:"whol_ntby_qty_rate"`
+	NtbyCntgCsnu    string `json:"ntby_cntg_csnu"`
+	SelnCnqnSmtn    string `json:"seln_cnqn_smtn"`
+	WholSelnVolRate string `json:"whol_seln_vol_rate"`
+	SelnCntgCsnu    string `json:"seln_cntg_csnu"`
+	ShnuCnqnSmtn    string `json:"shnu_cnqn_smtn"`
+	WholShunVolRate string `json:"whol_shun_vol_rate"`
+	ShnuCntgCsnu    string `json:"shnu_cntg_csnu"`
 }
 
 type KISDomesticStockV1QuotationsTradprtByamtRequest struct {
@@ -5005,25 +5005,25 @@ type KISDomesticStockV1QuotationsVolumeRank struct {
 }
 
 type KISDomesticStockV1QuotationsVolumeRankOutputItem struct {
-	HtsKorIsnm            string `json:"hts_kor_isnm,omitempty"`
-	MkscShrnIscd          string `json:"mksc_shrn_iscd,omitempty"`
-	DataRank              string `json:"data_rank,omitempty"`
-	StckPrpr              string `json:"stck_prpr,omitempty"`
-	PrdyVrssSign          string `json:"prdy_vrss_sign,omitempty"`
-	PrdyVrss              string `json:"prdy_vrss,omitempty"`
-	PrdyCtrt              string `json:"prdy_ctrt,omitempty"`
-	AcmlVol               string `json:"acml_vol,omitempty"`
-	PrdyVol               string `json:"prdy_vol,omitempty"`
-	LstnStcn              string `json:"lstn_stcn,omitempty"`
-	AvrgVol               string `json:"avrg_vol,omitempty"`
-	NBefrClprVrssPrprRate string `json:"n_befr_clpr_vrss_prpr_rate,omitempty"`
-	VolInrt               string `json:"vol_inrt,omitempty"`
-	VolTnrt               string `json:"vol_tnrt,omitempty"`
-	NdayVolTnrt           string `json:"nday_vol_tnrt,omitempty"`
-	AvrgTrPbmn            string `json:"avrg_tr_pbmn,omitempty"`
-	TrPbmnTnrt            string `json:"tr_pbmn_tnrt,omitempty"`
-	NdayTrPbmnTnrt        string `json:"nday_tr_pbmn_tnrt,omitempty"`
-	AcmlTrPbmn            string `json:"acml_tr_pbmn,omitempty"`
+	HtsKorIsnm            string `json:"hts_kor_isnm"`
+	MkscShrnIscd          string `json:"mksc_shrn_iscd"`
+	DataRank              string `json:"data_rank"`
+	StckPrpr              string `json:"stck_prpr"`
+	PrdyVrssSign          string `json:"prdy_vrss_sign"`
+	PrdyVrss              string `json:"prdy_vrss"`
+	PrdyCtrt              string `json:"prdy_ctrt"`
+	AcmlVol               string `json:"acml_vol"`
+	PrdyVol               string `json:"prdy_vol"`
+	LstnStcn              string `json:"lstn_stcn"`
+	AvrgVol               string `json:"avrg_vol"`
+	NBefrClprVrssPrprRate string `json:"n_befr_clpr_vrss_prpr_rate"`
+	VolInrt               string `json:"vol_inrt"`
+	VolTnrt               string `json:"vol_tnrt"`
+	NdayVolTnrt           string `json:"nday_vol_tnrt"`
+	AvrgTrPbmn            string `json:"avrg_tr_pbmn"`
+	TrPbmnTnrt            string `json:"tr_pbmn_tnrt"`
+	NdayTrPbmnTnrt        string `json:"nday_tr_pbmn_tnrt"`
+	AcmlTrPbmn            string `json:"acml_tr_pbmn"`
 }
 
 type KISDomesticStockV1QuotationsVolumeRankRequest struct {
@@ -5046,17 +5046,17 @@ type KISDomesticStockV1RankingAfterHourBalance struct {
 }
 
 type KISDomesticStockV1RankingAfterHourBalanceOutputItem struct {
-	StckShrnIscd      string `json:"stck_shrn_iscd,omitempty"`
-	DataRank          string `json:"data_rank,omitempty"`
-	HtsKorIsnm        string `json:"hts_kor_isnm,omitempty"`
-	StckPrpr          string `json:"stck_prpr,omitempty"`
-	PrdyVrss          string `json:"prdy_vrss,omitempty"`
-	PrdyVrssSign      string `json:"prdy_vrss_sign,omitempty"`
-	PrdyCtrt          string `json:"prdy_ctrt,omitempty"`
-	OvtmTotalAskpRsqn string `json:"ovtm_total_askp_rsqn,omitempty"`
-	OvtmTotalBidpRsqn string `json:"ovtm_total_bidp_rsqn,omitempty"`
-	MkobOtcpVol       string `json:"mkob_otcp_vol,omitempty"`
-	MkfaOtcpVol       string `json:"mkfa_otcp_vol,omitempty"`
+	StckShrnIscd      string `json:"stck_shrn_iscd"`
+	DataRank          string `json:"data_rank"`
+	HtsKorIsnm        string `json:"hts_kor_isnm"`
+	StckPrpr          string `json:"stck_prpr"`
+	PrdyVrss          string `json:"prdy_vrss"`
+	PrdyVrssSign      string `json:"prdy_vrss_sign"`
+	PrdyCtrt          string `json:"prdy_ctrt"`
+	OvtmTotalAskpRsqn string `json:"ovtm_total_askp_rsqn"`
+	OvtmTotalBidpRsqn string `json:"ovtm_total_bidp_rsqn"`
+	MkobOtcpVol       string `json:"mkob_otcp_vol"`
+	MkfaOtcpVol       string `json:"mkfa_otcp_vol"`
 }
 
 type KISDomesticStockV1RankingAfterHourBalanceRequest struct {
@@ -5078,17 +5078,17 @@ type KISDomesticStockV1RankingBulkTransNum struct {
 }
 
 type KISDomesticStockV1RankingBulkTransNumOutputItem struct {
-	MkscShrnIscd string `json:"mksc_shrn_iscd,omitempty"`
-	DataRank     string `json:"data_rank,omitempty"`
-	HtsKorIsnm   string `json:"hts_kor_isnm,omitempty"`
-	StckPrpr     string `json:"stck_prpr,omitempty"`
-	PrdyVrssSign string `json:"prdy_vrss_sign,omitempty"`
-	PrdyVrss     string `json:"prdy_vrss,omitempty"`
-	PrdyCtrt     string `json:"prdy_ctrt,omitempty"`
-	AcmlVol      string `json:"acml_vol,omitempty"`
-	ShnuCntgCsnu string `json:"shnu_cntg_csnu,omitempty"`
-	SelnCntgCsnu string `json:"seln_cntg_csnu,omitempty"`
-	NtbyCnqn     string `json:"ntby_cnqn,omitempty"`
+	MkscShrnIscd string `json:"mksc_shrn_iscd"`
+	DataRank     string `json:"data_rank"`
+	HtsKorIsnm   string `json:"hts_kor_isnm"`
+	StckPrpr     string `json:"stck_prpr"`
+	PrdyVrssSign string `json:"prdy_vrss_sign"`
+	PrdyVrss     string `json:"prdy_vrss"`
+	PrdyCtrt     string `json:"prdy_ctrt"`
+	AcmlVol      string `json:"acml_vol"`
+	ShnuCntgCsnu string `json:"shnu_cntg_csnu"`
+	SelnCntgCsnu string `json:"seln_cntg_csnu"`
+	NtbyCnqn     string `json:"ntby_cnqn"`
 }
 
 type KISDomesticStockV1RankingBulkTransNumRequest struct {
@@ -5113,28 +5113,28 @@ type KISDomesticStockV1RankingCreditBalance struct {
 }
 
 type KISDomesticStockV1RankingCreditBalanceOutput1Item struct {
-	BstpClsCode string `json:"bstp_cls_code,omitempty"`
-	HtsKorIsnm  string `json:"hts_kor_isnm,omitempty"`
-	StndDate1   string `json:"stnd_date1,omitempty"`
-	StndDate2   string `json:"stnd_date2,omitempty"`
+	BstpClsCode string `json:"bstp_cls_code"`
+	HtsKorIsnm  string `json:"hts_kor_isnm"`
+	StndDate1   string `json:"stnd_date1"`
+	StndDate2   string `json:"stnd_date2"`
 }
 
 type KISDomesticStockV1RankingCreditBalanceOutput2Item struct {
-	MkscShrnIscd         string `json:"mksc_shrn_iscd,omitempty"`
-	HtsKorIsnm           string `json:"hts_kor_isnm,omitempty"`
-	StckPrpr             string `json:"stck_prpr,omitempty"`
-	PrdyVrss             string `json:"prdy_vrss,omitempty"`
-	PrdyVrssSign         string `json:"prdy_vrss_sign,omitempty"`
-	PrdyCtrt             string `json:"prdy_ctrt,omitempty"`
-	AcmlVol              string `json:"acml_vol,omitempty"`
-	WholLoanRmndStcn     string `json:"whol_loan_rmnd_stcn,omitempty"`
-	WholLoanRmndAmt      string `json:"whol_loan_rmnd_amt,omitempty"`
-	WholLoanRmndRate     string `json:"whol_loan_rmnd_rate,omitempty"`
-	WholStlnRmndStcn     string `json:"whol_stln_rmnd_stcn,omitempty"`
-	WholStlnRmndAmt      string `json:"whol_stln_rmnd_amt,omitempty"`
-	WholStlnRmndRate     string `json:"whol_stln_rmnd_rate,omitempty"`
-	NdayVrssLoanRmndInrt string `json:"nday_vrss_loan_rmnd_inrt,omitempty"`
-	NdayVrssStlnRmndInrt string `json:"nday_vrss_stln_rmnd_inrt,omitempty"`
+	MkscShrnIscd         string `json:"mksc_shrn_iscd"`
+	HtsKorIsnm           string `json:"hts_kor_isnm"`
+	StckPrpr             string `json:"stck_prpr"`
+	PrdyVrss             string `json:"prdy_vrss"`
+	PrdyVrssSign         string `json:"prdy_vrss_sign"`
+	PrdyCtrt             string `json:"prdy_ctrt"`
+	AcmlVol              string `json:"acml_vol"`
+	WholLoanRmndStcn     string `json:"whol_loan_rmnd_stcn"`
+	WholLoanRmndAmt      string `json:"whol_loan_rmnd_amt"`
+	WholLoanRmndRate     string `json:"whol_loan_rmnd_rate"`
+	WholStlnRmndStcn     string `json:"whol_stln_rmnd_stcn"`
+	WholStlnRmndAmt      string `json:"whol_stln_rmnd_amt"`
+	WholStlnRmndRate     string `json:"whol_stln_rmnd_rate"`
+	NdayVrssLoanRmndInrt string `json:"nday_vrss_loan_rmnd_inrt"`
+	NdayVrssStlnRmndInrt string `json:"nday_vrss_stln_rmnd_inrt"`
 }
 
 type KISDomesticStockV1RankingCreditBalanceRequest struct {
@@ -5151,19 +5151,19 @@ type KISDomesticStockV1RankingDisparity struct {
 }
 
 type KISDomesticStockV1RankingDisparityOutputItem struct {
-	MkscShrnIscd string `json:"mksc_shrn_iscd,omitempty"`
-	DataRank     string `json:"data_rank,omitempty"`
-	HtsKorIsnm   string `json:"hts_kor_isnm,omitempty"`
-	StckPrpr     string `json:"stck_prpr,omitempty"`
-	PrdyVrss     string `json:"prdy_vrss,omitempty"`
-	PrdyCtrt     string `json:"prdy_ctrt,omitempty"`
-	PrdyVrssSign string `json:"prdy_vrss_sign,omitempty"`
-	AcmlVol      string `json:"acml_vol,omitempty"`
-	D5Dsrt       string `json:"d5_dsrt,omitempty"`
-	D10Dsrt      string `json:"d10_dsrt,omitempty"`
-	D20Dsrt      string `json:"d20_dsrt,omitempty"`
-	D60Dsrt      string `json:"d60_dsrt,omitempty"`
-	D120Dsrt     string `json:"d120_dsrt,omitempty"`
+	MkscShrnIscd string `json:"mksc_shrn_iscd"`
+	DataRank     string `json:"data_rank"`
+	HtsKorIsnm   string `json:"hts_kor_isnm"`
+	StckPrpr     string `json:"stck_prpr"`
+	PrdyVrss     string `json:"prdy_vrss"`
+	PrdyCtrt     string `json:"prdy_ctrt"`
+	PrdyVrssSign string `json:"prdy_vrss_sign"`
+	AcmlVol      string `json:"acml_vol"`
+	D5Dsrt       string `json:"d5_dsrt"`
+	D10Dsrt      string `json:"d10_dsrt"`
+	D20Dsrt      string `json:"d20_dsrt"`
+	D60Dsrt      string `json:"d60_dsrt"`
+	D120Dsrt     string `json:"d120_dsrt"`
 }
 
 type KISDomesticStockV1RankingDisparityRequest struct {
@@ -5186,13 +5186,13 @@ type KISDomesticStockV1RankingDividendRate struct {
 }
 
 type KISDomesticStockV1RankingDividendRateOutput1Item struct {
-	Rank          string `json:"rank,omitempty"`
-	ShtCd         string `json:"sht_cd,omitempty"`
-	IsinName      string `json:"isin_name,omitempty"`
-	RecordDate    string `json:"record_date,omitempty"`
-	PerStoDiviAmt string `json:"per_sto_divi_amt,omitempty"`
-	DiviRate      string `json:"divi_rate,omitempty"`
-	DiviKind      string `json:"divi_kind,omitempty"`
+	Rank          string `json:"rank"`
+	ShtCd         string `json:"sht_cd"`
+	IsinName      string `json:"isin_name"`
+	RecordDate    string `json:"record_date"`
+	PerStoDiviAmt string `json:"per_sto_divi_amt"`
+	DiviRate      string `json:"divi_rate"`
+	DiviKind      string `json:"divi_kind"`
 }
 
 type KISDomesticStockV1RankingDividendRateRequest struct {
@@ -5212,21 +5212,21 @@ type KISDomesticStockV1RankingExpTransUpdown struct {
 }
 
 type KISDomesticStockV1RankingExpTransUpdownOutputItem struct {
-	StckShrnIscd  string `json:"stck_shrn_iscd,omitempty"`
-	HtsKorIsnm    string `json:"hts_kor_isnm,omitempty"`
-	StckPrpr      string `json:"stck_prpr,omitempty"`
-	PrdyVrss      string `json:"prdy_vrss,omitempty"`
-	PrdyVrssSign  string `json:"prdy_vrss_sign,omitempty"`
-	PrdyCtrt      string `json:"prdy_ctrt,omitempty"`
-	StckSdpr      string `json:"stck_sdpr,omitempty"`
-	SelnRsqn      string `json:"seln_rsqn,omitempty"`
-	Askp          string `json:"askp,omitempty"`
-	Bidp          string `json:"bidp,omitempty"`
-	ShnuRsqn      string `json:"shnu_rsqn,omitempty"`
-	CntgVol       string `json:"cntg_vol,omitempty"`
-	AntcTrPbmn    string `json:"antc_tr_pbmn,omitempty"`
-	TotalAskpRsqn string `json:"total_askp_rsqn,omitempty"`
-	TotalBidpRsqn string `json:"total_bidp_rsqn,omitempty"`
+	StckShrnIscd  string `json:"stck_shrn_iscd"`
+	HtsKorIsnm    string `json:"hts_kor_isnm"`
+	StckPrpr      string `json:"stck_prpr"`
+	PrdyVrss      string `json:"prdy_vrss"`
+	PrdyVrssSign  string `json:"prdy_vrss_sign"`
+	PrdyCtrt      string `json:"prdy_ctrt"`
+	StckSdpr      string `json:"stck_sdpr"`
+	SelnRsqn      string `json:"seln_rsqn"`
+	Askp          string `json:"askp"`
+	Bidp          string `json:"bidp"`
+	ShnuRsqn      string `json:"shnu_rsqn"`
+	CntgVol       string `json:"cntg_vol"`
+	AntcTrPbmn    string `json:"antc_tr_pbmn"`
+	TotalAskpRsqn string `json:"total_askp_rsqn"`
+	TotalBidpRsqn string `json:"total_bidp_rsqn"`
 }
 
 type KISDomesticStockV1RankingExpTransUpdownRequest struct {
@@ -5248,33 +5248,33 @@ type KISDomesticStockV1RankingFinanceRatio struct {
 }
 
 type KISDomesticStockV1RankingFinanceRatioOutputItem struct {
-	DataRank         string `json:"data_rank,omitempty"`
-	HtsKorIsnm       string `json:"hts_kor_isnm,omitempty"`
-	MkscShrnIscd     string `json:"mksc_shrn_iscd,omitempty"`
-	StckPrpr         string `json:"stck_prpr,omitempty"`
-	PrdyVrss         string `json:"prdy_vrss,omitempty"`
-	PrdyVrssSign     string `json:"prdy_vrss_sign,omitempty"`
-	PrdyCtrt         string `json:"prdy_ctrt,omitempty"`
-	AcmlVol          string `json:"acml_vol,omitempty"`
-	CptlOpPrfi       string `json:"cptl_op_prfi,omitempty"`
-	CptlNtinRate     string `json:"cptl_ntin_rate,omitempty"`
-	SaleTotlRate     string `json:"sale_totl_rate,omitempty"`
-	SaleNtinRate     string `json:"sale_ntin_rate,omitempty"`
-	Bis              string `json:"bis,omitempty"`
-	LbltRate         string `json:"lblt_rate,omitempty"`
-	BramDepn         string `json:"bram_depn,omitempty"`
-	RsrvRate         string `json:"rsrv_rate,omitempty"`
-	Grs              string `json:"grs,omitempty"`
-	OpPrfiInrt       string `json:"op_prfi_inrt,omitempty"`
-	BsopPrfiInrt     string `json:"bsop_prfi_inrt,omitempty"`
-	NtinInrt         string `json:"ntin_inrt,omitempty"`
-	EqutInrt         string `json:"equt_inrt,omitempty"`
-	CptlTnrt         string `json:"cptl_tnrt,omitempty"`
-	SaleBondTnrt     string `json:"sale_bond_tnrt,omitempty"`
-	TotlAsetInrt     string `json:"totl_aset_inrt,omitempty"`
-	StacMonth        string `json:"stac_month,omitempty"`
-	StacMonthClsCode string `json:"stac_month_cls_code,omitempty"`
-	IqryCsnu         string `json:"iqry_csnu,omitempty"`
+	DataRank         string `json:"data_rank"`
+	HtsKorIsnm       string `json:"hts_kor_isnm"`
+	MkscShrnIscd     string `json:"mksc_shrn_iscd"`
+	StckPrpr         string `json:"stck_prpr"`
+	PrdyVrss         string `json:"prdy_vrss"`
+	PrdyVrssSign     string `json:"prdy_vrss_sign"`
+	PrdyCtrt         string `json:"prdy_ctrt"`
+	AcmlVol          string `json:"acml_vol"`
+	CptlOpPrfi       string `json:"cptl_op_prfi"`
+	CptlNtinRate     string `json:"cptl_ntin_rate"`
+	SaleTotlRate     string `json:"sale_totl_rate"`
+	SaleNtinRate     string `json:"sale_ntin_rate"`
+	Bis              string `json:"bis"`
+	LbltRate         string `json:"lblt_rate"`
+	BramDepn         string `json:"bram_depn"`
+	RsrvRate         string `json:"rsrv_rate"`
+	Grs              string `json:"grs"`
+	OpPrfiInrt       string `json:"op_prfi_inrt"`
+	BsopPrfiInrt     string `json:"bsop_prfi_inrt"`
+	NtinInrt         string `json:"ntin_inrt"`
+	EqutInrt         string `json:"equt_inrt"`
+	CptlTnrt         string `json:"cptl_tnrt"`
+	SaleBondTnrt     string `json:"sale_bond_tnrt"`
+	TotlAsetInrt     string `json:"totl_aset_inrt"`
+	StacMonth        string `json:"stac_month"`
+	StacMonthClsCode string `json:"stac_month_cls_code"`
+	IqryCsnu         string `json:"iqry_csnu"`
 }
 
 type KISDomesticStockV1RankingFinanceRatioRequest struct {
@@ -5299,30 +5299,30 @@ type KISDomesticStockV1RankingFluctuation struct {
 }
 
 type KISDomesticStockV1RankingFluctuationOutputItem struct {
-	StckShrnIscd             string `json:"stck_shrn_iscd,omitempty"`
-	DataRank                 string `json:"data_rank,omitempty"`
-	HtsKorIsnm               string `json:"hts_kor_isnm,omitempty"`
-	StckPrpr                 string `json:"stck_prpr,omitempty"`
-	PrdyVrss                 string `json:"prdy_vrss,omitempty"`
-	PrdyVrssSign             string `json:"prdy_vrss_sign,omitempty"`
-	PrdyCtrt                 string `json:"prdy_ctrt,omitempty"`
-	AcmlVol                  string `json:"acml_vol,omitempty"`
-	StckHgpr                 string `json:"stck_hgpr,omitempty"`
-	HgprHour                 string `json:"hgpr_hour,omitempty"`
-	AcmlHgprDate             string `json:"acml_hgpr_date,omitempty"`
-	StckLwpr                 string `json:"stck_lwpr,omitempty"`
-	LwprHour                 string `json:"lwpr_hour,omitempty"`
-	AcmlLwprDate             string `json:"acml_lwpr_date,omitempty"`
-	LwprVrssPrprRate         string `json:"lwpr_vrss_prpr_rate,omitempty"`
-	DsgtDateClprVrssPrprRate string `json:"dsgt_date_clpr_vrss_prpr_rate,omitempty"`
-	CnntAscnDynu             string `json:"cnnt_ascn_dynu,omitempty"`
-	HgprVrssPrprRate         string `json:"hgpr_vrss_prpr_rate,omitempty"`
-	CnntDownDynu             string `json:"cnnt_down_dynu,omitempty"`
-	OprcVrssPrprSign         string `json:"oprc_vrss_prpr_sign,omitempty"`
-	OprcVrssPrpr             string `json:"oprc_vrss_prpr,omitempty"`
-	OprcVrssPrprRate         string `json:"oprc_vrss_prpr_rate,omitempty"`
-	PrdRsfl                  string `json:"prd_rsfl,omitempty"`
-	PrdRsflRate              string `json:"prd_rsfl_rate,omitempty"`
+	StckShrnIscd             string `json:"stck_shrn_iscd"`
+	DataRank                 string `json:"data_rank"`
+	HtsKorIsnm               string `json:"hts_kor_isnm"`
+	StckPrpr                 string `json:"stck_prpr"`
+	PrdyVrss                 string `json:"prdy_vrss"`
+	PrdyVrssSign             string `json:"prdy_vrss_sign"`
+	PrdyCtrt                 string `json:"prdy_ctrt"`
+	AcmlVol                  string `json:"acml_vol"`
+	StckHgpr                 string `json:"stck_hgpr"`
+	HgprHour                 string `json:"hgpr_hour"`
+	AcmlHgprDate             string `json:"acml_hgpr_date"`
+	StckLwpr                 string `json:"stck_lwpr"`
+	LwprHour                 string `json:"lwpr_hour"`
+	AcmlLwprDate             string `json:"acml_lwpr_date"`
+	LwprVrssPrprRate         string `json:"lwpr_vrss_prpr_rate"`
+	DsgtDateClprVrssPrprRate string `json:"dsgt_date_clpr_vrss_prpr_rate"`
+	CnntAscnDynu             string `json:"cnnt_ascn_dynu"`
+	HgprVrssPrprRate         string `json:"hgpr_vrss_prpr_rate"`
+	CnntDownDynu             string `json:"cnnt_down_dynu"`
+	OprcVrssPrprSign         string `json:"oprc_vrss_prpr_sign"`
+	OprcVrssPrpr             string `json:"oprc_vrss_prpr"`
+	OprcVrssPrprRate         string `json:"oprc_vrss_prpr_rate"`
+	PrdRsfl                  string `json:"prd_rsfl"`
+	PrdRsflRate              string `json:"prd_rsfl_rate"`
 }
 
 type KISDomesticStockV1RankingFluctuationRequest struct {
@@ -5348,8 +5348,8 @@ type KISDomesticStockV1RankingHtsTopView struct {
 }
 
 type KISDomesticStockV1RankingHtsTopViewOutput1Item struct {
-	MrktDivClsCode string `json:"mrkt_div_cls_code,omitempty"`
-	MkscShrnIscd   string `json:"mksc_shrn_iscd,omitempty"`
+	MrktDivClsCode string `json:"mrkt_div_cls_code"`
+	MkscShrnIscd   string `json:"mksc_shrn_iscd"`
 }
 
 type KISDomesticStockV1RankingHtsTopViewRequest struct {
@@ -5361,17 +5361,17 @@ type KISDomesticStockV1RankingMarketCap struct {
 }
 
 type KISDomesticStockV1RankingMarketCapOutputItem struct {
-	MkscShrnIscd     string `json:"mksc_shrn_iscd,omitempty"`
-	DataRank         string `json:"data_rank,omitempty"`
-	HtsKorIsnm       string `json:"hts_kor_isnm,omitempty"`
-	StckPrpr         string `json:"stck_prpr,omitempty"`
-	PrdyVrss         string `json:"prdy_vrss,omitempty"`
-	PrdyVrssSign     string `json:"prdy_vrss_sign,omitempty"`
-	PrdyCtrt         string `json:"prdy_ctrt,omitempty"`
-	AcmlVol          string `json:"acml_vol,omitempty"`
-	LstnStcn         string `json:"lstn_stcn,omitempty"`
-	StckAvls         string `json:"stck_avls,omitempty"`
-	MrktWholAvlsRlim string `json:"mrkt_whol_avls_rlim,omitempty"`
+	MkscShrnIscd     string `json:"mksc_shrn_iscd"`
+	DataRank         string `json:"data_rank"`
+	HtsKorIsnm       string `json:"hts_kor_isnm"`
+	StckPrpr         string `json:"stck_prpr"`
+	PrdyVrss         string `json:"prdy_vrss"`
+	PrdyVrssSign     string `json:"prdy_vrss_sign"`
+	PrdyCtrt         string `json:"prdy_ctrt"`
+	AcmlVol          string `json:"acml_vol"`
+	LstnStcn         string `json:"lstn_stcn"`
+	StckAvls         string `json:"stck_avls"`
+	MrktWholAvlsRlim string `json:"mrkt_whol_avls_rlim"`
 }
 
 type KISDomesticStockV1RankingMarketCapRequest struct {
@@ -5392,26 +5392,26 @@ type KISDomesticStockV1RankingMarketValue struct {
 }
 
 type KISDomesticStockV1RankingMarketValueOutputItem struct {
-	DataRank          string `json:"data_rank,omitempty"`
-	HtsKorIsnm        string `json:"hts_kor_isnm,omitempty"`
-	MkscShrnIscd      string `json:"mksc_shrn_iscd,omitempty"`
-	StckPrpr          string `json:"stck_prpr,omitempty"`
-	PrdyVrss          string `json:"prdy_vrss,omitempty"`
-	PrdyVrssSign      string `json:"prdy_vrss_sign,omitempty"`
-	PrdyCtrt          string `json:"prdy_ctrt,omitempty"`
-	AcmlVol           string `json:"acml_vol,omitempty"`
-	Per               string `json:"per,omitempty"`
-	Pbr               string `json:"pbr,omitempty"`
-	Pcr               string `json:"pcr,omitempty"`
-	Psr               string `json:"psr,omitempty"`
-	Eps               string `json:"eps,omitempty"`
-	Eva               string `json:"eva,omitempty"`
-	Ebitda            string `json:"ebitda,omitempty"`
-	PvDivEbitda       string `json:"pv_div_ebitda,omitempty"`
-	EbitdaDivFnncExpn string `json:"ebitda_div_fnnc_expn,omitempty"`
-	StacMonth         string `json:"stac_month,omitempty"`
-	StacMonthClsCode  string `json:"stac_month_cls_code,omitempty"`
-	IqryCsnu          string `json:"iqry_csnu,omitempty"`
+	DataRank          string `json:"data_rank"`
+	HtsKorIsnm        string `json:"hts_kor_isnm"`
+	MkscShrnIscd      string `json:"mksc_shrn_iscd"`
+	StckPrpr          string `json:"stck_prpr"`
+	PrdyVrss          string `json:"prdy_vrss"`
+	PrdyVrssSign      string `json:"prdy_vrss_sign"`
+	PrdyCtrt          string `json:"prdy_ctrt"`
+	AcmlVol           string `json:"acml_vol"`
+	Per               string `json:"per"`
+	Pbr               string `json:"pbr"`
+	Pcr               string `json:"pcr"`
+	Psr               string `json:"psr"`
+	Eps               string `json:"eps"`
+	Eva               string `json:"eva"`
+	Ebitda            string `json:"ebitda"`
+	PvDivEbitda       string `json:"pv_div_ebitda"`
+	EbitdaDivFnncExpn string `json:"ebitda_div_fnnc_expn"`
+	StacMonth         string `json:"stac_month"`
+	StacMonthClsCode  string `json:"stac_month_cls_code"`
+	IqryCsnu          string `json:"iqry_csnu"`
 }
 
 type KISDomesticStockV1RankingMarketValueRequest struct {
@@ -5436,22 +5436,22 @@ type KISDomesticStockV1RankingNearNewHighlow struct {
 }
 
 type KISDomesticStockV1RankingNearNewHighlowOutputItem struct {
-	HtsKorIsnm   string `json:"hts_kor_isnm,omitempty"`
-	MkscShrnIscd string `json:"mksc_shrn_iscd,omitempty"`
-	StckPrpr     string `json:"stck_prpr,omitempty"`
-	PrdyVrssSign string `json:"prdy_vrss_sign,omitempty"`
-	PrdyVrss     string `json:"prdy_vrss,omitempty"`
-	PrdyCtrt     string `json:"prdy_ctrt,omitempty"`
-	Askp         string `json:"askp,omitempty"`
-	AskpRsqn1    string `json:"askp_rsqn1,omitempty"`
-	Bidp         string `json:"bidp,omitempty"`
-	BidpRsqn1    string `json:"bidp_rsqn1,omitempty"`
-	AcmlVol      string `json:"acml_vol,omitempty"`
-	NewHgpr      string `json:"new_hgpr,omitempty"`
-	HprcNearRate string `json:"hprc_near_rate,omitempty"`
-	NewLwpr      string `json:"new_lwpr,omitempty"`
-	LwprNearRate string `json:"lwpr_near_rate,omitempty"`
-	StckSdpr     string `json:"stck_sdpr,omitempty"`
+	HtsKorIsnm   string `json:"hts_kor_isnm"`
+	MkscShrnIscd string `json:"mksc_shrn_iscd"`
+	StckPrpr     string `json:"stck_prpr"`
+	PrdyVrssSign string `json:"prdy_vrss_sign"`
+	PrdyVrss     string `json:"prdy_vrss"`
+	PrdyCtrt     string `json:"prdy_ctrt"`
+	Askp         string `json:"askp"`
+	AskpRsqn1    string `json:"askp_rsqn1"`
+	Bidp         string `json:"bidp"`
+	BidpRsqn1    string `json:"bidp_rsqn1"`
+	AcmlVol      string `json:"acml_vol"`
+	NewHgpr      string `json:"new_hgpr"`
+	HprcNearRate string `json:"hprc_near_rate"`
+	NewLwpr      string `json:"new_lwpr"`
+	LwprNearRate string `json:"lwpr_near_rate"`
+	StckSdpr     string `json:"stck_sdpr"`
 }
 
 type KISDomesticStockV1RankingNearNewHighlowRequest struct {
@@ -5475,19 +5475,19 @@ type KISDomesticStockV1RankingOvertimeExpTransFluct struct {
 }
 
 type KISDomesticStockV1RankingOvertimeExpTransFluctOutputItem struct {
-	DataRank                 string `json:"data_rank,omitempty"`
-	IscdStatClsCode          string `json:"iscd_stat_cls_code,omitempty"`
-	StckShrnIscd             string `json:"stck_shrn_iscd,omitempty"`
-	HtsKorIsnm               string `json:"hts_kor_isnm,omitempty"`
-	OvtmUntpAntcCnpr         string `json:"ovtm_untp_antc_cnpr,omitempty"`
-	OvtmUntpAntcCntgVrss     string `json:"ovtm_untp_antc_cntg_vrss,omitempty"`
-	OvtmUntpAntcCntgVrsssign string `json:"ovtm_untp_antc_cntg_vrsssign,omitempty"`
-	OvtmUntpAntcCntgCtrt     string `json:"ovtm_untp_antc_cntg_ctrt,omitempty"`
-	OvtmUntpAskpRsqn1        string `json:"ovtm_untp_askp_rsqn1,omitempty"`
-	OvtmUntpBidpRsqn1        string `json:"ovtm_untp_bidp_rsqn1,omitempty"`
-	OvtmUntpAntcCnqn         string `json:"ovtm_untp_antc_cnqn,omitempty"`
-	ItmtVol                  string `json:"itmt_vol,omitempty"`
-	StckPrpr                 string `json:"stck_prpr,omitempty"`
+	DataRank                 string `json:"data_rank"`
+	IscdStatClsCode          string `json:"iscd_stat_cls_code"`
+	StckShrnIscd             string `json:"stck_shrn_iscd"`
+	HtsKorIsnm               string `json:"hts_kor_isnm"`
+	OvtmUntpAntcCnpr         string `json:"ovtm_untp_antc_cnpr"`
+	OvtmUntpAntcCntgVrss     string `json:"ovtm_untp_antc_cntg_vrss"`
+	OvtmUntpAntcCntgVrsssign string `json:"ovtm_untp_antc_cntg_vrsssign"`
+	OvtmUntpAntcCntgCtrt     string `json:"ovtm_untp_antc_cntg_ctrt"`
+	OvtmUntpAskpRsqn1        string `json:"ovtm_untp_askp_rsqn1"`
+	OvtmUntpBidpRsqn1        string `json:"ovtm_untp_bidp_rsqn1"`
+	OvtmUntpAntcCnqn         string `json:"ovtm_untp_antc_cnqn"`
+	ItmtVol                  string `json:"itmt_vol"`
+	StckPrpr                 string `json:"stck_prpr"`
 }
 
 type KISDomesticStockV1RankingOvertimeExpTransFluctRequest struct {
@@ -5508,36 +5508,36 @@ type KISDomesticStockV1RankingOvertimeFluctuation struct {
 }
 
 type KISDomesticStockV1RankingOvertimeFluctuationOutput1Item struct {
-	OvtmUntpUplmIssuCnt  string `json:"ovtm_untp_uplm_issu_cnt,omitempty"`
-	OvtmUntpAscnIssuCnt  string `json:"ovtm_untp_ascn_issu_cnt,omitempty"`
-	OvtmUntpStnrIssuCnt  string `json:"ovtm_untp_stnr_issu_cnt,omitempty"`
-	OvtmUntpLslmIssuCnt  string `json:"ovtm_untp_lslm_issu_cnt,omitempty"`
-	OvtmUntpDownIssuCnt  string `json:"ovtm_untp_down_issu_cnt,omitempty"`
-	OvtmUntpAcmlVol      string `json:"ovtm_untp_acml_vol,omitempty"`
-	OvtmUntpAcmlTrPbmn   string `json:"ovtm_untp_acml_tr_pbmn,omitempty"`
-	OvtmUntpExchVol      string `json:"ovtm_untp_exch_vol,omitempty"`
-	OvtmUntpExchTrPbmn   string `json:"ovtm_untp_exch_tr_pbmn,omitempty"`
-	OvtmUntpKosdaqVol    string `json:"ovtm_untp_kosdaq_vol,omitempty"`
-	OvtmUntpKosdaqTrPbmn string `json:"ovtm_untp_kosdaq_tr_pbmn,omitempty"`
+	OvtmUntpUplmIssuCnt  string `json:"ovtm_untp_uplm_issu_cnt"`
+	OvtmUntpAscnIssuCnt  string `json:"ovtm_untp_ascn_issu_cnt"`
+	OvtmUntpStnrIssuCnt  string `json:"ovtm_untp_stnr_issu_cnt"`
+	OvtmUntpLslmIssuCnt  string `json:"ovtm_untp_lslm_issu_cnt"`
+	OvtmUntpDownIssuCnt  string `json:"ovtm_untp_down_issu_cnt"`
+	OvtmUntpAcmlVol      string `json:"ovtm_untp_acml_vol"`
+	OvtmUntpAcmlTrPbmn   string `json:"ovtm_untp_acml_tr_pbmn"`
+	OvtmUntpExchVol      string `json:"ovtm_untp_exch_vol"`
+	OvtmUntpExchTrPbmn   string `json:"ovtm_untp_exch_tr_pbmn"`
+	OvtmUntpKosdaqVol    string `json:"ovtm_untp_kosdaq_vol"`
+	OvtmUntpKosdaqTrPbmn string `json:"ovtm_untp_kosdaq_tr_pbmn"`
 }
 
 type KISDomesticStockV1RankingOvertimeFluctuationOutput2Item struct {
-	MkscShrnIscd         string `json:"mksc_shrn_iscd,omitempty"`
-	HtsKorIsnm           string `json:"hts_kor_isnm,omitempty"`
-	OvtmUntpPrpr         string `json:"ovtm_untp_prpr,omitempty"`
-	OvtmUntpPrdyVrss     string `json:"ovtm_untp_prdy_vrss,omitempty"`
-	OvtmUntpPrdyVrssSign string `json:"ovtm_untp_prdy_vrss_sign,omitempty"`
-	OvtmUntpPrdyCtrt     string `json:"ovtm_untp_prdy_ctrt,omitempty"`
-	OvtmUntpAskp1        string `json:"ovtm_untp_askp1,omitempty"`
-	OvtmUntpSelnRsqn     string `json:"ovtm_untp_seln_rsqn,omitempty"`
-	OvtmUntpBidp1        string `json:"ovtm_untp_bidp1,omitempty"`
-	OvtmUntpShnuRsqn     string `json:"ovtm_untp_shnu_rsqn,omitempty"`
-	OvtmUntpVol          string `json:"ovtm_untp_vol,omitempty"`
-	OvtmVrssAcmlVolRlim  string `json:"ovtm_vrss_acml_vol_rlim,omitempty"`
-	StckPrpr             string `json:"stck_prpr,omitempty"`
-	AcmlVol              string `json:"acml_vol,omitempty"`
-	Bidp                 string `json:"bidp,omitempty"`
-	Askp                 string `json:"askp,omitempty"`
+	MkscShrnIscd         string `json:"mksc_shrn_iscd"`
+	HtsKorIsnm           string `json:"hts_kor_isnm"`
+	OvtmUntpPrpr         string `json:"ovtm_untp_prpr"`
+	OvtmUntpPrdyVrss     string `json:"ovtm_untp_prdy_vrss"`
+	OvtmUntpPrdyVrssSign string `json:"ovtm_untp_prdy_vrss_sign"`
+	OvtmUntpPrdyCtrt     string `json:"ovtm_untp_prdy_ctrt"`
+	OvtmUntpAskp1        string `json:"ovtm_untp_askp1"`
+	OvtmUntpSelnRsqn     string `json:"ovtm_untp_seln_rsqn"`
+	OvtmUntpBidp1        string `json:"ovtm_untp_bidp1"`
+	OvtmUntpShnuRsqn     string `json:"ovtm_untp_shnu_rsqn"`
+	OvtmUntpVol          string `json:"ovtm_untp_vol"`
+	OvtmVrssAcmlVolRlim  string `json:"ovtm_vrss_acml_vol_rlim"`
+	StckPrpr             string `json:"stck_prpr"`
+	AcmlVol              string `json:"acml_vol"`
+	Bidp                 string `json:"bidp"`
+	Askp                 string `json:"askp"`
 }
 
 type KISDomesticStockV1RankingOvertimeFluctuationRequest struct {
@@ -5560,27 +5560,27 @@ type KISDomesticStockV1RankingOvertimeVolume struct {
 }
 
 type KISDomesticStockV1RankingOvertimeVolumeOutput1Item struct {
-	OvtmUntpExchVol      string `json:"ovtm_untp_exch_vol,omitempty"`
-	OvtmUntpExchTrPbmn   string `json:"ovtm_untp_exch_tr_pbmn,omitempty"`
-	OvtmUntpKosdaqVol    string `json:"ovtm_untp_kosdaq_vol,omitempty"`
-	OvtmUntpKosdaqTrPbmn string `json:"ovtm_untp_kosdaq_tr_pbmn,omitempty"`
+	OvtmUntpExchVol      string `json:"ovtm_untp_exch_vol"`
+	OvtmUntpExchTrPbmn   string `json:"ovtm_untp_exch_tr_pbmn"`
+	OvtmUntpKosdaqVol    string `json:"ovtm_untp_kosdaq_vol"`
+	OvtmUntpKosdaqTrPbmn string `json:"ovtm_untp_kosdaq_tr_pbmn"`
 }
 
 type KISDomesticStockV1RankingOvertimeVolumeOutput2Item struct {
-	StckShrnIscd         string `json:"stck_shrn_iscd,omitempty"`
-	HtsKorIsnm           string `json:"hts_kor_isnm,omitempty"`
-	OvtmUntpPrpr         string `json:"ovtm_untp_prpr,omitempty"`
-	OvtmUntpPrdyVrss     string `json:"ovtm_untp_prdy_vrss,omitempty"`
-	OvtmUntpPrdyVrssSign string `json:"ovtm_untp_prdy_vrss_sign,omitempty"`
-	OvtmUntpPrdyCtrt     string `json:"ovtm_untp_prdy_ctrt,omitempty"`
-	OvtmUntpSelnRsqn     string `json:"ovtm_untp_seln_rsqn,omitempty"`
-	OvtmUntpShnuRsqn     string `json:"ovtm_untp_shnu_rsqn,omitempty"`
-	OvtmUntpVol          string `json:"ovtm_untp_vol,omitempty"`
-	OvtmVrssAcmlVolRlim  string `json:"ovtm_vrss_acml_vol_rlim,omitempty"`
-	StckPrpr             string `json:"stck_prpr,omitempty"`
-	AcmlVol              string `json:"acml_vol,omitempty"`
-	Bidp                 string `json:"bidp,omitempty"`
-	Askp                 string `json:"askp,omitempty"`
+	StckShrnIscd         string `json:"stck_shrn_iscd"`
+	HtsKorIsnm           string `json:"hts_kor_isnm"`
+	OvtmUntpPrpr         string `json:"ovtm_untp_prpr"`
+	OvtmUntpPrdyVrss     string `json:"ovtm_untp_prdy_vrss"`
+	OvtmUntpPrdyVrssSign string `json:"ovtm_untp_prdy_vrss_sign"`
+	OvtmUntpPrdyCtrt     string `json:"ovtm_untp_prdy_ctrt"`
+	OvtmUntpSelnRsqn     string `json:"ovtm_untp_seln_rsqn"`
+	OvtmUntpShnuRsqn     string `json:"ovtm_untp_shnu_rsqn"`
+	OvtmUntpVol          string `json:"ovtm_untp_vol"`
+	OvtmVrssAcmlVolRlim  string `json:"ovtm_vrss_acml_vol_rlim"`
+	StckPrpr             string `json:"stck_prpr"`
+	AcmlVol              string `json:"acml_vol"`
+	Bidp                 string `json:"bidp"`
+	Askp                 string `json:"askp"`
 }
 
 type KISDomesticStockV1RankingOvertimeVolumeRequest struct {
@@ -5601,23 +5601,23 @@ type KISDomesticStockV1RankingPreferDisparateRatio struct {
 }
 
 type KISDomesticStockV1RankingPreferDisparateRatioOutputItem struct {
-	MkscShrnIscd     string `json:"mksc_shrn_iscd,omitempty"`
-	DataRank         string `json:"data_rank,omitempty"`
-	HtsKorIsnm       string `json:"hts_kor_isnm,omitempty"`
-	StckPrpr         string `json:"stck_prpr,omitempty"`
-	PrdyVrss         string `json:"prdy_vrss,omitempty"`
-	PrdyVrssSign     string `json:"prdy_vrss_sign,omitempty"`
-	AcmlVol          string `json:"acml_vol,omitempty"`
-	PrstIscd         string `json:"prst_iscd,omitempty"`
-	PrstKorIsnm      string `json:"prst_kor_isnm,omitempty"`
-	PrstPrpr         string `json:"prst_prpr,omitempty"`
-	PrstPrdyVrss     string `json:"prst_prdy_vrss,omitempty"`
-	PrstPrdyVrssSign string `json:"prst_prdy_vrss_sign,omitempty"`
-	PrstAcmlVol      string `json:"prst_acml_vol,omitempty"`
-	DiffPrpr         string `json:"diff_prpr,omitempty"`
-	Dprt             string `json:"dprt,omitempty"`
-	PrdyCtrt         string `json:"prdy_ctrt,omitempty"`
-	PrstPrdyCtrt     string `json:"prst_prdy_ctrt,omitempty"`
+	MkscShrnIscd     string `json:"mksc_shrn_iscd"`
+	DataRank         string `json:"data_rank"`
+	HtsKorIsnm       string `json:"hts_kor_isnm"`
+	StckPrpr         string `json:"stck_prpr"`
+	PrdyVrss         string `json:"prdy_vrss"`
+	PrdyVrssSign     string `json:"prdy_vrss_sign"`
+	AcmlVol          string `json:"acml_vol"`
+	PrstIscd         string `json:"prst_iscd"`
+	PrstKorIsnm      string `json:"prst_kor_isnm"`
+	PrstPrpr         string `json:"prst_prpr"`
+	PrstPrdyVrss     string `json:"prst_prdy_vrss"`
+	PrstPrdyVrssSign string `json:"prst_prdy_vrss_sign"`
+	PrstAcmlVol      string `json:"prst_acml_vol"`
+	DiffPrpr         string `json:"diff_prpr"`
+	Dprt             string `json:"dprt"`
+	PrdyCtrt         string `json:"prdy_ctrt"`
+	PrstPrdyCtrt     string `json:"prst_prdy_ctrt"`
 }
 
 type KISDomesticStockV1RankingPreferDisparateRatioRequest struct {
@@ -5638,24 +5638,24 @@ type KISDomesticStockV1RankingProfitAssetIndex struct {
 }
 
 type KISDomesticStockV1RankingProfitAssetIndexOutputItem struct {
-	DataRank         string `json:"data_rank,omitempty"`
-	HtsKorIsnm       string `json:"hts_kor_isnm,omitempty"`
-	PrdyVrssSign     string `json:"prdy_vrss_sign,omitempty"`
-	MkscShrnIscd     string `json:"mksc_shrn_iscd,omitempty"`
-	StckPrpr         string `json:"stck_prpr,omitempty"`
-	PrdyVrss         string `json:"prdy_vrss,omitempty"`
-	PrdyCtrt         string `json:"prdy_ctrt,omitempty"`
-	AcmlVol          string `json:"acml_vol,omitempty"`
-	SaleTotlPrfi     string `json:"sale_totl_prfi,omitempty"`
-	BsopPrti         string `json:"bsop_prti,omitempty"`
-	OpPrfi           string `json:"op_prfi,omitempty"`
-	ThtrNtin         string `json:"thtr_ntin,omitempty"`
-	TotalAset        string `json:"total_aset,omitempty"`
-	TotalLblt        string `json:"total_lblt,omitempty"`
-	TotalCptl        string `json:"total_cptl,omitempty"`
-	StacMonth        string `json:"stac_month,omitempty"`
-	StacMonthClsCode string `json:"stac_month_cls_code,omitempty"`
-	IqryCsnu         string `json:"iqry_csnu,omitempty"`
+	DataRank         string `json:"data_rank"`
+	HtsKorIsnm       string `json:"hts_kor_isnm"`
+	PrdyVrssSign     string `json:"prdy_vrss_sign"`
+	MkscShrnIscd     string `json:"mksc_shrn_iscd"`
+	StckPrpr         string `json:"stck_prpr"`
+	PrdyVrss         string `json:"prdy_vrss"`
+	PrdyCtrt         string `json:"prdy_ctrt"`
+	AcmlVol          string `json:"acml_vol"`
+	SaleTotlPrfi     string `json:"sale_totl_prfi"`
+	BsopPrti         string `json:"bsop_prti"`
+	OpPrfi           string `json:"op_prfi"`
+	ThtrNtin         string `json:"thtr_ntin"`
+	TotalAset        string `json:"total_aset"`
+	TotalLblt        string `json:"total_lblt"`
+	TotalCptl        string `json:"total_cptl"`
+	StacMonth        string `json:"stac_month"`
+	StacMonthClsCode string `json:"stac_month_cls_code"`
+	IqryCsnu         string `json:"iqry_csnu"`
 }
 
 type KISDomesticStockV1RankingProfitAssetIndexRequest struct {
@@ -5680,19 +5680,19 @@ type KISDomesticStockV1RankingQuoteBalance struct {
 }
 
 type KISDomesticStockV1RankingQuoteBalanceOutputItem struct {
-	MkscShrnIscd      string `json:"mksc_shrn_iscd,omitempty"`
-	DataRank          string `json:"data_rank,omitempty"`
-	HtsKorIsnm        string `json:"hts_kor_isnm,omitempty"`
-	StckPrpr          string `json:"stck_prpr,omitempty"`
-	PrdyVrss          string `json:"prdy_vrss,omitempty"`
-	PrdyVrssSign      string `json:"prdy_vrss_sign,omitempty"`
-	PrdyCtrt          string `json:"prdy_ctrt,omitempty"`
-	AcmlVol           string `json:"acml_vol,omitempty"`
-	TotalAskpRsqn     string `json:"total_askp_rsqn,omitempty"`
-	TotalBidpRsqn     string `json:"total_bidp_rsqn,omitempty"`
-	TotalNtslBidpRsqn string `json:"total_ntsl_bidp_rsqn,omitempty"`
-	ShnuRsqnRate      string `json:"shnu_rsqn_rate,omitempty"`
-	SelnRsqnRate      string `json:"seln_rsqn_rate,omitempty"`
+	MkscShrnIscd      string `json:"mksc_shrn_iscd"`
+	DataRank          string `json:"data_rank"`
+	HtsKorIsnm        string `json:"hts_kor_isnm"`
+	StckPrpr          string `json:"stck_prpr"`
+	PrdyVrss          string `json:"prdy_vrss"`
+	PrdyVrssSign      string `json:"prdy_vrss_sign"`
+	PrdyCtrt          string `json:"prdy_ctrt"`
+	AcmlVol           string `json:"acml_vol"`
+	TotalAskpRsqn     string `json:"total_askp_rsqn"`
+	TotalBidpRsqn     string `json:"total_bidp_rsqn"`
+	TotalNtslBidpRsqn string `json:"total_ntsl_bidp_rsqn"`
+	ShnuRsqnRate      string `json:"shnu_rsqn_rate"`
+	SelnRsqnRate      string `json:"seln_rsqn_rate"`
 }
 
 type KISDomesticStockV1RankingQuoteBalanceRequest struct {
@@ -5714,21 +5714,21 @@ type KISDomesticStockV1RankingShortSale struct {
 }
 
 type KISDomesticStockV1RankingShortSaleOutputItem struct {
-	MkscShrnIscd   string `json:"mksc_shrn_iscd,omitempty"`
-	HtsKorIsnm     string `json:"hts_kor_isnm,omitempty"`
-	StckPrpr       string `json:"stck_prpr,omitempty"`
-	PrdyVrss       string `json:"prdy_vrss,omitempty"`
-	PrdyVrssSign   string `json:"prdy_vrss_sign,omitempty"`
-	PrdyCtrt       string `json:"prdy_ctrt,omitempty"`
-	AcmlVol        string `json:"acml_vol,omitempty"`
-	AcmlTrPbmn     string `json:"acml_tr_pbmn,omitempty"`
-	SstsCntgQty    string `json:"ssts_cntg_qty,omitempty"`
-	SstsVolRlim    string `json:"ssts_vol_rlim,omitempty"`
-	SstsTrPbmn     string `json:"ssts_tr_pbmn,omitempty"`
-	SstsTrPbmnRlim string `json:"ssts_tr_pbmn_rlim,omitempty"`
-	StndDate1      string `json:"stnd_date1,omitempty"`
-	StndDate2      string `json:"stnd_date2,omitempty"`
-	AvrgPrc        string `json:"avrg_prc,omitempty"`
+	MkscShrnIscd   string `json:"mksc_shrn_iscd"`
+	HtsKorIsnm     string `json:"hts_kor_isnm"`
+	StckPrpr       string `json:"stck_prpr"`
+	PrdyVrss       string `json:"prdy_vrss"`
+	PrdyVrssSign   string `json:"prdy_vrss_sign"`
+	PrdyCtrt       string `json:"prdy_ctrt"`
+	AcmlVol        string `json:"acml_vol"`
+	AcmlTrPbmn     string `json:"acml_tr_pbmn"`
+	SstsCntgQty    string `json:"ssts_cntg_qty"`
+	SstsVolRlim    string `json:"ssts_vol_rlim"`
+	SstsTrPbmn     string `json:"ssts_tr_pbmn"`
+	SstsTrPbmnRlim string `json:"ssts_tr_pbmn_rlim"`
+	StndDate1      string `json:"stnd_date1"`
+	StndDate2      string `json:"stnd_date2"`
+	AvrgPrc        string `json:"avrg_prc"`
 }
 
 type KISDomesticStockV1RankingShortSaleRequest struct {
@@ -5750,19 +5750,19 @@ type KISDomesticStockV1RankingTopInterestStock struct {
 }
 
 type KISDomesticStockV1RankingTopInterestStockOutputItem struct {
-	MrktDivClsName   string `json:"mrkt_div_cls_name,omitempty"`
-	MkscShrnIscd     string `json:"mksc_shrn_iscd,omitempty"`
-	HtsKorIsnm       string `json:"hts_kor_isnm,omitempty"`
-	StckPrpr         string `json:"stck_prpr,omitempty"`
-	PrdyVrss         string `json:"prdy_vrss,omitempty"`
-	PrdyVrssSign     string `json:"prdy_vrss_sign,omitempty"`
-	PrdyCtrt         string `json:"prdy_ctrt,omitempty"`
-	AcmlVol          string `json:"acml_vol,omitempty"`
-	AcmlTrPbmn       string `json:"acml_tr_pbmn,omitempty"`
-	Askp             string `json:"askp,omitempty"`
-	Bidp             string `json:"bidp,omitempty"`
-	DataRank         string `json:"data_rank,omitempty"`
-	InterIssuRegCsnu string `json:"inter_issu_reg_csnu,omitempty"`
+	MrktDivClsName   string `json:"mrkt_div_cls_name"`
+	MkscShrnIscd     string `json:"mksc_shrn_iscd"`
+	HtsKorIsnm       string `json:"hts_kor_isnm"`
+	StckPrpr         string `json:"stck_prpr"`
+	PrdyVrss         string `json:"prdy_vrss"`
+	PrdyVrssSign     string `json:"prdy_vrss_sign"`
+	PrdyCtrt         string `json:"prdy_ctrt"`
+	AcmlVol          string `json:"acml_vol"`
+	AcmlTrPbmn       string `json:"acml_tr_pbmn"`
+	Askp             string `json:"askp"`
+	Bidp             string `json:"bidp"`
+	DataRank         string `json:"data_rank"`
+	InterIssuRegCsnu string `json:"inter_issu_reg_csnu"`
 }
 
 type KISDomesticStockV1RankingTopInterestStockRequest struct {
@@ -5785,18 +5785,18 @@ type KISDomesticStockV1RankingTradedByCompany struct {
 }
 
 type KISDomesticStockV1RankingTradedByCompanyOutputItem struct {
-	DataRank     string `json:"data_rank,omitempty"`
-	MkscShrnIscd string `json:"mksc_shrn_iscd,omitempty"`
-	HtsKorIsnm   string `json:"hts_kor_isnm,omitempty"`
-	StckPrpr     string `json:"stck_prpr,omitempty"`
-	PrdyVrssSign string `json:"prdy_vrss_sign,omitempty"`
-	PrdyVrss     string `json:"prdy_vrss,omitempty"`
-	PrdyCtrt     string `json:"prdy_ctrt,omitempty"`
-	AcmlVol      string `json:"acml_vol,omitempty"`
-	AcmlTrPbmn   string `json:"acml_tr_pbmn,omitempty"`
-	SelnCnqnSmtn string `json:"seln_cnqn_smtn,omitempty"`
-	ShnuCnqnSmtn string `json:"shnu_cnqn_smtn,omitempty"`
-	NtbyCnqn     string `json:"ntby_cnqn,omitempty"`
+	DataRank     string `json:"data_rank"`
+	MkscShrnIscd string `json:"mksc_shrn_iscd"`
+	HtsKorIsnm   string `json:"hts_kor_isnm"`
+	StckPrpr     string `json:"stck_prpr"`
+	PrdyVrssSign string `json:"prdy_vrss_sign"`
+	PrdyVrss     string `json:"prdy_vrss"`
+	PrdyCtrt     string `json:"prdy_ctrt"`
+	AcmlVol      string `json:"acml_vol"`
+	AcmlTrPbmn   string `json:"acml_tr_pbmn"`
+	SelnCnqnSmtn string `json:"seln_cnqn_smtn"`
+	ShnuCnqnSmtn string `json:"shnu_cnqn_smtn"`
+	NtbyCnqn     string `json:"ntby_cnqn"`
 }
 
 type KISDomesticStockV1RankingTradedByCompanyRequest struct {
@@ -5820,17 +5820,17 @@ type KISDomesticStockV1RankingVolumePower struct {
 }
 
 type KISDomesticStockV1RankingVolumePowerOutputItem struct {
-	StckShrnIscd string `json:"stck_shrn_iscd,omitempty"`
-	DataRank     string `json:"data_rank,omitempty"`
-	HtsKorIsnm   string `json:"hts_kor_isnm,omitempty"`
-	StckPrpr     string `json:"stck_prpr,omitempty"`
-	PrdyVrss     string `json:"prdy_vrss,omitempty"`
-	PrdyVrssSign string `json:"prdy_vrss_sign,omitempty"`
-	PrdyCtrt     string `json:"prdy_ctrt,omitempty"`
-	AcmlVol      string `json:"acml_vol,omitempty"`
-	TdayRltv     string `json:"tday_rltv,omitempty"`
-	SelnCnqnSmtn string `json:"seln_cnqn_smtn,omitempty"`
-	ShnuCnqnSmtn string `json:"shnu_cnqn_smtn,omitempty"`
+	StckShrnIscd string `json:"stck_shrn_iscd"`
+	DataRank     string `json:"data_rank"`
+	HtsKorIsnm   string `json:"hts_kor_isnm"`
+	StckPrpr     string `json:"stck_prpr"`
+	PrdyVrss     string `json:"prdy_vrss"`
+	PrdyVrssSign string `json:"prdy_vrss_sign"`
+	PrdyCtrt     string `json:"prdy_ctrt"`
+	AcmlVol      string `json:"acml_vol"`
+	TdayRltv     string `json:"tday_rltv"`
+	SelnCnqnSmtn string `json:"seln_cnqn_smtn"`
+	ShnuCnqnSmtn string `json:"shnu_cnqn_smtn"`
 }
 
 type KISDomesticStockV1RankingVolumePowerRequest struct {
@@ -5852,40 +5852,40 @@ type KISDomesticStockV1TradingInquireAccountBalance struct {
 }
 
 type KISDomesticStockV1TradingInquireAccountBalanceOutput1Item struct {
-	PchsAmt     string `json:"pchs_amt,omitempty"`
-	EvluAmt     string `json:"evlu_amt,omitempty"`
-	EvluPflsAmt string `json:"evlu_pfls_amt,omitempty"`
-	CrdtLndAmt  string `json:"crdt_lnd_amt,omitempty"`
-	RealNassAmt string `json:"real_nass_amt,omitempty"`
-	WholWeitRt  string `json:"whol_weit_rt,omitempty"`
+	PchsAmt     string `json:"pchs_amt"`
+	EvluAmt     string `json:"evlu_amt"`
+	EvluPflsAmt string `json:"evlu_pfls_amt"`
+	CrdtLndAmt  string `json:"crdt_lnd_amt"`
+	RealNassAmt string `json:"real_nass_amt"`
+	WholWeitRt  string `json:"whol_weit_rt"`
 }
 
 type KISDomesticStockV1TradingInquireAccountBalanceOutput2Item struct {
-	PchsAmtSmtl            string `json:"pchs_amt_smtl,omitempty"`
-	NassTotAmt             string `json:"nass_tot_amt,omitempty"`
-	LoanAmtSmtl            string `json:"loan_amt_smtl,omitempty"`
-	EvluPflsAmtSmtl        string `json:"evlu_pfls_amt_smtl,omitempty"`
-	EvluAmtSmtl            string `json:"evlu_amt_smtl,omitempty"`
-	TotAsstAmt             string `json:"tot_asst_amt,omitempty"`
-	TotLndaTotUlstLnda     string `json:"tot_lnda_tot_ulst_lnda,omitempty"`
-	CmaAutoLoanAmt         string `json:"cma_auto_loan_amt,omitempty"`
-	TotMglnAmt             string `json:"tot_mgln_amt,omitempty"`
-	StlnEvluAmt            string `json:"stln_evlu_amt,omitempty"`
-	CrdtFncgAmt            string `json:"crdt_fncg_amt,omitempty"`
-	OclAplLoanAmt          string `json:"ocl_apl_loan_amt,omitempty"`
-	PldgStupAmt            string `json:"pldg_stup_amt,omitempty"`
-	FrcrEvluTota           string `json:"frcr_evlu_tota,omitempty"`
-	TotDnclAmt             string `json:"tot_dncl_amt,omitempty"`
-	CmaEvluAmt             string `json:"cma_evlu_amt,omitempty"`
-	DnclAmt                string `json:"dncl_amt,omitempty"`
-	TotSbstAmt             string `json:"tot_sbst_amt,omitempty"`
-	ThdtRcvbAmt            string `json:"thdt_rcvb_amt,omitempty"`
-	OvrsStckEvluAmt1       string `json:"ovrs_stck_evlu_amt1,omitempty"`
-	OvrsBondEvluAmt        string `json:"ovrs_bond_evlu_amt,omitempty"`
-	MmfCmaMggeLoanAmt      string `json:"mmf_cma_mgge_loan_amt,omitempty"`
-	SbscDnclAmt            string `json:"sbsc_dncl_amt,omitempty"`
-	PbstSbscFndsLoanUseAmt string `json:"pbst_sbsc_fnds_loan_use_amt,omitempty"`
-	EtprCrdtGrntLoanAmt    string `json:"etpr_crdt_grnt_loan_amt,omitempty"`
+	PchsAmtSmtl            string `json:"pchs_amt_smtl"`
+	NassTotAmt             string `json:"nass_tot_amt"`
+	LoanAmtSmtl            string `json:"loan_amt_smtl"`
+	EvluPflsAmtSmtl        string `json:"evlu_pfls_amt_smtl"`
+	EvluAmtSmtl            string `json:"evlu_amt_smtl"`
+	TotAsstAmt             string `json:"tot_asst_amt"`
+	TotLndaTotUlstLnda     string `json:"tot_lnda_tot_ulst_lnda"`
+	CmaAutoLoanAmt         string `json:"cma_auto_loan_amt"`
+	TotMglnAmt             string `json:"tot_mgln_amt"`
+	StlnEvluAmt            string `json:"stln_evlu_amt"`
+	CrdtFncgAmt            string `json:"crdt_fncg_amt"`
+	OclAplLoanAmt          string `json:"ocl_apl_loan_amt"`
+	PldgStupAmt            string `json:"pldg_stup_amt"`
+	FrcrEvluTota           string `json:"frcr_evlu_tota"`
+	TotDnclAmt             string `json:"tot_dncl_amt"`
+	CmaEvluAmt             string `json:"cma_evlu_amt"`
+	DnclAmt                string `json:"dncl_amt"`
+	TotSbstAmt             string `json:"tot_sbst_amt"`
+	ThdtRcvbAmt            string `json:"thdt_rcvb_amt"`
+	OvrsStckEvluAmt1       string `json:"ovrs_stck_evlu_amt1"`
+	OvrsBondEvluAmt        string `json:"ovrs_bond_evlu_amt"`
+	MmfCmaMggeLoanAmt      string `json:"mmf_cma_mgge_loan_amt"`
+	SbscDnclAmt            string `json:"sbsc_dncl_amt"`
+	PbstSbscFndsLoanUseAmt string `json:"pbst_sbsc_fnds_loan_use_amt"`
+	EtprCrdtGrntLoanAmt    string `json:"etpr_crdt_grnt_loan_amt"`
 }
 
 type KISDomesticStockV1TradingInquireAccountBalanceRequest struct {
@@ -5904,59 +5904,59 @@ type KISDomesticStockV1TradingInquireBalance struct {
 }
 
 type KISDomesticStockV1TradingInquireBalanceOutput1Item struct {
-	Pdno           string `json:"pdno,omitempty"`
-	PrdtName       string `json:"prdt_name,omitempty"`
-	TradDvsnName   string `json:"trad_dvsn_name,omitempty"`
-	BfdyBuyQty     string `json:"bfdy_buy_qty,omitempty"`
-	BfdySllQty     string `json:"bfdy_sll_qty,omitempty"`
-	ThdtBuyqty     string `json:"thdt_buyqty,omitempty"`
-	ThdtSllQty     string `json:"thdt_sll_qty,omitempty"`
-	HldgQty        string `json:"hldg_qty,omitempty"`
-	OrdPsblQty     string `json:"ord_psbl_qty,omitempty"`
-	PchsAvgPric    string `json:"pchs_avg_pric,omitempty"`
-	PchsAmt        string `json:"pchs_amt,omitempty"`
-	Prpr           string `json:"prpr,omitempty"`
-	EvluAmt        string `json:"evlu_amt,omitempty"`
-	EvluPflsAmt    string `json:"evlu_pfls_amt,omitempty"`
-	EvluPflsRt     string `json:"evlu_pfls_rt,omitempty"`
-	EvluErngRt     string `json:"evlu_erng_rt,omitempty"`
-	LoanDt         string `json:"loan_dt,omitempty"`
-	LoanAmt        string `json:"loan_amt,omitempty"`
-	StlnSlngChgs   string `json:"stln_slng_chgs,omitempty"`
-	ExpdDt         string `json:"expd_dt,omitempty"`
-	FlttRt         string `json:"fltt_rt,omitempty"`
-	BfdyCprsIcdc   string `json:"bfdy_cprs_icdc,omitempty"`
-	ItemMgnaRtName string `json:"item_mgna_rt_name,omitempty"`
-	GrtaRtName     string `json:"grta_rt_name,omitempty"`
-	SbstPric       string `json:"sbst_pric,omitempty"`
-	StckLoanUnpr   string `json:"stck_loan_unpr,omitempty"`
+	Pdno           string `json:"pdno"`
+	PrdtName       string `json:"prdt_name"`
+	TradDvsnName   string `json:"trad_dvsn_name"`
+	BfdyBuyQty     string `json:"bfdy_buy_qty"`
+	BfdySllQty     string `json:"bfdy_sll_qty"`
+	ThdtBuyqty     string `json:"thdt_buyqty"`
+	ThdtSllQty     string `json:"thdt_sll_qty"`
+	HldgQty        string `json:"hldg_qty"`
+	OrdPsblQty     string `json:"ord_psbl_qty"`
+	PchsAvgPric    string `json:"pchs_avg_pric"`
+	PchsAmt        string `json:"pchs_amt"`
+	Prpr           string `json:"prpr"`
+	EvluAmt        string `json:"evlu_amt"`
+	EvluPflsAmt    string `json:"evlu_pfls_amt"`
+	EvluPflsRt     string `json:"evlu_pfls_rt"`
+	EvluErngRt     string `json:"evlu_erng_rt"`
+	LoanDt         string `json:"loan_dt"`
+	LoanAmt        string `json:"loan_amt"`
+	StlnSlngChgs   string `json:"stln_slng_chgs"`
+	ExpdDt         string `json:"expd_dt"`
+	FlttRt         string `json:"fltt_rt"`
+	BfdyCprsIcdc   string `json:"bfdy_cprs_icdc"`
+	ItemMgnaRtName string `json:"item_mgna_rt_name"`
+	GrtaRtName     string `json:"grta_rt_name"`
+	SbstPric       string `json:"sbst_pric"`
+	StckLoanUnpr   string `json:"stck_loan_unpr"`
 }
 
 type KISDomesticStockV1TradingInquireBalanceOutput2Item struct {
-	DncaTotAmt         string `json:"dnca_tot_amt,omitempty"`
-	NxdyExccAmt        string `json:"nxdy_excc_amt,omitempty"`
-	PrvsRcdlExccAmt    string `json:"prvs_rcdl_excc_amt,omitempty"`
-	CmaEvluAmt         string `json:"cma_evlu_amt,omitempty"`
-	BfdyBuyAmt         string `json:"bfdy_buy_amt,omitempty"`
-	ThdtBuyAmt         string `json:"thdt_buy_amt,omitempty"`
-	NxdyAutoRdptAmt    string `json:"nxdy_auto_rdpt_amt,omitempty"`
-	BfdySllAmt         string `json:"bfdy_sll_amt,omitempty"`
-	ThdtSllAmt         string `json:"thdt_sll_amt,omitempty"`
-	D2AutoRdptAmt      string `json:"d2_auto_rdpt_amt,omitempty"`
-	BfdyTlexAmt        string `json:"bfdy_tlex_amt,omitempty"`
-	ThdtTlexAmt        string `json:"thdt_tlex_amt,omitempty"`
-	TotLoanAmt         string `json:"tot_loan_amt,omitempty"`
-	SctsEvluAmt        string `json:"scts_evlu_amt,omitempty"`
-	TotEvluAmt         string `json:"tot_evlu_amt,omitempty"`
-	NassAmt            string `json:"nass_amt,omitempty"`
-	FncgGldAutoRdptYn  string `json:"fncg_gld_auto_rdpt_yn,omitempty"`
-	PchsAmtSmtlAmt     string `json:"pchs_amt_smtl_amt,omitempty"`
-	EvluAmtSmtlAmt     string `json:"evlu_amt_smtl_amt,omitempty"`
-	EvluPflsSmtlAmt    string `json:"evlu_pfls_smtl_amt,omitempty"`
-	TotStlnSlngChgs    string `json:"tot_stln_slng_chgs,omitempty"`
-	BfdyTotAsstEvluAmt string `json:"bfdy_tot_asst_evlu_amt,omitempty"`
-	AsstIcdcAmt        string `json:"asst_icdc_amt,omitempty"`
-	AsstIcdcErngRt     string `json:"asst_icdc_erng_rt,omitempty"`
+	DncaTotAmt         string `json:"dnca_tot_amt"`
+	NxdyExccAmt        string `json:"nxdy_excc_amt"`
+	PrvsRcdlExccAmt    string `json:"prvs_rcdl_excc_amt"`
+	CmaEvluAmt         string `json:"cma_evlu_amt"`
+	BfdyBuyAmt         string `json:"bfdy_buy_amt"`
+	ThdtBuyAmt         string `json:"thdt_buy_amt"`
+	NxdyAutoRdptAmt    string `json:"nxdy_auto_rdpt_amt"`
+	BfdySllAmt         string `json:"bfdy_sll_amt"`
+	ThdtSllAmt         string `json:"thdt_sll_amt"`
+	D2AutoRdptAmt      string `json:"d2_auto_rdpt_amt"`
+	BfdyTlexAmt        string `json:"bfdy_tlex_amt"`
+	ThdtTlexAmt        string `json:"thdt_tlex_amt"`
+	TotLoanAmt         string `json:"tot_loan_amt"`
+	SctsEvluAmt        string `json:"scts_evlu_amt"`
+	TotEvluAmt         string `json:"tot_evlu_amt"`
+	NassAmt            string `json:"nass_amt"`
+	FncgGldAutoRdptYn  string `json:"fncg_gld_auto_rdpt_yn"`
+	PchsAmtSmtlAmt     string `json:"pchs_amt_smtl_amt"`
+	EvluAmtSmtlAmt     string `json:"evlu_amt_smtl_amt"`
+	EvluPflsSmtlAmt    string `json:"evlu_pfls_smtl_amt"`
+	TotStlnSlngChgs    string `json:"tot_stln_slng_chgs"`
+	BfdyTotAsstEvluAmt string `json:"bfdy_tot_asst_evlu_amt"`
+	AsstIcdcAmt        string `json:"asst_icdc_amt"`
+	AsstIcdcErngRt     string `json:"asst_icdc_erng_rt"`
 }
 
 type KISDomesticStockV1TradingInquireBalanceRequest struct {
@@ -5977,60 +5977,60 @@ type KISDomesticStockV1TradingInquireBalanceRlzPl struct {
 }
 
 type KISDomesticStockV1TradingInquireBalanceRlzPlOutput1Item struct {
-	Pdno         string `json:"pdno,omitempty"`
-	PrdtName     string `json:"prdt_name,omitempty"`
-	TradDvsnName string `json:"trad_dvsn_name,omitempty"`
-	BfdyBuyQty   string `json:"bfdy_buy_qty,omitempty"`
-	BfdySllQty   string `json:"bfdy_sll_qty,omitempty"`
-	ThdtBuyqty   string `json:"thdt_buyqty,omitempty"`
-	ThdtSllQty   string `json:"thdt_sll_qty,omitempty"`
-	HldgQty      string `json:"hldg_qty,omitempty"`
-	OrdPsblQty   string `json:"ord_psbl_qty,omitempty"`
-	PchsAvgPric  string `json:"pchs_avg_pric,omitempty"`
-	PchsAmt      string `json:"pchs_amt,omitempty"`
-	Prpr         string `json:"prpr,omitempty"`
-	EvluAmt      string `json:"evlu_amt,omitempty"`
-	EvluPflsAmt  string `json:"evlu_pfls_amt,omitempty"`
-	EvluPflsRt   string `json:"evlu_pfls_rt,omitempty"`
-	EvluErngRt   string `json:"evlu_erng_rt,omitempty"`
-	LoanDt       string `json:"loan_dt,omitempty"`
-	LoanAmt      string `json:"loan_amt,omitempty"`
-	StlnSlngChgs string `json:"stln_slng_chgs,omitempty"`
-	ExpdDt       string `json:"expd_dt,omitempty"`
-	StckLoanUnpr string `json:"stck_loan_unpr,omitempty"`
-	BfdyCprsIcdc string `json:"bfdy_cprs_icdc,omitempty"`
-	FlttRt       string `json:"fltt_rt,omitempty"`
+	Pdno         string `json:"pdno"`
+	PrdtName     string `json:"prdt_name"`
+	TradDvsnName string `json:"trad_dvsn_name"`
+	BfdyBuyQty   string `json:"bfdy_buy_qty"`
+	BfdySllQty   string `json:"bfdy_sll_qty"`
+	ThdtBuyqty   string `json:"thdt_buyqty"`
+	ThdtSllQty   string `json:"thdt_sll_qty"`
+	HldgQty      string `json:"hldg_qty"`
+	OrdPsblQty   string `json:"ord_psbl_qty"`
+	PchsAvgPric  string `json:"pchs_avg_pric"`
+	PchsAmt      string `json:"pchs_amt"`
+	Prpr         string `json:"prpr"`
+	EvluAmt      string `json:"evlu_amt"`
+	EvluPflsAmt  string `json:"evlu_pfls_amt"`
+	EvluPflsRt   string `json:"evlu_pfls_rt"`
+	EvluErngRt   string `json:"evlu_erng_rt"`
+	LoanDt       string `json:"loan_dt"`
+	LoanAmt      string `json:"loan_amt"`
+	StlnSlngChgs string `json:"stln_slng_chgs"`
+	ExpdDt       string `json:"expd_dt"`
+	StckLoanUnpr string `json:"stck_loan_unpr"`
+	BfdyCprsIcdc string `json:"bfdy_cprs_icdc"`
+	FlttRt       string `json:"fltt_rt"`
 }
 
 type KISDomesticStockV1TradingInquireBalanceRlzPlOutput2Item struct {
-	DncaTotAmt         string `json:"dnca_tot_amt,omitempty"`
-	NxdyExccAmt        string `json:"nxdy_excc_amt,omitempty"`
-	PrvsRcdlExccAmt    string `json:"prvs_rcdl_excc_amt,omitempty"`
-	CmaEvluAmt         string `json:"cma_evlu_amt,omitempty"`
-	BfdyBuyAmt         string `json:"bfdy_buy_amt,omitempty"`
-	ThdtBuyAmt         string `json:"thdt_buy_amt,omitempty"`
-	NxdyAutoRdptAmt    string `json:"nxdy_auto_rdpt_amt,omitempty"`
-	BfdySllAmt         string `json:"bfdy_sll_amt,omitempty"`
-	ThdtSllAmt         string `json:"thdt_sll_amt,omitempty"`
-	D2AutoRdptAmt      string `json:"d2_auto_rdpt_amt,omitempty"`
-	BfdyTlexAmt        string `json:"bfdy_tlex_amt,omitempty"`
-	ThdtTlexAmt        string `json:"thdt_tlex_amt,omitempty"`
-	TotLoanAmt         string `json:"tot_loan_amt,omitempty"`
-	SctsEvluAmt        string `json:"scts_evlu_amt,omitempty"`
-	TotEvluAmt         string `json:"tot_evlu_amt,omitempty"`
-	NassAmt            string `json:"nass_amt,omitempty"`
-	FncgGldAutoRdptYn  string `json:"fncg_gld_auto_rdpt_yn,omitempty"`
-	PchsAmtSmtlAmt     string `json:"pchs_amt_smtl_amt,omitempty"`
-	EvluAmtSmtlAmt     string `json:"evlu_amt_smtl_amt,omitempty"`
-	EvluPflsSmtlAmt    string `json:"evlu_pfls_smtl_amt,omitempty"`
-	TotStlnSlngChgs    string `json:"tot_stln_slng_chgs,omitempty"`
-	BfdyTotAsstEvluAmt string `json:"bfdy_tot_asst_evlu_amt,omitempty"`
-	AsstIcdcAmt        string `json:"asst_icdc_amt,omitempty"`
-	AsstIcdcErngRt     string `json:"asst_icdc_erng_rt,omitempty"`
-	RlztPfls           string `json:"rlzt_pfls,omitempty"`
-	RlztErngRt         string `json:"rlzt_erng_rt,omitempty"`
-	RealEvluPfls       string `json:"real_evlu_pfls,omitempty"`
-	RealEvluPflsErngRt string `json:"real_evlu_pfls_erng_rt,omitempty"`
+	DncaTotAmt         string `json:"dnca_tot_amt"`
+	NxdyExccAmt        string `json:"nxdy_excc_amt"`
+	PrvsRcdlExccAmt    string `json:"prvs_rcdl_excc_amt"`
+	CmaEvluAmt         string `json:"cma_evlu_amt"`
+	BfdyBuyAmt         string `json:"bfdy_buy_amt"`
+	ThdtBuyAmt         string `json:"thdt_buy_amt"`
+	NxdyAutoRdptAmt    string `json:"nxdy_auto_rdpt_amt"`
+	BfdySllAmt         string `json:"bfdy_sll_amt"`
+	ThdtSllAmt         string `json:"thdt_sll_amt"`
+	D2AutoRdptAmt      string `json:"d2_auto_rdpt_amt"`
+	BfdyTlexAmt        string `json:"bfdy_tlex_amt"`
+	ThdtTlexAmt        string `json:"thdt_tlex_amt"`
+	TotLoanAmt         string `json:"tot_loan_amt"`
+	SctsEvluAmt        string `json:"scts_evlu_amt"`
+	TotEvluAmt         string `json:"tot_evlu_amt"`
+	NassAmt            string `json:"nass_amt"`
+	FncgGldAutoRdptYn  string `json:"fncg_gld_auto_rdpt_yn"`
+	PchsAmtSmtlAmt     string `json:"pchs_amt_smtl_amt"`
+	EvluAmtSmtlAmt     string `json:"evlu_amt_smtl_amt"`
+	EvluPflsSmtlAmt    string `json:"evlu_pfls_smtl_amt"`
+	TotStlnSlngChgs    string `json:"tot_stln_slng_chgs"`
+	BfdyTotAsstEvluAmt string `json:"bfdy_tot_asst_evlu_amt"`
+	AsstIcdcAmt        string `json:"asst_icdc_amt"`
+	AsstIcdcErngRt     string `json:"asst_icdc_erng_rt"`
+	RlztPfls           string `json:"rlzt_pfls"`
+	RlztErngRt         string `json:"rlzt_erng_rt"`
+	RealEvluPfls       string `json:"real_evlu_pfls"`
+	RealEvluPflsErngRt string `json:"real_evlu_pfls_erng_rt"`
 }
 
 type KISDomesticStockV1TradingInquireBalanceRlzPlRequest struct {
@@ -6054,18 +6054,18 @@ type KISDomesticStockV1TradingInquireCreditPsamount struct {
 }
 
 type KISDomesticStockV1TradingInquireCreditPsamountOutputItem struct {
-	OrdPsblCash        string `json:"ord_psbl_cash,omitempty"`
-	OrdPsblSbst        string `json:"ord_psbl_sbst,omitempty"`
-	RusePsblAmt        string `json:"ruse_psbl_amt,omitempty"`
-	FundRpchChgs       string `json:"fund_rpch_chgs,omitempty"`
-	PsblQtyCalcUnpr    string `json:"psbl_qty_calc_unpr,omitempty"`
-	NrcvbBuyAmt        string `json:"nrcvb_buy_amt,omitempty"`
-	NrcvbBuyQty        string `json:"nrcvb_buy_qty,omitempty"`
-	MaxBuyAmt          string `json:"max_buy_amt,omitempty"`
-	MaxBuyQty          string `json:"max_buy_qty,omitempty"`
-	CmaEvluAmt         string `json:"cma_evlu_amt,omitempty"`
-	OvrsReUseAmtWcrc   string `json:"ovrs_re_use_amt_wcrc,omitempty"`
-	OrdPsblFrcrAmtWcrc string `json:"ord_psbl_frcr_amt_wcrc,omitempty"`
+	OrdPsblCash        string `json:"ord_psbl_cash"`
+	OrdPsblSbst        string `json:"ord_psbl_sbst"`
+	RusePsblAmt        string `json:"ruse_psbl_amt"`
+	FundRpchChgs       string `json:"fund_rpch_chgs"`
+	PsblQtyCalcUnpr    string `json:"psbl_qty_calc_unpr"`
+	NrcvbBuyAmt        string `json:"nrcvb_buy_amt"`
+	NrcvbBuyQty        string `json:"nrcvb_buy_qty"`
+	MaxBuyAmt          string `json:"max_buy_amt"`
+	MaxBuyQty          string `json:"max_buy_qty"`
+	CmaEvluAmt         string `json:"cma_evlu_amt"`
+	OvrsReUseAmtWcrc   string `json:"ovrs_re_use_amt_wcrc"`
+	OrdPsblFrcrAmtWcrc string `json:"ord_psbl_frcr_amt_wcrc"`
 }
 
 type KISDomesticStockV1TradingInquireCreditPsamountRequest struct {
@@ -6086,50 +6086,50 @@ type KISDomesticStockV1TradingInquireDailyCcld struct {
 }
 
 type KISDomesticStockV1TradingInquireDailyCcldOutput1Item struct {
-	OrdDt                  string `json:"ord_dt,omitempty"`
-	OrdGnoBrno             string `json:"ord_gno_brno,omitempty"`
-	Odno                   string `json:"odno,omitempty"`
-	OrgnOdno               string `json:"orgn_odno,omitempty"`
-	OrdDvsnName            string `json:"ord_dvsn_name,omitempty"`
-	SllBuyDvsnCd           string `json:"sll_buy_dvsn_cd,omitempty"`
-	SllBuyDvsnCdName       string `json:"sll_buy_dvsn_cd_name,omitempty"`
-	Pdno                   string `json:"pdno,omitempty"`
-	PrdtName               string `json:"prdt_name,omitempty"`
-	OrdQty                 string `json:"ord_qty,omitempty"`
-	OrdUnpr                string `json:"ord_unpr,omitempty"`
-	OrdTmd                 string `json:"ord_tmd,omitempty"`
-	TotCcldQty             string `json:"tot_ccld_qty,omitempty"`
-	AvgPrvs                string `json:"avg_prvs,omitempty"`
-	CnclYn                 string `json:"cncl_yn,omitempty"`
-	TotCcldAmt             string `json:"tot_ccld_amt,omitempty"`
-	LoanDt                 string `json:"loan_dt,omitempty"`
-	OrdrEmpno              string `json:"ordr_empno,omitempty"`
-	OrdDvsnCd              string `json:"ord_dvsn_cd,omitempty"`
-	CncCfrmQty             string `json:"cnc_cfrm_qty,omitempty"`
-	RmnQty                 string `json:"rmn_qty,omitempty"`
-	RjctQty                string `json:"rjct_qty,omitempty"`
-	CcldCndtName           string `json:"ccld_cndt_name,omitempty"`
-	InqrIpAddr             string `json:"inqr_ip_addr,omitempty"`
-	CpbcOrdpOrdRcitDvsnCd  string `json:"cpbc_ordp_ord_rcit_dvsn_cd,omitempty"`
-	CpbcOrdpInfmMthdDvsnCd string `json:"cpbc_ordp_infm_mthd_dvsn_cd,omitempty"`
-	InfmTmd                string `json:"infm_tmd,omitempty"`
-	CtacTlno               string `json:"ctac_tlno,omitempty"`
-	PrdtTypeCd             string `json:"prdt_type_cd,omitempty"`
-	ExcgDvsnCd             string `json:"excg_dvsn_cd,omitempty"`
-	CpbcOrdpMtrlDvsnCd     string `json:"cpbc_ordp_mtrl_dvsn_cd,omitempty"`
-	OrdOrgno               string `json:"ord_orgno,omitempty"`
-	RsvnOrdEndDt           string `json:"rsvn_ord_end_dt,omitempty"`
-	ExcgIdDvsnCd           string `json:"excg_id_dvsn_Cd,omitempty"`
-	StpmCndtPric           string `json:"stpm_cndt_pric,omitempty"`
-	StpmEfctOccrDtmd       string `json:"stpm_efct_occr_dtmd,omitempty"`
+	OrdDt                  string `json:"ord_dt"`
+	OrdGnoBrno             string `json:"ord_gno_brno"`
+	Odno                   string `json:"odno"`
+	OrgnOdno               string `json:"orgn_odno"`
+	OrdDvsnName            string `json:"ord_dvsn_name"`
+	SllBuyDvsnCd           string `json:"sll_buy_dvsn_cd"`
+	SllBuyDvsnCdName       string `json:"sll_buy_dvsn_cd_name"`
+	Pdno                   string `json:"pdno"`
+	PrdtName               string `json:"prdt_name"`
+	OrdQty                 string `json:"ord_qty"`
+	OrdUnpr                string `json:"ord_unpr"`
+	OrdTmd                 string `json:"ord_tmd"`
+	TotCcldQty             string `json:"tot_ccld_qty"`
+	AvgPrvs                string `json:"avg_prvs"`
+	CnclYn                 string `json:"cncl_yn"`
+	TotCcldAmt             string `json:"tot_ccld_amt"`
+	LoanDt                 string `json:"loan_dt"`
+	OrdrEmpno              string `json:"ordr_empno"`
+	OrdDvsnCd              string `json:"ord_dvsn_cd"`
+	CncCfrmQty             string `json:"cnc_cfrm_qty"`
+	RmnQty                 string `json:"rmn_qty"`
+	RjctQty                string `json:"rjct_qty"`
+	CcldCndtName           string `json:"ccld_cndt_name"`
+	InqrIpAddr             string `json:"inqr_ip_addr"`
+	CpbcOrdpOrdRcitDvsnCd  string `json:"cpbc_ordp_ord_rcit_dvsn_cd"`
+	CpbcOrdpInfmMthdDvsnCd string `json:"cpbc_ordp_infm_mthd_dvsn_cd"`
+	InfmTmd                string `json:"infm_tmd"`
+	CtacTlno               string `json:"ctac_tlno"`
+	PrdtTypeCd             string `json:"prdt_type_cd"`
+	ExcgDvsnCd             string `json:"excg_dvsn_cd"`
+	CpbcOrdpMtrlDvsnCd     string `json:"cpbc_ordp_mtrl_dvsn_cd"`
+	OrdOrgno               string `json:"ord_orgno"`
+	RsvnOrdEndDt           string `json:"rsvn_ord_end_dt"`
+	ExcgIdDvsnCd           string `json:"excg_id_dvsn_Cd"`
+	StpmCndtPric           string `json:"stpm_cndt_pric"`
+	StpmEfctOccrDtmd       string `json:"stpm_efct_occr_dtmd"`
 }
 
 type KISDomesticStockV1TradingInquireDailyCcldOutput2Item struct {
-	TotOrdQty    string `json:"tot_ord_qty,omitempty"`
-	TotCcldQty   string `json:"tot_ccld_qty,omitempty"`
-	TotCcldAmt   string `json:"tot_ccld_amt,omitempty"`
-	PrsmTlexSmtl string `json:"prsm_tlex_smtl,omitempty"`
-	PchsAvgPric  string `json:"pchs_avg_pric,omitempty"`
+	TotOrdQty    string `json:"tot_ord_qty"`
+	TotCcldQty   string `json:"tot_ccld_qty"`
+	TotCcldAmt   string `json:"tot_ccld_amt"`
+	PrsmTlexSmtl string `json:"prsm_tlex_smtl"`
+	PchsAvgPric  string `json:"pchs_avg_pric"`
 }
 
 type KISDomesticStockV1TradingInquireDailyCcldRequest struct {
@@ -6155,36 +6155,36 @@ type KISDomesticStockV1TradingInquirePeriodProfit struct {
 }
 
 type KISDomesticStockV1TradingInquirePeriodProfitOutput1Item struct {
-	TradDt   string `json:"trad_dt,omitempty"`
-	BuyAmt   string `json:"buy_amt,omitempty"`
-	SllAmt   string `json:"sll_amt,omitempty"`
-	RlztPfls string `json:"rlzt_pfls,omitempty"`
-	Fee      string `json:"fee,omitempty"`
-	LoanInt  string `json:"loan_int,omitempty"`
-	TlTax    string `json:"tl_tax,omitempty"`
-	PflsRt   string `json:"pfls_rt,omitempty"`
-	SllQty1  string `json:"sll_qty1,omitempty"`
-	BuyQty1  string `json:"buy_qty1,omitempty"`
+	TradDt   string `json:"trad_dt"`
+	BuyAmt   string `json:"buy_amt"`
+	SllAmt   string `json:"sll_amt"`
+	RlztPfls string `json:"rlzt_pfls"`
+	Fee      string `json:"fee"`
+	LoanInt  string `json:"loan_int"`
+	TlTax    string `json:"tl_tax"`
+	PflsRt   string `json:"pfls_rt"`
+	SllQty1  string `json:"sll_qty1"`
+	BuyQty1  string `json:"buy_qty1"`
 }
 
 type KISDomesticStockV1TradingInquirePeriodProfitOutput2Item struct {
-	SllQtySmtl     string `json:"sll_qty_smtl,omitempty"`
-	SllTrAmtSmtl   string `json:"sll_tr_amt_smtl,omitempty"`
-	SllFeeSmtl     string `json:"sll_fee_smtl,omitempty"`
-	SllTltxSmtl    string `json:"sll_tltx_smtl,omitempty"`
-	SllExccAmtSmtl string `json:"sll_excc_amt_smtl,omitempty"`
-	BuyQtySmtl     string `json:"buy_qty_smtl,omitempty"`
-	BuyTrAmtSmtl   string `json:"buy_tr_amt_smtl,omitempty"`
-	BuyFeeSmtl     string `json:"buy_fee_smtl,omitempty"`
-	BuyTaxSmtl     string `json:"buy_tax_smtl,omitempty"`
-	BuyExccAmtSmtl string `json:"buy_excc_amt_smtl,omitempty"`
-	TotQty         string `json:"tot_qty,omitempty"`
-	TotTrAmt       string `json:"tot_tr_amt,omitempty"`
-	TotFee         string `json:"tot_fee,omitempty"`
-	TotTltx        string `json:"tot_tltx,omitempty"`
-	TotExccAmt     string `json:"tot_excc_amt,omitempty"`
-	TotRlztPfls    string `json:"tot_rlzt_pfls,omitempty"`
-	LoanInt        string `json:"loan_int,omitempty"`
+	SllQtySmtl     string `json:"sll_qty_smtl"`
+	SllTrAmtSmtl   string `json:"sll_tr_amt_smtl"`
+	SllFeeSmtl     string `json:"sll_fee_smtl"`
+	SllTltxSmtl    string `json:"sll_tltx_smtl"`
+	SllExccAmtSmtl string `json:"sll_excc_amt_smtl"`
+	BuyQtySmtl     string `json:"buy_qty_smtl"`
+	BuyTrAmtSmtl   string `json:"buy_tr_amt_smtl"`
+	BuyFeeSmtl     string `json:"buy_fee_smtl"`
+	BuyTaxSmtl     string `json:"buy_tax_smtl"`
+	BuyExccAmtSmtl string `json:"buy_excc_amt_smtl"`
+	TotQty         string `json:"tot_qty"`
+	TotTrAmt       string `json:"tot_tr_amt"`
+	TotFee         string `json:"tot_fee"`
+	TotTltx        string `json:"tot_tltx"`
+	TotExccAmt     string `json:"tot_excc_amt"`
+	TotRlztPfls    string `json:"tot_rlzt_pfls"`
+	LoanInt        string `json:"loan_int"`
 }
 
 type KISDomesticStockV1TradingInquirePeriodProfitRequest struct {
@@ -6209,44 +6209,44 @@ type KISDomesticStockV1TradingInquirePeriodTradeProfit struct {
 }
 
 type KISDomesticStockV1TradingInquirePeriodTradeProfitOutput1Item struct {
-	TradDt       string `json:"trad_dt,omitempty"`
-	Pdno         string `json:"pdno,omitempty"`
-	PrdtName     string `json:"prdt_name,omitempty"`
-	TradDvsnName string `json:"trad_dvsn_name,omitempty"`
-	LoanDt       string `json:"loan_dt,omitempty"`
-	HldgQty      string `json:"hldg_qty,omitempty"`
-	PchsUnpr     string `json:"pchs_unpr,omitempty"`
-	BuyQty       string `json:"buy_qty,omitempty"`
-	BuyAmt       string `json:"buy_amt,omitempty"`
-	SllPric      string `json:"sll_pric,omitempty"`
-	SllQty       string `json:"sll_qty,omitempty"`
-	SllAmt       string `json:"sll_amt,omitempty"`
-	RlztPfls     string `json:"rlzt_pfls,omitempty"`
-	PflsRt       string `json:"pfls_rt,omitempty"`
-	Fee          string `json:"fee,omitempty"`
-	TlTax        string `json:"tl_tax,omitempty"`
-	LoanInt      string `json:"loan_int,omitempty"`
+	TradDt       string `json:"trad_dt"`
+	Pdno         string `json:"pdno"`
+	PrdtName     string `json:"prdt_name"`
+	TradDvsnName string `json:"trad_dvsn_name"`
+	LoanDt       string `json:"loan_dt"`
+	HldgQty      string `json:"hldg_qty"`
+	PchsUnpr     string `json:"pchs_unpr"`
+	BuyQty       string `json:"buy_qty"`
+	BuyAmt       string `json:"buy_amt"`
+	SllPric      string `json:"sll_pric"`
+	SllQty       string `json:"sll_qty"`
+	SllAmt       string `json:"sll_amt"`
+	RlztPfls     string `json:"rlzt_pfls"`
+	PflsRt       string `json:"pfls_rt"`
+	Fee          string `json:"fee"`
+	TlTax        string `json:"tl_tax"`
+	LoanInt      string `json:"loan_int"`
 }
 
 type KISDomesticStockV1TradingInquirePeriodTradeProfitOutput2Item struct {
-	SllQtySmtl     string `json:"sll_qty_smtl,omitempty"`
-	SllTrAmtSmtl   string `json:"sll_tr_amt_smtl,omitempty"`
-	SllFeeSmtl     string `json:"sll_fee_smtl,omitempty"`
-	SllTltxSmtl    string `json:"sll_tltx_smtl,omitempty"`
-	SllExccAmtSmtl string `json:"sll_excc_amt_smtl,omitempty"`
-	BuyqtySmtl     string `json:"buyqty_smtl,omitempty"`
-	BuyTrAmtSmtl   string `json:"buy_tr_amt_smtl,omitempty"`
-	BuyFeeSmtl     string `json:"buy_fee_smtl,omitempty"`
-	BuyTaxSmtl     string `json:"buy_tax_smtl,omitempty"`
-	BuyExccAmtSmtl string `json:"buy_excc_amt_smtl,omitempty"`
-	TotQty         string `json:"tot_qty,omitempty"`
-	TotTrAmt       string `json:"tot_tr_amt,omitempty"`
-	TotFee         string `json:"tot_fee,omitempty"`
-	TotTltx        string `json:"tot_tltx,omitempty"`
-	TotExccAmt     string `json:"tot_excc_amt,omitempty"`
-	TotRlztPfls    string `json:"tot_rlzt_pfls,omitempty"`
-	LoanInt        string `json:"loan_int,omitempty"`
-	TotPftrt       string `json:"tot_pftrt,omitempty"`
+	SllQtySmtl     string `json:"sll_qty_smtl"`
+	SllTrAmtSmtl   string `json:"sll_tr_amt_smtl"`
+	SllFeeSmtl     string `json:"sll_fee_smtl"`
+	SllTltxSmtl    string `json:"sll_tltx_smtl"`
+	SllExccAmtSmtl string `json:"sll_excc_amt_smtl"`
+	BuyqtySmtl     string `json:"buyqty_smtl"`
+	BuyTrAmtSmtl   string `json:"buy_tr_amt_smtl"`
+	BuyFeeSmtl     string `json:"buy_fee_smtl"`
+	BuyTaxSmtl     string `json:"buy_tax_smtl"`
+	BuyExccAmtSmtl string `json:"buy_excc_amt_smtl"`
+	TotQty         string `json:"tot_qty"`
+	TotTrAmt       string `json:"tot_tr_amt"`
+	TotFee         string `json:"tot_fee"`
+	TotTltx        string `json:"tot_tltx"`
+	TotExccAmt     string `json:"tot_excc_amt"`
+	TotRlztPfls    string `json:"tot_rlzt_pfls"`
+	LoanInt        string `json:"loan_int"`
+	TotPftrt       string `json:"tot_pftrt"`
 }
 
 type KISDomesticStockV1TradingInquirePeriodTradeProfitRequest struct {
@@ -6267,18 +6267,18 @@ type KISDomesticStockV1TradingInquirePsblOrder struct {
 }
 
 type KISDomesticStockV1TradingInquirePsblOrderOutputItem struct {
-	OrdPsblCash        string `json:"ord_psbl_cash,omitempty"`
-	OrdPsblSbst        string `json:"ord_psbl_sbst,omitempty"`
-	RusePsblAmt        string `json:"ruse_psbl_amt,omitempty"`
-	FundRpchChgs       string `json:"fund_rpch_chgs,omitempty"`
-	PsblQtyCalcUnpr    string `json:"psbl_qty_calc_unpr,omitempty"`
-	NrcvbBuyAmt        string `json:"nrcvb_buy_amt,omitempty"`
-	NrcvbBuyQty        string `json:"nrcvb_buy_qty,omitempty"`
-	MaxBuyAmt          string `json:"max_buy_amt,omitempty"`
-	MaxBuyQty          string `json:"max_buy_qty,omitempty"`
-	CmaEvluAmt         string `json:"cma_evlu_amt,omitempty"`
-	OvrsReUseAmtWcrc   string `json:"ovrs_re_use_amt_wcrc,omitempty"`
-	OrdPsblFrcrAmtWcrc string `json:"ord_psbl_frcr_amt_wcrc,omitempty"`
+	OrdPsblCash        string `json:"ord_psbl_cash"`
+	OrdPsblSbst        string `json:"ord_psbl_sbst"`
+	RusePsblAmt        string `json:"ruse_psbl_amt"`
+	FundRpchChgs       string `json:"fund_rpch_chgs"`
+	PsblQtyCalcUnpr    string `json:"psbl_qty_calc_unpr"`
+	NrcvbBuyAmt        string `json:"nrcvb_buy_amt"`
+	NrcvbBuyQty        string `json:"nrcvb_buy_qty"`
+	MaxBuyAmt          string `json:"max_buy_amt"`
+	MaxBuyQty          string `json:"max_buy_qty"`
+	CmaEvluAmt         string `json:"cma_evlu_amt"`
+	OvrsReUseAmtWcrc   string `json:"ovrs_re_use_amt_wcrc"`
+	OrdPsblFrcrAmtWcrc string `json:"ord_psbl_frcr_amt_wcrc"`
 }
 
 type KISDomesticStockV1TradingInquirePsblOrderRequest struct {
@@ -6297,27 +6297,27 @@ type KISDomesticStockV1TradingInquirePsblRvsecncl struct {
 }
 
 type KISDomesticStockV1TradingInquirePsblRvsecnclOutputItem struct {
-	OrdGnoBrno       string `json:"ord_gno_brno,omitempty"`
-	Odno             string `json:"odno,omitempty"`
-	OrgnOdno         string `json:"orgn_odno,omitempty"`
-	OrdDvsnName      string `json:"ord_dvsn_name,omitempty"`
-	Pdno             string `json:"pdno,omitempty"`
-	PrdtName         string `json:"prdt_name,omitempty"`
-	RvseCnclDvsnName string `json:"rvse_cncl_dvsn_name,omitempty"`
-	OrdQty           string `json:"ord_qty,omitempty"`
-	OrdUnpr          string `json:"ord_unpr,omitempty"`
-	OrdTmd           string `json:"ord_tmd,omitempty"`
-	TotCcldQty       string `json:"tot_ccld_qty,omitempty"`
-	TotCcldAmt       string `json:"tot_ccld_amt,omitempty"`
-	PsblQty          string `json:"psbl_qty,omitempty"`
-	SllBuyDvsnCd     string `json:"sll_buy_dvsn_cd,omitempty"`
-	OrdDvsnCd        string `json:"ord_dvsn_cd,omitempty"`
-	MgcoAptmOdno     string `json:"mgco_aptm_odno,omitempty"`
-	ExcgDvsnCd       string `json:"excg_dvsn_cd,omitempty"`
-	ExcgIdDvsnCd     string `json:"excg_id_dvsn_cd,omitempty"`
-	ExcgIdDvsnName   string `json:"excg_id_dvsn_name,omitempty"`
-	StpmCndtPric     string `json:"stpm_cndt_pric,omitempty"`
-	StpmEfctOccrYn   string `json:"stpm_efct_occr_yn,omitempty"`
+	OrdGnoBrno       string `json:"ord_gno_brno"`
+	Odno             string `json:"odno"`
+	OrgnOdno         string `json:"orgn_odno"`
+	OrdDvsnName      string `json:"ord_dvsn_name"`
+	Pdno             string `json:"pdno"`
+	PrdtName         string `json:"prdt_name"`
+	RvseCnclDvsnName string `json:"rvse_cncl_dvsn_name"`
+	OrdQty           string `json:"ord_qty"`
+	OrdUnpr          string `json:"ord_unpr"`
+	OrdTmd           string `json:"ord_tmd"`
+	TotCcldQty       string `json:"tot_ccld_qty"`
+	TotCcldAmt       string `json:"tot_ccld_amt"`
+	PsblQty          string `json:"psbl_qty"`
+	SllBuyDvsnCd     string `json:"sll_buy_dvsn_cd"`
+	OrdDvsnCd        string `json:"ord_dvsn_cd"`
+	MgcoAptmOdno     string `json:"mgco_aptm_odno"`
+	ExcgDvsnCd       string `json:"excg_dvsn_cd"`
+	ExcgIdDvsnCd     string `json:"excg_id_dvsn_cd"`
+	ExcgIdDvsnName   string `json:"excg_id_dvsn_name"`
+	StpmCndtPric     string `json:"stpm_cndt_pric"`
+	StpmEfctOccrYn   string `json:"stpm_efct_occr_yn"`
 }
 
 type KISDomesticStockV1TradingInquirePsblRvsecnclRequest struct {
@@ -6335,19 +6335,19 @@ type KISDomesticStockV1TradingInquirePsblSell struct {
 }
 
 type KISDomesticStockV1TradingInquirePsblSellOutput1Item struct {
-	Pdno        string `json:"pdno,omitempty"`
-	PrdtName    string `json:"prdt_name,omitempty"`
-	BuyQty      string `json:"buy_qty,omitempty"`
-	SllQty      string `json:"sll_qty,omitempty"`
-	CblcQty     string `json:"cblc_qty,omitempty"`
-	NsvgQty     string `json:"nsvg_qty,omitempty"`
-	OrdPsblQty  string `json:"ord_psbl_qty,omitempty"`
-	PchsAvgPric string `json:"pchs_avg_pric,omitempty"`
-	PchsAmt     string `json:"pchs_amt,omitempty"`
-	NowPric     string `json:"now_pric,omitempty"`
-	EvluAmt     string `json:"evlu_amt,omitempty"`
-	EvluPflsAmt string `json:"evlu_pfls_amt,omitempty"`
-	EvluPflsRt  string `json:"evlu_pfls_rt,omitempty"`
+	Pdno        string `json:"pdno"`
+	PrdtName    string `json:"prdt_name"`
+	BuyQty      string `json:"buy_qty"`
+	SllQty      string `json:"sll_qty"`
+	CblcQty     string `json:"cblc_qty"`
+	NsvgQty     string `json:"nsvg_qty"`
+	OrdPsblQty  string `json:"ord_psbl_qty"`
+	PchsAvgPric string `json:"pchs_avg_pric"`
+	PchsAmt     string `json:"pchs_amt"`
+	NowPric     string `json:"now_pric"`
+	EvluAmt     string `json:"evlu_amt"`
+	EvluPflsAmt string `json:"evlu_pfls_amt"`
+	EvluPflsRt  string `json:"evlu_pfls_rt"`
 }
 
 type KISDomesticStockV1TradingInquirePsblSellRequest struct {
@@ -6362,110 +6362,110 @@ type KISDomesticStockV1TradingIntgrMargin struct {
 }
 
 type KISDomesticStockV1TradingIntgrMarginOutputItem struct {
-	AcmgaRt                   string `json:"acmga_rt,omitempty"`
-	AcmgaPct100AptmRson       string `json:"acmga_pct100_aptm_rson,omitempty"`
-	StckCashObjtAmt           string `json:"stck_cash_objt_amt,omitempty"`
-	StckSbstObjtAmt           string `json:"stck_sbst_objt_amt,omitempty"`
-	StckEvluObjtAmt           string `json:"stck_evlu_objt_amt,omitempty"`
-	StckRusePsblObjtAmt       string `json:"stck_ruse_psbl_objt_amt,omitempty"`
-	StckFundRpchChgsObjtAmt   string `json:"stck_fund_rpch_chgs_objt_amt,omitempty"`
-	StckFncgRdptObjtAtm       string `json:"stck_fncg_rdpt_objt_atm,omitempty"`
-	BondRusePsblObjtAmt       string `json:"bond_ruse_psbl_objt_amt,omitempty"`
-	StckCashUseAmt            string `json:"stck_cash_use_amt,omitempty"`
-	StckSbstUseAmt            string `json:"stck_sbst_use_amt,omitempty"`
-	StckEvluUseAmt            string `json:"stck_evlu_use_amt,omitempty"`
-	StckRusePsblAmtUseAmt     string `json:"stck_ruse_psbl_amt_use_amt,omitempty"`
-	StckFundRpchChgsUseAmt    string `json:"stck_fund_rpch_chgs_use_amt,omitempty"`
-	StckFncgRdptAmtUseAmt     string `json:"stck_fncg_rdpt_amt_use_amt,omitempty"`
-	BondRusePsblAmtUseAmt     string `json:"bond_ruse_psbl_amt_use_amt,omitempty"`
-	StckCashOrdPsblAmt        string `json:"stck_cash_ord_psbl_amt,omitempty"`
-	StckSbstOrdPsblAmt        string `json:"stck_sbst_ord_psbl_amt,omitempty"`
-	StckEvluOrdPsblAmt        string `json:"stck_evlu_ord_psbl_amt,omitempty"`
-	StckRusePsblOrdPsblAmt    string `json:"stck_ruse_psbl_ord_psbl_amt,omitempty"`
-	StckFundRpchOrdPsblAmt    string `json:"stck_fund_rpch_ord_psbl_amt,omitempty"`
-	BondRusePsblOrdPsblAmt    string `json:"bond_ruse_psbl_ord_psbl_amt,omitempty"`
-	RcvbAmt                   string `json:"rcvb_amt,omitempty"`
-	StckLoanGrtaRusePsblAmt   string `json:"stck_loan_grta_ruse_psbl_amt,omitempty"`
-	StckCash20MaxOrdPsblAmt   string `json:"stck_cash20_max_ord_psbl_amt,omitempty"`
-	StckCash30MaxOrdPsblAmt   string `json:"stck_cash30_max_ord_psbl_amt,omitempty"`
-	StckCash40MaxOrdPsblAmt   string `json:"stck_cash40_max_ord_psbl_amt,omitempty"`
-	StckCash50MaxOrdPsblAmt   string `json:"stck_cash50_max_ord_psbl_amt,omitempty"`
-	StckCash60MaxOrdPsblAmt   string `json:"stck_cash60_max_ord_psbl_amt,omitempty"`
-	StckCash100MaxOrdPsblAmt  string `json:"stck_cash100_max_ord_psbl_amt,omitempty"`
-	StckRsip100MaxOrdPsblAmt  string `json:"stck_rsip100_max_ord_psbl_amt,omitempty"`
-	BondMaxOrdPsblAmt         string `json:"bond_max_ord_psbl_amt,omitempty"`
-	StckFncg45MaxOrdPsblAmt   string `json:"stck_fncg45_max_ord_psbl_amt,omitempty"`
-	StckFncg50MaxOrdPsblAmt   string `json:"stck_fncg50_max_ord_psbl_amt,omitempty"`
-	StckFncg60MaxOrdPsblAmt   string `json:"stck_fncg60_max_ord_psbl_amt,omitempty"`
-	StckFncg70MaxOrdPsblAmt   string `json:"stck_fncg70_max_ord_psbl_amt,omitempty"`
-	StckStlnMaxOrdPsblAmt     string `json:"stck_stln_max_ord_psbl_amt,omitempty"`
-	LmtAmt                    string `json:"lmt_amt,omitempty"`
-	OvrsStckItgrMgnaDvsnName  string `json:"ovrs_stck_itgr_mgna_dvsn_name,omitempty"`
-	UsdObjtAmt                string `json:"usd_objt_amt,omitempty"`
-	UsdUseAmt                 string `json:"usd_use_amt,omitempty"`
-	UsdOrdPsblAmt             string `json:"usd_ord_psbl_amt,omitempty"`
-	HkdObjtAmt                string `json:"hkd_objt_amt,omitempty"`
-	HkdUseAmt                 string `json:"hkd_use_amt,omitempty"`
-	HkdOrdPsblAmt             string `json:"hkd_ord_psbl_amt,omitempty"`
-	JpyObjtAmt                string `json:"jpy_objt_amt,omitempty"`
-	JpyUseAmt                 string `json:"jpy_use_amt,omitempty"`
-	JpyOrdPsblAmt             string `json:"jpy_ord_psbl_amt,omitempty"`
-	CnyObjtAmt                string `json:"cny_objt_amt,omitempty"`
-	CnyUseAmt                 string `json:"cny_use_amt,omitempty"`
-	CnyOrdPsblAmt             string `json:"cny_ord_psbl_amt,omitempty"`
-	UsdRuseObjtAmt            string `json:"usd_ruse_objt_amt,omitempty"`
-	UsdRuseAmt                string `json:"usd_ruse_amt,omitempty"`
-	UsdRuseOrdPsblAmt         string `json:"usd_ruse_ord_psbl_amt,omitempty"`
-	HkdRuseObjtAmt            string `json:"hkd_ruse_objt_amt,omitempty"`
-	HkdRuseAmt                string `json:"hkd_ruse_amt,omitempty"`
-	HkdRuseOrdPsblAmt         string `json:"hkd_ruse_ord_psbl_amt,omitempty"`
-	JpyRuseObjtAmt            string `json:"jpy_ruse_objt_amt,omitempty"`
-	JpyRuseAmt                string `json:"jpy_ruse_amt,omitempty"`
-	JpyRuseOrdPsblAmt         string `json:"jpy_ruse_ord_psbl_amt,omitempty"`
-	CnyRuseObjtAmt            string `json:"cny_ruse_objt_amt,omitempty"`
-	CnyRuseAmt                string `json:"cny_ruse_amt,omitempty"`
-	CnyRuseOrdPsblAmt         string `json:"cny_ruse_ord_psbl_amt,omitempty"`
-	UsdGnrlOrdPsblAmt         string `json:"usd_gnrl_ord_psbl_amt,omitempty"`
-	UsdItgrOrdPsblAmt         string `json:"usd_itgr_ord_psbl_amt,omitempty"`
-	HkdGnrlOrdPsblAmt         string `json:"hkd_gnrl_ord_psbl_amt,omitempty"`
-	HkdItgrOrdPsblAmt         string `json:"hkd_itgr_ord_psbl_amt,omitempty"`
-	JpyGnrlOrdPsblAmt         string `json:"jpy_gnrl_ord_psbl_amt,omitempty"`
-	JpyItgrOrdPsblAmt         string `json:"jpy_itgr_ord_psbl_amt,omitempty"`
-	CnyGnrlOrdPsblAmt         string `json:"cny_gnrl_ord_psbl_amt,omitempty"`
-	CnyItgrOrdPsblAmt         string `json:"cny_itgr_ord_psbl_amt,omitempty"`
-	StckItgrCash20OrdPsblAmt  string `json:"stck_itgr_cash20_ord_psbl_amt,omitempty"`
-	StckItgrCash30OrdPsblAmt  string `json:"stck_itgr_cash30_ord_psbl_amt,omitempty"`
-	StckItgrCash40OrdPsblAmt  string `json:"stck_itgr_cash40_ord_psbl_amt,omitempty"`
-	StckItgrCash50OrdPsblAmt  string `json:"stck_itgr_cash50_ord_psbl_amt,omitempty"`
-	StckItgrCash60OrdPsblAmt  string `json:"stck_itgr_cash60_ord_psbl_amt,omitempty"`
-	StckItgrCash100OrdPsblAmt string `json:"stck_itgr_cash100_ord_psbl_amt,omitempty"`
-	StckItgr100OrdPsblAmt     string `json:"stck_itgr_100_ord_psbl_amt,omitempty"`
-	StckItgrFncg45OrdPsblAmt  string `json:"stck_itgr_fncg45_ord_psbl_amt,omitempty"`
-	StckItgrFncg50OrdPsblAmt  string `json:"stck_itgr_fncg50_ord_psbl_amt,omitempty"`
-	StckItgrFncg60OrdPsblAmt  string `json:"stck_itgr_fncg60_ord_psbl_amt,omitempty"`
-	StckItgrFncg70OrdPsblAmt  string `json:"stck_itgr_fncg70_ord_psbl_amt,omitempty"`
-	StckItgrStlnOrdPsblAmt    string `json:"stck_itgr_stln_ord_psbl_amt,omitempty"`
-	BondItgrOrdPsblAmt        string `json:"bond_itgr_ord_psbl_amt,omitempty"`
-	StckCashOvrsUseAmt        string `json:"stck_cash_ovrs_use_amt,omitempty"`
-	StckSbstOvrsUseAmt        string `json:"stck_sbst_ovrs_use_amt,omitempty"`
-	StckEvluOvrsUseAmt        string `json:"stck_evlu_ovrs_use_amt,omitempty"`
-	StckReUseAmtOvrsUseAmt    string `json:"stck_re_use_amt_ovrs_use_amt,omitempty"`
-	StckFundRpchOvrsUseAmt    string `json:"stck_fund_rpch_ovrs_use_amt,omitempty"`
-	StckFncgRdptOvrsUseAmt    string `json:"stck_fncg_rdpt_ovrs_use_amt,omitempty"`
-	BondReUseOvrsUseAmt       string `json:"bond_re_use_ovrs_use_amt,omitempty"`
-	UsdOthMketUseAmt          string `json:"usd_oth_mket_use_amt,omitempty"`
-	JpyOthMketUseAmt          string `json:"jpy_oth_mket_use_amt,omitempty"`
-	CnyOthMketUseAmt          string `json:"cny_oth_mket_use_amt,omitempty"`
-	HkdOthMketUseAmt          string `json:"hkd_oth_mket_use_amt,omitempty"`
-	UsdReUseOthMketUseAmt     string `json:"usd_re_use_oth_mket_use_amt,omitempty"`
-	JpyReUseOthMketUseAmt     string `json:"jpy_re_use_oth_mket_use_amt,omitempty"`
-	CnyReUseOthMketUseAmt     string `json:"cny_re_use_oth_mket_use_amt,omitempty"`
-	HkdReUseOthMketUseAmt     string `json:"hkd_re_use_oth_mket_use_amt,omitempty"`
-	HgkgCnyReUseAmt           string `json:"hgkg_cny_re_use_amt,omitempty"`
-	UsdFrstBltnExrt           string `json:"usd_frst_bltn_exrt,omitempty"`
-	HkdFrstBltnExrt           string `json:"hkd_frst_bltn_exrt,omitempty"`
-	JpyFrstBltnExrt           string `json:"jpy_frst_bltn_exrt,omitempty"`
-	CnyFrstBltnExrt           string `json:"cny_frst_bltn_exrt,omitempty"`
+	AcmgaRt                   string `json:"acmga_rt"`
+	AcmgaPct100AptmRson       string `json:"acmga_pct100_aptm_rson"`
+	StckCashObjtAmt           string `json:"stck_cash_objt_amt"`
+	StckSbstObjtAmt           string `json:"stck_sbst_objt_amt"`
+	StckEvluObjtAmt           string `json:"stck_evlu_objt_amt"`
+	StckRusePsblObjtAmt       string `json:"stck_ruse_psbl_objt_amt"`
+	StckFundRpchChgsObjtAmt   string `json:"stck_fund_rpch_chgs_objt_amt"`
+	StckFncgRdptObjtAtm       string `json:"stck_fncg_rdpt_objt_atm"`
+	BondRusePsblObjtAmt       string `json:"bond_ruse_psbl_objt_amt"`
+	StckCashUseAmt            string `json:"stck_cash_use_amt"`
+	StckSbstUseAmt            string `json:"stck_sbst_use_amt"`
+	StckEvluUseAmt            string `json:"stck_evlu_use_amt"`
+	StckRusePsblAmtUseAmt     string `json:"stck_ruse_psbl_amt_use_amt"`
+	StckFundRpchChgsUseAmt    string `json:"stck_fund_rpch_chgs_use_amt"`
+	StckFncgRdptAmtUseAmt     string `json:"stck_fncg_rdpt_amt_use_amt"`
+	BondRusePsblAmtUseAmt     string `json:"bond_ruse_psbl_amt_use_amt"`
+	StckCashOrdPsblAmt        string `json:"stck_cash_ord_psbl_amt"`
+	StckSbstOrdPsblAmt        string `json:"stck_sbst_ord_psbl_amt"`
+	StckEvluOrdPsblAmt        string `json:"stck_evlu_ord_psbl_amt"`
+	StckRusePsblOrdPsblAmt    string `json:"stck_ruse_psbl_ord_psbl_amt"`
+	StckFundRpchOrdPsblAmt    string `json:"stck_fund_rpch_ord_psbl_amt"`
+	BondRusePsblOrdPsblAmt    string `json:"bond_ruse_psbl_ord_psbl_amt"`
+	RcvbAmt                   string `json:"rcvb_amt"`
+	StckLoanGrtaRusePsblAmt   string `json:"stck_loan_grta_ruse_psbl_amt"`
+	StckCash20MaxOrdPsblAmt   string `json:"stck_cash20_max_ord_psbl_amt"`
+	StckCash30MaxOrdPsblAmt   string `json:"stck_cash30_max_ord_psbl_amt"`
+	StckCash40MaxOrdPsblAmt   string `json:"stck_cash40_max_ord_psbl_amt"`
+	StckCash50MaxOrdPsblAmt   string `json:"stck_cash50_max_ord_psbl_amt"`
+	StckCash60MaxOrdPsblAmt   string `json:"stck_cash60_max_ord_psbl_amt"`
+	StckCash100MaxOrdPsblAmt  string `json:"stck_cash100_max_ord_psbl_amt"`
+	StckRsip100MaxOrdPsblAmt  string `json:"stck_rsip100_max_ord_psbl_amt"`
+	BondMaxOrdPsblAmt         string `json:"bond_max_ord_psbl_amt"`
+	StckFncg45MaxOrdPsblAmt   string `json:"stck_fncg45_max_ord_psbl_amt"`
+	StckFncg50MaxOrdPsblAmt   string `json:"stck_fncg50_max_ord_psbl_amt"`
+	StckFncg60MaxOrdPsblAmt   string `json:"stck_fncg60_max_ord_psbl_amt"`
+	StckFncg70MaxOrdPsblAmt   string `json:"stck_fncg70_max_ord_psbl_amt"`
+	StckStlnMaxOrdPsblAmt     string `json:"stck_stln_max_ord_psbl_amt"`
+	LmtAmt                    string `json:"lmt_amt"`
+	OvrsStckItgrMgnaDvsnName  string `json:"ovrs_stck_itgr_mgna_dvsn_name"`
+	UsdObjtAmt                string `json:"usd_objt_amt"`
+	UsdUseAmt                 string `json:"usd_use_amt"`
+	UsdOrdPsblAmt             string `json:"usd_ord_psbl_amt"`
+	HkdObjtAmt                string `json:"hkd_objt_amt"`
+	HkdUseAmt                 string `json:"hkd_use_amt"`
+	HkdOrdPsblAmt             string `json:"hkd_ord_psbl_amt"`
+	JpyObjtAmt                string `json:"jpy_objt_amt"`
+	JpyUseAmt                 string `json:"jpy_use_amt"`
+	JpyOrdPsblAmt             string `json:"jpy_ord_psbl_amt"`
+	CnyObjtAmt                string `json:"cny_objt_amt"`
+	CnyUseAmt                 string `json:"cny_use_amt"`
+	CnyOrdPsblAmt             string `json:"cny_ord_psbl_amt"`
+	UsdRuseObjtAmt            string `json:"usd_ruse_objt_amt"`
+	UsdRuseAmt                string `json:"usd_ruse_amt"`
+	UsdRuseOrdPsblAmt         string `json:"usd_ruse_ord_psbl_amt"`
+	HkdRuseObjtAmt            string `json:"hkd_ruse_objt_amt"`
+	HkdRuseAmt                string `json:"hkd_ruse_amt"`
+	HkdRuseOrdPsblAmt         string `json:"hkd_ruse_ord_psbl_amt"`
+	JpyRuseObjtAmt            string `json:"jpy_ruse_objt_amt"`
+	JpyRuseAmt                string `json:"jpy_ruse_amt"`
+	JpyRuseOrdPsblAmt         string `json:"jpy_ruse_ord_psbl_amt"`
+	CnyRuseObjtAmt            string `json:"cny_ruse_objt_amt"`
+	CnyRuseAmt                string `json:"cny_ruse_amt"`
+	CnyRuseOrdPsblAmt         string `json:"cny_ruse_ord_psbl_amt"`
+	UsdGnrlOrdPsblAmt         string `json:"usd_gnrl_ord_psbl_amt"`
+	UsdItgrOrdPsblAmt         string `json:"usd_itgr_ord_psbl_amt"`
+	HkdGnrlOrdPsblAmt         string `json:"hkd_gnrl_ord_psbl_amt"`
+	HkdItgrOrdPsblAmt         string `json:"hkd_itgr_ord_psbl_amt"`
+	JpyGnrlOrdPsblAmt         string `json:"jpy_gnrl_ord_psbl_amt"`
+	JpyItgrOrdPsblAmt         string `json:"jpy_itgr_ord_psbl_amt"`
+	CnyGnrlOrdPsblAmt         string `json:"cny_gnrl_ord_psbl_amt"`
+	CnyItgrOrdPsblAmt         string `json:"cny_itgr_ord_psbl_amt"`
+	StckItgrCash20OrdPsblAmt  string `json:"stck_itgr_cash20_ord_psbl_amt"`
+	StckItgrCash30OrdPsblAmt  string `json:"stck_itgr_cash30_ord_psbl_amt"`
+	StckItgrCash40OrdPsblAmt  string `json:"stck_itgr_cash40_ord_psbl_amt"`
+	StckItgrCash50OrdPsblAmt  string `json:"stck_itgr_cash50_ord_psbl_amt"`
+	StckItgrCash60OrdPsblAmt  string `json:"stck_itgr_cash60_ord_psbl_amt"`
+	StckItgrCash100OrdPsblAmt string `json:"stck_itgr_cash100_ord_psbl_amt"`
+	StckItgr100OrdPsblAmt     string `json:"stck_itgr_100_ord_psbl_amt"`
+	StckItgrFncg45OrdPsblAmt  string `json:"stck_itgr_fncg45_ord_psbl_amt"`
+	StckItgrFncg50OrdPsblAmt  string `json:"stck_itgr_fncg50_ord_psbl_amt"`
+	StckItgrFncg60OrdPsblAmt  string `json:"stck_itgr_fncg60_ord_psbl_amt"`
+	StckItgrFncg70OrdPsblAmt  string `json:"stck_itgr_fncg70_ord_psbl_amt"`
+	StckItgrStlnOrdPsblAmt    string `json:"stck_itgr_stln_ord_psbl_amt"`
+	BondItgrOrdPsblAmt        string `json:"bond_itgr_ord_psbl_amt"`
+	StckCashOvrsUseAmt        string `json:"stck_cash_ovrs_use_amt"`
+	StckSbstOvrsUseAmt        string `json:"stck_sbst_ovrs_use_amt"`
+	StckEvluOvrsUseAmt        string `json:"stck_evlu_ovrs_use_amt"`
+	StckReUseAmtOvrsUseAmt    string `json:"stck_re_use_amt_ovrs_use_amt"`
+	StckFundRpchOvrsUseAmt    string `json:"stck_fund_rpch_ovrs_use_amt"`
+	StckFncgRdptOvrsUseAmt    string `json:"stck_fncg_rdpt_ovrs_use_amt"`
+	BondReUseOvrsUseAmt       string `json:"bond_re_use_ovrs_use_amt"`
+	UsdOthMketUseAmt          string `json:"usd_oth_mket_use_amt"`
+	JpyOthMketUseAmt          string `json:"jpy_oth_mket_use_amt"`
+	CnyOthMketUseAmt          string `json:"cny_oth_mket_use_amt"`
+	HkdOthMketUseAmt          string `json:"hkd_oth_mket_use_amt"`
+	UsdReUseOthMketUseAmt     string `json:"usd_re_use_oth_mket_use_amt"`
+	JpyReUseOthMketUseAmt     string `json:"jpy_re_use_oth_mket_use_amt"`
+	CnyReUseOthMketUseAmt     string `json:"cny_re_use_oth_mket_use_amt"`
+	HkdReUseOthMketUseAmt     string `json:"hkd_re_use_oth_mket_use_amt"`
+	HgkgCnyReUseAmt           string `json:"hgkg_cny_re_use_amt"`
+	UsdFrstBltnExrt           string `json:"usd_frst_bltn_exrt"`
+	HkdFrstBltnExrt           string `json:"hkd_frst_bltn_exrt"`
+	JpyFrstBltnExrt           string `json:"jpy_frst_bltn_exrt"`
+	CnyFrstBltnExrt           string `json:"cny_frst_bltn_exrt"`
 }
 
 type KISDomesticStockV1TradingIntgrMarginRequest struct {
@@ -6482,9 +6482,9 @@ type KISDomesticStockV1TradingOrderCash struct {
 }
 
 type KISDomesticStockV1TradingOrderCashOutputItem struct {
-	KrxFwdgOrdOrgno string `json:"KRX_FWDG_ORD_ORGNO,omitempty"`
-	Odno            string `json:"ODNO,omitempty"`
-	OrdTmd          string `json:"ORD_TMD,omitempty"`
+	KrxFwdgOrdOrgno string `json:"KRX_FWDG_ORD_ORGNO"`
+	Odno            string `json:"ODNO"`
+	OrdTmd          string `json:"ORD_TMD"`
 }
 
 type KISDomesticStockV1TradingOrderCashRequest struct {
@@ -6502,9 +6502,9 @@ type KISDomesticStockV1TradingOrderCredit struct {
 }
 
 type KISDomesticStockV1TradingOrderCreditOutputItem struct {
-	KrxFwdgOrdOrgno string `json:"krx_fwdg_ord_orgno,omitempty"`
-	Odno            string `json:"odno,omitempty"`
-	OrdTmd          string `json:"ord_tmd,omitempty"`
+	KrxFwdgOrdOrgno string `json:"krx_fwdg_ord_orgno"`
+	Odno            string `json:"odno"`
+	OrdTmd          string `json:"ord_tmd"`
 }
 
 type KISDomesticStockV1TradingOrderCreditRequest struct {
@@ -6525,7 +6525,7 @@ type KISDomesticStockV1TradingOrderResv struct {
 }
 
 type KISDomesticStockV1TradingOrderResvOutputItem struct {
-	RsvnOrdSeq string `json:"rsvn_ord_seq,omitempty"`
+	RsvnOrdSeq string `json:"rsvn_ord_seq"`
 }
 
 type KISDomesticStockV1TradingOrderResvRequest struct {
@@ -6545,29 +6545,29 @@ type KISDomesticStockV1TradingOrderResvCcnl struct {
 }
 
 type KISDomesticStockV1TradingOrderResvCcnlOutputItem struct {
-	RsvnOrdSeq      string `json:"rsvn_ord_seq,omitempty"`
-	RsvnOrdOrdDt    string `json:"rsvn_ord_ord_dt,omitempty"`
-	RsvnOrdRcitDt   string `json:"rsvn_ord_rcit_dt,omitempty"`
-	Pdno            string `json:"pdno,omitempty"`
-	OrdDvsnCd       string `json:"ord_dvsn_cd,omitempty"`
-	OrdRsvnQty      string `json:"ord_rsvn_qty,omitempty"`
-	TotCcldQty      string `json:"tot_ccld_qty,omitempty"`
-	CnclOrdDt       string `json:"cncl_ord_dt,omitempty"`
-	OrdTmd          string `json:"ord_tmd,omitempty"`
-	CtacTlno        string `json:"ctac_tlno,omitempty"`
-	RjctRson2       string `json:"rjct_rson2,omitempty"`
-	Odno            string `json:"odno,omitempty"`
-	RsvnOrdRcitTmd  string `json:"rsvn_ord_rcit_tmd,omitempty"`
-	KorItemShtnName string `json:"kor_item_shtn_name,omitempty"`
-	SllBuyDvsnCd    string `json:"sll_buy_dvsn_cd,omitempty"`
-	OrdRsvnUnpr     string `json:"ord_rsvn_unpr,omitempty"`
-	TotCcldAmt      string `json:"tot_ccld_amt,omitempty"`
-	LoanDt          string `json:"loan_dt,omitempty"`
-	CnclRcitTmd     string `json:"cncl_rcit_tmd,omitempty"`
-	PrcsRslt        string `json:"prcs_rslt,omitempty"`
-	OrdDvsnName     string `json:"ord_dvsn_name,omitempty"`
-	TmnlMdiaKindCd  string `json:"tmnl_mdia_kind_cd,omitempty"`
-	RsvnEndDt       string `json:"rsvn_end_dt,omitempty"`
+	RsvnOrdSeq      string `json:"rsvn_ord_seq"`
+	RsvnOrdOrdDt    string `json:"rsvn_ord_ord_dt"`
+	RsvnOrdRcitDt   string `json:"rsvn_ord_rcit_dt"`
+	Pdno            string `json:"pdno"`
+	OrdDvsnCd       string `json:"ord_dvsn_cd"`
+	OrdRsvnQty      string `json:"ord_rsvn_qty"`
+	TotCcldQty      string `json:"tot_ccld_qty"`
+	CnclOrdDt       string `json:"cncl_ord_dt"`
+	OrdTmd          string `json:"ord_tmd"`
+	CtacTlno        string `json:"ctac_tlno"`
+	RjctRson2       string `json:"rjct_rson2"`
+	Odno            string `json:"odno"`
+	RsvnOrdRcitTmd  string `json:"rsvn_ord_rcit_tmd"`
+	KorItemShtnName string `json:"kor_item_shtn_name"`
+	SllBuyDvsnCd    string `json:"sll_buy_dvsn_cd"`
+	OrdRsvnUnpr     string `json:"ord_rsvn_unpr"`
+	TotCcldAmt      string `json:"tot_ccld_amt"`
+	LoanDt          string `json:"loan_dt"`
+	CnclRcitTmd     string `json:"cncl_rcit_tmd"`
+	PrcsRslt        string `json:"prcs_rslt"`
+	OrdDvsnName     string `json:"ord_dvsn_name"`
+	TmnlMdiaKindCd  string `json:"tmnl_mdia_kind_cd"`
+	RsvnEndDt       string `json:"rsvn_end_dt"`
 }
 
 type KISDomesticStockV1TradingOrderResvCcnlRequest struct {
@@ -6592,7 +6592,7 @@ type KISDomesticStockV1TradingOrderResvRvsecncl struct {
 }
 
 type KISDomesticStockV1TradingOrderResvRvsecnclOutputItem struct {
-	NrmlPrcsYn string `json:"nrml_prcs_yn,omitempty"`
+	NrmlPrcsYn string `json:"nrml_prcs_yn"`
 }
 
 type KISDomesticStockV1TradingOrderResvRvsecnclRequest struct {
@@ -6613,9 +6613,9 @@ type KISDomesticStockV1TradingOrderRvsecncl struct {
 }
 
 type KISDomesticStockV1TradingOrderRvsecnclOutputItem struct {
-	KrxFwdgOrdOrgno string `json:"krx_fwdg_ord_orgno,omitempty"`
-	Odno            string `json:"odno,omitempty"`
-	OrdTmd          string `json:"ord_tmd,omitempty"`
+	KrxFwdgOrdOrgno string `json:"krx_fwdg_ord_orgno"`
+	Odno            string `json:"odno"`
+	OrdTmd          string `json:"ord_tmd"`
 }
 
 type KISDomesticStockV1TradingOrderRvsecnclRequest struct {
@@ -6637,31 +6637,31 @@ type KISDomesticStockV1TradingPensionInquireBalance struct {
 }
 
 type KISDomesticStockV1TradingPensionInquireBalanceOutput1Item struct {
-	CblcDvsnName string `json:"cblc_dvsn_name,omitempty"`
-	PrdtName     string `json:"prdt_name,omitempty"`
-	Pdno         string `json:"pdno,omitempty"`
-	ItemDvsnName string `json:"item_dvsn_name,omitempty"`
-	ThdtBuyqty   string `json:"thdt_buyqty,omitempty"`
-	ThdtSllQty   string `json:"thdt_sll_qty,omitempty"`
-	HldgQty      string `json:"hldg_qty,omitempty"`
-	OrdPsblQty   string `json:"ord_psbl_qty,omitempty"`
-	PchsAvgPric  string `json:"pchs_avg_pric,omitempty"`
-	PchsAmt      string `json:"pchs_amt,omitempty"`
-	Prpr         string `json:"prpr,omitempty"`
-	EvluAmt      string `json:"evlu_amt,omitempty"`
-	EvluPflsAmt  string `json:"evlu_pfls_amt,omitempty"`
-	EvluErngRt   string `json:"evlu_erng_rt,omitempty"`
+	CblcDvsnName string `json:"cblc_dvsn_name"`
+	PrdtName     string `json:"prdt_name"`
+	Pdno         string `json:"pdno"`
+	ItemDvsnName string `json:"item_dvsn_name"`
+	ThdtBuyqty   string `json:"thdt_buyqty"`
+	ThdtSllQty   string `json:"thdt_sll_qty"`
+	HldgQty      string `json:"hldg_qty"`
+	OrdPsblQty   string `json:"ord_psbl_qty"`
+	PchsAvgPric  string `json:"pchs_avg_pric"`
+	PchsAmt      string `json:"pchs_amt"`
+	Prpr         string `json:"prpr"`
+	EvluAmt      string `json:"evlu_amt"`
+	EvluPflsAmt  string `json:"evlu_pfls_amt"`
+	EvluErngRt   string `json:"evlu_erng_rt"`
 }
 
 type KISDomesticStockV1TradingPensionInquireBalanceOutput2Item struct {
-	DncaTotAmt      string `json:"dnca_tot_amt,omitempty"`
-	NxdyExccAmt     string `json:"nxdy_excc_amt,omitempty"`
-	PrvsRcdlExccAmt string `json:"prvs_rcdl_excc_amt,omitempty"`
-	ThdtBuyAmt      string `json:"thdt_buy_amt,omitempty"`
-	ThdtSllAmt      string `json:"thdt_sll_amt,omitempty"`
-	ThdtTlexAmt     string `json:"thdt_tlex_amt,omitempty"`
-	SctsEvluAmt     string `json:"scts_evlu_amt,omitempty"`
-	TotEvluAmt      string `json:"tot_evlu_amt,omitempty"`
+	DncaTotAmt      string `json:"dnca_tot_amt"`
+	NxdyExccAmt     string `json:"nxdy_excc_amt"`
+	PrvsRcdlExccAmt string `json:"prvs_rcdl_excc_amt"`
+	ThdtBuyAmt      string `json:"thdt_buy_amt"`
+	ThdtSllAmt      string `json:"thdt_sll_amt"`
+	ThdtTlexAmt     string `json:"thdt_tlex_amt"`
+	SctsEvluAmt     string `json:"scts_evlu_amt"`
+	TotEvluAmt      string `json:"tot_evlu_amt"`
 }
 
 type KISDomesticStockV1TradingPensionInquireBalanceRequest struct {
@@ -6679,26 +6679,26 @@ type KISDomesticStockV1TradingPensionInquireDailyCcld struct {
 }
 
 type KISDomesticStockV1TradingPensionInquireDailyCcldOutputItem struct {
-	OrdGnoBrno       string `json:"ord_gno_brno,omitempty"`
-	SllBuyDvsnCd     string `json:"sll_buy_dvsn_cd,omitempty"`
-	TradDvsnName     string `json:"trad_dvsn_name,omitempty"`
-	Odno             string `json:"odno,omitempty"`
-	Pdno             string `json:"pdno,omitempty"`
-	PrdtName         string `json:"prdt_name,omitempty"`
-	OrdUnpr          string `json:"ord_unpr,omitempty"`
-	OrdQty           string `json:"ord_qty,omitempty"`
-	TotCcldQty       string `json:"tot_ccld_qty,omitempty"`
-	NccsQty          string `json:"nccs_qty,omitempty"`
-	OrdDvsnCd        string `json:"ord_dvsn_cd,omitempty"`
-	OrdDvsnName      string `json:"ord_dvsn_name,omitempty"`
-	OrgnOdno         string `json:"orgn_odno,omitempty"`
-	OrdTmd           string `json:"ord_tmd,omitempty"`
-	ObjtCustDvsnName string `json:"objt_cust_dvsn_name,omitempty"`
-	PchsAvgPric      string `json:"pchs_avg_pric,omitempty"`
-	StpmCndtPric     string `json:"stpm_cndt_pric,omitempty"`
-	StpmEfctOccrDtmd string `json:"stpm_efct_occr_dtmd,omitempty"`
-	StpmEfctOccrYn   string `json:"stpm_efct_occr_yn,omitempty"`
-	ExcgIdDvsnCd     string `json:"excg_id_dvsn_cd,omitempty"`
+	OrdGnoBrno       string `json:"ord_gno_brno"`
+	SllBuyDvsnCd     string `json:"sll_buy_dvsn_cd"`
+	TradDvsnName     string `json:"trad_dvsn_name"`
+	Odno             string `json:"odno"`
+	Pdno             string `json:"pdno"`
+	PrdtName         string `json:"prdt_name"`
+	OrdUnpr          string `json:"ord_unpr"`
+	OrdQty           string `json:"ord_qty"`
+	TotCcldQty       string `json:"tot_ccld_qty"`
+	NccsQty          string `json:"nccs_qty"`
+	OrdDvsnCd        string `json:"ord_dvsn_cd"`
+	OrdDvsnName      string `json:"ord_dvsn_name"`
+	OrgnOdno         string `json:"orgn_odno"`
+	OrdTmd           string `json:"ord_tmd"`
+	ObjtCustDvsnName string `json:"objt_cust_dvsn_name"`
+	PchsAvgPric      string `json:"pchs_avg_pric"`
+	StpmCndtPric     string `json:"stpm_cndt_pric"`
+	StpmEfctOccrDtmd string `json:"stpm_efct_occr_dtmd"`
+	StpmEfctOccrYn   string `json:"stpm_efct_occr_yn"`
+	ExcgIdDvsnCd     string `json:"excg_id_dvsn_cd"`
 }
 
 type KISDomesticStockV1TradingPensionInquireDailyCcldRequest struct {
@@ -6718,10 +6718,10 @@ type KISDomesticStockV1TradingPensionInquireDeposit struct {
 }
 
 type KISDomesticStockV1TradingPensionInquireDepositOutputItem struct {
-	DncaTota      string `json:"dnca_tota,omitempty"`
-	NxdyExccAmt   string `json:"nxdy_excc_amt,omitempty"`
-	NxdySttlAmt   string `json:"nxdy_sttl_amt,omitempty"`
-	Nx2DaySttlAmt string `json:"nx2_day_sttl_amt,omitempty"`
+	DncaTota      string `json:"dnca_tota"`
+	NxdyExccAmt   string `json:"nxdy_excc_amt"`
+	NxdySttlAmt   string `json:"nxdy_sttl_amt"`
+	Nx2DaySttlAmt string `json:"nx2_day_sttl_amt"`
 }
 
 type KISDomesticStockV1TradingPensionInquireDepositRequest struct {
@@ -6737,28 +6737,28 @@ type KISDomesticStockV1TradingPensionInquirePresentBalance struct {
 }
 
 type KISDomesticStockV1TradingPensionInquirePresentBalanceOutput1Item struct {
-	CblcDvsn     string `json:"cblc_dvsn,omitempty"`
-	CblcDvsnName string `json:"cblc_dvsn_name,omitempty"`
-	Pdno         string `json:"pdno,omitempty"`
-	PrdtName     string `json:"prdt_name,omitempty"`
-	HldgQty      string `json:"hldg_qty,omitempty"`
-	SlpsbQty     string `json:"slpsb_qty,omitempty"`
-	PchsAvgPric  string `json:"pchs_avg_pric,omitempty"`
-	EvluPflsAmt  string `json:"evlu_pfls_amt,omitempty"`
-	EvluPflsRt   string `json:"evlu_pfls_rt,omitempty"`
-	Prpr         string `json:"prpr,omitempty"`
-	EvluAmt      string `json:"evlu_amt,omitempty"`
-	PchsAmt      string `json:"pchs_amt,omitempty"`
-	CblcWeit     string `json:"cblc_weit,omitempty"`
+	CblcDvsn     string `json:"cblc_dvsn"`
+	CblcDvsnName string `json:"cblc_dvsn_name"`
+	Pdno         string `json:"pdno"`
+	PrdtName     string `json:"prdt_name"`
+	HldgQty      string `json:"hldg_qty"`
+	SlpsbQty     string `json:"slpsb_qty"`
+	PchsAvgPric  string `json:"pchs_avg_pric"`
+	EvluPflsAmt  string `json:"evlu_pfls_amt"`
+	EvluPflsRt   string `json:"evlu_pfls_rt"`
+	Prpr         string `json:"prpr"`
+	EvluAmt      string `json:"evlu_amt"`
+	PchsAmt      string `json:"pchs_amt"`
+	CblcWeit     string `json:"cblc_weit"`
 }
 
 type KISDomesticStockV1TradingPensionInquirePresentBalanceOutput2Item struct {
-	PchsAmtSmtlAmt  string `json:"pchs_amt_smtl_amt,omitempty"`
-	EvluAmtSmtlAmt  string `json:"evlu_amt_smtl_amt,omitempty"`
-	EvluPflsSmtlAmt string `json:"evlu_pfls_smtl_amt,omitempty"`
-	TradPflsSmtl    string `json:"trad_pfls_smtl,omitempty"`
-	ThdtTotPflsAmt  string `json:"thdt_tot_pfls_amt,omitempty"`
-	Pftrt           string `json:"pftrt,omitempty"`
+	PchsAmtSmtlAmt  string `json:"pchs_amt_smtl_amt"`
+	EvluAmtSmtlAmt  string `json:"evlu_amt_smtl_amt"`
+	EvluPflsSmtlAmt string `json:"evlu_pfls_smtl_amt"`
+	TradPflsSmtl    string `json:"trad_pfls_smtl"`
+	ThdtTotPflsAmt  string `json:"thdt_tot_pfls_amt"`
+	Pftrt           string `json:"pftrt"`
 }
 
 type KISDomesticStockV1TradingPensionInquirePresentBalanceRequest struct {
@@ -6775,11 +6775,11 @@ type KISDomesticStockV1TradingPensionInquirePsblOrder struct {
 }
 
 type KISDomesticStockV1TradingPensionInquirePsblOrderOutputItem struct {
-	OrdPsblCash     string `json:"ord_psbl_cash,omitempty"`
-	RusePsblAmt     string `json:"ruse_psbl_amt,omitempty"`
-	PsblQtyCalcUnpr string `json:"psbl_qty_calc_unpr,omitempty"`
-	MaxBuyAmt       string `json:"max_buy_amt,omitempty"`
-	MaxBuyQty       string `json:"max_buy_qty,omitempty"`
+	OrdPsblCash     string `json:"ord_psbl_cash"`
+	RusePsblAmt     string `json:"ruse_psbl_amt"`
+	PsblQtyCalcUnpr string `json:"psbl_qty_calc_unpr"`
+	MaxBuyAmt       string `json:"max_buy_amt"`
+	MaxBuyQty       string `json:"max_buy_qty"`
 }
 
 type KISDomesticStockV1TradingPensionInquirePsblOrderRequest struct {
@@ -6798,35 +6798,35 @@ type KISDomesticStockV1TradingPeriodRights struct {
 }
 
 type KISDomesticStockV1TradingPeriodRightsOutput1Item struct {
-	Acno10         string `json:"acno10,omitempty"`
-	RghtTypeCd     string `json:"rght_type_cd,omitempty"`
-	BassDt         string `json:"bass_dt,omitempty"`
-	RghtCblcTypeCd string `json:"rght_cblc_type_cd,omitempty"`
-	RpttPdno       string `json:"rptt_pdno,omitempty"`
-	Pdno           string `json:"pdno,omitempty"`
-	PrdtTypeCd     string `json:"prdt_type_cd,omitempty"`
-	ShtnPdno       string `json:"shtn_pdno,omitempty"`
-	PrdtName       string `json:"prdt_name,omitempty"`
-	CblcQty        string `json:"cblc_qty,omitempty"`
-	LastAlctQty    string `json:"last_alct_qty,omitempty"`
-	ExcsAlctQty    string `json:"excs_alct_qty,omitempty"`
-	TotAlctQty     string `json:"tot_alct_qty,omitempty"`
-	LastFtskQty    string `json:"last_ftsk_qty,omitempty"`
-	LastAlctAmt    string `json:"last_alct_amt,omitempty"`
-	LastFtskChgs   string `json:"last_ftsk_chgs,omitempty"`
-	RdptPrca       string `json:"rdpt_prca,omitempty"`
-	DlayIntAmt     string `json:"dlay_int_amt,omitempty"`
-	LstgDt         string `json:"lstg_dt,omitempty"`
-	SbscEndDt      string `json:"sbsc_end_dt,omitempty"`
-	CashDfrmDt     string `json:"cash_dfrm_dt,omitempty"`
-	RqstQty        string `json:"rqst_qty,omitempty"`
-	RqstAmt        string `json:"rqst_amt,omitempty"`
-	RqstDt         string `json:"rqst_dt,omitempty"`
-	RfndDt         string `json:"rfnd_dt,omitempty"`
-	RfndAmt        string `json:"rfnd_amt,omitempty"`
-	LstgStqt       string `json:"lstg_stqt,omitempty"`
-	TaxAmt         string `json:"tax_amt,omitempty"`
-	SbscUnpr       string `json:"sbsc_unpr,omitempty"`
+	Acno10         string `json:"acno10"`
+	RghtTypeCd     string `json:"rght_type_cd"`
+	BassDt         string `json:"bass_dt"`
+	RghtCblcTypeCd string `json:"rght_cblc_type_cd"`
+	RpttPdno       string `json:"rptt_pdno"`
+	Pdno           string `json:"pdno"`
+	PrdtTypeCd     string `json:"prdt_type_cd"`
+	ShtnPdno       string `json:"shtn_pdno"`
+	PrdtName       string `json:"prdt_name"`
+	CblcQty        string `json:"cblc_qty"`
+	LastAlctQty    string `json:"last_alct_qty"`
+	ExcsAlctQty    string `json:"excs_alct_qty"`
+	TotAlctQty     string `json:"tot_alct_qty"`
+	LastFtskQty    string `json:"last_ftsk_qty"`
+	LastAlctAmt    string `json:"last_alct_amt"`
+	LastFtskChgs   string `json:"last_ftsk_chgs"`
+	RdptPrca       string `json:"rdpt_prca"`
+	DlayIntAmt     string `json:"dlay_int_amt"`
+	LstgDt         string `json:"lstg_dt"`
+	SbscEndDt      string `json:"sbsc_end_dt"`
+	CashDfrmDt     string `json:"cash_dfrm_dt"`
+	RqstQty        string `json:"rqst_qty"`
+	RqstAmt        string `json:"rqst_amt"`
+	RqstDt         string `json:"rqst_dt"`
+	RfndDt         string `json:"rfnd_dt"`
+	RfndAmt        string `json:"rfnd_amt"`
+	LstgStqt       string `json:"lstg_stqt"`
+	TaxAmt         string `json:"tax_amt"`
+	SbscUnpr       string `json:"sbsc_unpr"`
 }
 
 type KISDomesticStockV1TradingPeriodRightsRequest struct {
@@ -6850,8 +6850,8 @@ type KISElwV1QuotationsCompareStocks struct {
 }
 
 type KISElwV1QuotationsCompareStocksOutputItem struct {
-	ElwShrnIscd string `json:"elw_shrn_iscd,omitempty"`
-	ElwKorIsnm  string `json:"elw_kor_isnm,omitempty"`
+	ElwShrnIscd string `json:"elw_shrn_iscd"`
+	ElwKorIsnm  string `json:"elw_kor_isnm"`
 }
 
 type KISElwV1QuotationsCompareStocksRequest struct {
@@ -6865,49 +6865,49 @@ type KISElwV1QuotationsCondSearch struct {
 }
 
 type KISElwV1QuotationsCondSearchOutput1Item struct {
-	BondShrnIscd     string `json:"bond_shrn_iscd,omitempty"`
-	HtsKorIsnm       string `json:"hts_kor_isnm,omitempty"`
-	RghtTypeName     string `json:"rght_type_name,omitempty"`
-	ElwPrpr          string `json:"elw_prpr,omitempty"`
-	PrdyVrss         string `json:"prdy_vrss,omitempty"`
-	PrdyVrssSign     string `json:"prdy_vrss_sign,omitempty"`
-	PrdyCtrt         string `json:"prdy_ctrt,omitempty"`
-	AcmlVol          string `json:"acml_vol,omitempty"`
-	Acpr             string `json:"acpr,omitempty"`
-	StckCnvrRate     string `json:"stck_cnvr_rate,omitempty"`
-	StckLstnDate     string `json:"stck_lstn_date,omitempty"`
-	StckLastTrDate   string `json:"stck_last_tr_date,omitempty"`
-	HtsRmnnDynu      string `json:"hts_rmnn_dynu,omitempty"`
-	UnasIsnm         string `json:"unas_isnm,omitempty"`
-	UnasPrpr         string `json:"unas_prpr,omitempty"`
-	UnasPrdyVrss     string `json:"unas_prdy_vrss,omitempty"`
-	UnasPrdyVrssSign string `json:"unas_prdy_vrss_sign,omitempty"`
-	UnasPrdyCtrt     string `json:"unas_prdy_ctrt,omitempty"`
-	UnasAcmlVol      string `json:"unas_acml_vol,omitempty"`
-	Moneyness        string `json:"moneyness,omitempty"`
-	AtmClsName       string `json:"atm_cls_name,omitempty"`
-	Prit             string `json:"prit,omitempty"`
-	DeltaVal         string `json:"delta_val,omitempty"`
-	HtsIntsVltl      string `json:"hts_ints_vltl,omitempty"`
-	TmvlVal          string `json:"tmvl_val,omitempty"`
-	Gear             string `json:"gear,omitempty"`
-	LvrgVal          string `json:"lvrg_val,omitempty"`
-	PrlsQryrRate     string `json:"prls_qryr_rate,omitempty"`
-	Cfp              string `json:"cfp,omitempty"`
-	LstnStcn         string `json:"lstn_stcn,omitempty"`
-	PblcCoName       string `json:"pblc_co_name,omitempty"`
-	LpMbcrName       string `json:"lp_mbcr_name,omitempty"`
-	LpHldnRate       string `json:"lp_hldn_rate,omitempty"`
-	ElwRghtForm      string `json:"elw_rght_form,omitempty"`
-	ElwKoBarrier     string `json:"elw_ko_barrier,omitempty"`
-	ApprchRate       string `json:"apprch_rate,omitempty"`
-	UnasShrnIscd     string `json:"unas_shrn_iscd,omitempty"`
-	MtrtDate         string `json:"mtrt_date,omitempty"`
-	PrmmVal          string `json:"prmm_val,omitempty"`
-	StckLpFinDate    string `json:"stck_lp_fin_date,omitempty"`
-	TickConvPrc      string `json:"tick_conv_prc,omitempty"`
-	PrlsQryrStprPrc  string `json:"prls_qryr_stpr_prc,omitempty"`
-	LpHvol           string `json:"lp_hvol,omitempty"`
+	BondShrnIscd     string `json:"bond_shrn_iscd"`
+	HtsKorIsnm       string `json:"hts_kor_isnm"`
+	RghtTypeName     string `json:"rght_type_name"`
+	ElwPrpr          string `json:"elw_prpr"`
+	PrdyVrss         string `json:"prdy_vrss"`
+	PrdyVrssSign     string `json:"prdy_vrss_sign"`
+	PrdyCtrt         string `json:"prdy_ctrt"`
+	AcmlVol          string `json:"acml_vol"`
+	Acpr             string `json:"acpr"`
+	StckCnvrRate     string `json:"stck_cnvr_rate"`
+	StckLstnDate     string `json:"stck_lstn_date"`
+	StckLastTrDate   string `json:"stck_last_tr_date"`
+	HtsRmnnDynu      string `json:"hts_rmnn_dynu"`
+	UnasIsnm         string `json:"unas_isnm"`
+	UnasPrpr         string `json:"unas_prpr"`
+	UnasPrdyVrss     string `json:"unas_prdy_vrss"`
+	UnasPrdyVrssSign string `json:"unas_prdy_vrss_sign"`
+	UnasPrdyCtrt     string `json:"unas_prdy_ctrt"`
+	UnasAcmlVol      string `json:"unas_acml_vol"`
+	Moneyness        string `json:"moneyness"`
+	AtmClsName       string `json:"atm_cls_name"`
+	Prit             string `json:"prit"`
+	DeltaVal         string `json:"delta_val"`
+	HtsIntsVltl      string `json:"hts_ints_vltl"`
+	TmvlVal          string `json:"tmvl_val"`
+	Gear             string `json:"gear"`
+	LvrgVal          string `json:"lvrg_val"`
+	PrlsQryrRate     string `json:"prls_qryr_rate"`
+	Cfp              string `json:"cfp"`
+	LstnStcn         string `json:"lstn_stcn"`
+	PblcCoName       string `json:"pblc_co_name"`
+	LpMbcrName       string `json:"lp_mbcr_name"`
+	LpHldnRate       string `json:"lp_hldn_rate"`
+	ElwRghtForm      string `json:"elw_rght_form"`
+	ElwKoBarrier     string `json:"elw_ko_barrier"`
+	ApprchRate       string `json:"apprch_rate"`
+	UnasShrnIscd     string `json:"unas_shrn_iscd"`
+	MtrtDate         string `json:"mtrt_date"`
+	PrmmVal          string `json:"prmm_val"`
+	StckLpFinDate    string `json:"stck_lp_fin_date"`
+	TickConvPrc      string `json:"tick_conv_prc"`
+	PrlsQryrStprPrc  string `json:"prls_qryr_stpr_prc"`
+	LpHvol           string `json:"lp_hvol"`
 }
 
 type KISElwV1QuotationsCondSearchRequest struct {
@@ -6976,27 +6976,27 @@ type KISElwV1QuotationsExpirationStocks struct {
 }
 
 type KISElwV1QuotationsExpirationStocksOutput1Item struct {
-	ElwShrnIscd    string `json:"elw_shrn_iscd,omitempty"`
-	ElwKorIsnm     string `json:"elw_kor_isnm,omitempty"`
-	UnasIsnm       string `json:"unas_isnm,omitempty"`
-	UnasPrpr       string `json:"unas_prpr,omitempty"`
-	Acpr           string `json:"acpr,omitempty"`
-	StckCnvrRate   string `json:"stck_cnvr_rate,omitempty"`
-	ElwPrpr        string `json:"elw_prpr,omitempty"`
-	StckLstnDate   string `json:"stck_lstn_date,omitempty"`
-	StckLastTrDate string `json:"stck_last_tr_date,omitempty"`
-	TotalRdmpAmt   string `json:"total_rdmp_amt,omitempty"`
-	RdmpAmt        string `json:"rdmp_amt,omitempty"`
-	LstnStcn       string `json:"lstn_stcn,omitempty"`
-	LpHvol         string `json:"lp_hvol,omitempty"`
-	CclsPaymPrc    string `json:"ccls_paym_prc,omitempty"`
-	MtrtVltnAmt    string `json:"mtrt_vltn_amt,omitempty"`
-	EvntPrdFinDate string `json:"evnt_prd_fin_date,omitempty"`
-	StlmDate       string `json:"stlm_date,omitempty"`
-	PblcPrc        string `json:"pblc_prc,omitempty"`
-	UnasShrnIscd   string `json:"unas_shrn_iscd,omitempty"`
-	StndIscd       string `json:"stnd_iscd,omitempty"`
-	RdmpAskAmt     string `json:"rdmp_ask_amt,omitempty"`
+	ElwShrnIscd    string `json:"elw_shrn_iscd"`
+	ElwKorIsnm     string `json:"elw_kor_isnm"`
+	UnasIsnm       string `json:"unas_isnm"`
+	UnasPrpr       string `json:"unas_prpr"`
+	Acpr           string `json:"acpr"`
+	StckCnvrRate   string `json:"stck_cnvr_rate"`
+	ElwPrpr        string `json:"elw_prpr"`
+	StckLstnDate   string `json:"stck_lstn_date"`
+	StckLastTrDate string `json:"stck_last_tr_date"`
+	TotalRdmpAmt   string `json:"total_rdmp_amt"`
+	RdmpAmt        string `json:"rdmp_amt"`
+	LstnStcn       string `json:"lstn_stcn"`
+	LpHvol         string `json:"lp_hvol"`
+	CclsPaymPrc    string `json:"ccls_paym_prc"`
+	MtrtVltnAmt    string `json:"mtrt_vltn_amt"`
+	EvntPrdFinDate string `json:"evnt_prd_fin_date"`
+	StlmDate       string `json:"stlm_date"`
+	PblcPrc        string `json:"pblc_prc"`
+	UnasShrnIscd   string `json:"unas_shrn_iscd"`
+	StndIscd       string `json:"stnd_iscd"`
+	RdmpAskAmt     string `json:"rdmp_ask_amt"`
 }
 
 type KISElwV1QuotationsExpirationStocksRequest struct {
@@ -7018,18 +7018,18 @@ type KISElwV1QuotationsIndicatorTrendCcnl struct {
 }
 
 type KISElwV1QuotationsIndicatorTrendCcnlOutputItem struct {
-	StckCntgHour string `json:"stck_cntg_hour,omitempty"`
-	ElwPrpr      string `json:"elw_prpr,omitempty"`
-	PrdyVrssSign string `json:"prdy_vrss_sign,omitempty"`
-	PrdyVrss     string `json:"prdy_vrss,omitempty"`
-	PrdyCtrt     string `json:"prdy_ctrt,omitempty"`
-	AcmlVol      string `json:"acml_vol,omitempty"`
-	LvrgVal      string `json:"lvrg_val,omitempty"`
-	Gear         string `json:"gear,omitempty"`
-	TmvlVal      string `json:"tmvl_val,omitempty"`
-	InvlVal      string `json:"invl_val,omitempty"`
-	Prit         string `json:"prit,omitempty"`
-	ApprchRate   string `json:"apprch_rate,omitempty"`
+	StckCntgHour string `json:"stck_cntg_hour"`
+	ElwPrpr      string `json:"elw_prpr"`
+	PrdyVrssSign string `json:"prdy_vrss_sign"`
+	PrdyVrss     string `json:"prdy_vrss"`
+	PrdyCtrt     string `json:"prdy_ctrt"`
+	AcmlVol      string `json:"acml_vol"`
+	LvrgVal      string `json:"lvrg_val"`
+	Gear         string `json:"gear"`
+	TmvlVal      string `json:"tmvl_val"`
+	InvlVal      string `json:"invl_val"`
+	Prit         string `json:"prit"`
+	ApprchRate   string `json:"apprch_rate"`
 }
 
 type KISElwV1QuotationsIndicatorTrendCcnlRequest struct {
@@ -7043,21 +7043,21 @@ type KISElwV1QuotationsIndicatorTrendDaily struct {
 }
 
 type KISElwV1QuotationsIndicatorTrendDailyOutputItem struct {
-	StckBsopDate string `json:"stck_bsop_date,omitempty"`
-	ElwPrpr      string `json:"elw_prpr,omitempty"`
-	PrdyVrssSign string `json:"prdy_vrss_sign,omitempty"`
-	PrdyVrss     string `json:"prdy_vrss,omitempty"`
-	PrdyCtrt     string `json:"prdy_ctrt,omitempty"`
-	AcmlVol      string `json:"acml_vol,omitempty"`
-	LvrgVal      string `json:"lvrg_val,omitempty"`
-	Gear         string `json:"gear,omitempty"`
-	TmvlVal      string `json:"tmvl_val,omitempty"`
-	InvlVal      string `json:"invl_val,omitempty"`
-	Prit         string `json:"prit,omitempty"`
-	ElwOprc      string `json:"elw_oprc,omitempty"`
-	ElwHgpr      string `json:"elw_hgpr,omitempty"`
-	ElwLwpr      string `json:"elw_lwpr,omitempty"`
-	ApprchRate   string `json:"apprch_rate,omitempty"`
+	StckBsopDate string `json:"stck_bsop_date"`
+	ElwPrpr      string `json:"elw_prpr"`
+	PrdyVrssSign string `json:"prdy_vrss_sign"`
+	PrdyVrss     string `json:"prdy_vrss"`
+	PrdyCtrt     string `json:"prdy_ctrt"`
+	AcmlVol      string `json:"acml_vol"`
+	LvrgVal      string `json:"lvrg_val"`
+	Gear         string `json:"gear"`
+	TmvlVal      string `json:"tmvl_val"`
+	InvlVal      string `json:"invl_val"`
+	Prit         string `json:"prit"`
+	ElwOprc      string `json:"elw_oprc"`
+	ElwHgpr      string `json:"elw_hgpr"`
+	ElwLwpr      string `json:"elw_lwpr"`
+	ApprchRate   string `json:"apprch_rate"`
 }
 
 type KISElwV1QuotationsIndicatorTrendDailyRequest struct {
@@ -7071,19 +7071,19 @@ type KISElwV1QuotationsIndicatorTrendMinute struct {
 }
 
 type KISElwV1QuotationsIndicatorTrendMinuteOutputItem struct {
-	StckBsopDate string `json:"stck_bsop_date,omitempty"`
-	StckCntgHour string `json:"stck_cntg_hour,omitempty"`
-	ElwPrpr      string `json:"elw_prpr,omitempty"`
-	ElwOprc      string `json:"elw_oprc,omitempty"`
-	ElwHgpr      string `json:"elw_hgpr,omitempty"`
-	ElwLwpr      string `json:"elw_lwpr,omitempty"`
-	LvrgVal      string `json:"lvrg_val,omitempty"`
-	Gear         string `json:"gear,omitempty"`
-	PrmmVal      string `json:"prmm_val,omitempty"`
-	InvlVal      string `json:"invl_val,omitempty"`
-	Prit         string `json:"prit,omitempty"`
-	AcmlVol      string `json:"acml_vol,omitempty"`
-	CntgVol      string `json:"cntg_vol,omitempty"`
+	StckBsopDate string `json:"stck_bsop_date"`
+	StckCntgHour string `json:"stck_cntg_hour"`
+	ElwPrpr      string `json:"elw_prpr"`
+	ElwOprc      string `json:"elw_oprc"`
+	ElwHgpr      string `json:"elw_hgpr"`
+	ElwLwpr      string `json:"elw_lwpr"`
+	LvrgVal      string `json:"lvrg_val"`
+	Gear         string `json:"gear"`
+	PrmmVal      string `json:"prmm_val"`
+	InvlVal      string `json:"invl_val"`
+	Prit         string `json:"prit"`
+	AcmlVol      string `json:"acml_vol"`
+	CntgVol      string `json:"cntg_vol"`
 }
 
 type KISElwV1QuotationsIndicatorTrendMinuteRequest struct {
@@ -7100,38 +7100,38 @@ type KISElwV1QuotationsLpTradeTrend struct {
 }
 
 type KISElwV1QuotationsLpTradeTrendOutput1Item struct {
-	ElwPrpr      string `json:"elw_prpr,omitempty"`
-	PrdyVrssSign string `json:"prdy_vrss_sign,omitempty"`
-	PrdyVrss     string `json:"prdy_vrss,omitempty"`
-	PrdyCtrt     string `json:"prdy_ctrt,omitempty"`
-	AcmlVol      string `json:"acml_vol,omitempty"`
-	PrdyVol      string `json:"prdy_vol,omitempty"`
-	StckCnvrRate string `json:"stck_cnvr_rate,omitempty"`
-	Prit         string `json:"prit,omitempty"`
-	LvrgVal      string `json:"lvrg_val,omitempty"`
-	Gear         string `json:"gear,omitempty"`
-	PrlsQryrRate string `json:"prls_qryr_rate,omitempty"`
-	Cfp          string `json:"cfp,omitempty"`
-	InvlVal      string `json:"invl_val,omitempty"`
-	TmvlVal      string `json:"tmvl_val,omitempty"`
-	Acpr         string `json:"acpr,omitempty"`
-	ElwKoBarrier string `json:"elw_ko_barrier,omitempty"`
+	ElwPrpr      string `json:"elw_prpr"`
+	PrdyVrssSign string `json:"prdy_vrss_sign"`
+	PrdyVrss     string `json:"prdy_vrss"`
+	PrdyCtrt     string `json:"prdy_ctrt"`
+	AcmlVol      string `json:"acml_vol"`
+	PrdyVol      string `json:"prdy_vol"`
+	StckCnvrRate string `json:"stck_cnvr_rate"`
+	Prit         string `json:"prit"`
+	LvrgVal      string `json:"lvrg_val"`
+	Gear         string `json:"gear"`
+	PrlsQryrRate string `json:"prls_qryr_rate"`
+	Cfp          string `json:"cfp"`
+	InvlVal      string `json:"invl_val"`
+	TmvlVal      string `json:"tmvl_val"`
+	Acpr         string `json:"acpr"`
+	ElwKoBarrier string `json:"elw_ko_barrier"`
 }
 
 type KISElwV1QuotationsLpTradeTrendOutput2Item struct {
-	StckBsopDate   string `json:"stck_bsop_date,omitempty"`
-	ElwPrpr        string `json:"elw_prpr,omitempty"`
-	PrdyVrssSign   string `json:"prdy_vrss_sign,omitempty"`
-	PrdyVrss       string `json:"prdy_vrss,omitempty"`
-	PrdyCtrt       string `json:"prdy_ctrt,omitempty"`
-	LpSelnQty      string `json:"lp_seln_qty,omitempty"`
-	LpSelnAvrgUnpr string `json:"lp_seln_avrg_unpr,omitempty"`
-	LpShnuQty      string `json:"lp_shnu_qty,omitempty"`
-	LpShnuAvrgUnpr string `json:"lp_shnu_avrg_unpr,omitempty"`
-	LpHvol         string `json:"lp_hvol,omitempty"`
-	LpHldnRate     string `json:"lp_hldn_rate,omitempty"`
-	PrsnDealQty    string `json:"prsn_deal_qty,omitempty"`
-	ApprchRate     string `json:"apprch_rate,omitempty"`
+	StckBsopDate   string `json:"stck_bsop_date"`
+	ElwPrpr        string `json:"elw_prpr"`
+	PrdyVrssSign   string `json:"prdy_vrss_sign"`
+	PrdyVrss       string `json:"prdy_vrss"`
+	PrdyCtrt       string `json:"prdy_ctrt"`
+	LpSelnQty      string `json:"lp_seln_qty"`
+	LpSelnAvrgUnpr string `json:"lp_seln_avrg_unpr"`
+	LpShnuQty      string `json:"lp_shnu_qty"`
+	LpShnuAvrgUnpr string `json:"lp_shnu_avrg_unpr"`
+	LpHvol         string `json:"lp_hvol"`
+	LpHldnRate     string `json:"lp_hldn_rate"`
+	PrsnDealQty    string `json:"prsn_deal_qty"`
+	ApprchRate     string `json:"apprch_rate"`
 }
 
 type KISElwV1QuotationsLpTradeTrendRequest struct {
@@ -7145,15 +7145,15 @@ type KISElwV1QuotationsNewlyListed struct {
 }
 
 type KISElwV1QuotationsNewlyListedOutputItem struct {
-	StckLstnDate   string `json:"stck_lstn_date,omitempty"`
-	ElwKorIsnm     string `json:"elw_kor_isnm,omitempty"`
-	ElwShrnIscd    string `json:"elw_shrn_iscd,omitempty"`
-	UnasIsnm       string `json:"unas_isnm,omitempty"`
-	PblcCoName     string `json:"pblc_co_name,omitempty"`
-	LstnStcn       string `json:"lstn_stcn,omitempty"`
-	Acpr           string `json:"acpr,omitempty"`
-	StckLastTrDate string `json:"stck_last_tr_date,omitempty"`
-	ElwKoBarrier   string `json:"elw_ko_barrier,omitempty"`
+	StckLstnDate   string `json:"stck_lstn_date"`
+	ElwKorIsnm     string `json:"elw_kor_isnm"`
+	ElwShrnIscd    string `json:"elw_shrn_iscd"`
+	UnasIsnm       string `json:"unas_isnm"`
+	PblcCoName     string `json:"pblc_co_name"`
+	LstnStcn       string `json:"lstn_stcn"`
+	Acpr           string `json:"acpr"`
+	StckLastTrDate string `json:"stck_last_tr_date"`
+	ElwKoBarrier   string `json:"elw_ko_barrier"`
 }
 
 type KISElwV1QuotationsNewlyListedRequest struct {
@@ -7172,17 +7172,17 @@ type KISElwV1QuotationsSensitivityTrendCcnl struct {
 }
 
 type KISElwV1QuotationsSensitivityTrendCcnlOutputItem struct {
-	StckCntgHour string `json:"stck_cntg_hour,omitempty"`
-	ElwPrpr      string `json:"elw_prpr,omitempty"`
-	PrdyVrss     string `json:"prdy_vrss,omitempty"`
-	PrdyVrssSign string `json:"prdy_vrss_sign,omitempty"`
-	PrdyCtrt     string `json:"prdy_ctrt,omitempty"`
-	HtsThpr      string `json:"hts_thpr,omitempty"`
-	DeltaVal     string `json:"delta_val,omitempty"`
-	Gama         string `json:"gama,omitempty"`
-	Theta        string `json:"theta,omitempty"`
-	Vega         string `json:"vega,omitempty"`
-	Rho          string `json:"rho,omitempty"`
+	StckCntgHour string `json:"stck_cntg_hour"`
+	ElwPrpr      string `json:"elw_prpr"`
+	PrdyVrss     string `json:"prdy_vrss"`
+	PrdyVrssSign string `json:"prdy_vrss_sign"`
+	PrdyCtrt     string `json:"prdy_ctrt"`
+	HtsThpr      string `json:"hts_thpr"`
+	DeltaVal     string `json:"delta_val"`
+	Gama         string `json:"gama"`
+	Theta        string `json:"theta"`
+	Vega         string `json:"vega"`
+	Rho          string `json:"rho"`
 }
 
 type KISElwV1QuotationsSensitivityTrendCcnlRequest struct {
@@ -7196,17 +7196,17 @@ type KISElwV1QuotationsSensitivityTrendDaily struct {
 }
 
 type KISElwV1QuotationsSensitivityTrendDailyOutputItem struct {
-	StckBsopDate string `json:"stck_bsop_date,omitempty"`
-	ElwPrpr      string `json:"elw_prpr,omitempty"`
-	PrdyVrss     string `json:"prdy_vrss,omitempty"`
-	PrdyVrssSign string `json:"prdy_vrss_sign,omitempty"`
-	PrdyCtrt     string `json:"prdy_ctrt,omitempty"`
-	HtsThpr      string `json:"hts_thpr,omitempty"`
-	DeltaVal     string `json:"delta_val,omitempty"`
-	Gama         string `json:"gama,omitempty"`
-	Theta        string `json:"theta,omitempty"`
-	Vega         string `json:"vega,omitempty"`
-	Rho          string `json:"rho,omitempty"`
+	StckBsopDate string `json:"stck_bsop_date"`
+	ElwPrpr      string `json:"elw_prpr"`
+	PrdyVrss     string `json:"prdy_vrss"`
+	PrdyVrssSign string `json:"prdy_vrss_sign"`
+	PrdyCtrt     string `json:"prdy_ctrt"`
+	HtsThpr      string `json:"hts_thpr"`
+	DeltaVal     string `json:"delta_val"`
+	Gama         string `json:"gama"`
+	Theta        string `json:"theta"`
+	Vega         string `json:"vega"`
+	Rho          string `json:"rho"`
 }
 
 type KISElwV1QuotationsSensitivityTrendDailyRequest struct {
@@ -7220,12 +7220,12 @@ type KISElwV1QuotationsUdrlAssetList struct {
 }
 
 type KISElwV1QuotationsUdrlAssetListOutputItem struct {
-	UnasShrnIscd     string `json:"unas_shrn_iscd,omitempty"`
-	UnasIsnm         string `json:"unas_isnm,omitempty"`
-	UnasPrpr         string `json:"unas_prpr,omitempty"`
-	UnasPrdyVrss     string `json:"unas_prdy_vrss,omitempty"`
-	UnasPrdyVrssSign string `json:"unas_prdy_vrss_sign,omitempty"`
-	UnasPrdyCtrt     string `json:"unas_prdy_ctrt,omitempty"`
+	UnasShrnIscd     string `json:"unas_shrn_iscd"`
+	UnasIsnm         string `json:"unas_isnm"`
+	UnasPrpr         string `json:"unas_prpr"`
+	UnasPrdyVrss     string `json:"unas_prdy_vrss"`
+	UnasPrdyVrssSign string `json:"unas_prdy_vrss_sign"`
+	UnasPrdyCtrt     string `json:"unas_prdy_ctrt"`
 }
 
 type KISElwV1QuotationsUdrlAssetListRequest struct {
@@ -7240,35 +7240,35 @@ type KISElwV1QuotationsUdrlAssetPrice struct {
 }
 
 type KISElwV1QuotationsUdrlAssetPriceOutputItem struct {
-	ElwShrnIscd     string `json:"elw_shrn_iscd,omitempty"`
-	HtsKorIsnm      string `json:"hts_kor_isnm,omitempty"`
-	ElwPrpr         string `json:"elw_prpr,omitempty"`
-	PrdyVrss        string `json:"prdy_vrss,omitempty"`
-	PrdyVrssSign    string `json:"prdy_vrss_sign,omitempty"`
-	PrdyCtrt        string `json:"prdy_ctrt,omitempty"`
-	AcmlVol         string `json:"acml_vol,omitempty"`
-	Acpr            string `json:"acpr,omitempty"`
-	PrlsQryrStprPrc string `json:"prls_qryr_stpr_prc,omitempty"`
-	HtsRmnnDynu     string `json:"hts_rmnn_dynu,omitempty"`
-	HtsIntsVltl     string `json:"hts_ints_vltl,omitempty"`
-	StckCnvrRate    string `json:"stck_cnvr_rate,omitempty"`
-	LpHvol          string `json:"lp_hvol,omitempty"`
-	LpRlim          string `json:"lp_rlim,omitempty"`
-	LvrgVal         string `json:"lvrg_val,omitempty"`
-	Gear            string `json:"gear,omitempty"`
-	DeltaVal        string `json:"delta_val,omitempty"`
-	Gama            string `json:"gama,omitempty"`
-	Vega            string `json:"vega,omitempty"`
-	Theta           string `json:"theta,omitempty"`
-	PrlsQryrRate    string `json:"prls_qryr_rate,omitempty"`
-	Cfp             string `json:"cfp,omitempty"`
-	Prit            string `json:"prit,omitempty"`
-	InvlVal         string `json:"invl_val,omitempty"`
-	TmvlVal         string `json:"tmvl_val,omitempty"`
-	HtsThpr         string `json:"hts_thpr,omitempty"`
-	StckLstnDate    string `json:"stck_lstn_date,omitempty"`
-	StckLastTrDate  string `json:"stck_last_tr_date,omitempty"`
-	LpNtbyQty       string `json:"lp_ntby_qty,omitempty"`
+	ElwShrnIscd     string `json:"elw_shrn_iscd"`
+	HtsKorIsnm      string `json:"hts_kor_isnm"`
+	ElwPrpr         string `json:"elw_prpr"`
+	PrdyVrss        string `json:"prdy_vrss"`
+	PrdyVrssSign    string `json:"prdy_vrss_sign"`
+	PrdyCtrt        string `json:"prdy_ctrt"`
+	AcmlVol         string `json:"acml_vol"`
+	Acpr            string `json:"acpr"`
+	PrlsQryrStprPrc string `json:"prls_qryr_stpr_prc"`
+	HtsRmnnDynu     string `json:"hts_rmnn_dynu"`
+	HtsIntsVltl     string `json:"hts_ints_vltl"`
+	StckCnvrRate    string `json:"stck_cnvr_rate"`
+	LpHvol          string `json:"lp_hvol"`
+	LpRlim          string `json:"lp_rlim"`
+	LvrgVal         string `json:"lvrg_val"`
+	Gear            string `json:"gear"`
+	DeltaVal        string `json:"delta_val"`
+	Gama            string `json:"gama"`
+	Vega            string `json:"vega"`
+	Theta           string `json:"theta"`
+	PrlsQryrRate    string `json:"prls_qryr_rate"`
+	Cfp             string `json:"cfp"`
+	Prit            string `json:"prit"`
+	InvlVal         string `json:"invl_val"`
+	TmvlVal         string `json:"tmvl_val"`
+	HtsThpr         string `json:"hts_thpr"`
+	StckLstnDate    string `json:"stck_lstn_date"`
+	StckLastTrDate  string `json:"stck_last_tr_date"`
+	LpNtbyQty       string `json:"lp_ntby_qty"`
 }
 
 type KISElwV1QuotationsUdrlAssetPriceRequest struct {
@@ -7296,15 +7296,15 @@ type KISElwV1QuotationsVolatilityTrendCcnl struct {
 }
 
 type KISElwV1QuotationsVolatilityTrendCcnlOutputItem struct {
-	StckCntgHour string `json:"stck_cntg_hour,omitempty"`
-	ElwPrpr      string `json:"elw_prpr,omitempty"`
-	PrdyVrss     string `json:"prdy_vrss,omitempty"`
-	PrdyVrssSign string `json:"prdy_vrss_sign,omitempty"`
-	PrdyCtrt     string `json:"prdy_ctrt,omitempty"`
-	Bidp         string `json:"bidp,omitempty"`
-	Askp         string `json:"askp,omitempty"`
-	AcmlVol      string `json:"acml_vol,omitempty"`
-	HtsIntsVltl  string `json:"hts_ints_vltl,omitempty"`
+	StckCntgHour string `json:"stck_cntg_hour"`
+	ElwPrpr      string `json:"elw_prpr"`
+	PrdyVrss     string `json:"prdy_vrss"`
+	PrdyVrssSign string `json:"prdy_vrss_sign"`
+	PrdyCtrt     string `json:"prdy_ctrt"`
+	Bidp         string `json:"bidp"`
+	Askp         string `json:"askp"`
+	AcmlVol      string `json:"acml_vol"`
+	HtsIntsVltl  string `json:"hts_ints_vltl"`
 }
 
 type KISElwV1QuotationsVolatilityTrendCcnlRequest struct {
@@ -7318,21 +7318,21 @@ type KISElwV1QuotationsVolatilityTrendDaily struct {
 }
 
 type KISElwV1QuotationsVolatilityTrendDailyOutputItem struct {
-	StckBsopDate string `json:"stck_bsop_date,omitempty"`
-	ElwPrpr      string `json:"elw_prpr,omitempty"`
-	PrdyVrss     string `json:"prdy_vrss,omitempty"`
-	PrdyVrssSign string `json:"prdy_vrss_sign,omitempty"`
-	PrdyCtrt     string `json:"prdy_ctrt,omitempty"`
-	ElwOprc      string `json:"elw_oprc,omitempty"`
-	ElwHgpr      string `json:"elw_hgpr,omitempty"`
-	ElwLwpr      string `json:"elw_lwpr,omitempty"`
-	AcmlVol      string `json:"acml_vol,omitempty"`
-	D10HistVltl  string `json:"d10_hist_vltl,omitempty"`
-	D20HistVltl  string `json:"d20_hist_vltl,omitempty"`
-	D30HistVltl  string `json:"d30_hist_vltl,omitempty"`
-	D60HistVltl  string `json:"d60_hist_vltl,omitempty"`
-	D90HistVltl  string `json:"d90_hist_vltl,omitempty"`
-	HtsIntsVltl  string `json:"hts_ints_vltl,omitempty"`
+	StckBsopDate string `json:"stck_bsop_date"`
+	ElwPrpr      string `json:"elw_prpr"`
+	PrdyVrss     string `json:"prdy_vrss"`
+	PrdyVrssSign string `json:"prdy_vrss_sign"`
+	PrdyCtrt     string `json:"prdy_ctrt"`
+	ElwOprc      string `json:"elw_oprc"`
+	ElwHgpr      string `json:"elw_hgpr"`
+	ElwLwpr      string `json:"elw_lwpr"`
+	AcmlVol      string `json:"acml_vol"`
+	D10HistVltl  string `json:"d10_hist_vltl"`
+	D20HistVltl  string `json:"d20_hist_vltl"`
+	D30HistVltl  string `json:"d30_hist_vltl"`
+	D60HistVltl  string `json:"d60_hist_vltl"`
+	D90HistVltl  string `json:"d90_hist_vltl"`
+	HtsIntsVltl  string `json:"hts_ints_vltl"`
 }
 
 type KISElwV1QuotationsVolatilityTrendDailyRequest struct {
@@ -7346,14 +7346,14 @@ type KISElwV1QuotationsVolatilityTrendMinute struct {
 }
 
 type KISElwV1QuotationsVolatilityTrendMinuteOutputItem struct {
-	StckBsopDate string `json:"stck_bsop_date,omitempty"`
-	StckCntgHour string `json:"stck_cntg_hour,omitempty"`
-	StckPrpr     string `json:"stck_prpr,omitempty"`
-	ElwOprc      string `json:"elw_oprc,omitempty"`
-	ElwHgpr      string `json:"elw_hgpr,omitempty"`
-	ElwLwpr      string `json:"elw_lwpr,omitempty"`
-	HtsIntsVltl  string `json:"hts_ints_vltl,omitempty"`
-	HistVltl     string `json:"hist_vltl,omitempty"`
+	StckBsopDate string `json:"stck_bsop_date"`
+	StckCntgHour string `json:"stck_cntg_hour"`
+	StckPrpr     string `json:"stck_prpr"`
+	ElwOprc      string `json:"elw_oprc"`
+	ElwHgpr      string `json:"elw_hgpr"`
+	ElwLwpr      string `json:"elw_lwpr"`
+	HtsIntsVltl  string `json:"hts_ints_vltl"`
+	HistVltl     string `json:"hist_vltl"`
 }
 
 type KISElwV1QuotationsVolatilityTrendMinuteRequest struct {
@@ -7369,10 +7369,10 @@ type KISElwV1QuotationsVolatilityTrendTick struct {
 }
 
 type KISElwV1QuotationsVolatilityTrendTickOutputItem struct {
-	BsopDate     string `json:"bsop_date,omitempty"`
-	StckCntgHour string `json:"stck_cntg_hour,omitempty"`
-	ElwPrpr      string `json:"elw_prpr,omitempty"`
-	HtsIntsVltl  string `json:"hts_ints_vltl,omitempty"`
+	BsopDate     string `json:"bsop_date"`
+	StckCntgHour string `json:"stck_cntg_hour"`
+	ElwPrpr      string `json:"elw_prpr"`
+	HtsIntsVltl  string `json:"hts_ints_vltl"`
 }
 
 type KISElwV1QuotationsVolatilityTrendTickRequest struct {
@@ -7386,19 +7386,19 @@ type KISElwV1RankingIndicator struct {
 }
 
 type KISElwV1RankingIndicatorOutput1Item struct {
-	ElwShrnIscd  string `json:"elw_shrn_iscd,omitempty"`
-	ElwKorIsnm   string `json:"elw_kor_isnm,omitempty"`
-	ElwPrpr      string `json:"elw_prpr,omitempty"`
-	PrdyVrss     string `json:"prdy_vrss,omitempty"`
-	PrdyVrssSign string `json:"prdy_vrss_sign,omitempty"`
-	PrdyCtrt     string `json:"prdy_ctrt,omitempty"`
-	AcmlVol      string `json:"acml_vol,omitempty"`
-	StckCnvrRate string `json:"stck_cnvr_rate,omitempty"`
-	LvrgVal      string `json:"lvrg_val,omitempty"`
-	Acpr         string `json:"acpr,omitempty"`
-	TmvlVal      string `json:"tmvl_val,omitempty"`
-	InvlVal      string `json:"invl_val,omitempty"`
-	ElwKoBarrier string `json:"elw_ko_barrier,omitempty"`
+	ElwShrnIscd  string `json:"elw_shrn_iscd"`
+	ElwKorIsnm   string `json:"elw_kor_isnm"`
+	ElwPrpr      string `json:"elw_prpr"`
+	PrdyVrss     string `json:"prdy_vrss"`
+	PrdyVrssSign string `json:"prdy_vrss_sign"`
+	PrdyCtrt     string `json:"prdy_ctrt"`
+	AcmlVol      string `json:"acml_vol"`
+	StckCnvrRate string `json:"stck_cnvr_rate"`
+	LvrgVal      string `json:"lvrg_val"`
+	Acpr         string `json:"acpr"`
+	TmvlVal      string `json:"tmvl_val"`
+	InvlVal      string `json:"invl_val"`
+	ElwKoBarrier string `json:"elw_ko_barrier"`
 }
 
 type KISElwV1RankingIndicatorRequest struct {
@@ -7421,20 +7421,20 @@ type KISElwV1RankingQuickChange struct {
 }
 
 type KISElwV1RankingQuickChangeOutputItem struct {
-	ElwShrnIscd   string `json:"elw_shrn_iscd,omitempty"`
-	ElwKorIsnm    string `json:"elw_kor_isnm,omitempty"`
-	ElwPrpr       string `json:"elw_prpr,omitempty"`
-	PrdyVrssSign  string `json:"prdy_vrss_sign,omitempty"`
-	PrdyVrss      string `json:"prdy_vrss,omitempty"`
-	PrdyCtrt      string `json:"prdy_ctrt,omitempty"`
-	Askp          string `json:"askp,omitempty"`
-	Bidp          string `json:"bidp,omitempty"`
-	TotalAskpRsqn string `json:"total_askp_rsqn,omitempty"`
-	TotalBidpRsqn string `json:"total_bidp_rsqn,omitempty"`
-	AcmlVol       string `json:"acml_vol,omitempty"`
-	StndVal       string `json:"stnd_val,omitempty"`
-	StndValVrss   string `json:"stnd_val_vrss,omitempty"`
-	StndValCtrt   string `json:"stnd_val_ctrt,omitempty"`
+	ElwShrnIscd   string `json:"elw_shrn_iscd"`
+	ElwKorIsnm    string `json:"elw_kor_isnm"`
+	ElwPrpr       string `json:"elw_prpr"`
+	PrdyVrssSign  string `json:"prdy_vrss_sign"`
+	PrdyVrss      string `json:"prdy_vrss"`
+	PrdyCtrt      string `json:"prdy_ctrt"`
+	Askp          string `json:"askp"`
+	Bidp          string `json:"bidp"`
+	TotalAskpRsqn string `json:"total_askp_rsqn"`
+	TotalBidpRsqn string `json:"total_bidp_rsqn"`
+	AcmlVol       string `json:"acml_vol"`
+	StndVal       string `json:"stnd_val"`
+	StndValVrss   string `json:"stnd_val_vrss"`
+	StndValCtrt   string `json:"stnd_val_ctrt"`
 }
 
 type KISElwV1RankingQuickChangeRequest struct {
@@ -7460,21 +7460,21 @@ type KISElwV1RankingSensitivity struct {
 }
 
 type KISElwV1RankingSensitivityOutputItem struct {
-	ElwShrnIscd  string `json:"elw_shrn_iscd,omitempty"`
-	ElwKorIsnm   string `json:"elw_kor_isnm,omitempty"`
-	ElwPrpr      string `json:"elw_prpr,omitempty"`
-	PrdyVrss     string `json:"prdy_vrss,omitempty"`
-	PrdyVrssSign string `json:"prdy_vrss_sign,omitempty"`
-	PrdyCtrt     string `json:"prdy_ctrt,omitempty"`
-	AcmlVol      string `json:"acml_vol,omitempty"`
-	HtsThpr      string `json:"hts_thpr,omitempty"`
-	DeltaVal     string `json:"delta_val,omitempty"`
-	Gama         string `json:"gama,omitempty"`
-	Theta        string `json:"theta,omitempty"`
-	Vega         string `json:"vega,omitempty"`
-	Rho          string `json:"rho,omitempty"`
-	HtsIntsVltl  string `json:"hts_ints_vltl,omitempty"`
-	D90HistVltl  string `json:"d90_hist_vltl,omitempty"`
+	ElwShrnIscd  string `json:"elw_shrn_iscd"`
+	ElwKorIsnm   string `json:"elw_kor_isnm"`
+	ElwPrpr      string `json:"elw_prpr"`
+	PrdyVrss     string `json:"prdy_vrss"`
+	PrdyVrssSign string `json:"prdy_vrss_sign"`
+	PrdyCtrt     string `json:"prdy_ctrt"`
+	AcmlVol      string `json:"acml_vol"`
+	HtsThpr      string `json:"hts_thpr"`
+	DeltaVal     string `json:"delta_val"`
+	Gama         string `json:"gama"`
+	Theta        string `json:"theta"`
+	Vega         string `json:"vega"`
+	Rho          string `json:"rho"`
+	HtsIntsVltl  string `json:"hts_ints_vltl"`
+	D90HistVltl  string `json:"d90_hist_vltl"`
 }
 
 type KISElwV1RankingSensitivityRequest struct {
@@ -7499,41 +7499,41 @@ type KISElwV1RankingUpdownRate struct {
 }
 
 type KISElwV1RankingUpdownRateOutputItem struct {
-	HtsKorIsnm       string `json:"hts_kor_isnm,omitempty"`
-	ElwShrnIscd      string `json:"elw_shrn_iscd,omitempty"`
-	ElwPrpr          string `json:"elw_prpr,omitempty"`
-	PrdyVrss         string `json:"prdy_vrss,omitempty"`
-	PrdyVrssSign     string `json:"prdy_vrss_sign,omitempty"`
-	PrdyCtrt         string `json:"prdy_ctrt,omitempty"`
-	AcmlVol          string `json:"acml_vol,omitempty"`
-	StckSdpr         string `json:"stck_sdpr,omitempty"`
-	SdprVrssPrprSign string `json:"sdpr_vrss_prpr_sign,omitempty"`
-	SdprVrssPrpr     string `json:"sdpr_vrss_prpr,omitempty"`
-	SdprVrssPrprRate string `json:"sdpr_vrss_prpr_rate,omitempty"`
-	StckOprc         string `json:"stck_oprc,omitempty"`
-	OprcVrssPrprSign string `json:"oprc_vrss_prpr_sign,omitempty"`
-	OprcVrssPrpr     string `json:"oprc_vrss_prpr,omitempty"`
-	OprcVrssPrprRate string `json:"oprc_vrss_prpr_rate,omitempty"`
-	StckHgpr         string `json:"stck_hgpr,omitempty"`
-	StckLwpr         string `json:"stck_lwpr,omitempty"`
-	PrdRsflSign      string `json:"prd_rsfl_sign,omitempty"`
-	PrdRsfl          string `json:"prd_rsfl,omitempty"`
-	PrdRsflRate      string `json:"prd_rsfl_rate,omitempty"`
-	StckCnvrRate     string `json:"stck_cnvr_rate,omitempty"`
-	HtsRmnnDynu      string `json:"hts_rmnn_dynu,omitempty"`
-	Acpr             string `json:"acpr,omitempty"`
-	UnasIsnm         string `json:"unas_isnm,omitempty"`
-	UnasShrnIscd     string `json:"unas_shrn_iscd,omitempty"`
-	LpHldnRate       string `json:"lp_hldn_rate,omitempty"`
-	Prit             string `json:"prit,omitempty"`
-	PrlsQryrStprPrc  string `json:"prls_qryr_stpr_prc,omitempty"`
-	DeltaVal         string `json:"delta_val,omitempty"`
-	Theta            string `json:"theta,omitempty"`
-	PrlsQryrRate     string `json:"prls_qryr_rate,omitempty"`
-	StckLstnDate     string `json:"stck_lstn_date,omitempty"`
-	StckLastTrDate   string `json:"stck_last_tr_date,omitempty"`
-	HtsIntsVltl      string `json:"hts_ints_vltl,omitempty"`
-	LvrgVal          string `json:"lvrg_val,omitempty"`
+	HtsKorIsnm       string `json:"hts_kor_isnm"`
+	ElwShrnIscd      string `json:"elw_shrn_iscd"`
+	ElwPrpr          string `json:"elw_prpr"`
+	PrdyVrss         string `json:"prdy_vrss"`
+	PrdyVrssSign     string `json:"prdy_vrss_sign"`
+	PrdyCtrt         string `json:"prdy_ctrt"`
+	AcmlVol          string `json:"acml_vol"`
+	StckSdpr         string `json:"stck_sdpr"`
+	SdprVrssPrprSign string `json:"sdpr_vrss_prpr_sign"`
+	SdprVrssPrpr     string `json:"sdpr_vrss_prpr"`
+	SdprVrssPrprRate string `json:"sdpr_vrss_prpr_rate"`
+	StckOprc         string `json:"stck_oprc"`
+	OprcVrssPrprSign string `json:"oprc_vrss_prpr_sign"`
+	OprcVrssPrpr     string `json:"oprc_vrss_prpr"`
+	OprcVrssPrprRate string `json:"oprc_vrss_prpr_rate"`
+	StckHgpr         string `json:"stck_hgpr"`
+	StckLwpr         string `json:"stck_lwpr"`
+	PrdRsflSign      string `json:"prd_rsfl_sign"`
+	PrdRsfl          string `json:"prd_rsfl"`
+	PrdRsflRate      string `json:"prd_rsfl_rate"`
+	StckCnvrRate     string `json:"stck_cnvr_rate"`
+	HtsRmnnDynu      string `json:"hts_rmnn_dynu"`
+	Acpr             string `json:"acpr"`
+	UnasIsnm         string `json:"unas_isnm"`
+	UnasShrnIscd     string `json:"unas_shrn_iscd"`
+	LpHldnRate       string `json:"lp_hldn_rate"`
+	Prit             string `json:"prit"`
+	PrlsQryrStprPrc  string `json:"prls_qryr_stpr_prc"`
+	DeltaVal         string `json:"delta_val"`
+	Theta            string `json:"theta"`
+	PrlsQryrRate     string `json:"prls_qryr_rate"`
+	StckLstnDate     string `json:"stck_lstn_date"`
+	StckLastTrDate   string `json:"stck_last_tr_date"`
+	HtsIntsVltl      string `json:"hts_ints_vltl"`
+	LvrgVal          string `json:"lvrg_val"`
 }
 
 type KISElwV1RankingUpdownRateRequest struct {
@@ -7559,48 +7559,48 @@ type KISElwV1RankingVolumeRank struct {
 }
 
 type KISElwV1RankingVolumeRankOutputItem struct {
-	ElwKorIsnm      string `json:"elw_kor_isnm,omitempty"`
-	ElwShrnIscd     string `json:"elw_shrn_iscd,omitempty"`
-	ElwPrpr         string `json:"elw_prpr,omitempty"`
-	PrdyVrss        string `json:"prdy_vrss,omitempty"`
-	PrdyVrssSign    string `json:"prdy_vrss_sign,omitempty"`
-	PrdyCtrt        string `json:"prdy_ctrt,omitempty"`
-	LstnStcn        string `json:"lstn_stcn,omitempty"`
-	AcmlVol         string `json:"acml_vol,omitempty"`
-	NPrdyVol        string `json:"n_prdy_vol,omitempty"`
-	NPrdyVolVrss    string `json:"n_prdy_vol_vrss,omitempty"`
-	VolInrt         string `json:"vol_inrt,omitempty"`
-	VolTnrt         string `json:"vol_tnrt,omitempty"`
-	NdayVolTnrt     string `json:"nday_vol_tnrt,omitempty"`
-	AcmlTrPbmn      string `json:"acml_tr_pbmn,omitempty"`
-	NPrdyTrPbmn     string `json:"n_prdy_tr_pbmn,omitempty"`
-	NPrdyTrPbmnVrss string `json:"n_prdy_tr_pbmn_vrss,omitempty"`
-	TotalAskpRsqn   string `json:"total_askp_rsqn,omitempty"`
-	TotalBidpRsqn   string `json:"total_bidp_rsqn,omitempty"`
-	NtslRsqn        string `json:"ntsl_rsqn,omitempty"`
-	NtbyRsqn        string `json:"ntby_rsqn,omitempty"`
-	SelnRsqnRate    string `json:"seln_rsqn_rate,omitempty"`
-	ShnuRsqnRate    string `json:"shnu_rsqn_rate,omitempty"`
-	StckCnvrRate    string `json:"stck_cnvr_rate,omitempty"`
-	HtsRmnnDynu     string `json:"hts_rmnn_dynu,omitempty"`
-	InvlVal         string `json:"invl_val,omitempty"`
-	TmvlVal         string `json:"tmvl_val,omitempty"`
-	Acpr            string `json:"acpr,omitempty"`
-	LpMbcrName      string `json:"lp_mbcr_name,omitempty"`
-	UnasIsnm        string `json:"unas_isnm,omitempty"`
-	StckLastTrDate  string `json:"stck_last_tr_date,omitempty"`
-	UnasShrnIscd    string `json:"unas_shrn_iscd,omitempty"`
-	PrdyVol         string `json:"prdy_vol,omitempty"`
-	LpHldnRate      string `json:"lp_hldn_rate,omitempty"`
-	Prit            string `json:"prit,omitempty"`
-	PrlsQryrStprPrc string `json:"prls_qryr_stpr_prc,omitempty"`
-	DeltaVal        string `json:"delta_val,omitempty"`
-	Theta           string `json:"theta,omitempty"`
-	PrlsQryrRate    string `json:"prls_qryr_rate,omitempty"`
-	StckLstnDate    string `json:"stck_lstn_date,omitempty"`
-	HtsIntsVltl     string `json:"hts_ints_vltl,omitempty"`
-	LvrgVal         string `json:"lvrg_val,omitempty"`
-	LpNtbyQty       string `json:"lp_ntby_qty,omitempty"`
+	ElwKorIsnm      string `json:"elw_kor_isnm"`
+	ElwShrnIscd     string `json:"elw_shrn_iscd"`
+	ElwPrpr         string `json:"elw_prpr"`
+	PrdyVrss        string `json:"prdy_vrss"`
+	PrdyVrssSign    string `json:"prdy_vrss_sign"`
+	PrdyCtrt        string `json:"prdy_ctrt"`
+	LstnStcn        string `json:"lstn_stcn"`
+	AcmlVol         string `json:"acml_vol"`
+	NPrdyVol        string `json:"n_prdy_vol"`
+	NPrdyVolVrss    string `json:"n_prdy_vol_vrss"`
+	VolInrt         string `json:"vol_inrt"`
+	VolTnrt         string `json:"vol_tnrt"`
+	NdayVolTnrt     string `json:"nday_vol_tnrt"`
+	AcmlTrPbmn      string `json:"acml_tr_pbmn"`
+	NPrdyTrPbmn     string `json:"n_prdy_tr_pbmn"`
+	NPrdyTrPbmnVrss string `json:"n_prdy_tr_pbmn_vrss"`
+	TotalAskpRsqn   string `json:"total_askp_rsqn"`
+	TotalBidpRsqn   string `json:"total_bidp_rsqn"`
+	NtslRsqn        string `json:"ntsl_rsqn"`
+	NtbyRsqn        string `json:"ntby_rsqn"`
+	SelnRsqnRate    string `json:"seln_rsqn_rate"`
+	ShnuRsqnRate    string `json:"shnu_rsqn_rate"`
+	StckCnvrRate    string `json:"stck_cnvr_rate"`
+	HtsRmnnDynu     string `json:"hts_rmnn_dynu"`
+	InvlVal         string `json:"invl_val"`
+	TmvlVal         string `json:"tmvl_val"`
+	Acpr            string `json:"acpr"`
+	LpMbcrName      string `json:"lp_mbcr_name"`
+	UnasIsnm        string `json:"unas_isnm"`
+	StckLastTrDate  string `json:"stck_last_tr_date"`
+	UnasShrnIscd    string `json:"unas_shrn_iscd"`
+	PrdyVol         string `json:"prdy_vol"`
+	LpHldnRate      string `json:"lp_hldn_rate"`
+	Prit            string `json:"prit"`
+	PrlsQryrStprPrc string `json:"prls_qryr_stpr_prc"`
+	DeltaVal        string `json:"delta_val"`
+	Theta           string `json:"theta"`
+	PrlsQryrRate    string `json:"prls_qryr_rate"`
+	StckLstnDate    string `json:"stck_lstn_date"`
+	HtsIntsVltl     string `json:"hts_ints_vltl"`
+	LvrgVal         string `json:"lvrg_val"`
+	LpNtbyQty       string `json:"lp_ntby_qty"`
 }
 
 type KISElwV1RankingVolumeRankRequest struct {
@@ -7628,40 +7628,40 @@ type KISEtfetnV1QuotationsInquireComponentStockPrice struct {
 }
 
 type KISEtfetnV1QuotationsInquireComponentStockPriceOutput1Item struct {
-	StckPrpr         string `json:"stck_prpr,omitempty"`
-	PrdyVrss         string `json:"prdy_vrss,omitempty"`
-	PrdyVrssSign     string `json:"prdy_vrss_sign,omitempty"`
-	PrdyCtrt         string `json:"prdy_ctrt,omitempty"`
-	EtfCnfgIssuAvls  string `json:"etf_cnfg_issu_avls,omitempty"`
-	Nav              string `json:"nav,omitempty"`
-	NavPrdyVrssSign  string `json:"nav_prdy_vrss_sign,omitempty"`
-	NavPrdyVrss      string `json:"nav_prdy_vrss,omitempty"`
-	NavPrdyCtrt      string `json:"nav_prdy_ctrt,omitempty"`
-	EtfNtasTtam      string `json:"etf_ntas_ttam,omitempty"`
-	PrdyClprNav      string `json:"prdy_clpr_nav,omitempty"`
-	OprcNav          string `json:"oprc_nav,omitempty"`
-	HprcNav          string `json:"hprc_nav,omitempty"`
-	LprcNav          string `json:"lprc_nav,omitempty"`
-	EtfCuUnitScrtCnt string `json:"etf_cu_unit_scrt_cnt,omitempty"`
-	EtfCnfgIssuCnt   string `json:"etf_cnfg_issu_cnt,omitempty"`
+	StckPrpr         string `json:"stck_prpr"`
+	PrdyVrss         string `json:"prdy_vrss"`
+	PrdyVrssSign     string `json:"prdy_vrss_sign"`
+	PrdyCtrt         string `json:"prdy_ctrt"`
+	EtfCnfgIssuAvls  string `json:"etf_cnfg_issu_avls"`
+	Nav              string `json:"nav"`
+	NavPrdyVrssSign  string `json:"nav_prdy_vrss_sign"`
+	NavPrdyVrss      string `json:"nav_prdy_vrss"`
+	NavPrdyCtrt      string `json:"nav_prdy_ctrt"`
+	EtfNtasTtam      string `json:"etf_ntas_ttam"`
+	PrdyClprNav      string `json:"prdy_clpr_nav"`
+	OprcNav          string `json:"oprc_nav"`
+	HprcNav          string `json:"hprc_nav"`
+	LprcNav          string `json:"lprc_nav"`
+	EtfCuUnitScrtCnt string `json:"etf_cu_unit_scrt_cnt"`
+	EtfCnfgIssuCnt   string `json:"etf_cnfg_issu_cnt"`
 }
 
 type KISEtfetnV1QuotationsInquireComponentStockPriceOutput2Item struct {
-	StckShrnIscd    string `json:"stck_shrn_iscd,omitempty"`
-	HtsKorIsnm      string `json:"hts_kor_isnm,omitempty"`
-	StckPrpr        string `json:"stck_prpr,omitempty"`
-	PrdyVrss        string `json:"prdy_vrss,omitempty"`
-	PrdyVrssSign    string `json:"prdy_vrss_sign,omitempty"`
-	PrdyCtrt        string `json:"prdy_ctrt,omitempty"`
-	AcmlVol         string `json:"acml_vol,omitempty"`
-	AcmlTrPbmn      string `json:"acml_tr_pbmn,omitempty"`
-	TdayRsflRate    string `json:"tday_rsfl_rate,omitempty"`
-	PrdyVrssVol     string `json:"prdy_vrss_vol,omitempty"`
-	TrPbmnTnrt      string `json:"tr_pbmn_tnrt,omitempty"`
-	HtsAvls         string `json:"hts_avls,omitempty"`
-	EtfCnfgIssuAvls string `json:"etf_cnfg_issu_avls,omitempty"`
-	EtfCnfgIssuRlim string `json:"etf_cnfg_issu_rlim,omitempty"`
-	EtfVltnAmt      string `json:"etf_vltn_amt,omitempty"`
+	StckShrnIscd    string `json:"stck_shrn_iscd"`
+	HtsKorIsnm      string `json:"hts_kor_isnm"`
+	StckPrpr        string `json:"stck_prpr"`
+	PrdyVrss        string `json:"prdy_vrss"`
+	PrdyVrssSign    string `json:"prdy_vrss_sign"`
+	PrdyCtrt        string `json:"prdy_ctrt"`
+	AcmlVol         string `json:"acml_vol"`
+	AcmlTrPbmn      string `json:"acml_tr_pbmn"`
+	TdayRsflRate    string `json:"tday_rsfl_rate"`
+	PrdyVrssVol     string `json:"prdy_vrss_vol"`
+	TrPbmnTnrt      string `json:"tr_pbmn_tnrt"`
+	HtsAvls         string `json:"hts_avls"`
+	EtfCnfgIssuAvls string `json:"etf_cnfg_issu_avls"`
+	EtfCnfgIssuRlim string `json:"etf_cnfg_issu_rlim"`
+	EtfVltnAmt      string `json:"etf_vltn_amt"`
 }
 
 type KISEtfetnV1QuotationsInquireComponentStockPriceRequest struct {
@@ -7676,65 +7676,65 @@ type KISEtfetnV1QuotationsInquirePrice struct {
 }
 
 type KISEtfetnV1QuotationsInquirePriceOutputItem struct {
-	StckPrpr               string `json:"stck_prpr,omitempty"`
-	PrdyVrssSign           string `json:"prdy_vrss_sign,omitempty"`
-	PrdyVrss               string `json:"prdy_vrss,omitempty"`
-	PrdyCtrt               string `json:"prdy_ctrt,omitempty"`
-	AcmlVol                string `json:"acml_vol,omitempty"`
-	PrdyVol                string `json:"prdy_vol,omitempty"`
-	StckMxpr               string `json:"stck_mxpr,omitempty"`
-	StckLlam               string `json:"stck_llam,omitempty"`
-	StckPrdyClpr           string `json:"stck_prdy_clpr,omitempty"`
-	StckOprc               string `json:"stck_oprc,omitempty"`
-	PrdyClprVrssOprcRate   string `json:"prdy_clpr_vrss_oprc_rate,omitempty"`
-	StckHgpr               string `json:"stck_hgpr,omitempty"`
-	PrdyClprVrssHgprRate   string `json:"prdy_clpr_vrss_hgpr_rate,omitempty"`
-	StckLwpr               string `json:"stck_lwpr,omitempty"`
-	PrdyClprVrssLwprRate   string `json:"prdy_clpr_vrss_lwpr_rate,omitempty"`
-	PrdyLastNav            string `json:"prdy_last_nav,omitempty"`
-	Nav                    string `json:"nav,omitempty"`
-	NavPrdyVrss            string `json:"nav_prdy_vrss,omitempty"`
-	NavPrdyVrssSign        string `json:"nav_prdy_vrss_sign,omitempty"`
-	NavPrdyCtrt            string `json:"nav_prdy_ctrt,omitempty"`
-	TrcErrt                string `json:"trc_errt,omitempty"`
-	StckSdpr               string `json:"stck_sdpr,omitempty"`
-	StckSspr               string `json:"stck_sspr,omitempty"`
-	NmixCtrt               string `json:"nmix_ctrt,omitempty"`
-	EtfCrclStcn            string `json:"etf_crcl_stcn,omitempty"`
-	EtfNtasTtam            string `json:"etf_ntas_ttam,omitempty"`
-	EtfFrcrNtasTtam        string `json:"etf_frcr_ntas_ttam,omitempty"`
-	FrgnLimtRate           string `json:"frgn_limt_rate,omitempty"`
-	FrgnOderAbleQty        string `json:"frgn_oder_able_qty,omitempty"`
-	EtfCuUnitScrtCnt       string `json:"etf_cu_unit_scrt_cnt,omitempty"`
-	EtfCnfgIssuCnt         string `json:"etf_cnfg_issu_cnt,omitempty"`
-	EtfDvdnCycl            string `json:"etf_dvdn_cycl,omitempty"`
-	Crcd                   string `json:"crcd,omitempty"`
-	EtfCrclNtasTtam        string `json:"etf_crcl_ntas_ttam,omitempty"`
-	EtfFrcrCrclNtasTtam    string `json:"etf_frcr_crcl_ntas_ttam,omitempty"`
-	EtfFrcrLastNtasWrthVal string `json:"etf_frcr_last_ntas_wrth_val,omitempty"`
-	LpOderAbleClsCode      string `json:"lp_oder_able_cls_code,omitempty"`
-	StckDryyHgpr           string `json:"stck_dryy_hgpr,omitempty"`
-	DryyHgprVrssPrprRate   string `json:"dryy_hgpr_vrss_prpr_rate,omitempty"`
-	DryyHgprDate           string `json:"dryy_hgpr_date,omitempty"`
-	StckDryyLwpr           string `json:"stck_dryy_lwpr,omitempty"`
-	DryyLwprVrssPrprRate   string `json:"dryy_lwpr_vrss_prpr_rate,omitempty"`
-	DryyLwprDate           string `json:"dryy_lwpr_date,omitempty"`
-	BstpKorIsnm            string `json:"bstp_kor_isnm,omitempty"`
-	ViClsCode              string `json:"vi_cls_code,omitempty"`
-	LstnStcn               string `json:"lstn_stcn,omitempty"`
-	FrgnHldnQty            string `json:"frgn_hldn_qty,omitempty"`
-	FrgnHldnQtyRate        string `json:"frgn_hldn_qty_rate,omitempty"`
-	EtfTrcErtMltp          string `json:"etf_trc_ert_mltp,omitempty"`
-	Dprt                   string `json:"dprt,omitempty"`
-	MbcrName               string `json:"mbcr_name,omitempty"`
-	StckLstnDate           string `json:"stck_lstn_date,omitempty"`
-	MtrtDate               string `json:"mtrt_date,omitempty"`
-	ShrgTypeCode           string `json:"shrg_type_code,omitempty"`
-	LpHldnRate             string `json:"lp_hldn_rate,omitempty"`
-	EtfTrgtNmixBstpCode    string `json:"etf_trgt_nmix_bstp_code,omitempty"`
-	EtfDivName             string `json:"etf_div_name,omitempty"`
-	EtfRprsBstpKorIsnm     string `json:"etf_rprs_bstp_kor_isnm,omitempty"`
-	LpHldnVol              string `json:"lp_hldn_vol,omitempty"`
+	StckPrpr               string `json:"stck_prpr"`
+	PrdyVrssSign           string `json:"prdy_vrss_sign"`
+	PrdyVrss               string `json:"prdy_vrss"`
+	PrdyCtrt               string `json:"prdy_ctrt"`
+	AcmlVol                string `json:"acml_vol"`
+	PrdyVol                string `json:"prdy_vol"`
+	StckMxpr               string `json:"stck_mxpr"`
+	StckLlam               string `json:"stck_llam"`
+	StckPrdyClpr           string `json:"stck_prdy_clpr"`
+	StckOprc               string `json:"stck_oprc"`
+	PrdyClprVrssOprcRate   string `json:"prdy_clpr_vrss_oprc_rate"`
+	StckHgpr               string `json:"stck_hgpr"`
+	PrdyClprVrssHgprRate   string `json:"prdy_clpr_vrss_hgpr_rate"`
+	StckLwpr               string `json:"stck_lwpr"`
+	PrdyClprVrssLwprRate   string `json:"prdy_clpr_vrss_lwpr_rate"`
+	PrdyLastNav            string `json:"prdy_last_nav"`
+	Nav                    string `json:"nav"`
+	NavPrdyVrss            string `json:"nav_prdy_vrss"`
+	NavPrdyVrssSign        string `json:"nav_prdy_vrss_sign"`
+	NavPrdyCtrt            string `json:"nav_prdy_ctrt"`
+	TrcErrt                string `json:"trc_errt"`
+	StckSdpr               string `json:"stck_sdpr"`
+	StckSspr               string `json:"stck_sspr"`
+	NmixCtrt               string `json:"nmix_ctrt"`
+	EtfCrclStcn            string `json:"etf_crcl_stcn"`
+	EtfNtasTtam            string `json:"etf_ntas_ttam"`
+	EtfFrcrNtasTtam        string `json:"etf_frcr_ntas_ttam"`
+	FrgnLimtRate           string `json:"frgn_limt_rate"`
+	FrgnOderAbleQty        string `json:"frgn_oder_able_qty"`
+	EtfCuUnitScrtCnt       string `json:"etf_cu_unit_scrt_cnt"`
+	EtfCnfgIssuCnt         string `json:"etf_cnfg_issu_cnt"`
+	EtfDvdnCycl            string `json:"etf_dvdn_cycl"`
+	Crcd                   string `json:"crcd"`
+	EtfCrclNtasTtam        string `json:"etf_crcl_ntas_ttam"`
+	EtfFrcrCrclNtasTtam    string `json:"etf_frcr_crcl_ntas_ttam"`
+	EtfFrcrLastNtasWrthVal string `json:"etf_frcr_last_ntas_wrth_val"`
+	LpOderAbleClsCode      string `json:"lp_oder_able_cls_code"`
+	StckDryyHgpr           string `json:"stck_dryy_hgpr"`
+	DryyHgprVrssPrprRate   string `json:"dryy_hgpr_vrss_prpr_rate"`
+	DryyHgprDate           string `json:"dryy_hgpr_date"`
+	StckDryyLwpr           string `json:"stck_dryy_lwpr"`
+	DryyLwprVrssPrprRate   string `json:"dryy_lwpr_vrss_prpr_rate"`
+	DryyLwprDate           string `json:"dryy_lwpr_date"`
+	BstpKorIsnm            string `json:"bstp_kor_isnm"`
+	ViClsCode              string `json:"vi_cls_code"`
+	LstnStcn               string `json:"lstn_stcn"`
+	FrgnHldnQty            string `json:"frgn_hldn_qty"`
+	FrgnHldnQtyRate        string `json:"frgn_hldn_qty_rate"`
+	EtfTrcErtMltp          string `json:"etf_trc_ert_mltp"`
+	Dprt                   string `json:"dprt"`
+	MbcrName               string `json:"mbcr_name"`
+	StckLstnDate           string `json:"stck_lstn_date"`
+	MtrtDate               string `json:"mtrt_date"`
+	ShrgTypeCode           string `json:"shrg_type_code"`
+	LpHldnRate             string `json:"lp_hldn_rate"`
+	EtfTrgtNmixBstpCode    string `json:"etf_trgt_nmix_bstp_code"`
+	EtfDivName             string `json:"etf_div_name"`
+	EtfRprsBstpKorIsnm     string `json:"etf_rprs_bstp_kor_isnm"`
+	LpHldnVol              string `json:"lp_hldn_vol"`
 }
 
 type KISEtfetnV1QuotationsInquirePriceRequest struct {
@@ -7748,19 +7748,19 @@ type KISEtfetnV1QuotationsNavComparisonDailyTrend struct {
 }
 
 type KISEtfetnV1QuotationsNavComparisonDailyTrendOutputItem struct {
-	StckBsopDate    string `json:"stck_bsop_date,omitempty"`
-	StckClpr        string `json:"stck_clpr,omitempty"`
-	PrdyVrss        string `json:"prdy_vrss,omitempty"`
-	PrdyVrssSign    string `json:"prdy_vrss_sign,omitempty"`
-	PrdyCtrt        string `json:"prdy_ctrt,omitempty"`
-	AcmlVol         string `json:"acml_vol,omitempty"`
-	CntgVol         string `json:"cntg_vol,omitempty"`
-	Dprt            string `json:"dprt,omitempty"`
-	NavVrssPrpr     string `json:"nav_vrss_prpr,omitempty"`
-	Nav             string `json:"nav,omitempty"`
-	NavPrdyVrssSign string `json:"nav_prdy_vrss_sign,omitempty"`
-	NavPrdyVrss     string `json:"nav_prdy_vrss,omitempty"`
-	NavPrdyCtrt     string `json:"nav_prdy_ctrt,omitempty"`
+	StckBsopDate    string `json:"stck_bsop_date"`
+	StckClpr        string `json:"stck_clpr"`
+	PrdyVrss        string `json:"prdy_vrss"`
+	PrdyVrssSign    string `json:"prdy_vrss_sign"`
+	PrdyCtrt        string `json:"prdy_ctrt"`
+	AcmlVol         string `json:"acml_vol"`
+	CntgVol         string `json:"cntg_vol"`
+	Dprt            string `json:"dprt"`
+	NavVrssPrpr     string `json:"nav_vrss_prpr"`
+	Nav             string `json:"nav"`
+	NavPrdyVrssSign string `json:"nav_prdy_vrss_sign"`
+	NavPrdyVrss     string `json:"nav_prdy_vrss"`
+	NavPrdyCtrt     string `json:"nav_prdy_ctrt"`
 }
 
 type KISEtfetnV1QuotationsNavComparisonDailyTrendRequest struct {
@@ -7776,19 +7776,19 @@ type KISEtfetnV1QuotationsNavComparisonTimeTrend struct {
 }
 
 type KISEtfetnV1QuotationsNavComparisonTimeTrendOutputItem struct {
-	BsopHour        string `json:"bsop_hour,omitempty"`
-	Nav             string `json:"nav,omitempty"`
-	NavPrdyVrssSign string `json:"nav_prdy_vrss_sign,omitempty"`
-	NavPrdyVrss     string `json:"nav_prdy_vrss,omitempty"`
-	NavPrdyCtrt     string `json:"nav_prdy_ctrt,omitempty"`
-	NavVrssPrpr     string `json:"nav_vrss_prpr,omitempty"`
-	Dprt            string `json:"dprt,omitempty"`
-	StckPrpr        string `json:"stck_prpr,omitempty"`
-	PrdyVrss        string `json:"prdy_vrss,omitempty"`
-	PrdyVrssSign    string `json:"prdy_vrss_sign,omitempty"`
-	PrdyCtrt        string `json:"prdy_ctrt,omitempty"`
-	AcmlVol         string `json:"acml_vol,omitempty"`
-	CntgVol         string `json:"cntg_vol,omitempty"`
+	BsopHour        string `json:"bsop_hour"`
+	Nav             string `json:"nav"`
+	NavPrdyVrssSign string `json:"nav_prdy_vrss_sign"`
+	NavPrdyVrss     string `json:"nav_prdy_vrss"`
+	NavPrdyCtrt     string `json:"nav_prdy_ctrt"`
+	NavVrssPrpr     string `json:"nav_vrss_prpr"`
+	Dprt            string `json:"dprt"`
+	StckPrpr        string `json:"stck_prpr"`
+	PrdyVrss        string `json:"prdy_vrss"`
+	PrdyVrssSign    string `json:"prdy_vrss_sign"`
+	PrdyCtrt        string `json:"prdy_ctrt"`
+	AcmlVol         string `json:"acml_vol"`
+	CntgVol         string `json:"cntg_vol"`
 }
 
 type KISEtfetnV1QuotationsNavComparisonTimeTrendRequest struct {
@@ -7804,29 +7804,29 @@ type KISEtfetnV1QuotationsNavComparisonTrend struct {
 }
 
 type KISEtfetnV1QuotationsNavComparisonTrendOutput1Item struct {
-	StckPrpr     string `json:"stck_prpr,omitempty"`
-	PrdyVrss     string `json:"prdy_vrss,omitempty"`
-	PrdyVrssSign string `json:"prdy_vrss_sign,omitempty"`
-	PrdyCtrt     string `json:"prdy_ctrt,omitempty"`
-	AcmlVol      string `json:"acml_vol,omitempty"`
-	AcmlTrPbmn   string `json:"acml_tr_pbmn,omitempty"`
-	StckPrdyClpr string `json:"stck_prdy_clpr,omitempty"`
-	StckOprc     string `json:"stck_oprc,omitempty"`
-	StckHgpr     string `json:"stck_hgpr,omitempty"`
-	StckLwpr     string `json:"stck_lwpr,omitempty"`
-	StckMxpr     string `json:"stck_mxpr,omitempty"`
-	StckLlam     string `json:"stck_llam,omitempty"`
+	StckPrpr     string `json:"stck_prpr"`
+	PrdyVrss     string `json:"prdy_vrss"`
+	PrdyVrssSign string `json:"prdy_vrss_sign"`
+	PrdyCtrt     string `json:"prdy_ctrt"`
+	AcmlVol      string `json:"acml_vol"`
+	AcmlTrPbmn   string `json:"acml_tr_pbmn"`
+	StckPrdyClpr string `json:"stck_prdy_clpr"`
+	StckOprc     string `json:"stck_oprc"`
+	StckHgpr     string `json:"stck_hgpr"`
+	StckLwpr     string `json:"stck_lwpr"`
+	StckMxpr     string `json:"stck_mxpr"`
+	StckLlam     string `json:"stck_llam"`
 }
 
 type KISEtfetnV1QuotationsNavComparisonTrendOutput2Item struct {
-	Nav             string `json:"nav,omitempty"`
-	NavPrdyVrssSign string `json:"nav_prdy_vrss_sign,omitempty"`
-	NavPrdyVrss     string `json:"nav_prdy_vrss,omitempty"`
-	NavPrdyCtrt     string `json:"nav_prdy_ctrt,omitempty"`
-	PrdyClprNav     string `json:"prdy_clpr_nav,omitempty"`
-	OprcNav         string `json:"oprc_nav,omitempty"`
-	HprcNav         string `json:"hprc_nav,omitempty"`
-	LprcNav         string `json:"lprc_nav,omitempty"`
+	Nav             string `json:"nav"`
+	NavPrdyVrssSign string `json:"nav_prdy_vrss_sign"`
+	NavPrdyVrss     string `json:"nav_prdy_vrss"`
+	NavPrdyCtrt     string `json:"nav_prdy_ctrt"`
+	PrdyClprNav     string `json:"prdy_clpr_nav"`
+	OprcNav         string `json:"oprc_nav"`
+	HprcNav         string `json:"hprc_nav"`
+	LprcNav         string `json:"lprc_nav"`
 }
 
 type KISEtfetnV1QuotationsNavComparisonTrendRequest struct {
@@ -7851,23 +7851,23 @@ type KISOverseasFutureoptionV1QuotationsDailyCcnl struct {
 }
 
 type KISOverseasFutureoptionV1QuotationsDailyCcnlOutput1Item struct {
-	TretCnt  string `json:"tret_cnt,omitempty"`
-	LastNCnt string `json:"last_n_cnt,omitempty"`
-	IndexKey string `json:"index_key,omitempty"`
+	TretCnt  string `json:"tret_cnt"`
+	LastNCnt string `json:"last_n_cnt"`
+	IndexKey string `json:"index_key"`
 }
 
 type KISOverseasFutureoptionV1QuotationsDailyCcnlOutput2Item struct {
-	DataDate      string `json:"data_date,omitempty"`
-	DataTime      string `json:"data_time,omitempty"`
-	OpenPrice     string `json:"open_price,omitempty"`
-	HighPrice     string `json:"high_price,omitempty"`
-	LowPrice      string `json:"low_price,omitempty"`
-	LastPrice     string `json:"last_price,omitempty"`
-	LastQntt      string `json:"last_qntt,omitempty"`
-	Vol           string `json:"vol,omitempty"`
-	PrevDiffFlag  string `json:"prev_diff_flag,omitempty"`
-	PrevDiffPrice string `json:"prev_diff_price,omitempty"`
-	PrevDiffRate  string `json:"prev_diff_rate,omitempty"`
+	DataDate      string `json:"data_date"`
+	DataTime      string `json:"data_time"`
+	OpenPrice     string `json:"open_price"`
+	HighPrice     string `json:"high_price"`
+	LowPrice      string `json:"low_price"`
+	LastPrice     string `json:"last_price"`
+	LastQntt      string `json:"last_qntt"`
+	Vol           string `json:"vol"`
+	PrevDiffFlag  string `json:"prev_diff_flag"`
+	PrevDiffPrice string `json:"prev_diff_price"`
+	PrevDiffRate  string `json:"prev_diff_rate"`
 }
 
 type KISOverseasFutureoptionV1QuotationsDailyCcnlRequest struct {
@@ -7888,25 +7888,25 @@ type KISOverseasFutureoptionV1QuotationsInquireAskingPrice struct {
 }
 
 type KISOverseasFutureoptionV1QuotationsInquireAskingPriceOutput1Item struct {
-	OpenPrice     string `json:"open_price,omitempty"`
-	HighPrice     string `json:"high_price,omitempty"`
-	LowpRice      string `json:"lowp_rice,omitempty"`
-	LastPrice     string `json:"last_price,omitempty"`
-	PrevPrice     string `json:"prev_price,omitempty"`
-	Vol           string `json:"vol,omitempty"`
-	PrevDiffPrice string `json:"prev_diff_price,omitempty"`
-	PrevDiffRate  string `json:"prev_diff_rate,omitempty"`
-	QuotDate      string `json:"quot_date,omitempty"`
-	QuotTime      string `json:"quot_time,omitempty"`
+	OpenPrice     string `json:"open_price"`
+	HighPrice     string `json:"high_price"`
+	LowpRice      string `json:"lowp_rice"`
+	LastPrice     string `json:"last_price"`
+	PrevPrice     string `json:"prev_price"`
+	Vol           string `json:"vol"`
+	PrevDiffPrice string `json:"prev_diff_price"`
+	PrevDiffRate  string `json:"prev_diff_rate"`
+	QuotDate      string `json:"quot_date"`
+	QuotTime      string `json:"quot_time"`
 }
 
 type KISOverseasFutureoptionV1QuotationsInquireAskingPriceOutput2Item struct {
-	BidQntt  string `json:"bid_qntt,omitempty"`
-	BidNum   string `json:"bid_num,omitempty"`
-	BidPrice string `json:"bid_price,omitempty"`
-	AskQntt  string `json:"ask_qntt,omitempty"`
-	AskNum   string `json:"ask_num,omitempty"`
-	AskPrice string `json:"ask_price,omitempty"`
+	BidQntt  string `json:"bid_qntt"`
+	BidNum   string `json:"bid_num"`
+	BidPrice string `json:"bid_price"`
+	AskQntt  string `json:"ask_qntt"`
+	AskNum   string `json:"ask_num"`
+	AskPrice string `json:"ask_price"`
 }
 
 type KISOverseasFutureoptionV1QuotationsInquireAskingPriceRequest struct {
@@ -7919,38 +7919,38 @@ type KISOverseasFutureoptionV1QuotationsInquirePrice struct {
 }
 
 type KISOverseasFutureoptionV1QuotationsInquirePriceOutput1Item struct {
-	ProcDate      string `json:"proc_date,omitempty"`
-	HighPrice     string `json:"high_price,omitempty"`
-	ProcTime      string `json:"proc_time,omitempty"`
-	OpenPrice     string `json:"open_price,omitempty"`
-	TrstMgn       string `json:"trst_mgn,omitempty"`
-	LowPrice      string `json:"low_price,omitempty"`
-	LastPrice     string `json:"last_price,omitempty"`
-	Vol           string `json:"vol,omitempty"`
-	PrevDiffFlag  string `json:"prev_diff_flag,omitempty"`
-	PrevDiffPrice string `json:"prev_diff_price,omitempty"`
-	PrevDiffRate  string `json:"prev_diff_rate,omitempty"`
-	BidQntt       string `json:"bid_qntt,omitempty"`
-	BidPrice      string `json:"bid_price,omitempty"`
-	AskQntt       string `json:"ask_qntt,omitempty"`
-	AskPrice      string `json:"ask_price,omitempty"`
-	PrevPrice     string `json:"prev_price,omitempty"`
-	ExchCd        string `json:"exch_cd,omitempty"`
-	CrcCd         string `json:"crc_cd,omitempty"`
-	TrdFrDate     string `json:"trd_fr_date,omitempty"`
-	ExprDate      string `json:"expr_date,omitempty"`
-	TrdToDate     string `json:"trd_to_date,omitempty"`
-	RemnCnt       string `json:"remn_cnt,omitempty"`
-	LastQntt      string `json:"last_qntt,omitempty"`
-	TotAskQntt    string `json:"tot_ask_qntt,omitempty"`
-	TotBidQntt    string `json:"tot_bid_qntt,omitempty"`
-	TickSize      string `json:"tick_size,omitempty"`
-	OpenDate      string `json:"open_date,omitempty"`
-	OpenTime      string `json:"open_time,omitempty"`
-	CloseDate     string `json:"close_date,omitempty"`
-	CloseTime     string `json:"close_time,omitempty"`
-	Sbsnsdate     string `json:"sbsnsdate,omitempty"`
-	SttlPrice     string `json:"sttl_price,omitempty"`
+	ProcDate      string `json:"proc_date"`
+	HighPrice     string `json:"high_price"`
+	ProcTime      string `json:"proc_time"`
+	OpenPrice     string `json:"open_price"`
+	TrstMgn       string `json:"trst_mgn"`
+	LowPrice      string `json:"low_price"`
+	LastPrice     string `json:"last_price"`
+	Vol           string `json:"vol"`
+	PrevDiffFlag  string `json:"prev_diff_flag"`
+	PrevDiffPrice string `json:"prev_diff_price"`
+	PrevDiffRate  string `json:"prev_diff_rate"`
+	BidQntt       string `json:"bid_qntt"`
+	BidPrice      string `json:"bid_price"`
+	AskQntt       string `json:"ask_qntt"`
+	AskPrice      string `json:"ask_price"`
+	PrevPrice     string `json:"prev_price"`
+	ExchCd        string `json:"exch_cd"`
+	CrcCd         string `json:"crc_cd"`
+	TrdFrDate     string `json:"trd_fr_date"`
+	ExprDate      string `json:"expr_date"`
+	TrdToDate     string `json:"trd_to_date"`
+	RemnCnt       string `json:"remn_cnt"`
+	LastQntt      string `json:"last_qntt"`
+	TotAskQntt    string `json:"tot_ask_qntt"`
+	TotBidQntt    string `json:"tot_bid_qntt"`
+	TickSize      string `json:"tick_size"`
+	OpenDate      string `json:"open_date"`
+	OpenTime      string `json:"open_time"`
+	CloseDate     string `json:"close_date"`
+	CloseTime     string `json:"close_time"`
+	Sbsnsdate     string `json:"sbsnsdate"`
+	SttlPrice     string `json:"sttl_price"`
 }
 
 type KISOverseasFutureoptionV1QuotationsInquirePriceRequest struct {
@@ -7964,23 +7964,23 @@ type KISOverseasFutureoptionV1QuotationsInquireTimeFuturechartprice struct {
 }
 
 type KISOverseasFutureoptionV1QuotationsInquireTimeFuturechartpriceOutput2Item struct {
-	RetCnt   string `json:"ret_cnt,omitempty"`
-	LastNCnt string `json:"last_n_cnt,omitempty"`
-	IndexKey string `json:"index_key,omitempty"`
+	RetCnt   string `json:"ret_cnt"`
+	LastNCnt string `json:"last_n_cnt"`
+	IndexKey string `json:"index_key"`
 }
 
 type KISOverseasFutureoptionV1QuotationsInquireTimeFuturechartpriceOutput1Item struct {
-	DataDate      string `json:"data_date,omitempty"`
-	DataTime      string `json:"data_time,omitempty"`
-	OpenPrice     string `json:"open_price,omitempty"`
-	HighPrice     string `json:"high_price,omitempty"`
-	LowPrice      string `json:"low_price,omitempty"`
-	LastPrice     string `json:"last_price,omitempty"`
-	LastQntt      string `json:"last_qntt,omitempty"`
-	Vol           string `json:"vol,omitempty"`
-	PrevDiffFlag  string `json:"prev_diff_flag,omitempty"`
-	PrevDiffPrice string `json:"prev_diff_price,omitempty"`
-	PrevDiffRate  string `json:"prev_diff_rate,omitempty"`
+	DataDate      string `json:"data_date"`
+	DataTime      string `json:"data_time"`
+	OpenPrice     string `json:"open_price"`
+	HighPrice     string `json:"high_price"`
+	LowPrice      string `json:"low_price"`
+	LastPrice     string `json:"last_price"`
+	LastQntt      string `json:"last_qntt"`
+	Vol           string `json:"vol"`
+	PrevDiffFlag  string `json:"prev_diff_flag"`
+	PrevDiffPrice string `json:"prev_diff_price"`
+	PrevDiffRate  string `json:"prev_diff_rate"`
 }
 
 type KISOverseasFutureoptionV1QuotationsInquireTimeFuturechartpriceRequest struct {
@@ -8001,23 +8001,23 @@ type KISOverseasFutureoptionV1QuotationsInquireTimeOptchartprice struct {
 }
 
 type KISOverseasFutureoptionV1QuotationsInquireTimeOptchartpriceOutput2Item struct {
-	RetCnt   string `json:"ret_cnt,omitempty"`
-	LastNCnt string `json:"last_n_cnt,omitempty"`
-	IndexKey string `json:"index_key,omitempty"`
+	RetCnt   string `json:"ret_cnt"`
+	LastNCnt string `json:"last_n_cnt"`
+	IndexKey string `json:"index_key"`
 }
 
 type KISOverseasFutureoptionV1QuotationsInquireTimeOptchartpriceOutput1Item struct {
-	DataDate      string `json:"data_date,omitempty"`
-	DataTime      string `json:"data_time,omitempty"`
-	OpenPrice     string `json:"open_price,omitempty"`
-	HighPrice     string `json:"high_price,omitempty"`
-	LowPrice      string `json:"low_price,omitempty"`
-	LastPrice     string `json:"last_price,omitempty"`
-	LastQntt      string `json:"last_qntt,omitempty"`
-	Vol           string `json:"vol,omitempty"`
-	PrevDiffFlag  string `json:"prev_diff_flag,omitempty"`
-	PrevDiffPrice string `json:"prev_diff_price,omitempty"`
-	PrevDiffRate  string `json:"prev_diff_rate,omitempty"`
+	DataDate      string `json:"data_date"`
+	DataTime      string `json:"data_time"`
+	OpenPrice     string `json:"open_price"`
+	HighPrice     string `json:"high_price"`
+	LowPrice      string `json:"low_price"`
+	LastPrice     string `json:"last_price"`
+	LastQntt      string `json:"last_qntt"`
+	Vol           string `json:"vol"`
+	PrevDiffFlag  string `json:"prev_diff_flag"`
+	PrevDiffPrice string `json:"prev_diff_price"`
+	PrevDiffRate  string `json:"prev_diff_rate"`
 }
 
 type KISOverseasFutureoptionV1QuotationsInquireTimeOptchartpriceRequest struct {
@@ -8038,27 +8038,27 @@ type KISOverseasFutureoptionV1QuotationsInvestorUnpdTrend struct {
 }
 
 type KISOverseasFutureoptionV1QuotationsInvestorUnpdTrendOutput1Item struct {
-	RowCnt string `json:"row_cnt,omitempty"`
+	RowCnt string `json:"row_cnt"`
 }
 
 type KISOverseasFutureoptionV1QuotationsInvestorUnpdTrendOutput2Item struct {
-	ProdIscd       string `json:"prod_iscd,omitempty"`
-	CftcIscd       string `json:"cftc_iscd,omitempty"`
-	BsopDate       string `json:"bsop_date,omitempty"`
-	BidpSpec       string `json:"bidp_spec,omitempty"`
-	AskpSpec       string `json:"askp_spec,omitempty"`
-	SpreadSpec     string `json:"spread_spec,omitempty"`
-	BidpHedge      string `json:"bidp_hedge,omitempty"`
-	AskpHedge      string `json:"askp_hedge,omitempty"`
-	HtsOtstSmtn    string `json:"hts_otst_smtn,omitempty"`
-	BidpMissing    string `json:"bidp_missing,omitempty"`
-	AskpMissing    string `json:"askp_missing,omitempty"`
-	BidpSpecCust   string `json:"bidp_spec_cust,omitempty"`
-	AskpSpecCust   string `json:"askp_spec_cust,omitempty"`
-	SpreadSpecCust string `json:"spread_spec_cust,omitempty"`
-	BidpHedgeCust  string `json:"bidp_hedge_cust,omitempty"`
-	AskpHedgeCust  string `json:"askp_hedge_cust,omitempty"`
-	CustSmtn       string `json:"cust_smtn,omitempty"`
+	ProdIscd       string `json:"prod_iscd"`
+	CftcIscd       string `json:"cftc_iscd"`
+	BsopDate       string `json:"bsop_date"`
+	BidpSpec       string `json:"bidp_spec"`
+	AskpSpec       string `json:"askp_spec"`
+	SpreadSpec     string `json:"spread_spec"`
+	BidpHedge      string `json:"bidp_hedge"`
+	AskpHedge      string `json:"askp_hedge"`
+	HtsOtstSmtn    string `json:"hts_otst_smtn"`
+	BidpMissing    string `json:"bidp_missing"`
+	AskpMissing    string `json:"askp_missing"`
+	BidpSpecCust   string `json:"bidp_spec_cust"`
+	AskpSpecCust   string `json:"askp_spec_cust"`
+	SpreadSpecCust string `json:"spread_spec_cust"`
+	BidpHedgeCust  string `json:"bidp_hedge_cust"`
+	AskpHedgeCust  string `json:"askp_hedge_cust"`
+	CustSmtn       string `json:"cust_smtn"`
 }
 
 type KISOverseasFutureoptionV1QuotationsInvestorUnpdTrendRequest struct {
@@ -8074,21 +8074,21 @@ type KISOverseasFutureoptionV1QuotationsMarketTime struct {
 }
 
 type KISOverseasFutureoptionV1QuotationsMarketTimeOutputItem struct {
-	FmPdgrCd        string `json:"fm_pdgr_cd,omitempty"`
-	FmPdgrName      string `json:"fm_pdgr_name,omitempty"`
-	FmExcgCd        string `json:"fm_excg_cd,omitempty"`
-	FmExcgName      string `json:"fm_excg_name,omitempty"`
-	FuopDvsnName    string `json:"fuop_dvsn_name,omitempty"`
-	FmClasCd        string `json:"fm_clas_cd,omitempty"`
-	FmClasName      string `json:"fm_clas_name,omitempty"`
-	AmMkmnStrtTmd   string `json:"am_mkmn_strt_tmd,omitempty"`
-	AmMkmnEndTmd    string `json:"am_mkmn_end_tmd,omitempty"`
-	PmMkmnStrtTmd   string `json:"pm_mkmn_strt_tmd,omitempty"`
-	PmMkmnEndTmd    string `json:"pm_mkmn_end_tmd,omitempty"`
-	MkmnNxdyStrtTmd string `json:"mkmn_nxdy_strt_tmd,omitempty"`
-	MkmnNxdyEndTmd  string `json:"mkmn_nxdy_end_tmd,omitempty"`
-	BaseMketStrtTmd string `json:"base_mket_strt_tmd,omitempty"`
-	BaseMketEndTmd  string `json:"base_mket_end_tmd,omitempty"`
+	FmPdgrCd        string `json:"fm_pdgr_cd"`
+	FmPdgrName      string `json:"fm_pdgr_name"`
+	FmExcgCd        string `json:"fm_excg_cd"`
+	FmExcgName      string `json:"fm_excg_name"`
+	FuopDvsnName    string `json:"fuop_dvsn_name"`
+	FmClasCd        string `json:"fm_clas_cd"`
+	FmClasName      string `json:"fm_clas_name"`
+	AmMkmnStrtTmd   string `json:"am_mkmn_strt_tmd"`
+	AmMkmnEndTmd    string `json:"am_mkmn_end_tmd"`
+	PmMkmnStrtTmd   string `json:"pm_mkmn_strt_tmd"`
+	PmMkmnEndTmd    string `json:"pm_mkmn_end_tmd"`
+	MkmnNxdyStrtTmd string `json:"mkmn_nxdy_strt_tmd"`
+	MkmnNxdyEndTmd  string `json:"mkmn_nxdy_end_tmd"`
+	BaseMketStrtTmd string `json:"base_mket_strt_tmd"`
+	BaseMketEndTmd  string `json:"base_mket_end_tmd"`
 }
 
 type KISOverseasFutureoptionV1QuotationsMarketTimeRequest struct {
@@ -8107,23 +8107,23 @@ type KISOverseasFutureoptionV1QuotationsMonthlyCcnl struct {
 }
 
 type KISOverseasFutureoptionV1QuotationsMonthlyCcnlOutput1Item struct {
-	TretCnt  string `json:"tret_cnt,omitempty"`
-	LastNCnt string `json:"last_n_cnt,omitempty"`
-	IndexKey string `json:"index_key,omitempty"`
+	TretCnt  string `json:"tret_cnt"`
+	LastNCnt string `json:"last_n_cnt"`
+	IndexKey string `json:"index_key"`
 }
 
 type KISOverseasFutureoptionV1QuotationsMonthlyCcnlOutput2Item struct {
-	DataDate      string `json:"data_date,omitempty"`
-	DataTime      string `json:"data_time,omitempty"`
-	OpenPrice     string `json:"open_price,omitempty"`
-	HighPrice     string `json:"high_price,omitempty"`
-	LowPrice      string `json:"low_price,omitempty"`
-	LastPrice     string `json:"last_price,omitempty"`
-	LastQntt      string `json:"last_qntt,omitempty"`
-	Vol           string `json:"vol,omitempty"`
-	PrevDiffFlag  string `json:"prev_diff_flag,omitempty"`
-	PrevDiffPrice string `json:"prev_diff_price,omitempty"`
-	PrevDiffRate  string `json:"prev_diff_rate,omitempty"`
+	DataDate      string `json:"data_date"`
+	DataTime      string `json:"data_time"`
+	OpenPrice     string `json:"open_price"`
+	HighPrice     string `json:"high_price"`
+	LowPrice      string `json:"low_price"`
+	LastPrice     string `json:"last_price"`
+	LastQntt      string `json:"last_qntt"`
+	Vol           string `json:"vol"`
+	PrevDiffFlag  string `json:"prev_diff_flag"`
+	PrevDiffPrice string `json:"prev_diff_price"`
+	PrevDiffRate  string `json:"prev_diff_rate"`
 }
 
 type KISOverseasFutureoptionV1QuotationsMonthlyCcnlRequest struct {
@@ -8144,25 +8144,25 @@ type KISOverseasFutureoptionV1QuotationsOptAskingPrice struct {
 }
 
 type KISOverseasFutureoptionV1QuotationsOptAskingPriceOutput1Item struct {
-	OpenPrice     string `json:"open_price,omitempty"`
-	HighPrice     string `json:"high_price,omitempty"`
-	LowpRice      string `json:"lowp_rice,omitempty"`
-	LastPrice     string `json:"last_price,omitempty"`
-	SttlPrice     string `json:"sttl_price,omitempty"`
-	Vol           string `json:"vol,omitempty"`
-	PrevDiffPrice string `json:"prev_diff_price,omitempty"`
-	PrevDiffRate  string `json:"prev_diff_rate,omitempty"`
-	QuotDate      string `json:"quot_date,omitempty"`
-	QuotTime      string `json:"quot_time,omitempty"`
+	OpenPrice     string `json:"open_price"`
+	HighPrice     string `json:"high_price"`
+	LowpRice      string `json:"lowp_rice"`
+	LastPrice     string `json:"last_price"`
+	SttlPrice     string `json:"sttl_price"`
+	Vol           string `json:"vol"`
+	PrevDiffPrice string `json:"prev_diff_price"`
+	PrevDiffRate  string `json:"prev_diff_rate"`
+	QuotDate      string `json:"quot_date"`
+	QuotTime      string `json:"quot_time"`
 }
 
 type KISOverseasFutureoptionV1QuotationsOptAskingPriceOutput2Item struct {
-	BidQntt  string `json:"bid_qntt,omitempty"`
-	BidNum   string `json:"bid_num,omitempty"`
-	BidPrice string `json:"bid_price,omitempty"`
-	AskQntt  string `json:"ask_qntt,omitempty"`
-	AskNum   string `json:"ask_num,omitempty"`
-	AskPrice string `json:"ask_price,omitempty"`
+	BidQntt  string `json:"bid_qntt"`
+	BidNum   string `json:"bid_num"`
+	BidPrice string `json:"bid_price"`
+	AskQntt  string `json:"ask_qntt"`
+	AskNum   string `json:"ask_num"`
+	AskPrice string `json:"ask_price"`
 }
 
 type KISOverseasFutureoptionV1QuotationsOptAskingPriceRequest struct {
@@ -8176,23 +8176,23 @@ type KISOverseasFutureoptionV1QuotationsOptDailyCcnl struct {
 }
 
 type KISOverseasFutureoptionV1QuotationsOptDailyCcnlOutput1Item struct {
-	RetCnt   string `json:"ret_cnt,omitempty"`
-	LastNCnt string `json:"last_n_cnt,omitempty"`
-	IndexKey string `json:"index_key,omitempty"`
+	RetCnt   string `json:"ret_cnt"`
+	LastNCnt string `json:"last_n_cnt"`
+	IndexKey string `json:"index_key"`
 }
 
 type KISOverseasFutureoptionV1QuotationsOptDailyCcnlOutput2Item struct {
-	DataDate      string `json:"data_date,omitempty"`
-	DataTime      string `json:"data_time,omitempty"`
-	OpenPrice     string `json:"open_price,omitempty"`
-	HighPrice     string `json:"high_price,omitempty"`
-	LowPrice      string `json:"low_price,omitempty"`
-	LastPrice     string `json:"last_price,omitempty"`
-	LastQntt      string `json:"last_qntt,omitempty"`
-	Vol           string `json:"vol,omitempty"`
-	PrevDiffFlag  string `json:"prev_diff_flag,omitempty"`
-	PrevDiffPrice string `json:"prev_diff_price,omitempty"`
-	PrevDiffRate  string `json:"prev_diff_rate,omitempty"`
+	DataDate      string `json:"data_date"`
+	DataTime      string `json:"data_time"`
+	OpenPrice     string `json:"open_price"`
+	HighPrice     string `json:"high_price"`
+	LowPrice      string `json:"low_price"`
+	LastPrice     string `json:"last_price"`
+	LastQntt      string `json:"last_qntt"`
+	Vol           string `json:"vol"`
+	PrevDiffFlag  string `json:"prev_diff_flag"`
+	PrevDiffPrice string `json:"prev_diff_price"`
+	PrevDiffRate  string `json:"prev_diff_rate"`
 }
 
 type KISOverseasFutureoptionV1QuotationsOptDailyCcnlRequest struct {
@@ -8212,27 +8212,27 @@ type KISOverseasFutureoptionV1QuotationsOptDetail struct {
 }
 
 type KISOverseasFutureoptionV1QuotationsOptDetailOutput1Item struct {
-	ExchCd        string `json:"exch_cd,omitempty"`
-	ClasCd        string `json:"clas_cd,omitempty"`
-	CrcCd         string `json:"crc_cd,omitempty"`
-	SttlPrice     string `json:"sttl_price,omitempty"`
-	SttlDate      string `json:"sttl_date,omitempty"`
-	TrstMgn       string `json:"trst_mgn,omitempty"`
-	DispDigit     string `json:"disp_digit,omitempty"`
-	TickSz        string `json:"tick_sz,omitempty"`
-	TickVal       string `json:"tick_val,omitempty"`
-	MrktOpenDate  string `json:"mrkt_open_date,omitempty"`
-	MrktOpenTime  string `json:"mrkt_open_time,omitempty"`
-	MrktCloseDate string `json:"mrkt_close_date,omitempty"`
-	MrktCloseTime string `json:"mrkt_close_time,omitempty"`
-	TrdFrDate     string `json:"trd_fr_date,omitempty"`
-	ExprDate      string `json:"expr_date,omitempty"`
-	TrdToDate     string `json:"trd_to_date,omitempty"`
-	RemnCnt       string `json:"remn_cnt,omitempty"`
-	StatTp        string `json:"stat_tp,omitempty"`
-	CtrtSize      string `json:"ctrt_size,omitempty"`
-	StlTp         string `json:"stl_tp,omitempty"`
-	FrstNotiDate  string `json:"frst_noti_date,omitempty"`
+	ExchCd        string `json:"exch_cd"`
+	ClasCd        string `json:"clas_cd"`
+	CrcCd         string `json:"crc_cd"`
+	SttlPrice     string `json:"sttl_price"`
+	SttlDate      string `json:"sttl_date"`
+	TrstMgn       string `json:"trst_mgn"`
+	DispDigit     string `json:"disp_digit"`
+	TickSz        string `json:"tick_sz"`
+	TickVal       string `json:"tick_val"`
+	MrktOpenDate  string `json:"mrkt_open_date"`
+	MrktOpenTime  string `json:"mrkt_open_time"`
+	MrktCloseDate string `json:"mrkt_close_date"`
+	MrktCloseTime string `json:"mrkt_close_time"`
+	TrdFrDate     string `json:"trd_fr_date"`
+	ExprDate      string `json:"expr_date"`
+	TrdToDate     string `json:"trd_to_date"`
+	RemnCnt       string `json:"remn_cnt"`
+	StatTp        string `json:"stat_tp"`
+	CtrtSize      string `json:"ctrt_size"`
+	StlTp         string `json:"stl_tp"`
+	FrstNotiDate  string `json:"frst_noti_date"`
 }
 
 type KISOverseasFutureoptionV1QuotationsOptDetailRequest struct {
@@ -8246,23 +8246,23 @@ type KISOverseasFutureoptionV1QuotationsOptMonthlyCcnl struct {
 }
 
 type KISOverseasFutureoptionV1QuotationsOptMonthlyCcnlOutput1Item struct {
-	RetCnt   string `json:"ret_cnt,omitempty"`
-	LastNCnt string `json:"last_n_cnt,omitempty"`
-	IndexKey string `json:"index_key,omitempty"`
+	RetCnt   string `json:"ret_cnt"`
+	LastNCnt string `json:"last_n_cnt"`
+	IndexKey string `json:"index_key"`
 }
 
 type KISOverseasFutureoptionV1QuotationsOptMonthlyCcnlOutput2Item struct {
-	DataDate      string `json:"data_date,omitempty"`
-	DataTime      string `json:"data_time,omitempty"`
-	OpenPrice     string `json:"open_price,omitempty"`
-	HighPrice     string `json:"high_price,omitempty"`
-	LowPrice      string `json:"low_price,omitempty"`
-	LastPrice     string `json:"last_price,omitempty"`
-	LastQntt      string `json:"last_qntt,omitempty"`
-	Vol           string `json:"vol,omitempty"`
-	PrevDiffFlag  string `json:"prev_diff_flag,omitempty"`
-	PrevDiffPrice string `json:"prev_diff_price,omitempty"`
-	PrevDiffRate  string `json:"prev_diff_rate,omitempty"`
+	DataDate      string `json:"data_date"`
+	DataTime      string `json:"data_time"`
+	OpenPrice     string `json:"open_price"`
+	HighPrice     string `json:"high_price"`
+	LowPrice      string `json:"low_price"`
+	LastPrice     string `json:"last_price"`
+	LastQntt      string `json:"last_qntt"`
+	Vol           string `json:"vol"`
+	PrevDiffFlag  string `json:"prev_diff_flag"`
+	PrevDiffPrice string `json:"prev_diff_price"`
+	PrevDiffRate  string `json:"prev_diff_rate"`
 }
 
 type KISOverseasFutureoptionV1QuotationsOptMonthlyCcnlRequest struct {
@@ -8282,37 +8282,37 @@ type KISOverseasFutureoptionV1QuotationsOptPrice struct {
 }
 
 type KISOverseasFutureoptionV1QuotationsOptPriceOutput1Item struct {
-	ProcDate      string `json:"proc_date,omitempty"`
-	ProcTime      string `json:"proc_time,omitempty"`
-	OpenPrice     string `json:"open_price,omitempty"`
-	HighPrice     string `json:"high_price,omitempty"`
-	LowPrice      string `json:"low_price,omitempty"`
-	LastPrice     string `json:"last_price,omitempty"`
-	Vol           string `json:"vol,omitempty"`
-	PrevDiffFlag  string `json:"prev_diff_flag,omitempty"`
-	PrevDiffPrice string `json:"prev_diff_price,omitempty"`
-	PrevDiffRate  string `json:"prev_diff_rate,omitempty"`
-	BidQntt       string `json:"bid_qntt,omitempty"`
-	BidPrice      string `json:"bid_price,omitempty"`
-	AskQntt       string `json:"ask_qntt,omitempty"`
-	AskPrice      string `json:"ask_price,omitempty"`
-	TrstMgn       string `json:"trst_mgn,omitempty"`
-	ExchCd        string `json:"exch_cd,omitempty"`
-	CrcCd         string `json:"crc_cd,omitempty"`
-	TrdFrDate     string `json:"trd_fr_date,omitempty"`
-	ExprDate      string `json:"expr_date,omitempty"`
-	TrdToDate     string `json:"trd_to_date,omitempty"`
-	RemnCnt       string `json:"remn_cnt,omitempty"`
-	LastQntt      string `json:"last_qntt,omitempty"`
-	TotAskQntt    string `json:"tot_ask_qntt,omitempty"`
-	TotBidQntt    string `json:"tot_bid_qntt,omitempty"`
-	TickSize      string `json:"tick_size,omitempty"`
-	OpenDate      string `json:"open_date,omitempty"`
-	OpenTime      string `json:"open_time,omitempty"`
-	CloseDate     string `json:"close_date,omitempty"`
-	CloseTime     string `json:"close_time,omitempty"`
-	Sbsnsdate     string `json:"sbsnsdate,omitempty"`
-	SttlPrice     string `json:"sttl_price,omitempty"`
+	ProcDate      string `json:"proc_date"`
+	ProcTime      string `json:"proc_time"`
+	OpenPrice     string `json:"open_price"`
+	HighPrice     string `json:"high_price"`
+	LowPrice      string `json:"low_price"`
+	LastPrice     string `json:"last_price"`
+	Vol           string `json:"vol"`
+	PrevDiffFlag  string `json:"prev_diff_flag"`
+	PrevDiffPrice string `json:"prev_diff_price"`
+	PrevDiffRate  string `json:"prev_diff_rate"`
+	BidQntt       string `json:"bid_qntt"`
+	BidPrice      string `json:"bid_price"`
+	AskQntt       string `json:"ask_qntt"`
+	AskPrice      string `json:"ask_price"`
+	TrstMgn       string `json:"trst_mgn"`
+	ExchCd        string `json:"exch_cd"`
+	CrcCd         string `json:"crc_cd"`
+	TrdFrDate     string `json:"trd_fr_date"`
+	ExprDate      string `json:"expr_date"`
+	TrdToDate     string `json:"trd_to_date"`
+	RemnCnt       string `json:"remn_cnt"`
+	LastQntt      string `json:"last_qntt"`
+	TotAskQntt    string `json:"tot_ask_qntt"`
+	TotBidQntt    string `json:"tot_bid_qntt"`
+	TickSize      string `json:"tick_size"`
+	OpenDate      string `json:"open_date"`
+	OpenTime      string `json:"open_time"`
+	CloseDate     string `json:"close_date"`
+	CloseTime     string `json:"close_time"`
+	Sbsnsdate     string `json:"sbsnsdate"`
+	SttlPrice     string `json:"sttl_price"`
 }
 
 type KISOverseasFutureoptionV1QuotationsOptPriceRequest struct {
@@ -8326,23 +8326,23 @@ type KISOverseasFutureoptionV1QuotationsOptTickCcnl struct {
 }
 
 type KISOverseasFutureoptionV1QuotationsOptTickCcnlOutput1Item struct {
-	RetCnt   string `json:"ret_cnt,omitempty"`
-	LastNCnt string `json:"last_n_cnt,omitempty"`
-	IndexKey string `json:"index_key,omitempty"`
+	RetCnt   string `json:"ret_cnt"`
+	LastNCnt string `json:"last_n_cnt"`
+	IndexKey string `json:"index_key"`
 }
 
 type KISOverseasFutureoptionV1QuotationsOptTickCcnlOutput2Item struct {
-	DataDate      string `json:"data_date,omitempty"`
-	DataTime      string `json:"data_time,omitempty"`
-	OpenPrice     string `json:"open_price,omitempty"`
-	HighPrice     string `json:"high_price,omitempty"`
-	LowPrice      string `json:"low_price,omitempty"`
-	LastPrice     string `json:"last_price,omitempty"`
-	LastQntt      string `json:"last_qntt,omitempty"`
-	Vol           string `json:"vol,omitempty"`
-	PrevDiffFlag  string `json:"prev_diff_flag,omitempty"`
-	PrevDiffPrice string `json:"prev_diff_price,omitempty"`
-	PrevDiffRate  string `json:"prev_diff_rate,omitempty"`
+	DataDate      string `json:"data_date"`
+	DataTime      string `json:"data_time"`
+	OpenPrice     string `json:"open_price"`
+	HighPrice     string `json:"high_price"`
+	LowPrice      string `json:"low_price"`
+	LastPrice     string `json:"last_price"`
+	LastQntt      string `json:"last_qntt"`
+	Vol           string `json:"vol"`
+	PrevDiffFlag  string `json:"prev_diff_flag"`
+	PrevDiffPrice string `json:"prev_diff_price"`
+	PrevDiffRate  string `json:"prev_diff_rate"`
 }
 
 type KISOverseasFutureoptionV1QuotationsOptTickCcnlRequest struct {
@@ -8363,23 +8363,23 @@ type KISOverseasFutureoptionV1QuotationsOptWeeklyCcnl struct {
 }
 
 type KISOverseasFutureoptionV1QuotationsOptWeeklyCcnlOutput1Item struct {
-	RetCnt   string `json:"ret_cnt,omitempty"`
-	LastNCnt string `json:"last_n_cnt,omitempty"`
-	IndexKey string `json:"index_key,omitempty"`
+	RetCnt   string `json:"ret_cnt"`
+	LastNCnt string `json:"last_n_cnt"`
+	IndexKey string `json:"index_key"`
 }
 
 type KISOverseasFutureoptionV1QuotationsOptWeeklyCcnlOutput2Item struct {
-	DataDate      string `json:"data_date,omitempty"`
-	DataTime      string `json:"data_time,omitempty"`
-	OpenPrice     string `json:"open_price,omitempty"`
-	HighPrice     string `json:"high_price,omitempty"`
-	LowPrice      string `json:"low_price,omitempty"`
-	LastPrice     string `json:"last_price,omitempty"`
-	LastQntt      string `json:"last_qntt,omitempty"`
-	Vol           string `json:"vol,omitempty"`
-	PrevDiffFlag  string `json:"prev_diff_flag,omitempty"`
-	PrevDiffPrice string `json:"prev_diff_price,omitempty"`
-	PrevDiffRate  string `json:"prev_diff_rate,omitempty"`
+	DataDate      string `json:"data_date"`
+	DataTime      string `json:"data_time"`
+	OpenPrice     string `json:"open_price"`
+	HighPrice     string `json:"high_price"`
+	LowPrice      string `json:"low_price"`
+	LastPrice     string `json:"last_price"`
+	LastQntt      string `json:"last_qntt"`
+	Vol           string `json:"vol"`
+	PrevDiffFlag  string `json:"prev_diff_flag"`
+	PrevDiffPrice string `json:"prev_diff_price"`
+	PrevDiffRate  string `json:"prev_diff_rate"`
 }
 
 type KISOverseasFutureoptionV1QuotationsOptWeeklyCcnlRequest struct {
@@ -8399,28 +8399,28 @@ type KISOverseasFutureoptionV1QuotationsSearchContractDetail struct {
 }
 
 type KISOverseasFutureoptionV1QuotationsSearchContractDetailOutput2Item struct {
-	ExchCd        string `json:"exch_cd,omitempty"`
-	ClasCd        string `json:"clas_cd,omitempty"`
-	CrcCd         string `json:"crc_cd,omitempty"`
-	SttlPrice     string `json:"sttl_price,omitempty"`
-	SttlDate      string `json:"sttl_date,omitempty"`
-	TrstMgn       string `json:"trst_mgn,omitempty"`
-	DispDigit     string `json:"disp_digit,omitempty"`
-	TickSz        string `json:"tick_sz,omitempty"`
-	TickVal       string `json:"tick_val,omitempty"`
-	MrktOpenDate  string `json:"mrkt_open_date,omitempty"`
-	MrktOpenTime  string `json:"mrkt_open_time,omitempty"`
-	MrktCloseDate string `json:"mrkt_close_date,omitempty"`
-	MrktCloseTime string `json:"mrkt_close_time,omitempty"`
-	TrdFrDate     string `json:"trd_fr_date,omitempty"`
-	ExprDate      string `json:"expr_date,omitempty"`
-	TrdToDate     string `json:"trd_to_date,omitempty"`
-	RemnCnt       string `json:"remn_cnt,omitempty"`
-	StatTp        string `json:"stat_tp,omitempty"`
-	CtrtSize      string `json:"ctrt_size,omitempty"`
-	StlTp         string `json:"stl_tp,omitempty"`
-	FrstNotiDate  string `json:"frst_noti_date,omitempty"`
-	SubExchNm     string `json:"sub_exch_nm,omitempty"`
+	ExchCd        string `json:"exch_cd"`
+	ClasCd        string `json:"clas_cd"`
+	CrcCd         string `json:"crc_cd"`
+	SttlPrice     string `json:"sttl_price"`
+	SttlDate      string `json:"sttl_date"`
+	TrstMgn       string `json:"trst_mgn"`
+	DispDigit     string `json:"disp_digit"`
+	TickSz        string `json:"tick_sz"`
+	TickVal       string `json:"tick_val"`
+	MrktOpenDate  string `json:"mrkt_open_date"`
+	MrktOpenTime  string `json:"mrkt_open_time"`
+	MrktCloseDate string `json:"mrkt_close_date"`
+	MrktCloseTime string `json:"mrkt_close_time"`
+	TrdFrDate     string `json:"trd_fr_date"`
+	ExprDate      string `json:"expr_date"`
+	TrdToDate     string `json:"trd_to_date"`
+	RemnCnt       string `json:"remn_cnt"`
+	StatTp        string `json:"stat_tp"`
+	CtrtSize      string `json:"ctrt_size"`
+	StlTp         string `json:"stl_tp"`
+	FrstNotiDate  string `json:"frst_noti_date"`
+	SubExchNm     string `json:"sub_exch_nm"`
 }
 
 type KISOverseasFutureoptionV1QuotationsSearchContractDetailRequest struct {
@@ -8436,27 +8436,27 @@ type KISOverseasFutureoptionV1QuotationsSearchOptDetail struct {
 }
 
 type KISOverseasFutureoptionV1QuotationsSearchOptDetailOutput2Item struct {
-	ExchCd        string `json:"exch_cd,omitempty"`
-	ClasCd        string `json:"clas_cd,omitempty"`
-	CrcCd         string `json:"crc_cd,omitempty"`
-	SttlPrice     string `json:"sttl_price,omitempty"`
-	SttlDate      string `json:"sttl_date,omitempty"`
-	TrstMgn       string `json:"trst_mgn,omitempty"`
-	DispDigit     string `json:"disp_digit,omitempty"`
-	TickSz        string `json:"tick_sz,omitempty"`
-	TickVal       string `json:"tick_val,omitempty"`
-	MrktOpenDate  string `json:"mrkt_open_date,omitempty"`
-	MrktOpenTime  string `json:"mrkt_open_time,omitempty"`
-	MrktCloseDate string `json:"mrkt_close_date,omitempty"`
-	MrktCloseTime string `json:"mrkt_close_time,omitempty"`
-	TrdFrDate     string `json:"trd_fr_date,omitempty"`
-	ExprDate      string `json:"expr_date,omitempty"`
-	TrdToDate     string `json:"trd_to_date,omitempty"`
-	RemnCnt       string `json:"remn_cnt,omitempty"`
-	StatTp        string `json:"stat_tp,omitempty"`
-	CtrtSize      string `json:"ctrt_size,omitempty"`
-	StlTp         string `json:"stl_tp,omitempty"`
-	FrstNotiDate  string `json:"frst_noti_date,omitempty"`
+	ExchCd        string `json:"exch_cd"`
+	ClasCd        string `json:"clas_cd"`
+	CrcCd         string `json:"crc_cd"`
+	SttlPrice     string `json:"sttl_price"`
+	SttlDate      string `json:"sttl_date"`
+	TrstMgn       string `json:"trst_mgn"`
+	DispDigit     string `json:"disp_digit"`
+	TickSz        string `json:"tick_sz"`
+	TickVal       string `json:"tick_val"`
+	MrktOpenDate  string `json:"mrkt_open_date"`
+	MrktOpenTime  string `json:"mrkt_open_time"`
+	MrktCloseDate string `json:"mrkt_close_date"`
+	MrktCloseTime string `json:"mrkt_close_time"`
+	TrdFrDate     string `json:"trd_fr_date"`
+	ExprDate      string `json:"expr_date"`
+	TrdToDate     string `json:"trd_to_date"`
+	RemnCnt       string `json:"remn_cnt"`
+	StatTp        string `json:"stat_tp"`
+	CtrtSize      string `json:"ctrt_size"`
+	StlTp         string `json:"stl_tp"`
+	FrstNotiDate  string `json:"frst_noti_date"`
 }
 
 type KISOverseasFutureoptionV1QuotationsSearchOptDetailRequest struct {
@@ -8472,29 +8472,29 @@ type KISOverseasFutureoptionV1QuotationsStockDetail struct {
 }
 
 type KISOverseasFutureoptionV1QuotationsStockDetailOutput1Item struct {
-	ExchCd        string `json:"exch_cd,omitempty"`
-	TickSz        string `json:"tick_sz,omitempty"`
-	DispDigit     string `json:"disp_digit,omitempty"`
-	TrstMgn       string `json:"trst_mgn,omitempty"`
-	SttlDate      string `json:"sttl_date,omitempty"`
-	PrevPrice     string `json:"prev_price,omitempty"`
-	CrcCd         string `json:"crc_cd,omitempty"`
-	ClasCd        string `json:"clas_cd,omitempty"`
-	TickVal       string `json:"tick_val,omitempty"`
-	MrktOpenDate  string `json:"mrkt_open_date,omitempty"`
-	MrktOpenTime  string `json:"mrkt_open_time,omitempty"`
-	MrktCloseDate string `json:"mrkt_close_date,omitempty"`
-	MrktCloseTime string `json:"mrkt_close_time,omitempty"`
-	TrdFrDate     string `json:"trd_fr_date,omitempty"`
-	ExprDate      string `json:"expr_date,omitempty"`
-	TrdToDate     string `json:"trd_to_date,omitempty"`
-	RemnCnt       string `json:"remn_cnt,omitempty"`
-	StatTp        string `json:"stat_tp,omitempty"`
-	CtrtSize      string `json:"ctrt_size,omitempty"`
-	StlTp         string `json:"stl_tp,omitempty"`
-	FrstNotiDate  string `json:"frst_noti_date,omitempty"`
-	SprdSrsCd1    string `json:"sprd_srs_cd1,omitempty"`
-	SprdSrsCd2    string `json:"sprd_srs_cd2,omitempty"`
+	ExchCd        string `json:"exch_cd"`
+	TickSz        string `json:"tick_sz"`
+	DispDigit     string `json:"disp_digit"`
+	TrstMgn       string `json:"trst_mgn"`
+	SttlDate      string `json:"sttl_date"`
+	PrevPrice     string `json:"prev_price"`
+	CrcCd         string `json:"crc_cd"`
+	ClasCd        string `json:"clas_cd"`
+	TickVal       string `json:"tick_val"`
+	MrktOpenDate  string `json:"mrkt_open_date"`
+	MrktOpenTime  string `json:"mrkt_open_time"`
+	MrktCloseDate string `json:"mrkt_close_date"`
+	MrktCloseTime string `json:"mrkt_close_time"`
+	TrdFrDate     string `json:"trd_fr_date"`
+	ExprDate      string `json:"expr_date"`
+	TrdToDate     string `json:"trd_to_date"`
+	RemnCnt       string `json:"remn_cnt"`
+	StatTp        string `json:"stat_tp"`
+	CtrtSize      string `json:"ctrt_size"`
+	StlTp         string `json:"stl_tp"`
+	FrstNotiDate  string `json:"frst_noti_date"`
+	SprdSrsCd1    string `json:"sprd_srs_cd1"`
+	SprdSrsCd2    string `json:"sprd_srs_cd2"`
 }
 
 type KISOverseasFutureoptionV1QuotationsStockDetailRequest struct {
@@ -8508,23 +8508,23 @@ type KISOverseasFutureoptionV1QuotationsTickCcnl struct {
 }
 
 type KISOverseasFutureoptionV1QuotationsTickCcnlOutput1Item struct {
-	TretCnt  string `json:"tret_cnt,omitempty"`
-	LastNCnt string `json:"last_n_cnt,omitempty"`
-	IndexKey string `json:"index_key,omitempty"`
+	TretCnt  string `json:"tret_cnt"`
+	LastNCnt string `json:"last_n_cnt"`
+	IndexKey string `json:"index_key"`
 }
 
 type KISOverseasFutureoptionV1QuotationsTickCcnlOutput2Item struct {
-	DataDate      string `json:"data_date,omitempty"`
-	DataTime      string `json:"data_time,omitempty"`
-	OpenPrice     string `json:"open_price,omitempty"`
-	HighPrice     string `json:"high_price,omitempty"`
-	LowPrice      string `json:"low_price,omitempty"`
-	LastPrice     string `json:"last_price,omitempty"`
-	LastQntt      string `json:"last_qntt,omitempty"`
-	Vol           string `json:"vol,omitempty"`
-	PrevDiffFlag  string `json:"prev_diff_flag,omitempty"`
-	PrevDiffPrice string `json:"prev_diff_price,omitempty"`
-	PrevDiffRate  string `json:"prev_diff_rate,omitempty"`
+	DataDate      string `json:"data_date"`
+	DataTime      string `json:"data_time"`
+	OpenPrice     string `json:"open_price"`
+	HighPrice     string `json:"high_price"`
+	LowPrice      string `json:"low_price"`
+	LastPrice     string `json:"last_price"`
+	LastQntt      string `json:"last_qntt"`
+	Vol           string `json:"vol"`
+	PrevDiffFlag  string `json:"prev_diff_flag"`
+	PrevDiffPrice string `json:"prev_diff_price"`
+	PrevDiffRate  string `json:"prev_diff_rate"`
 }
 
 type KISOverseasFutureoptionV1QuotationsTickCcnlRequest struct {
@@ -8545,23 +8545,23 @@ type KISOverseasFutureoptionV1QuotationsWeeklyCcnl struct {
 }
 
 type KISOverseasFutureoptionV1QuotationsWeeklyCcnlOutput1Item struct {
-	RetCnt   string `json:"ret_cnt,omitempty"`
-	LastNCnt string `json:"last_n_cnt,omitempty"`
-	IndexKey string `json:"index_key,omitempty"`
+	RetCnt   string `json:"ret_cnt"`
+	LastNCnt string `json:"last_n_cnt"`
+	IndexKey string `json:"index_key"`
 }
 
 type KISOverseasFutureoptionV1QuotationsWeeklyCcnlOutput2Item struct {
-	DataDate      string `json:"data_date,omitempty"`
-	DataTime      string `json:"data_time,omitempty"`
-	OpenPrice     string `json:"open_price,omitempty"`
-	HighPrice     string `json:"high_price,omitempty"`
-	LowPrice      string `json:"low_price,omitempty"`
-	LastPrice     string `json:"last_price,omitempty"`
-	LastQntt      string `json:"last_qntt,omitempty"`
-	Vol           string `json:"vol,omitempty"`
-	PrevDiffFlag  string `json:"prev_diff_flag,omitempty"`
-	PrevDiffPrice string `json:"prev_diff_price,omitempty"`
-	PrevDiffRate  string `json:"prev_diff_rate,omitempty"`
+	DataDate      string `json:"data_date"`
+	DataTime      string `json:"data_time"`
+	OpenPrice     string `json:"open_price"`
+	HighPrice     string `json:"high_price"`
+	LowPrice      string `json:"low_price"`
+	LastPrice     string `json:"last_price"`
+	LastQntt      string `json:"last_qntt"`
+	Vol           string `json:"vol"`
+	PrevDiffFlag  string `json:"prev_diff_flag"`
+	PrevDiffPrice string `json:"prev_diff_price"`
+	PrevDiffRate  string `json:"prev_diff_rate"`
 }
 
 type KISOverseasFutureoptionV1QuotationsWeeklyCcnlRequest struct {
@@ -8581,37 +8581,37 @@ type KISOverseasFutureoptionV1TradingInquireCcld struct {
 }
 
 type KISOverseasFutureoptionV1TradingInquireCcldOutputItem struct {
-	Cano            string `json:"cano,omitempty"`
-	AcntPrdtCd      string `json:"acnt_prdt_cd,omitempty"`
-	OrdDt           string `json:"ord_dt,omitempty"`
-	Odno            string `json:"odno,omitempty"`
-	OrgnOrdDt       string `json:"orgn_ord_dt,omitempty"`
-	OrgnOdno        string `json:"orgn_odno,omitempty"`
-	OvrsFutrFxPdno  string `json:"ovrs_futr_fx_pdno,omitempty"`
-	RcitDvsnCd      string `json:"rcit_dvsn_cd,omitempty"`
-	SllBuyDvsnCd    string `json:"sll_buy_dvsn_cd,omitempty"`
-	TradStgyDvsnCd  string `json:"trad_stgy_dvsn_cd,omitempty"`
-	BassPricTypeCd  string `json:"bass_pric_type_cd,omitempty"`
-	OrdStatCd       string `json:"ord_stat_cd,omitempty"`
-	FmOrdQty        string `json:"fm_ord_qty,omitempty"`
-	FmOrdPric       string `json:"fm_ord_pric,omitempty"`
-	FmStopOrdPric   string `json:"fm_stop_ord_pric,omitempty"`
-	RsvnDvsn        string `json:"rsvn_dvsn,omitempty"`
-	FmCcldQty       string `json:"fm_ccld_qty,omitempty"`
-	FmCcldPric      string `json:"fm_ccld_pric,omitempty"`
-	FmOrdRmnQty     string `json:"fm_ord_rmn_qty,omitempty"`
-	OrdGrpName      string `json:"ord_grp_name,omitempty"`
-	ErlmDtlDtime    string `json:"erlm_dtl_dtime,omitempty"`
-	CcldDtlDtime    string `json:"ccld_dtl_dtime,omitempty"`
-	OrdStfno        string `json:"ord_stfno,omitempty"`
-	Rmks1           string `json:"rmks1,omitempty"`
-	NewLqdDvsnCd    string `json:"new_lqd_dvsn_cd,omitempty"`
-	FmLqdLmtOrdPric string `json:"fm_lqd_lmt_ord_pric,omitempty"`
-	FmLqdStopPric   string `json:"fm_lqd_stop_pric,omitempty"`
-	CcldCndtCd      string `json:"ccld_cndt_cd,omitempty"`
-	NotiValdDt      string `json:"noti_vald_dt,omitempty"`
-	AcntTypeCd      string `json:"acnt_type_cd,omitempty"`
-	FuopDvsn        string `json:"fuop_dvsn,omitempty"`
+	Cano            string `json:"cano"`
+	AcntPrdtCd      string `json:"acnt_prdt_cd"`
+	OrdDt           string `json:"ord_dt"`
+	Odno            string `json:"odno"`
+	OrgnOrdDt       string `json:"orgn_ord_dt"`
+	OrgnOdno        string `json:"orgn_odno"`
+	OvrsFutrFxPdno  string `json:"ovrs_futr_fx_pdno"`
+	RcitDvsnCd      string `json:"rcit_dvsn_cd"`
+	SllBuyDvsnCd    string `json:"sll_buy_dvsn_cd"`
+	TradStgyDvsnCd  string `json:"trad_stgy_dvsn_cd"`
+	BassPricTypeCd  string `json:"bass_pric_type_cd"`
+	OrdStatCd       string `json:"ord_stat_cd"`
+	FmOrdQty        string `json:"fm_ord_qty"`
+	FmOrdPric       string `json:"fm_ord_pric"`
+	FmStopOrdPric   string `json:"fm_stop_ord_pric"`
+	RsvnDvsn        string `json:"rsvn_dvsn"`
+	FmCcldQty       string `json:"fm_ccld_qty"`
+	FmCcldPric      string `json:"fm_ccld_pric"`
+	FmOrdRmnQty     string `json:"fm_ord_rmn_qty"`
+	OrdGrpName      string `json:"ord_grp_name"`
+	ErlmDtlDtime    string `json:"erlm_dtl_dtime"`
+	CcldDtlDtime    string `json:"ccld_dtl_dtime"`
+	OrdStfno        string `json:"ord_stfno"`
+	Rmks1           string `json:"rmks1"`
+	NewLqdDvsnCd    string `json:"new_lqd_dvsn_cd"`
+	FmLqdLmtOrdPric string `json:"fm_lqd_lmt_ord_pric"`
+	FmLqdStopPric   string `json:"fm_lqd_stop_pric"`
+	CcldCndtCd      string `json:"ccld_cndt_cd"`
+	NotiValdDt      string `json:"noti_vald_dt"`
+	AcntTypeCd      string `json:"acnt_type_cd"`
+	FuopDvsn        string `json:"fuop_dvsn"`
 }
 
 type KISOverseasFutureoptionV1TradingInquireCcldRequest struct {
@@ -8631,29 +8631,29 @@ type KISOverseasFutureoptionV1TradingInquireDailyCcld struct {
 }
 
 type KISOverseasFutureoptionV1TradingInquireDailyCcldOutput2Item struct {
-	FmTotCcldQty     string `json:"fm_tot_ccld_qty,omitempty"`
-	FmTotFutrAgrmAmt string `json:"fm_tot_futr_agrm_amt,omitempty"`
-	FmTotOptAgrmAmt  string `json:"fm_tot_opt_agrm_amt,omitempty"`
-	FmFeeSmtl        string `json:"fm_fee_smtl,omitempty"`
+	FmTotCcldQty     string `json:"fm_tot_ccld_qty"`
+	FmTotFutrAgrmAmt string `json:"fm_tot_futr_agrm_amt"`
+	FmTotOptAgrmAmt  string `json:"fm_tot_opt_agrm_amt"`
+	FmFeeSmtl        string `json:"fm_fee_smtl"`
 }
 
 type KISOverseasFutureoptionV1TradingInquireDailyCcldOutput1Item struct {
-	Dt                string `json:"dt,omitempty"`
-	Ccno              string `json:"ccno,omitempty"`
-	OvrsFutrFxPdno    string `json:"ovrs_futr_fx_pdno,omitempty"`
-	SllBuyDvsnCd      string `json:"sll_buy_dvsn_cd,omitempty"`
-	FmCcldQty         string `json:"fm_ccld_qty,omitempty"`
-	FmCcldAmt         string `json:"fm_ccld_amt,omitempty"`
-	FmFutrCcldAmt     string `json:"fm_futr_ccld_amt,omitempty"`
-	FmOptCcldAmt      string `json:"fm_opt_ccld_amt,omitempty"`
-	CrcyCd            string `json:"crcy_cd,omitempty"`
-	FmFee             string `json:"fm_fee,omitempty"`
-	FmFutrPureAgrmAmt string `json:"fm_futr_pure_agrm_amt,omitempty"`
-	FmOptPureAgrmAmt  string `json:"fm_opt_pure_agrm_amt,omitempty"`
-	CcldDtlDtime      string `json:"ccld_dtl_dtime,omitempty"`
-	OrdDt             string `json:"ord_dt,omitempty"`
-	Odno              string `json:"odno,omitempty"`
-	OrdMdiaDvsnName   string `json:"ord_mdia_dvsn_name,omitempty"`
+	Dt                string `json:"dt"`
+	Ccno              string `json:"ccno"`
+	OvrsFutrFxPdno    string `json:"ovrs_futr_fx_pdno"`
+	SllBuyDvsnCd      string `json:"sll_buy_dvsn_cd"`
+	FmCcldQty         string `json:"fm_ccld_qty"`
+	FmCcldAmt         string `json:"fm_ccld_amt"`
+	FmFutrCcldAmt     string `json:"fm_futr_ccld_amt"`
+	FmOptCcldAmt      string `json:"fm_opt_ccld_amt"`
+	CrcyCd            string `json:"crcy_cd"`
+	FmFee             string `json:"fm_fee"`
+	FmFutrPureAgrmAmt string `json:"fm_futr_pure_agrm_amt"`
+	FmOptPureAgrmAmt  string `json:"fm_opt_pure_agrm_amt"`
+	CcldDtlDtime      string `json:"ccld_dtl_dtime"`
+	OrdDt             string `json:"ord_dt"`
+	Odno              string `json:"odno"`
+	OrdMdiaDvsnName   string `json:"ord_mdia_dvsn_name"`
 }
 
 type KISOverseasFutureoptionV1TradingInquireDailyCcldRequest struct {
@@ -8676,33 +8676,33 @@ type KISOverseasFutureoptionV1TradingInquireDailyOrder struct {
 }
 
 type KISOverseasFutureoptionV1TradingInquireDailyOrderOutputItem struct {
-	Cano           string `json:"cano,omitempty"`
-	AcntPrdtCd     string `json:"acnt_prdt_cd,omitempty"`
-	Dt             string `json:"dt,omitempty"`
-	OrdDt          string `json:"ord_dt,omitempty"`
-	Odno           string `json:"odno,omitempty"`
-	OrgnOrdDt      string `json:"orgn_ord_dt,omitempty"`
-	OrgnOdno       string `json:"orgn_odno,omitempty"`
-	OvrsFutrFxPdno string `json:"ovrs_futr_fx_pdno,omitempty"`
-	RvseCnclDvsnCd string `json:"rvse_cncl_dvsn_cd,omitempty"`
-	SllBuyDvsnCd   string `json:"sll_buy_dvsn_cd,omitempty"`
-	CplxOrdDvsnCd  string `json:"cplx_ord_dvsn_cd,omitempty"`
-	PricDvsnCd     string `json:"pric_dvsn_cd,omitempty"`
-	RcitDvsnCd     string `json:"rcit_dvsn_cd,omitempty"`
-	FmOrdQty       string `json:"fm_ord_qty,omitempty"`
-	FmOrdPric      string `json:"fm_ord_pric,omitempty"`
-	FmStopOrdPric  string `json:"fm_stop_ord_pric,omitempty"`
-	EcisRsvnOrdYn  string `json:"ecis_rsvn_ord_yn,omitempty"`
-	FmCcldQty      string `json:"fm_ccld_qty,omitempty"`
-	FmCcldPric     string `json:"fm_ccld_pric,omitempty"`
-	FmOrdRmnQty    string `json:"fm_ord_rmn_qty,omitempty"`
-	OrdGrpName     string `json:"ord_grp_name,omitempty"`
-	RcitDtlDtime   string `json:"rcit_dtl_dtime,omitempty"`
-	CcldDtlDtime   string `json:"ccld_dtl_dtime,omitempty"`
-	OrdrEmpNo      string `json:"ordr_emp_no,omitempty"`
-	RjctRsonName   string `json:"rjct_rson_name,omitempty"`
-	CcldCndtCd     string `json:"ccld_cndt_cd,omitempty"`
-	TradEndDt      string `json:"trad_end_dt,omitempty"`
+	Cano           string `json:"cano"`
+	AcntPrdtCd     string `json:"acnt_prdt_cd"`
+	Dt             string `json:"dt"`
+	OrdDt          string `json:"ord_dt"`
+	Odno           string `json:"odno"`
+	OrgnOrdDt      string `json:"orgn_ord_dt"`
+	OrgnOdno       string `json:"orgn_odno"`
+	OvrsFutrFxPdno string `json:"ovrs_futr_fx_pdno"`
+	RvseCnclDvsnCd string `json:"rvse_cncl_dvsn_cd"`
+	SllBuyDvsnCd   string `json:"sll_buy_dvsn_cd"`
+	CplxOrdDvsnCd  string `json:"cplx_ord_dvsn_cd"`
+	PricDvsnCd     string `json:"pric_dvsn_cd"`
+	RcitDvsnCd     string `json:"rcit_dvsn_cd"`
+	FmOrdQty       string `json:"fm_ord_qty"`
+	FmOrdPric      string `json:"fm_ord_pric"`
+	FmStopOrdPric  string `json:"fm_stop_ord_pric"`
+	EcisRsvnOrdYn  string `json:"ecis_rsvn_ord_yn"`
+	FmCcldQty      string `json:"fm_ccld_qty"`
+	FmCcldPric     string `json:"fm_ccld_pric"`
+	FmOrdRmnQty    string `json:"fm_ord_rmn_qty"`
+	OrdGrpName     string `json:"ord_grp_name"`
+	RcitDtlDtime   string `json:"rcit_dtl_dtime"`
+	CcldDtlDtime   string `json:"ccld_dtl_dtime"`
+	OrdrEmpNo      string `json:"ordr_emp_no"`
+	RjctRsonName   string `json:"rjct_rson_name"`
+	CcldCndtCd     string `json:"ccld_cndt_cd"`
+	TradEndDt      string `json:"trad_end_dt"`
 }
 
 type KISOverseasFutureoptionV1TradingInquireDailyOrderRequest struct {
@@ -8724,31 +8724,31 @@ type KISOverseasFutureoptionV1TradingInquireDeposit struct {
 }
 
 type KISOverseasFutureoptionV1TradingInquireDepositOutputItem struct {
-	FmNxdyDnclAmt        string `json:"fm_nxdy_dncl_amt,omitempty"`
-	FmTotAsstEvluAmt     string `json:"fm_tot_asst_evlu_amt,omitempty"`
-	Cano                 string `json:"cano,omitempty"`
-	AcntPrdtCd           string `json:"acnt_prdt_cd,omitempty"`
-	CrcyCd               string `json:"crcy_cd,omitempty"`
-	RespDt               string `json:"resp_dt,omitempty"`
-	FmDncaRmnd           string `json:"fm_dnca_rmnd,omitempty"`
-	FmLqdPflsAmt         string `json:"fm_lqd_pfls_amt,omitempty"`
-	FmFee                string `json:"fm_fee,omitempty"`
-	FmFuopEvluPflsAmt    string `json:"fm_fuop_evlu_pfls_amt,omitempty"`
-	FmRcvbAmt            string `json:"fm_rcvb_amt,omitempty"`
-	FmBrkgMgnAmt         string `json:"fm_brkg_mgn_amt,omitempty"`
-	FmMntnMgnAmt         string `json:"fm_mntn_mgn_amt,omitempty"`
-	FmAddMgnAmt          string `json:"fm_add_mgn_amt,omitempty"`
-	FmRiskRt             string `json:"fm_risk_rt,omitempty"`
-	FmOrdPsblAmt         string `json:"fm_ord_psbl_amt,omitempty"`
-	FmDrwgPsblAmt        string `json:"fm_drwg_psbl_amt,omitempty"`
-	FmEchmRqrmAmt        string `json:"fm_echm_rqrm_amt,omitempty"`
-	FmDrwgPrarAmt        string `json:"fm_drwg_prar_amt,omitempty"`
-	FmOptTrChgs          string `json:"fm_opt_tr_chgs,omitempty"`
-	FmOptIcldAsstEvluAmt string `json:"fm_opt_icld_asst_evlu_amt,omitempty"`
-	FmOptEvluAmt         string `json:"fm_opt_evlu_amt,omitempty"`
-	FmCrcySbstAmt        string `json:"fm_crcy_sbst_amt,omitempty"`
-	FmCrcySbstUseAmt     string `json:"fm_crcy_sbst_use_amt,omitempty"`
-	FmCrcySbstStupAmt    string `json:"fm_crcy_sbst_stup_amt,omitempty"`
+	FmNxdyDnclAmt        string `json:"fm_nxdy_dncl_amt"`
+	FmTotAsstEvluAmt     string `json:"fm_tot_asst_evlu_amt"`
+	Cano                 string `json:"cano"`
+	AcntPrdtCd           string `json:"acnt_prdt_cd"`
+	CrcyCd               string `json:"crcy_cd"`
+	RespDt               string `json:"resp_dt"`
+	FmDncaRmnd           string `json:"fm_dnca_rmnd"`
+	FmLqdPflsAmt         string `json:"fm_lqd_pfls_amt"`
+	FmFee                string `json:"fm_fee"`
+	FmFuopEvluPflsAmt    string `json:"fm_fuop_evlu_pfls_amt"`
+	FmRcvbAmt            string `json:"fm_rcvb_amt"`
+	FmBrkgMgnAmt         string `json:"fm_brkg_mgn_amt"`
+	FmMntnMgnAmt         string `json:"fm_mntn_mgn_amt"`
+	FmAddMgnAmt          string `json:"fm_add_mgn_amt"`
+	FmRiskRt             string `json:"fm_risk_rt"`
+	FmOrdPsblAmt         string `json:"fm_ord_psbl_amt"`
+	FmDrwgPsblAmt        string `json:"fm_drwg_psbl_amt"`
+	FmEchmRqrmAmt        string `json:"fm_echm_rqrm_amt"`
+	FmDrwgPrarAmt        string `json:"fm_drwg_prar_amt"`
+	FmOptTrChgs          string `json:"fm_opt_tr_chgs"`
+	FmOptIcldAsstEvluAmt string `json:"fm_opt_icld_asst_evlu_amt"`
+	FmOptEvluAmt         string `json:"fm_opt_evlu_amt"`
+	FmCrcySbstAmt        string `json:"fm_crcy_sbst_amt"`
+	FmCrcySbstUseAmt     string `json:"fm_crcy_sbst_use_amt"`
+	FmCrcySbstStupAmt    string `json:"fm_crcy_sbst_stup_amt"`
 }
 
 type KISOverseasFutureoptionV1TradingInquireDepositRequest struct {
@@ -8765,41 +8765,41 @@ type KISOverseasFutureoptionV1TradingInquirePeriodCcld struct {
 }
 
 type KISOverseasFutureoptionV1TradingInquirePeriodCcldOutput1Item struct {
-	Cano                  string `json:"cano,omitempty"`
-	AcntPrdtCd            string `json:"acnt_prdt_cd,omitempty"`
-	CrcyCd                string `json:"crcy_cd,omitempty"`
-	FmBuyQty              string `json:"fm_buy_qty,omitempty"`
-	FmSllQty              string `json:"fm_sll_qty,omitempty"`
-	FmLqdPflsAmt          string `json:"fm_lqd_pfls_amt,omitempty"`
-	FmFee                 string `json:"fm_fee,omitempty"`
-	FmNetPflsAmt          string `json:"fm_net_pfls_amt,omitempty"`
-	FmUstlBuyQty          string `json:"fm_ustl_buy_qty,omitempty"`
-	FmUstlSllQty          string `json:"fm_ustl_sll_qty,omitempty"`
-	FmUstlEvluPflsAmt     string `json:"fm_ustl_evlu_pfls_amt,omitempty"`
-	FmUstlEvluPflsAmt2    string `json:"fm_ustl_evlu_pfls_amt2,omitempty"`
-	FmUstlEvluPflsIcdcAmt string `json:"fm_ustl_evlu_pfls_icdc_amt,omitempty"`
-	FmUstlAgrmAmt         string `json:"fm_ustl_agrm_amt,omitempty"`
-	FmOptLqdAmt           string `json:"fm_opt_lqd_amt,omitempty"`
+	Cano                  string `json:"cano"`
+	AcntPrdtCd            string `json:"acnt_prdt_cd"`
+	CrcyCd                string `json:"crcy_cd"`
+	FmBuyQty              string `json:"fm_buy_qty"`
+	FmSllQty              string `json:"fm_sll_qty"`
+	FmLqdPflsAmt          string `json:"fm_lqd_pfls_amt"`
+	FmFee                 string `json:"fm_fee"`
+	FmNetPflsAmt          string `json:"fm_net_pfls_amt"`
+	FmUstlBuyQty          string `json:"fm_ustl_buy_qty"`
+	FmUstlSllQty          string `json:"fm_ustl_sll_qty"`
+	FmUstlEvluPflsAmt     string `json:"fm_ustl_evlu_pfls_amt"`
+	FmUstlEvluPflsAmt2    string `json:"fm_ustl_evlu_pfls_amt2"`
+	FmUstlEvluPflsIcdcAmt string `json:"fm_ustl_evlu_pfls_icdc_amt"`
+	FmUstlAgrmAmt         string `json:"fm_ustl_agrm_amt"`
+	FmOptLqdAmt           string `json:"fm_opt_lqd_amt"`
 }
 
 type KISOverseasFutureoptionV1TradingInquirePeriodCcldOutput2Item struct {
-	Cano                  string `json:"cano,omitempty"`
-	AcntPrdtCd            string `json:"acnt_prdt_cd,omitempty"`
-	OvrsFutrFxPdno        string `json:"ovrs_futr_fx_pdno,omitempty"`
-	CrcyCd                string `json:"crcy_cd,omitempty"`
-	FmBuyQty              string `json:"fm_buy_qty,omitempty"`
-	FmSllQty              string `json:"fm_sll_qty,omitempty"`
-	FmLqdPflsAmt          string `json:"fm_lqd_pfls_amt,omitempty"`
-	FmFee                 string `json:"fm_fee,omitempty"`
-	FmNetPflsAmt          string `json:"fm_net_pfls_amt,omitempty"`
-	FmUstlBuyQty          string `json:"fm_ustl_buy_qty,omitempty"`
-	FmUstlSllQty          string `json:"fm_ustl_sll_qty,omitempty"`
-	FmUstlEvluPflsAmt     string `json:"fm_ustl_evlu_pfls_amt,omitempty"`
-	FmUstlEvluPflsAmt2    string `json:"fm_ustl_evlu_pfls_amt2,omitempty"`
-	FmUstlEvluPflsIcdcAmt string `json:"fm_ustl_evlu_pfls_icdc_amt,omitempty"`
-	FmCcldAvgPric         string `json:"fm_ccld_avg_pric,omitempty"`
-	FmUstlAgrmAmt         string `json:"fm_ustl_agrm_amt,omitempty"`
-	FmOptLqdAmt           string `json:"fm_opt_lqd_amt,omitempty"`
+	Cano                  string `json:"cano"`
+	AcntPrdtCd            string `json:"acnt_prdt_cd"`
+	OvrsFutrFxPdno        string `json:"ovrs_futr_fx_pdno"`
+	CrcyCd                string `json:"crcy_cd"`
+	FmBuyQty              string `json:"fm_buy_qty"`
+	FmSllQty              string `json:"fm_sll_qty"`
+	FmLqdPflsAmt          string `json:"fm_lqd_pfls_amt"`
+	FmFee                 string `json:"fm_fee"`
+	FmNetPflsAmt          string `json:"fm_net_pfls_amt"`
+	FmUstlBuyQty          string `json:"fm_ustl_buy_qty"`
+	FmUstlSllQty          string `json:"fm_ustl_sll_qty"`
+	FmUstlEvluPflsAmt     string `json:"fm_ustl_evlu_pfls_amt"`
+	FmUstlEvluPflsAmt2    string `json:"fm_ustl_evlu_pfls_amt2"`
+	FmUstlEvluPflsIcdcAmt string `json:"fm_ustl_evlu_pfls_icdc_amt"`
+	FmCcldAvgPric         string `json:"fm_ccld_avg_pric"`
+	FmUstlAgrmAmt         string `json:"fm_ustl_agrm_amt"`
+	FmOptLqdAmt           string `json:"fm_opt_lqd_amt"`
 }
 
 type KISOverseasFutureoptionV1TradingInquirePeriodCcldRequest struct {
@@ -8820,23 +8820,23 @@ type KISOverseasFutureoptionV1TradingInquirePeriodTrans struct {
 }
 
 type KISOverseasFutureoptionV1TradingInquirePeriodTransOutputItem struct {
-	BassDt         string `json:"bass_dt,omitempty"`
-	Cano           string `json:"cano,omitempty"`
-	AcntPrdtCd     string `json:"acnt_prdt_cd,omitempty"`
-	FmLdgrInogSeq  string `json:"fm_ldgr_inog_seq,omitempty"`
-	AcntTrTypeName string `json:"acnt_tr_type_name,omitempty"`
-	CrcyCd         string `json:"crcy_cd,omitempty"`
-	TrItmName      string `json:"tr_itm_name,omitempty"`
-	FmIofwAmt      string `json:"fm_iofw_amt,omitempty"`
-	FmFee          string `json:"fm_fee,omitempty"`
-	FmTaxAmt       string `json:"fm_tax_amt,omitempty"`
-	FmSttlAmt      string `json:"fm_sttl_amt,omitempty"`
-	FmBfDnclAmt    string `json:"fm_bf_dncl_amt,omitempty"`
-	FmDnclAmt      string `json:"fm_dncl_amt,omitempty"`
-	FmRcvbOccrAmt  string `json:"fm_rcvb_occr_amt,omitempty"`
-	FmRcvbPybkAmt  string `json:"fm_rcvb_pybk_amt,omitempty"`
-	OvduIntPybkAmt string `json:"ovdu_int_pybk_amt,omitempty"`
-	RmksText       string `json:"rmks_text,omitempty"`
+	BassDt         string `json:"bass_dt"`
+	Cano           string `json:"cano"`
+	AcntPrdtCd     string `json:"acnt_prdt_cd"`
+	FmLdgrInogSeq  string `json:"fm_ldgr_inog_seq"`
+	AcntTrTypeName string `json:"acnt_tr_type_name"`
+	CrcyCd         string `json:"crcy_cd"`
+	TrItmName      string `json:"tr_itm_name"`
+	FmIofwAmt      string `json:"fm_iofw_amt"`
+	FmFee          string `json:"fm_fee"`
+	FmTaxAmt       string `json:"fm_tax_amt"`
+	FmSttlAmt      string `json:"fm_sttl_amt"`
+	FmBfDnclAmt    string `json:"fm_bf_dncl_amt"`
+	FmDnclAmt      string `json:"fm_dncl_amt"`
+	FmRcvbOccrAmt  string `json:"fm_rcvb_occr_amt"`
+	FmRcvbPybkAmt  string `json:"fm_rcvb_pybk_amt"`
+	OvduIntPybkAmt string `json:"ovdu_int_pybk_amt"`
+	RmksText       string `json:"rmks_text"`
 }
 
 type KISOverseasFutureoptionV1TradingInquirePeriodTransRequest struct {
@@ -8857,16 +8857,16 @@ type KISOverseasFutureoptionV1TradingInquirePsamount struct {
 }
 
 type KISOverseasFutureoptionV1TradingInquirePsamountOutputItem struct {
-	Cano                string `json:"cano,omitempty"`
-	AcntPrdtCd          string `json:"acnt_prdt_cd,omitempty"`
-	OvrsFutrFxPdno      string `json:"ovrs_futr_fx_pdno,omitempty"`
-	CrcyCd              string `json:"crcy_cd,omitempty"`
-	SllBuyDvsnCd        string `json:"sll_buy_dvsn_cd,omitempty"`
-	FmUstlQty           string `json:"fm_ustl_qty,omitempty"`
-	FmLqdPsblQty        string `json:"fm_lqd_psbl_qty,omitempty"`
-	FmNewOrdPsblQty     string `json:"fm_new_ord_psbl_qty,omitempty"`
-	FmTotOrdPsblQty     string `json:"fm_tot_ord_psbl_qty,omitempty"`
-	FmMkprTotOrdPsblQty string `json:"fm_mkpr_tot_ord_psbl_qty,omitempty"`
+	Cano                string `json:"cano"`
+	AcntPrdtCd          string `json:"acnt_prdt_cd"`
+	OvrsFutrFxPdno      string `json:"ovrs_futr_fx_pdno"`
+	CrcyCd              string `json:"crcy_cd"`
+	SllBuyDvsnCd        string `json:"sll_buy_dvsn_cd"`
+	FmUstlQty           string `json:"fm_ustl_qty"`
+	FmLqdPsblQty        string `json:"fm_lqd_psbl_qty"`
+	FmNewOrdPsblQty     string `json:"fm_new_ord_psbl_qty"`
+	FmTotOrdPsblQty     string `json:"fm_tot_ord_psbl_qty"`
+	FmMkprTotOrdPsblQty string `json:"fm_mkpr_tot_ord_psbl_qty"`
 }
 
 type KISOverseasFutureoptionV1TradingInquirePsamountRequest struct {
@@ -8884,21 +8884,21 @@ type KISOverseasFutureoptionV1TradingInquireUnpd struct {
 }
 
 type KISOverseasFutureoptionV1TradingInquireUnpdOutputItem struct {
-	Cano             string `json:"cano,omitempty"`
-	AcntPrdtCd       string `json:"acnt_prdt_cd,omitempty"`
-	OvrsFutrFxPdno   string `json:"ovrs_futr_fx_pdno,omitempty"`
-	PrdtTypeCd       string `json:"prdt_type_cd,omitempty"`
-	CrcyCd           string `json:"crcy_cd,omitempty"`
-	SllBuyDvsnCd     string `json:"sll_buy_dvsn_cd,omitempty"`
-	FmUstlQty        string `json:"fm_ustl_qty,omitempty"`
-	FmCcldAvgPric    string `json:"fm_ccld_avg_pric,omitempty"`
-	FmNowPric        string `json:"fm_now_pric,omitempty"`
-	FmEvluPflsAmt    string `json:"fm_evlu_pfls_amt,omitempty"`
-	FmOptEvluAmt     string `json:"fm_opt_evlu_amt,omitempty"`
-	FmOtpEvluPflsAmt string `json:"fm_otp_evlu_pfls_amt,omitempty"`
-	FuopDvsn         string `json:"fuop_dvsn,omitempty"`
-	EcisRsvnOrdYn    string `json:"ecis_rsvn_ord_yn,omitempty"`
-	FmLqdPsblQty     string `json:"fm_lqd_psbl_qty,omitempty"`
+	Cano             string `json:"cano"`
+	AcntPrdtCd       string `json:"acnt_prdt_cd"`
+	OvrsFutrFxPdno   string `json:"ovrs_futr_fx_pdno"`
+	PrdtTypeCd       string `json:"prdt_type_cd"`
+	CrcyCd           string `json:"crcy_cd"`
+	SllBuyDvsnCd     string `json:"sll_buy_dvsn_cd"`
+	FmUstlQty        string `json:"fm_ustl_qty"`
+	FmCcldAvgPric    string `json:"fm_ccld_avg_pric"`
+	FmNowPric        string `json:"fm_now_pric"`
+	FmEvluPflsAmt    string `json:"fm_evlu_pfls_amt"`
+	FmOptEvluAmt     string `json:"fm_opt_evlu_amt"`
+	FmOtpEvluPflsAmt string `json:"fm_otp_evlu_pfls_amt"`
+	FuopDvsn         string `json:"fuop_dvsn"`
+	EcisRsvnOrdYn    string `json:"ecis_rsvn_ord_yn"`
+	FmLqdPsblQty     string `json:"fm_lqd_psbl_qty"`
 }
 
 type KISOverseasFutureoptionV1TradingInquireUnpdRequest struct {
@@ -8915,55 +8915,55 @@ type KISOverseasFutureoptionV1TradingMarginDetail struct {
 }
 
 type KISOverseasFutureoptionV1TradingMarginDetailOutputItem struct {
-	Cano                     string `json:"cano,omitempty"`
-	AcntPrdtCd               string `json:"acnt_prdt_cd,omitempty"`
-	CrcyCd                   string `json:"crcy_cd,omitempty"`
-	RespDt                   string `json:"resp_dt,omitempty"`
-	AcntNetRiskMgnaAplyYn    string `json:"acnt_net_risk_mgna_aply_yn,omitempty"`
-	FmOrdPsblAmt             string `json:"fm_ord_psbl_amt,omitempty"`
-	FmAddMgnAmt              string `json:"fm_add_mgn_amt,omitempty"`
-	FmBrkgMgnAmt             string `json:"fm_brkg_mgn_amt,omitempty"`
-	FmExccBrkgMgnAmt         string `json:"fm_excc_brkg_mgn_amt,omitempty"`
-	FmUstlMgnAmt             string `json:"fm_ustl_mgn_amt,omitempty"`
-	FmMntnMgnAmt             string `json:"fm_mntn_mgn_amt,omitempty"`
-	FmOrdMgnAmt              string `json:"fm_ord_mgn_amt,omitempty"`
-	FmFutrOrdMgnAmt          string `json:"fm_futr_ord_mgn_amt,omitempty"`
-	FmOptBuyOrdAmt           string `json:"fm_opt_buy_ord_amt,omitempty"`
-	FmOptSllOrdMgnAmt        string `json:"fm_opt_sll_ord_mgn_amt,omitempty"`
-	FmOptBuyOrdMgnAmt        string `json:"fm_opt_buy_ord_mgn_amt,omitempty"`
-	FmEcisRsvnMgnAmt         string `json:"fm_ecis_rsvn_mgn_amt,omitempty"`
-	FmSpanBrkgMgnAmt         string `json:"fm_span_brkg_mgn_amt,omitempty"`
-	FmSpanPricAltrMgnAmt     string `json:"fm_span_pric_altr_mgn_amt,omitempty"`
-	FmSpanTermSprdMgnAmt     string `json:"fm_span_term_sprd_mgn_amt,omitempty"`
-	FmSpanBuyOptMinMgnAmt    string `json:"fm_span_buy_opt_min_mgn_amt,omitempty"`
-	FmSpanOptMinMgnAmt       string `json:"fm_span_opt_min_mgn_amt,omitempty"`
-	FmSpanTotRiskMgnAmt      string `json:"fm_span_tot_risk_mgn_amt,omitempty"`
-	FmSpanMntnMgnAmt         string `json:"fm_span_mntn_mgn_amt,omitempty"`
-	FmSpanMntnPricAltrMgnAmt string `json:"fm_span_mntn_pric_altr_mgn_amt,omitempty"`
-	FmSpanMntnTermSprdMgnAmt string `json:"fm_span_mntn_term_sprd_mgn_amt,omitempty"`
-	FmSpanMntnOptPricMgnAmt  string `json:"fm_span_mntn_opt_pric_mgn_amt,omitempty"`
-	FmSpanMntnOptMinMgnAmt   string `json:"fm_span_mntn_opt_min_mgn_amt,omitempty"`
-	FmSpanMntnTotRiskMgnAmt  string `json:"fm_span_mntn_tot_risk_mgn_amt,omitempty"`
-	FmEurxBrkgMgnAmt         string `json:"fm_eurx_brkg_mgn_amt,omitempty"`
-	FmEurxPricAltrMgnAmt     string `json:"fm_eurx_pric_altr_mgn_amt,omitempty"`
-	FmEurxTermSprdMgnAmt     string `json:"fm_eurx_term_sprd_mgn_amt,omitempty"`
-	FmEurxOptPricMgnAmt      string `json:"fm_eurx_opt_pric_mgn_amt,omitempty"`
-	FmEurxBuyOptMinMgnAmt    string `json:"fm_eurx_buy_opt_min_mgn_amt,omitempty"`
-	FmEurxTotRiskMgnAmt      string `json:"fm_eurx_tot_risk_mgn_amt,omitempty"`
-	FmEurxMntnMgnAmt         string `json:"fm_eurx_mntn_mgn_amt,omitempty"`
-	FmEurxMntnPricAltrMgnAmt string `json:"fm_eurx_mntn_pric_altr_mgn_amt,omitempty"`
-	FmEurxMntnTermSprdMgnAmt string `json:"fm_eurx_mntn_term_sprd_mgn_amt,omitempty"`
-	FmEurxMntnOptPricMgnAmt  string `json:"fm_eurx_mntn_opt_pric_mgn_amt,omitempty"`
-	FmEurxMntnTotRiskMgnAmt  string `json:"fm_eurx_mntn_tot_risk_mgn_amt,omitempty"`
-	FmGnrlBrkgMgnAmt         string `json:"fm_gnrl_brkg_mgn_amt,omitempty"`
-	FmFutrUstlMgnAmt         string `json:"fm_futr_ustl_mgn_amt,omitempty"`
-	FmSllOptUstlMgnAmt       string `json:"fm_sll_opt_ustl_mgn_amt,omitempty"`
-	FmBuyOptUstlMgnAmt       string `json:"fm_buy_opt_ustl_mgn_amt,omitempty"`
-	FmSprdUstlMgnAmt         string `json:"fm_sprd_ustl_mgn_amt,omitempty"`
-	FmAvgDsctMgnAmt          string `json:"fm_avg_dsct_mgn_amt,omitempty"`
-	FmGnrlMntnMgnAmt         string `json:"fm_gnrl_mntn_mgn_amt,omitempty"`
-	FmFutrMntnMgnAmt         string `json:"fm_futr_mntn_mgn_amt,omitempty"`
-	FmOptMntnMgnAmt          string `json:"fm_opt_mntn_mgn_amt,omitempty"`
+	Cano                     string `json:"cano"`
+	AcntPrdtCd               string `json:"acnt_prdt_cd"`
+	CrcyCd                   string `json:"crcy_cd"`
+	RespDt                   string `json:"resp_dt"`
+	AcntNetRiskMgnaAplyYn    string `json:"acnt_net_risk_mgna_aply_yn"`
+	FmOrdPsblAmt             string `json:"fm_ord_psbl_amt"`
+	FmAddMgnAmt              string `json:"fm_add_mgn_amt"`
+	FmBrkgMgnAmt             string `json:"fm_brkg_mgn_amt"`
+	FmExccBrkgMgnAmt         string `json:"fm_excc_brkg_mgn_amt"`
+	FmUstlMgnAmt             string `json:"fm_ustl_mgn_amt"`
+	FmMntnMgnAmt             string `json:"fm_mntn_mgn_amt"`
+	FmOrdMgnAmt              string `json:"fm_ord_mgn_amt"`
+	FmFutrOrdMgnAmt          string `json:"fm_futr_ord_mgn_amt"`
+	FmOptBuyOrdAmt           string `json:"fm_opt_buy_ord_amt"`
+	FmOptSllOrdMgnAmt        string `json:"fm_opt_sll_ord_mgn_amt"`
+	FmOptBuyOrdMgnAmt        string `json:"fm_opt_buy_ord_mgn_amt"`
+	FmEcisRsvnMgnAmt         string `json:"fm_ecis_rsvn_mgn_amt"`
+	FmSpanBrkgMgnAmt         string `json:"fm_span_brkg_mgn_amt"`
+	FmSpanPricAltrMgnAmt     string `json:"fm_span_pric_altr_mgn_amt"`
+	FmSpanTermSprdMgnAmt     string `json:"fm_span_term_sprd_mgn_amt"`
+	FmSpanBuyOptMinMgnAmt    string `json:"fm_span_buy_opt_min_mgn_amt"`
+	FmSpanOptMinMgnAmt       string `json:"fm_span_opt_min_mgn_amt"`
+	FmSpanTotRiskMgnAmt      string `json:"fm_span_tot_risk_mgn_amt"`
+	FmSpanMntnMgnAmt         string `json:"fm_span_mntn_mgn_amt"`
+	FmSpanMntnPricAltrMgnAmt string `json:"fm_span_mntn_pric_altr_mgn_amt"`
+	FmSpanMntnTermSprdMgnAmt string `json:"fm_span_mntn_term_sprd_mgn_amt"`
+	FmSpanMntnOptPricMgnAmt  string `json:"fm_span_mntn_opt_pric_mgn_amt"`
+	FmSpanMntnOptMinMgnAmt   string `json:"fm_span_mntn_opt_min_mgn_amt"`
+	FmSpanMntnTotRiskMgnAmt  string `json:"fm_span_mntn_tot_risk_mgn_amt"`
+	FmEurxBrkgMgnAmt         string `json:"fm_eurx_brkg_mgn_amt"`
+	FmEurxPricAltrMgnAmt     string `json:"fm_eurx_pric_altr_mgn_amt"`
+	FmEurxTermSprdMgnAmt     string `json:"fm_eurx_term_sprd_mgn_amt"`
+	FmEurxOptPricMgnAmt      string `json:"fm_eurx_opt_pric_mgn_amt"`
+	FmEurxBuyOptMinMgnAmt    string `json:"fm_eurx_buy_opt_min_mgn_amt"`
+	FmEurxTotRiskMgnAmt      string `json:"fm_eurx_tot_risk_mgn_amt"`
+	FmEurxMntnMgnAmt         string `json:"fm_eurx_mntn_mgn_amt"`
+	FmEurxMntnPricAltrMgnAmt string `json:"fm_eurx_mntn_pric_altr_mgn_amt"`
+	FmEurxMntnTermSprdMgnAmt string `json:"fm_eurx_mntn_term_sprd_mgn_amt"`
+	FmEurxMntnOptPricMgnAmt  string `json:"fm_eurx_mntn_opt_pric_mgn_amt"`
+	FmEurxMntnTotRiskMgnAmt  string `json:"fm_eurx_mntn_tot_risk_mgn_amt"`
+	FmGnrlBrkgMgnAmt         string `json:"fm_gnrl_brkg_mgn_amt"`
+	FmFutrUstlMgnAmt         string `json:"fm_futr_ustl_mgn_amt"`
+	FmSllOptUstlMgnAmt       string `json:"fm_sll_opt_ustl_mgn_amt"`
+	FmBuyOptUstlMgnAmt       string `json:"fm_buy_opt_ustl_mgn_amt"`
+	FmSprdUstlMgnAmt         string `json:"fm_sprd_ustl_mgn_amt"`
+	FmAvgDsctMgnAmt          string `json:"fm_avg_dsct_mgn_amt"`
+	FmGnrlMntnMgnAmt         string `json:"fm_gnrl_mntn_mgn_amt"`
+	FmFutrMntnMgnAmt         string `json:"fm_futr_mntn_mgn_amt"`
+	FmOptMntnMgnAmt          string `json:"fm_opt_mntn_mgn_amt"`
 }
 
 type KISOverseasFutureoptionV1TradingMarginDetailRequest struct {
@@ -8979,8 +8979,8 @@ type KISOverseasFutureoptionV1TradingOrder struct {
 }
 
 type KISOverseasFutureoptionV1TradingOrderOutputItem struct {
-	OrdDt string `json:"ORD_DT,omitempty"`
-	Odno  string `json:"ODNO,omitempty"`
+	OrdDt string `json:"ORD_DT"`
+	Odno  string `json:"ODNO"`
 }
 
 type KISOverseasFutureoptionV1TradingOrderRequest struct {
@@ -9004,8 +9004,8 @@ type KISOverseasFutureoptionV1TradingOrderRvsecncl struct {
 }
 
 type KISOverseasFutureoptionV1TradingOrderRvsecnclOutputItem struct {
-	OrdDt string `json:"ORD_DT,omitempty"`
-	Odno  string `json:"ODNO,omitempty"`
+	OrdDt string `json:"ORD_DT"`
+	Odno  string `json:"ODNO"`
 }
 
 type KISOverseasFutureoptionV1TradingOrderRvsecnclRequest struct {
@@ -9022,33 +9022,33 @@ type KISOverseasPriceV1QuotationsBrknewsTitle struct {
 }
 
 type KISOverseasPriceV1QuotationsBrknewsTitleOutputItem struct {
-	CnttUsiqSrno     string `json:"cntt_usiq_srno,omitempty"`
-	NewsOferEntpCode string `json:"news_ofer_entp_code,omitempty"`
-	DataDt           string `json:"data_dt,omitempty"`
-	DataTm           string `json:"data_tm,omitempty"`
-	HtsPbntTitlCntt  string `json:"hts_pbnt_titl_cntt,omitempty"`
-	NewsLrdvCode     string `json:"news_lrdv_code,omitempty"`
-	Dorg             string `json:"dorg,omitempty"`
-	Iscd1            string `json:"iscd1,omitempty"`
-	Iscd2            string `json:"iscd2,omitempty"`
-	Iscd3            string `json:"iscd3,omitempty"`
-	Iscd4            string `json:"iscd4,omitempty"`
-	Iscd5            string `json:"iscd5,omitempty"`
-	Iscd6            string `json:"iscd6,omitempty"`
-	Iscd7            string `json:"iscd7,omitempty"`
-	Iscd8            string `json:"iscd8,omitempty"`
-	Iscd9            string `json:"iscd9,omitempty"`
-	Iscd10           string `json:"iscd10,omitempty"`
-	KorIsnm1         string `json:"kor_isnm1,omitempty"`
-	KorIsnm2         string `json:"kor_isnm2,omitempty"`
-	KorIsnm3         string `json:"kor_isnm3,omitempty"`
-	KorIsnm4         string `json:"kor_isnm4,omitempty"`
-	KorIsnm5         string `json:"kor_isnm5,omitempty"`
-	KorIsnm6         string `json:"kor_isnm6,omitempty"`
-	KorIsnm7         string `json:"kor_isnm7,omitempty"`
-	KorIsnm8         string `json:"kor_isnm8,omitempty"`
-	KorIsnm9         string `json:"kor_isnm9,omitempty"`
-	KorIsnm10        string `json:"kor_isnm10,omitempty"`
+	CnttUsiqSrno     string `json:"cntt_usiq_srno"`
+	NewsOferEntpCode string `json:"news_ofer_entp_code"`
+	DataDt           string `json:"data_dt"`
+	DataTm           string `json:"data_tm"`
+	HtsPbntTitlCntt  string `json:"hts_pbnt_titl_cntt"`
+	NewsLrdvCode     string `json:"news_lrdv_code"`
+	Dorg             string `json:"dorg"`
+	Iscd1            string `json:"iscd1"`
+	Iscd2            string `json:"iscd2"`
+	Iscd3            string `json:"iscd3"`
+	Iscd4            string `json:"iscd4"`
+	Iscd5            string `json:"iscd5"`
+	Iscd6            string `json:"iscd6"`
+	Iscd7            string `json:"iscd7"`
+	Iscd8            string `json:"iscd8"`
+	Iscd9            string `json:"iscd9"`
+	Iscd10           string `json:"iscd10"`
+	KorIsnm1         string `json:"kor_isnm1"`
+	KorIsnm2         string `json:"kor_isnm2"`
+	KorIsnm3         string `json:"kor_isnm3"`
+	KorIsnm4         string `json:"kor_isnm4"`
+	KorIsnm5         string `json:"kor_isnm5"`
+	KorIsnm6         string `json:"kor_isnm6"`
+	KorIsnm7         string `json:"kor_isnm7"`
+	KorIsnm8         string `json:"kor_isnm8"`
+	KorIsnm9         string `json:"kor_isnm9"`
+	KorIsnm10        string `json:"kor_isnm10"`
 }
 
 type KISOverseasPriceV1QuotationsBrknewsTitleRequest struct {
@@ -9070,22 +9070,22 @@ type KISOverseasPriceV1QuotationsColableByCompany struct {
 }
 
 type KISOverseasPriceV1QuotationsColableByCompanyOutput1Item struct {
-	Pdno           string `json:"pdno,omitempty"`
-	OvrsItemName   string `json:"ovrs_item_name,omitempty"`
-	LoanRt         string `json:"loan_rt,omitempty"`
-	MggeMntnRt     string `json:"mgge_mntn_rt,omitempty"`
-	MggeEnsuRt     string `json:"mgge_ensu_rt,omitempty"`
-	LoanExecPsblYn string `json:"loan_exec_psbl_yn,omitempty"`
-	StffName       string `json:"stff_name,omitempty"`
-	ErlmDt         string `json:"erlm_dt,omitempty"`
-	TrMketName     string `json:"tr_mket_name,omitempty"`
-	CrcyCd         string `json:"crcy_cd,omitempty"`
-	NatnKorName    string `json:"natn_kor_name,omitempty"`
-	OvrsExcgCd     string `json:"ovrs_excg_cd,omitempty"`
+	Pdno           string `json:"pdno"`
+	OvrsItemName   string `json:"ovrs_item_name"`
+	LoanRt         string `json:"loan_rt"`
+	MggeMntnRt     string `json:"mgge_mntn_rt"`
+	MggeEnsuRt     string `json:"mgge_ensu_rt"`
+	LoanExecPsblYn string `json:"loan_exec_psbl_yn"`
+	StffName       string `json:"stff_name"`
+	ErlmDt         string `json:"erlm_dt"`
+	TrMketName     string `json:"tr_mket_name"`
+	CrcyCd         string `json:"crcy_cd"`
+	NatnKorName    string `json:"natn_kor_name"`
+	OvrsExcgCd     string `json:"ovrs_excg_cd"`
 }
 
 type KISOverseasPriceV1QuotationsColableByCompanyOutput2Item struct {
-	LoanPsblItemNum string `json:"loan_psbl_item_num,omitempty"`
+	LoanPsblItemNum string `json:"loan_psbl_item_num"`
 }
 
 type KISOverseasPriceV1QuotationsColableByCompanyRequest struct {
@@ -9110,26 +9110,26 @@ type KISOverseasPriceV1QuotationsDailyprice struct {
 }
 
 type KISOverseasPriceV1QuotationsDailypriceOutput1Item struct {
-	Rsym string `json:"rsym,omitempty"`
-	Zdiv string `json:"zdiv,omitempty"`
-	Nrec string `json:"nrec,omitempty"`
+	Rsym string `json:"rsym"`
+	Zdiv string `json:"zdiv"`
+	Nrec string `json:"nrec"`
 }
 
 type KISOverseasPriceV1QuotationsDailypriceOutput2Item struct {
-	Xymd string `json:"xymd,omitempty"`
-	Clos string `json:"clos,omitempty"`
-	Sign string `json:"sign,omitempty"`
-	Diff string `json:"diff,omitempty"`
-	Rate string `json:"rate,omitempty"`
-	Open string `json:"open,omitempty"`
-	High string `json:"high,omitempty"`
-	Low  string `json:"low,omitempty"`
-	Tvol string `json:"tvol,omitempty"`
-	Tamt string `json:"tamt,omitempty"`
-	Pbid string `json:"pbid,omitempty"`
-	Vbid string `json:"vbid,omitempty"`
-	Pask string `json:"pask,omitempty"`
-	Vask string `json:"vask,omitempty"`
+	Xymd string `json:"xymd"`
+	Clos string `json:"clos"`
+	Sign string `json:"sign"`
+	Diff string `json:"diff"`
+	Rate string `json:"rate"`
+	Open string `json:"open"`
+	High string `json:"high"`
+	Low  string `json:"low"`
+	Tvol string `json:"tvol"`
+	Tamt string `json:"tamt"`
+	Pbid string `json:"pbid"`
+	Vbid string `json:"vbid"`
+	Pask string `json:"pask"`
+	Vask string `json:"vask"`
 }
 
 type KISOverseasPriceV1QuotationsDailypriceRequest struct {
@@ -9148,12 +9148,12 @@ type KISOverseasPriceV1QuotationsIndustryPrice struct {
 }
 
 type KISOverseasPriceV1QuotationsIndustryPriceOutput1Item struct {
-	Nrec string `json:"nrec,omitempty"`
+	Nrec string `json:"nrec"`
 }
 
 type KISOverseasPriceV1QuotationsIndustryPriceOutput2Item struct {
-	Icod string `json:"icod,omitempty"`
-	Name string `json:"name,omitempty"`
+	Icod string `json:"icod"`
+	Name string `json:"name"`
 }
 
 type KISOverseasPriceV1QuotationsIndustryPriceRequest struct {
@@ -9168,30 +9168,30 @@ type KISOverseasPriceV1QuotationsIndustryTheme struct {
 }
 
 type KISOverseasPriceV1QuotationsIndustryThemeOutput1Item struct {
-	Zdiv string `json:"zdiv,omitempty"`
-	Stat string `json:"stat,omitempty"`
-	Crec string `json:"crec,omitempty"`
-	Trec string `json:"trec,omitempty"`
-	Nrec string `json:"nrec,omitempty"`
+	Zdiv string `json:"zdiv"`
+	Stat string `json:"stat"`
+	Crec string `json:"crec"`
+	Trec string `json:"trec"`
+	Nrec string `json:"nrec"`
 }
 
 type KISOverseasPriceV1QuotationsIndustryThemeOutput2Item struct {
-	Rsym   string `json:"rsym,omitempty"`
-	Excd   string `json:"excd,omitempty"`
-	Symb   string `json:"symb,omitempty"`
-	Name   string `json:"name,omitempty"`
-	Last   string `json:"last,omitempty"`
-	Sign   string `json:"sign,omitempty"`
-	Diff   string `json:"diff,omitempty"`
-	Rate   string `json:"rate,omitempty"`
-	Tvol   string `json:"tvol,omitempty"`
-	Vask   string `json:"vask,omitempty"`
-	Pask   string `json:"pask,omitempty"`
-	Pbid   string `json:"pbid,omitempty"`
-	Vbid   string `json:"vbid,omitempty"`
-	Seqn   string `json:"seqn,omitempty"`
-	Ename  string `json:"ename,omitempty"`
-	EOrdyn string `json:"e_ordyn,omitempty"`
+	Rsym   string `json:"rsym"`
+	Excd   string `json:"excd"`
+	Symb   string `json:"symb"`
+	Name   string `json:"name"`
+	Last   string `json:"last"`
+	Sign   string `json:"sign"`
+	Diff   string `json:"diff"`
+	Rate   string `json:"rate"`
+	Tvol   string `json:"tvol"`
+	Vask   string `json:"vask"`
+	Pask   string `json:"pask"`
+	Pbid   string `json:"pbid"`
+	Vbid   string `json:"vbid"`
+	Seqn   string `json:"seqn"`
+	Ename  string `json:"ename"`
+	EOrdyn string `json:"e_ordyn"`
 }
 
 type KISOverseasPriceV1QuotationsIndustryThemeRequest struct {
@@ -9210,98 +9210,98 @@ type KISOverseasPriceV1QuotationsInquireAskingPrice struct {
 }
 
 type KISOverseasPriceV1QuotationsInquireAskingPriceOutput1Item struct {
-	Rsym   string `json:"rsym,omitempty"`
-	Zdiv   string `json:"zdiv,omitempty"`
-	Curr   string `json:"curr,omitempty"`
-	Base   string `json:"base,omitempty"`
-	Open   string `json:"open,omitempty"`
-	High   string `json:"high,omitempty"`
-	Low    string `json:"low,omitempty"`
-	Last   string `json:"last,omitempty"`
-	Dymd   string `json:"dymd,omitempty"`
-	Dhms   string `json:"dhms,omitempty"`
-	Bvol   string `json:"bvol,omitempty"`
-	Avol   string `json:"avol,omitempty"`
-	Bdvl   string `json:"bdvl,omitempty"`
-	Advl   string `json:"advl,omitempty"`
-	Code   string `json:"code,omitempty"`
-	Ropen  string `json:"ropen,omitempty"`
-	Rhigh  string `json:"rhigh,omitempty"`
-	Rlow   string `json:"rlow,omitempty"`
-	Rclose string `json:"rclose,omitempty"`
+	Rsym   string `json:"rsym"`
+	Zdiv   string `json:"zdiv"`
+	Curr   string `json:"curr"`
+	Base   string `json:"base"`
+	Open   string `json:"open"`
+	High   string `json:"high"`
+	Low    string `json:"low"`
+	Last   string `json:"last"`
+	Dymd   string `json:"dymd"`
+	Dhms   string `json:"dhms"`
+	Bvol   string `json:"bvol"`
+	Avol   string `json:"avol"`
+	Bdvl   string `json:"bdvl"`
+	Advl   string `json:"advl"`
+	Code   string `json:"code"`
+	Ropen  string `json:"ropen"`
+	Rhigh  string `json:"rhigh"`
+	Rlow   string `json:"rlow"`
+	Rclose string `json:"rclose"`
 }
 
 type KISOverseasPriceV1QuotationsInquireAskingPriceOutput2Item struct {
-	Pbid1  string `json:"pbid1,omitempty"`
-	Pask1  string `json:"pask1,omitempty"`
-	Vbid1  string `json:"vbid1,omitempty"`
-	Vask1  string `json:"vask1,omitempty"`
-	Dbid1  string `json:"dbid1,omitempty"`
-	Dask1  string `json:"dask1,omitempty"`
-	Pbid2  string `json:"pbid2,omitempty"`
-	Pask2  string `json:"pask2,omitempty"`
-	Vbid2  string `json:"vbid2,omitempty"`
-	Vask2  string `json:"vask2,omitempty"`
-	Dbid2  string `json:"dbid2,omitempty"`
-	Dask2  string `json:"dask2,omitempty"`
-	Pbid3  string `json:"pbid3,omitempty"`
-	Pask3  string `json:"pask3,omitempty"`
-	Vbid3  string `json:"vbid3,omitempty"`
-	Vask3  string `json:"vask3,omitempty"`
-	Dbid3  string `json:"dbid3,omitempty"`
-	Dask3  string `json:"dask3,omitempty"`
-	Pbid4  string `json:"pbid4,omitempty"`
-	Pask4  string `json:"pask4,omitempty"`
-	Vbid4  string `json:"vbid4,omitempty"`
-	Vask4  string `json:"vask4,omitempty"`
-	Dbid4  string `json:"dbid4,omitempty"`
-	Dask4  string `json:"dask4,omitempty"`
-	Pbid5  string `json:"pbid5,omitempty"`
-	Pask5  string `json:"pask5,omitempty"`
-	Vbid5  string `json:"vbid5,omitempty"`
-	Vask5  string `json:"vask5,omitempty"`
-	Dbid5  string `json:"dbid5,omitempty"`
-	Dask5  string `json:"dask5,omitempty"`
-	Pbid6  string `json:"pbid6,omitempty"`
-	Pask6  string `json:"pask6,omitempty"`
-	Vbid6  string `json:"vbid6,omitempty"`
-	Vask6  string `json:"vask6,omitempty"`
-	Dbid6  string `json:"dbid6,omitempty"`
-	Dask6  string `json:"dask6,omitempty"`
-	Pbid7  string `json:"pbid7,omitempty"`
-	Pask7  string `json:"pask7,omitempty"`
-	Vbid7  string `json:"vbid7,omitempty"`
-	Vask7  string `json:"vask7,omitempty"`
-	Dbid7  string `json:"dbid7,omitempty"`
-	Dask7  string `json:"dask7,omitempty"`
-	Pbid8  string `json:"pbid8,omitempty"`
-	Pask8  string `json:"pask8,omitempty"`
-	Vbid8  string `json:"vbid8,omitempty"`
-	Vask8  string `json:"vask8,omitempty"`
-	Dbid8  string `json:"dbid8,omitempty"`
-	Dask8  string `json:"dask8,omitempty"`
-	Pbid9  string `json:"pbid9,omitempty"`
-	Pask9  string `json:"pask9,omitempty"`
-	Vbid9  string `json:"vbid9,omitempty"`
-	Vask9  string `json:"vask9,omitempty"`
-	Dbid9  string `json:"dbid9,omitempty"`
-	Dask9  string `json:"dask9,omitempty"`
-	Pbid10 string `json:"pbid10,omitempty"`
-	Pask10 string `json:"pask10,omitempty"`
-	Vbid10 string `json:"vbid10,omitempty"`
-	Vask10 string `json:"vask10,omitempty"`
-	Dbid10 string `json:"dbid10,omitempty"`
-	Dask10 string `json:"dask10,omitempty"`
+	Pbid1  string `json:"pbid1"`
+	Pask1  string `json:"pask1"`
+	Vbid1  string `json:"vbid1"`
+	Vask1  string `json:"vask1"`
+	Dbid1  string `json:"dbid1"`
+	Dask1  string `json:"dask1"`
+	Pbid2  string `json:"pbid2"`
+	Pask2  string `json:"pask2"`
+	Vbid2  string `json:"vbid2"`
+	Vask2  string `json:"vask2"`
+	Dbid2  string `json:"dbid2"`
+	Dask2  string `json:"dask2"`
+	Pbid3  string `json:"pbid3"`
+	Pask3  string `json:"pask3"`
+	Vbid3  string `json:"vbid3"`
+	Vask3  string `json:"vask3"`
+	Dbid3  string `json:"dbid3"`
+	Dask3  string `json:"dask3"`
+	Pbid4  string `json:"pbid4"`
+	Pask4  string `json:"pask4"`
+	Vbid4  string `json:"vbid4"`
+	Vask4  string `json:"vask4"`
+	Dbid4  string `json:"dbid4"`
+	Dask4  string `json:"dask4"`
+	Pbid5  string `json:"pbid5"`
+	Pask5  string `json:"pask5"`
+	Vbid5  string `json:"vbid5"`
+	Vask5  string `json:"vask5"`
+	Dbid5  string `json:"dbid5"`
+	Dask5  string `json:"dask5"`
+	Pbid6  string `json:"pbid6"`
+	Pask6  string `json:"pask6"`
+	Vbid6  string `json:"vbid6"`
+	Vask6  string `json:"vask6"`
+	Dbid6  string `json:"dbid6"`
+	Dask6  string `json:"dask6"`
+	Pbid7  string `json:"pbid7"`
+	Pask7  string `json:"pask7"`
+	Vbid7  string `json:"vbid7"`
+	Vask7  string `json:"vask7"`
+	Dbid7  string `json:"dbid7"`
+	Dask7  string `json:"dask7"`
+	Pbid8  string `json:"pbid8"`
+	Pask8  string `json:"pask8"`
+	Vbid8  string `json:"vbid8"`
+	Vask8  string `json:"vask8"`
+	Dbid8  string `json:"dbid8"`
+	Dask8  string `json:"dask8"`
+	Pbid9  string `json:"pbid9"`
+	Pask9  string `json:"pask9"`
+	Vbid9  string `json:"vbid9"`
+	Vask9  string `json:"vask9"`
+	Dbid9  string `json:"dbid9"`
+	Dask9  string `json:"dask9"`
+	Pbid10 string `json:"pbid10"`
+	Pask10 string `json:"pask10"`
+	Vbid10 string `json:"vbid10"`
+	Vask10 string `json:"vask10"`
+	Dbid10 string `json:"dbid10"`
+	Dask10 string `json:"dask10"`
 }
 
 type KISOverseasPriceV1QuotationsInquireAskingPriceOutput3Item struct {
-	Vstm string `json:"vstm,omitempty"`
-	Vetm string `json:"vetm,omitempty"`
-	Csbp string `json:"csbp,omitempty"`
-	Cshi string `json:"cshi,omitempty"`
-	Cslo string `json:"cslo,omitempty"`
-	Iep  string `json:"iep,omitempty"`
-	Iev  string `json:"iev,omitempty"`
+	Vstm string `json:"vstm"`
+	Vetm string `json:"vetm"`
+	Csbp string `json:"csbp"`
+	Cshi string `json:"cshi"`
+	Cslo string `json:"cslo"`
+	Iep  string `json:"iep"`
+	Iev  string `json:"iev"`
 }
 
 type KISOverseasPriceV1QuotationsInquireAskingPriceRequest struct {
@@ -9317,23 +9317,23 @@ type KISOverseasPriceV1QuotationsInquireCcnl struct {
 }
 
 type KISOverseasPriceV1QuotationsInquireCcnlOutput2Item struct {
-	Khms string `json:"khms,omitempty"`
-	Last string `json:"last,omitempty"`
-	Sign string `json:"sign,omitempty"`
-	Diff string `json:"diff,omitempty"`
-	Rate string `json:"rate,omitempty"`
-	Evol string `json:"evol,omitempty"`
-	Tvol string `json:"tvol,omitempty"`
-	Mtyp string `json:"mtyp,omitempty"`
-	Pbid string `json:"pbid,omitempty"`
-	Pask string `json:"pask,omitempty"`
-	Vpow string `json:"vpow,omitempty"`
+	Khms string `json:"khms"`
+	Last string `json:"last"`
+	Sign string `json:"sign"`
+	Diff string `json:"diff"`
+	Rate string `json:"rate"`
+	Evol string `json:"evol"`
+	Tvol string `json:"tvol"`
+	Mtyp string `json:"mtyp"`
+	Pbid string `json:"pbid"`
+	Pask string `json:"pask"`
+	Vpow string `json:"vpow"`
 }
 
 type KISOverseasPriceV1QuotationsInquireCcnlOutput1Item struct {
-	Rsym string `json:"rsym,omitempty"`
-	Zdiv string `json:"ZDIV,omitempty"`
-	Nrec string `json:"NREC,omitempty"`
+	Rsym string `json:"rsym"`
+	Zdiv string `json:"ZDIV"`
+	Nrec string `json:"NREC"`
 }
 
 type KISOverseasPriceV1QuotationsInquireCcnlRequest struct {
@@ -9351,28 +9351,28 @@ type KISOverseasPriceV1QuotationsInquireDailyChartprice struct {
 }
 
 type KISOverseasPriceV1QuotationsInquireDailyChartpriceOutput1Item struct {
-	OvrsNmixPrdyVrss string `json:"ovrs_nmix_prdy_vrss,omitempty"`
-	PrdyVrssSign     string `json:"prdy_vrss_sign,omitempty"`
-	PrdyCtrt         string `json:"prdy_ctrt,omitempty"`
-	OvrsNmixPrdyClpr string `json:"ovrs_nmix_prdy_clpr,omitempty"`
-	AcmlVol          string `json:"acml_vol,omitempty"`
-	HtsKorIsnm       string `json:"hts_kor_isnm,omitempty"`
-	OvrsNmixPrpr     string `json:"ovrs_nmix_prpr,omitempty"`
-	StckShrnIscd     string `json:"stck_shrn_iscd,omitempty"`
-	PrdyVol          string `json:"prdy_vol,omitempty"`
-	OvrsProdOprc     string `json:"ovrs_prod_oprc,omitempty"`
-	OvrsProdHgpr     string `json:"ovrs_prod_hgpr,omitempty"`
-	OvrsProdLwpr     string `json:"ovrs_prod_lwpr,omitempty"`
+	OvrsNmixPrdyVrss string `json:"ovrs_nmix_prdy_vrss"`
+	PrdyVrssSign     string `json:"prdy_vrss_sign"`
+	PrdyCtrt         string `json:"prdy_ctrt"`
+	OvrsNmixPrdyClpr string `json:"ovrs_nmix_prdy_clpr"`
+	AcmlVol          string `json:"acml_vol"`
+	HtsKorIsnm       string `json:"hts_kor_isnm"`
+	OvrsNmixPrpr     string `json:"ovrs_nmix_prpr"`
+	StckShrnIscd     string `json:"stck_shrn_iscd"`
+	PrdyVol          string `json:"prdy_vol"`
+	OvrsProdOprc     string `json:"ovrs_prod_oprc"`
+	OvrsProdHgpr     string `json:"ovrs_prod_hgpr"`
+	OvrsProdLwpr     string `json:"ovrs_prod_lwpr"`
 }
 
 type KISOverseasPriceV1QuotationsInquireDailyChartpriceOutput2Item struct {
-	StckBsopDate string `json:"stck_bsop_date,omitempty"`
-	OvrsNmixPrpr string `json:"ovrs_nmix_prpr,omitempty"`
-	OvrsNmixOprc string `json:"ovrs_nmix_oprc,omitempty"`
-	OvrsNmixHgpr string `json:"ovrs_nmix_hgpr,omitempty"`
-	OvrsNmixLwpr string `json:"ovrs_nmix_lwpr,omitempty"`
-	AcmlVol      string `json:"acml_vol,omitempty"`
-	ModYn        string `json:"mod_yn,omitempty"`
+	StckBsopDate string `json:"stck_bsop_date"`
+	OvrsNmixPrpr string `json:"ovrs_nmix_prpr"`
+	OvrsNmixOprc string `json:"ovrs_nmix_oprc"`
+	OvrsNmixHgpr string `json:"ovrs_nmix_hgpr"`
+	OvrsNmixLwpr string `json:"ovrs_nmix_lwpr"`
+	AcmlVol      string `json:"acml_vol"`
+	ModYn        string `json:"mod_yn"`
 }
 
 type KISOverseasPriceV1QuotationsInquireDailyChartpriceRequest struct {
@@ -9390,34 +9390,34 @@ type KISOverseasPriceV1QuotationsInquireSearch struct {
 }
 
 type KISOverseasPriceV1QuotationsInquireSearchOutput1Item struct {
-	Zdiv string `json:"zdiv,omitempty"`
-	Stat string `json:"stat,omitempty"`
-	Crec string `json:"crec,omitempty"`
-	Trec string `json:"trec,omitempty"`
-	Nrec string `json:"nrec,omitempty"`
+	Zdiv string `json:"zdiv"`
+	Stat string `json:"stat"`
+	Crec string `json:"crec"`
+	Trec string `json:"trec"`
+	Nrec string `json:"nrec"`
 }
 
 type KISOverseasPriceV1QuotationsInquireSearchOutput2Item struct {
-	Rsym   string `json:"rsym,omitempty"`
-	Excd   string `json:"excd,omitempty"`
-	Name   string `json:"name,omitempty"`
-	Symb   string `json:"symb,omitempty"`
-	Last   string `json:"last,omitempty"`
-	Shar   string `json:"shar,omitempty"`
-	Valx   string `json:"valx,omitempty"`
-	Plow   string `json:"plow,omitempty"`
-	Phigh  string `json:"phigh,omitempty"`
-	Popen  string `json:"popen,omitempty"`
-	Tvol   string `json:"tvol,omitempty"`
-	Rate   string `json:"rate,omitempty"`
-	Diff   string `json:"diff,omitempty"`
-	Sign   string `json:"sign,omitempty"`
-	Avol   string `json:"avol,omitempty"`
-	Eps    string `json:"eps,omitempty"`
-	Per    string `json:"per,omitempty"`
-	Rank   string `json:"rank,omitempty"`
-	Ename  string `json:"ename,omitempty"`
-	EOrdyn string `json:"e_ordyn,omitempty"`
+	Rsym   string `json:"rsym"`
+	Excd   string `json:"excd"`
+	Name   string `json:"name"`
+	Symb   string `json:"symb"`
+	Last   string `json:"last"`
+	Shar   string `json:"shar"`
+	Valx   string `json:"valx"`
+	Plow   string `json:"plow"`
+	Phigh  string `json:"phigh"`
+	Popen  string `json:"popen"`
+	Tvol   string `json:"tvol"`
+	Rate   string `json:"rate"`
+	Diff   string `json:"diff"`
+	Sign   string `json:"sign"`
+	Avol   string `json:"avol"`
+	Eps    string `json:"eps"`
+	Per    string `json:"per"`
+	Rank   string `json:"rank"`
+	Ename  string `json:"ename"`
+	EOrdyn string `json:"e_ordyn"`
 }
 
 type KISOverseasPriceV1QuotationsInquireSearchRequest struct {
@@ -9432,27 +9432,27 @@ type KISOverseasPriceV1QuotationsInquireTimeIndexchartprice struct {
 }
 
 type KISOverseasPriceV1QuotationsInquireTimeIndexchartpriceOutput1Item struct {
-	OvrsNmixPrdyVrss string `json:"ovrs_nmix_prdy_vrss,omitempty"`
-	PrdyVrssSign     string `json:"prdy_vrss_sign,omitempty"`
-	HtsKorIsnm       string `json:"hts_kor_isnm,omitempty"`
-	PrdyCtrt         string `json:"prdy_ctrt,omitempty"`
-	OvrsNmixPrdyClpr string `json:"ovrs_nmix_prdy_clpr,omitempty"`
-	AcmlVol          string `json:"acml_vol,omitempty"`
-	OvrsNmixPrpr     string `json:"ovrs_nmix_prpr,omitempty"`
-	StckShrnIscd     string `json:"stck_shrn_iscd,omitempty"`
-	OvrsProdOprc     string `json:"ovrs_prod_oprc,omitempty"`
-	OvrsProdHgpr     string `json:"ovrs_prod_hgpr,omitempty"`
-	OvrsProdLwpr     string `json:"ovrs_prod_lwpr,omitempty"`
+	OvrsNmixPrdyVrss string `json:"ovrs_nmix_prdy_vrss"`
+	PrdyVrssSign     string `json:"prdy_vrss_sign"`
+	HtsKorIsnm       string `json:"hts_kor_isnm"`
+	PrdyCtrt         string `json:"prdy_ctrt"`
+	OvrsNmixPrdyClpr string `json:"ovrs_nmix_prdy_clpr"`
+	AcmlVol          string `json:"acml_vol"`
+	OvrsNmixPrpr     string `json:"ovrs_nmix_prpr"`
+	StckShrnIscd     string `json:"stck_shrn_iscd"`
+	OvrsProdOprc     string `json:"ovrs_prod_oprc"`
+	OvrsProdHgpr     string `json:"ovrs_prod_hgpr"`
+	OvrsProdLwpr     string `json:"ovrs_prod_lwpr"`
 }
 
 type KISOverseasPriceV1QuotationsInquireTimeIndexchartpriceOutput2Item struct {
-	StckBsopDate string `json:"stck_bsop_date,omitempty"`
-	StckCntgHour string `json:"stck_cntg_hour,omitempty"`
-	OptnPrpr     string `json:"optn_prpr,omitempty"`
-	OptnOprc     string `json:"optn_oprc,omitempty"`
-	OptnHgpr     string `json:"optn_hgpr,omitempty"`
-	OptnLwpr     string `json:"optn_lwpr,omitempty"`
-	CntgVol      string `json:"cntg_vol,omitempty"`
+	StckBsopDate string `json:"stck_bsop_date"`
+	StckCntgHour string `json:"stck_cntg_hour"`
+	OptnPrpr     string `json:"optn_prpr"`
+	OptnOprc     string `json:"optn_oprc"`
+	OptnHgpr     string `json:"optn_hgpr"`
+	OptnLwpr     string `json:"optn_lwpr"`
+	CntgVol      string `json:"cntg_vol"`
 }
 
 type KISOverseasPriceV1QuotationsInquireTimeIndexchartpriceRequest struct {
@@ -9469,29 +9469,29 @@ type KISOverseasPriceV1QuotationsInquireTimeItemchartprice struct {
 }
 
 type KISOverseasPriceV1QuotationsInquireTimeItemchartpriceOutput1Item struct {
-	Rsym string `json:"rsym,omitempty"`
-	Zdiv string `json:"zdiv,omitempty"`
-	Stim string `json:"stim,omitempty"`
-	Etim string `json:"etim,omitempty"`
-	Sktm string `json:"sktm,omitempty"`
-	Ektm string `json:"ektm,omitempty"`
-	Next string `json:"next,omitempty"`
-	More string `json:"more,omitempty"`
-	Nrec string `json:"nrec,omitempty"`
+	Rsym string `json:"rsym"`
+	Zdiv string `json:"zdiv"`
+	Stim string `json:"stim"`
+	Etim string `json:"etim"`
+	Sktm string `json:"sktm"`
+	Ektm string `json:"ektm"`
+	Next string `json:"next"`
+	More string `json:"more"`
+	Nrec string `json:"nrec"`
 }
 
 type KISOverseasPriceV1QuotationsInquireTimeItemchartpriceOutput2Item struct {
-	Tymd string `json:"tymd,omitempty"`
-	Xymd string `json:"xymd,omitempty"`
-	Xhms string `json:"xhms,omitempty"`
-	Kymd string `json:"kymd,omitempty"`
-	Khms string `json:"khms,omitempty"`
-	Open string `json:"open,omitempty"`
-	High string `json:"high,omitempty"`
-	Low  string `json:"low,omitempty"`
-	Last string `json:"last,omitempty"`
-	Evol string `json:"evol,omitempty"`
-	Eamt string `json:"eamt,omitempty"`
+	Tymd string `json:"tymd"`
+	Xymd string `json:"xymd"`
+	Xhms string `json:"xhms"`
+	Kymd string `json:"kymd"`
+	Khms string `json:"khms"`
+	Open string `json:"open"`
+	High string `json:"high"`
+	Low  string `json:"low"`
+	Last string `json:"last"`
+	Evol string `json:"evol"`
+	Eamt string `json:"eamt"`
 }
 
 type KISOverseasPriceV1QuotationsInquireTimeItemchartpriceRequest struct {
@@ -9512,18 +9512,18 @@ type KISOverseasPriceV1QuotationsNewsTitle struct {
 }
 
 type KISOverseasPriceV1QuotationsNewsTitleOutblock1Item struct {
-	InfoGb     string `json:"info_gb,omitempty"`
-	NewsKey    string `json:"news_key,omitempty"`
-	DataDt     string `json:"data_dt,omitempty"`
-	DataTm     string `json:"data_tm,omitempty"`
-	ClassCd    string `json:"class_cd,omitempty"`
-	ClassName  string `json:"class_name,omitempty"`
-	Source     string `json:"source,omitempty"`
-	NationCd   string `json:"nation_cd,omitempty"`
-	ExchangeCd string `json:"exchange_cd,omitempty"`
-	Symb       string `json:"symb,omitempty"`
-	SymbName   string `json:"symb_name,omitempty"`
-	Title      string `json:"title,omitempty"`
+	InfoGb     string `json:"info_gb"`
+	NewsKey    string `json:"news_key"`
+	DataDt     string `json:"data_dt"`
+	DataTm     string `json:"data_tm"`
+	ClassCd    string `json:"class_cd"`
+	ClassName  string `json:"class_name"`
+	Source     string `json:"source"`
+	NationCd   string `json:"nation_cd"`
+	ExchangeCd string `json:"exchange_cd"`
+	Symb       string `json:"symb"`
+	SymbName   string `json:"symb_name"`
+	Title      string `json:"title"`
 }
 
 type KISOverseasPriceV1QuotationsNewsTitleRequest struct {
@@ -9543,26 +9543,26 @@ type KISOverseasPriceV1QuotationsPeriodRights struct {
 }
 
 type KISOverseasPriceV1QuotationsPeriodRightsOutputItem struct {
-	BassDt           string `json:"bass_dt,omitempty"`
-	RghtTypeCd       string `json:"rght_type_cd,omitempty"`
-	Pdno             string `json:"pdno,omitempty"`
-	PrdtName         string `json:"prdt_name,omitempty"`
-	PrdtTypeCd       string `json:"prdt_type_cd,omitempty"`
-	StdPdno          string `json:"std_pdno,omitempty"`
-	AcplBassDt       string `json:"acpl_bass_dt,omitempty"`
-	SbscStrtDt       string `json:"sbsc_strt_dt,omitempty"`
-	SbscEndDt        string `json:"sbsc_end_dt,omitempty"`
-	CashAlctRt       string `json:"cash_alct_rt,omitempty"`
-	StckAlctRt       string `json:"stck_alct_rt,omitempty"`
-	CrcyCd           string `json:"crcy_cd,omitempty"`
-	CrcyCd2          string `json:"crcy_cd2,omitempty"`
-	CrcyCd3          string `json:"crcy_cd3,omitempty"`
-	CrcyCd4          string `json:"crcy_cd4,omitempty"`
-	AlctFrcrUnpr     string `json:"alct_frcr_unpr,omitempty"`
-	StkpDvdnFrcrAmt2 string `json:"stkp_dvdn_frcr_amt2,omitempty"`
-	StkpDvdnFrcrAmt3 string `json:"stkp_dvdn_frcr_amt3,omitempty"`
-	StkpDvdnFrcrAmt4 string `json:"stkp_dvdn_frcr_amt4,omitempty"`
-	DfntYn           string `json:"dfnt_yn,omitempty"`
+	BassDt           string `json:"bass_dt"`
+	RghtTypeCd       string `json:"rght_type_cd"`
+	Pdno             string `json:"pdno"`
+	PrdtName         string `json:"prdt_name"`
+	PrdtTypeCd       string `json:"prdt_type_cd"`
+	StdPdno          string `json:"std_pdno"`
+	AcplBassDt       string `json:"acpl_bass_dt"`
+	SbscStrtDt       string `json:"sbsc_strt_dt"`
+	SbscEndDt        string `json:"sbsc_end_dt"`
+	CashAlctRt       string `json:"cash_alct_rt"`
+	StckAlctRt       string `json:"stck_alct_rt"`
+	CrcyCd           string `json:"crcy_cd"`
+	CrcyCd2          string `json:"crcy_cd2"`
+	CrcyCd3          string `json:"crcy_cd3"`
+	CrcyCd4          string `json:"crcy_cd4"`
+	AlctFrcrUnpr     string `json:"alct_frcr_unpr"`
+	StkpDvdnFrcrAmt2 string `json:"stkp_dvdn_frcr_amt2"`
+	StkpDvdnFrcrAmt3 string `json:"stkp_dvdn_frcr_amt3"`
+	StkpDvdnFrcrAmt4 string `json:"stkp_dvdn_frcr_amt4"`
+	DfntYn           string `json:"dfnt_yn"`
 }
 
 type KISOverseasPriceV1QuotationsPeriodRightsRequest struct {
@@ -9582,17 +9582,17 @@ type KISOverseasPriceV1QuotationsPrice struct {
 }
 
 type KISOverseasPriceV1QuotationsPriceOutputItem struct {
-	Rsym string `json:"rsym,omitempty"`
-	Zdiv string `json:"zdiv,omitempty"`
-	Base string `json:"base,omitempty"`
-	Pvol string `json:"pvol,omitempty"`
-	Last string `json:"last,omitempty"`
-	Sign string `json:"sign,omitempty"`
-	Diff string `json:"diff,omitempty"`
-	Rate string `json:"rate,omitempty"`
-	Tvol string `json:"tvol,omitempty"`
-	Tamt string `json:"tamt,omitempty"`
-	Ordy string `json:"ordy,omitempty"`
+	Rsym string `json:"rsym"`
+	Zdiv string `json:"zdiv"`
+	Base string `json:"base"`
+	Pvol string `json:"pvol"`
+	Last string `json:"last"`
+	Sign string `json:"sign"`
+	Diff string `json:"diff"`
+	Rate string `json:"rate"`
+	Tvol string `json:"tvol"`
+	Tamt string `json:"tamt"`
+	Ordy string `json:"ordy"`
 }
 
 type KISOverseasPriceV1QuotationsPriceRequest struct {
@@ -9607,47 +9607,47 @@ type KISOverseasPriceV1QuotationsPriceDetail struct {
 }
 
 type KISOverseasPriceV1QuotationsPriceDetailOutputItem struct {
-	Rsym   string `json:"rsym,omitempty"`
-	Pvol   string `json:"pvol,omitempty"`
-	Open   string `json:"open,omitempty"`
-	High   string `json:"high,omitempty"`
-	Low    string `json:"low,omitempty"`
-	Last   string `json:"last,omitempty"`
-	Base   string `json:"base,omitempty"`
-	Tomv   string `json:"tomv,omitempty"`
-	Pamt   string `json:"pamt,omitempty"`
-	Uplp   string `json:"uplp,omitempty"`
-	Dnlp   string `json:"dnlp,omitempty"`
-	H52p   string `json:"h52p,omitempty"`
-	H52d   string `json:"h52d,omitempty"`
-	L52p   string `json:"l52p,omitempty"`
-	L52d   string `json:"l52d,omitempty"`
-	Perx   string `json:"perx,omitempty"`
-	Pbrx   string `json:"pbrx,omitempty"`
-	Epsx   string `json:"epsx,omitempty"`
-	Bpsx   string `json:"bpsx,omitempty"`
-	Shar   string `json:"shar,omitempty"`
-	Mcap   string `json:"mcap,omitempty"`
-	Curr   string `json:"curr,omitempty"`
-	Zdiv   string `json:"zdiv,omitempty"`
-	Vnit   string `json:"vnit,omitempty"`
-	TXprc  string `json:"t_xprc,omitempty"`
-	TXdif  string `json:"t_xdif,omitempty"`
-	TXrat  string `json:"t_xrat,omitempty"`
-	PXprc  string `json:"p_xprc,omitempty"`
-	PXdif  string `json:"p_xdif,omitempty"`
-	PXrat  string `json:"p_xrat,omitempty"`
-	TRate  string `json:"t_rate,omitempty"`
-	PRate  string `json:"p_rate,omitempty"`
-	TXsgn  string `json:"t_xsgn,omitempty"`
-	PXsng  string `json:"p_xsng,omitempty"`
-	EOrdyn string `json:"e_ordyn,omitempty"`
-	EHogau string `json:"e_hogau,omitempty"`
-	EIcod  string `json:"e_icod,omitempty"`
-	EParp  string `json:"e_parp,omitempty"`
-	Tvol   string `json:"tvol,omitempty"`
-	Tamt   string `json:"tamt,omitempty"`
-	EtypNm string `json:"etyp_nm,omitempty"`
+	Rsym   string `json:"rsym"`
+	Pvol   string `json:"pvol"`
+	Open   string `json:"open"`
+	High   string `json:"high"`
+	Low    string `json:"low"`
+	Last   string `json:"last"`
+	Base   string `json:"base"`
+	Tomv   string `json:"tomv"`
+	Pamt   string `json:"pamt"`
+	Uplp   string `json:"uplp"`
+	Dnlp   string `json:"dnlp"`
+	H52p   string `json:"h52p"`
+	H52d   string `json:"h52d"`
+	L52p   string `json:"l52p"`
+	L52d   string `json:"l52d"`
+	Perx   string `json:"perx"`
+	Pbrx   string `json:"pbrx"`
+	Epsx   string `json:"epsx"`
+	Bpsx   string `json:"bpsx"`
+	Shar   string `json:"shar"`
+	Mcap   string `json:"mcap"`
+	Curr   string `json:"curr"`
+	Zdiv   string `json:"zdiv"`
+	Vnit   string `json:"vnit"`
+	TXprc  string `json:"t_xprc"`
+	TXdif  string `json:"t_xdif"`
+	TXrat  string `json:"t_xrat"`
+	PXprc  string `json:"p_xprc"`
+	PXdif  string `json:"p_xdif"`
+	PXrat  string `json:"p_xrat"`
+	TRate  string `json:"t_rate"`
+	PRate  string `json:"p_rate"`
+	TXsgn  string `json:"t_xsgn"`
+	PXsng  string `json:"p_xsng"`
+	EOrdyn string `json:"e_ordyn"`
+	EHogau string `json:"e_hogau"`
+	EIcod  string `json:"e_icod"`
+	EParp  string `json:"e_parp"`
+	Tvol   string `json:"tvol"`
+	Tamt   string `json:"tamt"`
+	EtypNm string `json:"etyp_nm"`
 }
 
 type KISOverseasPriceV1QuotationsPriceDetailRequest struct {
@@ -9662,18 +9662,18 @@ type KISOverseasPriceV1QuotationsRightsByIce struct {
 }
 
 type KISOverseasPriceV1QuotationsRightsByIceOutput1Item struct {
-	AnnoDt         string `json:"anno_dt,omitempty"`
-	CaTitle        string `json:"ca_title,omitempty"`
-	DivLockDt      string `json:"div_lock_dt,omitempty"`
-	PayDt          string `json:"pay_dt,omitempty"`
-	RecordDt       string `json:"record_dt,omitempty"`
-	ValidityDt     string `json:"validity_dt,omitempty"`
-	LocalEndDt     string `json:"local_end_dt,omitempty"`
-	LockDt         string `json:"lock_dt,omitempty"`
-	DelistDt       string `json:"delist_dt,omitempty"`
-	RedemptDt      string `json:"redempt_dt,omitempty"`
-	EarlyRedemptDt string `json:"early_redempt_dt,omitempty"`
-	EffectiveDt    string `json:"effective_dt,omitempty"`
+	AnnoDt         string `json:"anno_dt"`
+	CaTitle        string `json:"ca_title"`
+	DivLockDt      string `json:"div_lock_dt"`
+	PayDt          string `json:"pay_dt"`
+	RecordDt       string `json:"record_dt"`
+	ValidityDt     string `json:"validity_dt"`
+	LocalEndDt     string `json:"local_end_dt"`
+	LockDt         string `json:"lock_dt"`
+	DelistDt       string `json:"delist_dt"`
+	RedemptDt      string `json:"redempt_dt"`
+	EarlyRedemptDt string `json:"early_redempt_dt"`
+	EffectiveDt    string `json:"effective_dt"`
 }
 
 type KISOverseasPriceV1QuotationsRightsByIceRequest struct {
@@ -9689,61 +9689,61 @@ type KISOverseasPriceV1QuotationsSearchInfo struct {
 }
 
 type KISOverseasPriceV1QuotationsSearchInfoOutputItem struct {
-	StdPdno                string `json:"std_pdno,omitempty"`
-	PrdtEngName            string `json:"prdt_eng_name,omitempty"`
-	NatnCd                 string `json:"natn_cd,omitempty"`
-	NatnName               string `json:"natn_name,omitempty"`
-	TrMketCd               string `json:"tr_mket_cd,omitempty"`
-	TrMketName             string `json:"tr_mket_name,omitempty"`
-	OvrsExcgCd             string `json:"ovrs_excg_cd,omitempty"`
-	OvrsExcgName           string `json:"ovrs_excg_name,omitempty"`
-	TrCrcyCd               string `json:"tr_crcy_cd,omitempty"`
-	OvrsPapr               string `json:"ovrs_papr,omitempty"`
-	CrcyName               string `json:"crcy_name,omitempty"`
-	OvrsStckDvsnCd         string `json:"ovrs_stck_dvsn_cd,omitempty"`
-	PrdtClsfCd             string `json:"prdt_clsf_cd,omitempty"`
-	PrdtClsfName           string `json:"prdt_clsf_name,omitempty"`
-	SllUnitQty             string `json:"sll_unit_qty,omitempty"`
-	BuyUnitQty             string `json:"buy_unit_qty,omitempty"`
-	TrUnitAmt              string `json:"tr_unit_amt,omitempty"`
-	LstgStckNum            string `json:"lstg_stck_num,omitempty"`
-	LstgDt                 string `json:"lstg_dt,omitempty"`
-	OvrsStckTrStopDvsnCd   string `json:"ovrs_stck_tr_stop_dvsn_cd,omitempty"`
-	LstgAbolItemYn         string `json:"lstg_abol_item_yn,omitempty"`
-	OvrsStckPrdtGrpNo      string `json:"ovrs_stck_prdt_grp_no,omitempty"`
-	LstgYn                 string `json:"lstg_yn,omitempty"`
-	TaxLevyYn              string `json:"tax_levy_yn,omitempty"`
-	OvrsStckErlmRosnCd     string `json:"ovrs_stck_erlm_rosn_cd,omitempty"`
-	OvrsStckHistRghtDvsnCd string `json:"ovrs_stck_hist_rght_dvsn_cd,omitempty"`
-	ChngBfPdno             string `json:"chng_bf_pdno,omitempty"`
-	PrdtTypeCd2            string `json:"prdt_type_cd_2,omitempty"`
-	OvrsItemName           string `json:"ovrs_item_name,omitempty"`
-	SedolNo                string `json:"sedol_no,omitempty"`
-	BlbgTckrText           string `json:"blbg_tckr_text,omitempty"`
-	OvrsStckEtfRiskDrtpCd  string `json:"ovrs_stck_etf_risk_drtp_cd,omitempty"`
-	EtpChasErngRtDbnb      string `json:"etp_chas_erng_rt_dbnb,omitempty"`
-	IsttUsgeIsinCd         string `json:"istt_usge_isin_cd,omitempty"`
-	MintSvcYn              string `json:"mint_svc_yn,omitempty"`
-	MintSvcYnChngDt        string `json:"mint_svc_yn_chng_dt,omitempty"`
-	PrdtName               string `json:"prdt_name,omitempty"`
-	LeiCd                  string `json:"lei_cd,omitempty"`
-	OvrsStckStopRsonCd     string `json:"ovrs_stck_stop_rson_cd,omitempty"`
-	LstgAbolDt             string `json:"lstg_abol_dt,omitempty"`
-	MiniStkTrStatDvsnCd    string `json:"mini_stk_tr_stat_dvsn_cd,omitempty"`
-	MintFrstSvcErlmDt      string `json:"mint_frst_svc_erlm_dt,omitempty"`
-	MintDcptTradPsblYn     string `json:"mint_dcpt_trad_psbl_yn,omitempty"`
-	MintFnumTradPsblYn     string `json:"mint_fnum_trad_psbl_yn,omitempty"`
-	MintCblcCvsnIpsbYn     string `json:"mint_cblc_cvsn_ipsb_yn,omitempty"`
-	PtpItemYn              string `json:"ptp_item_yn,omitempty"`
-	PtpItemTrfxExmtYn      string `json:"ptp_item_trfx_exmt_yn,omitempty"`
-	PtpItemTrfxExmtStrtDt  string `json:"ptp_item_trfx_exmt_strt_dt,omitempty"`
-	PtpItemTrfxExmtEndDt   string `json:"ptp_item_trfx_exmt_end_dt,omitempty"`
-	DtmTrPsblYn            string `json:"dtm_tr_psbl_yn,omitempty"`
-	SdrfStopEclsYn         string `json:"sdrf_stop_ecls_yn,omitempty"`
-	SdrfStopEclsErlmDt     string `json:"sdrf_stop_ecls_erlm_dt,omitempty"`
-	MemoText1              string `json:"memo_text1,omitempty"`
-	OvrsNowPric1           string `json:"ovrs_now_pric1,omitempty"`
-	LastRcvgDtime          string `json:"last_rcvg_dtime,omitempty"`
+	StdPdno                string `json:"std_pdno"`
+	PrdtEngName            string `json:"prdt_eng_name"`
+	NatnCd                 string `json:"natn_cd"`
+	NatnName               string `json:"natn_name"`
+	TrMketCd               string `json:"tr_mket_cd"`
+	TrMketName             string `json:"tr_mket_name"`
+	OvrsExcgCd             string `json:"ovrs_excg_cd"`
+	OvrsExcgName           string `json:"ovrs_excg_name"`
+	TrCrcyCd               string `json:"tr_crcy_cd"`
+	OvrsPapr               string `json:"ovrs_papr"`
+	CrcyName               string `json:"crcy_name"`
+	OvrsStckDvsnCd         string `json:"ovrs_stck_dvsn_cd"`
+	PrdtClsfCd             string `json:"prdt_clsf_cd"`
+	PrdtClsfName           string `json:"prdt_clsf_name"`
+	SllUnitQty             string `json:"sll_unit_qty"`
+	BuyUnitQty             string `json:"buy_unit_qty"`
+	TrUnitAmt              string `json:"tr_unit_amt"`
+	LstgStckNum            string `json:"lstg_stck_num"`
+	LstgDt                 string `json:"lstg_dt"`
+	OvrsStckTrStopDvsnCd   string `json:"ovrs_stck_tr_stop_dvsn_cd"`
+	LstgAbolItemYn         string `json:"lstg_abol_item_yn"`
+	OvrsStckPrdtGrpNo      string `json:"ovrs_stck_prdt_grp_no"`
+	LstgYn                 string `json:"lstg_yn"`
+	TaxLevyYn              string `json:"tax_levy_yn"`
+	OvrsStckErlmRosnCd     string `json:"ovrs_stck_erlm_rosn_cd"`
+	OvrsStckHistRghtDvsnCd string `json:"ovrs_stck_hist_rght_dvsn_cd"`
+	ChngBfPdno             string `json:"chng_bf_pdno"`
+	PrdtTypeCd2            string `json:"prdt_type_cd_2"`
+	OvrsItemName           string `json:"ovrs_item_name"`
+	SedolNo                string `json:"sedol_no"`
+	BlbgTckrText           string `json:"blbg_tckr_text"`
+	OvrsStckEtfRiskDrtpCd  string `json:"ovrs_stck_etf_risk_drtp_cd"`
+	EtpChasErngRtDbnb      string `json:"etp_chas_erng_rt_dbnb"`
+	IsttUsgeIsinCd         string `json:"istt_usge_isin_cd"`
+	MintSvcYn              string `json:"mint_svc_yn"`
+	MintSvcYnChngDt        string `json:"mint_svc_yn_chng_dt"`
+	PrdtName               string `json:"prdt_name"`
+	LeiCd                  string `json:"lei_cd"`
+	OvrsStckStopRsonCd     string `json:"ovrs_stck_stop_rson_cd"`
+	LstgAbolDt             string `json:"lstg_abol_dt"`
+	MiniStkTrStatDvsnCd    string `json:"mini_stk_tr_stat_dvsn_cd"`
+	MintFrstSvcErlmDt      string `json:"mint_frst_svc_erlm_dt"`
+	MintDcptTradPsblYn     string `json:"mint_dcpt_trad_psbl_yn"`
+	MintFnumTradPsblYn     string `json:"mint_fnum_trad_psbl_yn"`
+	MintCblcCvsnIpsbYn     string `json:"mint_cblc_cvsn_ipsb_yn"`
+	PtpItemYn              string `json:"ptp_item_yn"`
+	PtpItemTrfxExmtYn      string `json:"ptp_item_trfx_exmt_yn"`
+	PtpItemTrfxExmtStrtDt  string `json:"ptp_item_trfx_exmt_strt_dt"`
+	PtpItemTrfxExmtEndDt   string `json:"ptp_item_trfx_exmt_end_dt"`
+	DtmTrPsblYn            string `json:"dtm_tr_psbl_yn"`
+	SdrfStopEclsYn         string `json:"sdrf_stop_ecls_yn"`
+	SdrfStopEclsErlmDt     string `json:"sdrf_stop_ecls_erlm_dt"`
+	MemoText1              string `json:"memo_text1"`
+	OvrsNowPric1           string `json:"ovrs_now_pric1"`
+	LastRcvgDtime          string `json:"last_rcvg_dtime"`
 }
 
 type KISOverseasPriceV1QuotationsSearchInfoRequest struct {
@@ -9757,14 +9757,14 @@ type KISOverseasStockV1QuotationsCountriesHoliday struct {
 }
 
 type KISOverseasStockV1QuotationsCountriesHolidayOutputItem struct {
-	PrdtTypeCd    string `json:"prdt_type_cd,omitempty"`
-	TrNatnCd      string `json:"tr_natn_cd,omitempty"`
-	TrNatnName    string `json:"tr_natn_name,omitempty"`
-	NatnEngAbrvCd string `json:"natn_eng_abrv_cd,omitempty"`
-	TrMketCd      string `json:"tr_mket_cd,omitempty"`
-	TrMketName    string `json:"tr_mket_name,omitempty"`
-	AcplSttlDt    string `json:"acpl_sttl_dt,omitempty"`
-	DmstSttlDt    string `json:"dmst_sttl_dt,omitempty"`
+	PrdtTypeCd    string `json:"prdt_type_cd"`
+	TrNatnCd      string `json:"tr_natn_cd"`
+	TrNatnName    string `json:"tr_natn_name"`
+	NatnEngAbrvCd string `json:"natn_eng_abrv_cd"`
+	TrMketCd      string `json:"tr_mket_cd"`
+	TrMketName    string `json:"tr_mket_name"`
+	AcplSttlDt    string `json:"acpl_sttl_dt"`
+	DmstSttlDt    string `json:"dmst_sttl_dt"`
 }
 
 type KISOverseasStockV1QuotationsCountriesHolidayRequest struct {
@@ -9780,29 +9780,29 @@ type KISOverseasStockV1RankingMarketCap struct {
 }
 
 type KISOverseasStockV1RankingMarketCapOutput1Item struct {
-	Zdiv string `json:"zdiv,omitempty"`
-	Stat string `json:"stat,omitempty"`
-	Crec string `json:"crec,omitempty"`
-	Trec string `json:"trec,omitempty"`
-	Nrec string `json:"nrec,omitempty"`
+	Zdiv string `json:"zdiv"`
+	Stat string `json:"stat"`
+	Crec string `json:"crec"`
+	Trec string `json:"trec"`
+	Nrec string `json:"nrec"`
 }
 
 type KISOverseasStockV1RankingMarketCapOutput2Item struct {
-	Rsym   string `json:"rsym,omitempty"`
-	Excd   string `json:"excd,omitempty"`
-	Symb   string `json:"symb,omitempty"`
-	Name   string `json:"name,omitempty"`
-	Last   string `json:"last,omitempty"`
-	Sign   string `json:"sign,omitempty"`
-	Diff   string `json:"diff,omitempty"`
-	Rate   string `json:"rate,omitempty"`
-	Tvol   string `json:"tvol,omitempty"`
-	Shar   string `json:"shar,omitempty"`
-	Tomv   string `json:"tomv,omitempty"`
-	Grav   string `json:"grav,omitempty"`
-	Rank   string `json:"rank,omitempty"`
-	Ename  string `json:"ename,omitempty"`
-	EOrdyn string `json:"e_ordyn,omitempty"`
+	Rsym   string `json:"rsym"`
+	Excd   string `json:"excd"`
+	Symb   string `json:"symb"`
+	Name   string `json:"name"`
+	Last   string `json:"last"`
+	Sign   string `json:"sign"`
+	Diff   string `json:"diff"`
+	Rate   string `json:"rate"`
+	Tvol   string `json:"tvol"`
+	Shar   string `json:"shar"`
+	Tomv   string `json:"tomv"`
+	Grav   string `json:"grav"`
+	Rank   string `json:"rank"`
+	Ename  string `json:"ename"`
+	EOrdyn string `json:"e_ordyn"`
 }
 
 type KISOverseasStockV1RankingMarketCapRequest struct {
@@ -9819,28 +9819,28 @@ type KISOverseasStockV1RankingNewHighlow struct {
 }
 
 type KISOverseasStockV1RankingNewHighlowOutput1Item struct {
-	Zdiv string `json:"zdiv,omitempty"`
-	Stat string `json:"stat,omitempty"`
-	Nrec string `json:"nrec,omitempty"`
+	Zdiv string `json:"zdiv"`
+	Stat string `json:"stat"`
+	Nrec string `json:"nrec"`
 }
 
 type KISOverseasStockV1RankingNewHighlowOutput2Item struct {
-	Rsym   string `json:"rsym,omitempty"`
-	Excd   string `json:"excd,omitempty"`
-	Symb   string `json:"symb,omitempty"`
-	Name   string `json:"name,omitempty"`
-	Last   string `json:"last,omitempty"`
-	Sign   string `json:"sign,omitempty"`
-	Diff   string `json:"diff,omitempty"`
-	Rate   string `json:"rate,omitempty"`
-	Tvol   string `json:"tvol,omitempty"`
-	Pask   string `json:"pask,omitempty"`
-	Pbid   string `json:"pbid,omitempty"`
-	NBase  string `json:"n_base,omitempty"`
-	NDiff  string `json:"n_diff,omitempty"`
-	NRate  string `json:"n_rate,omitempty"`
-	Ename  string `json:"ename,omitempty"`
-	EOrdyn string `json:"e_ordyn,omitempty"`
+	Rsym   string `json:"rsym"`
+	Excd   string `json:"excd"`
+	Symb   string `json:"symb"`
+	Name   string `json:"name"`
+	Last   string `json:"last"`
+	Sign   string `json:"sign"`
+	Diff   string `json:"diff"`
+	Rate   string `json:"rate"`
+	Tvol   string `json:"tvol"`
+	Pask   string `json:"pask"`
+	Pbid   string `json:"pbid"`
+	NBase  string `json:"n_base"`
+	NDiff  string `json:"n_diff"`
+	NRate  string `json:"n_rate"`
+	Ename  string `json:"ename"`
+	EOrdyn string `json:"e_ordyn"`
 }
 
 type KISOverseasStockV1RankingNewHighlowRequest struct {
@@ -9860,28 +9860,28 @@ type KISOverseasStockV1RankingPriceFluct struct {
 }
 
 type KISOverseasStockV1RankingPriceFluctOutput1Item struct {
-	Zdiv string `json:"zdiv,omitempty"`
-	Stat string `json:"stat,omitempty"`
-	Nrec string `json:"nrec,omitempty"`
+	Zdiv string `json:"zdiv"`
+	Stat string `json:"stat"`
+	Nrec string `json:"nrec"`
 }
 
 type KISOverseasStockV1RankingPriceFluctOutput2Item struct {
-	Rsym   string `json:"rsym,omitempty"`
-	Excd   string `json:"excd,omitempty"`
-	Symb   string `json:"symb,omitempty"`
-	Knam   string `json:"knam,omitempty"`
-	Last   string `json:"last,omitempty"`
-	Sign   string `json:"sign,omitempty"`
-	Diff   string `json:"diff,omitempty"`
-	Rate   string `json:"rate,omitempty"`
-	Tvol   string `json:"tvol,omitempty"`
-	Pask   string `json:"pask,omitempty"`
-	Pbid   string `json:"pbid,omitempty"`
-	NBase  string `json:"n_base,omitempty"`
-	NDiff  string `json:"n_diff,omitempty"`
-	NRate  string `json:"n_rate,omitempty"`
-	Enam   string `json:"enam,omitempty"`
-	EOrdyn string `json:"e_ordyn,omitempty"`
+	Rsym   string `json:"rsym"`
+	Excd   string `json:"excd"`
+	Symb   string `json:"symb"`
+	Knam   string `json:"knam"`
+	Last   string `json:"last"`
+	Sign   string `json:"sign"`
+	Diff   string `json:"diff"`
+	Rate   string `json:"rate"`
+	Tvol   string `json:"tvol"`
+	Pask   string `json:"pask"`
+	Pbid   string `json:"pbid"`
+	NBase  string `json:"n_base"`
+	NDiff  string `json:"n_diff"`
+	NRate  string `json:"n_rate"`
+	Enam   string `json:"enam"`
+	EOrdyn string `json:"e_ordyn"`
 }
 
 type KISOverseasStockV1RankingPriceFluctRequest struct {
@@ -9900,30 +9900,30 @@ type KISOverseasStockV1RankingTradeGrowth struct {
 }
 
 type KISOverseasStockV1RankingTradeGrowthOutput1Item struct {
-	Zdiv string `json:"zdiv,omitempty"`
-	Stat string `json:"stat,omitempty"`
-	Crec string `json:"crec,omitempty"`
-	Trec string `json:"trec,omitempty"`
-	Nrec string `json:"nrec,omitempty"`
+	Zdiv string `json:"zdiv"`
+	Stat string `json:"stat"`
+	Crec string `json:"crec"`
+	Trec string `json:"trec"`
+	Nrec string `json:"nrec"`
 }
 
 type KISOverseasStockV1RankingTradeGrowthOutput2Item struct {
-	Rsym   string `json:"rsym,omitempty"`
-	Excd   string `json:"excd,omitempty"`
-	Symb   string `json:"symb,omitempty"`
-	Name   string `json:"name,omitempty"`
-	Last   string `json:"last,omitempty"`
-	Sign   string `json:"sign,omitempty"`
-	Diff   string `json:"diff,omitempty"`
-	Rate   string `json:"rate,omitempty"`
-	Pask   string `json:"pask,omitempty"`
-	Pbid   string `json:"pbid,omitempty"`
-	Tvol   string `json:"tvol,omitempty"`
-	NTvol  string `json:"n_tvol,omitempty"`
-	NRate  string `json:"n_rate,omitempty"`
-	Rank   string `json:"rank,omitempty"`
-	Ename  string `json:"ename,omitempty"`
-	EOrdyn string `json:"e_ordyn,omitempty"`
+	Rsym   string `json:"rsym"`
+	Excd   string `json:"excd"`
+	Symb   string `json:"symb"`
+	Name   string `json:"name"`
+	Last   string `json:"last"`
+	Sign   string `json:"sign"`
+	Diff   string `json:"diff"`
+	Rate   string `json:"rate"`
+	Pask   string `json:"pask"`
+	Pbid   string `json:"pbid"`
+	Tvol   string `json:"tvol"`
+	NTvol  string `json:"n_tvol"`
+	NRate  string `json:"n_rate"`
+	Rank   string `json:"rank"`
+	Ename  string `json:"ename"`
+	EOrdyn string `json:"e_ordyn"`
 }
 
 type KISOverseasStockV1RankingTradeGrowthRequest struct {
@@ -9941,30 +9941,30 @@ type KISOverseasStockV1RankingTradePbmn struct {
 }
 
 type KISOverseasStockV1RankingTradePbmnOutput1Item struct {
-	Zdiv string `json:"zdiv,omitempty"`
-	Stat string `json:"stat,omitempty"`
-	Crec string `json:"crec,omitempty"`
-	Trec string `json:"trec,omitempty"`
-	Nrec string `json:"nrec,omitempty"`
+	Zdiv string `json:"zdiv"`
+	Stat string `json:"stat"`
+	Crec string `json:"crec"`
+	Trec string `json:"trec"`
+	Nrec string `json:"nrec"`
 }
 
 type KISOverseasStockV1RankingTradePbmnOutput2Item struct {
-	Rsym   string `json:"rsym,omitempty"`
-	Excd   string `json:"excd,omitempty"`
-	Symb   string `json:"symb,omitempty"`
-	Name   string `json:"name,omitempty"`
-	Last   string `json:"last,omitempty"`
-	Sign   string `json:"sign,omitempty"`
-	Diff   string `json:"diff,omitempty"`
-	Rate   string `json:"rate,omitempty"`
-	Pask   string `json:"pask,omitempty"`
-	Pbid   string `json:"pbid,omitempty"`
-	Tvol   string `json:"tvol,omitempty"`
-	Tamt   string `json:"tamt,omitempty"`
-	ATamt  string `json:"a_tamt,omitempty"`
-	Rank   string `json:"rank,omitempty"`
-	Ename  string `json:"ename,omitempty"`
-	EOrdyn string `json:"e_ordyn,omitempty"`
+	Rsym   string `json:"rsym"`
+	Excd   string `json:"excd"`
+	Symb   string `json:"symb"`
+	Name   string `json:"name"`
+	Last   string `json:"last"`
+	Sign   string `json:"sign"`
+	Diff   string `json:"diff"`
+	Rate   string `json:"rate"`
+	Pask   string `json:"pask"`
+	Pbid   string `json:"pbid"`
+	Tvol   string `json:"tvol"`
+	Tamt   string `json:"tamt"`
+	ATamt  string `json:"a_tamt"`
+	Rank   string `json:"rank"`
+	Ename  string `json:"ename"`
+	EOrdyn string `json:"e_ordyn"`
 }
 
 type KISOverseasStockV1RankingTradePbmnRequest struct {
@@ -9984,31 +9984,31 @@ type KISOverseasStockV1RankingTradeTurnover struct {
 }
 
 type KISOverseasStockV1RankingTradeTurnoverOutput1Item struct {
-	Zdiv string `json:"zdiv,omitempty"`
-	Stat string `json:"stat,omitempty"`
-	Crec string `json:"crec,omitempty"`
-	Trec string `json:"trec,omitempty"`
-	Nrec string `json:"nrec,omitempty"`
+	Zdiv string `json:"zdiv"`
+	Stat string `json:"stat"`
+	Crec string `json:"crec"`
+	Trec string `json:"trec"`
+	Nrec string `json:"nrec"`
 }
 
 type KISOverseasStockV1RankingTradeTurnoverOutput2Item struct {
-	Rsym   string `json:"rsym,omitempty"`
-	Excd   string `json:"excd,omitempty"`
-	Symb   string `json:"symb,omitempty"`
-	Name   string `json:"name,omitempty"`
-	Last   string `json:"last,omitempty"`
-	Sign   string `json:"sign,omitempty"`
-	Diff   string `json:"diff,omitempty"`
-	Rate   string `json:"rate,omitempty"`
-	Tvol   string `json:"tvol,omitempty"`
-	Pask   string `json:"pask,omitempty"`
-	Pbid   string `json:"pbid,omitempty"`
-	NTvol  string `json:"n_tvol,omitempty"`
-	Shar   string `json:"shar,omitempty"`
-	Tover  string `json:"tover,omitempty"`
-	Rank   string `json:"rank,omitempty"`
-	Ename  string `json:"ename,omitempty"`
-	EOrdyn string `json:"e_ordyn,omitempty"`
+	Rsym   string `json:"rsym"`
+	Excd   string `json:"excd"`
+	Symb   string `json:"symb"`
+	Name   string `json:"name"`
+	Last   string `json:"last"`
+	Sign   string `json:"sign"`
+	Diff   string `json:"diff"`
+	Rate   string `json:"rate"`
+	Tvol   string `json:"tvol"`
+	Pask   string `json:"pask"`
+	Pbid   string `json:"pbid"`
+	NTvol  string `json:"n_tvol"`
+	Shar   string `json:"shar"`
+	Tover  string `json:"tover"`
+	Rank   string `json:"rank"`
+	Ename  string `json:"ename"`
+	EOrdyn string `json:"e_ordyn"`
 }
 
 type KISOverseasStockV1RankingTradeTurnoverRequest struct {
@@ -10026,30 +10026,30 @@ type KISOverseasStockV1RankingTradeVol struct {
 }
 
 type KISOverseasStockV1RankingTradeVolOutput1Item struct {
-	Zdiv string `json:"zdiv,omitempty"`
-	Stat string `json:"stat,omitempty"`
-	Crec string `json:"crec,omitempty"`
-	Trec string `json:"trec,omitempty"`
-	Nrec string `json:"nrec,omitempty"`
+	Zdiv string `json:"zdiv"`
+	Stat string `json:"stat"`
+	Crec string `json:"crec"`
+	Trec string `json:"trec"`
+	Nrec string `json:"nrec"`
 }
 
 type KISOverseasStockV1RankingTradeVolOutput2Item struct {
-	Rsym   string `json:"rsym,omitempty"`
-	Excd   string `json:"excd,omitempty"`
-	Symb   string `json:"symb,omitempty"`
-	Name   string `json:"name,omitempty"`
-	Last   string `json:"last,omitempty"`
-	Sign   string `json:"sign,omitempty"`
-	Diff   string `json:"diff,omitempty"`
-	Rate   string `json:"rate,omitempty"`
-	Pask   string `json:"pask,omitempty"`
-	Pbid   string `json:"pbid,omitempty"`
-	Tvol   string `json:"tvol,omitempty"`
-	Tamt   string `json:"tamt,omitempty"`
-	ATvol  string `json:"a_tvol,omitempty"`
-	Rank   string `json:"rank,omitempty"`
-	Ename  string `json:"ename,omitempty"`
-	EOrdyn string `json:"e_ordyn,omitempty"`
+	Rsym   string `json:"rsym"`
+	Excd   string `json:"excd"`
+	Symb   string `json:"symb"`
+	Name   string `json:"name"`
+	Last   string `json:"last"`
+	Sign   string `json:"sign"`
+	Diff   string `json:"diff"`
+	Rate   string `json:"rate"`
+	Pask   string `json:"pask"`
+	Pbid   string `json:"pbid"`
+	Tvol   string `json:"tvol"`
+	Tamt   string `json:"tamt"`
+	ATvol  string `json:"a_tvol"`
+	Rank   string `json:"rank"`
+	Ename  string `json:"ename"`
+	EOrdyn string `json:"e_ordyn"`
 }
 
 type KISOverseasStockV1RankingTradeVolRequest struct {
@@ -10069,31 +10069,31 @@ type KISOverseasStockV1RankingUpdownRate struct {
 }
 
 type KISOverseasStockV1RankingUpdownRateOutput1Item struct {
-	Zdiv string `json:"zdiv,omitempty"`
-	Stat string `json:"stat,omitempty"`
-	Crec string `json:"crec,omitempty"`
-	Trec string `json:"trec,omitempty"`
-	Nrec string `json:"nrec,omitempty"`
+	Zdiv string `json:"zdiv"`
+	Stat string `json:"stat"`
+	Crec string `json:"crec"`
+	Trec string `json:"trec"`
+	Nrec string `json:"nrec"`
 }
 
 type KISOverseasStockV1RankingUpdownRateOutput2Item struct {
-	Rsym   string `json:"rsym,omitempty"`
-	Excd   string `json:"excd,omitempty"`
-	Symb   string `json:"symb,omitempty"`
-	Name   string `json:"name,omitempty"`
-	Last   string `json:"last,omitempty"`
-	Sign   string `json:"sign,omitempty"`
-	Diff   string `json:"diff,omitempty"`
-	Rate   string `json:"rate,omitempty"`
-	Tvol   string `json:"tvol,omitempty"`
-	Pask   string `json:"pask,omitempty"`
-	Pbid   string `json:"pbid,omitempty"`
-	NBase  string `json:"n_base,omitempty"`
-	NDiff  string `json:"n_diff,omitempty"`
-	NRate  string `json:"n_rate,omitempty"`
-	Rank   string `json:"rank,omitempty"`
-	Ename  string `json:"ename,omitempty"`
-	EOrdyn string `json:"e_ordyn,omitempty"`
+	Rsym   string `json:"rsym"`
+	Excd   string `json:"excd"`
+	Symb   string `json:"symb"`
+	Name   string `json:"name"`
+	Last   string `json:"last"`
+	Sign   string `json:"sign"`
+	Diff   string `json:"diff"`
+	Rate   string `json:"rate"`
+	Tvol   string `json:"tvol"`
+	Pask   string `json:"pask"`
+	Pbid   string `json:"pbid"`
+	NBase  string `json:"n_base"`
+	NDiff  string `json:"n_diff"`
+	NRate  string `json:"n_rate"`
+	Rank   string `json:"rank"`
+	Ename  string `json:"ename"`
+	EOrdyn string `json:"e_ordyn"`
 }
 
 type KISOverseasStockV1RankingUpdownRateRequest struct {
@@ -10112,27 +10112,27 @@ type KISOverseasStockV1RankingVolumePower struct {
 }
 
 type KISOverseasStockV1RankingVolumePowerOutput1Item struct {
-	Zdiv string `json:"zdiv,omitempty"`
-	Stat string `json:"stat,omitempty"`
-	Nrec string `json:"nrec,omitempty"`
+	Zdiv string `json:"zdiv"`
+	Stat string `json:"stat"`
+	Nrec string `json:"nrec"`
 }
 
 type KISOverseasStockV1RankingVolumePowerOutput2Item struct {
-	Rsym   string `json:"rsym,omitempty"`
-	Excd   string `json:"excd,omitempty"`
-	Symb   string `json:"symb,omitempty"`
-	Knam   string `json:"knam,omitempty"`
-	Last   string `json:"last,omitempty"`
-	Sign   string `json:"sign,omitempty"`
-	Diff   string `json:"diff,omitempty"`
-	Rate   string `json:"rate,omitempty"`
-	Tvol   string `json:"tvol,omitempty"`
-	Pask   string `json:"pask,omitempty"`
-	Pbid   string `json:"pbid,omitempty"`
-	Tpow   string `json:"tpow,omitempty"`
-	Powx   string `json:"powx,omitempty"`
-	Enam   string `json:"enam,omitempty"`
-	EOrdyn string `json:"e_ordyn,omitempty"`
+	Rsym   string `json:"rsym"`
+	Excd   string `json:"excd"`
+	Symb   string `json:"symb"`
+	Knam   string `json:"knam"`
+	Last   string `json:"last"`
+	Sign   string `json:"sign"`
+	Diff   string `json:"diff"`
+	Rate   string `json:"rate"`
+	Tvol   string `json:"tvol"`
+	Pask   string `json:"pask"`
+	Pbid   string `json:"pbid"`
+	Tpow   string `json:"tpow"`
+	Powx   string `json:"powx"`
+	Enam   string `json:"enam"`
+	EOrdyn string `json:"e_ordyn"`
 }
 
 type KISOverseasStockV1RankingVolumePowerRequest struct {
@@ -10150,28 +10150,28 @@ type KISOverseasStockV1RankingVolumeSurge struct {
 }
 
 type KISOverseasStockV1RankingVolumeSurgeOutput1Item struct {
-	Zdiv string `json:"zdiv,omitempty"`
-	Stat string `json:"stat,omitempty"`
-	Nrec string `json:"nrec,omitempty"`
+	Zdiv string `json:"zdiv"`
+	Stat string `json:"stat"`
+	Nrec string `json:"nrec"`
 }
 
 type KISOverseasStockV1RankingVolumeSurgeOutput2Item struct {
-	Rsym   string `json:"rsym,omitempty"`
-	Excd   string `json:"excd,omitempty"`
-	Symb   string `json:"symb,omitempty"`
-	Knam   string `json:"knam,omitempty"`
-	Last   string `json:"last,omitempty"`
-	Sign   string `json:"sign,omitempty"`
-	Diff   string `json:"diff,omitempty"`
-	Rate   string `json:"rate,omitempty"`
-	Tvol   string `json:"tvol,omitempty"`
-	Pask   string `json:"pask,omitempty"`
-	Pbid   string `json:"pbid,omitempty"`
-	NTvol  string `json:"n_tvol,omitempty"`
-	NDiff  string `json:"n_diff,omitempty"`
-	NRate  string `json:"n_rate,omitempty"`
-	Enam   string `json:"enam,omitempty"`
-	EOrdyn string `json:"e_ordyn,omitempty"`
+	Rsym   string `json:"rsym"`
+	Excd   string `json:"excd"`
+	Symb   string `json:"symb"`
+	Knam   string `json:"knam"`
+	Last   string `json:"last"`
+	Sign   string `json:"sign"`
+	Diff   string `json:"diff"`
+	Rate   string `json:"rate"`
+	Tvol   string `json:"tvol"`
+	Pask   string `json:"pask"`
+	Pbid   string `json:"pbid"`
+	NTvol  string `json:"n_tvol"`
+	NDiff  string `json:"n_diff"`
+	NRate  string `json:"n_rate"`
+	Enam   string `json:"enam"`
+	EOrdyn string `json:"e_ordyn"`
 }
 
 type KISOverseasStockV1RankingVolumeSurgeRequest struct {
@@ -10190,15 +10190,15 @@ type KISOverseasStockV1TradingAlgoOrdno struct {
 }
 
 type KISOverseasStockV1TradingAlgoOrdnoOutputItem struct {
-	Odno            string `json:"odno,omitempty"`
-	TradDvsnName    string `json:"trad_dvsn_name,omitempty"`
-	Pdno            string `json:"pdno,omitempty"`
-	ItemName        string `json:"item_name,omitempty"`
-	FtOrdQty        string `json:"ft_ord_qty,omitempty"`
-	FtOrdUnpr3      string `json:"ft_ord_unpr3,omitempty"`
-	SpltBuyAttrName string `json:"splt_buy_attr_name,omitempty"`
-	FtCcldQty       string `json:"ft_ccld_qty,omitempty"`
-	OrdGnoBrno      string `json:"ord_gno_brno,omitempty"`
+	Odno            string `json:"odno"`
+	TradDvsnName    string `json:"trad_dvsn_name"`
+	Pdno            string `json:"pdno"`
+	ItemName        string `json:"item_name"`
+	FtOrdQty        string `json:"ft_ord_qty"`
+	FtOrdUnpr3      string `json:"ft_ord_unpr3"`
+	SpltBuyAttrName string `json:"splt_buy_attr_name"`
+	FtCcldQty       string `json:"ft_ccld_qty"`
+	OrdGnoBrno      string `json:"ord_gno_brno"`
 }
 
 type KISOverseasStockV1TradingAlgoOrdnoRequest struct {
@@ -10213,9 +10213,9 @@ type KISOverseasStockV1TradingDaytimeOrder struct {
 }
 
 type KISOverseasStockV1TradingDaytimeOrderOutputItem struct {
-	KrxFwdgOrdOrgno string `json:"KRX_FWDG_ORD_ORGNO,omitempty"`
-	Odno            string `json:"ODNO,omitempty"`
-	OrdTmd          string `json:"ORD_TMD,omitempty"`
+	KrxFwdgOrdOrgno string `json:"KRX_FWDG_ORD_ORGNO"`
+	Odno            string `json:"ODNO"`
+	OrdTmd          string `json:"ORD_TMD"`
 }
 
 type KISOverseasStockV1TradingDaytimeOrderRequest struct {
@@ -10235,9 +10235,9 @@ type KISOverseasStockV1TradingDaytimeOrderRvsecncl struct {
 }
 
 type KISOverseasStockV1TradingDaytimeOrderRvsecnclOutputItem struct {
-	KrxFwdgOrdOrgno string `json:"KRX_FWDG_ORD_ORGNO,omitempty"`
-	Odno            string `json:"ODNO,omitempty"`
-	OrdTmd          string `json:"ORD_TMD,omitempty"`
+	KrxFwdgOrdOrgno string `json:"KRX_FWDG_ORD_ORGNO"`
+	Odno            string `json:"ODNO"`
+	OrdTmd          string `json:"ORD_TMD"`
 }
 
 type KISOverseasStockV1TradingDaytimeOrderRvsecnclRequest struct {
@@ -10260,17 +10260,17 @@ type KISOverseasStockV1TradingForeignMargin struct {
 }
 
 type KISOverseasStockV1TradingForeignMarginOutputItem struct {
-	NatnName           string `json:"natn_name,omitempty"`
-	CrcyCd             string `json:"crcy_cd,omitempty"`
-	FrcrDnclAmt1       string `json:"frcr_dncl_amt1,omitempty"`
-	UstlBuyAmt         string `json:"ustl_buy_amt,omitempty"`
-	UstlSllAmt         string `json:"ustl_sll_amt,omitempty"`
-	FrcrRcvbAmt        string `json:"frcr_rcvb_amt,omitempty"`
-	FrcrMgnAmt         string `json:"frcr_mgn_amt,omitempty"`
-	FrcrGnrlOrdPsblAmt string `json:"frcr_gnrl_ord_psbl_amt,omitempty"`
-	FrcrOrdPsblAmt1    string `json:"frcr_ord_psbl_amt1,omitempty"`
-	ItgrOrdPsblAmt     string `json:"itgr_ord_psbl_amt,omitempty"`
-	BassExrt           string `json:"bass_exrt,omitempty"`
+	NatnName           string `json:"natn_name"`
+	CrcyCd             string `json:"crcy_cd"`
+	FrcrDnclAmt1       string `json:"frcr_dncl_amt1"`
+	UstlBuyAmt         string `json:"ustl_buy_amt"`
+	UstlSllAmt         string `json:"ustl_sll_amt"`
+	FrcrRcvbAmt        string `json:"frcr_rcvb_amt"`
+	FrcrMgnAmt         string `json:"frcr_mgn_amt"`
+	FrcrGnrlOrdPsblAmt string `json:"frcr_gnrl_ord_psbl_amt"`
+	FrcrOrdPsblAmt1    string `json:"frcr_ord_psbl_amt1"`
+	ItgrOrdPsblAmt     string `json:"itgr_ord_psbl_amt"`
+	BassExrt           string `json:"bass_exrt"`
 }
 
 type KISOverseasStockV1TradingForeignMarginRequest struct {
@@ -10285,29 +10285,29 @@ type KISOverseasStockV1TradingInquireAlgoCcnl struct {
 }
 
 type KISOverseasStockV1TradingInquireAlgoCcnlOutputItem struct {
-	CcldSeq     string `json:"CCLD_SEQ,omitempty"`
-	CcldBtwn    string `json:"CCLD_BTWN,omitempty"`
-	Pdno        string `json:"PDNO,omitempty"`
-	ItemName    string `json:"ITEM_NAME,omitempty"`
-	FtCcldQty   string `json:"FT_CCLD_QTY,omitempty"`
-	FtCcldUnpr3 string `json:"FT_CCLD_UNPR3,omitempty"`
-	FtCcldAmt3  string `json:"FT_CCLD_AMT3,omitempty"`
+	CcldSeq     string `json:"CCLD_SEQ"`
+	CcldBtwn    string `json:"CCLD_BTWN"`
+	Pdno        string `json:"PDNO"`
+	ItemName    string `json:"ITEM_NAME"`
+	FtCcldQty   string `json:"FT_CCLD_QTY"`
+	FtCcldUnpr3 string `json:"FT_CCLD_UNPR3"`
+	FtCcldAmt3  string `json:"FT_CCLD_AMT3"`
 }
 
 type KISOverseasStockV1TradingInquireAlgoCcnlOutput3Item struct {
-	Odno            string `json:"ODNO,omitempty"`
-	TradDvsnName    string `json:"TRAD_DVSN_NAME,omitempty"`
-	Pdno            string `json:"PDNO,omitempty"`
-	ItemName        string `json:"ITEM_NAME,omitempty"`
-	FtOrdQty        string `json:"FT_ORD_QTY,omitempty"`
-	FtOrdUnpr3      string `json:"FT_ORD_UNPR3,omitempty"`
-	OrdTmd          string `json:"ORD_TMD,omitempty"`
-	SpltBuyAttrName string `json:"SPLT_BUY_ATTR_NAME,omitempty"`
-	FtCcldQty       string `json:"FT_CCLD_QTY,omitempty"`
-	TrCrcy          string `json:"TR_CRCY,omitempty"`
-	FtCcldUnpr3     string `json:"FT_CCLD_UNPR3,omitempty"`
-	FtCcldAmt3      string `json:"FT_CCLD_AMT3,omitempty"`
-	CcldCnt         string `json:"CCLD_CNT,omitempty"`
+	Odno            string `json:"ODNO"`
+	TradDvsnName    string `json:"TRAD_DVSN_NAME"`
+	Pdno            string `json:"PDNO"`
+	ItemName        string `json:"ITEM_NAME"`
+	FtOrdQty        string `json:"FT_ORD_QTY"`
+	FtOrdUnpr3      string `json:"FT_ORD_UNPR3"`
+	OrdTmd          string `json:"ORD_TMD"`
+	SpltBuyAttrName string `json:"SPLT_BUY_ATTR_NAME"`
+	FtCcldQty       string `json:"FT_CCLD_QTY"`
+	TrCrcy          string `json:"TR_CRCY"`
+	FtCcldUnpr3     string `json:"FT_CCLD_UNPR3"`
+	FtCcldAmt3      string `json:"FT_CCLD_AMT3"`
+	CcldCnt         string `json:"CCLD_CNT"`
 }
 
 type KISOverseasStockV1TradingInquireAlgoCcnlRequest struct {
@@ -10326,36 +10326,36 @@ type KISOverseasStockV1TradingInquireBalance struct {
 }
 
 type KISOverseasStockV1TradingInquireBalanceOutput1Item struct {
-	Cano            string `json:"cano,omitempty"`
-	AcntPrdtCd      string `json:"acnt_prdt_cd,omitempty"`
-	PrdtTypeCd      string `json:"prdt_type_cd,omitempty"`
-	OvrsPdno        string `json:"ovrs_pdno,omitempty"`
-	OvrsItemName    string `json:"ovrs_item_name,omitempty"`
-	FrcrEvluPflsAmt string `json:"frcr_evlu_pfls_amt,omitempty"`
-	EvluPflsRt      string `json:"evlu_pfls_rt,omitempty"`
-	PchsAvgPric     string `json:"pchs_avg_pric,omitempty"`
-	OvrsCblcQty     string `json:"ovrs_cblc_qty,omitempty"`
-	OrdPsblQty      string `json:"ord_psbl_qty,omitempty"`
-	FrcrPchsAmt1    string `json:"frcr_pchs_amt1,omitempty"`
-	OvrsStckEvluAmt string `json:"ovrs_stck_evlu_amt,omitempty"`
-	NowPric2        string `json:"now_pric2,omitempty"`
-	TrCrcyCd        string `json:"tr_crcy_cd,omitempty"`
-	OvrsExcgCd      string `json:"ovrs_excg_cd,omitempty"`
-	LoanTypeCd      string `json:"loan_type_cd,omitempty"`
-	LoanDt          string `json:"loan_dt,omitempty"`
-	ExpdDt          string `json:"expd_dt,omitempty"`
+	Cano            string `json:"cano"`
+	AcntPrdtCd      string `json:"acnt_prdt_cd"`
+	PrdtTypeCd      string `json:"prdt_type_cd"`
+	OvrsPdno        string `json:"ovrs_pdno"`
+	OvrsItemName    string `json:"ovrs_item_name"`
+	FrcrEvluPflsAmt string `json:"frcr_evlu_pfls_amt"`
+	EvluPflsRt      string `json:"evlu_pfls_rt"`
+	PchsAvgPric     string `json:"pchs_avg_pric"`
+	OvrsCblcQty     string `json:"ovrs_cblc_qty"`
+	OrdPsblQty      string `json:"ord_psbl_qty"`
+	FrcrPchsAmt1    string `json:"frcr_pchs_amt1"`
+	OvrsStckEvluAmt string `json:"ovrs_stck_evlu_amt"`
+	NowPric2        string `json:"now_pric2"`
+	TrCrcyCd        string `json:"tr_crcy_cd"`
+	OvrsExcgCd      string `json:"ovrs_excg_cd"`
+	LoanTypeCd      string `json:"loan_type_cd"`
+	LoanDt          string `json:"loan_dt"`
+	ExpdDt          string `json:"expd_dt"`
 }
 
 type KISOverseasStockV1TradingInquireBalanceOutput2Item struct {
-	FrcrPchsAmt1     string `json:"frcr_pchs_amt1,omitempty"`
-	OvrsRlztPflsAmt  string `json:"ovrs_rlzt_pfls_amt,omitempty"`
-	OvrsTotPfls      string `json:"ovrs_tot_pfls,omitempty"`
-	RlztErngRt       string `json:"rlzt_erng_rt,omitempty"`
-	TotEvluPflsAmt   string `json:"tot_evlu_pfls_amt,omitempty"`
-	TotPftrt         string `json:"tot_pftrt,omitempty"`
-	FrcrBuyAmtSmtl1  string `json:"frcr_buy_amt_smtl1,omitempty"`
-	OvrsRlztPflsAmt2 string `json:"ovrs_rlzt_pfls_amt2,omitempty"`
-	FrcrBuyAmtSmtl2  string `json:"frcr_buy_amt_smtl2,omitempty"`
+	FrcrPchsAmt1     string `json:"frcr_pchs_amt1"`
+	OvrsRlztPflsAmt  string `json:"ovrs_rlzt_pfls_amt"`
+	OvrsTotPfls      string `json:"ovrs_tot_pfls"`
+	RlztErngRt       string `json:"rlzt_erng_rt"`
+	TotEvluPflsAmt   string `json:"tot_evlu_pfls_amt"`
+	TotPftrt         string `json:"tot_pftrt"`
+	FrcrBuyAmtSmtl1  string `json:"frcr_buy_amt_smtl1"`
+	OvrsRlztPflsAmt2 string `json:"ovrs_rlzt_pfls_amt2"`
+	FrcrBuyAmtSmtl2  string `json:"frcr_buy_amt_smtl2"`
 }
 
 type KISOverseasStockV1TradingInquireBalanceRequest struct {
@@ -10373,38 +10373,38 @@ type KISOverseasStockV1TradingInquireCcnl struct {
 }
 
 type KISOverseasStockV1TradingInquireCcnlOutputItem struct {
-	OrdDt            string `json:"ord_dt,omitempty"`
-	OrdGnoBrno       string `json:"ord_gno_brno,omitempty"`
-	Odno             string `json:"odno,omitempty"`
-	OrgnOdno         string `json:"orgn_odno,omitempty"`
-	SllBuyDvsnCd     string `json:"sll_buy_dvsn_cd,omitempty"`
-	SllBuyDvsnCdName string `json:"sll_buy_dvsn_cd_name,omitempty"`
-	RvseCnclDvsn     string `json:"rvse_cncl_dvsn,omitempty"`
-	RvseCnclDvsnName string `json:"rvse_cncl_dvsn_name,omitempty"`
-	Pdno             string `json:"pdno,omitempty"`
-	PrdtName         string `json:"prdt_name,omitempty"`
-	FtOrdQty         string `json:"ft_ord_qty,omitempty"`
-	FtOrdUnpr3       string `json:"ft_ord_unpr3,omitempty"`
-	FtCcldQty        string `json:"ft_ccld_qty,omitempty"`
-	FtCcldUnpr3      string `json:"ft_ccld_unpr3,omitempty"`
-	FtCcldAmt3       string `json:"ft_ccld_amt3,omitempty"`
-	NccsQty          string `json:"nccs_qty,omitempty"`
-	PrcsStatName     string `json:"prcs_stat_name,omitempty"`
-	RjctRson         string `json:"rjct_rson,omitempty"`
-	RjctRsonName     string `json:"rjct_rson_name,omitempty"`
-	OrdTmd           string `json:"ord_tmd,omitempty"`
-	TrMketName       string `json:"tr_mket_name,omitempty"`
-	TrNatn           string `json:"tr_natn,omitempty"`
-	TrNatnName       string `json:"tr_natn_name,omitempty"`
-	OvrsExcgCd       string `json:"ovrs_excg_cd,omitempty"`
-	TrCrcyCd         string `json:"tr_crcy_cd,omitempty"`
-	DmstOrdDt        string `json:"dmst_ord_dt,omitempty"`
-	ThcoOrdTmd       string `json:"thco_ord_tmd,omitempty"`
-	LoanTypeCd       string `json:"loan_type_cd,omitempty"`
-	LoanDt           string `json:"loan_dt,omitempty"`
-	MdiaDvsnName     string `json:"mdia_dvsn_name,omitempty"`
-	UsaAmkExtsRqstYn string `json:"usa_amk_exts_rqst_yn,omitempty"`
-	SpltBuyAttrName  string `json:"splt_buy_attr_name,omitempty"`
+	OrdDt            string `json:"ord_dt"`
+	OrdGnoBrno       string `json:"ord_gno_brno"`
+	Odno             string `json:"odno"`
+	OrgnOdno         string `json:"orgn_odno"`
+	SllBuyDvsnCd     string `json:"sll_buy_dvsn_cd"`
+	SllBuyDvsnCdName string `json:"sll_buy_dvsn_cd_name"`
+	RvseCnclDvsn     string `json:"rvse_cncl_dvsn"`
+	RvseCnclDvsnName string `json:"rvse_cncl_dvsn_name"`
+	Pdno             string `json:"pdno"`
+	PrdtName         string `json:"prdt_name"`
+	FtOrdQty         string `json:"ft_ord_qty"`
+	FtOrdUnpr3       string `json:"ft_ord_unpr3"`
+	FtCcldQty        string `json:"ft_ccld_qty"`
+	FtCcldUnpr3      string `json:"ft_ccld_unpr3"`
+	FtCcldAmt3       string `json:"ft_ccld_amt3"`
+	NccsQty          string `json:"nccs_qty"`
+	PrcsStatName     string `json:"prcs_stat_name"`
+	RjctRson         string `json:"rjct_rson"`
+	RjctRsonName     string `json:"rjct_rson_name"`
+	OrdTmd           string `json:"ord_tmd"`
+	TrMketName       string `json:"tr_mket_name"`
+	TrNatn           string `json:"tr_natn"`
+	TrNatnName       string `json:"tr_natn_name"`
+	OvrsExcgCd       string `json:"ovrs_excg_cd"`
+	TrCrcyCd         string `json:"tr_crcy_cd"`
+	DmstOrdDt        string `json:"dmst_ord_dt"`
+	ThcoOrdTmd       string `json:"thco_ord_tmd"`
+	LoanTypeCd       string `json:"loan_type_cd"`
+	LoanDt           string `json:"loan_dt"`
+	MdiaDvsnName     string `json:"mdia_dvsn_name"`
+	UsaAmkExtsRqstYn string `json:"usa_amk_exts_rqst_yn"`
+	SpltBuyAttrName  string `json:"splt_buy_attr_name"`
 }
 
 type KISOverseasStockV1TradingInquireCcnlRequest struct {
@@ -10432,35 +10432,35 @@ type KISOverseasStockV1TradingInquireNccs struct {
 }
 
 type KISOverseasStockV1TradingInquireNccsOutputItem struct {
-	OrdDt              string `json:"ord_dt,omitempty"`
-	OrdGnoBrno         string `json:"ord_gno_brno,omitempty"`
-	Odno               string `json:"odno,omitempty"`
-	OrgnOdno           string `json:"orgn_odno,omitempty"`
-	Pdno               string `json:"pdno,omitempty"`
-	PrdtName           string `json:"prdt_name,omitempty"`
-	SllBuyDvsnCd       string `json:"sll_buy_dvsn_cd,omitempty"`
-	SllBuyDvsnCdName   string `json:"sll_buy_dvsn_cd_name,omitempty"`
-	RvseCnclDvsnCd     string `json:"rvse_cncl_dvsn_cd,omitempty"`
-	RvseCnclDvsnCdName string `json:"rvse_cncl_dvsn_cd_name,omitempty"`
-	RjctRson           string `json:"rjct_rson,omitempty"`
-	RjctRsonName       string `json:"rjct_rson_name,omitempty"`
-	OrdTmd             string `json:"ord_tmd,omitempty"`
-	TrMketName         string `json:"tr_mket_name,omitempty"`
-	TrCrcyCd           string `json:"tr_crcy_cd,omitempty"`
-	NatnCd             string `json:"natn_cd,omitempty"`
-	NatnKorName        string `json:"natn_kor_name,omitempty"`
-	FtOrdQty           string `json:"ft_ord_qty,omitempty"`
-	FtCcldQty          string `json:"ft_ccld_qty,omitempty"`
-	NccsQty            string `json:"nccs_qty,omitempty"`
-	FtOrdUnpr3         string `json:"ft_ord_unpr3,omitempty"`
-	FtCcldUnpr3        string `json:"ft_ccld_unpr3,omitempty"`
-	FtCcldAmt3         string `json:"ft_ccld_amt3,omitempty"`
-	OvrsExcgCd         string `json:"ovrs_excg_cd,omitempty"`
-	PrcsStatName       string `json:"prcs_stat_name,omitempty"`
-	LoanTypeCd         string `json:"loan_type_cd,omitempty"`
-	LoanDt             string `json:"loan_dt,omitempty"`
-	UsaAmkExtsRqstYn   string `json:"usa_amk_exts_rqst_yn,omitempty"`
-	SpltBuyAttrName    string `json:"splt_buy_attr_name,omitempty"`
+	OrdDt              string `json:"ord_dt"`
+	OrdGnoBrno         string `json:"ord_gno_brno"`
+	Odno               string `json:"odno"`
+	OrgnOdno           string `json:"orgn_odno"`
+	Pdno               string `json:"pdno"`
+	PrdtName           string `json:"prdt_name"`
+	SllBuyDvsnCd       string `json:"sll_buy_dvsn_cd"`
+	SllBuyDvsnCdName   string `json:"sll_buy_dvsn_cd_name"`
+	RvseCnclDvsnCd     string `json:"rvse_cncl_dvsn_cd"`
+	RvseCnclDvsnCdName string `json:"rvse_cncl_dvsn_cd_name"`
+	RjctRson           string `json:"rjct_rson"`
+	RjctRsonName       string `json:"rjct_rson_name"`
+	OrdTmd             string `json:"ord_tmd"`
+	TrMketName         string `json:"tr_mket_name"`
+	TrCrcyCd           string `json:"tr_crcy_cd"`
+	NatnCd             string `json:"natn_cd"`
+	NatnKorName        string `json:"natn_kor_name"`
+	FtOrdQty           string `json:"ft_ord_qty"`
+	FtCcldQty          string `json:"ft_ccld_qty"`
+	NccsQty            string `json:"nccs_qty"`
+	FtOrdUnpr3         string `json:"ft_ord_unpr3"`
+	FtCcldUnpr3        string `json:"ft_ccld_unpr3"`
+	FtCcldAmt3         string `json:"ft_ccld_amt3"`
+	OvrsExcgCd         string `json:"ovrs_excg_cd"`
+	PrcsStatName       string `json:"prcs_stat_name"`
+	LoanTypeCd         string `json:"loan_type_cd"`
+	LoanDt             string `json:"loan_dt"`
+	UsaAmkExtsRqstYn   string `json:"usa_amk_exts_rqst_yn"`
+	SpltBuyAttrName    string `json:"splt_buy_attr_name"`
 }
 
 type KISOverseasStockV1TradingInquireNccsRequest struct {
@@ -10480,50 +10480,50 @@ type KISOverseasStockV1TradingInquirePaymtStdrBalance struct {
 }
 
 type KISOverseasStockV1TradingInquirePaymtStdrBalanceOutput1Item struct {
-	Pdno            string `json:"pdno,omitempty"`
-	PrdtName        string `json:"prdt_name,omitempty"`
-	CblcQty13       string `json:"cblc_qty13,omitempty"`
-	OrdPsblQty1     string `json:"ord_psbl_qty1,omitempty"`
-	AvgUnpr3        string `json:"avg_unpr3,omitempty"`
-	OvrsNowPric1    string `json:"ovrs_now_pric1,omitempty"`
-	FrcrPchsAmt     string `json:"frcr_pchs_amt,omitempty"`
-	FrcrEvluAmt2    string `json:"frcr_evlu_amt2,omitempty"`
-	EvluPflsAmt2    string `json:"evlu_pfls_amt2,omitempty"`
-	BassExrt        string `json:"bass_exrt,omitempty"`
-	OprtDtlDtime    string `json:"oprt_dtl_dtime,omitempty"`
-	BuyCrcyCd       string `json:"buy_crcy_cd,omitempty"`
-	ThdtSllCcldQty1 string `json:"thdt_sll_ccld_qty1,omitempty"`
-	ThdtBuyCcldQty1 string `json:"thdt_buy_ccld_qty1,omitempty"`
-	EvluPflsRt1     string `json:"evlu_pfls_rt1,omitempty"`
-	TrMketName      string `json:"tr_mket_name,omitempty"`
-	NatnKorName     string `json:"natn_kor_name,omitempty"`
-	StdPdno         string `json:"std_pdno,omitempty"`
-	MggeQty         string `json:"mgge_qty,omitempty"`
-	LoanRmnd        string `json:"loan_rmnd,omitempty"`
-	PrdtTypeCd      string `json:"prdt_type_cd,omitempty"`
-	OvrsExcgCd      string `json:"ovrs_excg_cd,omitempty"`
-	SctsDvsnName    string `json:"scts_dvsn_name,omitempty"`
-	LdngCblcQty     string `json:"ldng_cblc_qty,omitempty"`
+	Pdno            string `json:"pdno"`
+	PrdtName        string `json:"prdt_name"`
+	CblcQty13       string `json:"cblc_qty13"`
+	OrdPsblQty1     string `json:"ord_psbl_qty1"`
+	AvgUnpr3        string `json:"avg_unpr3"`
+	OvrsNowPric1    string `json:"ovrs_now_pric1"`
+	FrcrPchsAmt     string `json:"frcr_pchs_amt"`
+	FrcrEvluAmt2    string `json:"frcr_evlu_amt2"`
+	EvluPflsAmt2    string `json:"evlu_pfls_amt2"`
+	BassExrt        string `json:"bass_exrt"`
+	OprtDtlDtime    string `json:"oprt_dtl_dtime"`
+	BuyCrcyCd       string `json:"buy_crcy_cd"`
+	ThdtSllCcldQty1 string `json:"thdt_sll_ccld_qty1"`
+	ThdtBuyCcldQty1 string `json:"thdt_buy_ccld_qty1"`
+	EvluPflsRt1     string `json:"evlu_pfls_rt1"`
+	TrMketName      string `json:"tr_mket_name"`
+	NatnKorName     string `json:"natn_kor_name"`
+	StdPdno         string `json:"std_pdno"`
+	MggeQty         string `json:"mgge_qty"`
+	LoanRmnd        string `json:"loan_rmnd"`
+	PrdtTypeCd      string `json:"prdt_type_cd"`
+	OvrsExcgCd      string `json:"ovrs_excg_cd"`
+	SctsDvsnName    string `json:"scts_dvsn_name"`
+	LdngCblcQty     string `json:"ldng_cblc_qty"`
 }
 
 type KISOverseasStockV1TradingInquirePaymtStdrBalanceOutput2Item struct {
-	CrcyCd       string `json:"crcy_cd,omitempty"`
-	CrcyCdName   string `json:"crcy_cd_name,omitempty"`
-	FrcrDnclAmt2 string `json:"frcr_dncl_amt_2,omitempty"`
-	FrstBltnExrt string `json:"frst_bltn_exrt,omitempty"`
-	FrcrEvluAmt2 string `json:"frcr_evlu_amt2,omitempty"`
+	CrcyCd       string `json:"crcy_cd"`
+	CrcyCdName   string `json:"crcy_cd_name"`
+	FrcrDnclAmt2 string `json:"frcr_dncl_amt_2"`
+	FrstBltnExrt string `json:"frst_bltn_exrt"`
+	FrcrEvluAmt2 string `json:"frcr_evlu_amt2"`
 }
 
 type KISOverseasStockV1TradingInquirePaymtStdrBalanceOutput3Item struct {
-	PchsAmtSmtlAmt          string `json:"pchs_amt_smtl_amt,omitempty"`
-	TotEvluPflsAmt          string `json:"tot_evlu_pfls_amt,omitempty"`
-	EvluErngRt1             string `json:"evlu_erng_rt1,omitempty"`
-	TotDnclAmt              string `json:"tot_dncl_amt,omitempty"`
-	WcrcEvluAmtSmtl         string `json:"wcrc_evlu_amt_smtl,omitempty"`
-	TotAsstAmt2             string `json:"tot_asst_amt2,omitempty"`
-	FrcrCblcWcrcEvluAmtSmtl string `json:"frcr_cblc_wcrc_evlu_amt_smtl,omitempty"`
-	TotLoanAmt              string `json:"tot_loan_amt,omitempty"`
-	TotLdngEvluAmt          string `json:"tot_ldng_evlu_amt,omitempty"`
+	PchsAmtSmtlAmt          string `json:"pchs_amt_smtl_amt"`
+	TotEvluPflsAmt          string `json:"tot_evlu_pfls_amt"`
+	EvluErngRt1             string `json:"evlu_erng_rt1"`
+	TotDnclAmt              string `json:"tot_dncl_amt"`
+	WcrcEvluAmtSmtl         string `json:"wcrc_evlu_amt_smtl"`
+	TotAsstAmt2             string `json:"tot_asst_amt2"`
+	FrcrCblcWcrcEvluAmtSmtl string `json:"frcr_cblc_wcrc_evlu_amt_smtl"`
+	TotLoanAmt              string `json:"tot_loan_amt"`
+	TotLdngEvluAmt          string `json:"tot_ldng_evlu_amt"`
 }
 
 type KISOverseasStockV1TradingInquirePaymtStdrBalanceRequest struct {
@@ -10541,31 +10541,31 @@ type KISOverseasStockV1TradingInquirePeriodProfit struct {
 }
 
 type KISOverseasStockV1TradingInquirePeriodProfitOutput1Item struct {
-	TradDay         string `json:"trad_day,omitempty"`
-	OvrsPdno        string `json:"ovrs_pdno,omitempty"`
-	OvrsItemName    string `json:"ovrs_item_name,omitempty"`
-	SlclQty         string `json:"slcl_qty,omitempty"`
-	PchsAvgPric     string `json:"pchs_avg_pric,omitempty"`
-	FrcrPchsAmt1    string `json:"frcr_pchs_amt1,omitempty"`
-	AvgSllUnpr      string `json:"avg_sll_unpr,omitempty"`
-	FrcrSllAmtSmtl1 string `json:"frcr_sll_amt_smtl1,omitempty"`
-	StckSllTlex     string `json:"stck_sll_tlex,omitempty"`
-	OvrsRlztPflsAmt string `json:"ovrs_rlzt_pfls_amt,omitempty"`
-	Pftrt           string `json:"pftrt,omitempty"`
-	Exrt            string `json:"exrt,omitempty"`
-	OvrsExcgCd      string `json:"ovrs_excg_cd,omitempty"`
-	FrstBltnExrt    string `json:"frst_bltn_exrt,omitempty"`
+	TradDay         string `json:"trad_day"`
+	OvrsPdno        string `json:"ovrs_pdno"`
+	OvrsItemName    string `json:"ovrs_item_name"`
+	SlclQty         string `json:"slcl_qty"`
+	PchsAvgPric     string `json:"pchs_avg_pric"`
+	FrcrPchsAmt1    string `json:"frcr_pchs_amt1"`
+	AvgSllUnpr      string `json:"avg_sll_unpr"`
+	FrcrSllAmtSmtl1 string `json:"frcr_sll_amt_smtl1"`
+	StckSllTlex     string `json:"stck_sll_tlex"`
+	OvrsRlztPflsAmt string `json:"ovrs_rlzt_pfls_amt"`
+	Pftrt           string `json:"pftrt"`
+	Exrt            string `json:"exrt"`
+	OvrsExcgCd      string `json:"ovrs_excg_cd"`
+	FrstBltnExrt    string `json:"frst_bltn_exrt"`
 }
 
 type KISOverseasStockV1TradingInquirePeriodProfitOutput2Item struct {
-	StckSllAmtSmtl     string `json:"stck_sll_amt_smtl,omitempty"`
-	StckBuyAmtSmtl     string `json:"stck_buy_amt_smtl,omitempty"`
-	SmtlFee1           string `json:"smtl_fee1,omitempty"`
-	ExccDfrmAmt        string `json:"excc_dfrm_amt,omitempty"`
-	OvrsRlztPflsTotAmt string `json:"ovrs_rlzt_pfls_tot_amt,omitempty"`
-	TotPftrt           string `json:"tot_pftrt,omitempty"`
-	BassDt             string `json:"bass_dt,omitempty"`
-	Exrt               string `json:"exrt,omitempty"`
+	StckSllAmtSmtl     string `json:"stck_sll_amt_smtl"`
+	StckBuyAmtSmtl     string `json:"stck_buy_amt_smtl"`
+	SmtlFee1           string `json:"smtl_fee1"`
+	ExccDfrmAmt        string `json:"excc_dfrm_amt"`
+	OvrsRlztPflsTotAmt string `json:"ovrs_rlzt_pfls_tot_amt"`
+	TotPftrt           string `json:"tot_pftrt"`
+	BassDt             string `json:"bass_dt"`
+	Exrt               string `json:"exrt"`
 }
 
 type KISOverseasStockV1TradingInquirePeriodProfitRequest struct {
@@ -10591,36 +10591,36 @@ type KISOverseasStockV1TradingInquirePeriodTrans struct {
 }
 
 type KISOverseasStockV1TradingInquirePeriodTransOutput1Item struct {
-	TradDt           string `json:"trad_dt,omitempty"`
-	SttlDt           string `json:"sttl_dt,omitempty"`
-	SllBuyDvsnCd     string `json:"sll_buy_dvsn_cd,omitempty"`
-	SllBuyDvsnName   string `json:"sll_buy_dvsn_name,omitempty"`
-	Pdno             string `json:"pdno,omitempty"`
-	OvrsItemName     string `json:"ovrs_item_name,omitempty"`
-	CcldQty          string `json:"ccld_qty,omitempty"`
-	AmtUnitCcldQty   string `json:"amt_unit_ccld_qty,omitempty"`
-	FtCcldUnpr2      string `json:"ft_ccld_unpr2,omitempty"`
-	OvrsStckCcldUnpr string `json:"ovrs_stck_ccld_unpr,omitempty"`
-	TrFrcrAmt2       string `json:"tr_frcr_amt2,omitempty"`
-	TrAmt            string `json:"tr_amt,omitempty"`
-	FrcrExccAmt1     string `json:"frcr_excc_amt_1,omitempty"`
-	WcrcExccAmt      string `json:"wcrc_excc_amt,omitempty"`
-	DmstFrcrFee1     string `json:"dmst_frcr_fee1,omitempty"`
-	FrcrFee1         string `json:"frcr_fee1,omitempty"`
-	DmstWcrcFee      string `json:"dmst_wcrc_fee,omitempty"`
-	OvrsWcrcFee      string `json:"ovrs_wcrc_fee,omitempty"`
-	CrcyCd           string `json:"crcy_cd,omitempty"`
-	StdPdno          string `json:"std_pdno,omitempty"`
-	ErlmExrt         string `json:"erlm_exrt,omitempty"`
-	LoanDvsnCd       string `json:"loan_dvsn_cd,omitempty"`
-	LoanDvsnName     string `json:"loan_dvsn_name,omitempty"`
+	TradDt           string `json:"trad_dt"`
+	SttlDt           string `json:"sttl_dt"`
+	SllBuyDvsnCd     string `json:"sll_buy_dvsn_cd"`
+	SllBuyDvsnName   string `json:"sll_buy_dvsn_name"`
+	Pdno             string `json:"pdno"`
+	OvrsItemName     string `json:"ovrs_item_name"`
+	CcldQty          string `json:"ccld_qty"`
+	AmtUnitCcldQty   string `json:"amt_unit_ccld_qty"`
+	FtCcldUnpr2      string `json:"ft_ccld_unpr2"`
+	OvrsStckCcldUnpr string `json:"ovrs_stck_ccld_unpr"`
+	TrFrcrAmt2       string `json:"tr_frcr_amt2"`
+	TrAmt            string `json:"tr_amt"`
+	FrcrExccAmt1     string `json:"frcr_excc_amt_1"`
+	WcrcExccAmt      string `json:"wcrc_excc_amt"`
+	DmstFrcrFee1     string `json:"dmst_frcr_fee1"`
+	FrcrFee1         string `json:"frcr_fee1"`
+	DmstWcrcFee      string `json:"dmst_wcrc_fee"`
+	OvrsWcrcFee      string `json:"ovrs_wcrc_fee"`
+	CrcyCd           string `json:"crcy_cd"`
+	StdPdno          string `json:"std_pdno"`
+	ErlmExrt         string `json:"erlm_exrt"`
+	LoanDvsnCd       string `json:"loan_dvsn_cd"`
+	LoanDvsnName     string `json:"loan_dvsn_name"`
 }
 
 type KISOverseasStockV1TradingInquirePeriodTransOutput2Item struct {
-	FrcrBuyAmtSmtl string `json:"frcr_buy_amt_smtl,omitempty"`
-	FrcrSllAmtSmtl string `json:"frcr_sll_amt_smtl,omitempty"`
-	DmstFeeSmtl    string `json:"dmst_fee_smtl,omitempty"`
-	OvrsFeeSmtl    string `json:"ovrs_fee_smtl,omitempty"`
+	FrcrBuyAmtSmtl string `json:"frcr_buy_amt_smtl"`
+	FrcrSllAmtSmtl string `json:"frcr_sll_amt_smtl"`
+	DmstFeeSmtl    string `json:"dmst_fee_smtl"`
+	OvrsFeeSmtl    string `json:"ovrs_fee_smtl"`
 }
 
 type KISOverseasStockV1TradingInquirePeriodTransRequest struct {
@@ -10644,74 +10644,74 @@ type KISOverseasStockV1TradingInquirePresentBalance struct {
 }
 
 type KISOverseasStockV1TradingInquirePresentBalanceOutput1Item struct {
-	PrdtName           string `json:"prdt_name,omitempty"`
-	CblcQty13          string `json:"cblc_qty13,omitempty"`
-	ThdtBuyCcldQty1    string `json:"thdt_buy_ccld_qty1,omitempty"`
-	ThdtSllCcldQty1    string `json:"thdt_sll_ccld_qty1,omitempty"`
-	CcldQtySmtl1       string `json:"ccld_qty_smtl1,omitempty"`
-	OrdPsblQty1        string `json:"ord_psbl_qty1,omitempty"`
-	FrcrPchsAmt        string `json:"frcr_pchs_amt,omitempty"`
-	FrcrEvluAmt2       string `json:"frcr_evlu_amt2,omitempty"`
-	EvluPflsAmt2       string `json:"evlu_pfls_amt2,omitempty"`
-	EvluPflsRt1        string `json:"evlu_pfls_rt1,omitempty"`
-	Pdno               string `json:"pdno,omitempty"`
-	BassExrt           string `json:"bass_exrt,omitempty"`
-	BuyCrcyCd          string `json:"buy_crcy_cd,omitempty"`
-	OvrsNowPric1       string `json:"ovrs_now_pric1,omitempty"`
-	AvgUnpr3           string `json:"avg_unpr3,omitempty"`
-	TrMketName         string `json:"tr_mket_name,omitempty"`
-	NatnKorName        string `json:"natn_kor_name,omitempty"`
-	PchsRmndWcrcAmt    string `json:"pchs_rmnd_wcrc_amt,omitempty"`
-	ThdtBuyCcldFrcrAmt string `json:"thdt_buy_ccld_frcr_amt,omitempty"`
-	ThdtSllCcldFrcrAmt string `json:"thdt_sll_ccld_frcr_amt,omitempty"`
-	UnitAmt            string `json:"unit_amt,omitempty"`
-	StdPdno            string `json:"std_pdno,omitempty"`
-	PrdtTypeCd         string `json:"prdt_type_cd,omitempty"`
-	SctsDvsnName       string `json:"scts_dvsn_name,omitempty"`
-	LoanRmnd           string `json:"loan_rmnd,omitempty"`
-	LoanDt             string `json:"loan_dt,omitempty"`
-	LoanExpdDt         string `json:"loan_expd_dt,omitempty"`
-	OvrsExcgCd         string `json:"ovrs_excg_cd,omitempty"`
-	ItemLnkgExcgCd     string `json:"item_lnkg_excg_cd,omitempty"`
+	PrdtName           string `json:"prdt_name"`
+	CblcQty13          string `json:"cblc_qty13"`
+	ThdtBuyCcldQty1    string `json:"thdt_buy_ccld_qty1"`
+	ThdtSllCcldQty1    string `json:"thdt_sll_ccld_qty1"`
+	CcldQtySmtl1       string `json:"ccld_qty_smtl1"`
+	OrdPsblQty1        string `json:"ord_psbl_qty1"`
+	FrcrPchsAmt        string `json:"frcr_pchs_amt"`
+	FrcrEvluAmt2       string `json:"frcr_evlu_amt2"`
+	EvluPflsAmt2       string `json:"evlu_pfls_amt2"`
+	EvluPflsRt1        string `json:"evlu_pfls_rt1"`
+	Pdno               string `json:"pdno"`
+	BassExrt           string `json:"bass_exrt"`
+	BuyCrcyCd          string `json:"buy_crcy_cd"`
+	OvrsNowPric1       string `json:"ovrs_now_pric1"`
+	AvgUnpr3           string `json:"avg_unpr3"`
+	TrMketName         string `json:"tr_mket_name"`
+	NatnKorName        string `json:"natn_kor_name"`
+	PchsRmndWcrcAmt    string `json:"pchs_rmnd_wcrc_amt"`
+	ThdtBuyCcldFrcrAmt string `json:"thdt_buy_ccld_frcr_amt"`
+	ThdtSllCcldFrcrAmt string `json:"thdt_sll_ccld_frcr_amt"`
+	UnitAmt            string `json:"unit_amt"`
+	StdPdno            string `json:"std_pdno"`
+	PrdtTypeCd         string `json:"prdt_type_cd"`
+	SctsDvsnName       string `json:"scts_dvsn_name"`
+	LoanRmnd           string `json:"loan_rmnd"`
+	LoanDt             string `json:"loan_dt"`
+	LoanExpdDt         string `json:"loan_expd_dt"`
+	OvrsExcgCd         string `json:"ovrs_excg_cd"`
+	ItemLnkgExcgCd     string `json:"item_lnkg_excg_cd"`
 }
 
 type KISOverseasStockV1TradingInquirePresentBalanceOutput2Item struct {
-	CrcyCd              string `json:"crcy_cd,omitempty"`
-	CrcyCdName          string `json:"crcy_cd_name,omitempty"`
-	FrcrBuyAmtSmtl      string `json:"frcr_buy_amt_smtl,omitempty"`
-	FrcrSllAmtSmtl      string `json:"frcr_sll_amt_smtl,omitempty"`
-	FrcrDnclAmt2        string `json:"frcr_dncl_amt_2,omitempty"`
-	FrstBltnExrt        string `json:"frst_bltn_exrt,omitempty"`
-	FrcrBuyMgnAmt       string `json:"frcr_buy_mgn_amt,omitempty"`
-	FrcrEtcMgna         string `json:"frcr_etc_mgna,omitempty"`
-	FrcrDrwgPsblAmt1    string `json:"frcr_drwg_psbl_amt_1,omitempty"`
-	FrcrEvluAmt2        string `json:"frcr_evlu_amt2,omitempty"`
-	AcplCstdCrcyYn      string `json:"acpl_cstd_crcy_yn,omitempty"`
-	NxdyFrcrDrwgPsblAmt string `json:"nxdy_frcr_drwg_psbl_amt,omitempty"`
+	CrcyCd              string `json:"crcy_cd"`
+	CrcyCdName          string `json:"crcy_cd_name"`
+	FrcrBuyAmtSmtl      string `json:"frcr_buy_amt_smtl"`
+	FrcrSllAmtSmtl      string `json:"frcr_sll_amt_smtl"`
+	FrcrDnclAmt2        string `json:"frcr_dncl_amt_2"`
+	FrstBltnExrt        string `json:"frst_bltn_exrt"`
+	FrcrBuyMgnAmt       string `json:"frcr_buy_mgn_amt"`
+	FrcrEtcMgna         string `json:"frcr_etc_mgna"`
+	FrcrDrwgPsblAmt1    string `json:"frcr_drwg_psbl_amt_1"`
+	FrcrEvluAmt2        string `json:"frcr_evlu_amt2"`
+	AcplCstdCrcyYn      string `json:"acpl_cstd_crcy_yn"`
+	NxdyFrcrDrwgPsblAmt string `json:"nxdy_frcr_drwg_psbl_amt"`
 }
 
 type KISOverseasStockV1TradingInquirePresentBalanceOutput3Item struct {
-	PchsAmtSmtl     string `json:"pchs_amt_smtl,omitempty"`
-	EvluAmtSmtl     string `json:"evlu_amt_smtl,omitempty"`
-	EvluPflsAmtSmtl string `json:"evlu_pfls_amt_smtl,omitempty"`
-	DnclAmt         string `json:"dncl_amt,omitempty"`
-	CmaEvluAmt      string `json:"cma_evlu_amt,omitempty"`
-	TotDnclAmt      string `json:"tot_dncl_amt,omitempty"`
-	EtcMgna         string `json:"etc_mgna,omitempty"`
-	WdrwPsblTotAmt  string `json:"wdrw_psbl_tot_amt,omitempty"`
-	FrcrEvluTota    string `json:"frcr_evlu_tota,omitempty"`
-	EvluErngRt1     string `json:"evlu_erng_rt1,omitempty"`
-	PchsAmtSmtlAmt  string `json:"pchs_amt_smtl_amt,omitempty"`
-	EvluAmtSmtlAmt  string `json:"evlu_amt_smtl_amt,omitempty"`
-	TotEvluPflsAmt  string `json:"tot_evlu_pfls_amt,omitempty"`
-	TotAsstAmt      string `json:"tot_asst_amt,omitempty"`
-	BuyMgnAmt       string `json:"buy_mgn_amt,omitempty"`
-	MgnaTota        string `json:"mgna_tota,omitempty"`
-	FrcrUsePsblAmt  string `json:"frcr_use_psbl_amt,omitempty"`
-	UstlSllAmtSmtl  string `json:"ustl_sll_amt_smtl,omitempty"`
-	UstlBuyAmtSmtl  string `json:"ustl_buy_amt_smtl,omitempty"`
-	TotFrcrCblcSmtl string `json:"tot_frcr_cblc_smtl,omitempty"`
-	TotLoanAmt      string `json:"tot_loan_amt,omitempty"`
+	PchsAmtSmtl     string `json:"pchs_amt_smtl"`
+	EvluAmtSmtl     string `json:"evlu_amt_smtl"`
+	EvluPflsAmtSmtl string `json:"evlu_pfls_amt_smtl"`
+	DnclAmt         string `json:"dncl_amt"`
+	CmaEvluAmt      string `json:"cma_evlu_amt"`
+	TotDnclAmt      string `json:"tot_dncl_amt"`
+	EtcMgna         string `json:"etc_mgna"`
+	WdrwPsblTotAmt  string `json:"wdrw_psbl_tot_amt"`
+	FrcrEvluTota    string `json:"frcr_evlu_tota"`
+	EvluErngRt1     string `json:"evlu_erng_rt1"`
+	PchsAmtSmtlAmt  string `json:"pchs_amt_smtl_amt"`
+	EvluAmtSmtlAmt  string `json:"evlu_amt_smtl_amt"`
+	TotEvluPflsAmt  string `json:"tot_evlu_pfls_amt"`
+	TotAsstAmt      string `json:"tot_asst_amt"`
+	BuyMgnAmt       string `json:"buy_mgn_amt"`
+	MgnaTota        string `json:"mgna_tota"`
+	FrcrUsePsblAmt  string `json:"frcr_use_psbl_amt"`
+	UstlSllAmtSmtl  string `json:"ustl_sll_amt_smtl"`
+	UstlBuyAmtSmtl  string `json:"ustl_buy_amt_smtl"`
+	TotFrcrCblcSmtl string `json:"tot_frcr_cblc_smtl"`
+	TotLoanAmt      string `json:"tot_loan_amt"`
 }
 
 type KISOverseasStockV1TradingInquirePresentBalanceRequest struct {
@@ -10729,17 +10729,17 @@ type KISOverseasStockV1TradingInquirePsamount struct {
 }
 
 type KISOverseasStockV1TradingInquirePsamountOutputItem struct {
-	TrCrcyCd          string `json:"tr_crcy_cd,omitempty"`
-	OrdPsblFrcrAmt    string `json:"ord_psbl_frcr_amt,omitempty"`
-	SllRusePsblAmt    string `json:"sll_ruse_psbl_amt,omitempty"`
-	OvrsOrdPsblAmt    string `json:"ovrs_ord_psbl_amt,omitempty"`
-	MaxOrdPsblQty     string `json:"max_ord_psbl_qty,omitempty"`
-	EchmAfOrdPsblAmt  string `json:"echm_af_ord_psbl_amt,omitempty"`
-	EchmAfOrdPsblQty  string `json:"echm_af_ord_psbl_qty,omitempty"`
-	OrdPsblQty        string `json:"ord_psbl_qty,omitempty"`
-	Exrt              string `json:"exrt,omitempty"`
-	FrcrOrdPsblAmt1   string `json:"frcr_ord_psbl_amt1,omitempty"`
-	OvrsMaxOrdPsblQty string `json:"ovrs_max_ord_psbl_qty,omitempty"`
+	TrCrcyCd          string `json:"tr_crcy_cd"`
+	OrdPsblFrcrAmt    string `json:"ord_psbl_frcr_amt"`
+	SllRusePsblAmt    string `json:"sll_ruse_psbl_amt"`
+	OvrsOrdPsblAmt    string `json:"ovrs_ord_psbl_amt"`
+	MaxOrdPsblQty     string `json:"max_ord_psbl_qty"`
+	EchmAfOrdPsblAmt  string `json:"echm_af_ord_psbl_amt"`
+	EchmAfOrdPsblQty  string `json:"echm_af_ord_psbl_qty"`
+	OrdPsblQty        string `json:"ord_psbl_qty"`
+	Exrt              string `json:"exrt"`
+	FrcrOrdPsblAmt1   string `json:"frcr_ord_psbl_amt1"`
+	OvrsMaxOrdPsblQty string `json:"ovrs_max_ord_psbl_qty"`
 }
 
 type KISOverseasStockV1TradingInquirePsamountRequest struct {
@@ -10756,9 +10756,9 @@ type KISOverseasStockV1TradingOrder struct {
 }
 
 type KISOverseasStockV1TradingOrderOutputItem struct {
-	KrxFwdgOrdOrgno string `json:"KRX_FWDG_ORD_ORGNO,omitempty"`
-	Odno            string `json:"ODNO,omitempty"`
-	OrdTmd          string `json:"ORD_TMD,omitempty"`
+	KrxFwdgOrdOrgno string `json:"KRX_FWDG_ORD_ORGNO"`
+	Odno            string `json:"ODNO"`
+	OrdTmd          string `json:"ORD_TMD"`
 }
 
 type KISOverseasStockV1TradingOrderRequest struct {
@@ -10778,9 +10778,9 @@ type KISOverseasStockV1TradingOrderResv struct {
 }
 
 type KISOverseasStockV1TradingOrderResvOutputItem struct {
-	Odno          string `json:"ODNO,omitempty"`
-	RsvnOrdRcitDt string `json:"RSVN_ORD_RCIT_DT,omitempty"`
-	OvrsRsvnOdno  string `json:"OVRS_RSVN_ODNO,omitempty"`
+	Odno          string `json:"ODNO"`
+	RsvnOrdRcitDt string `json:"RSVN_ORD_RCIT_DT"`
+	OvrsRsvnOdno  string `json:"OVRS_RSVN_ODNO"`
 }
 
 type KISOverseasStockV1TradingOrderResvRequest struct {
@@ -10800,7 +10800,7 @@ type KISOverseasStockV1TradingOrderResvCcnl struct {
 }
 
 type KISOverseasStockV1TradingOrderResvCcnlOutputItem struct {
-	OvrsRsvnOdno string `json:"OVRS_RSVN_ODNO,omitempty"`
+	OvrsRsvnOdno string `json:"OVRS_RSVN_ODNO"`
 }
 
 type KISOverseasStockV1TradingOrderResvCcnlRequest struct {
@@ -10818,30 +10818,30 @@ type KISOverseasStockV1TradingOrderResvList struct {
 }
 
 type KISOverseasStockV1TradingOrderResvListOutputItem struct {
-	CnclYn                string `json:"cncl_yn,omitempty"`
-	RsvnOrdRcitDt         string `json:"rsvn_ord_rcit_dt,omitempty"`
-	OvrsRsvnOdno          string `json:"ovrs_rsvn_odno,omitempty"`
-	OrdDt                 string `json:"ord_dt,omitempty"`
-	OrdGnoBrno            string `json:"ord_gno_brno,omitempty"`
-	Odno                  string `json:"odno,omitempty"`
-	SllBuyDvsnCd          string `json:"sll_buy_dvsn_cd,omitempty"`
-	SllBuyDvsnCdName      string `json:"sll_buy_dvsn_cd_name,omitempty"`
-	OvrsRsvnOrdStatCd     string `json:"ovrs_rsvn_ord_stat_cd,omitempty"`
-	OvrsRsvnOrdStatCdName string `json:"ovrs_rsvn_ord_stat_cd_name,omitempty"`
-	Pdno                  string `json:"pdno,omitempty"`
-	PrdtTypeCd            string `json:"prdt_type_cd,omitempty"`
-	PrdtName              string `json:"prdt_name,omitempty"`
-	OrdRcitTmd            string `json:"ord_rcit_tmd,omitempty"`
-	OrdFwdgTmd            string `json:"ord_fwdg_tmd,omitempty"`
-	TrDvsnName            string `json:"tr_dvsn_name,omitempty"`
-	OvrsExcgCd            string `json:"ovrs_excg_cd,omitempty"`
-	TrMketName            string `json:"tr_mket_name,omitempty"`
-	OrdStfno              string `json:"ord_stfno,omitempty"`
-	FtOrdQty              string `json:"ft_ord_qty,omitempty"`
-	FtOrdUnpr3            string `json:"ft_ord_unpr3,omitempty"`
-	FtCcldQty             string `json:"ft_ccld_qty,omitempty"`
-	NprcRsonText          string `json:"nprc_rson_text,omitempty"`
-	SpltBuyAttrName       string `json:"splt_buy_attr_name,omitempty"`
+	CnclYn                string `json:"cncl_yn"`
+	RsvnOrdRcitDt         string `json:"rsvn_ord_rcit_dt"`
+	OvrsRsvnOdno          string `json:"ovrs_rsvn_odno"`
+	OrdDt                 string `json:"ord_dt"`
+	OrdGnoBrno            string `json:"ord_gno_brno"`
+	Odno                  string `json:"odno"`
+	SllBuyDvsnCd          string `json:"sll_buy_dvsn_cd"`
+	SllBuyDvsnCdName      string `json:"sll_buy_dvsn_cd_name"`
+	OvrsRsvnOrdStatCd     string `json:"ovrs_rsvn_ord_stat_cd"`
+	OvrsRsvnOrdStatCdName string `json:"ovrs_rsvn_ord_stat_cd_name"`
+	Pdno                  string `json:"pdno"`
+	PrdtTypeCd            string `json:"prdt_type_cd"`
+	PrdtName              string `json:"prdt_name"`
+	OrdRcitTmd            string `json:"ord_rcit_tmd"`
+	OrdFwdgTmd            string `json:"ord_fwdg_tmd"`
+	TrDvsnName            string `json:"tr_dvsn_name"`
+	OvrsExcgCd            string `json:"ovrs_excg_cd"`
+	TrMketName            string `json:"tr_mket_name"`
+	OrdStfno              string `json:"ord_stfno"`
+	FtOrdQty              string `json:"ft_ord_qty"`
+	FtOrdUnpr3            string `json:"ft_ord_unpr3"`
+	FtCcldQty             string `json:"ft_ccld_qty"`
+	NprcRsonText          string `json:"nprc_rson_text"`
+	SpltBuyAttrName       string `json:"splt_buy_attr_name"`
 }
 
 type KISOverseasStockV1TradingOrderResvListRequest struct {
@@ -10862,9 +10862,9 @@ type KISOverseasStockV1TradingOrderRvsecncl struct {
 }
 
 type KISOverseasStockV1TradingOrderRvsecnclOutputItem struct {
-	KrxFwdgOrdOrgno string `json:"KRX_FWDG_ORD_ORGNO,omitempty"`
-	Odno            string `json:"ODNO,omitempty"`
-	OrdTmd          string `json:"ORD_TMD,omitempty"`
+	KrxFwdgOrdOrgno string `json:"KRX_FWDG_ORD_ORGNO"`
+	Odno            string `json:"ODNO"`
+	OrdTmd          string `json:"ORD_TMD"`
 }
 
 type KISOverseasStockV1TradingOrderRvsecnclRequest struct {

@@ -727,7 +727,7 @@ func emitEndpointType(b *strings.Builder, m endpointModel) {
 			}
 			usedChildJSONTags[code] = struct{}{}
 			fieldName := uniqueFieldName(toExportedIdentifier(code), usedChild)
-			fmt.Fprintf(b, "\t%s %s `json:\"%s,omitempty\"`\n", fieldName, goTypeForProp(p), code)
+			fmt.Fprintf(b, "\t%s %s `json:\"%s\"`\n", fieldName, goTypeForProp(p), code)
 		}
 		b.WriteString("}\n\n")
 	}
