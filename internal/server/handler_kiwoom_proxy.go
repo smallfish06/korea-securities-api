@@ -127,9 +127,9 @@ func (s *Server) handleKiwoomProxyStatic(path, apiID string) func(fuego.ContextW
 func (s *Server) resolveKiwoomProxyBroker(accountID string) (broker.Broker, int, string) {
 	accountID = strings.TrimSpace(accountID)
 	if accountID != "" {
-		brk, ok := s.getBrokerStrict(accountID)
-		if !ok {
-			return nil, http.StatusNotFound, "account not found"
+		brk, status, reason := s.resolveBrokerByAccountID(accountID)
+		if brk == nil {
+			return nil, status, reason
 		}
 		if !strings.EqualFold(strings.TrimSpace(brk.Name()), broker.NameKiwoom) {
 			return nil, http.StatusBadRequest, "account broker is not Kiwoom"

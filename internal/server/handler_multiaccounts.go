@@ -31,16 +31,19 @@ func (s *Server) handleAccountsSummary(c fuego.ContextNoBody) (Response, error) 
 
 	var totalAssets, totalCash, totalProfitLoss float64
 	balances := make([]broker.Balance, 0, len(s.accounts))
+	failed := 0
 
 	for _, account := range s.accounts {
-		brk := s.getBroker(account.AccountID)
-		if brk == nil {
+		brk, status, _ := s.resolveBrokerByAccountID(account.AccountID)
+		if status != 0 || brk == nil {
+			failed++
 			continue
 		}
 
 		balance, err := brk.GetBalance(ctx, account.AccountID)
 		if err != nil {
 			// 에러가 발생해도 계속 진행
+			failed++
 			continue
 		}
 
@@ -48,6 +51,13 @@ func (s *Server) handleAccountsSummary(c fuego.ContextNoBody) (Response, error) 
 		totalAssets += balance.TotalAssets
 		totalCash += balance.Cash
 		totalProfitLoss += balance.ProfitLoss
+	}
+
+	if len(s.accounts) > 0 && len(balances) == 0 && failed > 0 {
+		return respond(c, http.StatusServiceUnavailable, Response{
+			OK:    false,
+			Error: "failed to retrieve balances from all accounts",
+		})
 	}
 
 	summary := broker.AccountSummary{

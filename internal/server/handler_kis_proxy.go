@@ -116,9 +116,9 @@ func (s *Server) handleKISProxyPath(c fuego.ContextWithBody[kisProxyRequest], ra
 func (s *Server) resolveKISProxyBroker(accountID string) (broker.Broker, int, string) {
 	accountID = strings.TrimSpace(accountID)
 	if accountID != "" {
-		brk, ok := s.getBrokerStrict(accountID)
-		if !ok {
-			return nil, http.StatusNotFound, "account not found"
+		brk, status, reason := s.resolveBrokerByAccountID(accountID)
+		if brk == nil {
+			return nil, status, reason
 		}
 		if !strings.EqualFold(strings.TrimSpace(brk.Name()), broker.NameKIS) {
 			return nil, http.StatusBadRequest, "account broker is not KIS"

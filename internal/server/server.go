@@ -225,6 +225,7 @@ func (s *Server) routes() {
 		fuego.OptionDescription("Returns daily/weekly/monthly candlestick data."),
 		fuego.OptionPath("market", "Exchange market code", fuego.ParamExample("KRX", "KRX")),
 		fuego.OptionPath("symbol", "Ticker symbol", fuego.ParamExample("Samsung", "005930")),
+		fuego.OptionQuery("account_id", "Use a specific account's broker (optional)", fuego.ParamExample("KIS account", "12345678-01")),
 		fuego.OptionQuery("interval", "Candle interval: 1d, 1w, 1mo", fuego.ParamDefault("1d"), fuego.ParamExample("daily", "1d"), fuego.ParamExample("weekly", "1w")),
 		fuego.OptionQuery("from", "Start date (YYYY-MM-DD)", fuego.ParamExample("Jan 2026", "2026-01-01")),
 		fuego.OptionQuery("to", "End date (YYYY-MM-DD)", fuego.ParamExample("Feb 2026", "2026-02-28")),
@@ -450,20 +451,8 @@ func (s *Server) handleHealth(c fuego.ContextNoBody) (map[string]interface{}, er
 
 // getBroker returns the broker for the given account ID
 func (s *Server) getBroker(accountID string) broker.Broker {
-	if brk, ok := s.brokers[accountID]; ok {
+	if brk, status, _ := s.resolveBrokerByAccountID(accountID); status == 0 {
 		return brk
-	}
-	// Try matching with/without product code suffix (e.g., "73027400" matches "73027400-01")
-	for key, brk := range s.brokers {
-		if strings.HasPrefix(key, accountID+"-") || strings.HasPrefix(accountID, key+"-") || strings.TrimSuffix(key, "-01") == strings.TrimSuffix(accountID, "-01") {
-			return brk
-		}
-	}
-	// If not found, return first broker (legacy compatibility)
-	if len(s.brokers) > 0 {
-		for _, brk := range s.brokers {
-			return brk
-		}
 	}
 	return nil
 }
@@ -471,7 +460,22 @@ func (s *Server) getBroker(accountID string) broker.Broker {
 // getFirstBroker returns the first available broker (for legacy endpoints)
 func (s *Server) getFirstBroker() broker.Broker {
 	if len(s.accounts) > 0 {
-		return s.getBroker(s.accounts[0].AccountID)
+		if brk := s.getBroker(s.accounts[0].AccountID); brk != nil {
+			return brk
+		}
+	}
+	if len(s.brokers) == 0 {
+		return nil
+	}
+	ids := make([]string, 0, len(s.brokers))
+	for accountID := range s.brokers {
+		ids = append(ids, accountID)
+	}
+	sort.Strings(ids)
+	for _, accountID := range ids {
+		if brk := s.brokers[accountID]; brk != nil {
+			return brk
+		}
 	}
 	return nil
 }
