@@ -17,8 +17,8 @@ type proxyKiwoomBroker struct {
 	gotMethod string
 	gotPath   string
 	gotAPIID  string
-	gotFields map[string]string
-	resp      map[string]interface{}
+	gotReq    interface{}
+	resp      interface{}
 	err       error
 }
 
@@ -27,13 +27,13 @@ func (b *proxyKiwoomBroker) CallEndpoint(
 	method string,
 	path string,
 	apiID string,
-	fields map[string]string,
-) (map[string]interface{}, error) {
+	request interface{},
+) (interface{}, error) {
 	b.called = true
 	b.gotMethod = method
 	b.gotPath = path
 	b.gotAPIID = apiID
-	b.gotFields = fields
+	b.gotReq = request
 	return b.resp, b.err
 }
 
@@ -83,8 +83,12 @@ func TestHandleKiwoomProxy_DefaultRouteAndFirstKiwoomAccount(t *testing.T) {
 	if kiwoomBroker.gotAPIID != "ka10001" {
 		t.Fatalf("api_id = %q, want ka10001", kiwoomBroker.gotAPIID)
 	}
-	if got := kiwoomBroker.gotFields["stk_cd"]; got != "005930" {
-		t.Fatalf("params stk_cd = %q, want 005930", got)
+	reqMap, ok := kiwoomBroker.gotReq.(map[string]interface{})
+	if !ok {
+		t.Fatalf("request type = %T, want map[string]interface{}", kiwoomBroker.gotReq)
+	}
+	if got, ok := reqMap["stk_cd"].(string); !ok || got != "005930" {
+		t.Fatalf("params stk_cd = %#v, want 005930", reqMap["stk_cd"])
 	}
 }
 

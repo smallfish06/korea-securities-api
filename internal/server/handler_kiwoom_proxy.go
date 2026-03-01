@@ -26,8 +26,8 @@ type kiwoomEndpointCaller interface {
 		method string,
 		path string,
 		apiID string,
-		fields map[string]string,
-	) (map[string]interface{}, error)
+		request interface{},
+	) (interface{}, error)
 }
 
 // handleKiwoomProxy handles POST /kiwoom/{path...}
@@ -67,11 +67,11 @@ func (s *Server) handleKiwoomProxy(c fuego.ContextWithBody[kiwoomProxyRequest]) 
 		return respond(c, http.StatusBadRequest, Response{OK: false, Error: "selected account does not support Kiwoom endpoint dispatch"})
 	}
 
-	fields := mergeStringMaps(
-		mergeStringMaps(toStringMap(req.Query), toStringMap(req.Params)),
-		toStringMap(req.Body),
+	request := mergeInterfaceMaps(
+		mergeInterfaceMaps(req.Query, req.Params),
+		req.Body,
 	)
-	result, err := impl.CallEndpoint(c.Context(), method, rawPath, apiID, fields)
+	result, err := impl.CallEndpoint(c.Context(), method, rawPath, apiID, request)
 	if err != nil {
 		return respond(c, statusFromBrokerError(err, http.StatusInternalServerError), Response{
 			OK:     false,

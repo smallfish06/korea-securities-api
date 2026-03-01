@@ -10,6 +10,7 @@ import (
 	"testing"
 	"time"
 
+	kiwoomspecs "github.com/smallfish06/krsec/internal/kiwoom/specs"
 	"github.com/smallfish06/krsec/pkg/broker"
 )
 
@@ -108,7 +109,7 @@ func TestClientInquirePrice_UsesAuthAndAPIIDHeader(t *testing.T) {
 	if gotSymbol != "005930" {
 		t.Fatalf("stk_cd = %q, want 005930", gotSymbol)
 	}
-	if quote.Price != 70000 || quote.Change != 500 || quote.ChangeRate != 0.72 {
+	if asFloat64(quote.CurPrc) != 70000 || asFloat64(quote.PredPre) != 500 || asFloat64(quote.FluRt) != 0.72 {
 		t.Fatalf("unexpected quote: %+v", quote)
 	}
 }
@@ -182,13 +183,12 @@ func TestClientPlaceStockOrder_SellUsesSellTR(t *testing.T) {
 		t.Fatalf("Authenticate error: %v", err)
 	}
 
-	_, err := c.PlaceStockOrder(context.Background(), PlaceStockOrderRequest{
-		Side:       StockOrderSideSell,
-		Exchange:   "KRX",
-		Symbol:     "005930",
-		Quantity:   1,
-		OrderPrice: "70000",
-		TradeType:  "0",
+	_, err := c.PlaceStockOrder(context.Background(), StockOrderSideSell, kiwoomspecs.KiwoomApiDostkOrdrKt10000Request{
+		DmstStexTp: "KRX",
+		StkCd:      "005930",
+		OrdQty:     "1",
+		OrdUv:      "70000",
+		TrdeTp:     "0",
 	})
 	if err != nil {
 		t.Fatalf("PlaceStockOrder error: %v", err)
@@ -217,5 +217,81 @@ func TestAuthenticate_InvalidCredentialsMapped(t *testing.T) {
 	}
 	if !errors.Is(err, broker.ErrInvalidCredentials) {
 		t.Fatalf("expected ErrInvalidCredentials mapping, got: %v", err)
+	}
+}
+
+func TestCallDocumentedEndpoint_UsesGeneratedMethod(t *testing.T) {
+	var gotMethod string
+	var gotAPIID string
+	var gotSymbol string
+
+	ts := httptest.NewServer(http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
+		switch r.URL.Path {
+		case "/oauth2/token":
+			_ = json.NewEncoder(w).Encode(map[string]interface{}{
+				"expires_dt":  "20991231235959",
+				"token_type":  "bearer",
+				"token":       "test-token",
+				"return_code": 0,
+				"return_msg":  "ok",
+			})
+		case "/api/dostk/stkinfo":
+			gotMethod = r.Method
+			gotAPIID = r.Header.Get("api-id")
+			var body map[string]interface{}
+			_ = json.NewDecoder(r.Body).Decode(&body)
+			gotSymbol = asString(body["stk_cd"])
+			_ = json.NewEncoder(w).Encode(map[string]interface{}{
+				"return_code": 0,
+				"return_msg":  "ok",
+				"name":        "sample",
+			})
+		default:
+			http.NotFound(w, r)
+		}
+	}))
+	defer ts.Close()
+
+	c := NewClientWithTokenManager(false, &memoryTokenManager{})
+	c.SetBaseURL(ts.URL)
+	if _, err := c.Authenticate(context.Background(), broker.Credentials{AppKey: "k", AppSecret: "s"}); err != nil {
+		t.Fatalf("Authenticate error: %v", err)
+	}
+
+	_, err := c.CallDocumentedEndpoint(
+		context.Background(),
+		"ka10002",
+		"/api/dostk/stkinfo",
+		&kiwoomspecs.KiwoomApiDostkStkinfoKa10002Request{StkCd: "005930"},
+	)
+	if err != nil {
+		t.Fatalf("CallDocumentedEndpoint error: %v", err)
+	}
+	if gotMethod != http.MethodPost {
+		t.Fatalf("method = %q, want %q", gotMethod, http.MethodPost)
+	}
+	if gotAPIID != "ka10002" {
+		t.Fatalf("api-id header = %q, want ka10002", gotAPIID)
+	}
+	if gotSymbol != "005930" {
+		t.Fatalf("stk_cd = %q, want 005930", gotSymbol)
+	}
+}
+
+func TestCallDocumentedEndpoint_MissingSpec(t *testing.T) {
+	c := NewClientWithTokenManager(false, &memoryTokenManager{})
+	c.SetCredentials("k", "s")
+
+	_, err := c.CallDocumentedEndpoint(
+		context.Background(),
+		"zz99999",
+		"/api/dostk/stkinfo",
+		&kiwoomspecs.KiwoomApiDostkStkinfoKa10001Request{StkCd: "005930"},
+	)
+	if err == nil {
+		t.Fatal("expected error")
+	}
+	if !strings.Contains(err.Error(), "missing documented endpoint spec") {
+		t.Fatalf("unexpected error: %v", err)
 	}
 }

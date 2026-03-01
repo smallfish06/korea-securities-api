@@ -3,210 +3,249 @@ package kiwoom
 import (
 	"context"
 	"strings"
+
+	kiwoomspecs "github.com/smallfish06/krsec/internal/kiwoom/specs"
 )
 
-// InquireBalance fetches kt00005.
-func (c *Client) InquireBalance(ctx context.Context, exchange string) (*AccountBalance, error) {
-	exchange = strings.ToUpper(strings.TrimSpace(exchange))
-	if exchange == "" {
-		exchange = "KRX"
+// InquireBalanceByRequest fetches kt00005.
+func (c *Client) InquireBalanceByRequest(
+	ctx context.Context,
+	req kiwoomspecs.KiwoomApiDostkAcntKt00005Request,
+) (*kiwoomspecs.KiwoomApiDostkAcntKt00005Response, error) {
+	req.DmstStexTp = strings.ToUpper(strings.TrimSpace(req.DmstStexTp))
+	if req.DmstStexTp == "" {
+		req.DmstStexTp = "KRX"
 	}
 
-	res, err := c.call(ctx, endpointAccountBalance, map[string]interface{}{
-		"dmst_stex_tp": exchange,
-	}, callOptions{})
+	resObj, err := c.CallDocumentedEndpoint(ctx, "kt00005", PathAccount, &req)
 	if err != nil {
 		return nil, err
 	}
+	out := &kiwoomspecs.KiwoomApiDostkAcntKt00005Response{}
+	if err := bindResponseObject(resObj, out); err != nil {
+		return nil, err
+	}
+	return out, nil
+}
 
-	return &AccountBalance{
-		Deposit:              asFloat64(res.Body["entr"]),
-		DepositD1:            asFloat64(res.Body["entr_d1"]),
-		DepositD2:            asFloat64(res.Body["entr_d2"]),
-		OrderableAmount:      asFloat64(res.Body["ord_alowa"]),
-		WithdrawableAmount:   asFloat64(res.Body["wthd_alowa"]),
-		UnsettledStockAmount: asFloat64(res.Body["uncl_stk_amt"]),
-		StockBuyTotalAmount:  asFloat64(res.Body["stk_buy_tot_amt"]),
-		EvaluationTotal:      asFloat64(res.Body["evlt_amt_tot"]),
-		TotalProfitLoss:      asFloat64(res.Body["tot_pl_tot"]),
-		TotalProfitLossRate:  asFloat64(res.Body["tot_pl_rt"]),
-		PresumedAssetAmount:  asFloat64(res.Body["prsm_dpst_aset_amt"]),
-		CreditLoanTotal:      asFloat64(res.Body["crd_loan_tot"]),
-		ReturnMsg:            asString(res.Body["return_msg"]),
-		ReturnCode:           parseReturnCode(res.Body["return_code"]),
-	}, nil
+// InquireBalance fetches kt00005.
+func (c *Client) InquireBalance(ctx context.Context, exchange string) (*kiwoomspecs.KiwoomApiDostkAcntKt00005Response, error) {
+	return c.InquireBalanceByRequest(ctx, kiwoomspecs.KiwoomApiDostkAcntKt00005Request{
+		DmstStexTp: exchange,
+	})
+}
+
+// InquirePositionsByRequest fetches kt00018.
+func (c *Client) InquirePositionsByRequest(
+	ctx context.Context,
+	req kiwoomspecs.KiwoomApiDostkAcntKt00018Request,
+) (*kiwoomspecs.KiwoomApiDostkAcntKt00018Response, error) {
+	req.QryTp = strings.TrimSpace(req.QryTp)
+	if req.QryTp == "" {
+		req.QryTp = "0"
+	}
+	req.DmstStexTp = strings.ToUpper(strings.TrimSpace(req.DmstStexTp))
+	if req.DmstStexTp == "" {
+		req.DmstStexTp = "KRX"
+	}
+
+	resObj, err := c.CallDocumentedEndpoint(ctx, "kt00018", PathAccount, &req)
+	if err != nil {
+		return nil, err
+	}
+	out := &kiwoomspecs.KiwoomApiDostkAcntKt00018Response{}
+	if err := bindResponseObject(resObj, out); err != nil {
+		return nil, err
+	}
+	return out, nil
 }
 
 // InquirePositions fetches kt00018.
-func (c *Client) InquirePositions(ctx context.Context, queryType, exchange string) ([]AccountPosition, error) {
-	queryType = strings.TrimSpace(queryType)
-	if queryType == "" {
-		queryType = "0"
+func (c *Client) InquirePositions(ctx context.Context, queryType, exchange string) (*kiwoomspecs.KiwoomApiDostkAcntKt00018Response, error) {
+	return c.InquirePositionsByRequest(ctx, kiwoomspecs.KiwoomApiDostkAcntKt00018Request{
+		QryTp:      queryType,
+		DmstStexTp: exchange,
+	})
+}
+
+// InquireUnsettledOrdersByRequest fetches ka10075.
+func (c *Client) InquireUnsettledOrdersByRequest(
+	ctx context.Context,
+	req kiwoomspecs.KiwoomApiDostkAcntKa10075Request,
+) (*kiwoomspecs.KiwoomApiDostkAcntKa10075Response, error) {
+	req.AllStkTp = strings.TrimSpace(req.AllStkTp)
+	req.TrdeTp = strings.TrimSpace(req.TrdeTp)
+	req.StexTp = strings.TrimSpace(req.StexTp)
+	if req.TrdeTp == "" {
+		req.TrdeTp = "0"
 	}
-	exchange = strings.ToUpper(strings.TrimSpace(exchange))
-	if exchange == "" {
-		exchange = "KRX"
+	if req.StexTp == "" {
+		req.StexTp = "0"
+	}
+	req.StkCd = normalizeSymbolCode(req.StkCd)
+	if req.StkCd == "" {
+		if req.AllStkTp == "" {
+			req.AllStkTp = "0"
+		}
+	} else {
+		req.AllStkTp = "1"
 	}
 
-	res, err := c.call(ctx, endpointAccountPositions, map[string]interface{}{
-		"qry_tp":       queryType,
-		"dmst_stex_tp": exchange,
-	}, callOptions{})
+	resObj, err := c.CallDocumentedEndpoint(ctx, "ka10075", PathAccount, &req)
 	if err != nil {
 		return nil, err
 	}
-
-	rows := firstObjectArray(res.Body, "acnt_evlt_remn_indv_tot")
-	if len(rows) == 0 {
-		return []AccountPosition{}, nil
+	out := &kiwoomspecs.KiwoomApiDostkAcntKa10075Response{}
+	if err := bindResponseObject(resObj, out); err != nil {
+		return nil, err
 	}
-
-	positions := make([]AccountPosition, 0, len(rows))
-	for _, row := range rows {
-		positions = append(positions, AccountPosition{
-			StockCode:        normalizeSymbolCode(asString(row["stk_cd"])),
-			StockName:        asString(row["stk_nm"]),
-			RemainingQty:     asInt64(row["rmnd_qty"]),
-			TradableQty:      asInt64(row["trde_able_qty"]),
-			TodayBuyQty:      asInt64(row["tdy_buyq"]),
-			TodaySellQty:     asInt64(row["tdy_sellq"]),
-			PurchasePrice:    asFloat64(row["pur_pric"]),
-			CurrentPrice:     asFloat64(row["cur_prc"]),
-			PurchaseAmount:   asFloat64(row["pur_amt"]),
-			EvaluationAmount: asFloat64(row["evlt_amt"]),
-			EvaluationProfit: asFloat64(row["evltv_prft"]),
-			ProfitRate:       asFloat64(row["prft_rt"]),
-			WeightRate:       asFloat64(row["poss_rt"]),
-			CreditLoanDate:   asString(row["crd_loan_dt"]),
-		})
-	}
-	return positions, nil
+	return out, nil
 }
 
 // InquireUnsettledOrders fetches ka10075.
-func (c *Client) InquireUnsettledOrders(ctx context.Context, symbol string) ([]UnsettledOrder, error) {
-	body := map[string]interface{}{
-		"all_stk_tp": "0",
-		"trde_tp":    "0",
-		"stex_tp":    "0",
-	}
-	symbol = normalizeSymbolCode(symbol)
-	if symbol != "" {
-		body["stk_cd"] = symbol
-		body["all_stk_tp"] = "1"
-	}
+func (c *Client) InquireUnsettledOrders(ctx context.Context, symbol string) (*kiwoomspecs.KiwoomApiDostkAcntKa10075Response, error) {
+	return c.InquireUnsettledOrdersByRequest(ctx, kiwoomspecs.KiwoomApiDostkAcntKa10075Request{
+		StkCd: symbol,
+	})
+}
 
-	res, err := c.call(ctx, endpointUnsettledOrders, body, callOptions{})
+// InquireOrderExecutionsByRequest fetches ka10076.
+func (c *Client) InquireOrderExecutionsByRequest(
+	ctx context.Context,
+	req kiwoomspecs.KiwoomApiDostkAcntKa10076Request,
+) (*kiwoomspecs.KiwoomApiDostkAcntKa10076Response, error) {
+	req.QryTp = strings.TrimSpace(req.QryTp)
+	req.SellTp = strings.TrimSpace(req.SellTp)
+	req.StexTp = strings.TrimSpace(req.StexTp)
+	if req.QryTp == "" {
+		req.QryTp = "0"
+	}
+	if req.SellTp == "" {
+		req.SellTp = "0"
+	}
+	if req.StexTp == "" {
+		req.StexTp = "0"
+	}
+	req.StkCd = normalizeSymbolCode(req.StkCd)
+
+	resObj, err := c.CallDocumentedEndpoint(ctx, "ka10076", PathAccount, &req)
 	if err != nil {
 		return nil, err
 	}
-
-	rows := firstObjectArray(res.Body, "oso")
-	if len(rows) == 0 {
-		return []UnsettledOrder{}, nil
+	out := &kiwoomspecs.KiwoomApiDostkAcntKa10076Response{}
+	if err := bindResponseObject(resObj, out); err != nil {
+		return nil, err
 	}
-
-	orders := make([]UnsettledOrder, 0, len(rows))
-	for _, row := range rows {
-		orders = append(orders, UnsettledOrder{
-			OrderNumber:    asString(row["ord_no"]),
-			StockCode:      normalizeSymbolCode(asString(row["stk_cd"])),
-			OrderStatus:    asString(row["ord_stt"]),
-			OrderQty:       asInt64(row["ord_qty"]),
-			UnsettledQty:   asInt64(row["oso_qty"]),
-			OrderPrice:     asFloat64(row["ord_pric"]),
-			ConcludedPrice: asFloat64(row["cntr_pric"]),
-			OrderSideText:  asString(row["io_tp_nm"]),
-			ExchangeCode:   asString(row["stex_tp"]),
-			ExchangeText:   asString(row["stex_tp_txt"]),
-			ReturnMsg:      asString(res.Body["return_msg"]),
-			ReturnCode:     parseReturnCode(res.Body["return_code"]),
-		})
-	}
-	return orders, nil
+	return out, nil
 }
 
 // InquireOrderExecutions fetches ka10076.
-func (c *Client) InquireOrderExecutions(ctx context.Context, symbol string) ([]OrderExecution, error) {
-	body := map[string]interface{}{
-		"qry_tp":  "0",
-		"sell_tp": "0",
-		"stex_tp": "0",
+func (c *Client) InquireOrderExecutions(ctx context.Context, symbol string) (*kiwoomspecs.KiwoomApiDostkAcntKa10076Response, error) {
+	return c.InquireOrderExecutionsByRequest(ctx, kiwoomspecs.KiwoomApiDostkAcntKa10076Request{
+		StkCd: symbol,
+	})
+}
+
+// InquireOrderExecutionDetail fetches kt00007.
+func (c *Client) InquireOrderExecutionDetail(
+	ctx context.Context,
+	req kiwoomspecs.KiwoomApiDostkAcntKt00007Request,
+) (*kiwoomspecs.KiwoomApiDostkAcntKt00007Response, error) {
+	req.QryTp = strings.TrimSpace(req.QryTp)
+	req.StkBondTp = strings.TrimSpace(req.StkBondTp)
+	req.SellTp = strings.TrimSpace(req.SellTp)
+	req.DmstStexTp = strings.ToUpper(strings.TrimSpace(req.DmstStexTp))
+	if req.QryTp == "" {
+		req.QryTp = "0"
 	}
-	symbol = normalizeSymbolCode(symbol)
-	if symbol != "" {
-		body["stk_cd"] = symbol
+	if req.StkBondTp == "" {
+		req.StkBondTp = "0"
+	}
+	if req.SellTp == "" {
+		req.SellTp = "0"
+	}
+	if req.DmstStexTp == "" {
+		req.DmstStexTp = "KRX"
 	}
 
-	res, err := c.call(ctx, endpointOrderExecutions, body, callOptions{})
+	resObj, err := c.CallDocumentedEndpoint(ctx, "kt00007", PathAccount, &req)
 	if err != nil {
 		return nil, err
 	}
+	out := &kiwoomspecs.KiwoomApiDostkAcntKt00007Response{}
+	if err := bindResponseObject(resObj, out); err != nil {
+		return nil, err
+	}
+	return out, nil
+}
 
-	rows := firstObjectArray(res.Body, "cntr")
-	if len(rows) == 0 {
-		return []OrderExecution{}, nil
+// InquireOrderExecutionStatus fetches kt00009.
+func (c *Client) InquireOrderExecutionStatus(
+	ctx context.Context,
+	req kiwoomspecs.KiwoomApiDostkAcntKt00009Request,
+) (*kiwoomspecs.KiwoomApiDostkAcntKt00009Response, error) {
+	req.QryTp = strings.TrimSpace(req.QryTp)
+	req.StkBondTp = strings.TrimSpace(req.StkBondTp)
+	req.SellTp = strings.TrimSpace(req.SellTp)
+	req.MrktTp = strings.TrimSpace(req.MrktTp)
+	req.DmstStexTp = strings.ToUpper(strings.TrimSpace(req.DmstStexTp))
+	if req.QryTp == "" {
+		req.QryTp = "0"
+	}
+	if req.StkBondTp == "" {
+		req.StkBondTp = "0"
+	}
+	if req.SellTp == "" {
+		req.SellTp = "0"
+	}
+	if req.MrktTp == "" {
+		req.MrktTp = "000"
+	}
+	if req.DmstStexTp == "" {
+		req.DmstStexTp = "KRX"
 	}
 
-	executions := make([]OrderExecution, 0, len(rows))
-	for _, row := range rows {
-		executions = append(executions, OrderExecution{
-			OrderNumber:    asString(row["ord_no"]),
-			StockCode:      normalizeSymbolCode(asString(row["stk_cd"])),
-			OrderSideText:  asString(row["io_tp_nm"]),
-			ExecutionPrice: asFloat64(row["cntr_pric"]),
-			ExecutionQty:   asInt64(row["cntr_qty"]),
-			OrderTime:      asString(row["ord_tm"]),
-			OrderStatus:    asString(row["ord_stt"]),
-			ExchangeCode:   asString(row["stex_tp"]),
-			ExchangeText:   asString(row["stex_tp_txt"]),
-		})
+	resObj, err := c.CallDocumentedEndpoint(ctx, "kt00009", PathAccount, &req, 20)
+	if err != nil {
+		return nil, err
 	}
-	return executions, nil
+	out := &kiwoomspecs.KiwoomApiDostkAcntKt00009Response{}
+	if err := bindResponseObject(resObj, out); err != nil {
+		return nil, err
+	}
+	return out, nil
 }
 
-// InquireDepositDetail fetches account deposit detail via kt00001.
-func (c *Client) InquireDepositDetail(ctx context.Context, body map[string]interface{}) (map[string]interface{}, error) {
-	return c.callRaw(ctx, endpointAccountDepositDetail, body)
-}
+// InquireOrderableWithdrawable fetches kt00010.
+func (c *Client) InquireOrderableWithdrawable(
+	ctx context.Context,
+	req kiwoomspecs.KiwoomApiDostkAcntKt00010Request,
+) (*kiwoomspecs.KiwoomApiDostkAcntKt00010Response, error) {
+	req.TrdeTp = strings.TrimSpace(req.TrdeTp)
+	req.Uv = strings.TrimSpace(req.Uv)
+	if req.TrdeTp == "" {
+		req.TrdeTp = "0"
+	}
+	if req.Uv == "" {
+		req.Uv = "0"
+	}
 
-// InquireOrderExecutionDetail fetches detailed order/fill history via kt00007.
-func (c *Client) InquireOrderExecutionDetail(ctx context.Context, body map[string]interface{}) (map[string]interface{}, error) {
-	payload := cloneBody(body)
-	setDefaultPayload(payload, "qry_tp", "0")
-	setDefaultPayload(payload, "stk_bond_tp", "0")
-	setDefaultPayload(payload, "sell_tp", "0")
-	setDefaultPayload(payload, "dmst_stex_tp", "KRX")
-	return c.callRaw(ctx, endpointAccountOrderExecutionDetail, payload)
-}
-
-// InquireOrderExecutionStatus fetches order/fill status via kt00009.
-func (c *Client) InquireOrderExecutionStatus(ctx context.Context, body map[string]interface{}) (map[string]interface{}, error) {
-	payload := cloneBody(body)
-	setDefaultPayload(payload, "qry_tp", "0")
-	setDefaultPayload(payload, "stk_bond_tp", "0")
-	setDefaultPayload(payload, "sell_tp", "0")
-	setDefaultPayload(payload, "mrkt_tp", "000")
-	setDefaultPayload(payload, "dmst_stex_tp", "KRX")
-	return c.callRawAllowCodes(ctx, endpointAccountOrderExecutionStatus, payload, 20)
-}
-
-// InquireOrderableWithdrawable fetches orderable/withdrawable amounts via kt00010.
-func (c *Client) InquireOrderableWithdrawable(ctx context.Context, body map[string]interface{}) (map[string]interface{}, error) {
-	payload := cloneBody(body)
-	setDefaultPayload(payload, "qry_tp", "0")
-	setDefaultPayload(payload, "trde_tp", "0")
-	setDefaultPayload(payload, "uv", "0")
-	return c.callRawAllowCodes(ctx, endpointAccountOrderableWithdrawable, payload, 20)
-}
-
-// InquireMarginDetail fetches margin detail via kt00013.
-func (c *Client) InquireMarginDetail(ctx context.Context, body map[string]interface{}) (map[string]interface{}, error) {
-	return c.callRaw(ctx, endpointAccountMarginDetail, body)
+	resObj, err := c.CallDocumentedEndpoint(ctx, "kt00010", PathAccount, &req, 20)
+	if err != nil {
+		return nil, err
+	}
+	out := &kiwoomspecs.KiwoomApiDostkAcntKt00010Response{}
+	if err := bindResponseObject(resObj, out); err != nil {
+		return nil, err
+	}
+	return out, nil
 }
 
 // InquirePositionsByAsset fetches positions with optional stock/bond filter (e.g. 1=stock, 2=bond).
-func (c *Client) InquirePositionsByAsset(ctx context.Context, queryType, exchange, stockBondType string) ([]AccountPosition, error) {
+func (c *Client) InquirePositionsByAsset(
+	ctx context.Context,
+	queryType, exchange, stockBondType string,
+) (*kiwoomspecs.KiwoomApiDostkAcntKt00018Response, error) {
 	queryType = strings.TrimSpace(queryType)
 	if queryType == "" {
 		queryType = "0"
@@ -216,132 +255,53 @@ func (c *Client) InquirePositionsByAsset(ctx context.Context, queryType, exchang
 		exchange = "KRX"
 	}
 
-	body := map[string]interface{}{
-		"qry_tp":       queryType,
-		"dmst_stex_tp": exchange,
-	}
-	if strings.TrimSpace(stockBondType) != "" {
-		body["stk_bond_tp"] = strings.TrimSpace(stockBondType)
+	req := struct {
+		kiwoomspecs.KiwoomApiDostkAcntKt00018Request
+		StkBondTp string `json:"stk_bond_tp,omitempty"`
+	}{
+		KiwoomApiDostkAcntKt00018Request: kiwoomspecs.KiwoomApiDostkAcntKt00018Request{
+			QryTp:      queryType,
+			DmstStexTp: exchange,
+		},
+		StkBondTp: strings.TrimSpace(stockBondType),
 	}
 
-	res, err := c.call(ctx, endpointAccountPositions, body, callOptions{})
+	resObj, err := c.CallDocumentedEndpoint(ctx, "kt00018", PathAccount, &req)
 	if err != nil {
 		return nil, err
 	}
-	rows := firstObjectArray(res.Body, "acnt_evlt_remn_indv_tot")
-	if len(rows) == 0 {
-		return []AccountPosition{}, nil
+	out := &kiwoomspecs.KiwoomApiDostkAcntKt00018Response{}
+	if err := bindResponseObject(resObj, out); err != nil {
+		return nil, err
 	}
-
-	positions := make([]AccountPosition, 0, len(rows))
-	for _, row := range rows {
-		positions = append(positions, AccountPosition{
-			StockCode:        normalizeSymbolCode(asString(row["stk_cd"])),
-			StockName:        asString(row["stk_nm"]),
-			RemainingQty:     asInt64(row["rmnd_qty"]),
-			TradableQty:      asInt64(row["trde_able_qty"]),
-			TodayBuyQty:      asInt64(row["tdy_buyq"]),
-			TodaySellQty:     asInt64(row["tdy_sellq"]),
-			PurchasePrice:    asFloat64(row["pur_pric"]),
-			CurrentPrice:     asFloat64(row["cur_prc"]),
-			PurchaseAmount:   asFloat64(row["pur_amt"]),
-			EvaluationAmount: asFloat64(row["evlt_amt"]),
-			EvaluationProfit: asFloat64(row["evltv_prft"]),
-			ProfitRate:       asFloat64(row["prft_rt"]),
-			WeightRate:       asFloat64(row["poss_rt"]),
-			CreditLoanDate:   asString(row["crd_loan_dt"]),
-		})
-	}
-	return positions, nil
+	return out, nil
 }
 
 // InquireBondPositions is a convenience wrapper for bond holdings.
-func (c *Client) InquireBondPositions(ctx context.Context, exchange string) ([]AccountPosition, error) {
+func (c *Client) InquireBondPositions(ctx context.Context, exchange string) (*kiwoomspecs.KiwoomApiDostkAcntKt00018Response, error) {
 	return c.InquirePositionsByAsset(ctx, "0", exchange, "2")
 }
 
 // InquireUnsettledOrdersByExchange fetches unsettled orders with explicit exchange scope.
-func (c *Client) InquireUnsettledOrdersByExchange(ctx context.Context, symbol, exchangeType string) ([]UnsettledOrder, error) {
-	body := map[string]interface{}{
-		"all_stk_tp": "0",
-		"trde_tp":    "0",
-		"stex_tp":    strings.TrimSpace(exchangeType),
+func (c *Client) InquireUnsettledOrdersByExchange(
+	ctx context.Context,
+	symbol, exchangeType string,
+) (*kiwoomspecs.KiwoomApiDostkAcntKa10075Response, error) {
+	req := kiwoomspecs.KiwoomApiDostkAcntKa10075Request{
+		StexTp: strings.TrimSpace(exchangeType),
 	}
-	if body["stex_tp"] == "" {
-		body["stex_tp"] = "0"
-	}
-	symbol = normalizeSymbolCode(symbol)
-	if symbol != "" {
-		body["stk_cd"] = symbol
-		body["all_stk_tp"] = "1"
-	}
-
-	res, err := c.call(ctx, endpointUnsettledOrders, body, callOptions{})
-	if err != nil {
-		return nil, err
-	}
-	rows := firstObjectArray(res.Body, "oso")
-	if len(rows) == 0 {
-		return []UnsettledOrder{}, nil
-	}
-
-	orders := make([]UnsettledOrder, 0, len(rows))
-	for _, row := range rows {
-		orders = append(orders, UnsettledOrder{
-			OrderNumber:    asString(row["ord_no"]),
-			StockCode:      normalizeSymbolCode(asString(row["stk_cd"])),
-			OrderStatus:    asString(row["ord_stt"]),
-			OrderQty:       asInt64(row["ord_qty"]),
-			UnsettledQty:   asInt64(row["oso_qty"]),
-			OrderPrice:     asFloat64(row["ord_pric"]),
-			ConcludedPrice: asFloat64(row["cntr_pric"]),
-			OrderSideText:  asString(row["io_tp_nm"]),
-			ExchangeCode:   asString(row["stex_tp"]),
-			ExchangeText:   asString(row["stex_tp_txt"]),
-			ReturnMsg:      asString(res.Body["return_msg"]),
-			ReturnCode:     parseReturnCode(res.Body["return_code"]),
-		})
-	}
-	return orders, nil
+	req.StkCd = symbol
+	return c.InquireUnsettledOrdersByRequest(ctx, req)
 }
 
 // InquireOrderExecutionsByExchange fetches execution rows with explicit exchange scope.
-func (c *Client) InquireOrderExecutionsByExchange(ctx context.Context, symbol, exchangeType string) ([]OrderExecution, error) {
-	body := map[string]interface{}{
-		"qry_tp":  "0",
-		"sell_tp": "0",
-		"stex_tp": strings.TrimSpace(exchangeType),
+func (c *Client) InquireOrderExecutionsByExchange(
+	ctx context.Context,
+	symbol, exchangeType string,
+) (*kiwoomspecs.KiwoomApiDostkAcntKa10076Response, error) {
+	req := kiwoomspecs.KiwoomApiDostkAcntKa10076Request{
+		StexTp: strings.TrimSpace(exchangeType),
 	}
-	if body["stex_tp"] == "" {
-		body["stex_tp"] = "0"
-	}
-	symbol = normalizeSymbolCode(symbol)
-	if symbol != "" {
-		body["stk_cd"] = symbol
-	}
-
-	res, err := c.call(ctx, endpointOrderExecutions, body, callOptions{})
-	if err != nil {
-		return nil, err
-	}
-	rows := firstObjectArray(res.Body, "cntr")
-	if len(rows) == 0 {
-		return []OrderExecution{}, nil
-	}
-
-	executions := make([]OrderExecution, 0, len(rows))
-	for _, row := range rows {
-		executions = append(executions, OrderExecution{
-			OrderNumber:    asString(row["ord_no"]),
-			StockCode:      normalizeSymbolCode(asString(row["stk_cd"])),
-			OrderSideText:  asString(row["io_tp_nm"]),
-			ExecutionPrice: asFloat64(row["cntr_pric"]),
-			ExecutionQty:   asInt64(row["cntr_qty"]),
-			OrderTime:      asString(row["ord_tm"]),
-			OrderStatus:    asString(row["ord_stt"]),
-			ExchangeCode:   asString(row["stex_tp"]),
-			ExchangeText:   asString(row["stex_tp_txt"]),
-		})
-	}
-	return executions, nil
+	req.StkCd = symbol
+	return c.InquireOrderExecutionsByRequest(ctx, req)
 }

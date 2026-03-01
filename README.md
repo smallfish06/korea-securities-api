@@ -52,7 +52,7 @@ krsec -config config.yaml
 | Method | Path | 설명 |
 |---|---|---|
 | `POST` | `/kis/<documented-uapi-path>` | KIS 문서 스펙에 등록된 정적 엔드포인트 호출 (`/uapi` prefix 제외 경로) |
-| `POST` | `/kiwoom/{path...}` | Kiwoom 엔드포인트 호출 (`/api` 경로 + `api_id`를 구현/문서 등록(비웹소켓 REST) 함수로 명시 매핑) |
+| `POST` | `/kiwoom/{path...}` | Kiwoom 엔드포인트 호출 (`/api` 경로 + `api_id`를 구현/문서 스냅샷 기반 generated 매핑(비웹소켓 REST)) |
 | `GET` | `/quotes/{market}/{symbol}` | 현재가 |
 | `GET` | `/quotes/{market}/{symbol}/ohlcv` | 일봉 |
 | `GET` | `/instruments/{market}/{symbol}` | 종목 정보 |
@@ -128,6 +128,8 @@ make lint      # lint
 make mock      # mock 재생성
 make kis-spec-check    # KIS generated spec/type 동기화 확인
 make kis-spec-refresh  # KIS 포털 snapshot 갱신 + generated 파일 재생성
+make kiwoom-spec-check   # Kiwoom generated spec/type 동기화 확인
+make kiwoom-spec-refresh # Kiwoom 포털 snapshot 갱신 + generated 파일 재생성
 ```
 
 ### KIS spec 관리
@@ -135,6 +137,12 @@ make kis-spec-refresh  # KIS 포털 snapshot 갱신 + generated 파일 재생성
 - KIS 문서 스펙은 `internal/kis/specs/documented_endpoints.json` snapshot으로 버전 관리합니다.
 - 런타임은 웹사이트를 조회하지 않고, snapshot에서 생성된 코드만 사용합니다.
 - CI는 `make kis-spec-check`로 generated 파일 drift를 차단합니다.
+
+### Kiwoom spec 관리
+
+- Kiwoom 문서 스펙은 `internal/kiwoom/specs/documented_endpoints.json` snapshot으로 버전 관리합니다.
+- 런타임은 웹사이트를 조회하지 않고, snapshot에서 생성된 코드만 사용합니다.
+- CI는 `make kiwoom-spec-check`로 generated 파일 drift를 차단합니다.
 
 ## License
 

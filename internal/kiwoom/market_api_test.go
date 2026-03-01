@@ -6,9 +6,11 @@ import (
 	"net/http"
 	"net/http/httptest"
 	"testing"
+
+	kiwoomspecs "github.com/smallfish06/krsec/internal/kiwoom/specs"
 )
 
-func TestInquireOrderBook_UsesKa10004AndMrkcondPath(t *testing.T) {
+func TestCallDocumentedEndpoint_OrderBook_UsesKa10004AndMrkcondPath(t *testing.T) {
 	t.Parallel()
 
 	var gotAPIID string
@@ -40,8 +42,13 @@ func TestInquireOrderBook_UsesKa10004AndMrkcondPath(t *testing.T) {
 	c.SetBaseURL(ts.URL)
 	c.SetCredentials("k", "s")
 
-	if _, err := c.InquireOrderBook(context.Background(), "005930"); err != nil {
-		t.Fatalf("InquireOrderBook error: %v", err)
+	if _, err := c.CallDocumentedEndpoint(
+		context.Background(),
+		"ka10004",
+		PathMarketCond,
+		&kiwoomspecs.KiwoomApiDostkMrkcondKa10004Request{StkCd: "005930"},
+	); err != nil {
+		t.Fatalf("CallDocumentedEndpoint error: %v", err)
 	}
 
 	if gotAPIID != "ka10004" {
@@ -52,7 +59,7 @@ func TestInquireOrderBook_UsesKa10004AndMrkcondPath(t *testing.T) {
 	}
 }
 
-func TestInquireVolumeRank_UsesKa10030AndRkinfoPath(t *testing.T) {
+func TestCallDocumentedEndpoint_VolumeRank_UsesKa10030AndRkinfoPath(t *testing.T) {
 	t.Parallel()
 
 	var gotAPIID string
@@ -80,8 +87,18 @@ func TestInquireVolumeRank_UsesKa10030AndRkinfoPath(t *testing.T) {
 	c.SetBaseURL(ts.URL)
 	c.SetCredentials("k", "s")
 
-	if _, err := c.InquireVolumeRank(context.Background(), map[string]interface{}{"mrkt_tp": "000"}); err != nil {
-		t.Fatalf("InquireVolumeRank error: %v", err)
+	if _, err := c.CallDocumentedEndpoint(context.Background(), "ka10030", PathRankingInfo, &kiwoomspecs.KiwoomApiDostkRkinfoKa10030Request{
+		StexTp:       "0",
+		MrktTp:       "000",
+		SortTp:       "1",
+		MangStkIncls: "0",
+		CrdTp:        "0",
+		TrdeQtyTp:    "0",
+		PricTp:       "0",
+		TrdePricaTp:  "0",
+		MrktOpenTp:   "0",
+	}); err != nil {
+		t.Fatalf("CallDocumentedEndpoint error: %v", err)
 	}
 
 	if gotAPIID != "ka10030" {
@@ -89,7 +106,7 @@ func TestInquireVolumeRank_UsesKa10030AndRkinfoPath(t *testing.T) {
 	}
 }
 
-func TestInquireSectorCurrentAndDepositDetail(t *testing.T) {
+func TestCallDocumentedEndpoint_SectorCurrentAndDepositDetail(t *testing.T) {
 	t.Parallel()
 
 	var sectorAPIID string
@@ -121,11 +138,21 @@ func TestInquireSectorCurrentAndDepositDetail(t *testing.T) {
 	c.SetBaseURL(ts.URL)
 	c.SetCredentials("k", "s")
 
-	if _, err := c.InquireSectorCurrent(context.Background(), map[string]interface{}{"upcode": "001"}); err != nil {
-		t.Fatalf("InquireSectorCurrent error: %v", err)
+	if _, err := c.CallDocumentedEndpoint(
+		context.Background(),
+		"ka20001",
+		PathSector,
+		&kiwoomspecs.KiwoomApiDostkSectKa20001Request{IndsCd: "001", MrktTp: "000"},
+	); err != nil {
+		t.Fatalf("CallDocumentedEndpoint error: %v", err)
 	}
-	if _, err := c.InquireDepositDetail(context.Background(), map[string]interface{}{"qry_tp": "0"}); err != nil {
-		t.Fatalf("InquireDepositDetail error: %v", err)
+	if _, err := c.CallDocumentedEndpoint(
+		context.Background(),
+		"kt00001",
+		PathAccount,
+		&kiwoomspecs.KiwoomApiDostkAcntKt00001Request{QryTp: "0"},
+	); err != nil {
+		t.Fatalf("CallDocumentedEndpoint error: %v", err)
 	}
 
 	if sectorAPIID != "ka20001" {

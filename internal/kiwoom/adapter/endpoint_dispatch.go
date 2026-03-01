@@ -1,18 +1,19 @@
 package adapter
 
 import (
+	"bytes"
 	"context"
 	"encoding/json"
 	"fmt"
 	"net/http"
-	"strconv"
 	"strings"
 
 	"github.com/smallfish06/krsec/internal/kiwoom"
+	kiwoomspecs "github.com/smallfish06/krsec/internal/kiwoom/specs"
 	"github.com/smallfish06/krsec/pkg/broker"
 )
 
-type endpointDispatchFunc func(ctx context.Context, apiID string, fields map[string]string) (map[string]interface{}, error)
+type endpointDispatchFunc func(ctx context.Context, request interface{}) (interface{}, error)
 
 type endpointRouteKey struct {
 	path  string
@@ -25,20 +26,25 @@ type endpointDispatcher struct {
 }
 
 type endpointRoute struct {
-	methods map[string]struct{}
-	fn      endpointDispatchFunc
+	methods       map[string]struct{}
+	defaultMethod string
+	fn            endpointDispatchFunc
 }
 
 func newEndpointRoute(methods []string, fn endpointDispatchFunc) endpointRoute {
 	m := make(map[string]struct{}, len(methods))
+	defaultMethod := ""
 	for _, method := range methods {
 		n := strings.ToUpper(strings.TrimSpace(method))
 		if n == "" {
 			continue
 		}
+		if defaultMethod == "" {
+			defaultMethod = n
+		}
 		m[n] = struct{}{}
 	}
-	return endpointRoute{methods: m, fn: fn}
+	return endpointRoute{methods: m, defaultMethod: defaultMethod, fn: fn}
 }
 
 func (r endpointRoute) allows(method string) bool {
@@ -47,59 +53,355 @@ func (r endpointRoute) allows(method string) bool {
 }
 
 func newEndpointDispatcher(adapter *Adapter) *endpointDispatcher {
-	d := &endpointDispatcher{adapter: adapter}
-	d.routes = map[endpointRouteKey]endpointRoute{
-		{path: kiwoom.PathStockInfo, apiID: kiwoom.APIIDDomesticQuote}:              newEndpointRoute([]string{http.MethodPost}, d.dispatchDomesticQuote),
-		{path: kiwoom.PathStockInfo, apiID: kiwoom.APIIDDomesticExecutionInfo}:      newEndpointRoute([]string{http.MethodPost}, d.dispatchDomesticExecutionInfo),
-		{path: kiwoom.PathStockInfo, apiID: kiwoom.APIIDInstrumentInfo}:             newEndpointRoute([]string{http.MethodPost}, d.dispatchInstrumentInfo),
-		{path: kiwoom.PathStockInfo, apiID: kiwoom.APIIDInvestorByStock}:            newEndpointRoute([]string{http.MethodPost}, d.dispatchInvestorByStock),
-		{path: kiwoom.PathMarketCond, apiID: kiwoom.APIIDDomesticOrderBook}:         newEndpointRoute([]string{http.MethodPost}, d.dispatchDomesticOrderBook),
-		{path: kiwoom.PathRankingInfo, apiID: kiwoom.APIIDVolumeRank}:               newEndpointRoute([]string{http.MethodPost}, d.dispatchVolumeRank),
-		{path: kiwoom.PathRankingInfo, apiID: kiwoom.APIIDChangeRateRank}:           newEndpointRoute([]string{http.MethodPost}, d.dispatchChangeRateRank),
-		{path: kiwoom.PathSector, apiID: kiwoom.APIIDSectorCurrent}:                 newEndpointRoute([]string{http.MethodPost}, d.dispatchSectorCurrent),
-		{path: kiwoom.PathSector, apiID: kiwoom.APIIDSectorByPrice}:                 newEndpointRoute([]string{http.MethodPost}, d.dispatchSectorByPrice),
-		{path: kiwoom.PathELW, apiID: kiwoom.APIIDELWDetail}:                        newEndpointRoute([]string{http.MethodPost}, d.dispatchELWDetail),
-		{path: kiwoom.PathAccount, apiID: kiwoom.APIIDAccountBalance}:               newEndpointRoute([]string{http.MethodPost}, d.dispatchAccountBalance),
-		{path: kiwoom.PathAccount, apiID: kiwoom.APIIDAccountPositions}:             newEndpointRoute([]string{http.MethodPost}, d.dispatchAccountPositions),
-		{path: kiwoom.PathAccount, apiID: kiwoom.APIIDUnsettledOrders}:              newEndpointRoute([]string{http.MethodPost}, d.dispatchUnsettledOrders),
-		{path: kiwoom.PathAccount, apiID: kiwoom.APIIDOrderExecutions}:              newEndpointRoute([]string{http.MethodPost}, d.dispatchOrderExecutions),
-		{path: kiwoom.PathAccount, apiID: kiwoom.APIIDAccountDepositDetail}:         newEndpointRoute([]string{http.MethodPost}, d.dispatchAccountDepositDetail),
-		{path: kiwoom.PathAccount, apiID: kiwoom.APIIDAccountOrderExecutionDetail}:  newEndpointRoute([]string{http.MethodPost}, d.dispatchAccountOrderExecutionDetail),
-		{path: kiwoom.PathAccount, apiID: kiwoom.APIIDAccountOrderExecutionStatus}:  newEndpointRoute([]string{http.MethodPost}, d.dispatchAccountOrderExecutionStatus),
-		{path: kiwoom.PathAccount, apiID: kiwoom.APIIDAccountOrderableWithdrawable}: newEndpointRoute([]string{http.MethodPost}, d.dispatchAccountOrderableWithdrawable),
-		{path: kiwoom.PathAccount, apiID: kiwoom.APIIDAccountMarginDetail}:          newEndpointRoute([]string{http.MethodPost}, d.dispatchAccountMarginDetail),
-		{path: kiwoom.PathChart, apiID: kiwoom.APIIDTickChart}:                      newEndpointRoute([]string{http.MethodPost}, d.dispatchTickChart),
-		{path: kiwoom.PathChart, apiID: kiwoom.APIIDInvestorByStockChart}:           newEndpointRoute([]string{http.MethodPost}, d.dispatchInvestorByStockChart),
-		{path: kiwoom.PathChart, apiID: kiwoom.APIIDDailyChart}:                     newEndpointRoute([]string{http.MethodPost}, d.dispatchDailyChart),
-		{path: kiwoom.PathChart, apiID: kiwoom.APIIDWeeklyChart}:                    newEndpointRoute([]string{http.MethodPost}, d.dispatchWeeklyChart),
-		{path: kiwoom.PathChart, apiID: kiwoom.APIIDMonthlyChart}:                   newEndpointRoute([]string{http.MethodPost}, d.dispatchMonthlyChart),
-		{path: kiwoom.PathOrder, apiID: kiwoom.APIIDPlaceBuyOrder}:                  newEndpointRoute([]string{http.MethodPost}, d.dispatchPlaceOrder),
-		{path: kiwoom.PathOrder, apiID: kiwoom.APIIDPlaceSellOrder}:                 newEndpointRoute([]string{http.MethodPost}, d.dispatchPlaceOrder),
-		{path: kiwoom.PathOrder, apiID: kiwoom.APIIDModifyOrder}:                    newEndpointRoute([]string{http.MethodPost}, d.dispatchModifyOrder),
-		{path: kiwoom.PathOrder, apiID: kiwoom.APIIDCancelOrder}:                    newEndpointRoute([]string{http.MethodPost}, d.dispatchCancelOrder),
+	d := &endpointDispatcher{
+		adapter: adapter,
+		routes:  make(map[endpointRouteKey]endpointRoute, kiwoomspecs.DocumentedEndpointSpecCount()),
 	}
-	d.registerDocumentedCustomRoutes()
+	d.registerDocumentedRoutes()
+	d.registerCoreOverrides()
 	return d
 }
 
-func (d *endpointDispatcher) registerDocumentedCustomRoutes() {
-	for _, key := range documentedCustomRouteKeys {
-		if _, exists := d.routes[key]; exists {
+func (d *endpointDispatcher) registerDocumentedRoutes() {
+	for _, spec := range kiwoomspecs.DocumentedKiwoomEndpointSpecs {
+		path := normalizeEndpointPath(spec.Path)
+		apiID := normalizeEndpointAPIID(spec.APIID)
+		if path == "" || apiID == "" {
 			continue
 		}
-		d.routes[key] = newEndpointRoute([]string{http.MethodPost}, d.dispatchDocumentedEndpoint(key.path))
+		method := strings.ToUpper(strings.TrimSpace(spec.Method))
+		if method == "" {
+			method = http.MethodPost
+		}
+		routeSpec := spec
+		d.routes[endpointRouteKey{path: path, apiID: apiID}] = newEndpointRoute(
+			[]string{method},
+			d.dispatchDocumentedEndpoint(path, apiID, routeSpec),
+		)
 	}
 }
 
-func (d *endpointDispatcher) dispatchDocumentedEndpoint(path string) endpointDispatchFunc {
-	return func(ctx context.Context, apiID string, fields map[string]string) (map[string]interface{}, error) {
-		if d.adapter == nil || d.adapter.client == nil {
-			return nil, fmt.Errorf("%w: kiwoom client is not initialized", broker.ErrInvalidOrderRequest)
+func (d *endpointDispatcher) registerCoreOverrides() {
+	postMethods := []string{http.MethodPost}
+
+	d.registerOverrideRoute(
+		kiwoom.PathStockInfo,
+		"ka10001",
+		postMethods,
+		newRequestDispatchPrepared[kiwoomspecs.KiwoomApiDostkStkinfoKa10001Request, *kiwoomspecs.KiwoomApiDostkStkinfoKa10001Response](
+			d,
+			func(req *kiwoomspecs.KiwoomApiDostkStkinfoKa10001Request) error {
+				if strings.TrimSpace(req.StkCd) == "" {
+					return broker.ErrInvalidSymbol
+				}
+				return nil
+			},
+			func(client *kiwoom.Client, callCtx context.Context, req kiwoomspecs.KiwoomApiDostkStkinfoKa10001Request) (*kiwoomspecs.KiwoomApiDostkStkinfoKa10001Response, error) {
+				return client.InquirePriceByRequest(callCtx, req)
+			},
+		),
+	)
+	d.registerOverrideRoute(
+		kiwoom.PathStockInfo,
+		"ka10003",
+		postMethods,
+		newRequestDispatch[kiwoomspecs.KiwoomApiDostkStkinfoKa10003Request, *kiwoomspecs.KiwoomApiDostkStkinfoKa10003Response](
+			d,
+			func(client *kiwoom.Client, callCtx context.Context, req kiwoomspecs.KiwoomApiDostkStkinfoKa10003Request) (*kiwoomspecs.KiwoomApiDostkStkinfoKa10003Response, error) {
+				return client.InquireExecutionInfo(callCtx, req)
+			},
+		),
+	)
+	d.registerOverrideRoute(
+		kiwoom.PathStockInfo,
+		"ka10100",
+		postMethods,
+		newRequestDispatch[kiwoomspecs.KiwoomApiDostkStkinfoKa10100Request, *kiwoomspecs.KiwoomApiDostkStkinfoKa10100Response](
+			d,
+			func(client *kiwoom.Client, callCtx context.Context, req kiwoomspecs.KiwoomApiDostkStkinfoKa10100Request) (*kiwoomspecs.KiwoomApiDostkStkinfoKa10100Response, error) {
+				return client.InquireInstrumentInfoByRequest(callCtx, req)
+			},
+		),
+	)
+	d.registerOverrideRoute(
+		kiwoom.PathStockInfo,
+		"ka10059",
+		postMethods,
+		newRequestDispatch[kiwoomspecs.KiwoomApiDostkStkinfoKa10059Request, *kiwoomspecs.KiwoomApiDostkStkinfoKa10059Response](
+			d,
+			func(client *kiwoom.Client, callCtx context.Context, req kiwoomspecs.KiwoomApiDostkStkinfoKa10059Request) (*kiwoomspecs.KiwoomApiDostkStkinfoKa10059Response, error) {
+				return client.InquireInvestorByStock(callCtx, req)
+			},
+		),
+	)
+	d.registerOverrideRoute(
+		kiwoom.PathMarketCond,
+		"ka10004",
+		postMethods,
+		newRequestDispatch[kiwoomspecs.KiwoomApiDostkMrkcondKa10004Request, *kiwoomspecs.KiwoomApiDostkMrkcondKa10004Response](
+			d,
+			func(client *kiwoom.Client, callCtx context.Context, req kiwoomspecs.KiwoomApiDostkMrkcondKa10004Request) (*kiwoomspecs.KiwoomApiDostkMrkcondKa10004Response, error) {
+				return client.InquireOrderBook(callCtx, req)
+			},
+		),
+	)
+	d.registerOverrideRoute(
+		kiwoom.PathRankingInfo,
+		"ka10030",
+		postMethods,
+		newRequestDispatch[kiwoomspecs.KiwoomApiDostkRkinfoKa10030Request, *kiwoomspecs.KiwoomApiDostkRkinfoKa10030Response](
+			d,
+			func(client *kiwoom.Client, callCtx context.Context, req kiwoomspecs.KiwoomApiDostkRkinfoKa10030Request) (*kiwoomspecs.KiwoomApiDostkRkinfoKa10030Response, error) {
+				return client.InquireVolumeRank(callCtx, req)
+			},
+		),
+	)
+	d.registerOverrideRoute(
+		kiwoom.PathRankingInfo,
+		"ka10027",
+		postMethods,
+		newRequestDispatch[kiwoomspecs.KiwoomApiDostkRkinfoKa10027Request, *kiwoomspecs.KiwoomApiDostkRkinfoKa10027Response](
+			d,
+			func(client *kiwoom.Client, callCtx context.Context, req kiwoomspecs.KiwoomApiDostkRkinfoKa10027Request) (*kiwoomspecs.KiwoomApiDostkRkinfoKa10027Response, error) {
+				return client.InquireChangeRateRank(callCtx, req)
+			},
+		),
+	)
+	d.registerOverrideRoute(
+		kiwoom.PathSector,
+		"ka20001",
+		postMethods,
+		newRequestDispatch[kiwoomspecs.KiwoomApiDostkSectKa20001Request, *kiwoomspecs.KiwoomApiDostkSectKa20001Response](
+			d,
+			func(client *kiwoom.Client, callCtx context.Context, req kiwoomspecs.KiwoomApiDostkSectKa20001Request) (*kiwoomspecs.KiwoomApiDostkSectKa20001Response, error) {
+				return client.InquireSectorCurrent(callCtx, req)
+			},
+		),
+	)
+	d.registerOverrideRoute(
+		kiwoom.PathSector,
+		"ka20002",
+		postMethods,
+		newRequestDispatch[kiwoomspecs.KiwoomApiDostkSectKa20002Request, *kiwoomspecs.KiwoomApiDostkSectKa20002Response](
+			d,
+			func(client *kiwoom.Client, callCtx context.Context, req kiwoomspecs.KiwoomApiDostkSectKa20002Request) (*kiwoomspecs.KiwoomApiDostkSectKa20002Response, error) {
+				return client.InquireSectorByPrice(callCtx, req)
+			},
+		),
+	)
+	d.registerOverrideRoute(
+		kiwoom.PathAccount,
+		"kt00005",
+		postMethods,
+		newRequestDispatch[kiwoomspecs.KiwoomApiDostkAcntKt00005Request, *kiwoomspecs.KiwoomApiDostkAcntKt00005Response](
+			d,
+			func(client *kiwoom.Client, callCtx context.Context, req kiwoomspecs.KiwoomApiDostkAcntKt00005Request) (*kiwoomspecs.KiwoomApiDostkAcntKt00005Response, error) {
+				return client.InquireBalanceByRequest(callCtx, req)
+			},
+		),
+	)
+	d.registerOverrideRoute(
+		kiwoom.PathAccount,
+		"kt00018",
+		postMethods,
+		newRequestDispatch[kiwoomspecs.KiwoomApiDostkAcntKt00018Request, *kiwoomspecs.KiwoomApiDostkAcntKt00018Response](
+			d,
+			func(client *kiwoom.Client, callCtx context.Context, req kiwoomspecs.KiwoomApiDostkAcntKt00018Request) (*kiwoomspecs.KiwoomApiDostkAcntKt00018Response, error) {
+				return client.InquirePositionsByRequest(callCtx, req)
+			},
+		),
+	)
+	d.registerOverrideRoute(
+		kiwoom.PathAccount,
+		"ka10075",
+		postMethods,
+		newRequestDispatch[kiwoomspecs.KiwoomApiDostkAcntKa10075Request, *kiwoomspecs.KiwoomApiDostkAcntKa10075Response](
+			d,
+			func(client *kiwoom.Client, callCtx context.Context, req kiwoomspecs.KiwoomApiDostkAcntKa10075Request) (*kiwoomspecs.KiwoomApiDostkAcntKa10075Response, error) {
+				return client.InquireUnsettledOrdersByRequest(callCtx, req)
+			},
+		),
+	)
+	d.registerOverrideRoute(
+		kiwoom.PathAccount,
+		"ka10076",
+		postMethods,
+		newRequestDispatch[kiwoomspecs.KiwoomApiDostkAcntKa10076Request, *kiwoomspecs.KiwoomApiDostkAcntKa10076Response](
+			d,
+			func(client *kiwoom.Client, callCtx context.Context, req kiwoomspecs.KiwoomApiDostkAcntKa10076Request) (*kiwoomspecs.KiwoomApiDostkAcntKa10076Response, error) {
+				return client.InquireOrderExecutionsByRequest(callCtx, req)
+			},
+		),
+	)
+	d.registerOverrideRoute(
+		kiwoom.PathAccount,
+		"kt00007",
+		postMethods,
+		newRequestDispatch[kiwoomspecs.KiwoomApiDostkAcntKt00007Request, *kiwoomspecs.KiwoomApiDostkAcntKt00007Response](
+			d,
+			func(client *kiwoom.Client, callCtx context.Context, req kiwoomspecs.KiwoomApiDostkAcntKt00007Request) (*kiwoomspecs.KiwoomApiDostkAcntKt00007Response, error) {
+				return client.InquireOrderExecutionDetail(callCtx, req)
+			},
+		),
+	)
+	d.registerOverrideRoute(
+		kiwoom.PathAccount,
+		"kt00009",
+		postMethods,
+		newRequestDispatch[kiwoomspecs.KiwoomApiDostkAcntKt00009Request, *kiwoomspecs.KiwoomApiDostkAcntKt00009Response](
+			d,
+			func(client *kiwoom.Client, callCtx context.Context, req kiwoomspecs.KiwoomApiDostkAcntKt00009Request) (*kiwoomspecs.KiwoomApiDostkAcntKt00009Response, error) {
+				return client.InquireOrderExecutionStatus(callCtx, req)
+			},
+		),
+	)
+	d.registerOverrideRoute(
+		kiwoom.PathAccount,
+		"kt00010",
+		postMethods,
+		newRequestDispatch[kiwoomspecs.KiwoomApiDostkAcntKt00010Request, *kiwoomspecs.KiwoomApiDostkAcntKt00010Response](
+			d,
+			func(client *kiwoom.Client, callCtx context.Context, req kiwoomspecs.KiwoomApiDostkAcntKt00010Request) (*kiwoomspecs.KiwoomApiDostkAcntKt00010Response, error) {
+				return client.InquireOrderableWithdrawable(callCtx, req)
+			},
+		),
+	)
+	d.registerOverrideRoute(
+		kiwoom.PathChart,
+		"ka10079",
+		postMethods,
+		newRequestDispatch[kiwoomspecs.KiwoomApiDostkChartKa10079Request, *kiwoomspecs.KiwoomApiDostkChartKa10079Response](
+			d,
+			func(client *kiwoom.Client, callCtx context.Context, req kiwoomspecs.KiwoomApiDostkChartKa10079Request) (*kiwoomspecs.KiwoomApiDostkChartKa10079Response, error) {
+				return client.InquireTickChartByRequest(callCtx, req)
+			},
+		),
+	)
+	d.registerOverrideRoute(
+		kiwoom.PathChart,
+		"ka10060",
+		postMethods,
+		newRequestDispatch[kiwoomspecs.KiwoomApiDostkChartKa10060Request, *kiwoomspecs.KiwoomApiDostkChartKa10060Response](
+			d,
+			func(client *kiwoom.Client, callCtx context.Context, req kiwoomspecs.KiwoomApiDostkChartKa10060Request) (*kiwoomspecs.KiwoomApiDostkChartKa10060Response, error) {
+				return client.InquireInvestorByStockChart(callCtx, req)
+			},
+		),
+	)
+	d.registerOverrideRoute(
+		kiwoom.PathChart,
+		"ka10081",
+		postMethods,
+		newRequestDispatch[kiwoomspecs.KiwoomApiDostkChartKa10081Request, *kiwoomspecs.KiwoomApiDostkChartKa10081Response](
+			d,
+			func(client *kiwoom.Client, callCtx context.Context, req kiwoomspecs.KiwoomApiDostkChartKa10081Request) (*kiwoomspecs.KiwoomApiDostkChartKa10081Response, error) {
+				return client.InquireDailyPriceByRequest(callCtx, req)
+			},
+		),
+	)
+	d.registerOverrideRoute(
+		kiwoom.PathChart,
+		"ka10082",
+		postMethods,
+		newRequestDispatch[kiwoomspecs.KiwoomApiDostkChartKa10082Request, *kiwoomspecs.KiwoomApiDostkChartKa10082Response](
+			d,
+			func(client *kiwoom.Client, callCtx context.Context, req kiwoomspecs.KiwoomApiDostkChartKa10082Request) (*kiwoomspecs.KiwoomApiDostkChartKa10082Response, error) {
+				return client.InquireWeeklyPriceByRequest(callCtx, req)
+			},
+		),
+	)
+	d.registerOverrideRoute(
+		kiwoom.PathChart,
+		"ka10083",
+		postMethods,
+		newRequestDispatch[kiwoomspecs.KiwoomApiDostkChartKa10083Request, *kiwoomspecs.KiwoomApiDostkChartKa10083Response](
+			d,
+			func(client *kiwoom.Client, callCtx context.Context, req kiwoomspecs.KiwoomApiDostkChartKa10083Request) (*kiwoomspecs.KiwoomApiDostkChartKa10083Response, error) {
+				return client.InquireMonthlyPriceByRequest(callCtx, req)
+			},
+		),
+	)
+	d.registerOverrideRoute(
+		kiwoom.PathOrder,
+		"kt10000",
+		postMethods,
+		newRequestDispatch[kiwoomspecs.KiwoomApiDostkOrdrKt10000Request, *kiwoomspecs.KiwoomApiDostkOrdrKt10000Response](
+			d,
+			func(client *kiwoom.Client, callCtx context.Context, req kiwoomspecs.KiwoomApiDostkOrdrKt10000Request) (*kiwoomspecs.KiwoomApiDostkOrdrKt10000Response, error) {
+				return client.PlaceBuyOrder(callCtx, req)
+			},
+		),
+	)
+	d.registerOverrideRoute(
+		kiwoom.PathOrder,
+		"kt10001",
+		postMethods,
+		newRequestDispatch[kiwoomspecs.KiwoomApiDostkOrdrKt10001Request, *kiwoomspecs.KiwoomApiDostkOrdrKt10000Response](
+			d,
+			func(client *kiwoom.Client, callCtx context.Context, req kiwoomspecs.KiwoomApiDostkOrdrKt10001Request) (*kiwoomspecs.KiwoomApiDostkOrdrKt10000Response, error) {
+				return client.PlaceSellOrder(callCtx, req)
+			},
+		),
+	)
+	d.registerOverrideRoute(
+		kiwoom.PathOrder,
+		"kt10002",
+		postMethods,
+		newRequestDispatch[kiwoomspecs.KiwoomApiDostkOrdrKt10002Request, *kiwoomspecs.KiwoomApiDostkOrdrKt10002Response](
+			d,
+			func(client *kiwoom.Client, callCtx context.Context, req kiwoomspecs.KiwoomApiDostkOrdrKt10002Request) (*kiwoomspecs.KiwoomApiDostkOrdrKt10002Response, error) {
+				return client.ModifyStockOrder(callCtx, req)
+			},
+		),
+	)
+	d.registerOverrideRoute(
+		kiwoom.PathOrder,
+		"kt10003",
+		postMethods,
+		newRequestDispatch[kiwoomspecs.KiwoomApiDostkOrdrKt10003Request, *kiwoomspecs.KiwoomApiDostkOrdrKt10003Response](
+			d,
+			func(client *kiwoom.Client, callCtx context.Context, req kiwoomspecs.KiwoomApiDostkOrdrKt10003Request) (*kiwoomspecs.KiwoomApiDostkOrdrKt10003Response, error) {
+				return client.CancelStockOrder(callCtx, req)
+			},
+		),
+	)
+}
+
+func (d *endpointDispatcher) registerOverrideRoute(path, apiID string, methods []string, fn endpointDispatchFunc) {
+	d.routes[endpointRouteKey{
+		path:  normalizeEndpointPath(path),
+		apiID: normalizeEndpointAPIID(apiID),
+	}] = newEndpointRoute(methods, fn)
+}
+
+func (d *endpointDispatcher) dispatchDocumentedEndpoint(
+	path string,
+	apiID string,
+	spec kiwoomspecs.KiwoomEndpointSpec,
+) endpointDispatchFunc {
+	return func(ctx context.Context, request interface{}) (interface{}, error) {
+		payload, err := requestPayloadMap(request)
+		if err != nil {
+			return nil, fmt.Errorf("%w: %v", broker.ErrInvalidOrderRequest, err)
 		}
-		payload := fieldsToBody(fields)
 		applyDocumentedDefaults(apiID, payload)
-		resp, err := d.adapter.client.CallDocumentedEndpoint(ctx, apiID, path, payload)
-		return marshalMap(resp, err)
+		for _, required := range spec.RequiredFields {
+			if payloadFieldEmpty(payload, required) {
+				return nil, fmt.Errorf("%w: missing required field %s", broker.ErrInvalidOrderRequest, strings.ToUpper(strings.TrimSpace(required)))
+			}
+		}
+
+		client, err := d.client()
+		if err != nil {
+			return nil, err
+		}
+
+		req, err := buildDocumentedEndpointRequest(path, apiID, payload)
+		if err != nil {
+			return nil, fmt.Errorf("%w: %v", broker.ErrInvalidOrderRequest, err)
+		}
+		resp, err := client.CallDocumentedEndpoint(ctx, apiID, path, req)
+		return resp, err
 	}
 }
 
@@ -116,7 +418,7 @@ func payloadFieldEmpty(payload map[string]interface{}, key string) bool {
 	if payload == nil {
 		return true
 	}
-	v, ok := payload[key]
+	v, ok := payload[strings.ToLower(strings.TrimSpace(key))]
 	if !ok || v == nil {
 		return true
 	}
@@ -129,13 +431,13 @@ func (a *Adapter) CallEndpoint(
 	method string,
 	path string,
 	apiID string,
-	fields map[string]string,
-) (map[string]interface{}, error) {
+	request interface{},
+) (interface{}, error) {
 	dispatcher := a.dispatcher
 	if dispatcher == nil {
 		dispatcher = newEndpointDispatcher(a)
 	}
-	return dispatcher.callEndpoint(ctx, method, path, apiID, fields)
+	return dispatcher.callEndpoint(ctx, method, path, apiID, request)
 }
 
 func (d *endpointDispatcher) callEndpoint(
@@ -143,16 +445,12 @@ func (d *endpointDispatcher) callEndpoint(
 	method string,
 	path string,
 	apiID string,
-	fields map[string]string,
-) (map[string]interface{}, error) {
+	request interface{},
+) (interface{}, error) {
 	m := strings.ToUpper(strings.TrimSpace(method))
-	if m == "" {
-		m = http.MethodPost
-	}
 
 	normalizedPath := normalizeEndpointPath(path)
 	normalizedAPIID := normalizeEndpointAPIID(apiID)
-	normalizedFields := normalizeEndpointFields(fields)
 
 	if normalizedAPIID == "" {
 		return nil, fmt.Errorf("%w: api_id is required", broker.ErrInvalidOrderRequest)
@@ -162,239 +460,19 @@ func (d *endpointDispatcher) callEndpoint(
 	if !ok {
 		return nil, fmt.Errorf("%w: unsupported Kiwoom endpoint path/api_id %s/%s", broker.ErrInvalidOrderRequest, normalizedPath, normalizedAPIID)
 	}
+	if m == "" {
+		m = route.defaultMethod
+	}
 	if !route.allows(m) {
 		return nil, fmt.Errorf("%w: unsupported method %s", broker.ErrInvalidOrderRequest, m)
 	}
 
-	return route.fn(ctx, normalizedAPIID, normalizedFields)
-}
-
-func (d *endpointDispatcher) dispatchDomesticQuote(ctx context.Context, _ string, fields map[string]string) (map[string]interface{}, error) {
-	symbol := getField(fields, "STK_CD", "SYMBOL")
-	if symbol == "" {
-		return nil, broker.ErrInvalidSymbol
-	}
-	resp, err := d.adapter.client.InquirePrice(ctx, symbol)
-	return marshalMap(resp, err)
-}
-
-func (d *endpointDispatcher) dispatchDomesticExecutionInfo(ctx context.Context, _ string, fields map[string]string) (map[string]interface{}, error) {
-	symbol := getField(fields, "STK_CD", "SYMBOL")
-	if symbol == "" {
-		return nil, broker.ErrInvalidSymbol
-	}
-	resp, err := d.adapter.client.InquireExecutionInfo(ctx, symbol)
-	return marshalMap(resp, err)
-}
-
-func (d *endpointDispatcher) dispatchDomesticOrderBook(ctx context.Context, _ string, fields map[string]string) (map[string]interface{}, error) {
-	symbol := getField(fields, "STK_CD", "SYMBOL")
-	if symbol == "" {
-		return nil, broker.ErrInvalidSymbol
-	}
-	resp, err := d.adapter.client.InquireOrderBook(ctx, symbol)
-	return marshalMap(resp, err)
-}
-
-func (d *endpointDispatcher) dispatchInstrumentInfo(ctx context.Context, _ string, fields map[string]string) (map[string]interface{}, error) {
-	symbol := getField(fields, "STK_CD", "SYMBOL")
-	if symbol == "" {
-		return nil, broker.ErrInvalidSymbol
-	}
-	resp, err := d.adapter.client.InquireInstrumentInfo(ctx, symbol)
-	return marshalMap(resp, err)
-}
-
-func (d *endpointDispatcher) dispatchInvestorByStock(ctx context.Context, _ string, fields map[string]string) (map[string]interface{}, error) {
-	symbol := getField(fields, "STK_CD", "SYMBOL")
-	if symbol == "" {
-		return nil, broker.ErrInvalidSymbol
-	}
-	resp, err := d.adapter.client.InquireInvestorByStock(ctx, symbol, fieldsToBody(fields, "STK_CD", "SYMBOL"))
-	return marshalMap(resp, err)
-}
-
-func (d *endpointDispatcher) dispatchSectorCurrent(ctx context.Context, _ string, fields map[string]string) (map[string]interface{}, error) {
-	resp, err := d.adapter.client.InquireSectorCurrent(ctx, fieldsToBody(fields))
-	return marshalMap(resp, err)
-}
-
-func (d *endpointDispatcher) dispatchSectorByPrice(ctx context.Context, _ string, fields map[string]string) (map[string]interface{}, error) {
-	resp, err := d.adapter.client.InquireSectorByPrice(ctx, fieldsToBody(fields))
-	return marshalMap(resp, err)
-}
-
-func (d *endpointDispatcher) dispatchVolumeRank(ctx context.Context, _ string, fields map[string]string) (map[string]interface{}, error) {
-	resp, err := d.adapter.client.InquireVolumeRank(ctx, fieldsToBody(fields))
-	return marshalMap(resp, err)
-}
-
-func (d *endpointDispatcher) dispatchChangeRateRank(ctx context.Context, _ string, fields map[string]string) (map[string]interface{}, error) {
-	resp, err := d.adapter.client.InquireChangeRateRank(ctx, fieldsToBody(fields))
-	return marshalMap(resp, err)
-}
-
-func (d *endpointDispatcher) dispatchELWDetail(ctx context.Context, _ string, fields map[string]string) (map[string]interface{}, error) {
-	resp, err := d.adapter.client.InquireELWDetail(ctx, fieldsToBody(fields))
-	return marshalMap(resp, err)
-}
-
-func (d *endpointDispatcher) dispatchAccountBalance(ctx context.Context, _ string, fields map[string]string) (map[string]interface{}, error) {
-	resp, err := d.adapter.client.InquireBalance(ctx, getField(fields, "DMST_STEX_TP", "EXCHANGE"))
-	return marshalMap(resp, err)
-}
-
-func (d *endpointDispatcher) dispatchAccountPositions(ctx context.Context, _ string, fields map[string]string) (map[string]interface{}, error) {
-	resp, err := d.adapter.client.InquirePositions(
-		ctx,
-		getField(fields, "QRY_TP"),
-		getField(fields, "DMST_STEX_TP", "EXCHANGE"),
-	)
-	return marshalMap(resp, err)
-}
-
-func (d *endpointDispatcher) dispatchUnsettledOrders(ctx context.Context, _ string, fields map[string]string) (map[string]interface{}, error) {
-	resp, err := d.adapter.client.InquireUnsettledOrders(ctx, getField(fields, "STK_CD", "SYMBOL"))
-	return marshalMap(resp, err)
-}
-
-func (d *endpointDispatcher) dispatchOrderExecutions(ctx context.Context, _ string, fields map[string]string) (map[string]interface{}, error) {
-	resp, err := d.adapter.client.InquireOrderExecutions(ctx, getField(fields, "STK_CD", "SYMBOL"))
-	return marshalMap(resp, err)
-}
-
-func (d *endpointDispatcher) dispatchAccountDepositDetail(ctx context.Context, _ string, fields map[string]string) (map[string]interface{}, error) {
-	resp, err := d.adapter.client.InquireDepositDetail(ctx, fieldsToBody(fields))
-	return marshalMap(resp, err)
-}
-
-func (d *endpointDispatcher) dispatchAccountOrderExecutionDetail(ctx context.Context, _ string, fields map[string]string) (map[string]interface{}, error) {
-	resp, err := d.adapter.client.InquireOrderExecutionDetail(ctx, fieldsToBody(fields))
-	return marshalMap(resp, err)
-}
-
-func (d *endpointDispatcher) dispatchAccountOrderExecutionStatus(ctx context.Context, _ string, fields map[string]string) (map[string]interface{}, error) {
-	resp, err := d.adapter.client.InquireOrderExecutionStatus(ctx, fieldsToBody(fields))
-	return marshalMap(resp, err)
-}
-
-func (d *endpointDispatcher) dispatchAccountOrderableWithdrawable(ctx context.Context, _ string, fields map[string]string) (map[string]interface{}, error) {
-	resp, err := d.adapter.client.InquireOrderableWithdrawable(ctx, fieldsToBody(fields))
-	return marshalMap(resp, err)
-}
-
-func (d *endpointDispatcher) dispatchAccountMarginDetail(ctx context.Context, _ string, fields map[string]string) (map[string]interface{}, error) {
-	resp, err := d.adapter.client.InquireMarginDetail(ctx, fieldsToBody(fields))
-	return marshalMap(resp, err)
-}
-
-func (d *endpointDispatcher) dispatchTickChart(ctx context.Context, _ string, fields map[string]string) (map[string]interface{}, error) {
-	symbol := getField(fields, "STK_CD", "SYMBOL")
-	if symbol == "" {
-		return nil, broker.ErrInvalidSymbol
-	}
-	resp, err := d.adapter.client.InquireTickChart(ctx, symbol, getField(fields, "BASE_DT", "BASE_DATE"))
-	return marshalMap(resp, err)
-}
-
-func (d *endpointDispatcher) dispatchInvestorByStockChart(ctx context.Context, _ string, fields map[string]string) (map[string]interface{}, error) {
-	symbol := getField(fields, "STK_CD", "SYMBOL")
-	if symbol == "" {
-		return nil, broker.ErrInvalidSymbol
-	}
-	resp, err := d.adapter.client.InquireInvestorByStockChart(ctx, symbol, fieldsToBody(fields, "STK_CD", "SYMBOL"))
-	return marshalMap(resp, err)
-}
-
-func (d *endpointDispatcher) dispatchDailyChart(ctx context.Context, _ string, fields map[string]string) (map[string]interface{}, error) {
-	symbol := getField(fields, "STK_CD", "SYMBOL")
-	if symbol == "" {
-		return nil, broker.ErrInvalidSymbol
-	}
-	resp, err := d.adapter.client.InquireDailyPrice(ctx, symbol, getField(fields, "BASE_DT", "BASE_DATE"))
-	return marshalMap(resp, err)
-}
-
-func (d *endpointDispatcher) dispatchWeeklyChart(ctx context.Context, _ string, fields map[string]string) (map[string]interface{}, error) {
-	symbol := getField(fields, "STK_CD", "SYMBOL")
-	if symbol == "" {
-		return nil, broker.ErrInvalidSymbol
-	}
-	resp, err := d.adapter.client.InquireWeeklyPrice(ctx, symbol, getField(fields, "BASE_DT", "BASE_DATE"))
-	return marshalMap(resp, err)
-}
-
-func (d *endpointDispatcher) dispatchMonthlyChart(ctx context.Context, _ string, fields map[string]string) (map[string]interface{}, error) {
-	symbol := getField(fields, "STK_CD", "SYMBOL")
-	if symbol == "" {
-		return nil, broker.ErrInvalidSymbol
-	}
-	resp, err := d.adapter.client.InquireMonthlyPrice(ctx, symbol, getField(fields, "BASE_DT", "BASE_DATE"))
-	return marshalMap(resp, err)
-}
-
-func (d *endpointDispatcher) dispatchPlaceOrder(ctx context.Context, apiID string, fields map[string]string) (map[string]interface{}, error) {
-	symbol := getField(fields, "STK_CD", "SYMBOL")
-	if symbol == "" {
-		return nil, broker.ErrInvalidSymbol
-	}
-	qty, err := parseInt64Field(getField(fields, "ORD_QTY", "QUANTITY"))
-	if err != nil || qty <= 0 {
-		return nil, fmt.Errorf("%w: invalid ORD_QTY", broker.ErrInvalidOrderRequest)
+	normalizedRequest, err := normalizeEndpointRequest(normalizedPath, normalizedAPIID, request)
+	if err != nil {
+		return nil, fmt.Errorf("%w: %v", broker.ErrInvalidOrderRequest, err)
 	}
 
-	side := kiwoom.StockOrderSideBuy
-	if apiID == kiwoom.APIIDPlaceSellOrder {
-		side = kiwoom.StockOrderSideSell
-	}
-	resp, err := d.adapter.client.PlaceStockOrder(ctx, kiwoom.PlaceStockOrderRequest{
-		Side:           side,
-		Exchange:       getField(fields, "DMST_STEX_TP", "EXCHANGE"),
-		Symbol:         symbol,
-		Quantity:       qty,
-		OrderPrice:     getField(fields, "ORD_UV", "ORDER_PRICE"),
-		TradeType:      getField(fields, "TRDE_TP", "TRADE_TYPE"),
-		ConditionPrice: getField(fields, "COND_UV", "CONDITION_PRICE"),
-	})
-	return marshalMap(resp, err)
-}
-
-func (d *endpointDispatcher) dispatchModifyOrder(ctx context.Context, _ string, fields map[string]string) (map[string]interface{}, error) {
-	symbol := getField(fields, "STK_CD", "SYMBOL")
-	if symbol == "" {
-		return nil, broker.ErrInvalidSymbol
-	}
-	qty, err := parseInt64Field(getField(fields, "MDFY_QTY", "MODIFY_QTY"))
-	if err != nil || qty <= 0 {
-		return nil, fmt.Errorf("%w: invalid MDFY_QTY", broker.ErrInvalidOrderRequest)
-	}
-	resp, err := d.adapter.client.ModifyStockOrder(ctx, kiwoom.ModifyStockOrderRequest{
-		Exchange:       getField(fields, "DMST_STEX_TP", "EXCHANGE"),
-		OriginalID:     getField(fields, "ORIG_ORD_NO", "ORIGINAL_ORDER_ID"),
-		Symbol:         symbol,
-		ModifyQty:      qty,
-		ModifyPrice:    getField(fields, "MDFY_UV", "MODIFY_PRICE"),
-		ConditionPrice: getField(fields, "MDFY_COND_UV", "MODIFY_CONDITION_PRICE"),
-	})
-	return marshalMap(resp, err)
-}
-
-func (d *endpointDispatcher) dispatchCancelOrder(ctx context.Context, _ string, fields map[string]string) (map[string]interface{}, error) {
-	symbol := getField(fields, "STK_CD", "SYMBOL")
-	if symbol == "" {
-		return nil, broker.ErrInvalidSymbol
-	}
-	qty, err := parseInt64Field(getField(fields, "CNCL_QTY", "CANCEL_QTY"))
-	if err != nil || qty <= 0 {
-		return nil, fmt.Errorf("%w: invalid CNCL_QTY", broker.ErrInvalidOrderRequest)
-	}
-	resp, err := d.adapter.client.CancelStockOrder(ctx, kiwoom.CancelStockOrderRequest{
-		Exchange:   getField(fields, "DMST_STEX_TP", "EXCHANGE"),
-		OriginalID: getField(fields, "ORIG_ORD_NO", "ORIGINAL_ORDER_ID"),
-		Symbol:     symbol,
-		CancelQty:  qty,
-	})
-	return marshalMap(resp, err)
+	return route.fn(ctx, normalizedRequest)
 }
 
 func normalizeEndpointPath(path string) string {
@@ -415,83 +493,164 @@ func normalizeEndpointAPIID(apiID string) string {
 	return strings.ToLower(strings.TrimSpace(apiID))
 }
 
-func normalizeEndpointFields(in map[string]string) map[string]string {
+func normalizeEndpointRequest(path, apiID string, request interface{}) (interface{}, error) {
+	switch request.(type) {
+	case nil, map[string]interface{}:
+		payload, err := requestPayloadMap(request)
+		if err != nil {
+			return nil, err
+		}
+		return buildDocumentedEndpointRequest(path, apiID, payload)
+	default:
+		return request, nil
+	}
+}
+
+func requestPayloadMap(request interface{}) (map[string]interface{}, error) {
+	switch t := request.(type) {
+	case nil:
+		return map[string]interface{}{}, nil
+	case map[string]interface{}:
+		return normalizePayloadMap(t), nil
+	default:
+		data, err := json.Marshal(t)
+		if err != nil {
+			return nil, fmt.Errorf("marshal request payload: %w", err)
+		}
+		if len(bytes.TrimSpace(data)) == 0 || bytes.Equal(bytes.TrimSpace(data), []byte("null")) {
+			return map[string]interface{}{}, nil
+		}
+		out := make(map[string]interface{})
+		if err := json.Unmarshal(data, &out); err != nil {
+			return nil, fmt.Errorf("decode request payload: %w", err)
+		}
+		return normalizePayloadMap(out), nil
+	}
+}
+
+func buildDocumentedEndpointRequest(path, apiID string, payload map[string]interface{}) (interface{}, error) {
+	req := kiwoomspecs.NewDocumentedEndpointRequest(strings.TrimSpace(path), strings.TrimSpace(apiID))
+	if req == nil {
+		return clonePayloadMap(payload), nil
+	}
+	if payload == nil {
+		return req, nil
+	}
+
+	data, err := json.Marshal(payload)
+	if err != nil {
+		return nil, fmt.Errorf("marshal documented request payload: %w", err)
+	}
+	if err := json.Unmarshal(data, req); err != nil {
+		return nil, fmt.Errorf("decode documented request payload: %w", err)
+	}
+	return req, nil
+}
+
+func clonePayloadMap(payload map[string]interface{}) map[string]interface{} {
+	if payload == nil {
+		return map[string]interface{}{}
+	}
+	out := make(map[string]interface{}, len(payload))
+	for k, v := range payload {
+		out[k] = v
+	}
+	return out
+}
+
+func normalizePayloadMap(in map[string]interface{}) map[string]interface{} {
 	if len(in) == 0 {
-		return map[string]string{}
+		return map[string]interface{}{}
 	}
-	out := make(map[string]string, len(in))
+	out := make(map[string]interface{}, len(in))
 	for k, v := range in {
-		key := strings.ToUpper(strings.TrimSpace(k))
+		key := strings.ToLower(strings.TrimSpace(k))
 		if key == "" {
 			continue
 		}
-		out[key] = strings.TrimSpace(v)
+		out[key] = v
 	}
 	return out
 }
 
-func getField(fields map[string]string, keys ...string) string {
-	for _, k := range keys {
-		key := strings.ToUpper(strings.TrimSpace(k))
-		if key == "" {
-			continue
-		}
-		if v, ok := fields[key]; ok && strings.TrimSpace(v) != "" {
-			return strings.TrimSpace(v)
-		}
-	}
-	return ""
+func newRequestDispatch[TReq any, TResp any](
+	d *endpointDispatcher,
+	call func(client *kiwoom.Client, ctx context.Context, req TReq) (TResp, error),
+) endpointDispatchFunc {
+	return newRequestDispatchPrepared(d, nil, call)
 }
 
-func fieldsToBody(fields map[string]string, excludeKeys ...string) map[string]interface{} {
-	excluded := make(map[string]struct{}, len(excludeKeys))
-	for _, key := range excludeKeys {
-		n := strings.ToUpper(strings.TrimSpace(key))
-		if n != "" {
-			excluded[n] = struct{}{}
-		}
+func newRequestDispatchPrepared[TReq any, TResp any](
+	d *endpointDispatcher,
+	prepare func(*TReq) error,
+	call func(client *kiwoom.Client, ctx context.Context, req TReq) (TResp, error),
+) endpointDispatchFunc {
+	return func(ctx context.Context, request interface{}) (interface{}, error) {
+		return dispatchWithRequestPrepared(d, ctx, request, prepare, call)
 	}
-	out := make(map[string]interface{}, len(fields))
-	for k, v := range fields {
-		if _, skip := excluded[k]; skip {
-			continue
-		}
-		out[strings.ToLower(k)] = v
-	}
-	return out
 }
 
-func parseInt64Field(v string) (int64, error) {
-	v = strings.TrimSpace(v)
-	if v == "" {
-		return 0, nil
-	}
-	return strconv.ParseInt(v, 10, 64)
-}
-
-func marshalMap(v interface{}, err error) (map[string]interface{}, error) {
+func dispatchWithRequestPrepared[TReq any, TResp any](
+	d *endpointDispatcher,
+	ctx context.Context,
+	request interface{},
+	prepare func(*TReq) error,
+	call func(client *kiwoom.Client, ctx context.Context, req TReq) (TResp, error),
+) (interface{}, error) {
+	req, err := decodeDispatchRequestAs[TReq](request)
 	if err != nil {
 		return nil, err
 	}
-	if v == nil {
-		return map[string]interface{}{}, nil
+	if prepare != nil {
+		if err := prepare(&req); err != nil {
+			return nil, err
+		}
 	}
-	data, err := json.Marshal(v)
+
+	client, err := d.client()
 	if err != nil {
-		return nil, fmt.Errorf("marshal response: %w", err)
+		return nil, err
 	}
 
-	// Most Kiwoom responses are JSON objects. Some typed wrappers return arrays;
-	// wrap those as {"items": [...]} to keep CallEndpoint's map contract.
-	out := make(map[string]interface{})
-	if err := json.Unmarshal(data, &out); err == nil {
-		return out, nil
+	resp, err := call(client, ctx, req)
+	if err != nil {
+		return nil, err
 	}
+	return resp, nil
+}
 
-	items := make([]interface{}, 0)
-	if err := json.Unmarshal(data, &items); err == nil {
-		return map[string]interface{}{"items": items}, nil
+func decodeDispatchRequestAs[T any](request interface{}) (T, error) {
+	var req T
+	if err := decodeDispatchRequest(request, &req); err != nil {
+		var zero T
+		return zero, err
 	}
+	return req, nil
+}
 
-	return nil, fmt.Errorf("decode response map: expected object or array")
+func decodeDispatchRequest(request interface{}, out interface{}) error {
+	if out == nil {
+		return fmt.Errorf("%w: request target is nil", broker.ErrInvalidOrderRequest)
+	}
+	if request == nil {
+		return nil
+	}
+	data, err := json.Marshal(request)
+	if err != nil {
+		return fmt.Errorf("%w: marshal request: %v", broker.ErrInvalidOrderRequest, err)
+	}
+	if len(bytes.TrimSpace(data)) == 0 || bytes.Equal(bytes.TrimSpace(data), []byte("null")) {
+		return nil
+	}
+	if err := json.Unmarshal(data, out); err != nil {
+		return fmt.Errorf("%w: decode request: %v", broker.ErrInvalidOrderRequest, err)
+	}
+	return nil
+}
+
+func (d *endpointDispatcher) client() (*kiwoom.Client, error) {
+	if d == nil || d.adapter == nil || d.adapter.client == nil {
+		return nil, fmt.Errorf("%w: kiwoom client is not initialized", broker.ErrInvalidOrderRequest)
+	}
+	return d.adapter.client, nil
 }

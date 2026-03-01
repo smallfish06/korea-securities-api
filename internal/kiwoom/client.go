@@ -7,11 +7,13 @@ import (
 	"fmt"
 	"io"
 	"net/http"
+	neturl "net/url"
 	"strconv"
 	"strings"
 	"sync"
 	"time"
 
+	kiwoomspecs "github.com/smallfish06/krsec/internal/kiwoom/specs"
 	"github.com/smallfish06/krsec/internal/ratelimit"
 	"github.com/smallfish06/krsec/pkg/broker"
 )
@@ -43,12 +45,6 @@ type callOptions struct {
 	ContYN  string
 	NextKey string
 	Headers map[string]string
-}
-
-// callResult wraps parsed body and raw response headers.
-type callResult struct {
-	Headers http.Header
-	Body    map[string]interface{}
 }
 
 func cloneBody(body map[string]interface{}) map[string]interface{} {
@@ -147,58 +143,65 @@ func (c *Client) isTokenValid() bool {
 	return time.Now().Before(expiresAt.Add(-2 * time.Minute))
 }
 
-// call executes one Kiwoom REST API request with a concrete endpoint spec.
-func (c *Client) call(ctx context.Context, endpoint endpointSpec, body map[string]interface{}, opts callOptions) (*callResult, error) {
-	if strings.TrimSpace(endpoint.APIID) == "" || strings.TrimSpace(endpoint.Method) == "" || strings.TrimSpace(endpoint.Path) == "" {
-		return nil, fmt.Errorf("invalid endpoint spec")
+func documentedEndpointMethod(path, apiID string) (string, error) {
+	spec, ok := kiwoomspecs.LookupDocumentedEndpointSpec(path, apiID)
+	if !ok {
+		return "", fmt.Errorf("missing documented endpoint spec for %s/%s", strings.TrimSpace(path), strings.TrimSpace(apiID))
 	}
-	if body == nil {
-		body = map[string]interface{}{}
+	method := strings.ToUpper(strings.TrimSpace(spec.Method))
+	if method == "" {
+		method = http.MethodPost
 	}
-
-	headers, result, err := c.doRequest(ctx, endpoint, body, opts)
-	if err != nil {
-		return nil, err
-	}
-
-	if code := parseReturnCode(result["return_code"]); code != 0 {
-		msg := strings.TrimSpace(toString(result["return_msg"]))
-		return nil, wrapCallError(endpoint.APIID, code, msg)
-	}
-
-	return &callResult{Headers: headers, Body: result}, nil
-}
-
-func (c *Client) callRaw(ctx context.Context, endpoint endpointSpec, body map[string]interface{}) (map[string]interface{}, error) {
-	res, err := c.call(ctx, endpoint, body, callOptions{})
-	if err != nil {
-		return nil, err
-	}
-	return cloneBody(res.Body), nil
-}
-
-func (c *Client) callRawAllowCodes(ctx context.Context, endpoint endpointSpec, body map[string]interface{}, allowedCodes ...int) (map[string]interface{}, error) {
-	_, result, err := c.doRequest(ctx, endpoint, body, callOptions{})
-	if err != nil {
-		return nil, err
-	}
-
-	if code := parseReturnCode(result["return_code"]); code != 0 && !containsCode(allowedCodes, code) {
-		msg := strings.TrimSpace(toString(result["return_msg"]))
-		return nil, wrapCallError(endpoint.APIID, code, msg)
-	}
-	return cloneBody(result), nil
+	return method, nil
 }
 
 // CallDocumentedEndpoint executes a documented Kiwoom REST endpoint.
-func (c *Client) CallDocumentedEndpoint(ctx context.Context, apiID, path string, body map[string]interface{}) (map[string]interface{}, error) {
-	endpoint := endpointSpec{
-		APIID:       strings.TrimSpace(apiID),
-		Method:      http.MethodPost,
-		Path:        strings.TrimSpace(path),
-		ContentType: "application/json;charset=UTF-8",
+// It returns generated response type for known documented path/api_id.
+func (c *Client) CallDocumentedEndpoint(
+	ctx context.Context,
+	apiID, path string,
+	body interface{},
+	allowedCodes ...int,
+) (interface{}, error) {
+	method, err := documentedEndpointMethod(path, apiID)
+	if err != nil {
+		return nil, err
 	}
-	return c.callRaw(ctx, endpoint, body)
+	if err := validateDocumentedRequestBody(body); err != nil {
+		return nil, err
+	}
+
+	bodyBytes, err := c.doRequest(ctx, method, apiID, path, normalizeRequestBody(body), callOptions{})
+	if err != nil {
+		return nil, err
+	}
+	code, msg := decodeReturnStatus(bodyBytes)
+	if code != 0 && !containsCode(allowedCodes, code) {
+		return nil, wrapCallError(apiID, code, msg)
+	}
+	resp := kiwoomspecs.NewDocumentedEndpointResponse(strings.TrimSpace(path), strings.TrimSpace(apiID))
+	if resp == nil {
+		out := make(map[string]interface{})
+		if len(bytes.TrimSpace(bodyBytes)) == 0 {
+			return out, nil
+		}
+		if err := json.Unmarshal(bodyBytes, &out); err != nil {
+			return nil, fmt.Errorf("decode response: %w", err)
+		}
+		return out, nil
+	}
+	if len(bytes.TrimSpace(bodyBytes)) == 0 {
+		return resp, nil
+	}
+	if err := json.Unmarshal(bodyBytes, resp); err != nil {
+		// Documented schema can diverge from runtime response shape.
+		out := make(map[string]interface{})
+		if err := json.Unmarshal(bodyBytes, &out); err != nil {
+			return nil, fmt.Errorf("decode response: %w", err)
+		}
+		return out, nil
+	}
+	return resp, nil
 }
 
 func containsCode(codes []int, target int) bool {
@@ -210,40 +213,109 @@ func containsCode(codes []int, target int) bool {
 	return false
 }
 
-func (c *Client) doRequest(ctx context.Context, endpoint endpointSpec, body map[string]interface{}, opts callOptions) (http.Header, map[string]interface{}, error) {
+func validateDocumentedRequestBody(body interface{}) error {
+	switch body.(type) {
+	case map[string]interface{}, map[string]string:
+		return fmt.Errorf("documented endpoint request must use generated request type (map body is not allowed)")
+	default:
+		return nil
+	}
+}
+
+func decodeReturnStatus(bodyBytes []byte) (int, string) {
+	if len(bytes.TrimSpace(bodyBytes)) == 0 {
+		return 0, ""
+	}
+	var payload struct {
+		ReturnCode interface{} `json:"return_code"`
+		ReturnMsg  string      `json:"return_msg"`
+	}
+	if err := json.Unmarshal(bodyBytes, &payload); err != nil {
+		return 0, ""
+	}
+	return parseReturnCode(payload.ReturnCode), strings.TrimSpace(payload.ReturnMsg)
+}
+
+func responseBodyMap(v interface{}) (map[string]interface{}, error) {
+	switch t := v.(type) {
+	case nil:
+		return map[string]interface{}{}, nil
+	case map[string]interface{}:
+		return cloneBody(t), nil
+	case map[string]string:
+		out := make(map[string]interface{}, len(t))
+		for k, val := range t {
+			out[k] = val
+		}
+		return out, nil
+	default:
+		data, err := json.Marshal(t)
+		if err != nil {
+			return nil, fmt.Errorf("marshal response: %w", err)
+		}
+		out := make(map[string]interface{})
+		if len(bytes.TrimSpace(data)) == 0 || bytes.Equal(bytes.TrimSpace(data), []byte("null")) {
+			return out, nil
+		}
+		if err := json.Unmarshal(data, &out); err != nil {
+			return nil, fmt.Errorf("decode response: %w", err)
+		}
+		return out, nil
+	}
+}
+
+func bindResponseObject(v interface{}, out interface{}) error {
+	if out == nil {
+		return fmt.Errorf("response target is nil")
+	}
+	data, err := json.Marshal(v)
+	if err != nil {
+		return fmt.Errorf("marshal response: %w", err)
+	}
+	if len(bytes.TrimSpace(data)) == 0 || bytes.Equal(bytes.TrimSpace(data), []byte("null")) {
+		return nil
+	}
+	if err := json.Unmarshal(data, out); err != nil {
+		return fmt.Errorf("decode response: %w", err)
+	}
+	return nil
+}
+
+func (c *Client) doRequest(ctx context.Context, method, apiID, path string, body interface{}, opts callOptions) ([]byte, error) {
 	if err := c.apiLimiter.Wait(ctx); err != nil {
-		return nil, nil, err
+		return nil, err
 	}
 
 	if !c.isTokenValid() {
 		appKey, appSecret := c.getCredentials()
 		if appKey == "" || appSecret == "" {
-			return nil, nil, fmt.Errorf("missing credentials for token refresh")
+			return nil, fmt.Errorf("missing credentials for token refresh")
 		}
 		if _, err := c.Authenticate(ctx, broker.Credentials{AppKey: appKey, AppSecret: appSecret}); err != nil {
-			return nil, nil, fmt.Errorf("token refresh failed: %w", err)
+			return nil, fmt.Errorf("token refresh failed: %w", err)
 		}
 	}
 
-	url := strings.TrimRight(c.baseURL, "/") + endpoint.Path
-	payload, err := json.Marshal(body)
-	if err != nil {
-		return nil, nil, fmt.Errorf("marshal request body: %w", err)
+	path = strings.TrimSpace(path)
+	apiID = strings.TrimSpace(apiID)
+	if path == "" || apiID == "" {
+		return nil, fmt.Errorf("invalid endpoint arguments")
+	}
+	requestURL := strings.TrimRight(c.baseURL, "/") + path
+	method = strings.ToUpper(strings.TrimSpace(method))
+	if method == "" {
+		method = http.MethodPost
 	}
 
-	req, err := http.NewRequestWithContext(ctx, endpoint.Method, url, bytes.NewReader(payload))
+	req, err := c.newHTTPRequest(ctx, method, requestURL, body)
 	if err != nil {
-		return nil, nil, fmt.Errorf("create request: %w", err)
+		return nil, err
 	}
 
 	token, _ := c.getToken()
 	req.Header.Set("Authorization", "Bearer "+token)
-	if strings.TrimSpace(endpoint.ContentType) != "" {
-		req.Header.Set("Content-Type", endpoint.ContentType)
-	} else {
-		req.Header.Set("Content-Type", "application/json;charset=UTF-8")
-	}
-	req.Header.Set("api-id", endpoint.APIID)
+	req.Header.Set("Content-Type", "application/json;charset=UTF-8")
+	req.Header.Set("api-id", apiID)
 
 	if cont := strings.TrimSpace(opts.ContYN); cont != "" {
 		req.Header.Set("cont-yn", cont)
@@ -261,13 +333,13 @@ func (c *Client) doRequest(ctx context.Context, endpoint endpointSpec, body map[
 
 	resp, err := c.httpClient.Do(req)
 	if err != nil {
-		return nil, nil, fmt.Errorf("do request: %w", err)
+		return nil, fmt.Errorf("do request: %w", err)
 	}
 	defer func() { _ = resp.Body.Close() }()
 
 	bodyBytes, err := io.ReadAll(resp.Body)
 	if err != nil {
-		return nil, nil, fmt.Errorf("read response: %w", err)
+		return nil, fmt.Errorf("read response: %w", err)
 	}
 
 	if resp.StatusCode >= 400 {
@@ -275,23 +347,88 @@ func (c *Client) doRequest(ctx context.Context, endpoint endpointSpec, body map[
 			if code == 0 {
 				code = resp.StatusCode
 			}
-			return nil, nil, wrapCallError(endpoint.APIID, code, msg)
+			return nil, wrapCallError(apiID, code, msg)
 		}
 		msg := strings.TrimSpace(string(bodyBytes))
 		if msg == "" {
 			msg = http.StatusText(resp.StatusCode)
 		}
-		return nil, nil, wrapCallError(endpoint.APIID, resp.StatusCode, msg)
+		return nil, wrapCallError(apiID, resp.StatusCode, msg)
 	}
+	return bodyBytes, nil
+}
 
-	out := make(map[string]interface{})
-	if len(bytes.TrimSpace(bodyBytes)) > 0 {
-		if err := json.Unmarshal(bodyBytes, &out); err != nil {
-			return nil, nil, fmt.Errorf("decode response: %w", err)
+func (c *Client) newHTTPRequest(ctx context.Context, method string, requestURL string, body interface{}) (*http.Request, error) {
+	switch method {
+	case http.MethodGet, http.MethodHead, http.MethodDelete:
+		bodyMap, err := bodyToMap(body)
+		if err != nil {
+			return nil, fmt.Errorf("encode request query: %w", err)
 		}
+		u, err := neturl.Parse(requestURL)
+		if err != nil {
+			return nil, fmt.Errorf("parse request URL: %w", err)
+		}
+		q := u.Query()
+		for k, v := range bodyMap {
+			key := strings.TrimSpace(k)
+			if key == "" {
+				continue
+			}
+			q.Set(key, strings.TrimSpace(toString(v)))
+		}
+		u.RawQuery = q.Encode()
+		req, err := http.NewRequestWithContext(ctx, method, u.String(), nil)
+		if err != nil {
+			return nil, fmt.Errorf("create request: %w", err)
+		}
+		return req, nil
+	default:
+		payload, err := json.Marshal(normalizeRequestBody(body))
+		if err != nil {
+			return nil, fmt.Errorf("marshal request body: %w", err)
+		}
+		req, err := http.NewRequestWithContext(ctx, method, requestURL, bytes.NewReader(payload))
+		if err != nil {
+			return nil, fmt.Errorf("create request: %w", err)
+		}
+		return req, nil
 	}
+}
 
-	return resp.Header.Clone(), out, nil
+func normalizeRequestBody(body interface{}) interface{} {
+	if body == nil {
+		return map[string]interface{}{}
+	}
+	return body
+}
+
+func bodyToMap(body interface{}) (map[string]interface{}, error) {
+	switch t := body.(type) {
+	case nil:
+		return map[string]interface{}{}, nil
+	case map[string]interface{}:
+		return cloneBody(t), nil
+	case map[string]string:
+		out := make(map[string]interface{}, len(t))
+		for k, v := range t {
+			out[k] = v
+		}
+		return out, nil
+	default:
+		data, err := json.Marshal(t)
+		if err != nil {
+			return nil, err
+		}
+		if len(bytes.TrimSpace(data)) == 0 || bytes.Equal(bytes.TrimSpace(data), []byte("null")) {
+			return map[string]interface{}{}, nil
+		}
+		out := make(map[string]interface{})
+		if err := json.Unmarshal(data, &out); err != nil {
+			return nil, err
+		}
+		return out, nil
+	}
 }
 
 func parseReturnCode(v interface{}) int {

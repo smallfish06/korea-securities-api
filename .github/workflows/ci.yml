@@ -25,6 +25,9 @@ jobs:
       - name: Check Generated KIS Specs
         run: make kis-spec-check
 
+      - name: Check Generated Kiwoom Specs
+        run: make kiwoom-spec-check
+
       - name: Vet
         run: go vet ./...
 
