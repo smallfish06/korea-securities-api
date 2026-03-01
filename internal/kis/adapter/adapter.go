@@ -109,9 +109,9 @@ func (a *Adapter) GetQuote(ctx context.Context, market, symbol string) (*broker.
 		http.MethodGet,
 		kis.PathDomesticStockInquirePrice,
 		"",
-		map[string]string{
-			"FID_COND_MRKT_DIV_CODE": fidCondMrktDivCode,
-			"FID_INPUT_ISCD":         symbol,
+		kisspecs.KISDomesticStockV1QuotationsInquirePriceRequest{
+			FidCondMrktDivCode: fidCondMrktDivCode,
+			FidInputIscd:       symbol,
 		},
 	)
 	if err != nil {
@@ -166,10 +166,10 @@ func (a *Adapter) getOverseasQuote(ctx context.Context, market, symbol, exchange
 		http.MethodGet,
 		kis.PathOverseasPricePriceDetail,
 		"",
-		map[string]string{
-			"AUTH": "",
-			"EXCD": exchangeCode,
-			"SYMB": symbol,
+		kisspecs.KISOverseasPriceV1QuotationsPriceDetailRequest{
+			Auth: "",
+			Excd: exchangeCode,
+			Symb: symbol,
 		},
 	)
 	if err != nil {
@@ -227,11 +227,11 @@ func (a *Adapter) GetOHLCV(ctx context.Context, market, symbol string, opts brok
 		http.MethodGet,
 		kis.PathDomesticStockInquireDailyPrice,
 		"",
-		map[string]string{
-			"FID_COND_MRKT_DIV_CODE": fidCondMrktDivCode,
-			"FID_INPUT_ISCD":         symbol,
-			"FID_PERIOD_DIV_CODE":    "D",
-			"FID_ORG_ADJ_PRC":        "0",
+		kisspecs.KISDomesticStockV1QuotationsInquireDailyPriceRequest{
+			FidCondMrktDivCode: fidCondMrktDivCode,
+			FidInputIscd:       symbol,
+			FidPeriodDivCode:   "D",
+			FidOrgAdjPrc:       "0",
 		},
 	)
 	if err != nil {
@@ -277,18 +277,15 @@ func (a *Adapter) GetBalance(ctx context.Context, accountID string) (*broker.Bal
 		http.MethodGet,
 		kis.PathDomesticStockTradingInquireBalance,
 		"",
-		map[string]string{
-			"CANO":                  cano,
-			"ACNT_PRDT_CD":          acntPrdtCD,
-			"AFHR_FLPR_YN":          "N",
-			"INQR_DVSN":             "01",
-			"UNPR_DVSN":             "01",
-			"FUND_STTL_ICLD_YN":     "N",
-			"FNCG_AMT_AUTO_RDPT_YN": "N",
-			"OFL_YN":                "",
-			"PRCS_DVSN":             "00",
-			"CTX_AREA_FK100":        "",
-			"CTX_AREA_NK100":        "",
+		kisspecs.KISDomesticStockV1TradingInquireBalanceRequest{
+			Cano:              cano,
+			AcntPrdtCd:        acntPrdtCD,
+			AfhrFlprYn:        "N",
+			InqrDvsn:          "01",
+			UnprDvsn:          "01",
+			FundSttlIcldYn:    "N",
+			FncgAmtAutoRdptYn: "N",
+			PrcsDvsn:          "00",
 		},
 	)
 	if err != nil {
@@ -356,18 +353,15 @@ func (a *Adapter) GetPositions(ctx context.Context, accountID string) ([]broker.
 		http.MethodGet,
 		kis.PathDomesticStockTradingInquireBalance,
 		"",
-		map[string]string{
-			"CANO":                  cano,
-			"ACNT_PRDT_CD":          acntPrdtCD,
-			"AFHR_FLPR_YN":          "N",
-			"INQR_DVSN":             "01",
-			"UNPR_DVSN":             "01",
-			"FUND_STTL_ICLD_YN":     "N",
-			"FNCG_AMT_AUTO_RDPT_YN": "N",
-			"OFL_YN":                "",
-			"PRCS_DVSN":             "00",
-			"CTX_AREA_FK100":        "",
-			"CTX_AREA_NK100":        "",
+		kisspecs.KISDomesticStockV1TradingInquireBalanceRequest{
+			Cano:              cano,
+			AcntPrdtCd:        acntPrdtCD,
+			AfhrFlprYn:        "N",
+			InqrDvsn:          "01",
+			UnprDvsn:          "01",
+			FundSttlIcldYn:    "N",
+			FncgAmtAutoRdptYn: "N",
+			PrcsDvsn:          "00",
 		},
 	)
 	if err == nil {
@@ -386,14 +380,14 @@ func (a *Adapter) GetPositions(ctx context.Context, accountID string) ([]broker.
 		http.MethodGet,
 		kis.PathDomesticBondInquireBalance,
 		"",
-		map[string]string{
-			"CANO":           cano,
-			"ACNT_PRDT_CD":   acntPrdtCD,
-			"INQR_CNDT":      "00",
-			"PDNO":           "",
-			"BUY_DT":         "",
-			"CTX_AREA_FK200": "",
-			"CTX_AREA_NK200": "",
+		kisspecs.KISDomesticBondV1TradingInquireBalanceRequest{
+			Cano:         cano,
+			AcntPrdtCd:   acntPrdtCD,
+			InqrCndt:     "00",
+			Pdno:         "",
+			BuyDt:        "",
+			CtxAreaFk200: "",
+			CtxAreaNk200: "",
 		},
 	)
 	if err != nil {
@@ -486,9 +480,9 @@ func (a *Adapter) GetInstrument(ctx context.Context, market, symbol string) (*br
 			http.MethodGet,
 			kis.PathOverseasPriceSearchInfo,
 			"",
-			map[string]string{
-				"PDNO":         symbol,
-				"PRDT_TYPE_CD": prdtTypeCode,
+			kisspecs.KISOverseasPriceV1QuotationsSearchInfoRequest{
+				Pdno:       symbol,
+				PrdtTypeCd: prdtTypeCode,
 			},
 		)
 		if err != nil {
@@ -544,9 +538,9 @@ func (a *Adapter) GetInstrument(ctx context.Context, market, symbol string) (*br
 		http.MethodGet,
 		kis.PathDomesticStockSearchStockInfo,
 		"",
-		map[string]string{
-			"PDNO":         symbol,
-			"PRDT_TYPE_CD": prdtTypeCode,
+		kisspecs.KISDomesticStockV1QuotationsSearchStockInfoRequest{
+			Pdno:       symbol,
+			PrdtTypeCd: prdtTypeCode,
 		},
 	)
 	if err == nil {
@@ -590,9 +584,9 @@ func (a *Adapter) GetInstrument(ctx context.Context, market, symbol string) (*br
 		http.MethodGet,
 		kis.PathDomesticStockSearchInfo,
 		"",
-		map[string]string{
-			"PDNO":         symbol,
-			"PRDT_TYPE_CD": prdtTypeCode,
+		kisspecs.KISDomesticStockV1QuotationsSearchInfoRequest{
+			Pdno:       symbol,
+			PrdtTypeCd: prdtTypeCode,
 		},
 	)
 	if fallbackErr != nil {
@@ -1433,13 +1427,13 @@ func (a *Adapter) strictInquirePossibleRvseCncl(ctx context.Context, cano, acntP
 		http.MethodGet,
 		kis.PathDomesticStockTradingInquirePsblRvseCncl,
 		"",
-		map[string]string{
-			"CANO":           cano,
-			"ACNT_PRDT_CD":   acntPrdt,
-			"CTX_AREA_FK100": "",
-			"CTX_AREA_NK100": "",
-			"INQR_DVSN_1":    "0",
-			"INQR_DVSN_2":    "0",
+		kisspecs.KISDomesticStockV1TradingInquirePsblRvsecnclRequest{
+			Cano:         cano,
+			AcntPrdtCd:   acntPrdt,
+			CtxAreaFk100: "",
+			CtxAreaNk100: "",
+			InqrDvsn1:    "0",
+			InqrDvsn2:    "0",
 		},
 	)
 	if err != nil {
@@ -1479,22 +1473,20 @@ func (a *Adapter) strictInquireDailyCcld(
 		http.MethodGet,
 		kis.PathDomesticStockTradingInquireDailyCcld,
 		"",
-		map[string]string{
-			"CANO":            accountNo,
-			"ACNT_PRDT_CD":    accountProductCode,
-			"INQR_STRT_DT":    startDate,
-			"INQR_END_DT":     endDate,
-			"SLL_BUY_DVSN_CD": "00",
-			"INQR_DVSN":       "00",
-			"PDNO":            "",
-			"CCLD_DVSN":       "00",
-			"ORD_GNO_BRNO":    orderOrgNo,
-			"ODNO":            orderNo,
-			"INQR_DVSN_3":     "00",
-			"INQR_DVSN_1":     "",
-			"EXCG_ID_DVSN_CD": exchangeID,
-			"CTX_AREA_FK100":  "",
-			"CTX_AREA_NK100":  "",
+		kisspecs.KISDomesticStockV1TradingInquireDailyCcldRequest{
+			Cano:         accountNo,
+			AcntPrdtCd:   accountProductCode,
+			InqrStrtDt:   startDate,
+			InqrEndDt:    endDate,
+			SllBuyDvsnCd: "00",
+			InqrDvsn:     "00",
+			CcldDvsn:     "00",
+			OrdGnoBrno:   orderOrgNo,
+			InqrDvsn3:    "00",
+			InqrDvsn1:    "",
+			ExcgIdDvsnCd: exchangeID,
+			CtxAreaFk100: "",
+			CtxAreaNk100: "",
 		},
 	)
 	if err != nil {
@@ -1549,21 +1541,21 @@ func (a *Adapter) strictInquireOverseasCcnl(
 			http.MethodGet,
 			kis.PathOverseasStockTradingInquireCcnl,
 			"",
-			map[string]string{
-				"CANO":           accountNo,
-				"ACNT_PRDT_CD":   accountProductCode,
-				"PDNO":           "%",
-				"ORD_STRT_DT":    startDate,
-				"ORD_END_DT":     endDate,
-				"SLL_BUY_DVSN":   "00",
-				"CCLD_NCCS_DVSN": "00",
-				"OVRS_EXCG_CD":   exchangeCode,
-				"SORT_SQN":       "DS",
-				"ORD_DT":         "",
-				"ORD_GNO_BRNO":   "",
-				"ODNO":           "",
-				"CTX_AREA_NK200": ctxNK,
-				"CTX_AREA_FK200": ctxFK,
+			kisspecs.KISOverseasStockV1TradingInquireCcnlRequest{
+				Cano:         accountNo,
+				AcntPrdtCd:   accountProductCode,
+				Pdno:         "%",
+				OrdStrtDt:    startDate,
+				OrdEndDt:     endDate,
+				SllBuyDvsn:   "00",
+				CcldNccsDvsn: "00",
+				OvrsExcgCd:   exchangeCode,
+				SortSqn:      "DS",
+				OrdDt:        "",
+				OrdGnoBrno:   "",
+				Odno:         "",
+				CtxAreaNk200: ctxNK,
+				CtxAreaFk200: ctxFK,
 			},
 		)
 		if err != nil {
