@@ -19,14 +19,7 @@ func (c *Client) PlaceStockOrder(
 	case StockOrderSideBuy:
 		return c.PlaceBuyOrder(ctx, req)
 	case StockOrderSideSell:
-		return c.PlaceSellOrder(ctx, kiwoomspecs.KiwoomApiDostkOrdrKt10001Request{
-			DmstStexTp: req.DmstStexTp,
-			StkCd:      req.StkCd,
-			OrdQty:     req.OrdQty,
-			OrdUv:      req.OrdUv,
-			TrdeTp:     req.TrdeTp,
-			CondUv:     req.CondUv,
-		})
+		return c.PlaceSellOrder(ctx, kiwoomspecs.KiwoomApiDostkOrdrKt10001Request(req))
 	default:
 		return nil, broker.ErrInvalidOrderRequest
 	}

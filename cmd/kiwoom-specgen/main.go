@@ -830,7 +830,7 @@ func sanitizeIdentifier(raw string) string {
 		return ""
 	}
 	parts := strings.FieldsFunc(raw, func(r rune) bool {
-		return !(unicode.IsLetter(r) || unicode.IsDigit(r))
+		return !unicode.IsLetter(r) && !unicode.IsDigit(r)
 	})
 	if len(parts) == 0 {
 		return ""
