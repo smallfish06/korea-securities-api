@@ -175,10 +175,7 @@ func TestAdapter_IntegratedCoreFlows(t *testing.T) {
 	}))
 	defer ts.Close()
 
-	a := NewAdapterWithOptions(false, "1234567890", Options{
-		TokenManager:    &testTokenManager{},
-		OrderContextDir: t.TempDir(),
-	})
+	a := NewAdapterWithOptions(false, "1234567890", &testTokenManager{}, t.TempDir())
 	a.client.SetBaseURL(ts.URL)
 
 	ctx := context.Background()
@@ -293,10 +290,7 @@ func TestAdapter_GetOrderFills_OrderNotFound(t *testing.T) {
 	}))
 	defer ts.Close()
 
-	a := NewAdapterWithOptions(false, "1234567890", Options{
-		TokenManager:    &testTokenManager{},
-		OrderContextDir: t.TempDir(),
-	})
+	a := NewAdapterWithOptions(false, "1234567890", &testTokenManager{}, t.TempDir())
 	a.client.SetBaseURL(ts.URL)
 	if _, err := a.Authenticate(context.Background(), broker.Credentials{AppKey: "k", AppSecret: "s"}); err != nil {
 		t.Fatalf("Authenticate error: %v", err)

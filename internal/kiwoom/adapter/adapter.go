@@ -13,8 +13,8 @@ import (
 	"time"
 
 	"github.com/smallfish06/krsec/internal/kiwoom"
-	kiwoomspecs "github.com/smallfish06/krsec/internal/kiwoom/specs"
 	"github.com/smallfish06/krsec/pkg/broker"
+	kiwoomspecs "github.com/smallfish06/krsec/pkg/kiwoom/specs"
 	tokencache "github.com/smallfish06/krsec/pkg/token"
 )
 
@@ -30,12 +30,6 @@ type Adapter struct {
 	orders map[string]orderContext
 }
 
-// Options configures adapter internals.
-type Options struct {
-	TokenManager    tokencache.Manager
-	OrderContextDir string
-}
-
 type orderContext struct {
 	OrderID      string             `json:"order_id"`
 	Symbol       string             `json:"symbol"`
@@ -49,12 +43,17 @@ type orderContext struct {
 }
 
 // NewAdapterWithOptions creates a Kiwoom adapter with injectable internals.
-func NewAdapterWithOptions(sandbox bool, accountID string, opts Options) *Adapter {
+func NewAdapterWithOptions(
+	sandbox bool,
+	accountID string,
+	tokenManager tokencache.Manager,
+	orderContextDir string,
+) *Adapter {
 	a := &Adapter{
-		client:    kiwoom.NewClientWithTokenManager(sandbox, opts.TokenManager),
+		client:    kiwoom.NewClientWithTokenManager(sandbox, tokenManager),
 		accountID: strings.TrimSpace(accountID),
 		sandbox:   sandbox,
-		orderDir:  strings.TrimSpace(opts.OrderContextDir),
+		orderDir:  strings.TrimSpace(orderContextDir),
 		orders:    make(map[string]orderContext),
 	}
 	a.dispatcher = newEndpointDispatcher(a)

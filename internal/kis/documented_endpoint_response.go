@@ -3,7 +3,7 @@ package kis
 import (
 	"strings"
 
-	kisspecs "github.com/smallfish06/krsec/internal/kis/specs"
+	kisspecs "github.com/smallfish06/krsec/pkg/kis/specs"
 )
 
 // DocumentedEndpointResponse is the typed response contract for documented KIS endpoints.

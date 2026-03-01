@@ -25,8 +25,5 @@ type Options struct {
 
 // NewAdapterWithOptions creates a Kiwoom adapter with injectable options.
 func NewAdapterWithOptions(sandbox bool, accountID string, opts Options) Adapter {
-	return internaladapter.NewAdapterWithOptions(sandbox, accountID, internaladapter.Options{
-		TokenManager:    opts.TokenManager,
-		OrderContextDir: opts.OrderContextDir,
-	})
+	return internaladapter.NewAdapterWithOptions(sandbox, accountID, opts.TokenManager, opts.OrderContextDir)
 }

@@ -12,11 +12,11 @@ import (
 
 	"github.com/smallfish06/krsec/internal/kis"
 	"github.com/smallfish06/krsec/internal/kiwoom"
-	kiwoomspecs "github.com/smallfish06/krsec/internal/kiwoom/specs"
 	"github.com/smallfish06/krsec/pkg/broker"
 	"github.com/smallfish06/krsec/pkg/config"
 	pkgkis "github.com/smallfish06/krsec/pkg/kis"
 	pkgkiwoom "github.com/smallfish06/krsec/pkg/kiwoom"
+	kiwoomspecs "github.com/smallfish06/krsec/pkg/kiwoom/specs"
 	tokencache "github.com/smallfish06/krsec/pkg/token"
 )
 

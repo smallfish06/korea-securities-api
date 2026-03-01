@@ -13,9 +13,9 @@ import (
 	"sync"
 	"time"
 
-	kiwoomspecs "github.com/smallfish06/krsec/internal/kiwoom/specs"
 	"github.com/smallfish06/krsec/internal/ratelimit"
 	"github.com/smallfish06/krsec/pkg/broker"
+	kiwoomspecs "github.com/smallfish06/krsec/pkg/kiwoom/specs"
 	tokencache "github.com/smallfish06/krsec/pkg/token"
 )
 

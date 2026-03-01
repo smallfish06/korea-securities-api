@@ -14,7 +14,7 @@ type Adapter interface {
 	GetOrder(ctx context.Context, orderID string) (*broker.OrderResult, error)
 	GetOrderFills(ctx context.Context, orderID string) ([]broker.OrderFill, error)
 	GetInstrument(ctx context.Context, market, symbol string) (*broker.Instrument, error)
-	CallEndpoint(ctx context.Context, method, path, trID string, fields map[string]string) (map[string]interface{}, error)
+	CallEndpoint(ctx context.Context, method, path, trID string, request interface{}) (interface{}, error)
 	BootstrapSymbols(ctx context.Context) (int, error)
 	ReloadSymbols(ctx context.Context) (int, error)
 }
@@ -27,8 +27,5 @@ type Options struct {
 
 // NewAdapterWithOptions creates a KIS adapter with injectable options.
 func NewAdapterWithOptions(sandbox bool, accountID string, opts Options) Adapter {
-	return internaladapter.NewAdapterWithOptions(sandbox, accountID, internaladapter.Options{
-		TokenManager:    opts.TokenManager,
-		OrderContextDir: opts.OrderContextDir,
-	})
+	return internaladapter.NewAdapterWithOptions(sandbox, accountID, opts.TokenManager, opts.OrderContextDir)
 }

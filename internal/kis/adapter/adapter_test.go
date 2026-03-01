@@ -6,8 +6,8 @@ import (
 	"testing"
 	"time"
 
-	"github.com/smallfish06/krsec/internal/kis"
 	"github.com/smallfish06/krsec/pkg/broker"
+	kisspecs "github.com/smallfish06/krsec/pkg/kis/specs"
 )
 
 func TestToKISOverseasExchange(t *testing.T) {
@@ -185,9 +185,7 @@ func TestOrderContextPersistence(t *testing.T) {
 	tmpDir := t.TempDir()
 	orderDir := filepath.Join(tmpDir, "orders")
 
-	a := NewAdapterWithOptions(false, "12345678-01", Options{
-		OrderContextDir: orderDir,
-	})
+	a := NewAdapterWithOptions(false, "12345678-01", nil, orderDir)
 	now := time.Now().Truncate(time.Second)
 	a.storeOrderContext("000001", orderContext{
 		CANO:         "12345678",
@@ -203,9 +201,7 @@ func TestOrderContextPersistence(t *testing.T) {
 		UpdatedAt:    now,
 	})
 
-	b := NewAdapterWithOptions(false, "12345678-01", Options{
-		OrderContextDir: orderDir,
-	})
+	b := NewAdapterWithOptions(false, "12345678-01", nil, orderDir)
 	got, ok := b.getOrderContext("000001")
 	if !ok {
 		t.Fatalf("persisted order context not loaded")
@@ -218,7 +214,7 @@ func TestOrderContextPersistence(t *testing.T) {
 func TestToBrokerBalance_MapsExtendedFields(t *testing.T) {
 	t.Parallel()
 
-	summary := kis.StockBalanceSummary{
+	summary := kisspecs.KISDomesticStockV1TradingInquireBalanceOutput2Item{
 		DncaTotAmt:      "1000000",
 		TotEvluAmt:      "1500000",
 		PchsAmtSmtlAmt:  "1200000",
@@ -264,7 +260,7 @@ func TestToBrokerBalance_MapsExtendedFields(t *testing.T) {
 func TestToBrokerStockPosition_UsesPrprFallbackAndExtendedFields(t *testing.T) {
 	t.Parallel()
 
-	item := kis.StockBalanceOutput{
+	item := kisspecs.KISDomesticStockV1TradingInquireBalanceOutput1Item{
 		Pdno:        "005930",
 		PrdtName:    "삼성전자",
 		HldgQty:     "10",
