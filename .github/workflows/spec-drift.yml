@@ -1,0 +1,72 @@
+name: Spec Drift Check
+
+on:
+  schedule:
+    # Daily at 09:15 KST (00:15 UTC)
+    - cron: "15 0 * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: spec-drift-check
+  cancel-in-progress: false
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-go@v5
+        with:
+          go-version-file: go.mod
+
+      - name: Download dependencies
+        run: go mod download
+
+      - name: Refresh documented specs
+        run: |
+          make kis-spec-refresh
+          make kiwoom-spec-refresh
+
+      - name: Detect spec drift
+        id: drift
+        run: |
+          set -euo pipefail
+
+          TRACKED_FILES=(
+            internal/kis/specs/documented_endpoints.json
+            internal/kis/specs/documented_specs_generated.go
+            internal/kis/specs/documented_endpoint_types_generated.go
+            internal/kiwoom/specs/documented_endpoints.json
+            internal/kiwoom/specs/documented_specs_generated.go
+            internal/kiwoom/specs/documented_endpoint_types_generated.go
+          )
+
+          if git diff --quiet -- "${TRACKED_FILES[@]}"; then
+            echo "changed=false" >> "$GITHUB_OUTPUT"
+            echo "No spec drift detected." >> "$GITHUB_STEP_SUMMARY"
+            exit 0
+          fi
+
+          echo "changed=true" >> "$GITHUB_OUTPUT"
+          mkdir -p artifacts
+          git status --short -- "${TRACKED_FILES[@]}" > artifacts/spec-status.txt
+          git diff -- "${TRACKED_FILES[@]}" > artifacts/spec.diff
+          echo "Spec drift detected in generated/snapshot files." >> "$GITHUB_STEP_SUMMARY"
+
+      - name: Upload drift artifacts
+        if: steps.drift.outputs.changed == 'true'
+        uses: actions/upload-artifact@v4
+        with:
+          name: spec-drift
+          path: artifacts/
+          if-no-files-found: error
+
+      - name: Fail on drift
+        if: steps.drift.outputs.changed == 'true'
+        run: |
+          echo "::error::Spec drift detected. Check spec-drift artifact for details."
+          exit 1
