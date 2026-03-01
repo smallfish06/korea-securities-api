@@ -13,15 +13,8 @@ import (
 	"time"
 
 	"github.com/smallfish06/krsec/internal/ratelimit"
+	tokencache "github.com/smallfish06/krsec/internal/token"
 )
-
-// TokenManager defines token cache and token-issuance throttling behavior.
-// Custom implementations can be injected into Client/Adapter constructors.
-type TokenManager interface {
-	GetToken(appKey string) (string, time.Time, bool)
-	SetToken(appKey, token string, expiresAt time.Time) error
-	WaitForAuth(appKey string)
-}
 
 // FileTokenManager stores tokens in memory and persists them to disk.
 type FileTokenManager struct {
@@ -41,7 +34,7 @@ type tokenEntry struct {
 }
 
 var (
-	globalTokenManager   TokenManager
+	globalTokenManager   tokencache.Manager
 	globalTokenManagerMu sync.RWMutex
 )
 
@@ -64,7 +57,7 @@ func NewFileTokenManagerWithDir(dir string) *FileTokenManager {
 
 // GetTokenManager returns the global token manager.
 // The default implementation is file-backed.
-func GetTokenManager() TokenManager {
+func GetTokenManager() tokencache.Manager {
 	globalTokenManagerMu.RLock()
 	tm := globalTokenManager
 	globalTokenManagerMu.RUnlock()
@@ -78,17 +71,6 @@ func GetTokenManager() TokenManager {
 		globalTokenManager = NewFileTokenManager()
 	}
 	return globalTokenManager
-}
-
-// SetGlobalTokenManager overrides the global token manager implementation.
-// If tm is nil, the default file-backed manager is used.
-func SetGlobalTokenManager(tm TokenManager) {
-	if tm == nil {
-		tm = NewFileTokenManager()
-	}
-	globalTokenManagerMu.Lock()
-	globalTokenManager = tm
-	globalTokenManagerMu.Unlock()
 }
 
 // GetToken returns the cached token for the given appkey

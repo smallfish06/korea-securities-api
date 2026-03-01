@@ -13,6 +13,7 @@ import (
 	kisadapter "github.com/smallfish06/krsec/internal/kis/adapter"
 	"github.com/smallfish06/krsec/internal/kiwoom"
 	kiwoomadapter "github.com/smallfish06/krsec/internal/kiwoom/adapter"
+	tokencache "github.com/smallfish06/krsec/internal/token"
 	"github.com/smallfish06/krsec/pkg/broker"
 	"github.com/smallfish06/krsec/pkg/config"
 )
@@ -145,8 +146,8 @@ func main() {
 func buildBroker(
 	acc config.AccountConfig,
 	cfg *config.Config,
-	kisTokenManager kis.TokenManager,
-	kiwoomTokenManager kiwoom.TokenManager,
+	kisTokenManager tokencache.Manager,
+	kiwoomTokenManager tokencache.Manager,
 ) (broker.Broker, error) {
 	switch strings.ToLower(strings.TrimSpace(acc.Broker)) {
 	case "kis":

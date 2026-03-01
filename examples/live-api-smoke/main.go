@@ -15,6 +15,7 @@ import (
 	"github.com/smallfish06/krsec/internal/kiwoom"
 	kiwoomadapter "github.com/smallfish06/krsec/internal/kiwoom/adapter"
 	kiwoomspecs "github.com/smallfish06/krsec/internal/kiwoom/specs"
+	tokencache "github.com/smallfish06/krsec/internal/token"
 	"github.com/smallfish06/krsec/pkg/broker"
 	"github.com/smallfish06/krsec/pkg/config"
 )
@@ -83,7 +84,7 @@ func main() {
 	}
 }
 
-func runKISAccount(results *[]smokeResult, acc config.AccountConfig, tm kis.TokenManager, orderContextDir string) {
+func runKISAccount(results *[]smokeResult, acc config.AccountConfig, tm tokencache.Manager, orderContextDir string) {
 	a := kisadapter.NewAdapterWithOptions(acc.Sandbox, acc.AccountID, kisadapter.Options{
 		TokenManager:    tm,
 		OrderContextDir: orderContextDir,
@@ -142,7 +143,7 @@ func runKISAccount(results *[]smokeResult, acc config.AccountConfig, tm kis.Toke
 	}
 }
 
-func runKiwoomAccount(results *[]smokeResult, acc config.AccountConfig, tm kiwoom.TokenManager, orderContextDir string) {
+func runKiwoomAccount(results *[]smokeResult, acc config.AccountConfig, tm tokencache.Manager, orderContextDir string) {
 	a := kiwoomadapter.NewAdapterWithOptions(acc.Sandbox, acc.AccountID, kiwoomadapter.Options{
 		TokenManager:    tm,
 		OrderContextDir: orderContextDir,

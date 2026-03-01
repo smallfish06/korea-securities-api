@@ -14,6 +14,7 @@ import (
 
 	"github.com/smallfish06/krsec/internal/kis"
 	kisspecs "github.com/smallfish06/krsec/internal/kis/specs"
+	tokencache "github.com/smallfish06/krsec/internal/token"
 	"github.com/smallfish06/krsec/pkg/broker"
 )
 
@@ -32,7 +33,7 @@ type Adapter struct {
 
 // Options configures adapter internals such as token and persistence strategy.
 type Options struct {
-	TokenManager    kis.TokenManager
+	TokenManager    tokencache.Manager
 	OrderContextDir string
 }
 

@@ -14,6 +14,7 @@ import (
 
 	"github.com/smallfish06/krsec/internal/kiwoom"
 	kiwoomspecs "github.com/smallfish06/krsec/internal/kiwoom/specs"
+	tokencache "github.com/smallfish06/krsec/internal/token"
 	"github.com/smallfish06/krsec/pkg/broker"
 )
 
@@ -31,7 +32,7 @@ type Adapter struct {
 
 // Options configures adapter internals.
 type Options struct {
-	TokenManager    kiwoom.TokenManager
+	TokenManager    tokencache.Manager
 	OrderContextDir string
 }
 

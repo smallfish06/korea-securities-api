@@ -15,6 +15,7 @@ import (
 
 	kiwoomspecs "github.com/smallfish06/krsec/internal/kiwoom/specs"
 	"github.com/smallfish06/krsec/internal/ratelimit"
+	tokencache "github.com/smallfish06/krsec/internal/token"
 	"github.com/smallfish06/krsec/pkg/broker"
 )
 
@@ -37,7 +38,7 @@ type Client struct {
 	expiresAt   time.Time
 
 	apiLimiter   *ratelimit.Limiter
-	tokenManager TokenManager
+	tokenManager tokencache.Manager
 }
 
 // callOptions controls optional Kiwoom continuation headers.
@@ -64,7 +65,7 @@ func NewClient(sandbox bool) *Client {
 }
 
 // NewClientWithTokenManager creates a client with injected token manager.
-func NewClientWithTokenManager(sandbox bool, tm TokenManager) *Client {
+func NewClientWithTokenManager(sandbox bool, tm tokencache.Manager) *Client {
 	baseURL := BaseURLReal
 	if sandbox {
 		baseURL = BaseURLSandbox
