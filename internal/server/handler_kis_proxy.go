@@ -44,18 +44,13 @@ func (s *Server) handleKISProxy(c fuego.ContextWithBody[kisProxyRequest]) (Respo
 	}
 
 	trID := strings.TrimSpace(req.TRID)
-	if trID == "" {
-		return respond(c, http.StatusBadRequest, Response{OK: false, Error: "tr_id is required"})
-	}
-
 	method := strings.ToUpper(strings.TrimSpace(req.Method))
-	if method == "" {
-		method = http.MethodGet
-	}
-	switch method {
-	case http.MethodGet, http.MethodPost, http.MethodPut, http.MethodDelete, http.MethodPatch:
-	default:
-		return respond(c, http.StatusBadRequest, Response{OK: false, Error: "unsupported method"})
+	if method != "" {
+		switch method {
+		case http.MethodGet, http.MethodPost, http.MethodPut, http.MethodDelete, http.MethodPatch:
+		default:
+			return respond(c, http.StatusBadRequest, Response{OK: false, Error: "unsupported method"})
+		}
 	}
 
 	brk, status, reason := s.resolveKISProxyBroker(req.AccountID)

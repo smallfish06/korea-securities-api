@@ -87,23 +87,23 @@ func (d *endpointDispatcher) registerDocumentedCustomRoutes() {
 		if _, exists := d.routes[key]; exists {
 			continue
 		}
-		d.routes[key] = newEndpointRoute([]string{http.MethodPost}, d.dispatchDocumentedCustom(key.path))
+		d.routes[key] = newEndpointRoute([]string{http.MethodPost}, d.dispatchDocumentedEndpoint(key.path))
 	}
 }
 
-func (d *endpointDispatcher) dispatchDocumentedCustom(path string) endpointDispatchFunc {
+func (d *endpointDispatcher) dispatchDocumentedEndpoint(path string) endpointDispatchFunc {
 	return func(ctx context.Context, apiID string, fields map[string]string) (map[string]interface{}, error) {
 		if d.adapter == nil || d.adapter.client == nil {
 			return nil, fmt.Errorf("%w: kiwoom client is not initialized", broker.ErrInvalidOrderRequest)
 		}
 		payload := fieldsToBody(fields)
-		applyDocumentedCustomDefaults(apiID, payload)
-		resp, err := d.adapter.client.CallCustom(ctx, apiID, path, payload)
+		applyDocumentedDefaults(apiID, payload)
+		resp, err := d.adapter.client.CallDocumentedEndpoint(ctx, apiID, path, payload)
 		return marshalMap(resp, err)
 	}
 }
 
-func applyDocumentedCustomDefaults(apiID string, payload map[string]interface{}) {
+func applyDocumentedDefaults(apiID string, payload map[string]interface{}) {
 	switch strings.ToLower(strings.TrimSpace(apiID)) {
 	case "ka50079", "ka50080":
 		if payloadFieldEmpty(payload, "tic_scope") {

@@ -53,7 +53,10 @@ const (
 )
 
 const (
-	PathDomesticBondInquirePrice   = "/uapi/domestic-bond/v1/quotations/inquire-price"
-	PathDomesticBondInquireBalance = "/uapi/domestic-bond/v1/trading/inquire-balance"
-	PathETFETNComponentStockPrice  = "/uapi/etfetn/v1/quotations/inquire-component-stock-price"
+	PathDomesticBondInquirePrice      = "/uapi/domestic-bond/v1/quotations/inquire-price"
+	PathDomesticBondInquireDailyPrice = "/uapi/domestic-bond/v1/quotations/inquire-daily-price"
+	PathDomesticBondSearchBondInfo    = "/uapi/domestic-bond/v1/quotations/search-bond-info"
+	PathDomesticBondAvgUnit           = "/uapi/domestic-bond/v1/quotations/avg-unit"
+	PathDomesticBondInquireBalance    = "/uapi/domestic-bond/v1/trading/inquire-balance"
+	PathETFETNComponentStockPrice     = "/uapi/etfetn/v1/quotations/inquire-component-stock-price"
 )

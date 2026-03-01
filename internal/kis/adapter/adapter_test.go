@@ -219,15 +219,15 @@ func TestToBrokerBalance_MapsExtendedFields(t *testing.T) {
 	t.Parallel()
 
 	summary := kis.StockBalanceSummary{
-		DnpspCblAmt:  "1000000",
-		DpsplTotAmt:  "1500000",
-		PchsAmtSmtl:  "1200000",
-		EvluAmtSmtl:  "1400000",
-		TotEvluPfls:  "200000",
-		EvluErngRt:   "16.67",
-		NxdyExccAmt:  "50000",
-		PrvsRcdlExcc: "12000",
-		TotStlnSlCa:  "300000",
+		DncaTotAmt:      "1000000",
+		TotEvluAmt:      "1500000",
+		PchsAmtSmtlAmt:  "1200000",
+		EvluAmtSmtlAmt:  "1400000",
+		EvluPflsSmtlAmt: "200000",
+		AsstIcdcErngRt:  "16.67",
+		NxdyExccAmt:     "50000",
+		PrvsRcdlExccAmt: "12000",
+		TotStlnSlngChgs: "300000",
 	}
 
 	got := toBrokerBalance("12345678-01", summary)
@@ -265,18 +265,16 @@ func TestToBrokerStockPosition_UsesPrprFallbackAndExtendedFields(t *testing.T) {
 	t.Parallel()
 
 	item := kis.StockBalanceOutput{
-		PdNo:         "005930",
-		PrdtName:     "삼성전자",
-		HldgQty:      "10",
-		OrdPsblQty:   "7",
-		PchmAvgPric:  "70000",
-		Prpr:         "71000",
-		PrprTprt:     "0",
-		PchmAmt:      "700000",
-		EvluAmt:      "710000",
-		EvluPflsAmt:  "10000",
-		EvluPflsRt:   "1.42",
-		HldgQtyRatio: "13.7",
+		Pdno:        "005930",
+		PrdtName:    "삼성전자",
+		HldgQty:     "10",
+		OrdPsblQty:  "7",
+		PchsAvgPric: "70000",
+		Prpr:        "71000",
+		PchsAmt:     "700000",
+		EvluAmt:     "710000",
+		EvluPflsAmt: "10000",
+		EvluPflsRt:  "1.42",
 	}
 
 	got := toBrokerStockPosition(item)
@@ -294,9 +292,6 @@ func TestToBrokerStockPosition_UsesPrprFallbackAndExtendedFields(t *testing.T) {
 	}
 	if math.Abs(got.ProfitLossPct-1.42) > 1e-9 {
 		t.Fatalf("ProfitLossPct = %v", got.ProfitLossPct)
-	}
-	if math.Abs(got.WeightPct-13.7) > 1e-9 {
-		t.Fatalf("WeightPct = %v", got.WeightPct)
 	}
 }
 

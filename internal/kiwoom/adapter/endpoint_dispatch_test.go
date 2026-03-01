@@ -128,13 +128,13 @@ func TestApplyDocumentedCustomDefaults_TicScope(t *testing.T) {
 	t.Parallel()
 
 	payload := map[string]interface{}{}
-	applyDocumentedCustomDefaults("ka50079", payload)
+	applyDocumentedDefaults("ka50079", payload)
 	if payload["tic_scope"] != "1" {
 		t.Fatalf("tic_scope = %#v, want \"1\"", payload["tic_scope"])
 	}
 
 	payload2 := map[string]interface{}{"tic_scope": "5"}
-	applyDocumentedCustomDefaults("ka50080", payload2)
+	applyDocumentedDefaults("ka50080", payload2)
 	if payload2["tic_scope"] != "5" {
 		t.Fatalf("tic_scope = %#v, want \"5\"", payload2["tic_scope"])
 	}

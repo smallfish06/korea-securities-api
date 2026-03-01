@@ -190,8 +190,8 @@ func (c *Client) callRawAllowCodes(ctx context.Context, endpoint endpointSpec, b
 	return cloneBody(result), nil
 }
 
-// CallCustom exposes a typed Kiwoom REST call for APIs not yet wrapped in this client.
-func (c *Client) CallCustom(ctx context.Context, apiID, path string, body map[string]interface{}) (map[string]interface{}, error) {
+// CallDocumentedEndpoint executes a documented Kiwoom REST endpoint.
+func (c *Client) CallDocumentedEndpoint(ctx context.Context, apiID, path string, body map[string]interface{}) (map[string]interface{}, error) {
 	endpoint := endpointSpec{
 		APIID:       strings.TrimSpace(apiID),
 		Method:      http.MethodPost,

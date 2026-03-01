@@ -2,8 +2,10 @@ package adapter
 
 import (
 	"context"
+	"encoding/json"
 	"fmt"
 	"log"
+	"net/http"
 	"sort"
 	"strconv"
 	"strings"
@@ -86,22 +88,41 @@ func (a *Adapter) Authenticate(ctx context.Context, creds broker.Credentials) (*
 	return a.client.Authenticate(ctx, creds)
 }
 
-// GetQuote retrieves a quote for a given market and symbol
-// For overseas markets (us, us-nyse, us-nasdaq, us-amex), uses InquireOverseasPrice.
+// GetQuote retrieves a quote for a given market and symbol.
+// For overseas markets, strict documented endpoint dispatch is used.
 func (a *Adapter) GetQuote(ctx context.Context, market, symbol string) (*broker.Quote, error) {
 	if quoteExcg, ok := toKISOverseasQuoteExchange(market); ok {
 		return a.getOverseasQuote(ctx, market, symbol, quoteExcg)
 	}
 
-	resp, err := a.client.InquirePrice(ctx, market, symbol)
+	fidCondMrktDivCode := "J"
+	if strings.EqualFold(strings.TrimSpace(market), "KOSDAQ") {
+		fidCondMrktDivCode = "Q"
+	}
+	resp, err := callEndpointDecoded[struct {
+		Output  []kis.StockPriceOutput `json:"output"`
+		Output1 []kis.StockPriceOutput `json:"output1"`
+	}](
+		a,
+		ctx,
+		http.MethodGet,
+		kis.PathDomesticStockInquirePrice,
+		"",
+		map[string]string{
+			"FID_COND_MRKT_DIV_CODE": fidCondMrktDivCode,
+			"FID_INPUT_ISCD":         symbol,
+		},
+	)
 	if err != nil {
 		return nil, err
 	}
 
 	// 응답 데이터가 output 또는 output1에 있을 수 있음
-	output := resp.Output
-	if output.StckPrpr == "" && resp.Output1.StckPrpr != "" {
-		output = resp.Output1
+	var output kis.StockPriceOutput
+	if len(resp.Output) > 0 {
+		output = resp.Output[0]
+	} else if len(resp.Output1) > 0 {
+		output = resp.Output1[0]
 	}
 
 	price, _ := strconv.ParseFloat(output.StckPrpr, 64)
@@ -136,21 +157,44 @@ func (a *Adapter) GetQuote(ctx context.Context, market, symbol string) (*broker.
 
 // getOverseasQuote retrieves overseas stock quote via KIS API (HHDFS00000300)
 func (a *Adapter) getOverseasQuote(ctx context.Context, market, symbol, exchangeCode string) (*broker.Quote, error) {
-	resp, err := a.client.InquireOverseasPrice(ctx, exchangeCode, symbol)
+	resp, err := callEndpointDecoded[struct {
+		Output []kis.OverseasPriceOutput `json:"output"`
+	}](
+		a,
+		ctx,
+		http.MethodGet,
+		kis.PathOverseasPricePriceDetail,
+		"",
+		map[string]string{
+			"AUTH": "",
+			"EXCD": exchangeCode,
+			"SYMB": symbol,
+		},
+	)
 	if err != nil {
 		return nil, err
 	}
+	if len(resp.Output) == 0 {
+		return nil, broker.ErrInstrumentNotFound
+	}
+	out := resp.Output[0]
 
-	price, _ := strconv.ParseFloat(resp.Output.Last, 64)
-	open, _ := strconv.ParseFloat(resp.Output.Open, 64)
-	high, _ := strconv.ParseFloat(resp.Output.High, 64)
-	low, _ := strconv.ParseFloat(resp.Output.Low, 64)
-	change := parseFirstFloat(resp.Output.PrdyVrss)
+	price, _ := strconv.ParseFloat(out.Last, 64)
+	open, _ := strconv.ParseFloat(out.Open, 64)
+	high, _ := strconv.ParseFloat(out.High, 64)
+	low, _ := strconv.ParseFloat(out.Low, 64)
+	change := parseFirstFloat(out.TXdif, out.PXdif)
+	if change == 0 {
+		base := parseFirstFloat(out.Base)
+		if price != 0 || base != 0 {
+			change = price - base
+		}
+	}
 	prevClose := 0.0
 	if price != 0 || change != 0 {
 		prevClose = price - change
 	}
-	volume, _ := strconv.ParseInt(resp.Output.AccrTrVol, 10, 64)
+	volume, _ := strconv.ParseInt(out.Tvol, 10, 64)
 
 	return &broker.Quote{
 		Symbol:    symbol,
@@ -169,12 +213,34 @@ func (a *Adapter) getOverseasQuote(ctx context.Context, market, symbol, exchange
 
 // GetOHLCV retrieves OHLCV data for a given market and symbol
 func (a *Adapter) GetOHLCV(ctx context.Context, market, symbol string, opts broker.OHLCVOpts) ([]broker.OHLCV, error) {
-	resp, err := a.client.InquireDailyPrice(ctx, market, symbol, "", "", true)
+	fidCondMrktDivCode := "J"
+	if strings.EqualFold(strings.TrimSpace(market), "KOSDAQ") {
+		fidCondMrktDivCode = "Q"
+	}
+	resp, err := callEndpointDecoded[struct {
+		Output  []kis.StockDailyPriceOutput `json:"output"`
+		Output1 []kis.StockDailyPriceOutput `json:"output1"`
+	}](
+		a,
+		ctx,
+		http.MethodGet,
+		kis.PathDomesticStockInquireDailyPrice,
+		"",
+		map[string]string{
+			"FID_COND_MRKT_DIV_CODE": fidCondMrktDivCode,
+			"FID_INPUT_ISCD":         symbol,
+			"FID_PERIOD_DIV_CODE":    "D",
+			"FID_ORG_ADJ_PRC":        "0",
+		},
+	)
 	if err != nil {
 		return nil, err
 	}
 
-	rows := resp.Rows()
+	rows := resp.Output
+	if len(rows) == 0 {
+		rows = resp.Output1
+	}
 	result := make([]broker.OHLCV, 0, len(rows))
 	for _, item := range rows {
 		timestamp, _ := time.Parse("20060102", item.StckBsopDate)
@@ -202,7 +268,28 @@ func (a *Adapter) GetBalance(ctx context.Context, accountID string) (*broker.Bal
 	// accountID 파싱
 	cano, acntPrdtCD := a.parseAccountID(accountID)
 
-	resp, err := a.client.InquireBalance(ctx, cano, acntPrdtCD)
+	resp, err := callEndpointDecoded[struct {
+		Output2 []kis.StockBalanceSummary `json:"output2"`
+	}](
+		a,
+		ctx,
+		http.MethodGet,
+		kis.PathDomesticStockTradingInquireBalance,
+		"",
+		map[string]string{
+			"CANO":                  cano,
+			"ACNT_PRDT_CD":          acntPrdtCD,
+			"AFHR_FLPR_YN":          "N",
+			"INQR_DVSN":             "01",
+			"UNPR_DVSN":             "01",
+			"FUND_STTL_ICLD_YN":     "N",
+			"FNCG_AMT_AUTO_RDPT_YN": "N",
+			"OFL_YN":                "",
+			"PRCS_DVSN":             "00",
+			"CTX_AREA_FK100":        "",
+			"CTX_AREA_NK100":        "",
+		},
+	)
 	if err != nil {
 		return nil, err
 	}
@@ -216,21 +303,21 @@ func (a *Adapter) GetBalance(ctx context.Context, accountID string) (*broker.Bal
 }
 
 func toBrokerBalance(accountID string, summary kis.StockBalanceSummary) *broker.Balance {
-	cash := parseFirstFloat(summary.DnpspCblAmt)
+	cash := parseFirstFloat(summary.DncaTotAmt)
 	return &broker.Balance{
 		AccountID:        accountID,
 		Cash:             cash,
-		TotalAssets:      parseFirstFloat(summary.DpsplTotAmt),
+		TotalAssets:      parseFirstFloat(summary.TotEvluAmt),
 		BuyingPower:      cash, // KIS 잔고 응답에는 별도 주문가능현금 필드가 없어 예수금을 사용
 		WithdrawableCash: cash,
-		ReceivableAmount: parseFirstFloat(summary.PrvsRcdlExcc),
-		ProfitLoss:       parseFirstFloat(summary.TotEvluPfls, summary.EvluPflsSm),
-		ProfitLossPct:    parseFirstFloat(summary.EvluErngRt),
-		PositionCost:     parseFirstFloat(summary.PchsAmtSmtl),
-		PositionValue:    parseFirstFloat(summary.EvluAmtSmtl),
+		ReceivableAmount: parseFirstFloat(summary.PrvsRcdlExccAmt),
+		ProfitLoss:       parseFirstFloat(summary.EvluPflsSmtlAmt),
+		ProfitLossPct:    parseFirstFloat(summary.AsstIcdcErngRt),
+		PositionCost:     parseFirstFloat(summary.PchsAmtSmtlAmt),
+		PositionValue:    parseFirstFloat(summary.EvluAmtSmtlAmt),
 		SettlementT1:     parseFirstFloat(summary.NxdyExccAmt),
-		Unsettled:        parseFirstFloat(summary.PrvsRcdlExcc),
-		LoanBalance:      parseFirstFloat(summary.TotStlnSlCa),
+		Unsettled:        parseFirstFloat(summary.PrvsRcdlExccAmt),
+		LoanBalance:      parseFirstFloat(summary.TotStlnSlngChgs),
 	}
 }
 
@@ -238,19 +325,18 @@ func toBrokerStockPosition(item kis.StockBalanceOutput) broker.Position {
 	qty, _ := strconv.ParseInt(item.HldgQty, 10, 64)
 	orderableQty, _ := strconv.ParseInt(item.OrdPsblQty, 10, 64)
 	return broker.Position{
-		Symbol:        item.PdNo,
+		Symbol:        item.Pdno,
 		Name:          item.PrdtName,
 		Market:        "KRX",
 		AssetType:     broker.AssetStock,
 		Quantity:      qty,
 		OrderableQty:  orderableQty,
-		AvgPrice:      parseFirstFloat(item.PchmAvgPric),
-		CurrentPrice:  parseFirstFloat(item.Prpr, item.PrprTprt),
-		PurchaseValue: parseFirstFloat(item.PchmAmt),
+		AvgPrice:      parseFirstFloat(item.PchsAvgPric),
+		CurrentPrice:  parseFirstFloat(item.Prpr),
+		PurchaseValue: parseFirstFloat(item.PchsAmt),
 		MarketValue:   parseFirstFloat(item.EvluAmt),
 		ProfitLoss:    parseFirstFloat(item.EvluPflsAmt),
 		ProfitLossPct: parseFirstFloat(item.EvluPflsRt),
-		WeightPct:     parseFirstFloat(item.HldgQtyRatio),
 	}
 }
 
@@ -261,7 +347,28 @@ func (a *Adapter) GetPositions(ctx context.Context, accountID string) ([]broker.
 	var positions []broker.Position
 
 	// 1. 주식 잔고 조회
-	resp, err := a.client.InquireBalance(ctx, cano, acntPrdtCD)
+	resp, err := callEndpointDecoded[struct {
+		Output1 []kis.StockBalanceOutput `json:"output1"`
+	}](
+		a,
+		ctx,
+		http.MethodGet,
+		kis.PathDomesticStockTradingInquireBalance,
+		"",
+		map[string]string{
+			"CANO":                  cano,
+			"ACNT_PRDT_CD":          acntPrdtCD,
+			"AFHR_FLPR_YN":          "N",
+			"INQR_DVSN":             "01",
+			"UNPR_DVSN":             "01",
+			"FUND_STTL_ICLD_YN":     "N",
+			"FNCG_AMT_AUTO_RDPT_YN": "N",
+			"OFL_YN":                "",
+			"PRCS_DVSN":             "00",
+			"CTX_AREA_FK100":        "",
+			"CTX_AREA_NK100":        "",
+		},
+	)
 	if err == nil {
 		for _, item := range resp.Output1 {
 			positions = append(positions, toBrokerStockPosition(item))
@@ -269,7 +376,25 @@ func (a *Adapter) GetPositions(ctx context.Context, accountID string) ([]broker.
 	}
 
 	// 2. 채권 잔고 조회 (실패해도 주식 결과는 반환)
-	bondResp, err := a.client.InquireBondBalance(ctx, cano, acntPrdtCD)
+	bondResp, err := callEndpointDecoded[struct {
+		Output  []kis.BondBalanceOutput `json:"output"`
+		Output1 []kis.BondBalanceOutput `json:"output1"`
+	}](
+		a,
+		ctx,
+		http.MethodGet,
+		kis.PathDomesticBondInquireBalance,
+		"",
+		map[string]string{
+			"CANO":           cano,
+			"ACNT_PRDT_CD":   acntPrdtCD,
+			"INQR_CNDT":      "00",
+			"PDNO":           "",
+			"BUY_DT":         "",
+			"CTX_AREA_FK200": "",
+			"CTX_AREA_NK200": "",
+		},
+	)
 	if err != nil {
 		log.Printf("bond balance query failed (non-fatal): %v", err)
 	}
@@ -291,11 +416,11 @@ func (a *Adapter) GetPositions(ctx context.Context, accountID string) ([]broker.
 				continue
 			}
 			buyAmt, _ := strconv.ParseFloat(item.BuyAmt, 64)
-			if agg, ok := bondMap[item.PdNo]; ok {
+			if agg, ok := bondMap[item.Pdno]; ok {
 				agg.totalQty += qty
 				agg.totalAmt += buyAmt
 			} else {
-				bondMap[item.PdNo] = &bondAgg{name: item.PrdtName, totalQty: qty, totalAmt: buyAmt}
+				bondMap[item.Pdno] = &bondAgg{name: item.PrdtName, totalQty: qty, totalAmt: buyAmt}
 			}
 		}
 		for symbol, agg := range bondMap {
@@ -352,12 +477,27 @@ func (a *Adapter) GetInstrument(ctx context.Context, market, symbol string) (*br
 	}
 
 	if isOverseas {
-		resp, err := a.client.InquireOverseasProductBasicInfo(ctx, symbol, prdtTypeCode)
+		resp, err := callEndpointDecoded[struct {
+			Output []kis.OverseasProductBasicInfoOutput `json:"output"`
+		}](
+			a,
+			ctx,
+			http.MethodGet,
+			kis.PathOverseasPriceSearchInfo,
+			"",
+			map[string]string{
+				"PDNO":         symbol,
+				"PRDT_TYPE_CD": prdtTypeCode,
+			},
+		)
 		if err != nil {
 			return nil, err
 		}
-		out := resp.Output
-		if out.StdPdNo == "" && out.PrdtName == "" && out.PrdtEngName == "" {
+		if len(resp.Output) == 0 {
+			return nil, broker.ErrInstrumentNotFound
+		}
+		out := resp.Output[0]
+		if out.StdPdno == "" && out.PrdtName == "" && out.PrdtEngName == "" {
 			return nil, broker.ErrInstrumentNotFound
 		}
 
@@ -369,83 +509,113 @@ func (a *Adapter) GetInstrument(ctx context.Context, market, symbol string) (*br
 			name = symbol
 		}
 
-		isListed := parseYN(out.LstgYN)
-		if parseYN(out.LstgAbolItemYN) {
+		isListed := parseYN(out.LstgYn)
+		if parseYN(out.LstgAbolItemYn) {
 			isListed = false
 		}
 
 		return &broker.Instrument{
 			Symbol:          symbol,
 			Market:          strings.ToUpper(strings.TrimSpace(market)),
-			ISIN:            normalizeISIN(out.StdPdNo),
+			ISIN:            normalizeISIN(out.StdPdno),
 			Name:            name,
 			NameEn:          out.PrdtEngName,
-			Exchange:        out.OvrsExcgCD,
-			Currency:        out.TrCrcyCD,
+			Exchange:        out.OvrsExcgCd,
+			Currency:        out.TrCrcyCd,
 			Country:         out.NatnName,
 			AssetType:       broker.AssetOverseas,
-			ProductType:     overseasProductTypeFromCode(out.OvrsStckDvsnCD),
+			ProductType:     overseasProductTypeFromCode(out.OvrsStckDvsnCd),
 			ProductTypeCode: prdtTypeCode,
-			SecurityGroup:   out.OvrsStckDvsnCD,
+			SecurityGroup:   out.OvrsStckDvsnCd,
 			Sector:          out.PrdtClsfName,
 			IsListed:        isListed,
-			IsSuspended:     out.OvrsStckTrStopDvsnCD != "" && out.OvrsStckTrStopDvsnCD != "01",
+			IsSuspended:     out.OvrsStckTrStopDvsnCd != "" && out.OvrsStckTrStopDvsnCd != "01",
 			ListingDate:     out.LstgDt,
 			DelistingDate:   out.LstgAbolDt,
 		}, nil
 	}
 
-	resp, err := a.client.InquireStockBasicInfo(ctx, symbol, prdtTypeCode)
+	resp, err := callEndpointDecoded[struct {
+		Output []kis.StockBasicInfoOutput `json:"output"`
+	}](
+		a,
+		ctx,
+		http.MethodGet,
+		kis.PathDomesticStockSearchStockInfo,
+		"",
+		map[string]string{
+			"PDNO":         symbol,
+			"PRDT_TYPE_CD": prdtTypeCode,
+		},
+	)
 	if err == nil {
-		out := resp.Output
-		if out.PdNo == "" && out.PrdtName == "" {
+		if len(resp.Output) == 0 {
+			return nil, broker.ErrInstrumentNotFound
+		}
+		out := resp.Output[0]
+		if out.Pdno == "" && out.PrdtName == "" {
 			return nil, broker.ErrInstrumentNotFound
 		}
 
 		return &broker.Instrument{
-			Symbol:          firstNonEmpty(out.PdNo, symbol),
-			Market:          normalizeDomesticMarket(strings.ToUpper(strings.TrimSpace(market)), out.MketIDCD),
-			ISIN:            normalizeISIN(out.StdPdNo),
+			Symbol:          firstNonEmpty(out.Pdno, symbol),
+			Market:          normalizeDomesticMarket(strings.ToUpper(strings.TrimSpace(market)), out.MketIdCd),
+			ISIN:            normalizeISIN(out.StdPdno),
 			Name:            firstNonEmpty(out.PrdtName, symbol),
 			NameEn:          out.PrdtEngName,
 			ShortName:       out.PrdtAbrvName,
-			Exchange:        normalizeDomesticExchange(out.ExcgDvsnCD),
+			Exchange:        normalizeDomesticExchange(out.ExcgDvsnCd),
 			Currency:        "KRW",
 			Country:         "KR",
-			AssetType:       domesticAssetTypeFromSecurityGroup(out.SctyGrpIDCD),
-			ProductType:     domesticProductTypeFromSecurityGroup(out.SctyGrpIDCD),
-			ProductTypeCode: out.PrdtTypeCD,
-			SecurityGroup:   out.SctyGrpIDCD,
-			Sector:          firstNonEmpty(out.StdIdstClsfCDName, out.PrdtClsfName),
+			AssetType:       domesticAssetTypeFromSecurityGroup(out.SctyGrpIdCd),
+			ProductType:     domesticProductTypeFromSecurityGroup(out.SctyGrpIdCd),
+			ProductTypeCode: out.PrdtTypeCd,
+			SecurityGroup:   out.SctyGrpIdCd,
+			Sector:          out.StdIdstClsfCdName,
 			ListedShares:    int64(parseIntOrDefault(out.LstgStqt, 0)),
 			IsListed:        out.LstgAbolDt == "",
-			IsSuspended:     parseYN(out.TrStopYN),
+			IsSuspended:     parseYN(out.TrStopYn),
 			ListingDate:     firstNonEmpty(out.SctsMketLstgDt, out.KosdaqMketLstgDt, out.FrbdMketLstgDt),
 			DelistingDate:   out.LstgAbolDt,
 		}, nil
 	}
 
 	// Fallback to the more generic domestic product info API when stock-info is unavailable.
-	fallback, fallbackErr := a.client.InquireProductBasicInfo(ctx, symbol, prdtTypeCode)
+	fallback, fallbackErr := callEndpointDecoded[struct {
+		Output []kis.ProductBasicInfoOutput `json:"output"`
+	}](
+		a,
+		ctx,
+		http.MethodGet,
+		kis.PathDomesticStockSearchInfo,
+		"",
+		map[string]string{
+			"PDNO":         symbol,
+			"PRDT_TYPE_CD": prdtTypeCode,
+		},
+	)
 	if fallbackErr != nil {
 		return nil, err
 	}
-	out := fallback.Output
-	if out.PdNo == "" && out.PrdtName == "" {
+	if len(fallback.Output) == 0 {
+		return nil, broker.ErrInstrumentNotFound
+	}
+	out := fallback.Output[0]
+	if out.Pdno == "" && out.PrdtName == "" {
 		return nil, broker.ErrInstrumentNotFound
 	}
 
 	return &broker.Instrument{
-		Symbol:          firstNonEmpty(out.PdNo, symbol),
+		Symbol:          firstNonEmpty(out.Pdno, symbol),
 		Market:          strings.ToUpper(strings.TrimSpace(market)),
-		ISIN:            normalizeISIN(out.StdPdNo),
+		ISIN:            normalizeISIN(out.StdPdno),
 		Name:            firstNonEmpty(out.PrdtName, symbol),
 		NameEn:          out.PrdtEngName,
 		ShortName:       out.PrdtAbrvName,
 		Currency:        "KRW",
 		Country:         "KR",
 		AssetType:       broker.AssetStock,
-		ProductTypeCode: out.PrdtTypeCD,
+		ProductTypeCode: out.PrdtTypeCd,
 		Sector:          out.PrdtClsfName,
 		IsListed:        out.SaleEndDt == "",
 		IsSuspended:     false,
@@ -466,10 +636,8 @@ func (a *Adapter) ReloadSymbols(ctx context.Context) (int, error) {
 
 // PlaceOrder places a new order
 func (a *Adapter) PlaceOrder(ctx context.Context, req broker.OrderRequest) (*broker.OrderResult, error) {
-	orderType := "limit"
 	orderDvsn := "00"
 	if req.Type == broker.OrderTypeMarket {
-		orderType = "market"
 		orderDvsn = "01"
 	}
 
@@ -484,15 +652,40 @@ func (a *Adapter) PlaceOrder(ctx context.Context, req broker.OrderRequest) (*bro
 			return nil, broker.ErrInvalidOrderRequest
 		}
 
-		resp, err := a.client.OrderOverseas(ctx, cano, acntPrdtCD, ovrsExcg, req.Symbol, int(req.Quantity), req.Price, side, "00")
+		trID, err := kis.ResolveOverseasOrderTRID(ovrsExcg, side, a.sandbox)
 		if err != nil {
 			return nil, err
 		}
+		reqFields := kis.KISOverseasStockV1TradingOrderRequest{
+			Cano:         cano,
+			AcntPrdtCd:   acntPrdtCD,
+			OvrsExcgCd:   ovrsExcg,
+			Pdno:         req.Symbol,
+			OrdQty:       strconv.Itoa(int(req.Quantity)),
+			OvrsOrdUnpr:  fmt.Sprintf("%.4f", req.Price),
+			OrdSvrDvsnCd: "0",
+			OrdDvsn:      "00",
+		}
+		resp, err := callEndpointDecoded[kis.KISOverseasStockV1TradingOrder](
+			a,
+			ctx,
+			http.MethodPost,
+			kis.PathOverseasStockTradingOrder,
+			trID,
+			reqFields,
+		)
+		if err != nil {
+			return nil, err
+		}
+		if len(resp.Output) == 0 || strings.TrimSpace(resp.Output[0].Odno) == "" {
+			return nil, fmt.Errorf("%w: empty overseas order response", broker.ErrInvalidOrderRequest)
+		}
+		out := resp.Output[0]
 
-		a.storeOrderContext(resp.Output.OrdNo, orderContext{
+		a.storeOrderContext(out.Odno, orderContext{
 			CANO:         cano,
 			AccountPrdt:  acntPrdtCD,
-			OrderID:      resp.Output.OrdNo,
+			OrderID:      out.Odno,
 			OrderDvsn:    "00",
 			OrderQty:     int(req.Quantity),
 			OrderPrice:   req.Price,
@@ -504,7 +697,7 @@ func (a *Adapter) PlaceOrder(ctx context.Context, req broker.OrderRequest) (*bro
 		})
 
 		return &broker.OrderResult{
-			OrderID:        resp.Output.OrdNo,
+			OrderID:        out.Odno,
 			Status:         broker.OrderStatusPending,
 			RemainingQty:   req.Quantity,
 			AvgFilledPrice: 0,
@@ -515,16 +708,43 @@ func (a *Adapter) PlaceOrder(ctx context.Context, req broker.OrderRequest) (*bro
 
 	exchangeCode := toKISExchangeID(req.Market)
 
-	resp, err := a.client.OrderCash(ctx, cano, acntPrdtCD, req.Symbol, orderType, int(req.Quantity), int(req.Price), side, exchangeCode)
+	trID := "TTTC0802U"
+	if side == "sell" {
+		trID = "TTTC0801U"
+	}
+	if a.sandbox {
+		trID = "V" + trID[1:]
+	}
+
+	reqFields := kis.KISDomesticStockV1TradingOrderCashRequest{
+		Cano:       cano,
+		AcntPrdtCd: acntPrdtCD,
+		Pdno:       req.Symbol,
+		OrdDvsn:    orderDvsn,
+		OrdQty:     strconv.Itoa(int(req.Quantity)),
+		OrdUnpr:    strconv.Itoa(int(req.Price)),
+	}
+	resp, err := callEndpointDecoded[kis.KISDomesticStockV1TradingOrderCash](
+		a,
+		ctx,
+		http.MethodPost,
+		kis.PathDomesticStockTradingOrderCash,
+		trID,
+		reqFields,
+	)
 	if err != nil {
 		return nil, err
 	}
+	if len(resp.Output) == 0 || strings.TrimSpace(resp.Output[0].Odno) == "" {
+		return nil, fmt.Errorf("%w: empty domestic order response", broker.ErrInvalidOrderRequest)
+	}
+	out := resp.Output[0]
 
-	a.storeOrderContext(resp.Output.OrdNo, orderContext{
+	a.storeOrderContext(out.Odno, orderContext{
 		CANO:         cano,
 		AccountPrdt:  acntPrdtCD,
-		OrderID:      resp.Output.OrdNo,
-		OrderOrgNo:   resp.Output.KrxFwdOrdOrgno,
+		OrderID:      out.Odno,
+		OrderOrgNo:   out.KrxFwdgOrdOrgno,
 		OrderDvsn:    orderDvsn,
 		OrderQty:     int(req.Quantity),
 		OrderPrice:   req.Price,
@@ -535,7 +755,7 @@ func (a *Adapter) PlaceOrder(ctx context.Context, req broker.OrderRequest) (*bro
 	})
 
 	return &broker.OrderResult{
-		OrderID:        resp.Output.OrdNo,
+		OrderID:        out.Odno,
 		Status:         broker.OrderStatusPending,
 		RemainingQty:   req.Quantity,
 		AvgFilledPrice: 0,
@@ -552,30 +772,51 @@ func (a *Adapter) CancelOrder(ctx context.Context, orderID string) error {
 	}
 
 	if meta.IsOverseas {
-		_, err = a.client.OrderOverseasRvseCncl(
+		trID, trErr := kis.ResolveOverseasRvseCnclTRID(meta.ExchangeCode, a.sandbox)
+		if trErr != nil {
+			return trErr
+		}
+		reqFields := kis.KISOverseasStockV1TradingOrderRvsecnclRequest{
+			Cano:           meta.CANO,
+			AcntPrdtCd:     meta.AccountPrdt,
+			OvrsExcgCd:     meta.ExchangeCode,
+			Pdno:           meta.Symbol,
+			OrgnOdno:       meta.OrderID,
+			RvseCnclDvsnCd: "02",
+			OrdQty:         strconv.Itoa(meta.OrderQty),
+			OvrsOrdUnpr:    "0",
+		}
+		_, err = callEndpointDecoded[kis.KISOverseasStockV1TradingOrderRvsecncl](
+			a,
 			ctx,
-			meta.CANO,
-			meta.AccountPrdt,
-			meta.ExchangeCode,
-			meta.Symbol,
-			meta.OrderID,
-			"02",
-			meta.OrderQty,
-			0,
+			http.MethodPost,
+			kis.PathOverseasStockTradingOrderRvseCncl,
+			trID,
+			reqFields,
 		)
 	} else {
-		_, err = a.client.OrderRvseCncl(
+		trID := "TTTC0803U"
+		if a.sandbox {
+			trID = "VTTC0803U"
+		}
+		reqFields := kis.KISDomesticStockV1TradingOrderRvsecnclRequest{
+			Cano:            meta.CANO,
+			AcntPrdtCd:      meta.AccountPrdt,
+			KrxFwdgOrdOrgno: meta.OrderOrgNo,
+			OrgnOdno:        meta.OrderID,
+			OrdDvsn:         meta.OrderDvsn,
+			RvseCnclDvsnCd:  "02",
+			OrdQty:          strconv.Itoa(meta.OrderQty),
+			OrdUnpr:         strconv.Itoa(int(meta.OrderPrice)),
+			QtyAllOrdYn:     "Y",
+		}
+		_, err = callEndpointDecoded[kis.KISDomesticStockV1TradingOrderRvsecncl](
+			a,
 			ctx,
-			meta.CANO,
-			meta.AccountPrdt,
-			meta.OrderOrgNo,
-			meta.OrderID,
-			meta.OrderDvsn,
-			"02",
-			meta.OrderQty,
-			int(meta.OrderPrice),
-			true,
-			meta.ExchangeCode,
+			http.MethodPost,
+			kis.PathDomesticStockTradingOrderRvseCncl,
+			trID,
+			reqFields,
 		)
 	}
 	if err != nil {
@@ -611,45 +852,78 @@ func (a *Adapter) ModifyOrder(ctx context.Context, orderID string, req broker.Mo
 		newPrice = req.Price
 	}
 
-	var resp *kis.OrderResponse
+	var respMsg string
+	var respOrdNo string
+	var respOrderOrgNo string
 	if meta.IsOverseas {
 		if newPrice <= 0 {
 			return nil, broker.ErrInvalidOrderRequest
 		}
-		resp, err = a.client.OrderOverseasRvseCncl(
+		trID, trErr := kis.ResolveOverseasRvseCnclTRID(meta.ExchangeCode, a.sandbox)
+		if trErr != nil {
+			return nil, trErr
+		}
+		reqFields := kis.KISOverseasStockV1TradingOrderRvsecnclRequest{
+			Cano:           meta.CANO,
+			AcntPrdtCd:     meta.AccountPrdt,
+			OvrsExcgCd:     meta.ExchangeCode,
+			Pdno:           meta.Symbol,
+			OrgnOdno:       meta.OrderID,
+			RvseCnclDvsnCd: "01",
+			OrdQty:         strconv.Itoa(newQty),
+			OvrsOrdUnpr:    fmt.Sprintf("%.4f", newPrice),
+		}
+		decoded, err := callEndpointDecoded[kis.KISOverseasStockV1TradingOrderRvsecncl](
+			a,
 			ctx,
-			meta.CANO,
-			meta.AccountPrdt,
-			meta.ExchangeCode,
-			meta.Symbol,
-			meta.OrderID,
-			"01",
-			newQty,
-			newPrice,
+			http.MethodPost,
+			kis.PathOverseasStockTradingOrderRvseCncl,
+			trID,
+			reqFields,
 		)
 		if err != nil {
 			return nil, err
 		}
+		respMsg = decoded.Msg1
+		if len(decoded.Output) > 0 {
+			respOrderOrgNo = decoded.Output[0].KrxFwdgOrdOrgno
+			respOrdNo = decoded.Output[0].Odno
+		}
 	} else {
-		resp, err = a.client.OrderRvseCncl(
+		trID := "TTTC0803U"
+		if a.sandbox {
+			trID = "VTTC0803U"
+		}
+		reqFields := kis.KISDomesticStockV1TradingOrderRvsecnclRequest{
+			Cano:            meta.CANO,
+			AcntPrdtCd:      meta.AccountPrdt,
+			KrxFwdgOrdOrgno: meta.OrderOrgNo,
+			OrgnOdno:        meta.OrderID,
+			OrdDvsn:         meta.OrderDvsn,
+			RvseCnclDvsnCd:  "01",
+			OrdQty:          strconv.Itoa(newQty),
+			OrdUnpr:         strconv.Itoa(int(newPrice)),
+			QtyAllOrdYn:     "N",
+		}
+		decoded, err := callEndpointDecoded[kis.KISDomesticStockV1TradingOrderRvsecncl](
+			a,
 			ctx,
-			meta.CANO,
-			meta.AccountPrdt,
-			meta.OrderOrgNo,
-			meta.OrderID,
-			meta.OrderDvsn,
-			"01",
-			newQty,
-			int(newPrice),
-			false,
-			meta.ExchangeCode,
+			http.MethodPost,
+			kis.PathDomesticStockTradingOrderRvseCncl,
+			trID,
+			reqFields,
 		)
 		if err != nil {
 			return nil, err
+		}
+		respMsg = decoded.Msg1
+		if len(decoded.Output) > 0 {
+			respOrderOrgNo = decoded.Output[0].KrxFwdgOrdOrgno
+			respOrdNo = decoded.Output[0].Odno
 		}
 	}
 
-	newOrderID := resp.Output.OrdNo
+	newOrderID := respOrdNo
 	if newOrderID == "" {
 		newOrderID = orderID
 	}
@@ -658,7 +932,7 @@ func (a *Adapter) ModifyOrder(ctx context.Context, orderID string, req broker.Mo
 		CANO:         meta.CANO,
 		AccountPrdt:  meta.AccountPrdt,
 		OrderID:      newOrderID,
-		OrderOrgNo:   resp.Output.KrxFwdOrdOrgno,
+		OrderOrgNo:   respOrderOrgNo,
 		OrderDvsn:    meta.OrderDvsn,
 		OrderQty:     newQty,
 		OrderPrice:   newPrice,
@@ -676,7 +950,7 @@ func (a *Adapter) ModifyOrder(ctx context.Context, orderID string, req broker.Mo
 		OrderID:      newOrderID,
 		Status:       broker.OrderStatusPending,
 		RemainingQty: int64(newQty),
-		Message:      resp.Msg1,
+		Message:      respMsg,
 		Timestamp:    time.Now(),
 	}, nil
 }
@@ -707,11 +981,11 @@ func (a *Adapter) GetOrder(ctx context.Context, orderID string) (*broker.OrderRe
 			rejectReason = snap.RejectedReason
 		} else if !meta.IsOverseas {
 			// Fallback: check current open-order list only when daily fill lookup is unavailable.
-			resp, err := a.client.InquirePossibleRvseCncl(ctx, meta.CANO, meta.AccountPrdt)
+			items, err := a.strictInquirePossibleRvseCncl(ctx, meta.CANO, meta.AccountPrdt)
 			if err == nil {
 				found := false
-				for _, item := range resp.Output {
-					if item.ODNo == meta.OrderID || item.OrgnODNo == meta.OrderID {
+				for _, item := range items {
+					if item.Odno == meta.OrderID || item.OrgnOdno == meta.OrderID {
 						found = true
 						break
 					}
@@ -782,20 +1056,20 @@ func (a *Adapter) GetOrderFills(ctx context.Context, orderID string) ([]broker.O
 		if exchange == "" {
 			exchange = "%"
 		}
-		resp, err := a.client.InquireOverseasCcnl(ctx, meta.CANO, meta.AccountPrdt, start, end, exchange)
+		items, err := a.strictInquireOverseasCcnl(ctx, meta.CANO, meta.AccountPrdt, start, end, exchange)
 		if err != nil {
 			return nil, err
 		}
 		fills := make([]broker.OrderFill, 0)
-		for _, item := range resp.Output {
-			if item.ODNo != meta.OrderID && item.OrgnODNo != meta.OrderID {
+		for _, item := range items {
+			if item.Odno != meta.OrderID && item.OrgnOdno != meta.OrderID {
 				continue
 			}
 			qty := int64(parseIntOrDefault(item.FtCcldQty, 0))
 			if qty <= 0 {
 				continue
 			}
-			price, _ := strconv.ParseFloat(strings.TrimSpace(item.FtCcldUNPR3), 64)
+			price, _ := strconv.ParseFloat(strings.TrimSpace(item.FtCcldUnpr3), 64)
 			amount, _ := strconv.ParseFloat(strings.TrimSpace(item.FtCcldAmt3), 64)
 			if amount == 0 && price > 0 {
 				amount = float64(qty) * price
@@ -803,13 +1077,13 @@ func (a *Adapter) GetOrderFills(ctx context.Context, orderID string) ([]broker.O
 			filledAt := parseOrderDateTime(item.OrdDt, item.OrdTmd)
 			fills = append(fills, broker.OrderFill{
 				OrderID:   meta.OrderID,
-				Symbol:    firstNonEmpty(item.PdNo, meta.Symbol),
+				Symbol:    firstNonEmpty(item.Pdno, meta.Symbol),
 				Market:    strings.ToUpper(strings.TrimSpace(meta.ExchangeCode)),
-				Side:      normalizeSideLabel(item.SllBuyDvsnCD),
+				Side:      normalizeSideLabel(item.SllBuyDvsnCd),
 				Quantity:  qty,
 				Price:     price,
 				Amount:    amount,
-				Currency:  item.TrCrcyCD,
+				Currency:  item.TrCrcyCd,
 				FilledAt:  filledAt,
 				RawStatus: item.PrcsStatName,
 			})
@@ -824,14 +1098,14 @@ func (a *Adapter) GetOrderFills(ctx context.Context, orderID string) ([]broker.O
 	if exchangeID == "" {
 		exchangeID = "ALL"
 	}
-	resp, err := a.client.InquireDailyCcld(ctx, meta.CANO, meta.AccountPrdt, start, end, meta.OrderOrgNo, meta.OrderID, exchangeID)
+	items, err := a.strictInquireDailyCcld(ctx, meta.CANO, meta.AccountPrdt, start, end, meta.OrderOrgNo, meta.OrderID, exchangeID)
 	if err != nil {
 		return nil, err
 	}
 
 	fills := make([]broker.OrderFill, 0)
-	for _, item := range resp.Output1 {
-		if item.ODNo != meta.OrderID && item.OrgnODNo != meta.OrderID {
+	for _, item := range items {
+		if item.Odno != meta.OrderID && item.OrgnOdno != meta.OrderID {
 			continue
 		}
 		qty := int64(parseIntOrDefault(item.TotCcldQty, 0))
@@ -840,7 +1114,7 @@ func (a *Adapter) GetOrderFills(ctx context.Context, orderID string) ([]broker.O
 		}
 		price, _ := strconv.ParseFloat(strings.TrimSpace(item.AvgPrvs), 64)
 		if price == 0 {
-			price, _ = strconv.ParseFloat(strings.TrimSpace(item.OrdUNPR), 64)
+			price, _ = strconv.ParseFloat(strings.TrimSpace(item.OrdUnpr), 64)
 		}
 		amount, _ := strconv.ParseFloat(strings.TrimSpace(item.TotCcldAmt), 64)
 		if amount == 0 && price > 0 {
@@ -850,15 +1124,15 @@ func (a *Adapter) GetOrderFills(ctx context.Context, orderID string) ([]broker.O
 
 		fills = append(fills, broker.OrderFill{
 			OrderID:   meta.OrderID,
-			Symbol:    firstNonEmpty(item.PdNo, meta.Symbol),
-			Market:    firstNonEmpty(item.ExcgIDDvsn, meta.ExchangeCode, "KRX"),
-			Side:      normalizeSideLabel(item.SllBuyDvsn),
+			Symbol:    firstNonEmpty(item.Pdno, meta.Symbol),
+			Market:    firstNonEmpty(item.ExcgIdDvsnCd, meta.ExchangeCode, "KRX"),
+			Side:      normalizeSideLabel(item.SllBuyDvsnCd),
 			Quantity:  qty,
 			Price:     price,
 			Amount:    amount,
 			Currency:  "KRW",
 			FilledAt:  filledAt,
-			RawStatus: item.OrdDvsnCD,
+			RawStatus: item.OrdDvsnCd,
 		})
 	}
 	if fills == nil {
@@ -926,15 +1200,15 @@ func (a *Adapter) resolveOrderContext(ctx context.Context, orderID string) (orde
 		return cached, nil
 	}
 
-	resp, err := a.client.InquirePossibleRvseCncl(ctx, a.accountID, a.accountPrdtCD)
+	items, err := a.strictInquirePossibleRvseCncl(ctx, a.accountID, a.accountPrdtCD)
 	if err != nil {
 		if hasCached {
 			return cached, nil
 		}
 		return orderContext{}, err
 	}
-	for _, item := range resp.Output {
-		if item.ODNo != orderID && item.OrgnODNo != orderID {
+	for _, item := range items {
+		if item.Odno != orderID && item.OrgnOdno != orderID {
 			continue
 		}
 
@@ -942,16 +1216,16 @@ func (a *Adapter) resolveOrderContext(ctx context.Context, orderID string) (orde
 		if qty == 0 {
 			qty, _ = strconv.Atoi(item.OrdQty)
 		}
-		price, _ := strconv.Atoi(item.OrdUNPR)
+		price, _ := strconv.Atoi(item.OrdUnpr)
 		meta := orderContext{
 			CANO:         a.accountID,
 			AccountPrdt:  a.accountPrdtCD,
-			OrderID:      item.ODNo,
+			OrderID:      item.Odno,
 			OrderOrgNo:   item.OrdGnoBrno,
-			OrderDvsn:    item.OrdDvsn,
+			OrderDvsn:    item.OrdDvsnCd,
 			OrderQty:     qty,
 			OrderPrice:   float64(price),
-			ExchangeCode: item.ExcgIDDvsnCD,
+			ExchangeCode: item.ExcgIdDvsnCd,
 			Status:       broker.OrderStatusPending,
 			UpdatedAt:    time.Now(),
 		}
@@ -1039,12 +1313,12 @@ func (a *Adapter) resolveRemoteOrderSnapshot(ctx context.Context, meta orderCont
 		if exchange == "" {
 			exchange = "%"
 		}
-		resp, err := a.client.InquireOverseasCcnl(ctx, meta.CANO, meta.AccountPrdt, start, end, exchange)
+		items, err := a.strictInquireOverseasCcnl(ctx, meta.CANO, meta.AccountPrdt, start, end, exchange)
 		if err != nil {
 			return orderStatusSnapshot{}, false
 		}
-		for _, item := range resp.Output {
-			if item.ODNo != meta.OrderID && item.OrgnODNo != meta.OrderID {
+		for _, item := range items {
+			if item.Odno != meta.OrderID && item.OrgnOdno != meta.OrderID {
 				continue
 			}
 			ordQty := parseIntOrDefault(item.FtOrdQty, meta.OrderQty)
@@ -1053,7 +1327,7 @@ func (a *Adapter) resolveRemoteOrderSnapshot(ctx context.Context, meta orderCont
 			if remainQty == 0 && ordQty > 0 && filledQty >= 0 && filledQty < ordQty {
 				remainQty = ordQty - filledQty
 			}
-			avgPrice := parseFirstFloat(item.FtCcldUNPR3, item.FtOrdUNPR3)
+			avgPrice := parseFirstFloat(item.FtCcldUnpr3, item.FtOrdUnpr3)
 			base := orderStatusSnapshot{
 				FilledQty:      int64(filledQty),
 				RemainingQty:   int64(remainQty),
@@ -1082,12 +1356,12 @@ func (a *Adapter) resolveRemoteOrderSnapshot(ctx context.Context, meta orderCont
 	if exchangeID == "" {
 		exchangeID = "ALL"
 	}
-	resp, err := a.client.InquireDailyCcld(ctx, meta.CANO, meta.AccountPrdt, start, end, meta.OrderOrgNo, meta.OrderID, exchangeID)
+	items, err := a.strictInquireDailyCcld(ctx, meta.CANO, meta.AccountPrdt, start, end, meta.OrderOrgNo, meta.OrderID, exchangeID)
 	if err != nil {
 		return orderStatusSnapshot{}, false
 	}
-	for _, item := range resp.Output1 {
-		if item.ODNo != meta.OrderID && item.OrgnODNo != meta.OrderID {
+	for _, item := range items {
+		if item.Odno != meta.OrderID && item.OrgnOdno != meta.OrderID {
 			continue
 		}
 
@@ -1098,11 +1372,11 @@ func (a *Adapter) resolveRemoteOrderSnapshot(ctx context.Context, meta orderCont
 			remainQty = ordQty - filledQty
 		}
 		rejectQty := parseIntOrDefault(item.RjctQty, 0)
-		cancelled := parseYN(item.CnclYN) || parseIntOrDefault(item.CncCfrmQty, 0) > 0
+		cancelled := parseYN(item.CnclYn) || parseIntOrDefault(item.CncCfrmQty, 0) > 0
 		base := orderStatusSnapshot{
 			FilledQty:      int64(filledQty),
 			RemainingQty:   int64(remainQty),
-			AvgFilledPrice: parseFirstFloat(item.AvgPrvs, item.OrdUNPR),
+			AvgFilledPrice: parseFirstFloat(item.AvgPrvs, item.OrdUnpr),
 		}
 
 		if rejectQty > 0 && filledQty == 0 {
@@ -1123,6 +1397,201 @@ func (a *Adapter) resolveRemoteOrderSnapshot(ctx context.Context, meta orderCont
 	}
 
 	return orderStatusSnapshot{}, false
+}
+
+func callEndpointDecoded[T any](
+	a *Adapter,
+	ctx context.Context,
+	method string,
+	path string,
+	trID string,
+	fields interface{},
+) (T, error) {
+	var zero T
+	reqFields, err := kis.DocumentedRequestFields(fields)
+	if err != nil {
+		return zero, err
+	}
+	payload, err := a.CallEndpoint(ctx, method, path, trID, reqFields)
+	if err != nil {
+		return zero, err
+	}
+	data, err := json.Marshal(payload)
+	if err != nil {
+		return zero, fmt.Errorf("marshal endpoint payload: %w", err)
+	}
+	var out T
+	if err := json.Unmarshal(data, &out); err != nil {
+		return zero, fmt.Errorf("decode endpoint payload: %w", err)
+	}
+	return out, nil
+}
+
+func (a *Adapter) strictInquirePossibleRvseCncl(ctx context.Context, cano, acntPrdt string) ([]kis.StockRvseCnclCandidate, error) {
+	resp, err := callEndpointDecoded[struct {
+		Output []kis.StockRvseCnclCandidate `json:"output"`
+	}](
+		a,
+		ctx,
+		http.MethodGet,
+		kis.PathDomesticStockTradingInquirePsblRvseCncl,
+		"",
+		map[string]string{
+			"CANO":           cano,
+			"ACNT_PRDT_CD":   acntPrdt,
+			"CTX_AREA_FK100": "",
+			"CTX_AREA_NK100": "",
+			"INQR_DVSN_1":    "0",
+			"INQR_DVSN_2":    "0",
+		},
+	)
+	if err != nil {
+		return nil, err
+	}
+	if resp.Output == nil {
+		return []kis.StockRvseCnclCandidate{}, nil
+	}
+	return resp.Output, nil
+}
+
+func (a *Adapter) strictInquireDailyCcld(
+	ctx context.Context,
+	accountNo, accountProductCode, startDate, endDate, orderOrgNo, orderNo, exchangeID string,
+) ([]kis.DomesticDailyCcldItem, error) {
+	if accountProductCode == "" {
+		accountProductCode = "01"
+	}
+	if startDate == "" || endDate == "" {
+		today := time.Now().Format("20060102")
+		if startDate == "" {
+			startDate = today
+		}
+		if endDate == "" {
+			endDate = today
+		}
+	}
+	if exchangeID == "" {
+		exchangeID = "ALL"
+	}
+
+	resp, err := callEndpointDecoded[struct {
+		Output1 []kis.DomesticDailyCcldItem `json:"output1"`
+	}](
+		a,
+		ctx,
+		http.MethodGet,
+		kis.PathDomesticStockTradingInquireDailyCcld,
+		"",
+		map[string]string{
+			"CANO":            accountNo,
+			"ACNT_PRDT_CD":    accountProductCode,
+			"INQR_STRT_DT":    startDate,
+			"INQR_END_DT":     endDate,
+			"SLL_BUY_DVSN_CD": "00",
+			"INQR_DVSN":       "00",
+			"PDNO":            "",
+			"CCLD_DVSN":       "00",
+			"ORD_GNO_BRNO":    orderOrgNo,
+			"ODNO":            orderNo,
+			"INQR_DVSN_3":     "00",
+			"INQR_DVSN_1":     "",
+			"EXCG_ID_DVSN_CD": exchangeID,
+			"CTX_AREA_FK100":  "",
+			"CTX_AREA_NK100":  "",
+		},
+	)
+	if err != nil {
+		return nil, err
+	}
+	if resp.Output1 == nil {
+		return []kis.DomesticDailyCcldItem{}, nil
+	}
+	return resp.Output1, nil
+}
+
+func (a *Adapter) strictInquireOverseasCcnl(
+	ctx context.Context,
+	accountNo, accountProductCode, startDate, endDate, exchangeCode string,
+) ([]kis.OverseasCcnlItem, error) {
+	if accountProductCode == "" {
+		accountProductCode = "01"
+	}
+	if startDate == "" || endDate == "" {
+		today := time.Now().Format("20060102")
+		if startDate == "" {
+			startDate = today
+		}
+		if endDate == "" {
+			endDate = today
+		}
+	}
+	if exchangeCode == "" {
+		exchangeCode = "%"
+	}
+
+	ctxFK := ""
+	ctxNK := ""
+	all := make([]kis.OverseasCcnlItem, 0)
+	seenCursors := make(map[string]struct{})
+	const maxPages = 200
+
+	for i := 0; i < maxPages; i++ {
+		select {
+		case <-ctx.Done():
+			return nil, ctx.Err()
+		default:
+		}
+
+		resp, err := callEndpointDecoded[struct {
+			CtxAreaFK200 string                 `json:"ctx_area_fk200"`
+			CtxAreaNK200 string                 `json:"ctx_area_nk200"`
+			Output       []kis.OverseasCcnlItem `json:"output"`
+		}](
+			a,
+			ctx,
+			http.MethodGet,
+			kis.PathOverseasStockTradingInquireCcnl,
+			"",
+			map[string]string{
+				"CANO":           accountNo,
+				"ACNT_PRDT_CD":   accountProductCode,
+				"PDNO":           "%",
+				"ORD_STRT_DT":    startDate,
+				"ORD_END_DT":     endDate,
+				"SLL_BUY_DVSN":   "00",
+				"CCLD_NCCS_DVSN": "00",
+				"OVRS_EXCG_CD":   exchangeCode,
+				"SORT_SQN":       "DS",
+				"ORD_DT":         "",
+				"ORD_GNO_BRNO":   "",
+				"ODNO":           "",
+				"CTX_AREA_NK200": ctxNK,
+				"CTX_AREA_FK200": ctxFK,
+			},
+		)
+		if err != nil {
+			return nil, err
+		}
+
+		all = append(all, resp.Output...)
+
+		nextFK := strings.TrimSpace(resp.CtxAreaFK200)
+		nextNK := strings.TrimSpace(resp.CtxAreaNK200)
+		if nextNK == "" || (nextFK == ctxFK && nextNK == ctxNK) {
+			break
+		}
+		cursorKey := nextFK + "|" + nextNK
+		if _, exists := seenCursors[cursorKey]; exists {
+			break
+		}
+		seenCursors[cursorKey] = struct{}{}
+		ctxFK = nextFK
+		ctxNK = nextNK
+	}
+	if all == nil {
+		return []kis.OverseasCcnlItem{}, nil
+	}
+	return all, nil
 }
 
 func parseIntOrDefault(v string, d int) int {

@@ -126,7 +126,15 @@ make test      # 테스트
 make build     # 빌드
 make lint      # lint
 make mock      # mock 재생성
+make kis-spec-check    # KIS generated spec/type 동기화 확인
+make kis-spec-refresh  # KIS 포털 snapshot 갱신 + generated 파일 재생성
 ```
+
+### KIS spec 관리
+
+- KIS 문서 스펙은 `internal/kis/specs/documented_endpoints.json` snapshot으로 버전 관리합니다.
+- 런타임은 웹사이트를 조회하지 않고, snapshot에서 생성된 코드만 사용합니다.
+- CI는 `make kis-spec-check`로 generated 파일 drift를 차단합니다.
 
 ## License
 

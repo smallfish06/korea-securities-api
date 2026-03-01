@@ -1,4 +1,4 @@
-.PHONY: build run test clean deps mock
+.PHONY: build run test clean deps mock kis-spec-fetch kis-spec-generate kis-spec-refresh kis-spec-check
 
 # Build the application
 build:
@@ -40,3 +40,19 @@ fmt:
 # Vet code
 vet:
 	go vet ./...
+
+# Fetch latest documented KIS snapshot from portal (network required)
+kis-spec-fetch:
+	go run ./cmd/kis-specgen fetch --out internal/kis/specs/documented_endpoints.json
+
+# Generate KIS documented spec/type Go files from snapshot
+kis-spec-generate:
+	go run ./cmd/kis-specgen generate --in internal/kis/specs/documented_endpoints.json --spec-out internal/kis/adapter/documented_specs.go --types-out internal/kis/documented_endpoint_types_generated.go
+
+# Refresh snapshot + regenerate KIS documented Go files
+kis-spec-refresh:
+	go run ./cmd/kis-specgen refresh --snapshot internal/kis/specs/documented_endpoints.json --spec-out internal/kis/adapter/documented_specs.go --types-out internal/kis/documented_endpoint_types_generated.go
+
+# Verify generated KIS documented files are up to date
+kis-spec-check:
+	go run ./cmd/kis-specgen check --in internal/kis/specs/documented_endpoints.json --spec-out internal/kis/adapter/documented_specs.go --types-out internal/kis/documented_endpoint_types_generated.go

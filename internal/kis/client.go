@@ -9,6 +9,8 @@ import (
 	"log"
 	"net/http"
 	"net/url"
+	"sort"
+	"strings"
 	"sync"
 	"time"
 
@@ -190,17 +192,113 @@ func (c *Client) doRequest(ctx context.Context, method, path string, trID string
 	return nil
 }
 
-func (c *Client) getRaw(ctx context.Context, path, trID string) (*RawResponse, error) {
-	var resp RawResponse
-	if err := c.doRequest(ctx, "GET", path, trID, nil, &resp); err != nil {
-		return nil, err
-	}
-	if !resp.IsSuccess() {
-		return nil, fmt.Errorf("KIS API error: %s (%s)", resp.Msg1, resp.MsgCD)
-	}
-	return &resp, nil
-}
-
 func encodeQuery(basePath string, values url.Values) string {
 	return basePath + "?" + values.Encode()
+}
+
+func encodeQueryWithFields(basePath string, fields map[string]string) string {
+	if len(fields) == 0 {
+		return basePath
+	}
+	keys := make([]string, 0, len(fields))
+	for k := range fields {
+		keys = append(keys, k)
+	}
+	sort.Strings(keys)
+
+	q := url.Values{}
+	for _, k := range keys {
+		key := strings.TrimSpace(k)
+		if key == "" {
+			continue
+		}
+		q.Set(key, strings.TrimSpace(fields[k]))
+	}
+	if len(q) == 0 {
+		return basePath
+	}
+	return encodeQuery(basePath, q)
+}
+
+// CallDocumentedEndpointInto calls a documented KIS endpoint and decodes into result.
+// result should be a pointer to a struct response type.
+func (c *Client) CallDocumentedEndpointInto(
+	ctx context.Context,
+	method string,
+	path string,
+	trID string,
+	fields map[string]string,
+	result interface{},
+) error {
+	m := strings.ToUpper(strings.TrimSpace(method))
+	if m == "" {
+		m = http.MethodGet
+	}
+
+	if m == http.MethodGet {
+		path = encodeQueryWithFields(path, fields)
+		if err := c.doRequest(ctx, m, path, trID, nil, result); err != nil {
+			return err
+		}
+		return checkEndpointResult(result)
+	}
+
+	body := make(map[string]string, len(fields))
+	for k, v := range fields {
+		key := strings.TrimSpace(k)
+		if key == "" {
+			continue
+		}
+		body[key] = strings.TrimSpace(v)
+	}
+
+	if err := c.doRequest(ctx, m, path, trID, body, result); err != nil {
+		return err
+	}
+	return checkEndpointResult(result)
+}
+
+// ResolveTRID picks the environment-appropriate TR_ID from documented real/virtual IDs.
+// It returns empty string when no usable TR_ID exists.
+func (c *Client) ResolveTRID(realTRID, virtualTRID string) string {
+	normalize := func(v string) string {
+		v = strings.TrimSpace(v)
+		if v == "" {
+			return ""
+		}
+		// KIS docs use this sentinel for endpoints that do not support paper trading.
+		if strings.Contains(v, "모의투자 미지원") {
+			return ""
+		}
+		return v
+	}
+
+	real := normalize(realTRID)
+	virtual := normalize(virtualTRID)
+
+	if c.baseURL == BaseURLSandbox {
+		if virtual != "" {
+			return virtual
+		}
+		return real
+	}
+	if real != "" {
+		return real
+	}
+	return virtual
+}
+
+func checkEndpointResult(result interface{}) error {
+	switch v := result.(type) {
+	case nil:
+		return nil
+	case DocumentedEndpointResponse:
+		if !v.IsSuccess() {
+			return fmt.Errorf("KIS API error: %s (%s)", v.GetMsg1(), v.GetMsgCode())
+		}
+		return nil
+	default:
+		// Unknown response shape: do not enforce semantic success check here.
+		return nil
+	}
 }

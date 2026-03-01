@@ -111,8 +111,8 @@ func TestHandleKISProxy_DefaultRouteAndFirstKISAccount(t *testing.T) {
 	if !kisBroker.called {
 		t.Fatalf("expected KIS broker to be called")
 	}
-	if kisBroker.gotMethod != http.MethodGet {
-		t.Fatalf("method = %q, want GET", kisBroker.gotMethod)
+	if kisBroker.gotMethod != "" {
+		t.Fatalf("method = %q, want empty (adapter default)", kisBroker.gotMethod)
 	}
 	if kisBroker.gotPath != "/uapi/overseas-price/v1/quotations/price" {
 		t.Fatalf("path = %q", kisBroker.gotPath)
@@ -152,6 +152,30 @@ func TestHandleKISProxy_GETBodyCompatibility(t *testing.T) {
 	}
 	if got := kisBroker.gotFields["FID_INPUT_ISCD"]; got != "KR103501GE04" {
 		t.Fatalf("query FID_INPUT_ISCD = %q", got)
+	}
+}
+
+func TestHandleKISProxy_TRIDOptional(t *testing.T) {
+	t.Parallel()
+
+	kisBroker := &proxyKISBroker{
+		proxyStubBroker: proxyStubBroker{name: "KIS"},
+		resp:            map[string]interface{}{"rt_cd": "0"},
+	}
+	s := newOrderTestServer(
+		map[string]broker.Broker{"kis-acc": kisBroker},
+		[]config.AccountConfig{{AccountID: "kis-acc", Broker: "kis"}},
+	)
+
+	body := []byte(`{"params":{"BASS_DT":"20260302"}}`)
+	req := httptest.NewRequest(http.MethodPost, "/kis/domestic-stock/v1/quotations/chk-holiday", bytes.NewReader(body))
+	rr := performFiberRequest(t, s, req)
+
+	if rr.Code != http.StatusOK {
+		t.Fatalf("expected 200, got %d body=%s", rr.Code, rr.Body.String())
+	}
+	if kisBroker.gotTRID != "" {
+		t.Fatalf("tr_id = %q, want empty", kisBroker.gotTRID)
 	}
 }
 
