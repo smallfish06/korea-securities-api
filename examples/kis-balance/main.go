@@ -8,10 +8,9 @@ import (
 	"log"
 	"time"
 
-	"github.com/smallfish06/krsec/internal/kis"
-	kisadapter "github.com/smallfish06/krsec/internal/kis/adapter"
 	"github.com/smallfish06/krsec/pkg/broker"
 	"github.com/smallfish06/krsec/pkg/config"
+	"github.com/smallfish06/krsec/pkg/kis"
 )
 
 type result struct {
@@ -41,7 +40,7 @@ func main() {
 	}
 
 	tokenManager := kis.NewFileTokenManagerWithDir(cfg.Storage.TokenDir)
-	adapter := kisadapter.NewAdapterWithOptions(account.Sandbox, account.AccountID, kisadapter.Options{
+	adapter := kis.NewAdapterWithOptions(account.Sandbox, account.AccountID, kis.Options{
 		TokenManager:    tokenManager,
 		OrderContextDir: cfg.Storage.OrderContextDir,
 	})

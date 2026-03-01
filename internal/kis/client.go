@@ -15,8 +15,8 @@ import (
 	"time"
 
 	"github.com/smallfish06/krsec/internal/ratelimit"
-	tokencache "github.com/smallfish06/krsec/internal/token"
 	"github.com/smallfish06/krsec/pkg/broker"
+	tokencache "github.com/smallfish06/krsec/pkg/token"
 )
 
 const (

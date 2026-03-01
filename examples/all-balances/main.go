@@ -9,13 +9,11 @@ import (
 	"strings"
 	"time"
 
-	"github.com/smallfish06/krsec/internal/kis"
-	kisadapter "github.com/smallfish06/krsec/internal/kis/adapter"
-	"github.com/smallfish06/krsec/internal/kiwoom"
-	kiwoomadapter "github.com/smallfish06/krsec/internal/kiwoom/adapter"
-	tokencache "github.com/smallfish06/krsec/internal/token"
 	"github.com/smallfish06/krsec/pkg/broker"
 	"github.com/smallfish06/krsec/pkg/config"
+	"github.com/smallfish06/krsec/pkg/kis"
+	"github.com/smallfish06/krsec/pkg/kiwoom"
+	tokencache "github.com/smallfish06/krsec/pkg/token"
 )
 
 type accountResult struct {
@@ -151,12 +149,12 @@ func buildBroker(
 ) (broker.Broker, error) {
 	switch strings.ToLower(strings.TrimSpace(acc.Broker)) {
 	case "kis":
-		return kisadapter.NewAdapterWithOptions(acc.Sandbox, acc.AccountID, kisadapter.Options{
+		return kis.NewAdapterWithOptions(acc.Sandbox, acc.AccountID, kis.Options{
 			TokenManager:    kisTokenManager,
 			OrderContextDir: cfg.Storage.OrderContextDir,
 		}), nil
 	case "kiwoom":
-		return kiwoomadapter.NewAdapterWithOptions(acc.Sandbox, acc.AccountID, kiwoomadapter.Options{
+		return kiwoom.NewAdapterWithOptions(acc.Sandbox, acc.AccountID, kiwoom.Options{
 			TokenManager:    kiwoomTokenManager,
 			OrderContextDir: cfg.Storage.OrderContextDir,
 		}), nil

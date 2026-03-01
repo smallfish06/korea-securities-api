@@ -14,8 +14,8 @@ import (
 
 	"github.com/smallfish06/krsec/internal/kiwoom"
 	kiwoomspecs "github.com/smallfish06/krsec/internal/kiwoom/specs"
-	tokencache "github.com/smallfish06/krsec/internal/token"
 	"github.com/smallfish06/krsec/pkg/broker"
+	tokencache "github.com/smallfish06/krsec/pkg/token"
 )
 
 // Adapter adapts Kiwoom APIs into broker.Broker.

@@ -13,7 +13,7 @@ import (
 	"time"
 
 	"github.com/smallfish06/krsec/internal/ratelimit"
-	tokencache "github.com/smallfish06/krsec/internal/token"
+	tokencache "github.com/smallfish06/krsec/pkg/token"
 )
 
 // FileTokenManager stores tokens in memory and persists them to disk.

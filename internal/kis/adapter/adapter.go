@@ -14,8 +14,8 @@ import (
 
 	"github.com/smallfish06/krsec/internal/kis"
 	kisspecs "github.com/smallfish06/krsec/internal/kis/specs"
-	tokencache "github.com/smallfish06/krsec/internal/token"
 	"github.com/smallfish06/krsec/pkg/broker"
+	tokencache "github.com/smallfish06/krsec/pkg/token"
 )
 
 // Adapter adapts KIS raw API to broker.Broker interface
