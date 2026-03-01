@@ -5,6 +5,7 @@ import (
 	"encoding/json"
 	"fmt"
 	"math"
+	"reflect"
 	"sort"
 	"strconv"
 	"strings"
@@ -839,7 +840,48 @@ func parseDateYYYYMMDDString(value string) (time.Time, bool) {
 	return t, true
 }
 
-func decodeObjectArray(raw json.RawMessage) []map[string]interface{} {
+func decodeObjectArray(raw interface{}) []map[string]interface{} {
+	switch t := raw.(type) {
+	case nil:
+		return nil
+	case json.RawMessage:
+		return decodeObjectArrayFromJSON(t)
+	case []byte:
+		return decodeObjectArrayFromJSON(t)
+	case []map[string]interface{}:
+		return t
+	}
+
+	rv := reflect.ValueOf(raw)
+	if !rv.IsValid() {
+		return nil
+	}
+	if rv.Kind() != reflect.Slice && rv.Kind() != reflect.Array {
+		return nil
+	}
+
+	out := make([]map[string]interface{}, 0, rv.Len())
+	for i := 0; i < rv.Len(); i++ {
+		item := rv.Index(i).Interface()
+		switch row := item.(type) {
+		case map[string]interface{}:
+			out = append(out, row)
+		default:
+			encoded, err := json.Marshal(item)
+			if err != nil || len(encoded) == 0 {
+				continue
+			}
+			m := make(map[string]interface{})
+			if err := json.Unmarshal(encoded, &m); err != nil {
+				continue
+			}
+			out = append(out, m)
+		}
+	}
+	return out
+}
+
+func decodeObjectArrayFromJSON(raw []byte) []map[string]interface{} {
 	if len(raw) == 0 {
 		return nil
 	}

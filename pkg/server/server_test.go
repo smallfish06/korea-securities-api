@@ -185,6 +185,93 @@ func TestNew_OpenAPIEndpoints(t *testing.T) {
 		t.Fatalf("unexpected static response schema ref: %q", got)
 	}
 
+	kiwoomPathItem, ok := paths["/kiwoom/dostk/stkinfo/ka10001"].(map[string]interface{})
+	if !ok {
+		t.Fatalf("expected static Kiwoom endpoint in openapi spec")
+	}
+	kiwoomPost, ok := kiwoomPathItem["post"].(map[string]interface{})
+	if !ok {
+		t.Fatalf("expected POST operation in static Kiwoom endpoint")
+	}
+	kiwoomReqBody, ok := kiwoomPost["requestBody"].(map[string]interface{})
+	if !ok {
+		t.Fatalf("requestBody missing in static Kiwoom endpoint")
+	}
+	kiwoomReqContent, ok := kiwoomReqBody["content"].(map[string]interface{})
+	if !ok {
+		t.Fatalf("requestBody.content missing in static Kiwoom endpoint")
+	}
+	kiwoomReqAppJSON, ok := kiwoomReqContent["application/json"].(map[string]interface{})
+	if !ok {
+		t.Fatalf("requestBody.content.application/json missing in static Kiwoom endpoint")
+	}
+	kiwoomReqSchema, ok := kiwoomReqAppJSON["schema"].(map[string]interface{})
+	if !ok {
+		t.Fatalf("requestBody schema missing in static Kiwoom endpoint")
+	}
+	if got, _ := kiwoomReqSchema["$ref"].(string); got != "#/components/schemas/KiwoomApiDostkStkinfoKa10001Request" {
+		t.Fatalf("unexpected static Kiwoom request schema ref: %q", got)
+	}
+	kiwoomResponses, ok := kiwoomPost["responses"].(map[string]interface{})
+	if !ok {
+		t.Fatalf("responses missing in static Kiwoom endpoint")
+	}
+	kiwoomResp200, ok := kiwoomResponses["200"].(map[string]interface{})
+	if !ok {
+		t.Fatalf("responses.200 missing in static Kiwoom endpoint")
+	}
+	kiwoomRespContent, ok := kiwoomResp200["content"].(map[string]interface{})
+	if !ok {
+		t.Fatalf("responses.200.content missing in static Kiwoom endpoint")
+	}
+	kiwoomRespAppJSON, ok := kiwoomRespContent["application/json"].(map[string]interface{})
+	if !ok {
+		t.Fatalf("responses.200.content.application/json missing in static Kiwoom endpoint")
+	}
+	kiwoomRespSchema, ok := kiwoomRespAppJSON["schema"].(map[string]interface{})
+	if !ok {
+		t.Fatalf("responses.200 schema missing in static Kiwoom endpoint")
+	}
+	if got, _ := kiwoomRespSchema["$ref"].(string); got != "#/components/schemas/KiwoomApiDostkStkinfoKa10001Response" {
+		t.Fatalf("unexpected static Kiwoom response schema ref: %q", got)
+	}
+	components, ok := openapi["components"].(map[string]interface{})
+	if !ok {
+		t.Fatalf("openapi components not found")
+	}
+	schemas, ok := components["schemas"].(map[string]interface{})
+	if !ok {
+		t.Fatalf("openapi components.schemas not found")
+	}
+	mrkcondSchema, ok := schemas["KiwoomApiDostkMrkcondKa10066Response"].(map[string]interface{})
+	if !ok {
+		t.Fatalf("KiwoomApiDostkMrkcondKa10066Response schema not found")
+	}
+	mrkcondProps, ok := mrkcondSchema["properties"].(map[string]interface{})
+	if !ok {
+		t.Fatalf("KiwoomApiDostkMrkcondKa10066Response.properties not found")
+	}
+	listProp, ok := mrkcondProps["opaf_invsr_trde"].(map[string]interface{})
+	if !ok {
+		t.Fatalf("KiwoomApiDostkMrkcondKa10066Response.opaf_invsr_trde not found")
+	}
+	listItems, ok := listProp["items"].(map[string]interface{})
+	if !ok {
+		t.Fatalf("KiwoomApiDostkMrkcondKa10066Response.opaf_invsr_trde.items not found")
+	}
+	itemProps, ok := listItems["properties"].(map[string]interface{})
+	if !ok {
+		t.Fatalf("KiwoomApiDostkMrkcondKa10066Response item properties not found")
+	}
+	for key := range itemProps {
+		if strings.HasPrefix(key, "- ") {
+			t.Fatalf("unexpected hyphen-prefixed Kiwoom response field key: %q", key)
+		}
+	}
+	if _, hasWildcard := paths["/kiwoom/{path...}"]; !hasWildcard {
+		t.Fatalf("expected wildcard Kiwoom endpoint in openapi spec")
+	}
+
 	req = httptest.NewRequest(http.MethodGet, "/swagger/", nil)
 	rr = httptest.NewRecorder()
 	s.App().Mux.ServeHTTP(rr, req)

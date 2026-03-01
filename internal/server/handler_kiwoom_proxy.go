@@ -87,6 +87,46 @@ func (s *Server) handleKiwoomProxy(c fuego.ContextWithBody[kiwoomProxyRequest]) 
 	})
 }
 
+func (s *Server) handleKiwoomProxyStatic(path, apiID string) func(fuego.ContextWithBody[map[string]interface{}]) (Response, error) {
+	rawPath := normalizeKiwoomProxyPath(path)
+	fixedAPIID := strings.ToLower(strings.TrimSpace(apiID))
+	return func(c fuego.ContextWithBody[map[string]interface{}]) (Response, error) {
+		if rawPath == "" || fixedAPIID == "" {
+			return respond(c, http.StatusBadRequest, Response{OK: false, Error: "path/api_id is required"})
+		}
+
+		reqBody, err := c.Body()
+		if err != nil {
+			return respond(c, http.StatusBadRequest, Response{OK: false, Error: "invalid request body"})
+		}
+
+		brk, status, reason := s.resolveKiwoomProxyBroker(c.QueryParam("account_id"))
+		if brk == nil {
+			return respond(c, status, Response{OK: false, Error: reason})
+		}
+
+		impl, ok := brk.(kiwoomEndpointCaller)
+		if !ok {
+			return respond(c, http.StatusBadRequest, Response{OK: false, Error: "selected account does not support Kiwoom endpoint dispatch"})
+		}
+
+		result, err := impl.CallEndpoint(c.Context(), http.MethodPost, rawPath, fixedAPIID, reqBody)
+		if err != nil {
+			return respond(c, statusFromBrokerError(err, http.StatusInternalServerError), Response{
+				OK:     false,
+				Error:  err.Error(),
+				Broker: brk.Name(),
+			})
+		}
+
+		return respond(c, http.StatusOK, Response{
+			OK:     true,
+			Data:   result,
+			Broker: brk.Name(),
+		})
+	}
+}
+
 func (s *Server) resolveKiwoomProxyBroker(accountID string) (broker.Broker, int, string) {
 	accountID = strings.TrimSpace(accountID)
 	if accountID != "" {

@@ -669,15 +669,70 @@ func emitEndpointRequestType(b *strings.Builder, m endpointModel) {
 }
 
 func emitEndpointResponseType(b *strings.Builder, m endpointModel) {
-	fmt.Fprintf(b, "type %s struct {\n", m.ResponseType)
 	if len(m.ResponseFields) == 0 {
+		fmt.Fprintf(b, "type %s struct {\n", m.ResponseType)
 		b.WriteString("}\n\n")
 		return
 	}
-	used := map[string]int{}
+
+	hasListField := false
 	for _, field := range m.ResponseFields {
-		goName := goFieldName(field.Code, used)
-		fmt.Fprintf(b, "\t%s %s `json:\"%s,omitempty\"`\n", goName, responseFieldGoType(field), field.Code)
+		if isListFieldType(field.Type) {
+			hasListField = true
+			break
+		}
+	}
+
+	// Kiwoom docs encode LIST item fields with a leading "- " marker.
+	// Keep those fields in a nested item type instead of top-level response.
+	topFields := make([]requestFieldSnapshot, 0, len(m.ResponseFields))
+	itemFields := make([]requestFieldSnapshot, 0)
+	for _, field := range m.ResponseFields {
+		if hasListField && isKiwoomListItemField(field.Code) {
+			itemFields = append(itemFields, field)
+			continue
+		}
+		topFields = append(topFields, field)
+	}
+
+	itemListCode := ""
+	itemTypeName := ""
+	if len(itemFields) > 0 {
+		itemListCode = preferredListFieldCode(topFields)
+		if itemListCode != "" {
+			itemTypeName = m.ResponseType + "Item"
+		}
+	}
+
+	fmt.Fprintf(b, "type %s struct {\n", m.ResponseType)
+	used := map[string]int{}
+	for _, field := range topFields {
+		jsonCode := normalizeKiwoomFieldCode(field.Code)
+		if jsonCode == "" {
+			continue
+		}
+		goName := goFieldName(jsonCode, used)
+		goType := responseFieldGoType(field)
+		if itemTypeName != "" && isListFieldType(field.Type) && normalizeKiwoomFieldCode(field.Code) == itemListCode {
+			goType = "[]" + itemTypeName
+		}
+		fmt.Fprintf(b, "\t%s %s `json:\"%s,omitempty\"`\n", goName, goType, jsonCode)
+	}
+	b.WriteString("}\n\n")
+
+	if itemTypeName == "" {
+		return
+	}
+
+	fmt.Fprintf(b, "type %s struct {\n", itemTypeName)
+	itemUsed := map[string]int{}
+	for _, field := range itemFields {
+		jsonCode := normalizeKiwoomFieldCode(field.Code)
+		if jsonCode == "" {
+			continue
+		}
+		goName := goFieldName(jsonCode, itemUsed)
+		fmt.Fprintf(b, "\t%s %s `json:\"%s,omitempty\"`\n", goName, responseFieldGoType(field), jsonCode)
 	}
 	b.WriteString("}\n\n")
 }
@@ -691,6 +746,39 @@ func responseFieldGoType(field requestFieldSnapshot) string {
 
 func isListFieldType(t string) bool {
 	return strings.EqualFold(strings.TrimSpace(t), "LIST")
+}
+
+func isKiwoomListItemField(code string) bool {
+	return strings.HasPrefix(strings.TrimSpace(code), "-")
+}
+
+func normalizeKiwoomFieldCode(code string) string {
+	trimmed := strings.TrimSpace(code)
+	trimmed = strings.TrimPrefix(trimmed, "-")
+	return strings.TrimSpace(trimmed)
+}
+
+func preferredListFieldCode(fields []requestFieldSnapshot) string {
+	for _, field := range fields {
+		if !isListFieldType(field.Type) {
+			continue
+		}
+		if isKiwoomListItemField(field.Code) {
+			continue
+		}
+		if code := normalizeKiwoomFieldCode(field.Code); code != "" {
+			return code
+		}
+	}
+	for _, field := range fields {
+		if !isListFieldType(field.Type) {
+			continue
+		}
+		if code := normalizeKiwoomFieldCode(field.Code); code != "" {
+			return code
+		}
+	}
+	return ""
 }
 
 func requestTypeName(ep endpointSnapshot) string {

@@ -145,3 +145,43 @@ func TestHandleKiwoomProxy_NonKiwoomAccountRejected(t *testing.T) {
 		t.Fatalf("expected 400, got %d body=%s", rr.Code, rr.Body.String())
 	}
 }
+
+func TestHandleKiwoomProxy_StaticRoute(t *testing.T) {
+	t.Parallel()
+
+	kiwoomBroker := &proxyKiwoomBroker{
+		proxyStubBroker: proxyStubBroker{name: "KIWOOM"},
+		resp:            map[string]interface{}{"return_code": 0, "return_msg": "ok"},
+	}
+	s := newOrderTestServer(
+		map[string]broker.Broker{"kiwoom-acc": kiwoomBroker},
+		[]config.AccountConfig{{AccountID: "kiwoom-acc", Broker: "kiwoom"}},
+	)
+
+	body := []byte(`{"stk_cd":"005930"}`)
+	req := httptest.NewRequest(http.MethodPost, "/kiwoom/dostk/stkinfo/ka10001?account_id=kiwoom-acc", bytes.NewReader(body))
+	rr := performFiberRequest(t, s, req)
+
+	if rr.Code != http.StatusOK {
+		t.Fatalf("expected 200, got %d body=%s", rr.Code, rr.Body.String())
+	}
+	if !kiwoomBroker.called {
+		t.Fatalf("expected Kiwoom broker to be called")
+	}
+	if kiwoomBroker.gotMethod != http.MethodPost {
+		t.Fatalf("method = %q, want POST", kiwoomBroker.gotMethod)
+	}
+	if kiwoomBroker.gotPath != "/api/dostk/stkinfo" {
+		t.Fatalf("path = %q", kiwoomBroker.gotPath)
+	}
+	if kiwoomBroker.gotAPIID != "ka10001" {
+		t.Fatalf("api_id = %q, want ka10001", kiwoomBroker.gotAPIID)
+	}
+	reqMap, ok := kiwoomBroker.gotReq.(map[string]interface{})
+	if !ok {
+		t.Fatalf("request type = %T, want map[string]interface{}", kiwoomBroker.gotReq)
+	}
+	if got, ok := reqMap["stk_cd"].(string); !ok || got != "005930" {
+		t.Fatalf("request stk_cd = %#v, want 005930", reqMap["stk_cd"])
+	}
+}
