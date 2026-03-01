@@ -16,6 +16,7 @@ import (
 
 	"github.com/smallfish06/krsec/internal/ratelimit"
 	"github.com/smallfish06/krsec/pkg/broker"
+	tokencache "github.com/smallfish06/krsec/pkg/token"
 )
 
 const (
@@ -37,7 +38,7 @@ type Client struct {
 	expiresAt   time.Time
 
 	apiLimiter   *ratelimit.Limiter
-	tokenManager TokenManager
+	tokenManager tokencache.Manager
 }
 
 // NewClient creates a new KIS client
@@ -47,7 +48,7 @@ func NewClient(sandbox bool) *Client {
 
 // NewClientWithTokenManager creates a new KIS client with an injected token manager.
 // When tokenManager is nil, the global default manager is used.
-func NewClientWithTokenManager(sandbox bool, tokenManager TokenManager) *Client {
+func NewClientWithTokenManager(sandbox bool, tokenManager tokencache.Manager) *Client {
 	baseURL := BaseURLReal
 	if sandbox {
 		baseURL = BaseURLSandbox

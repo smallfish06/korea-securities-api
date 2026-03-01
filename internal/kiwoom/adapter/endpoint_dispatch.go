@@ -9,8 +9,8 @@ import (
 	"strings"
 
 	"github.com/smallfish06/krsec/internal/kiwoom"
-	kiwoomspecs "github.com/smallfish06/krsec/internal/kiwoom/specs"
 	"github.com/smallfish06/krsec/pkg/broker"
+	kiwoomspecs "github.com/smallfish06/krsec/pkg/kiwoom/specs"
 )
 
 type endpointDispatchFunc func(ctx context.Context, request interface{}) (interface{}, error)

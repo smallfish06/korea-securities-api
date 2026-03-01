@@ -64,13 +64,19 @@ func (b *proxyKISBroker) CallEndpoint(
 	method string,
 	path string,
 	trID string,
-	fields map[string]string,
-) (map[string]interface{}, error) {
+	request interface{},
+) (interface{}, error) {
 	b.called = true
 	b.gotMethod = method
 	b.gotPath = path
 	b.gotTRID = trID
-	b.gotFields = fields
+	if request == nil {
+		b.gotFields = nil
+	} else if fields, ok := request.(map[string]string); ok {
+		b.gotFields = fields
+	} else {
+		b.gotFields = map[string]string{}
+	}
 	return b.resp, b.err
 }
 

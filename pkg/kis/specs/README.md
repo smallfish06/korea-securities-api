@@ -9,6 +9,6 @@
 ## Refresh Flow
 
 1. `make kis-spec-refresh`
-2. Review diff (`internal/kis/specs/documented_endpoints.json`, generated `.go` files)
+2. Review diff (`pkg/kis/specs/documented_endpoints.json`, generated `.go` files)
 3. Run live smoke/contract checks for critical endpoints
 4. Commit

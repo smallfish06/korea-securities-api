@@ -4,7 +4,7 @@ import (
 	"context"
 	"strings"
 
-	kiwoomspecs "github.com/smallfish06/krsec/internal/kiwoom/specs"
+	kiwoomspecs "github.com/smallfish06/krsec/pkg/kiwoom/specs"
 )
 
 // InquireBalanceByRequest fetches kt00005.

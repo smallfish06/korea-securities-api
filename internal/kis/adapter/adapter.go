@@ -13,8 +13,9 @@ import (
 	"time"
 
 	"github.com/smallfish06/krsec/internal/kis"
-	kisspecs "github.com/smallfish06/krsec/internal/kis/specs"
 	"github.com/smallfish06/krsec/pkg/broker"
+	kisspecs "github.com/smallfish06/krsec/pkg/kis/specs"
+	tokencache "github.com/smallfish06/krsec/pkg/token"
 )
 
 // Adapter adapts KIS raw API to broker.Broker interface
@@ -28,12 +29,6 @@ type Adapter struct {
 
 	mu     sync.RWMutex
 	orders map[string]orderContext // key: order id
-}
-
-// Options configures adapter internals such as token and persistence strategy.
-type Options struct {
-	TokenManager    kis.TokenManager
-	OrderContextDir string
 }
 
 type orderContext struct {
@@ -52,7 +47,12 @@ type orderContext struct {
 }
 
 // NewAdapterWithOptions creates a new KIS adapter with injectable dependencies.
-func NewAdapterWithOptions(sandbox bool, accountID string, opts Options) *Adapter {
+func NewAdapterWithOptions(
+	sandbox bool,
+	accountID string,
+	tokenManager tokencache.Manager,
+	orderContextDir string,
+) *Adapter {
 	// accountID 형식: "12345678-01" 또는 "12345678"
 	// 분리: CANO = "12345678", ACNT_PRDT_CD = "01"
 	cano := accountID
@@ -65,11 +65,11 @@ func NewAdapterWithOptions(sandbox bool, accountID string, opts Options) *Adapte
 	}
 
 	a := &Adapter{
-		client:        kis.NewClientWithTokenManager(sandbox, opts.TokenManager),
+		client:        kis.NewClientWithTokenManager(sandbox, tokenManager),
 		accountID:     cano,
 		accountPrdtCD: acntPrdtCD,
 		sandbox:       sandbox,
-		orderDir:      strings.TrimSpace(opts.OrderContextDir),
+		orderDir:      strings.TrimSpace(orderContextDir),
 		orders:        make(map[string]orderContext),
 	}
 	a.dispatcher = newEndpointDispatcher(a)
@@ -101,17 +101,17 @@ func (a *Adapter) GetQuote(ctx context.Context, market, symbol string) (*broker.
 		fidCondMrktDivCode = "Q"
 	}
 	resp, err := callEndpointDecoded[struct {
-		Output  []kis.StockPriceOutput `json:"output"`
-		Output1 []kis.StockPriceOutput `json:"output1"`
+		Output  []kisspecs.KISDomesticStockV1QuotationsInquirePriceOutputItem `json:"output"`
+		Output1 []kisspecs.KISDomesticStockV1QuotationsInquirePriceOutputItem `json:"output1"`
 	}](
 		a,
 		ctx,
 		http.MethodGet,
 		kis.PathDomesticStockInquirePrice,
 		"",
-		map[string]string{
-			"FID_COND_MRKT_DIV_CODE": fidCondMrktDivCode,
-			"FID_INPUT_ISCD":         symbol,
+		kisspecs.KISDomesticStockV1QuotationsInquirePriceRequest{
+			FidCondMrktDivCode: fidCondMrktDivCode,
+			FidInputIscd:       symbol,
 		},
 	)
 	if err != nil {
@@ -119,7 +119,7 @@ func (a *Adapter) GetQuote(ctx context.Context, market, symbol string) (*broker.
 	}
 
 	// 응답 데이터가 output 또는 output1에 있을 수 있음
-	var output kis.StockPriceOutput
+	var output kisspecs.KISDomesticStockV1QuotationsInquirePriceOutputItem
 	if len(resp.Output) > 0 {
 		output = resp.Output[0]
 	} else if len(resp.Output1) > 0 {
@@ -159,17 +159,17 @@ func (a *Adapter) GetQuote(ctx context.Context, market, symbol string) (*broker.
 // getOverseasQuote retrieves overseas stock quote via KIS API (HHDFS00000300)
 func (a *Adapter) getOverseasQuote(ctx context.Context, market, symbol, exchangeCode string) (*broker.Quote, error) {
 	resp, err := callEndpointDecoded[struct {
-		Output []kis.OverseasPriceOutput `json:"output"`
+		Output []kisspecs.KISOverseasPriceV1QuotationsPriceDetailOutputItem `json:"output"`
 	}](
 		a,
 		ctx,
 		http.MethodGet,
 		kis.PathOverseasPricePriceDetail,
 		"",
-		map[string]string{
-			"AUTH": "",
-			"EXCD": exchangeCode,
-			"SYMB": symbol,
+		kisspecs.KISOverseasPriceV1QuotationsPriceDetailRequest{
+			Auth: "",
+			Excd: exchangeCode,
+			Symb: symbol,
 		},
 	)
 	if err != nil {
@@ -219,19 +219,19 @@ func (a *Adapter) GetOHLCV(ctx context.Context, market, symbol string, opts brok
 		fidCondMrktDivCode = "Q"
 	}
 	resp, err := callEndpointDecoded[struct {
-		Output  []kis.StockDailyPriceOutput `json:"output"`
-		Output1 []kis.StockDailyPriceOutput `json:"output1"`
+		Output  []kisspecs.KISDomesticStockV1QuotationsInquireDailyPriceOutputItem `json:"output"`
+		Output1 []kisspecs.KISDomesticStockV1QuotationsInquireDailyPriceOutputItem `json:"output1"`
 	}](
 		a,
 		ctx,
 		http.MethodGet,
 		kis.PathDomesticStockInquireDailyPrice,
 		"",
-		map[string]string{
-			"FID_COND_MRKT_DIV_CODE": fidCondMrktDivCode,
-			"FID_INPUT_ISCD":         symbol,
-			"FID_PERIOD_DIV_CODE":    "D",
-			"FID_ORG_ADJ_PRC":        "0",
+		kisspecs.KISDomesticStockV1QuotationsInquireDailyPriceRequest{
+			FidCondMrktDivCode: fidCondMrktDivCode,
+			FidInputIscd:       symbol,
+			FidPeriodDivCode:   "D",
+			FidOrgAdjPrc:       "0",
 		},
 	)
 	if err != nil {
@@ -270,25 +270,22 @@ func (a *Adapter) GetBalance(ctx context.Context, accountID string) (*broker.Bal
 	cano, acntPrdtCD := a.parseAccountID(accountID)
 
 	resp, err := callEndpointDecoded[struct {
-		Output2 []kis.StockBalanceSummary `json:"output2"`
+		Output2 []kisspecs.KISDomesticStockV1TradingInquireBalanceOutput2Item `json:"output2"`
 	}](
 		a,
 		ctx,
 		http.MethodGet,
 		kis.PathDomesticStockTradingInquireBalance,
 		"",
-		map[string]string{
-			"CANO":                  cano,
-			"ACNT_PRDT_CD":          acntPrdtCD,
-			"AFHR_FLPR_YN":          "N",
-			"INQR_DVSN":             "01",
-			"UNPR_DVSN":             "01",
-			"FUND_STTL_ICLD_YN":     "N",
-			"FNCG_AMT_AUTO_RDPT_YN": "N",
-			"OFL_YN":                "",
-			"PRCS_DVSN":             "00",
-			"CTX_AREA_FK100":        "",
-			"CTX_AREA_NK100":        "",
+		kisspecs.KISDomesticStockV1TradingInquireBalanceRequest{
+			Cano:              cano,
+			AcntPrdtCd:        acntPrdtCD,
+			AfhrFlprYn:        "N",
+			InqrDvsn:          "01",
+			UnprDvsn:          "01",
+			FundSttlIcldYn:    "N",
+			FncgAmtAutoRdptYn: "N",
+			PrcsDvsn:          "00",
 		},
 	)
 	if err != nil {
@@ -303,7 +300,7 @@ func (a *Adapter) GetBalance(ctx context.Context, accountID string) (*broker.Bal
 	return toBrokerBalance(accountID, summary), nil
 }
 
-func toBrokerBalance(accountID string, summary kis.StockBalanceSummary) *broker.Balance {
+func toBrokerBalance(accountID string, summary kisspecs.KISDomesticStockV1TradingInquireBalanceOutput2Item) *broker.Balance {
 	cash := parseFirstFloat(summary.DncaTotAmt)
 	return &broker.Balance{
 		AccountID:        accountID,
@@ -322,7 +319,7 @@ func toBrokerBalance(accountID string, summary kis.StockBalanceSummary) *broker.
 	}
 }
 
-func toBrokerStockPosition(item kis.StockBalanceOutput) broker.Position {
+func toBrokerStockPosition(item kisspecs.KISDomesticStockV1TradingInquireBalanceOutput1Item) broker.Position {
 	qty, _ := strconv.ParseInt(item.HldgQty, 10, 64)
 	orderableQty, _ := strconv.ParseInt(item.OrdPsblQty, 10, 64)
 	return broker.Position{
@@ -349,25 +346,22 @@ func (a *Adapter) GetPositions(ctx context.Context, accountID string) ([]broker.
 
 	// 1. 주식 잔고 조회
 	resp, err := callEndpointDecoded[struct {
-		Output1 []kis.StockBalanceOutput `json:"output1"`
+		Output1 []kisspecs.KISDomesticStockV1TradingInquireBalanceOutput1Item `json:"output1"`
 	}](
 		a,
 		ctx,
 		http.MethodGet,
 		kis.PathDomesticStockTradingInquireBalance,
 		"",
-		map[string]string{
-			"CANO":                  cano,
-			"ACNT_PRDT_CD":          acntPrdtCD,
-			"AFHR_FLPR_YN":          "N",
-			"INQR_DVSN":             "01",
-			"UNPR_DVSN":             "01",
-			"FUND_STTL_ICLD_YN":     "N",
-			"FNCG_AMT_AUTO_RDPT_YN": "N",
-			"OFL_YN":                "",
-			"PRCS_DVSN":             "00",
-			"CTX_AREA_FK100":        "",
-			"CTX_AREA_NK100":        "",
+		kisspecs.KISDomesticStockV1TradingInquireBalanceRequest{
+			Cano:              cano,
+			AcntPrdtCd:        acntPrdtCD,
+			AfhrFlprYn:        "N",
+			InqrDvsn:          "01",
+			UnprDvsn:          "01",
+			FundSttlIcldYn:    "N",
+			FncgAmtAutoRdptYn: "N",
+			PrcsDvsn:          "00",
 		},
 	)
 	if err == nil {
@@ -378,22 +372,22 @@ func (a *Adapter) GetPositions(ctx context.Context, accountID string) ([]broker.
 
 	// 2. 채권 잔고 조회 (실패해도 주식 결과는 반환)
 	bondResp, err := callEndpointDecoded[struct {
-		Output  []kis.BondBalanceOutput `json:"output"`
-		Output1 []kis.BondBalanceOutput `json:"output1"`
+		Output  []kisspecs.KISDomesticBondV1TradingInquireBalanceOutputItem `json:"output"`
+		Output1 []kisspecs.KISDomesticBondV1TradingInquireBalanceOutputItem `json:"output1"`
 	}](
 		a,
 		ctx,
 		http.MethodGet,
 		kis.PathDomesticBondInquireBalance,
 		"",
-		map[string]string{
-			"CANO":           cano,
-			"ACNT_PRDT_CD":   acntPrdtCD,
-			"INQR_CNDT":      "00",
-			"PDNO":           "",
-			"BUY_DT":         "",
-			"CTX_AREA_FK200": "",
-			"CTX_AREA_NK200": "",
+		kisspecs.KISDomesticBondV1TradingInquireBalanceRequest{
+			Cano:         cano,
+			AcntPrdtCd:   acntPrdtCD,
+			InqrCndt:     "00",
+			Pdno:         "",
+			BuyDt:        "",
+			CtxAreaFk200: "",
+			CtxAreaNk200: "",
 		},
 	)
 	if err != nil {
@@ -479,16 +473,16 @@ func (a *Adapter) GetInstrument(ctx context.Context, market, symbol string) (*br
 
 	if isOverseas {
 		resp, err := callEndpointDecoded[struct {
-			Output []kis.OverseasProductBasicInfoOutput `json:"output"`
+			Output []kisspecs.KISOverseasPriceV1QuotationsSearchInfoOutputItem `json:"output"`
 		}](
 			a,
 			ctx,
 			http.MethodGet,
 			kis.PathOverseasPriceSearchInfo,
 			"",
-			map[string]string{
-				"PDNO":         symbol,
-				"PRDT_TYPE_CD": prdtTypeCode,
+			kisspecs.KISOverseasPriceV1QuotationsSearchInfoRequest{
+				Pdno:       symbol,
+				PrdtTypeCd: prdtTypeCode,
 			},
 		)
 		if err != nil {
@@ -537,16 +531,16 @@ func (a *Adapter) GetInstrument(ctx context.Context, market, symbol string) (*br
 	}
 
 	resp, err := callEndpointDecoded[struct {
-		Output []kis.StockBasicInfoOutput `json:"output"`
+		Output []kisspecs.KISDomesticStockV1QuotationsSearchStockInfoOutputItem `json:"output"`
 	}](
 		a,
 		ctx,
 		http.MethodGet,
 		kis.PathDomesticStockSearchStockInfo,
 		"",
-		map[string]string{
-			"PDNO":         symbol,
-			"PRDT_TYPE_CD": prdtTypeCode,
+		kisspecs.KISDomesticStockV1QuotationsSearchStockInfoRequest{
+			Pdno:       symbol,
+			PrdtTypeCd: prdtTypeCode,
 		},
 	)
 	if err == nil {
@@ -583,16 +577,16 @@ func (a *Adapter) GetInstrument(ctx context.Context, market, symbol string) (*br
 
 	// Fallback to the more generic domestic product info API when stock-info is unavailable.
 	fallback, fallbackErr := callEndpointDecoded[struct {
-		Output []kis.ProductBasicInfoOutput `json:"output"`
+		Output []kisspecs.KISDomesticStockV1QuotationsSearchInfoOutputItem `json:"output"`
 	}](
 		a,
 		ctx,
 		http.MethodGet,
 		kis.PathDomesticStockSearchInfo,
 		"",
-		map[string]string{
-			"PDNO":         symbol,
-			"PRDT_TYPE_CD": prdtTypeCode,
+		kisspecs.KISDomesticStockV1QuotationsSearchInfoRequest{
+			Pdno:       symbol,
+			PrdtTypeCd: prdtTypeCode,
 		},
 	)
 	if fallbackErr != nil {
@@ -1406,14 +1400,10 @@ func callEndpointDecoded[T any](
 	method string,
 	path string,
 	trID string,
-	fields interface{},
+	request interface{},
 ) (T, error) {
 	var zero T
-	reqFields, err := kis.DocumentedRequestFields(fields)
-	if err != nil {
-		return zero, err
-	}
-	payload, err := a.CallEndpoint(ctx, method, path, trID, reqFields)
+	payload, err := a.CallEndpoint(ctx, method, path, trID, request)
 	if err != nil {
 		return zero, err
 	}
@@ -1428,29 +1418,29 @@ func callEndpointDecoded[T any](
 	return out, nil
 }
 
-func (a *Adapter) strictInquirePossibleRvseCncl(ctx context.Context, cano, acntPrdt string) ([]kis.StockRvseCnclCandidate, error) {
+func (a *Adapter) strictInquirePossibleRvseCncl(ctx context.Context, cano, acntPrdt string) ([]kisspecs.KISDomesticStockV1TradingInquirePsblRvsecnclOutputItem, error) {
 	resp, err := callEndpointDecoded[struct {
-		Output []kis.StockRvseCnclCandidate `json:"output"`
+		Output []kisspecs.KISDomesticStockV1TradingInquirePsblRvsecnclOutputItem `json:"output"`
 	}](
 		a,
 		ctx,
 		http.MethodGet,
 		kis.PathDomesticStockTradingInquirePsblRvseCncl,
 		"",
-		map[string]string{
-			"CANO":           cano,
-			"ACNT_PRDT_CD":   acntPrdt,
-			"CTX_AREA_FK100": "",
-			"CTX_AREA_NK100": "",
-			"INQR_DVSN_1":    "0",
-			"INQR_DVSN_2":    "0",
+		kisspecs.KISDomesticStockV1TradingInquirePsblRvsecnclRequest{
+			Cano:         cano,
+			AcntPrdtCd:   acntPrdt,
+			CtxAreaFk100: "",
+			CtxAreaNk100: "",
+			InqrDvsn1:    "0",
+			InqrDvsn2:    "0",
 		},
 	)
 	if err != nil {
 		return nil, err
 	}
 	if resp.Output == nil {
-		return []kis.StockRvseCnclCandidate{}, nil
+		return []kisspecs.KISDomesticStockV1TradingInquirePsblRvsecnclOutputItem{}, nil
 	}
 	return resp.Output, nil
 }
@@ -1458,7 +1448,7 @@ func (a *Adapter) strictInquirePossibleRvseCncl(ctx context.Context, cano, acntP
 func (a *Adapter) strictInquireDailyCcld(
 	ctx context.Context,
 	accountNo, accountProductCode, startDate, endDate, orderOrgNo, orderNo, exchangeID string,
-) ([]kis.DomesticDailyCcldItem, error) {
+) ([]kisspecs.KISDomesticStockV1TradingInquireDailyCcldOutput1Item, error) {
 	if accountProductCode == "" {
 		accountProductCode = "01"
 	}
@@ -1476,36 +1466,34 @@ func (a *Adapter) strictInquireDailyCcld(
 	}
 
 	resp, err := callEndpointDecoded[struct {
-		Output1 []kis.DomesticDailyCcldItem `json:"output1"`
+		Output1 []kisspecs.KISDomesticStockV1TradingInquireDailyCcldOutput1Item `json:"output1"`
 	}](
 		a,
 		ctx,
 		http.MethodGet,
 		kis.PathDomesticStockTradingInquireDailyCcld,
 		"",
-		map[string]string{
-			"CANO":            accountNo,
-			"ACNT_PRDT_CD":    accountProductCode,
-			"INQR_STRT_DT":    startDate,
-			"INQR_END_DT":     endDate,
-			"SLL_BUY_DVSN_CD": "00",
-			"INQR_DVSN":       "00",
-			"PDNO":            "",
-			"CCLD_DVSN":       "00",
-			"ORD_GNO_BRNO":    orderOrgNo,
-			"ODNO":            orderNo,
-			"INQR_DVSN_3":     "00",
-			"INQR_DVSN_1":     "",
-			"EXCG_ID_DVSN_CD": exchangeID,
-			"CTX_AREA_FK100":  "",
-			"CTX_AREA_NK100":  "",
+		kisspecs.KISDomesticStockV1TradingInquireDailyCcldRequest{
+			Cano:         accountNo,
+			AcntPrdtCd:   accountProductCode,
+			InqrStrtDt:   startDate,
+			InqrEndDt:    endDate,
+			SllBuyDvsnCd: "00",
+			InqrDvsn:     "00",
+			CcldDvsn:     "00",
+			OrdGnoBrno:   orderOrgNo,
+			InqrDvsn3:    "00",
+			InqrDvsn1:    "",
+			ExcgIdDvsnCd: exchangeID,
+			CtxAreaFk100: "",
+			CtxAreaNk100: "",
 		},
 	)
 	if err != nil {
 		return nil, err
 	}
 	if resp.Output1 == nil {
-		return []kis.DomesticDailyCcldItem{}, nil
+		return []kisspecs.KISDomesticStockV1TradingInquireDailyCcldOutput1Item{}, nil
 	}
 	return resp.Output1, nil
 }
@@ -1513,7 +1501,7 @@ func (a *Adapter) strictInquireDailyCcld(
 func (a *Adapter) strictInquireOverseasCcnl(
 	ctx context.Context,
 	accountNo, accountProductCode, startDate, endDate, exchangeCode string,
-) ([]kis.OverseasCcnlItem, error) {
+) ([]kisspecs.KISOverseasStockV1TradingInquireCcnlOutputItem, error) {
 	if accountProductCode == "" {
 		accountProductCode = "01"
 	}
@@ -1532,7 +1520,7 @@ func (a *Adapter) strictInquireOverseasCcnl(
 
 	ctxFK := ""
 	ctxNK := ""
-	all := make([]kis.OverseasCcnlItem, 0)
+	all := make([]kisspecs.KISOverseasStockV1TradingInquireCcnlOutputItem, 0)
 	seenCursors := make(map[string]struct{})
 	const maxPages = 200
 
@@ -1544,30 +1532,30 @@ func (a *Adapter) strictInquireOverseasCcnl(
 		}
 
 		resp, err := callEndpointDecoded[struct {
-			CtxAreaFK200 string                 `json:"ctx_area_fk200"`
-			CtxAreaNK200 string                 `json:"ctx_area_nk200"`
-			Output       []kis.OverseasCcnlItem `json:"output"`
+			CtxAreaFK200 string                                                    `json:"ctx_area_fk200"`
+			CtxAreaNK200 string                                                    `json:"ctx_area_nk200"`
+			Output       []kisspecs.KISOverseasStockV1TradingInquireCcnlOutputItem `json:"output"`
 		}](
 			a,
 			ctx,
 			http.MethodGet,
 			kis.PathOverseasStockTradingInquireCcnl,
 			"",
-			map[string]string{
-				"CANO":           accountNo,
-				"ACNT_PRDT_CD":   accountProductCode,
-				"PDNO":           "%",
-				"ORD_STRT_DT":    startDate,
-				"ORD_END_DT":     endDate,
-				"SLL_BUY_DVSN":   "00",
-				"CCLD_NCCS_DVSN": "00",
-				"OVRS_EXCG_CD":   exchangeCode,
-				"SORT_SQN":       "DS",
-				"ORD_DT":         "",
-				"ORD_GNO_BRNO":   "",
-				"ODNO":           "",
-				"CTX_AREA_NK200": ctxNK,
-				"CTX_AREA_FK200": ctxFK,
+			kisspecs.KISOverseasStockV1TradingInquireCcnlRequest{
+				Cano:         accountNo,
+				AcntPrdtCd:   accountProductCode,
+				Pdno:         "%",
+				OrdStrtDt:    startDate,
+				OrdEndDt:     endDate,
+				SllBuyDvsn:   "00",
+				CcldNccsDvsn: "00",
+				OvrsExcgCd:   exchangeCode,
+				SortSqn:      "DS",
+				OrdDt:        "",
+				OrdGnoBrno:   "",
+				Odno:         "",
+				CtxAreaNk200: ctxNK,
+				CtxAreaFk200: ctxFK,
 			},
 		)
 		if err != nil {
@@ -1590,7 +1578,7 @@ func (a *Adapter) strictInquireOverseasCcnl(
 		ctxNK = nextNK
 	}
 	if all == nil {
-		return []kis.OverseasCcnlItem{}, nil
+		return []kisspecs.KISOverseasStockV1TradingInquireCcnlOutputItem{}, nil
 	}
 	return all, nil
 }

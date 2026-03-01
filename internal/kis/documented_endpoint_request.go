@@ -5,7 +5,7 @@ import (
 	"fmt"
 	"strings"
 
-	kisspecs "github.com/smallfish06/krsec/internal/kis/specs"
+	kisspecs "github.com/smallfish06/krsec/pkg/kis/specs"
 )
 
 // DocumentedRequestFields normalizes documented request structs/maps into endpoint fields.

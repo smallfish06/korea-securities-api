@@ -7,7 +7,7 @@ import (
 	"net/http/httptest"
 	"testing"
 
-	kiwoomspecs "github.com/smallfish06/krsec/internal/kiwoom/specs"
+	kiwoomspecs "github.com/smallfish06/krsec/pkg/kiwoom/specs"
 )
 
 func TestCallDocumentedEndpoint_OrderBook_UsesKa10004AndMrkcondPath(t *testing.T) {

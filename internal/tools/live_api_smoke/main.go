@@ -11,12 +11,13 @@ import (
 	"time"
 
 	"github.com/smallfish06/krsec/internal/kis"
-	kisadapter "github.com/smallfish06/krsec/internal/kis/adapter"
 	"github.com/smallfish06/krsec/internal/kiwoom"
-	kiwoomadapter "github.com/smallfish06/krsec/internal/kiwoom/adapter"
-	kiwoomspecs "github.com/smallfish06/krsec/internal/kiwoom/specs"
 	"github.com/smallfish06/krsec/pkg/broker"
 	"github.com/smallfish06/krsec/pkg/config"
+	pkgkis "github.com/smallfish06/krsec/pkg/kis"
+	pkgkiwoom "github.com/smallfish06/krsec/pkg/kiwoom"
+	kiwoomspecs "github.com/smallfish06/krsec/pkg/kiwoom/specs"
+	tokencache "github.com/smallfish06/krsec/pkg/token"
 )
 
 type smokeResult struct {
@@ -49,8 +50,8 @@ func main() {
 
 	var results []smokeResult
 
-	kisTokenManager := kis.NewFileTokenManagerWithDir(cfg.Storage.TokenDir)
-	kiwoomTokenManager := kiwoom.NewFileTokenManagerWithDir(cfg.Storage.TokenDir)
+	kisTokenManager := pkgkis.NewFileTokenManagerWithDir(cfg.Storage.TokenDir)
+	kiwoomTokenManager := pkgkiwoom.NewFileTokenManagerWithDir(cfg.Storage.TokenDir)
 
 	for _, acc := range cfg.Accounts {
 		acc := acc
@@ -83,8 +84,8 @@ func main() {
 	}
 }
 
-func runKISAccount(results *[]smokeResult, acc config.AccountConfig, tm kis.TokenManager, orderContextDir string) {
-	a := kisadapter.NewAdapterWithOptions(acc.Sandbox, acc.AccountID, kisadapter.Options{
+func runKISAccount(results *[]smokeResult, acc config.AccountConfig, tm tokencache.Manager, orderContextDir string) {
+	a := pkgkis.NewAdapterWithOptions(acc.Sandbox, acc.AccountID, pkgkis.Options{
 		TokenManager:    tm,
 		OrderContextDir: orderContextDir,
 	})
@@ -142,8 +143,8 @@ func runKISAccount(results *[]smokeResult, acc config.AccountConfig, tm kis.Toke
 	}
 }
 
-func runKiwoomAccount(results *[]smokeResult, acc config.AccountConfig, tm kiwoom.TokenManager, orderContextDir string) {
-	a := kiwoomadapter.NewAdapterWithOptions(acc.Sandbox, acc.AccountID, kiwoomadapter.Options{
+func runKiwoomAccount(results *[]smokeResult, acc config.AccountConfig, tm tokencache.Manager, orderContextDir string) {
+	a := pkgkiwoom.NewAdapterWithOptions(acc.Sandbox, acc.AccountID, pkgkiwoom.Options{
 		TokenManager:    tm,
 		OrderContextDir: orderContextDir,
 	})

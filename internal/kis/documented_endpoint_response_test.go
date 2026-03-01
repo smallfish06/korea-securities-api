@@ -6,7 +6,7 @@ import (
 	"net/http/httptest"
 	"testing"
 
-	kisspecs "github.com/smallfish06/krsec/internal/kis/specs"
+	kisspecs "github.com/smallfish06/krsec/pkg/kis/specs"
 )
 
 func TestDocumentedEndpointResponseFactoryCoverage(t *testing.T) {

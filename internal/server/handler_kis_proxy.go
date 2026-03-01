@@ -52,8 +52,8 @@ type kisEndpointCaller interface {
 		method string,
 		path string,
 		trID string,
-		fields map[string]string,
-	) (map[string]interface{}, error)
+		request interface{},
+	) (interface{}, error)
 }
 
 func (s *Server) handleKISProxyStatic(path string) func(fuego.ContextWithBody[kisProxyRequest]) (Response, error) {
@@ -93,11 +93,11 @@ func (s *Server) handleKISProxyPath(c fuego.ContextWithBody[kisProxyRequest], ra
 		return respond(c, http.StatusBadRequest, Response{OK: false, Error: "selected account does not support KIS endpoint dispatch"})
 	}
 
-	fields := mergeStringMaps(
+	request := mergeStringMaps(
 		mergeStringMaps(toStringMap(req.Query), toStringMap(req.Params)),
 		toStringMap(req.Body),
 	)
-	result, err := impl.CallEndpoint(c.Context(), method, rawPath, trID, fields)
+	result, err := impl.CallEndpoint(c.Context(), method, rawPath, trID, request)
 	if err != nil {
 		return respond(c, statusFromBrokerError(err, http.StatusInternalServerError), Response{
 			OK:     false,

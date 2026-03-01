@@ -14,12 +14,12 @@ import (
 
 	"github.com/smallfish06/krsec/internal/kis"
 	kisadapter "github.com/smallfish06/krsec/internal/kis/adapter"
-	kisspecs "github.com/smallfish06/krsec/internal/kis/specs"
 	"github.com/smallfish06/krsec/internal/kiwoom"
 	kiwoomadapter "github.com/smallfish06/krsec/internal/kiwoom/adapter"
-	kiwoomspecs "github.com/smallfish06/krsec/internal/kiwoom/specs"
 	"github.com/smallfish06/krsec/pkg/broker"
 	"github.com/smallfish06/krsec/pkg/config"
+	kisspecs "github.com/smallfish06/krsec/pkg/kis/specs"
+	kiwoomspecs "github.com/smallfish06/krsec/pkg/kiwoom/specs"
 )
 
 // Server represents the HTTP server
@@ -79,10 +79,12 @@ func New(cfg *config.Config) *Server {
 		var brk broker.Broker
 		switch account.Broker {
 		case broker.CodeKIS:
-			adapter := kisadapter.NewAdapterWithOptions(account.Sandbox, account.AccountID, kisadapter.Options{
-				TokenManager:    kisTokenManager,
-				OrderContextDir: cfg.Storage.OrderContextDir,
-			})
+			adapter := kisadapter.NewAdapterWithOptions(
+				account.Sandbox,
+				account.AccountID,
+				kisTokenManager,
+				cfg.Storage.OrderContextDir,
+			)
 			creds := broker.Credentials{
 				AppKey:    account.AppKey,
 				AppSecret: account.AppSecret,
@@ -123,10 +125,12 @@ func New(cfg *config.Config) *Server {
 			}(account.Name, adapter)
 			brk = adapter
 		case broker.CodeKiwoom:
-			adapter := kiwoomadapter.NewAdapterWithOptions(account.Sandbox, account.AccountID, kiwoomadapter.Options{
-				TokenManager:    kiwoomTokenManager,
-				OrderContextDir: cfg.Storage.OrderContextDir,
-			})
+			adapter := kiwoomadapter.NewAdapterWithOptions(
+				account.Sandbox,
+				account.AccountID,
+				kiwoomTokenManager,
+				cfg.Storage.OrderContextDir,
+			)
 			creds := broker.Credentials{
 				AppKey:    account.AppKey,
 				AppSecret: account.AppSecret,

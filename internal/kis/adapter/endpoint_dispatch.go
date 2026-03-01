@@ -2,17 +2,16 @@ package adapter
 
 import (
 	"context"
-	"encoding/json"
 	"fmt"
 	"net/http"
 	"strings"
 
 	"github.com/smallfish06/krsec/internal/kis"
-	kisspecs "github.com/smallfish06/krsec/internal/kis/specs"
 	"github.com/smallfish06/krsec/pkg/broker"
+	kisspecs "github.com/smallfish06/krsec/pkg/kis/specs"
 )
 
-type endpointDispatchFunc func(ctx context.Context, method string, trID string, fields map[string]string) (map[string]interface{}, error)
+type endpointDispatchFunc func(ctx context.Context, method string, trID string, fields map[string]string) (interface{}, error)
 
 type endpointDispatcher struct {
 	adapter *Adapter
@@ -67,7 +66,7 @@ func (d *endpointDispatcher) registerDocumentedKISRoutes() {
 }
 
 func (d *endpointDispatcher) dispatchDocumentedKISEndpoint(path string, spec kisspecs.KISEndpointSpec) endpointDispatchFunc {
-	return func(ctx context.Context, method string, trID string, fields map[string]string) (map[string]interface{}, error) {
+	return func(ctx context.Context, method string, trID string, fields map[string]string) (interface{}, error) {
 		for _, req := range spec.RequiredFields {
 			k := strings.ToUpper(strings.TrimSpace(req))
 			if k == "" {
@@ -91,8 +90,10 @@ func (d *endpointDispatcher) dispatchDocumentedKISEndpoint(path string, spec kis
 		if resp == nil {
 			return nil, fmt.Errorf("%w: missing documented response type for path %s", broker.ErrInvalidOrderRequest, path)
 		}
-		err := d.adapter.client.CallDocumentedEndpointInto(ctx, method, path, effectiveTRID, fields, resp)
-		return marshalMap(resp, err)
+		if err := d.adapter.client.CallDocumentedEndpointInto(ctx, method, path, effectiveTRID, fields, resp); err != nil {
+			return nil, err
+		}
+		return resp, nil
 	}
 }
 
@@ -101,12 +102,16 @@ func (d *endpointDispatcher) callEndpoint(
 	method string,
 	path string,
 	trID string,
-	fields map[string]string,
-) (map[string]interface{}, error) {
+	request interface{},
+) (interface{}, error) {
 	m := strings.ToUpper(strings.TrimSpace(method))
 
 	normalizedPath := normalizeEndpointPath(path)
-	normalizedFields := normalizeEndpointFields(fields)
+	normalizedFields, err := kis.DocumentedRequestFields(request)
+	if err != nil {
+		return nil, fmt.Errorf("%w: %v", broker.ErrInvalidOrderRequest, err)
+	}
+	normalizedFields = normalizeEndpointFields(normalizedFields)
 
 	route, ok := d.routes[normalizedPath]
 	if !ok {
@@ -128,13 +133,13 @@ func (a *Adapter) CallEndpoint(
 	method string,
 	path string,
 	trID string,
-	fields map[string]string,
-) (map[string]interface{}, error) {
+	request interface{},
+) (interface{}, error) {
 	dispatcher := a.dispatcher
 	if dispatcher == nil {
 		dispatcher = newEndpointDispatcher(a)
 	}
-	return dispatcher.callEndpoint(ctx, method, path, trID, fields)
+	return dispatcher.callEndpoint(ctx, method, path, trID, request)
 }
 
 func normalizeEndpointPath(path string) string {
@@ -164,29 +169,4 @@ func normalizeEndpointFields(in map[string]string) map[string]string {
 		out[key] = strings.TrimSpace(v)
 	}
 	return out
-}
-
-func marshalMap(v interface{}, err error) (map[string]interface{}, error) {
-	if err != nil {
-		return nil, err
-	}
-	if v == nil {
-		return map[string]interface{}{}, nil
-	}
-	data, err := json.Marshal(v)
-	if err != nil {
-		return nil, fmt.Errorf("marshal response: %w", err)
-	}
-
-	out := make(map[string]interface{})
-	if err := json.Unmarshal(data, &out); err == nil {
-		return out, nil
-	}
-
-	items := make([]interface{}, 0)
-	if err := json.Unmarshal(data, &items); err == nil {
-		return map[string]interface{}{"items": items}, nil
-	}
-
-	return nil, fmt.Errorf("decode response map: expected object or array")
 }
