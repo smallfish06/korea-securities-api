@@ -70,8 +70,3 @@ func defaultTokenDir(cwd string) (string, error) {
 func findProjectRoot(start string) (string, bool) {
 	return filetoken.FindProjectRoot(start)
 }
-
-// hashAppKey returns the first 12 characters of the sha256 hash of the appkey.
-func hashAppKey(appKey string) string {
-	return filetoken.HashAppKey(appKey)
-}

@@ -54,19 +54,3 @@ func GetTokenManager() tokencache.Manager {
 	}
 	return globalTokenManager
 }
-
-func (tm *FileTokenManager) tokenDir() (string, error) {
-	return tm.TokenDir()
-}
-
-func defaultTokenDir(cwd string) (string, error) {
-	return filetoken.DefaultTokenDir(cwd)
-}
-
-func findProjectRoot(start string) (string, bool) {
-	return filetoken.FindProjectRoot(start)
-}
-
-func hashAppKey(appKey string) string {
-	return filetoken.HashAppKey(appKey)
-}
