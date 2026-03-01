@@ -95,7 +95,7 @@ func TestBootstrapMasterSymbols_RetryAfterFailure(t *testing.T) {
 		{URL: failServer.URL + "/kospi_code.mst.zip", Market: "KOSPI", Exchange: "KRX", TailLen: 228},
 	}
 
-	client := NewClient(false)
+	client := NewClientWithTokenManager(false, nil)
 	if _, err := client.BootstrapMasterSymbols(context.Background()); err == nil {
 		t.Fatalf("expected bootstrap failure")
 	}
@@ -148,7 +148,7 @@ func TestReloadMasterSymbols_OverridesExistingCache(t *testing.T) {
 		{URL: server.URL + "/kospi_code.mst.zip", Market: "KOSPI", Exchange: "KRX", TailLen: 228},
 	}
 
-	client := NewClient(false)
+	client := NewClientWithTokenManager(false, nil)
 	if _, err := client.BootstrapMasterSymbols(context.Background()); err != nil {
 		t.Fatalf("bootstrap failed: %v", err)
 	}

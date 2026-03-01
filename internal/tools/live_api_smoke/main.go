@@ -4,6 +4,7 @@ import (
 	"context"
 	"flag"
 	"fmt"
+	"maps"
 	"net/http"
 	"os"
 	"sort"
@@ -12,6 +13,7 @@ import (
 
 	"github.com/smallfish06/krsec/internal/kis"
 	"github.com/smallfish06/krsec/internal/kiwoom"
+	pkgadapter "github.com/smallfish06/krsec/pkg/adapter"
 	"github.com/smallfish06/krsec/pkg/broker"
 	"github.com/smallfish06/krsec/pkg/config"
 	pkgkis "github.com/smallfish06/krsec/pkg/kis"
@@ -85,7 +87,7 @@ func main() {
 }
 
 func runKISAccount(results *[]smokeResult, acc config.AccountConfig, tm tokencache.Manager, orderContextDir string) {
-	a := pkgkis.NewAdapterWithOptions(acc.Sandbox, acc.AccountID, pkgkis.Options{
+	a := pkgkis.NewAdapterWithOptions(acc.Sandbox, acc.AccountID, pkgadapter.Options{
 		TokenManager:    tm,
 		OrderContextDir: orderContextDir,
 	})
@@ -144,7 +146,7 @@ func runKISAccount(results *[]smokeResult, acc config.AccountConfig, tm tokencac
 }
 
 func runKiwoomAccount(results *[]smokeResult, acc config.AccountConfig, tm tokencache.Manager, orderContextDir string) {
-	a := pkgkiwoom.NewAdapterWithOptions(acc.Sandbox, acc.AccountID, pkgkiwoom.Options{
+	a := pkgkiwoom.NewAdapterWithOptions(acc.Sandbox, acc.AccountID, pkgadapter.Options{
 		TokenManager:    tm,
 		OrderContextDir: orderContextDir,
 	})
@@ -406,11 +408,7 @@ func cloneMap(in map[string]string) map[string]string {
 	if len(in) == 0 {
 		return map[string]string{}
 	}
-	out := make(map[string]string, len(in))
-	for k, v := range in {
-		out[k] = v
-	}
-	return out
+	return maps.Clone(in)
 }
 
 func shorten(s string, max int) string {

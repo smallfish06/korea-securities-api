@@ -12,6 +12,8 @@ import (
 	"sync"
 	"time"
 
+	"github.com/samber/lo"
+
 	"github.com/smallfish06/krsec/internal/kis"
 	"github.com/smallfish06/krsec/pkg/broker"
 	kisspecs "github.com/smallfish06/krsec/pkg/kis/specs"
@@ -1719,10 +1721,11 @@ func parseYN(v string) bool {
 }
 
 func firstNonEmpty(v ...string) string {
-	for _, s := range v {
-		if strings.TrimSpace(s) != "" {
-			return s
-		}
+	first, ok := lo.Find(v, func(s string) bool {
+		return strings.TrimSpace(s) != ""
+	})
+	if ok {
+		return first
 	}
 	return ""
 }

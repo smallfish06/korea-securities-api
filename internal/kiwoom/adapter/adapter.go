@@ -4,6 +4,7 @@ import (
 	"context"
 	"encoding/json"
 	"fmt"
+	"log"
 	"math"
 	"reflect"
 	"sort"
@@ -11,6 +12,8 @@ import (
 	"strings"
 	"sync"
 	"time"
+
+	"github.com/samber/lo"
 
 	"github.com/smallfish06/krsec/internal/kiwoom"
 	"github.com/smallfish06/krsec/pkg/broker"
@@ -57,7 +60,9 @@ func NewAdapterWithOptions(
 		orders:    make(map[string]orderContext),
 	}
 	a.dispatcher = newEndpointDispatcher(a)
-	_ = a.loadOrderContexts()
+	if err := a.loadOrderContexts(); err != nil {
+		log.Printf("Warning: failed to load persisted orders for %s: %v", a.accountID, err)
+	}
 	return a
 }
 
@@ -942,10 +947,11 @@ func marketFromCode(code, name string) string {
 }
 
 func firstNonEmpty(values ...string) string {
-	for _, v := range values {
-		if strings.TrimSpace(v) != "" {
-			return strings.TrimSpace(v)
-		}
+	first, ok := lo.Find(values, func(v string) bool {
+		return strings.TrimSpace(v) != ""
+	})
+	if ok {
+		return strings.TrimSpace(first)
 	}
 	return ""
 }

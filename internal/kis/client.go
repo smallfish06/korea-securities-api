@@ -16,6 +16,7 @@ import (
 
 	"github.com/smallfish06/krsec/internal/ratelimit"
 	"github.com/smallfish06/krsec/pkg/broker"
+	kisspecs "github.com/smallfish06/krsec/pkg/kis/specs"
 	tokencache "github.com/smallfish06/krsec/pkg/token"
 )
 
@@ -39,11 +40,6 @@ type Client struct {
 
 	apiLimiter   *ratelimit.Limiter
 	tokenManager tokencache.Manager
-}
-
-// NewClient creates a new KIS client
-func NewClient(sandbox bool) *Client {
-	return NewClientWithTokenManager(sandbox, nil)
 }
 
 // NewClientWithTokenManager creates a new KIS client with an injected token manager.
@@ -293,7 +289,7 @@ func checkEndpointResult(result interface{}) error {
 	switch v := result.(type) {
 	case nil:
 		return nil
-	case DocumentedEndpointResponse:
+	case kisspecs.DocumentedEndpointResponse:
 		if !v.IsSuccess() {
 			return fmt.Errorf("KIS API error: %s (%s)", v.GetMsg1(), v.GetMsgCode())
 		}

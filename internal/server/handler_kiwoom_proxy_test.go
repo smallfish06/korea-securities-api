@@ -185,3 +185,48 @@ func TestHandleKiwoomProxy_StaticRoute(t *testing.T) {
 		t.Fatalf("request stk_cd = %#v, want 005930", reqMap["stk_cd"])
 	}
 }
+
+func TestHandleKiwoomProxy_MethodNormalizedToUpper(t *testing.T) {
+	t.Parallel()
+
+	kiwoomBroker := &proxyKiwoomBroker{
+		proxyStubBroker: proxyStubBroker{name: "KIWOOM"},
+		resp:            map[string]interface{}{"return_code": 0, "return_msg": "ok"},
+	}
+	s := newOrderTestServer(
+		map[string]broker.Broker{"kiwoom-acc": kiwoomBroker},
+		[]config.AccountConfig{{AccountID: "kiwoom-acc", Broker: "kiwoom"}},
+	)
+
+	body := []byte(`{"method":"get","api_id":"ka10001","params":{"stk_cd":"005930"}}`)
+	req := httptest.NewRequest(http.MethodPost, "/kiwoom/dostk/stkinfo", bytes.NewReader(body))
+	rr := performFiberRequest(t, s, req)
+
+	if rr.Code != http.StatusOK {
+		t.Fatalf("expected 200, got %d body=%s", rr.Code, rr.Body.String())
+	}
+	if kiwoomBroker.gotMethod != http.MethodGet {
+		t.Fatalf("method = %q, want GET", kiwoomBroker.gotMethod)
+	}
+}
+
+func TestHandleKiwoomProxy_InvalidMethodRejected(t *testing.T) {
+	t.Parallel()
+
+	kiwoomBroker := &proxyKiwoomBroker{proxyStubBroker: proxyStubBroker{name: "KIWOOM"}}
+	s := newOrderTestServer(
+		map[string]broker.Broker{"kiwoom-acc": kiwoomBroker},
+		[]config.AccountConfig{{AccountID: "kiwoom-acc", Broker: "kiwoom"}},
+	)
+
+	body := []byte(`{"method":"trace","api_id":"ka10001","params":{"stk_cd":"005930"}}`)
+	req := httptest.NewRequest(http.MethodPost, "/kiwoom/dostk/stkinfo", bytes.NewReader(body))
+	rr := performFiberRequest(t, s, req)
+
+	if rr.Code != http.StatusBadRequest {
+		t.Fatalf("expected 400, got %d body=%s", rr.Code, rr.Body.String())
+	}
+	if kiwoomBroker.called {
+		t.Fatalf("expected broker not to be called")
+	}
+}

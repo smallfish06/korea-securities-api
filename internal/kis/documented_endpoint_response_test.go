@@ -12,7 +12,7 @@ import (
 func TestDocumentedEndpointResponseFactoryCoverage(t *testing.T) {
 	t.Parallel()
 
-	if got := DocumentedEndpointResponseFactoryCount(); got != 273 {
+	if got := kisspecs.DocumentedEndpointResponseFactoryCount(); got != 273 {
 		t.Fatalf("factory count = %d, want 273", got)
 	}
 }
@@ -20,7 +20,7 @@ func TestDocumentedEndpointResponseFactoryCoverage(t *testing.T) {
 func TestNewDocumentedEndpointResponse_KnownAndUnknown(t *testing.T) {
 	t.Parallel()
 
-	got := NewDocumentedEndpointResponse("/uapi/domestic-stock/v1/quotations/inquire-price")
+	got := kisspecs.NewDocumentedEndpointResponse("/uapi/domestic-stock/v1/quotations/inquire-price")
 	if got == nil {
 		t.Fatal("expected typed response for known path")
 	}
@@ -28,7 +28,7 @@ func TestNewDocumentedEndpointResponse_KnownAndUnknown(t *testing.T) {
 		t.Fatalf("unexpected type: %T", got)
 	}
 
-	if unk := NewDocumentedEndpointResponse("/uapi/unknown/path"); unk != nil {
+	if unk := kisspecs.NewDocumentedEndpointResponse("/uapi/unknown/path"); unk != nil {
 		t.Fatalf("expected nil for unknown path, got %T", unk)
 	}
 }
@@ -48,7 +48,7 @@ func TestCallDocumentedEndpointInto_TypedResponseCheck(t *testing.T) {
 	defer ts.Close()
 
 	c := newAuthedTestClient(ts.URL)
-	resp := NewDocumentedEndpointResponse("/uapi/domestic-stock/v1/quotations/chk-holiday")
+	resp := kisspecs.NewDocumentedEndpointResponse("/uapi/domestic-stock/v1/quotations/chk-holiday")
 	if resp == nil {
 		t.Fatal("typed response factory returned nil")
 	}
@@ -63,7 +63,7 @@ func TestCallDocumentedEndpointInto_TypedResponseCheck(t *testing.T) {
 func TestDocumentedResponseBase_EmptyRtCdTreatedSuccess(t *testing.T) {
 	t.Parallel()
 
-	base := &DocumentedResponseBase{}
+	base := &kisspecs.DocumentedResponseBase{}
 	if !base.IsSuccess() {
 		t.Fatal("expected empty rt_cd to be treated as success")
 	}

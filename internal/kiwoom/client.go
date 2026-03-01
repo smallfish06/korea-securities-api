@@ -6,8 +6,10 @@ import (
 	"encoding/json"
 	"fmt"
 	"io"
+	"maps"
 	"net/http"
 	neturl "net/url"
+	"slices"
 	"strconv"
 	"strings"
 	"sync"
@@ -52,16 +54,7 @@ func cloneBody(body map[string]interface{}) map[string]interface{} {
 	if body == nil {
 		return map[string]interface{}{}
 	}
-	out := make(map[string]interface{}, len(body))
-	for k, v := range body {
-		out[k] = v
-	}
-	return out
-}
-
-// NewClient creates a new Kiwoom client.
-func NewClient(sandbox bool) *Client {
-	return NewClientWithTokenManager(sandbox, nil)
+	return maps.Clone(body)
 }
 
 // NewClientWithTokenManager creates a client with injected token manager.
@@ -206,12 +199,7 @@ func (c *Client) CallDocumentedEndpoint(
 }
 
 func containsCode(codes []int, target int) bool {
-	for _, c := range codes {
-		if c == target {
-			return true
-		}
-	}
-	return false
+	return slices.Contains(codes, target)
 }
 
 func validateDocumentedRequestBody(body interface{}) error {

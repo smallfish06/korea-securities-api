@@ -7,6 +7,8 @@ import (
 	"net/http"
 	"net/http/httptest"
 	"testing"
+
+	kisspecs "github.com/smallfish06/krsec/pkg/kis/specs"
 )
 
 func TestCallDocumentedEndpoint_GET(t *testing.T) {
@@ -32,7 +34,7 @@ func TestCallDocumentedEndpoint_GET(t *testing.T) {
 	defer ts.Close()
 
 	client := newAuthedTestClient(ts.URL)
-	resp := NewDocumentedEndpointResponse("/uapi/domestic-stock/v1/quotations/chk-holiday")
+	resp := kisspecs.NewDocumentedEndpointResponse("/uapi/domestic-stock/v1/quotations/chk-holiday")
 	if resp == nil {
 		t.Fatal("expected documented response type")
 	}
@@ -82,7 +84,7 @@ func TestCallDocumentedEndpoint_POST(t *testing.T) {
 	defer ts.Close()
 
 	client := newAuthedTestClient(ts.URL)
-	resp := NewDocumentedEndpointResponse("/uapi/domestic-bond/v1/trading/buy")
+	resp := kisspecs.NewDocumentedEndpointResponse("/uapi/domestic-bond/v1/trading/buy")
 	if resp == nil {
 		t.Fatal("expected documented response type")
 	}
@@ -110,7 +112,7 @@ func TestCallDocumentedEndpoint_POST_APIError(t *testing.T) {
 	defer ts.Close()
 
 	client := newAuthedTestClient(ts.URL)
-	resp := NewDocumentedEndpointResponse("/uapi/domestic-bond/v1/trading/buy")
+	resp := kisspecs.NewDocumentedEndpointResponse("/uapi/domestic-bond/v1/trading/buy")
 	if resp == nil {
 		t.Fatal("expected documented response type")
 	}

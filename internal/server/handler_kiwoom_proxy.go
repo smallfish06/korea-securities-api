@@ -2,11 +2,13 @@ package server
 
 import (
 	"context"
+	"log"
 	"net/http"
 	"strings"
 
 	"github.com/go-fuego/fuego"
 
+	"github.com/smallfish06/krsec/internal/endpointpath"
 	"github.com/smallfish06/krsec/internal/kiwoom"
 	"github.com/smallfish06/krsec/pkg/broker"
 )
@@ -41,20 +43,15 @@ func (s *Server) handleKiwoomProxy(c fuego.ContextWithBody[kiwoomProxyRequest]) 
 	if err != nil {
 		return respond(c, http.StatusBadRequest, Response{OK: false, Error: "invalid request body"})
 	}
-
-	apiID := strings.TrimSpace(req.APIID)
-	if apiID == "" {
-		return respond(c, http.StatusBadRequest, Response{OK: false, Error: "api_id is required"})
+	if err := validateKiwoomProxyRequest(&req); err != nil {
+		log.Printf("Warning: Kiwoom proxy validation failed path=%s account_id=%s err=%v", rawPath, req.AccountID, err)
+		return respond(c, http.StatusBadRequest, Response{OK: false, Error: err.Error()})
 	}
 
-	method := strings.ToUpper(strings.TrimSpace(req.Method))
+	apiID := req.APIID
+	method := req.Method
 	if method == "" {
 		method = http.MethodPost
-	}
-	switch method {
-	case http.MethodGet, http.MethodPost, http.MethodPut, http.MethodDelete, http.MethodPatch:
-	default:
-		return respond(c, http.StatusBadRequest, Response{OK: false, Error: "unsupported method"})
 	}
 
 	brk, status, reason := s.resolveKiwoomProxyBroker(req.AccountID)
@@ -152,15 +149,5 @@ func (s *Server) resolveKiwoomProxyBroker(accountID string) (broker.Broker, int,
 }
 
 func normalizeKiwoomProxyPath(path string) string {
-	path = strings.TrimSpace(path)
-	if path == "" {
-		return ""
-	}
-	if !strings.HasPrefix(path, "/") {
-		path = "/" + path
-	}
-	if !strings.HasPrefix(path, kiwoom.PathPrefixAPISlash) {
-		path = kiwoom.PathPrefixAPI + path
-	}
-	return path
+	return endpointpath.Normalize(path, kiwoom.PathPrefixAPI, kiwoom.PathPrefixAPISlash)
 }
