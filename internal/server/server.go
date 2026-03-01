@@ -5,6 +5,7 @@ import (
 	"fmt"
 	"log"
 	"net/http"
+	"sort"
 	"strings"
 	"time"
 
@@ -13,6 +14,7 @@ import (
 
 	"github.com/smallfish06/krsec/internal/kis"
 	kisadapter "github.com/smallfish06/krsec/internal/kis/adapter"
+	kisspecs "github.com/smallfish06/krsec/internal/kis/specs"
 	"github.com/smallfish06/krsec/internal/kiwoom"
 	kiwoomadapter "github.com/smallfish06/krsec/internal/kiwoom/adapter"
 	"github.com/smallfish06/krsec/pkg/broker"
@@ -188,14 +190,8 @@ func (s *Server) routes() {
 		fuego.OptionDescription("Authenticate with a broker and receive an access token."),
 	)
 
-	// KIS endpoint dispatcher (calls supported KIS endpoints by path)
-	fuego.Post(s.router, "/kis/{path...}", s.handleKISProxy,
-		fuego.OptionTags("KIS"),
-		fuego.OptionSummary("Call KIS endpoint by path"),
-		fuego.OptionDescription("Calls KIS endpoints implemented in krsec by path. Example path: overseas-price/v1/quotations/price"),
-		fuego.OptionPath("path", "KIS API path under /uapi. Accepts wildcard segments."),
-		fuego.OptionQuery("account_id", "Optional account selector when multiple KIS accounts exist."),
-	)
+	// KIS static endpoint routes (documented KIS paths exposed as static OpenAPI operations)
+	s.registerKISStaticProxyRoutes()
 
 	// Kiwoom endpoint dispatcher (calls supported Kiwoom endpoints by path + api_id)
 	fuego.Post(s.router, "/kiwoom/{path...}", s.handleKiwoomProxy,
@@ -298,6 +294,65 @@ func (s *Server) routes() {
 		fuego.OptionPath("account_id", "Account that placed the order"),
 		fuego.OptionPath("order_id", "Order ID to modify"),
 	)
+}
+
+func (s *Server) registerKISStaticProxyRoutes() {
+	uapiPaths := make([]string, 0, len(kisspecs.DocumentedKISEndpointSpecs))
+	for p := range kisspecs.DocumentedKISEndpointSpecs {
+		uapiPaths = append(uapiPaths, p)
+	}
+	sort.Strings(uapiPaths)
+
+	for _, uapiPath := range uapiPaths {
+		spec := kisspecs.DocumentedKISEndpointSpecs[uapiPath]
+		proxyPath := toKISStaticProxyPath(uapiPath)
+		if proxyPath == "" {
+			continue
+		}
+
+		desc := fmt.Sprintf("Static documented KIS proxy route for %s %s.", strings.ToUpper(strings.TrimSpace(spec.Method)), uapiPath)
+		summary := "Call KIS static endpoint " + proxyPath
+
+		options := []fuego.RouteOption{
+			fuego.OptionTags("KIS"),
+			fuego.OptionSummary(summary),
+			fuego.OptionDescription(desc),
+			fuego.OptionQuery("account_id", "Optional account selector when multiple KIS accounts exist."),
+		}
+
+		if reqType := kisspecs.NewDocumentedEndpointRequest(uapiPath); reqType != nil {
+			options = append(options, fuego.OptionRequestBody(fuego.RequestBody{
+				Type:         reqType,
+				ContentTypes: []string{"application/json"},
+			}))
+		}
+		if respType := kisspecs.NewDocumentedEndpointResponse(uapiPath); respType != nil {
+			options = append(options, fuego.OptionAddResponse(http.StatusOK, "OK", fuego.Response{
+				Type:         respType,
+				ContentTypes: []string{"application/json"},
+			}))
+		}
+
+		fuego.Post(s.router, proxyPath, s.handleKISProxyStatic(uapiPath), options...)
+	}
+}
+
+func toKISStaticProxyPath(uapiPath string) string {
+	p := strings.TrimSpace(uapiPath)
+	if p == "" {
+		return ""
+	}
+	if !strings.HasPrefix(p, "/") {
+		p = "/" + p
+	}
+	if !strings.HasPrefix(p, kis.PathPrefixUAPISlash) {
+		return ""
+	}
+	trimmed := strings.TrimPrefix(p, kis.PathPrefixUAPI)
+	if trimmed == "" || trimmed == "/" {
+		return ""
+	}
+	return "/kis" + trimmed
 }
 
 // Run starts the HTTP server

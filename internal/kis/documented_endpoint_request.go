@@ -4,6 +4,8 @@ import (
 	"encoding/json"
 	"fmt"
 	"strings"
+
+	kisspecs "github.com/smallfish06/krsec/internal/kis/specs"
 )
 
 // DocumentedRequestFields normalizes documented request structs/maps into endpoint fields.
@@ -48,4 +50,14 @@ func DocumentedRequestFields(v interface{}) (map[string]string, error) {
 		fields[k] = strings.TrimSpace(val)
 	}
 	return fields, nil
+}
+
+// NewDocumentedEndpointRequest returns a typed request object for the endpoint path.
+func NewDocumentedEndpointRequest(path string) interface{} {
+	return kisspecs.NewDocumentedEndpointRequest(strings.TrimSpace(path))
+}
+
+// DocumentedEndpointRequestFactoryCount returns the number of typed documented endpoint requests.
+func DocumentedEndpointRequestFactoryCount() int {
+	return kisspecs.DocumentedEndpointRequestFactoryCount()
 }

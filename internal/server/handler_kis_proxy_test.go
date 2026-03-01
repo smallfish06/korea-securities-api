@@ -155,6 +155,33 @@ func TestHandleKISProxy_GETBodyCompatibility(t *testing.T) {
 	}
 }
 
+func TestHandleKISProxy_StaticFlatRequestCompatibility(t *testing.T) {
+	t.Parallel()
+
+	kisBroker := &proxyKISBroker{
+		proxyStubBroker: proxyStubBroker{name: "KIS"},
+		resp:            map[string]interface{}{"rt_cd": "0"},
+	}
+	s := newOrderTestServer(
+		map[string]broker.Broker{"kis-acc": kisBroker},
+		[]config.AccountConfig{{AccountID: "kis-acc", Broker: "kis"}},
+	)
+
+	body := []byte(`{"FID_COND_MRKT_DIV_CODE":"J","FID_INPUT_ISCD":"KR103501GE04"}`)
+	req := httptest.NewRequest(http.MethodPost, "/kis/domestic-bond/v1/quotations/inquire-price", bytes.NewReader(body))
+	rr := performFiberRequest(t, s, req)
+
+	if rr.Code != http.StatusOK {
+		t.Fatalf("expected 200, got %d body=%s", rr.Code, rr.Body.String())
+	}
+	if got := kisBroker.gotFields["FID_COND_MRKT_DIV_CODE"]; got != "J" {
+		t.Fatalf("query FID_COND_MRKT_DIV_CODE = %q, want J", got)
+	}
+	if got := kisBroker.gotFields["FID_INPUT_ISCD"]; got != "KR103501GE04" {
+		t.Fatalf("query FID_INPUT_ISCD = %q", got)
+	}
+}
+
 func TestHandleKISProxy_TRIDOptional(t *testing.T) {
 	t.Parallel()
 
@@ -212,5 +239,29 @@ func TestHandleKISProxy_NonKISAccountRejected(t *testing.T) {
 
 	if rr.Code != http.StatusBadRequest {
 		t.Fatalf("expected 400, got %d body=%s", rr.Code, rr.Body.String())
+	}
+}
+
+func TestHandleKISProxy_StrictOnlyUndocumentedPathReturnsNotFound(t *testing.T) {
+	t.Parallel()
+
+	kisBroker := &proxyKISBroker{
+		proxyStubBroker: proxyStubBroker{name: "KIS"},
+		resp:            map[string]interface{}{"rt_cd": "0"},
+	}
+	s := newOrderTestServer(
+		map[string]broker.Broker{"kis-acc": kisBroker},
+		[]config.AccountConfig{{AccountID: "kis-acc", Broker: "kis"}},
+	)
+
+	body := []byte(`{"ANY":"VALUE"}`)
+	req := httptest.NewRequest(http.MethodPost, "/kis/not-documented/v1/endpoint", bytes.NewReader(body))
+	rr := performFiberRequest(t, s, req)
+
+	if rr.Code != http.StatusNotFound {
+		t.Fatalf("expected 404, got %d body=%s", rr.Code, rr.Body.String())
+	}
+	if kisBroker.called {
+		t.Fatalf("expected broker not to be called for undocumented path")
 	}
 }

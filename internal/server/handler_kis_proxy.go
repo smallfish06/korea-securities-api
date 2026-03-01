@@ -2,6 +2,7 @@ package server
 
 import (
 	"context"
+	"encoding/json"
 	"fmt"
 	"net/http"
 	"strings"
@@ -21,6 +22,30 @@ type kisProxyRequest struct {
 	Body      map[string]interface{} `json:"body,omitempty"`
 }
 
+func (r *kisProxyRequest) UnmarshalJSON(data []byte) error {
+	type alias kisProxyRequest
+	var decoded alias
+	if err := json.Unmarshal(data, &decoded); err != nil {
+		return err
+	}
+
+	var flat map[string]interface{}
+	if err := json.Unmarshal(data, &flat); err != nil {
+		return err
+	}
+	delete(flat, "account_id")
+	delete(flat, "method")
+	delete(flat, "tr_id")
+	delete(flat, "params")
+	delete(flat, "query")
+	delete(flat, "body")
+
+	decoded.Params = mergeInterfaceMaps(flat, decoded.Params)
+
+	*r = kisProxyRequest(decoded)
+	return nil
+}
+
 type kisEndpointCaller interface {
 	CallEndpoint(
 		ctx context.Context,
@@ -31,9 +56,14 @@ type kisEndpointCaller interface {
 	) (map[string]interface{}, error)
 }
 
-// handleKISProxy handles POST /kis/{path...}
-func (s *Server) handleKISProxy(c fuego.ContextWithBody[kisProxyRequest]) (Response, error) {
-	rawPath := normalizeKISProxyPath(c.PathParam("path"))
+func (s *Server) handleKISProxyStatic(path string) func(fuego.ContextWithBody[kisProxyRequest]) (Response, error) {
+	rawPath := normalizeKISProxyPath(path)
+	return func(c fuego.ContextWithBody[kisProxyRequest]) (Response, error) {
+		return s.handleKISProxyPath(c, rawPath)
+	}
+}
+
+func (s *Server) handleKISProxyPath(c fuego.ContextWithBody[kisProxyRequest], rawPath string) (Response, error) {
 	if rawPath == "" {
 		return respond(c, http.StatusBadRequest, Response{OK: false, Error: "path is required"})
 	}
@@ -145,6 +175,20 @@ func mergeStringMaps(base map[string]string, override map[string]string) map[str
 		return nil
 	}
 	out := make(map[string]string, len(base)+len(override))
+	for k, v := range base {
+		out[k] = v
+	}
+	for k, v := range override {
+		out[k] = v
+	}
+	return out
+}
+
+func mergeInterfaceMaps(base map[string]interface{}, override map[string]interface{}) map[string]interface{} {
+	if len(base) == 0 && len(override) == 0 {
+		return nil
+	}
+	out := make(map[string]interface{}, len(base)+len(override))
 	for k, v := range base {
 		out[k] = v
 	}

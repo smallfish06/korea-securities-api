@@ -120,6 +120,71 @@ func TestNew_OpenAPIEndpoints(t *testing.T) {
 		t.Fatalf("unexpected openapi spec body: %s", rr.Body.String())
 	}
 
+	var openapi map[string]interface{}
+	if err := json.Unmarshal(rr.Body.Bytes(), &openapi); err != nil {
+		t.Fatalf("unmarshal openapi spec: %v", err)
+	}
+
+	paths, ok := openapi["paths"].(map[string]interface{})
+	if !ok {
+		t.Fatalf("openapi paths not found")
+	}
+	pathItem, ok := paths["/kis/domestic-bond/v1/quotations/inquire-price"].(map[string]interface{})
+	if !ok {
+		t.Fatalf("expected static KIS endpoint in openapi spec")
+	}
+	if _, hasWildcard := paths["/kis/{path...}"]; hasWildcard {
+		t.Fatalf("unexpected wildcard KIS endpoint in openapi spec")
+	}
+	postOp, ok := pathItem["post"].(map[string]interface{})
+	if !ok {
+		t.Fatalf("expected POST operation in static KIS endpoint")
+	}
+
+	reqBody, ok := postOp["requestBody"].(map[string]interface{})
+	if !ok {
+		t.Fatalf("requestBody missing in static KIS endpoint")
+	}
+	reqContent, ok := reqBody["content"].(map[string]interface{})
+	if !ok {
+		t.Fatalf("requestBody.content missing in static KIS endpoint")
+	}
+	reqAppJSON, ok := reqContent["application/json"].(map[string]interface{})
+	if !ok {
+		t.Fatalf("requestBody.content.application/json missing in static KIS endpoint")
+	}
+	reqSchema, ok := reqAppJSON["schema"].(map[string]interface{})
+	if !ok {
+		t.Fatalf("requestBody schema missing in static KIS endpoint")
+	}
+	if got, _ := reqSchema["$ref"].(string); got != "#/components/schemas/KISDomesticBondV1QuotationsInquirePriceRequest" {
+		t.Fatalf("unexpected static request schema ref: %q", got)
+	}
+
+	responses, ok := postOp["responses"].(map[string]interface{})
+	if !ok {
+		t.Fatalf("responses missing in static KIS endpoint")
+	}
+	resp200, ok := responses["200"].(map[string]interface{})
+	if !ok {
+		t.Fatalf("responses.200 missing in static KIS endpoint")
+	}
+	respContent, ok := resp200["content"].(map[string]interface{})
+	if !ok {
+		t.Fatalf("responses.200.content missing in static KIS endpoint")
+	}
+	respAppJSON, ok := respContent["application/json"].(map[string]interface{})
+	if !ok {
+		t.Fatalf("responses.200.content.application/json missing in static KIS endpoint")
+	}
+	respSchema, ok := respAppJSON["schema"].(map[string]interface{})
+	if !ok {
+		t.Fatalf("responses.200 schema missing in static KIS endpoint")
+	}
+	if got, _ := respSchema["$ref"].(string); got != "#/components/schemas/KISDomesticBondV1QuotationsInquirePrice" {
+		t.Fatalf("unexpected static response schema ref: %q", got)
+	}
+
 	req = httptest.NewRequest(http.MethodGet, "/swagger/", nil)
 	rr = httptest.NewRecorder()
 	s.App().Mux.ServeHTTP(rr, req)

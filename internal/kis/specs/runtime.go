@@ -46,9 +46,22 @@ func NewDocumentedEndpointResponse(path string) DocumentedEndpointResponse {
 	return nil
 }
 
+// NewDocumentedEndpointRequest returns a typed request object for the endpoint path.
+func NewDocumentedEndpointRequest(path string) any {
+	if f, ok := documentedEndpointRequestFactories[strings.TrimSpace(path)]; ok {
+		return f()
+	}
+	return nil
+}
+
 // DocumentedEndpointResponseFactoryCount returns the number of typed documented endpoint responses.
 func DocumentedEndpointResponseFactoryCount() int {
 	return len(documentedEndpointResponseFactories)
+}
+
+// DocumentedEndpointRequestFactoryCount returns the number of typed documented endpoint requests.
+func DocumentedEndpointRequestFactoryCount() int {
+	return len(documentedEndpointRequestFactories)
 }
 
 // DocumentedSlice accepts both object and array payloads and normalizes them to a typed slice.

@@ -595,6 +595,12 @@ func generateDocumentedTypesGo(snap *snapshot) ([]byte, error) {
 		fmt.Fprintf(&b, "\t%q: func() DocumentedEndpointResponse { return &%s{} },\n", m.Path, m.TypeName)
 	}
 	b.WriteString("}\n")
+	b.WriteString("\n")
+	b.WriteString("var documentedEndpointRequestFactories = map[string]func() any{\n")
+	for _, m := range models {
+		fmt.Fprintf(&b, "\t%q: func() any { return &%s{} },\n", m.Path, m.RequestType)
+	}
+	b.WriteString("}\n")
 
 	return format.Source([]byte(b.String()))
 }
