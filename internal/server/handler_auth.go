@@ -25,11 +25,11 @@ func (s *Server) handleAuthToken(c fuego.ContextWithBody[AuthTokenRequest]) (Res
 		})
 	}
 
-	brk := s.getFirstBroker()
+	brk, status, reason := s.resolveAuthBroker(req.Broker, req.Sandbox)
 	if brk == nil {
-		return respond(c, http.StatusServiceUnavailable, Response{
+		return respond(c, status, Response{
 			OK:    false,
-			Error: "no broker available",
+			Error: reason,
 		})
 	}
 

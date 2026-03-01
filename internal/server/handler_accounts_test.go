@@ -58,3 +58,31 @@ func TestHandleGetPositions_UnknownAccountReturnsNotFound(t *testing.T) {
 		t.Fatalf("unexpected error: %s", resp.Error)
 	}
 }
+
+func TestHandleGetBalance_AmbiguousAccountReturnsBadRequest(t *testing.T) {
+	t.Parallel()
+
+	first := newMockBroker(t, "KIS-1")
+	second := newMockBroker(t, "KIS-2")
+	s := newOrderTestServer(
+		map[string]broker.Broker{
+			"12345678-01": first,
+			"12345678-02": second,
+		},
+		[]config.AccountConfig{
+			{AccountID: "12345678-01"},
+			{AccountID: "12345678-02"},
+		},
+	)
+
+	req := httptest.NewRequest(http.MethodGet, "/accounts/12345678/balance", nil)
+	rr := performFiberRequest(t, s, req)
+
+	if rr.Code != http.StatusBadRequest {
+		t.Fatalf("expected 400, got %d body=%s", rr.Code, rr.Body.String())
+	}
+	resp := decodeResponse(t, rr)
+	if resp.Error != ambiguousAccountIDError {
+		t.Fatalf("unexpected error: %s", resp.Error)
+	}
+}

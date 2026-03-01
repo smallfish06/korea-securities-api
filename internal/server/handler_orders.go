@@ -4,7 +4,6 @@ import (
 	"context"
 	"errors"
 	"net/http"
-	"strings"
 
 	"github.com/go-fuego/fuego"
 
@@ -23,9 +22,9 @@ type orderFillsGetter interface {
 func (s *Server) handleGetOrder(c fuego.ContextNoBody) (Response, error) {
 	accountID := c.PathParam("account_id")
 	orderID := c.PathParam("order_id")
-	brk, ok := s.getBrokerStrict(accountID)
-	if !ok {
-		return respond(c, http.StatusNotFound, Response{OK: false, Error: "account not found"})
+	brk, status, reason := s.resolveBrokerByAccountID(accountID)
+	if brk == nil {
+		return respond(c, status, Response{OK: false, Error: reason})
 	}
 
 	getter, ok := brk.(orderGetter)
@@ -61,9 +60,9 @@ func (s *Server) handleGetOrder(c fuego.ContextNoBody) (Response, error) {
 func (s *Server) handleGetOrderFills(c fuego.ContextNoBody) (Response, error) {
 	accountID := c.PathParam("account_id")
 	orderID := c.PathParam("order_id")
-	brk, ok := s.getBrokerStrict(accountID)
-	if !ok {
-		return respond(c, http.StatusNotFound, Response{OK: false, Error: "account not found"})
+	brk, status, reason := s.resolveBrokerByAccountID(accountID)
+	if brk == nil {
+		return respond(c, status, Response{OK: false, Error: reason})
 	}
 
 	getter, ok := brk.(orderFillsGetter)
@@ -99,9 +98,9 @@ func (s *Server) handleGetOrderFills(c fuego.ContextNoBody) (Response, error) {
 func (s *Server) handlePlaceOrder(c fuego.ContextWithBody[broker.OrderRequest]) (Response, error) {
 	accountID := c.PathParam("account_id")
 
-	brk, ok := s.getBrokerStrict(accountID)
-	if !ok {
-		return respond(c, http.StatusNotFound, Response{OK: false, Error: "account not found"})
+	brk, status, reason := s.resolveBrokerByAccountID(accountID)
+	if brk == nil {
+		return respond(c, status, Response{OK: false, Error: reason})
 	}
 
 	req, err := c.Body()
@@ -140,9 +139,9 @@ func (s *Server) handlePlaceOrder(c fuego.ContextWithBody[broker.OrderRequest]) 
 func (s *Server) handleCancelOrder(c fuego.ContextNoBody) (Response, error) {
 	accountID := c.PathParam("account_id")
 	orderID := c.PathParam("order_id")
-	brk, ok := s.getBrokerStrict(accountID)
-	if !ok {
-		return respond(c, http.StatusNotFound, Response{OK: false, Error: "account not found"})
+	brk, status, reason := s.resolveBrokerByAccountID(accountID)
+	if brk == nil {
+		return respond(c, status, Response{OK: false, Error: reason})
 	}
 
 	err := brk.CancelOrder(c.Context(), orderID)
@@ -170,9 +169,9 @@ func (s *Server) handleCancelOrder(c fuego.ContextNoBody) (Response, error) {
 func (s *Server) handleModifyOrder(c fuego.ContextWithBody[broker.ModifyOrderRequest]) (Response, error) {
 	accountID := c.PathParam("account_id")
 	orderID := c.PathParam("order_id")
-	brk, ok := s.getBrokerStrict(accountID)
-	if !ok {
-		return respond(c, http.StatusNotFound, Response{OK: false, Error: "account not found"})
+	brk, status, reason := s.resolveBrokerByAccountID(accountID)
+	if brk == nil {
+		return respond(c, status, Response{OK: false, Error: reason})
 	}
 
 	req, err := c.Body()
@@ -210,7 +209,7 @@ func (s *Server) orderBrokerCandidates(accountID string) []broker.Broker {
 	seen := make(map[broker.Broker]struct{})
 
 	if accountID != "" {
-		if brk, ok := s.getBrokerStrict(accountID); ok {
+		if brk, status, _ := s.resolveBrokerByAccountID(accountID); status == 0 {
 			out = append(out, brk)
 			seen[brk] = struct{}{}
 		}
@@ -225,31 +224,4 @@ func (s *Server) orderBrokerCandidates(accountID string) []broker.Broker {
 	}
 
 	return out
-}
-
-func (s *Server) getBrokerStrict(accountID string) (broker.Broker, bool) {
-	if brk, ok := s.brokers[accountID]; ok {
-		return brk, true
-	}
-	for key, brk := range s.brokers {
-		if strings.HasPrefix(key, accountID+"-") || strings.HasPrefix(accountID, key+"-") || strings.TrimSuffix(key, "-01") == strings.TrimSuffix(accountID, "-01") {
-			return brk, true
-		}
-	}
-	return nil, false
-}
-
-func sameAccountID(a, b string) bool {
-	a = strings.TrimSpace(a)
-	b = strings.TrimSpace(b)
-	if a == b {
-		return true
-	}
-	if strings.TrimSuffix(a, "-01") == strings.TrimSuffix(b, "-01") {
-		return true
-	}
-	if strings.HasPrefix(a, b+"-") || strings.HasPrefix(b, a+"-") {
-		return true
-	}
-	return false
 }

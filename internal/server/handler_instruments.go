@@ -20,13 +20,17 @@ func (s *Server) handleGetInstrument(c fuego.ContextNoBody) (Response, error) {
 	symbol := c.PathParam("symbol")
 	accountID := c.QueryParam("account_id")
 
+	var candidates []broker.Broker
 	if accountID != "" {
-		if _, ok := s.getBrokerStrict(accountID); !ok {
-			return respond(c, http.StatusNotFound, Response{OK: false, Error: "account not found"})
+		brk, status, reason := s.resolveBrokerByAccountID(accountID)
+		if brk == nil {
+			return respond(c, status, Response{OK: false, Error: reason})
 		}
+		candidates = []broker.Broker{brk}
+	} else {
+		candidates = s.orderBrokerCandidates("")
 	}
 
-	candidates := s.orderBrokerCandidates(accountID)
 	if len(candidates) == 0 {
 		return respond(c, http.StatusServiceUnavailable, Response{OK: false, Error: "no broker available"})
 	}

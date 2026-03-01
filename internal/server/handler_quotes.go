@@ -16,8 +16,22 @@ import (
 func (s *Server) handleGetQuote(c fuego.ContextNoBody) (Response, error) {
 	market := c.PathParam("market")
 	symbol := c.PathParam("symbol")
+	accountID := strings.TrimSpace(c.QueryParam("account_id"))
 
-	brk := s.getFirstBroker()
+	var brk broker.Broker
+	if accountID != "" {
+		var status int
+		var reason string
+		brk, status, reason = s.resolveBrokerByAccountID(accountID)
+		if brk == nil {
+			return respond(c, status, Response{
+				OK:    false,
+				Error: reason,
+			})
+		}
+	} else {
+		brk = s.getFirstBroker()
+	}
 	if brk == nil {
 		return respond(c, http.StatusInternalServerError, Response{
 			OK:    false,
@@ -44,8 +58,22 @@ func (s *Server) handleGetQuote(c fuego.ContextNoBody) (Response, error) {
 func (s *Server) handleGetOHLCV(c fuego.ContextNoBody) (Response, error) {
 	market := c.PathParam("market")
 	symbol := c.PathParam("symbol")
+	accountID := strings.TrimSpace(c.QueryParam("account_id"))
 
-	brk := s.getFirstBroker()
+	var brk broker.Broker
+	if accountID != "" {
+		var status int
+		var reason string
+		brk, status, reason = s.resolveBrokerByAccountID(accountID)
+		if brk == nil {
+			return respond(c, status, Response{
+				OK:    false,
+				Error: reason,
+			})
+		}
+	} else {
+		brk = s.getFirstBroker()
+	}
 	if brk == nil {
 		return respond(c, http.StatusInternalServerError, Response{
 			OK:    false,

@@ -75,6 +75,36 @@ func TestHandlePlaceOrder_BodyAccountMismatchReturnsBadRequest(t *testing.T) {
 	}
 }
 
+func TestHandlePlaceOrder_BodyDefaultSuffixAliasAccepted(t *testing.T) {
+	t.Parallel()
+
+	var captured broker.OrderRequest
+	b := newMockBroker(t, "KIS")
+	b.On("PlaceOrder", testifymock.Anything, testifymock.Anything).Run(func(args testifymock.Arguments) {
+		captured = args.Get(1).(broker.OrderRequest)
+	}).Return(&broker.OrderResult{
+		OrderID:   "000123",
+		Status:    broker.OrderStatusPending,
+		Timestamp: time.Now(),
+	}, nil).Once()
+
+	s := newOrderTestServer(
+		map[string]broker.Broker{"12345678-01": b},
+		[]config.AccountConfig{{AccountID: "12345678-01"}},
+	)
+
+	body := []byte(`{"account_id":"12345678","symbol":"005930","market":"KRX","side":"buy","type":"limit","quantity":1,"price":70000}`)
+	req := httptest.NewRequest(http.MethodPost, "/accounts/12345678-01/orders", bytes.NewReader(body))
+	rr := performFiberRequest(t, s, req)
+
+	if rr.Code != http.StatusOK {
+		t.Fatalf("expected 200, got %d body=%s", rr.Code, rr.Body.String())
+	}
+	if captured.AccountID != "12345678-01" {
+		t.Fatalf("account_id = %q, want 12345678-01", captured.AccountID)
+	}
+}
+
 func TestHandlePlaceOrder_UsesBrokerDomainShape(t *testing.T) {
 	t.Parallel()
 
