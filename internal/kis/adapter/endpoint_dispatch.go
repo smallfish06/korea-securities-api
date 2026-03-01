@@ -6,6 +6,7 @@ import (
 	"net/http"
 	"strings"
 
+	"github.com/smallfish06/krsec/internal/endpointpath"
 	"github.com/smallfish06/krsec/internal/kis"
 	"github.com/smallfish06/krsec/pkg/broker"
 	kisspecs "github.com/smallfish06/krsec/pkg/kis/specs"
@@ -86,7 +87,7 @@ func (d *endpointDispatcher) dispatchDocumentedKISEndpoint(path string, spec kis
 			effectiveTRID = d.adapter.client.ResolveTRID(spec.RealTRID, spec.VirtualTRID)
 		}
 
-		resp := kis.NewDocumentedEndpointResponse(path)
+		resp := kisspecs.NewDocumentedEndpointResponse(strings.TrimSpace(path))
 		if resp == nil {
 			return nil, fmt.Errorf("%w: missing documented response type for path %s", broker.ErrInvalidOrderRequest, path)
 		}
@@ -143,17 +144,7 @@ func (a *Adapter) CallEndpoint(
 }
 
 func normalizeEndpointPath(path string) string {
-	path = strings.TrimSpace(path)
-	if path == "" {
-		return ""
-	}
-	if !strings.HasPrefix(path, "/") {
-		path = "/" + path
-	}
-	if !strings.HasPrefix(path, kis.PathPrefixUAPISlash) {
-		path = kis.PathPrefixUAPI + path
-	}
-	return path
+	return endpointpath.Normalize(path, kis.PathPrefixUAPI, kis.PathPrefixUAPISlash)
 }
 
 func normalizeEndpointFields(in map[string]string) map[string]string {

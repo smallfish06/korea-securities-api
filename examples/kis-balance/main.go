@@ -8,6 +8,7 @@ import (
 	"log"
 	"time"
 
+	pkgadapter "github.com/smallfish06/krsec/pkg/adapter"
 	"github.com/smallfish06/krsec/pkg/broker"
 	"github.com/smallfish06/krsec/pkg/config"
 	"github.com/smallfish06/krsec/pkg/kis"
@@ -40,7 +41,7 @@ func main() {
 	}
 
 	tokenManager := kis.NewFileTokenManagerWithDir(cfg.Storage.TokenDir)
-	adapter := kis.NewAdapterWithOptions(account.Sandbox, account.AccountID, kis.Options{
+	adapter := kis.NewAdapterWithOptions(account.Sandbox, account.AccountID, pkgadapter.Options{
 		TokenManager:    tokenManager,
 		OrderContextDir: cfg.Storage.OrderContextDir,
 	})

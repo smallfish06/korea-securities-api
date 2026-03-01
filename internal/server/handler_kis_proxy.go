@@ -4,11 +4,14 @@ import (
 	"context"
 	"encoding/json"
 	"fmt"
+	"log"
+	"maps"
 	"net/http"
 	"strings"
 
 	"github.com/go-fuego/fuego"
 
+	"github.com/smallfish06/krsec/internal/endpointpath"
 	"github.com/smallfish06/krsec/internal/kis"
 	"github.com/smallfish06/krsec/pkg/broker"
 )
@@ -72,16 +75,13 @@ func (s *Server) handleKISProxyPath(c fuego.ContextWithBody[kisProxyRequest], ra
 	if err != nil {
 		return respond(c, http.StatusBadRequest, Response{OK: false, Error: "invalid request body"})
 	}
-
-	trID := strings.TrimSpace(req.TRID)
-	method := strings.ToUpper(strings.TrimSpace(req.Method))
-	if method != "" {
-		switch method {
-		case http.MethodGet, http.MethodPost, http.MethodPut, http.MethodDelete, http.MethodPatch:
-		default:
-			return respond(c, http.StatusBadRequest, Response{OK: false, Error: "unsupported method"})
-		}
+	if err := validateKISProxyRequest(&req); err != nil {
+		log.Printf("Warning: KIS proxy validation failed path=%s account_id=%s err=%v", rawPath, req.AccountID, err)
+		return respond(c, http.StatusBadRequest, Response{OK: false, Error: err.Error()})
 	}
+
+	trID := req.TRID
+	method := req.Method
 
 	brk, status, reason := s.resolveKISProxyBroker(req.AccountID)
 	if brk == nil {
@@ -138,17 +138,7 @@ func (s *Server) resolveKISProxyBroker(accountID string) (broker.Broker, int, st
 }
 
 func normalizeKISProxyPath(path string) string {
-	path = strings.TrimSpace(path)
-	if path == "" {
-		return ""
-	}
-	if !strings.HasPrefix(path, "/") {
-		path = "/" + path
-	}
-	if !strings.HasPrefix(path, kis.PathPrefixUAPISlash) {
-		path = kis.PathPrefixUAPI + path
-	}
-	return path
+	return endpointpath.Normalize(path, kis.PathPrefixUAPI, kis.PathPrefixUAPISlash)
 }
 
 func toStringMap(src map[string]interface{}) map[string]string {
@@ -174,13 +164,11 @@ func mergeStringMaps(base map[string]string, override map[string]string) map[str
 	if len(base) == 0 && len(override) == 0 {
 		return nil
 	}
-	out := make(map[string]string, len(base)+len(override))
-	for k, v := range base {
-		out[k] = v
+	out := maps.Clone(base)
+	if out == nil {
+		out = make(map[string]string, len(override))
 	}
-	for k, v := range override {
-		out[k] = v
-	}
+	maps.Copy(out, override)
 	return out
 }
 
@@ -188,12 +176,10 @@ func mergeInterfaceMaps(base map[string]interface{}, override map[string]interfa
 	if len(base) == 0 && len(override) == 0 {
 		return nil
 	}
-	out := make(map[string]interface{}, len(base)+len(override))
-	for k, v := range base {
-		out[k] = v
+	out := maps.Clone(base)
+	if out == nil {
+		out = make(map[string]interface{}, len(override))
 	}
-	for k, v := range override {
-		out[k] = v
-	}
+	maps.Copy(out, override)
 	return out
 }

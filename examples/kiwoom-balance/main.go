@@ -9,6 +9,7 @@ import (
 	"strings"
 	"time"
 
+	pkgadapter "github.com/smallfish06/krsec/pkg/adapter"
 	"github.com/smallfish06/krsec/pkg/broker"
 	"github.com/smallfish06/krsec/pkg/config"
 	"github.com/smallfish06/krsec/pkg/kiwoom"
@@ -41,7 +42,7 @@ func main() {
 	}
 
 	tokenManager := kiwoom.NewFileTokenManagerWithDir(cfg.Storage.TokenDir)
-	adapter := kiwoom.NewAdapterWithOptions(account.Sandbox, account.AccountID, kiwoom.Options{
+	adapter := kiwoom.NewAdapterWithOptions(account.Sandbox, account.AccountID, pkgadapter.Options{
 		TokenManager:    tokenManager,
 		OrderContextDir: cfg.Storage.OrderContextDir,
 	})

@@ -5,9 +5,11 @@ import (
 	"context"
 	"encoding/json"
 	"fmt"
+	"maps"
 	"net/http"
 	"strings"
 
+	"github.com/smallfish06/krsec/internal/endpointpath"
 	"github.com/smallfish06/krsec/internal/kiwoom"
 	"github.com/smallfish06/krsec/pkg/broker"
 	kiwoomspecs "github.com/smallfish06/krsec/pkg/kiwoom/specs"
@@ -29,6 +31,12 @@ type endpointRoute struct {
 	methods       map[string]struct{}
 	defaultMethod string
 	fn            endpointDispatchFunc
+}
+
+type overrideRouteDef struct {
+	path  string
+	apiID string
+	fn    endpointDispatchFunc
 }
 
 func newEndpointRoute(methods []string, fn endpointDispatchFunc) endpointRoute {
@@ -83,288 +91,267 @@ func (d *endpointDispatcher) registerDocumentedRoutes() {
 
 func (d *endpointDispatcher) registerCoreOverrides() {
 	postMethods := []string{http.MethodPost}
-
-	d.registerOverrideRoute(
-		kiwoom.PathStockInfo,
-		"ka10001",
-		postMethods,
-		newRequestDispatchPrepared[kiwoomspecs.KiwoomApiDostkStkinfoKa10001Request, *kiwoomspecs.KiwoomApiDostkStkinfoKa10001Response](
-			d,
-			func(req *kiwoomspecs.KiwoomApiDostkStkinfoKa10001Request) error {
-				if strings.TrimSpace(req.StkCd) == "" {
-					return broker.ErrInvalidSymbol
-				}
-				return nil
-			},
-			func(client *kiwoom.Client, callCtx context.Context, req kiwoomspecs.KiwoomApiDostkStkinfoKa10001Request) (*kiwoomspecs.KiwoomApiDostkStkinfoKa10001Response, error) {
-				return client.InquirePriceByRequest(callCtx, req)
-			},
-		),
-	)
-	d.registerOverrideRoute(
-		kiwoom.PathStockInfo,
-		"ka10003",
-		postMethods,
-		newRequestDispatch[kiwoomspecs.KiwoomApiDostkStkinfoKa10003Request, *kiwoomspecs.KiwoomApiDostkStkinfoKa10003Response](
-			d,
-			func(client *kiwoom.Client, callCtx context.Context, req kiwoomspecs.KiwoomApiDostkStkinfoKa10003Request) (*kiwoomspecs.KiwoomApiDostkStkinfoKa10003Response, error) {
-				return client.InquireExecutionInfo(callCtx, req)
-			},
-		),
-	)
-	d.registerOverrideRoute(
-		kiwoom.PathStockInfo,
-		"ka10100",
-		postMethods,
-		newRequestDispatch[kiwoomspecs.KiwoomApiDostkStkinfoKa10100Request, *kiwoomspecs.KiwoomApiDostkStkinfoKa10100Response](
-			d,
-			func(client *kiwoom.Client, callCtx context.Context, req kiwoomspecs.KiwoomApiDostkStkinfoKa10100Request) (*kiwoomspecs.KiwoomApiDostkStkinfoKa10100Response, error) {
-				return client.InquireInstrumentInfoByRequest(callCtx, req)
-			},
-		),
-	)
-	d.registerOverrideRoute(
-		kiwoom.PathStockInfo,
-		"ka10059",
-		postMethods,
-		newRequestDispatch[kiwoomspecs.KiwoomApiDostkStkinfoKa10059Request, *kiwoomspecs.KiwoomApiDostkStkinfoKa10059Response](
-			d,
-			func(client *kiwoom.Client, callCtx context.Context, req kiwoomspecs.KiwoomApiDostkStkinfoKa10059Request) (*kiwoomspecs.KiwoomApiDostkStkinfoKa10059Response, error) {
-				return client.InquireInvestorByStock(callCtx, req)
-			},
-		),
-	)
-	d.registerOverrideRoute(
-		kiwoom.PathMarketCond,
-		"ka10004",
-		postMethods,
-		newRequestDispatch[kiwoomspecs.KiwoomApiDostkMrkcondKa10004Request, *kiwoomspecs.KiwoomApiDostkMrkcondKa10004Response](
-			d,
-			func(client *kiwoom.Client, callCtx context.Context, req kiwoomspecs.KiwoomApiDostkMrkcondKa10004Request) (*kiwoomspecs.KiwoomApiDostkMrkcondKa10004Response, error) {
-				return client.InquireOrderBook(callCtx, req)
-			},
-		),
-	)
-	d.registerOverrideRoute(
-		kiwoom.PathRankingInfo,
-		"ka10030",
-		postMethods,
-		newRequestDispatch[kiwoomspecs.KiwoomApiDostkRkinfoKa10030Request, *kiwoomspecs.KiwoomApiDostkRkinfoKa10030Response](
-			d,
-			func(client *kiwoom.Client, callCtx context.Context, req kiwoomspecs.KiwoomApiDostkRkinfoKa10030Request) (*kiwoomspecs.KiwoomApiDostkRkinfoKa10030Response, error) {
-				return client.InquireVolumeRank(callCtx, req)
-			},
-		),
-	)
-	d.registerOverrideRoute(
-		kiwoom.PathRankingInfo,
-		"ka10027",
-		postMethods,
-		newRequestDispatch[kiwoomspecs.KiwoomApiDostkRkinfoKa10027Request, *kiwoomspecs.KiwoomApiDostkRkinfoKa10027Response](
-			d,
-			func(client *kiwoom.Client, callCtx context.Context, req kiwoomspecs.KiwoomApiDostkRkinfoKa10027Request) (*kiwoomspecs.KiwoomApiDostkRkinfoKa10027Response, error) {
-				return client.InquireChangeRateRank(callCtx, req)
-			},
-		),
-	)
-	d.registerOverrideRoute(
-		kiwoom.PathSector,
-		"ka20001",
-		postMethods,
-		newRequestDispatch[kiwoomspecs.KiwoomApiDostkSectKa20001Request, *kiwoomspecs.KiwoomApiDostkSectKa20001Response](
-			d,
-			func(client *kiwoom.Client, callCtx context.Context, req kiwoomspecs.KiwoomApiDostkSectKa20001Request) (*kiwoomspecs.KiwoomApiDostkSectKa20001Response, error) {
-				return client.InquireSectorCurrent(callCtx, req)
-			},
-		),
-	)
-	d.registerOverrideRoute(
-		kiwoom.PathSector,
-		"ka20002",
-		postMethods,
-		newRequestDispatch[kiwoomspecs.KiwoomApiDostkSectKa20002Request, *kiwoomspecs.KiwoomApiDostkSectKa20002Response](
-			d,
-			func(client *kiwoom.Client, callCtx context.Context, req kiwoomspecs.KiwoomApiDostkSectKa20002Request) (*kiwoomspecs.KiwoomApiDostkSectKa20002Response, error) {
-				return client.InquireSectorByPrice(callCtx, req)
-			},
-		),
-	)
-	d.registerOverrideRoute(
-		kiwoom.PathAccount,
-		"kt00005",
-		postMethods,
-		newRequestDispatch[kiwoomspecs.KiwoomApiDostkAcntKt00005Request, *kiwoomspecs.KiwoomApiDostkAcntKt00005Response](
-			d,
-			func(client *kiwoom.Client, callCtx context.Context, req kiwoomspecs.KiwoomApiDostkAcntKt00005Request) (*kiwoomspecs.KiwoomApiDostkAcntKt00005Response, error) {
-				return client.InquireBalanceByRequest(callCtx, req)
-			},
-		),
-	)
-	d.registerOverrideRoute(
-		kiwoom.PathAccount,
-		"kt00018",
-		postMethods,
-		newRequestDispatch[kiwoomspecs.KiwoomApiDostkAcntKt00018Request, *kiwoomspecs.KiwoomApiDostkAcntKt00018Response](
-			d,
-			func(client *kiwoom.Client, callCtx context.Context, req kiwoomspecs.KiwoomApiDostkAcntKt00018Request) (*kiwoomspecs.KiwoomApiDostkAcntKt00018Response, error) {
-				return client.InquirePositionsByRequest(callCtx, req)
-			},
-		),
-	)
-	d.registerOverrideRoute(
-		kiwoom.PathAccount,
-		"ka10075",
-		postMethods,
-		newRequestDispatch[kiwoomspecs.KiwoomApiDostkAcntKa10075Request, *kiwoomspecs.KiwoomApiDostkAcntKa10075Response](
-			d,
-			func(client *kiwoom.Client, callCtx context.Context, req kiwoomspecs.KiwoomApiDostkAcntKa10075Request) (*kiwoomspecs.KiwoomApiDostkAcntKa10075Response, error) {
-				return client.InquireUnsettledOrdersByRequest(callCtx, req)
-			},
-		),
-	)
-	d.registerOverrideRoute(
-		kiwoom.PathAccount,
-		"ka10076",
-		postMethods,
-		newRequestDispatch[kiwoomspecs.KiwoomApiDostkAcntKa10076Request, *kiwoomspecs.KiwoomApiDostkAcntKa10076Response](
-			d,
-			func(client *kiwoom.Client, callCtx context.Context, req kiwoomspecs.KiwoomApiDostkAcntKa10076Request) (*kiwoomspecs.KiwoomApiDostkAcntKa10076Response, error) {
-				return client.InquireOrderExecutionsByRequest(callCtx, req)
-			},
-		),
-	)
-	d.registerOverrideRoute(
-		kiwoom.PathAccount,
-		"kt00007",
-		postMethods,
-		newRequestDispatch[kiwoomspecs.KiwoomApiDostkAcntKt00007Request, *kiwoomspecs.KiwoomApiDostkAcntKt00007Response](
-			d,
-			func(client *kiwoom.Client, callCtx context.Context, req kiwoomspecs.KiwoomApiDostkAcntKt00007Request) (*kiwoomspecs.KiwoomApiDostkAcntKt00007Response, error) {
-				return client.InquireOrderExecutionDetail(callCtx, req)
-			},
-		),
-	)
-	d.registerOverrideRoute(
-		kiwoom.PathAccount,
-		"kt00009",
-		postMethods,
-		newRequestDispatch[kiwoomspecs.KiwoomApiDostkAcntKt00009Request, *kiwoomspecs.KiwoomApiDostkAcntKt00009Response](
-			d,
-			func(client *kiwoom.Client, callCtx context.Context, req kiwoomspecs.KiwoomApiDostkAcntKt00009Request) (*kiwoomspecs.KiwoomApiDostkAcntKt00009Response, error) {
-				return client.InquireOrderExecutionStatus(callCtx, req)
-			},
-		),
-	)
-	d.registerOverrideRoute(
-		kiwoom.PathAccount,
-		"kt00010",
-		postMethods,
-		newRequestDispatch[kiwoomspecs.KiwoomApiDostkAcntKt00010Request, *kiwoomspecs.KiwoomApiDostkAcntKt00010Response](
-			d,
-			func(client *kiwoom.Client, callCtx context.Context, req kiwoomspecs.KiwoomApiDostkAcntKt00010Request) (*kiwoomspecs.KiwoomApiDostkAcntKt00010Response, error) {
-				return client.InquireOrderableWithdrawable(callCtx, req)
-			},
-		),
-	)
-	d.registerOverrideRoute(
-		kiwoom.PathChart,
-		"ka10079",
-		postMethods,
-		newRequestDispatch[kiwoomspecs.KiwoomApiDostkChartKa10079Request, *kiwoomspecs.KiwoomApiDostkChartKa10079Response](
-			d,
-			func(client *kiwoom.Client, callCtx context.Context, req kiwoomspecs.KiwoomApiDostkChartKa10079Request) (*kiwoomspecs.KiwoomApiDostkChartKa10079Response, error) {
-				return client.InquireTickChartByRequest(callCtx, req)
-			},
-		),
-	)
-	d.registerOverrideRoute(
-		kiwoom.PathChart,
-		"ka10060",
-		postMethods,
-		newRequestDispatch[kiwoomspecs.KiwoomApiDostkChartKa10060Request, *kiwoomspecs.KiwoomApiDostkChartKa10060Response](
-			d,
-			func(client *kiwoom.Client, callCtx context.Context, req kiwoomspecs.KiwoomApiDostkChartKa10060Request) (*kiwoomspecs.KiwoomApiDostkChartKa10060Response, error) {
-				return client.InquireInvestorByStockChart(callCtx, req)
-			},
-		),
-	)
-	d.registerOverrideRoute(
-		kiwoom.PathChart,
-		"ka10081",
-		postMethods,
-		newRequestDispatch[kiwoomspecs.KiwoomApiDostkChartKa10081Request, *kiwoomspecs.KiwoomApiDostkChartKa10081Response](
-			d,
-			func(client *kiwoom.Client, callCtx context.Context, req kiwoomspecs.KiwoomApiDostkChartKa10081Request) (*kiwoomspecs.KiwoomApiDostkChartKa10081Response, error) {
-				return client.InquireDailyPriceByRequest(callCtx, req)
-			},
-		),
-	)
-	d.registerOverrideRoute(
-		kiwoom.PathChart,
-		"ka10082",
-		postMethods,
-		newRequestDispatch[kiwoomspecs.KiwoomApiDostkChartKa10082Request, *kiwoomspecs.KiwoomApiDostkChartKa10082Response](
-			d,
-			func(client *kiwoom.Client, callCtx context.Context, req kiwoomspecs.KiwoomApiDostkChartKa10082Request) (*kiwoomspecs.KiwoomApiDostkChartKa10082Response, error) {
-				return client.InquireWeeklyPriceByRequest(callCtx, req)
-			},
-		),
-	)
-	d.registerOverrideRoute(
-		kiwoom.PathChart,
-		"ka10083",
-		postMethods,
-		newRequestDispatch[kiwoomspecs.KiwoomApiDostkChartKa10083Request, *kiwoomspecs.KiwoomApiDostkChartKa10083Response](
-			d,
-			func(client *kiwoom.Client, callCtx context.Context, req kiwoomspecs.KiwoomApiDostkChartKa10083Request) (*kiwoomspecs.KiwoomApiDostkChartKa10083Response, error) {
-				return client.InquireMonthlyPriceByRequest(callCtx, req)
-			},
-		),
-	)
-	d.registerOverrideRoute(
-		kiwoom.PathOrder,
-		"kt10000",
-		postMethods,
-		newRequestDispatch[kiwoomspecs.KiwoomApiDostkOrdrKt10000Request, *kiwoomspecs.KiwoomApiDostkOrdrKt10000Response](
-			d,
-			func(client *kiwoom.Client, callCtx context.Context, req kiwoomspecs.KiwoomApiDostkOrdrKt10000Request) (*kiwoomspecs.KiwoomApiDostkOrdrKt10000Response, error) {
-				return client.PlaceBuyOrder(callCtx, req)
-			},
-		),
-	)
-	d.registerOverrideRoute(
-		kiwoom.PathOrder,
-		"kt10001",
-		postMethods,
-		newRequestDispatch[kiwoomspecs.KiwoomApiDostkOrdrKt10001Request, *kiwoomspecs.KiwoomApiDostkOrdrKt10000Response](
-			d,
-			func(client *kiwoom.Client, callCtx context.Context, req kiwoomspecs.KiwoomApiDostkOrdrKt10001Request) (*kiwoomspecs.KiwoomApiDostkOrdrKt10000Response, error) {
-				return client.PlaceSellOrder(callCtx, req)
-			},
-		),
-	)
-	d.registerOverrideRoute(
-		kiwoom.PathOrder,
-		"kt10002",
-		postMethods,
-		newRequestDispatch[kiwoomspecs.KiwoomApiDostkOrdrKt10002Request, *kiwoomspecs.KiwoomApiDostkOrdrKt10002Response](
-			d,
-			func(client *kiwoom.Client, callCtx context.Context, req kiwoomspecs.KiwoomApiDostkOrdrKt10002Request) (*kiwoomspecs.KiwoomApiDostkOrdrKt10002Response, error) {
-				return client.ModifyStockOrder(callCtx, req)
-			},
-		),
-	)
-	d.registerOverrideRoute(
-		kiwoom.PathOrder,
-		"kt10003",
-		postMethods,
-		newRequestDispatch[kiwoomspecs.KiwoomApiDostkOrdrKt10003Request, *kiwoomspecs.KiwoomApiDostkOrdrKt10003Response](
-			d,
-			func(client *kiwoom.Client, callCtx context.Context, req kiwoomspecs.KiwoomApiDostkOrdrKt10003Request) (*kiwoomspecs.KiwoomApiDostkOrdrKt10003Response, error) {
-				return client.CancelStockOrder(callCtx, req)
-			},
-		),
-	)
+	defs := []overrideRouteDef{
+		{
+			path:  kiwoom.PathStockInfo,
+			apiID: "ka10001",
+			fn: newRequestDispatchPrepared[kiwoomspecs.KiwoomApiDostkStkinfoKa10001Request, *kiwoomspecs.KiwoomApiDostkStkinfoKa10001Response](
+				d,
+				func(req *kiwoomspecs.KiwoomApiDostkStkinfoKa10001Request) error {
+					if strings.TrimSpace(req.StkCd) == "" {
+						return broker.ErrInvalidSymbol
+					}
+					return nil
+				},
+				func(client *kiwoom.Client, callCtx context.Context, req kiwoomspecs.KiwoomApiDostkStkinfoKa10001Request) (*kiwoomspecs.KiwoomApiDostkStkinfoKa10001Response, error) {
+					return client.InquirePriceByRequest(callCtx, req)
+				},
+			),
+		},
+		{
+			path:  kiwoom.PathStockInfo,
+			apiID: "ka10003",
+			fn: newRequestDispatch[kiwoomspecs.KiwoomApiDostkStkinfoKa10003Request, *kiwoomspecs.KiwoomApiDostkStkinfoKa10003Response](
+				d,
+				func(client *kiwoom.Client, callCtx context.Context, req kiwoomspecs.KiwoomApiDostkStkinfoKa10003Request) (*kiwoomspecs.KiwoomApiDostkStkinfoKa10003Response, error) {
+					return client.InquireExecutionInfo(callCtx, req)
+				},
+			),
+		},
+		{
+			path:  kiwoom.PathStockInfo,
+			apiID: "ka10100",
+			fn: newRequestDispatch[kiwoomspecs.KiwoomApiDostkStkinfoKa10100Request, *kiwoomspecs.KiwoomApiDostkStkinfoKa10100Response](
+				d,
+				func(client *kiwoom.Client, callCtx context.Context, req kiwoomspecs.KiwoomApiDostkStkinfoKa10100Request) (*kiwoomspecs.KiwoomApiDostkStkinfoKa10100Response, error) {
+					return client.InquireInstrumentInfoByRequest(callCtx, req)
+				},
+			),
+		},
+		{
+			path:  kiwoom.PathStockInfo,
+			apiID: "ka10059",
+			fn: newRequestDispatch[kiwoomspecs.KiwoomApiDostkStkinfoKa10059Request, *kiwoomspecs.KiwoomApiDostkStkinfoKa10059Response](
+				d,
+				func(client *kiwoom.Client, callCtx context.Context, req kiwoomspecs.KiwoomApiDostkStkinfoKa10059Request) (*kiwoomspecs.KiwoomApiDostkStkinfoKa10059Response, error) {
+					return client.InquireInvestorByStock(callCtx, req)
+				},
+			),
+		},
+		{
+			path:  kiwoom.PathMarketCond,
+			apiID: "ka10004",
+			fn: newRequestDispatch[kiwoomspecs.KiwoomApiDostkMrkcondKa10004Request, *kiwoomspecs.KiwoomApiDostkMrkcondKa10004Response](
+				d,
+				func(client *kiwoom.Client, callCtx context.Context, req kiwoomspecs.KiwoomApiDostkMrkcondKa10004Request) (*kiwoomspecs.KiwoomApiDostkMrkcondKa10004Response, error) {
+					return client.InquireOrderBook(callCtx, req)
+				},
+			),
+		},
+		{
+			path:  kiwoom.PathRankingInfo,
+			apiID: "ka10030",
+			fn: newRequestDispatch[kiwoomspecs.KiwoomApiDostkRkinfoKa10030Request, *kiwoomspecs.KiwoomApiDostkRkinfoKa10030Response](
+				d,
+				func(client *kiwoom.Client, callCtx context.Context, req kiwoomspecs.KiwoomApiDostkRkinfoKa10030Request) (*kiwoomspecs.KiwoomApiDostkRkinfoKa10030Response, error) {
+					return client.InquireVolumeRank(callCtx, req)
+				},
+			),
+		},
+		{
+			path:  kiwoom.PathRankingInfo,
+			apiID: "ka10027",
+			fn: newRequestDispatch[kiwoomspecs.KiwoomApiDostkRkinfoKa10027Request, *kiwoomspecs.KiwoomApiDostkRkinfoKa10027Response](
+				d,
+				func(client *kiwoom.Client, callCtx context.Context, req kiwoomspecs.KiwoomApiDostkRkinfoKa10027Request) (*kiwoomspecs.KiwoomApiDostkRkinfoKa10027Response, error) {
+					return client.InquireChangeRateRank(callCtx, req)
+				},
+			),
+		},
+		{
+			path:  kiwoom.PathSector,
+			apiID: "ka20001",
+			fn: newRequestDispatch[kiwoomspecs.KiwoomApiDostkSectKa20001Request, *kiwoomspecs.KiwoomApiDostkSectKa20001Response](
+				d,
+				func(client *kiwoom.Client, callCtx context.Context, req kiwoomspecs.KiwoomApiDostkSectKa20001Request) (*kiwoomspecs.KiwoomApiDostkSectKa20001Response, error) {
+					return client.InquireSectorCurrent(callCtx, req)
+				},
+			),
+		},
+		{
+			path:  kiwoom.PathSector,
+			apiID: "ka20002",
+			fn: newRequestDispatch[kiwoomspecs.KiwoomApiDostkSectKa20002Request, *kiwoomspecs.KiwoomApiDostkSectKa20002Response](
+				d,
+				func(client *kiwoom.Client, callCtx context.Context, req kiwoomspecs.KiwoomApiDostkSectKa20002Request) (*kiwoomspecs.KiwoomApiDostkSectKa20002Response, error) {
+					return client.InquireSectorByPrice(callCtx, req)
+				},
+			),
+		},
+		{
+			path:  kiwoom.PathAccount,
+			apiID: "kt00005",
+			fn: newRequestDispatch[kiwoomspecs.KiwoomApiDostkAcntKt00005Request, *kiwoomspecs.KiwoomApiDostkAcntKt00005Response](
+				d,
+				func(client *kiwoom.Client, callCtx context.Context, req kiwoomspecs.KiwoomApiDostkAcntKt00005Request) (*kiwoomspecs.KiwoomApiDostkAcntKt00005Response, error) {
+					return client.InquireBalanceByRequest(callCtx, req)
+				},
+			),
+		},
+		{
+			path:  kiwoom.PathAccount,
+			apiID: "kt00018",
+			fn: newRequestDispatch[kiwoomspecs.KiwoomApiDostkAcntKt00018Request, *kiwoomspecs.KiwoomApiDostkAcntKt00018Response](
+				d,
+				func(client *kiwoom.Client, callCtx context.Context, req kiwoomspecs.KiwoomApiDostkAcntKt00018Request) (*kiwoomspecs.KiwoomApiDostkAcntKt00018Response, error) {
+					return client.InquirePositionsByRequest(callCtx, req)
+				},
+			),
+		},
+		{
+			path:  kiwoom.PathAccount,
+			apiID: "ka10075",
+			fn: newRequestDispatch[kiwoomspecs.KiwoomApiDostkAcntKa10075Request, *kiwoomspecs.KiwoomApiDostkAcntKa10075Response](
+				d,
+				func(client *kiwoom.Client, callCtx context.Context, req kiwoomspecs.KiwoomApiDostkAcntKa10075Request) (*kiwoomspecs.KiwoomApiDostkAcntKa10075Response, error) {
+					return client.InquireUnsettledOrdersByRequest(callCtx, req)
+				},
+			),
+		},
+		{
+			path:  kiwoom.PathAccount,
+			apiID: "ka10076",
+			fn: newRequestDispatch[kiwoomspecs.KiwoomApiDostkAcntKa10076Request, *kiwoomspecs.KiwoomApiDostkAcntKa10076Response](
+				d,
+				func(client *kiwoom.Client, callCtx context.Context, req kiwoomspecs.KiwoomApiDostkAcntKa10076Request) (*kiwoomspecs.KiwoomApiDostkAcntKa10076Response, error) {
+					return client.InquireOrderExecutionsByRequest(callCtx, req)
+				},
+			),
+		},
+		{
+			path:  kiwoom.PathAccount,
+			apiID: "kt00007",
+			fn: newRequestDispatch[kiwoomspecs.KiwoomApiDostkAcntKt00007Request, *kiwoomspecs.KiwoomApiDostkAcntKt00007Response](
+				d,
+				func(client *kiwoom.Client, callCtx context.Context, req kiwoomspecs.KiwoomApiDostkAcntKt00007Request) (*kiwoomspecs.KiwoomApiDostkAcntKt00007Response, error) {
+					return client.InquireOrderExecutionDetail(callCtx, req)
+				},
+			),
+		},
+		{
+			path:  kiwoom.PathAccount,
+			apiID: "kt00009",
+			fn: newRequestDispatch[kiwoomspecs.KiwoomApiDostkAcntKt00009Request, *kiwoomspecs.KiwoomApiDostkAcntKt00009Response](
+				d,
+				func(client *kiwoom.Client, callCtx context.Context, req kiwoomspecs.KiwoomApiDostkAcntKt00009Request) (*kiwoomspecs.KiwoomApiDostkAcntKt00009Response, error) {
+					return client.InquireOrderExecutionStatus(callCtx, req)
+				},
+			),
+		},
+		{
+			path:  kiwoom.PathAccount,
+			apiID: "kt00010",
+			fn: newRequestDispatch[kiwoomspecs.KiwoomApiDostkAcntKt00010Request, *kiwoomspecs.KiwoomApiDostkAcntKt00010Response](
+				d,
+				func(client *kiwoom.Client, callCtx context.Context, req kiwoomspecs.KiwoomApiDostkAcntKt00010Request) (*kiwoomspecs.KiwoomApiDostkAcntKt00010Response, error) {
+					return client.InquireOrderableWithdrawable(callCtx, req)
+				},
+			),
+		},
+		{
+			path:  kiwoom.PathChart,
+			apiID: "ka10079",
+			fn: newRequestDispatch[kiwoomspecs.KiwoomApiDostkChartKa10079Request, *kiwoomspecs.KiwoomApiDostkChartKa10079Response](
+				d,
+				func(client *kiwoom.Client, callCtx context.Context, req kiwoomspecs.KiwoomApiDostkChartKa10079Request) (*kiwoomspecs.KiwoomApiDostkChartKa10079Response, error) {
+					return client.InquireTickChartByRequest(callCtx, req)
+				},
+			),
+		},
+		{
+			path:  kiwoom.PathChart,
+			apiID: "ka10060",
+			fn: newRequestDispatch[kiwoomspecs.KiwoomApiDostkChartKa10060Request, *kiwoomspecs.KiwoomApiDostkChartKa10060Response](
+				d,
+				func(client *kiwoom.Client, callCtx context.Context, req kiwoomspecs.KiwoomApiDostkChartKa10060Request) (*kiwoomspecs.KiwoomApiDostkChartKa10060Response, error) {
+					return client.InquireInvestorByStockChart(callCtx, req)
+				},
+			),
+		},
+		{
+			path:  kiwoom.PathChart,
+			apiID: "ka10081",
+			fn: newRequestDispatch[kiwoomspecs.KiwoomApiDostkChartKa10081Request, *kiwoomspecs.KiwoomApiDostkChartKa10081Response](
+				d,
+				func(client *kiwoom.Client, callCtx context.Context, req kiwoomspecs.KiwoomApiDostkChartKa10081Request) (*kiwoomspecs.KiwoomApiDostkChartKa10081Response, error) {
+					return client.InquireDailyPriceByRequest(callCtx, req)
+				},
+			),
+		},
+		{
+			path:  kiwoom.PathChart,
+			apiID: "ka10082",
+			fn: newRequestDispatch[kiwoomspecs.KiwoomApiDostkChartKa10082Request, *kiwoomspecs.KiwoomApiDostkChartKa10082Response](
+				d,
+				func(client *kiwoom.Client, callCtx context.Context, req kiwoomspecs.KiwoomApiDostkChartKa10082Request) (*kiwoomspecs.KiwoomApiDostkChartKa10082Response, error) {
+					return client.InquireWeeklyPriceByRequest(callCtx, req)
+				},
+			),
+		},
+		{
+			path:  kiwoom.PathChart,
+			apiID: "ka10083",
+			fn: newRequestDispatch[kiwoomspecs.KiwoomApiDostkChartKa10083Request, *kiwoomspecs.KiwoomApiDostkChartKa10083Response](
+				d,
+				func(client *kiwoom.Client, callCtx context.Context, req kiwoomspecs.KiwoomApiDostkChartKa10083Request) (*kiwoomspecs.KiwoomApiDostkChartKa10083Response, error) {
+					return client.InquireMonthlyPriceByRequest(callCtx, req)
+				},
+			),
+		},
+		{
+			path:  kiwoom.PathOrder,
+			apiID: "kt10000",
+			fn: newRequestDispatch[kiwoomspecs.KiwoomApiDostkOrdrKt10000Request, *kiwoomspecs.KiwoomApiDostkOrdrKt10000Response](
+				d,
+				func(client *kiwoom.Client, callCtx context.Context, req kiwoomspecs.KiwoomApiDostkOrdrKt10000Request) (*kiwoomspecs.KiwoomApiDostkOrdrKt10000Response, error) {
+					return client.PlaceBuyOrder(callCtx, req)
+				},
+			),
+		},
+		{
+			path:  kiwoom.PathOrder,
+			apiID: "kt10001",
+			fn: newRequestDispatch[kiwoomspecs.KiwoomApiDostkOrdrKt10001Request, *kiwoomspecs.KiwoomApiDostkOrdrKt10000Response](
+				d,
+				func(client *kiwoom.Client, callCtx context.Context, req kiwoomspecs.KiwoomApiDostkOrdrKt10001Request) (*kiwoomspecs.KiwoomApiDostkOrdrKt10000Response, error) {
+					return client.PlaceSellOrder(callCtx, req)
+				},
+			),
+		},
+		{
+			path:  kiwoom.PathOrder,
+			apiID: "kt10002",
+			fn: newRequestDispatch[kiwoomspecs.KiwoomApiDostkOrdrKt10002Request, *kiwoomspecs.KiwoomApiDostkOrdrKt10002Response](
+				d,
+				func(client *kiwoom.Client, callCtx context.Context, req kiwoomspecs.KiwoomApiDostkOrdrKt10002Request) (*kiwoomspecs.KiwoomApiDostkOrdrKt10002Response, error) {
+					return client.ModifyStockOrder(callCtx, req)
+				},
+			),
+		},
+		{
+			path:  kiwoom.PathOrder,
+			apiID: "kt10003",
+			fn: newRequestDispatch[kiwoomspecs.KiwoomApiDostkOrdrKt10003Request, *kiwoomspecs.KiwoomApiDostkOrdrKt10003Response](
+				d,
+				func(client *kiwoom.Client, callCtx context.Context, req kiwoomspecs.KiwoomApiDostkOrdrKt10003Request) (*kiwoomspecs.KiwoomApiDostkOrdrKt10003Response, error) {
+					return client.CancelStockOrder(callCtx, req)
+				},
+			),
+		},
+	}
+	for _, def := range defs {
+		d.registerOverrideRoute(def.path, def.apiID, postMethods, def.fn)
+	}
 }
 
 func (d *endpointDispatcher) registerOverrideRoute(path, apiID string, methods []string, fn endpointDispatchFunc) {
@@ -476,17 +463,7 @@ func (d *endpointDispatcher) callEndpoint(
 }
 
 func normalizeEndpointPath(path string) string {
-	path = strings.TrimSpace(path)
-	if path == "" {
-		return ""
-	}
-	if !strings.HasPrefix(path, "/") {
-		path = "/" + path
-	}
-	if !strings.HasPrefix(path, kiwoom.PathPrefixAPISlash) {
-		path = kiwoom.PathPrefixAPI + path
-	}
-	return path
+	return endpointpath.Normalize(path, kiwoom.PathPrefixAPI, kiwoom.PathPrefixAPISlash)
 }
 
 func normalizeEndpointAPIID(apiID string) string {
@@ -551,11 +528,7 @@ func clonePayloadMap(payload map[string]interface{}) map[string]interface{} {
 	if payload == nil {
 		return map[string]interface{}{}
 	}
-	out := make(map[string]interface{}, len(payload))
-	for k, v := range payload {
-		out[k] = v
-	}
-	return out
+	return maps.Clone(payload)
 }
 
 func normalizePayloadMap(in map[string]interface{}) map[string]interface{} {

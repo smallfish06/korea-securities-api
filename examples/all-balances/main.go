@@ -9,6 +9,7 @@ import (
 	"strings"
 	"time"
 
+	pkgadapter "github.com/smallfish06/krsec/pkg/adapter"
 	"github.com/smallfish06/krsec/pkg/broker"
 	"github.com/smallfish06/krsec/pkg/config"
 	"github.com/smallfish06/krsec/pkg/kis"
@@ -149,12 +150,12 @@ func buildBroker(
 ) (broker.Broker, error) {
 	switch strings.ToLower(strings.TrimSpace(acc.Broker)) {
 	case "kis":
-		return kis.NewAdapterWithOptions(acc.Sandbox, acc.AccountID, kis.Options{
+		return kis.NewAdapterWithOptions(acc.Sandbox, acc.AccountID, pkgadapter.Options{
 			TokenManager:    kisTokenManager,
 			OrderContextDir: cfg.Storage.OrderContextDir,
 		}), nil
 	case "kiwoom":
-		return kiwoom.NewAdapterWithOptions(acc.Sandbox, acc.AccountID, kiwoom.Options{
+		return kiwoom.NewAdapterWithOptions(acc.Sandbox, acc.AccountID, pkgadapter.Options{
 			TokenManager:    kiwoomTokenManager,
 			OrderContextDir: cfg.Storage.OrderContextDir,
 		}), nil
