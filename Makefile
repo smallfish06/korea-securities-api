@@ -27,11 +27,11 @@ deps:
 
 # Install development tools
 dev-tools:
-	go install github.com/golangci/golangci-lint/cmd/golangci-lint@latest
+	go install github.com/golangci/golangci-lint/v2/cmd/golangci-lint@latest
 
 # Lint code
 lint:
-	golangci-lint run
+	go run github.com/golangci/golangci-lint/v2/cmd/golangci-lint@latest run
 
 # Format code
 fmt:
