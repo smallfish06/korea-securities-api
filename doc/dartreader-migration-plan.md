@@ -38,7 +38,7 @@ DART는 증권사 API(KIS, Kiwoom)와 달리 주문/잔고/시세 등의 거래 
 | non-200 `None` 반환 | 모든 HTTP 호출 `error` 반환 |
 | `dart_request_exception` 후 코드 계속 실행 | `if err != nil { return }` 패턴 |
 | Singleton 설정 무시 | 명시적 `Config` struct, DI |
-| Redis 필수 의존 | `internal/ratelimit.Limiter` (in-process) |
+| Redis 필수 의존 (fallback 없음) | `RateLimiter` 인터페이스: local(in-process) / redis(분산) 선택형 |
 | `print()` 디버깅 | `log` 패키지 또는 structured logging |
 | 입력 검증 없음 | 각 함수 진입부에서 검증 + sentinel error |
 | 테스트 부재 | 모듈별 `_test.go`, httptest 기반 |
@@ -52,42 +52,45 @@ DART는 증권사 API(KIS, Kiwoom)와 달리 주문/잔고/시세 등의 거래 
 ```
 krsec/
 ├── internal/
-│   └── dart/
-│       ├── client.go              # HTTP 클라이언트 (rate limit, API key 로테이션)
-│       ├── client_test.go
-│       ├── corpcode.go            # 고유번호 다운로드/파싱/캐싱
-│       ├── corpcode_test.go
-│       ├── disclosure.go          # 공시검색 (list), 기업개황 (company)
-│       ├── disclosure_test.go
-│       ├── finstate.go            # 재무정보 (단일/다중/전체/XBRL taxonomy)
-│       ├── finstate_test.go
-│       ├── report.go              # 사업보고서 (22개 키워드)
-│       ├── report_test.go
-│       ├── share.go               # 지분공시 (대량보유, 임원소유)
-│       ├── share_test.go
-│       ├── event.go               # 주요사항보고서 (37개 filing type)
-│       ├── event_test.go
-│       ├── regstate.go            # 증권신고서 (6개 키워드)
-│       ├── regstate_test.go
-│       ├── document.go            # 공시서류 원본 (XML/ZIP 다운로드)
-│       ├── document_test.go
-│       ├── errors.go              # DART 전용 에러 타입
-│       └── apikey.go              # API 키 로테이션 로직
-│
-├── pkg/
-│   └── dart/
-│       ├── types.go               # 공개 타입 (CorpCode, Disclosure, FinState 등)
-│       ├── provider.go            # DartProvider 인터페이스
-│       └── adapter.go             # internal/dart를 감싸는 공개 adapter
-│
-├── internal/
+│   ├── ratelimit/
+│   │   ├── ratelimit.go           # Waiter 인터페이스 + 기존 Limiter (변경 최소화)
+│   │   ├── redis.go               # RedisLimiter (분산 rate limiting)
+│   │   └── ratelimit_test.go      # 기존 테스트 + RedisLimiter 테스트
+│   │
+│   ├── dart/
+│   │   ├── client.go              # HTTP 클라이언트 (per-key rate limit, API key 로테이션)
+│   │   ├── client_test.go
+│   │   ├── corpcode.go            # 고유번호 다운로드/파싱/캐싱
+│   │   ├── corpcode_test.go
+│   │   ├── disclosure.go          # 공시검색 (list), 기업개황 (company)
+│   │   ├── disclosure_test.go
+│   │   ├── finstate.go            # 재무정보 (단일/다중/전체/XBRL taxonomy)
+│   │   ├── finstate_test.go
+│   │   ├── report.go              # 사업보고서 (22개 키워드)
+│   │   ├── report_test.go
+│   │   ├── share.go               # 지분공시 (대량보유, 임원소유)
+│   │   ├── share_test.go
+│   │   ├── event.go               # 주요사항보고서 (37개 filing type)
+│   │   ├── event_test.go
+│   │   ├── regstate.go            # 증권신고서 (6개 키워드)
+│   │   ├── regstate_test.go
+│   │   ├── document.go            # 공시서류 원본 (XML/ZIP 다운로드)
+│   │   ├── document_test.go
+│   │   ├── errors.go              # DART 전용 에러 타입
+│   │   └── apikey.go              # API 키 로테이션 (일일 한도 관리)
+│   │
 │   └── server/
 │       ├── handler_dart.go        # /dart/* HTTP 핸들러
 │       └── handler_dart_test.go
 │
 └── pkg/
+    ├── dart/
+    │   ├── types.go               # 공개 타입 (CorpCode, Disclosure, FinState 등)
+    │   ├── provider.go            # DartProvider 인터페이스
+    │   └── adapter.go             # internal/dart를 감싸는 공개 adapter
+    │
     └── config/
-        └── config.go             # DartConfig 추가
+        └── config.go             # DartConfig 추가 (api_keys, rate_limit, redis_url)
 ```
 
 ### 핵심 인터페이스
@@ -203,30 +206,108 @@ func (m *APIKeyManager) ResetIfNewDay()             // 날짜 변경 시 전체 
 ```
 
 - dartreader의 `RatedSemaphore.get_api_key()` + `stop()` 대체
-- Redis 의존 제거, in-process 관리
+- 일일 한도 관리 (per-key disable/enable)는 API 키 단위로 in-process 관리
 - 자정 기준 자동 리셋 (KST)
+- per-second rate limiting은 아래 `RateLimiter` 인터페이스에서 담당 (별개 관심사)
+
+### 3-3b. `internal/ratelimit/` — RateLimiter 인터페이스 추상화
+
+기존 `ratelimit.Limiter`는 in-process 전용입니다. DART는 **멀티 pod에서 동일 API 키의 per-second 한도를 공유**해야 하므로 Redis 기반 분산 rate limiting이 필요합니다.
+
+krsec 전체의 rate limiter를 인터페이스로 추상화하면 DART뿐 아니라 KIS/Kiwoom도 향후 멀티 pod 배포 시 동일하게 대응 가능합니다.
+
+```go
+// internal/ratelimit/ratelimit.go
+
+// Waiter is the common rate-limiter interface.
+// Both in-process and distributed (Redis) implementations satisfy this.
+type Waiter interface {
+    // Wait blocks until a request is allowed or ctx is cancelled.
+    Wait(ctx context.Context) error
+    // Allow reports whether a request can proceed right now without waiting.
+    Allow() bool
+}
+
+// Limiter는 기존 in-process 구현 (변경 없이 Waiter 자동 만족)
+type Limiter struct { ... }  // 기존 코드 유지
+```
+
+```go
+// internal/ratelimit/redis.go
+
+// RedisLimiter implements Waiter using Redis sliding window counter.
+// 멀티 pod 환경에서 per-key rate limit을 공유합니다.
+type RedisLimiter struct {
+    client *redis.Client
+    key    string          // Redis key prefix (e.g. "dart:ratelimit:{api_key}")
+    rps    int             // requests per second
+}
+
+func NewRedisLimiter(redisURL, keyPrefix string, rps int) (*RedisLimiter, error)
+
+// Wait implements Waiter using Redis INCR + EXPIRE (sliding window).
+func (r *RedisLimiter) Wait(ctx context.Context) error
+func (r *RedisLimiter) Allow() bool
+```
+
+**dartreader의 Redis 사용 패턴 보존:**
+
+dartreader의 `RatedSemaphore.lock(api_key)`는 Redis의 `SlidingWindowCounterRateLimiter`를 사용해
+per-API-key per-second rate limit을 멀티 pod에서 공유합니다.
+
+```python
+# dartreader 현재 동작
+while not self.limiter.test(self.limit, api_key):   # Redis sliding window 체크
+    time.sleep(self.period + jitter)                 # jitter로 thundering herd 방지
+self.limiter.hit(self.limit, api_key)                # Redis에 요청 카운트 기록
+```
+
+Go에서도 동일한 의미를 `RedisLimiter.Wait()`으로 구현합니다:
+- Redis key: `dart:ratelimit:{api_key}` (per-key 독립)
+- 알고리즘: sliding window counter (INCR + EXPIRE, 또는 Lua script)
+- Thundering herd 방지: jitter 포함 backoff
+
+**사용처 선택 로직 (Config 기반):**
+
+```go
+func NewWaiter(cfg RateLimitConfig) (Waiter, error) {
+    if cfg.RedisURL != "" {
+        return NewRedisLimiter(cfg.RedisURL, cfg.KeyPrefix, cfg.RPS)
+    }
+    return New(cfg.Name, float64(cfg.RPS), cfg.Burst), nil
+}
+```
+
+- `redis_url` 설정 있음 → `RedisLimiter` (분산)
+- `redis_url` 없음 → 기존 `Limiter` (in-process)
+- 기존 KIS/Kiwoom 코드는 변경 없음 (`Waiter` 인터페이스를 이미 만족)
 
 ### 3-4. `internal/dart/client.go` — HTTP 클라이언트
 
 ```go
 type Client struct {
     httpClient  *http.Client
-    limiter     *ratelimit.Limiter    // krsec 기존 인프라 재활용
     keyManager  *APIKeyManager
+    newLimiter  func(apiKey string) ratelimit.Waiter  // per-key limiter factory
+    limiters    map[string]ratelimit.Waiter            // api_key → limiter 캐시
+    mu          sync.RWMutex
 }
 
-func NewClient(keys []string, rps float64) *Client
+func NewClient(keys []string, limiterFactory func(string) ratelimit.Waiter) *Client
 
 // 핵심 메서드: 모든 DART API 호출의 단일 진입점
 func (c *Client) GetJSON(ctx context.Context, url string, params url.Values, result interface{}) error
 func (c *Client) GetBytes(ctx context.Context, url string, params url.Values) ([]byte, string, error)  // contentType 반환
 ```
 
-- Rate limit: `ratelimit.New("dart", rps, burst)` — krsec 기존 `internal/ratelimit` 재활용
+- **Per-key rate limiting**: API 키별로 독립된 limiter 인스턴스 유지
+  - limiter factory를 주입받아 `RedisLimiter` 또는 `Limiter` 자동 선택
+  - Redis 모드: `dart:ratelimit:{api_key}` 키로 멀티 pod 공유
+  - Local 모드: `ratelimit.New("dart:"+apiKey, rps, burst)` per-key
 - API 키 자동 주입: `params.Set("crtfc_key", key)`
 - 에러 처리:
   - non-200 → `fmt.Errorf("dart: HTTP %d: %s", statusCode, body)`
-  - status `"020"` → `keyManager.DisableKey()` + 재시도
+  - status `"020"` → `keyManager.DisableKey()` + 다음 키로 재시도
 - 응답 검증: `result.(DARTResponse).Status` 체크 공통화
 
 ### 3-5. `internal/dart/corpcode.go` — 고유번호 관리
@@ -253,13 +334,16 @@ func (s *CorpCodeStore) FindMulti(names []string) ([]string, error)  // None 조
 - `internal/dart/client_test.go`: `httptest.Server`로 mock DART API
 - `internal/dart/corpcode_test.go`: XML 파싱, Find/FindMulti 검증
 - `internal/dart/apikey_test.go`: 키 로테이션, 날짜 리셋 검증
+- `internal/ratelimit/ratelimit_test.go`: Waiter 인터페이스 + RedisLimiter 테스트
 
 ### Task 목록
 
+- [ ] `internal/ratelimit/ratelimit.go`에 `Waiter` 인터페이스 추가 (기존 `Limiter` 호환)
+- [ ] `internal/ratelimit/redis.go` 작성 (Redis sliding window) + 테스트
 - [ ] `pkg/dart/types.go` 작성 (CorpCode, DateRange, ListOpts 등 모든 공개 타입)
 - [ ] `internal/dart/errors.go` 작성
-- [ ] `internal/dart/apikey.go` 작성 + 테스트
-- [ ] `internal/dart/client.go` 작성 (GetJSON, GetBytes) + 테스트
+- [ ] `internal/dart/apikey.go` 작성 (일일 한도 관리) + 테스트
+- [ ] `internal/dart/client.go` 작성 (GetJSON, GetBytes, per-key limiter) + 테스트
 - [ ] `internal/dart/corpcode.go` 작성 (Refresh, Find, FindMulti) + 테스트
 
 ---
@@ -430,8 +514,9 @@ func (c *Client) DownloadXBRL(ctx context.Context, rcpNo string) ([]byte, error)
 ```go
 // pkg/config/config.go에 추가
 type DartConfig struct {
-    APIKeys    []string `yaml:"api_keys"`
-    RateLimit  float64  `yaml:"rate_limit"`   // requests per second (기본: 10)
+    APIKeys   []string `yaml:"api_keys"`
+    RateLimit float64  `yaml:"rate_limit"`  // requests per second per key (기본: 10)
+    RedisURL  string   `yaml:"redis_url"`   // 분산 rate limiting (선택)
 }
 ```
 
@@ -515,7 +600,8 @@ dart:
   api_keys:
     - "your-dart-api-key-1"
     - "your-dart-api-key-2"     # 여러 키 로테이션 지원
-  rate_limit: 10                # requests/second (기본: 10)
+  rate_limit: 10                # requests/second per key (기본: 10)
+  redis_url: "redis://localhost:6379"  # 분산 rate limiting (선택)
 ```
 
 ### 검증 규칙
@@ -523,6 +609,9 @@ dart:
 - `dart` 섹션 자체는 optional (DART 미사용 시 생략 가능)
 - `dart` 섹션이 있으면 `api_keys`에 최소 1개 키 필수
 - `rate_limit` ≤ 0이면 기본값 10 적용
+- `redis_url`:
+  - 설정 시 → Redis 기반 분산 rate limiting (멀티 pod 환경)
+  - 미설정 시 → in-process rate limiting (단일 pod / 로컬 개발)
 
 ---
 
@@ -530,15 +619,16 @@ dart:
 
 ### 새로 추가되는 의존성
 
-| 패키지 | 용도 | Phase |
-|--------|------|-------|
-| `golang.org/x/text/encoding/korean` | euc-kr/cp949 디코딩 (공시서류) | Phase 6 |
+| 패키지 | 용도 | Phase | 필수 |
+|--------|------|-------|------|
+| `github.com/redis/go-redis/v9` | 분산 rate limiting (Redis sliding window) | Phase 1 | 선택 (redis_url 설정 시) |
 
 ### 이미 krsec에 있는 의존성 (재활용)
 
 | 패키지 | 용도 |
 |--------|------|
-| `golang.org/x/time/rate` | Rate limiting |
+| `golang.org/x/time/rate` | In-process rate limiting (fallback) |
+| `golang.org/x/text` | euc-kr/cp949 디코딩 (이미 go.mod에 존재) |
 | `encoding/xml` | XML 파싱 (표준 라이브러리) |
 | `archive/zip` | ZIP 처리 (표준 라이브러리) |
 | `net/http` | HTTP 클라이언트 (표준 라이브러리) |
@@ -549,6 +639,21 @@ dart:
 | 패키지 | 용도 |
 |--------|------|
 | `github.com/PuerkitoBio/goquery` | HTML 스크래핑 |
+
+### build tag를 통한 Redis 선택적 컴파일
+
+Redis 의존성을 원하지 않는 사용자를 위해 build tag로 분리 가능:
+
+```go
+//go:build redis
+
+package ratelimit
+
+// redis.go — go-redis 의존
+```
+
+`go build -tags redis` 시에만 Redis 구현 포함. tag 없으면 in-process만 사용.
+단, 이는 선택사항이며 go-redis가 부담되지 않으면 tag 없이 포함해도 무방합니다.
 
 ---
 
