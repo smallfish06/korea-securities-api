@@ -186,10 +186,15 @@ func runRefresh(args []string) error {
 	client := &http.Client{Timeout: *timeout}
 	snap, err := fetchSnapshot(client, *portalURL, *detailURL, *workers)
 	if err != nil {
-		return err
-	}
-	if err := writeSnapshot(*snapshotPath, snap); err != nil {
-		return err
+		fmt.Fprintf(os.Stderr, "kis-specgen: live fetch failed (%v), falling back to existing snapshot\n", err)
+		snap, err = readSnapshot(*snapshotPath)
+		if err != nil {
+			return fmt.Errorf("fallback snapshot read failed: %w", err)
+		}
+	} else {
+		if err := writeSnapshot(*snapshotPath, snap); err != nil {
+			return err
+		}
 	}
 
 	specBytes, err := generateDocumentedSpecsGo(snap)
